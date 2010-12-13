@@ -20,7 +20,7 @@ namespace Utils
             bool result = PnpUtilHelper(PnpUtilOptions.Enumerate, "",  ref output);
             if (result == true)
             {                
-                Trace.TraceInformation(output);
+                Trace.TraceInformation("O/P of Enumeration : " + Environment.NewLine + output + Environment.NewLine);
 
                 // Parse the output
                 using (StringReader sr = new StringReader(output))                
@@ -138,7 +138,7 @@ namespace Utils
                     {
                         result = reader.ReadToEnd();
                         output = result;
-                        Trace.TraceInformation(result);
+                        Trace.TraceInformation(result + Environment.NewLine);
 
                         if (option == PnpUtilOptions.Delete || option == PnpUtilOptions.ForceDelete)
                         {
@@ -161,7 +161,7 @@ namespace Utils
             catch (Exception e)
             {
                 // dont catch all exceptions -- but will do for our needs!
-                Trace.TraceError(String.Format(@"{0}\n{1}", e.Message, e.StackTrace));
+                Trace.TraceError(String.Format(@"{0}\n{1}"+Environment.NewLine, e.Message, e.StackTrace));
                 output = "";
                 retVal = false;
             }

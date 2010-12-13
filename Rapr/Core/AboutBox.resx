@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="textBox1.Text" xml:space="preserve">
-    <value>DriverStoreExplorer is a simply utility that abstracts the PnpUtil functionality (present in Windows Vista+). More info on driver store here - http://msdn.microsoft.com/en-us/library/ff544868(VS.85).aspx</value>
+    <value>DriverStoreExplorer is a simple utility that abstracts the PnpUtil functionality (present in Windows Vista+). More info on driver store here - http://msdn.microsoft.com/en-us/library/ff544868(VS.85).aspx</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="logoPictureBox.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
