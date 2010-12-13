@@ -14,22 +14,14 @@ namespace Rapr
         Color SavedBackColor, SavedForeColor;
         OperationContext context = new OperationContext();
 
-        private static bool IsOSSupported()
-        {
-             //Get Operating system information.
-            OperatingSystem os = Environment.OSVersion;
-            
-            //Get version information about the os.
-            Version version = os.Version;
-
-            return ((os.Platform == PlatformID.Win32NT) && (version.Major >= 6));
-        }
+     
         public Form1()
         {
             InitializeComponent();            
             AppState.MainForm = this;
+            AppState.EnableFileLogging();
             driverStore = AppState.GetDriverStoreHandler();
-            if (!IsOSSupported())
+            if (!AppState.IsOSSupported())
             {
                 MessageBox.Show("This utility cannot be run in pre-Vista OS", "Rapr", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
@@ -52,6 +44,12 @@ namespace Rapr
 
             }
         }
+
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            System.Diagnostics.Trace.TraceInformation("Shutting down - reason " + e.CloseReason);
+            AppState.Cleanup();
+        }  
 
         private void buttonEnumerate_Click(object sender, EventArgs e)
         {            
@@ -149,7 +147,7 @@ namespace Rapr
                             temp = driverStore.DeletePackage(dse, false);
                             resultTxt = String.Format("Delete({0}) {1}", dse.driverPublishedName,
                                 temp == true ? "succeeded" : "failed");
-                            System.Diagnostics.Trace.TraceInformation(resultTxt);
+                            System.Diagnostics.Trace.TraceInformation(resultTxt + Environment.NewLine);
 
                             sb.AppendLine(resultTxt);
 
@@ -172,7 +170,7 @@ namespace Rapr
                             temp = driverStore.DeletePackage(dse, true);
                             resultTxt = String.Format("ForceDelete({0}) {1}", dse.driverPublishedName,
                                     temp == true ? "succeeded" : "failed");
-                            System.Diagnostics.Trace.TraceInformation(resultTxt);
+                            System.Diagnostics.Trace.TraceInformation(resultTxt + Environment.NewLine);
 
                             sb.AppendLine(resultTxt);
 
@@ -191,7 +189,8 @@ namespace Rapr
                 case OperationCode.Dummy:
                     throw new Exception("Invalid argument rcvd by bgroundWorker");
             }            
-            e.Result = localContext; 
+            e.Result = localContext;
+            AppState.FlushTrace();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -283,6 +282,7 @@ namespace Rapr
                     break;                    
             }
             ShowOperationInProgress(false);
+            AppState.FlushTrace();
         }
 
         private static void ShowAboutBox()
@@ -339,6 +339,7 @@ namespace Rapr
         private void ctxtMenuAbout_Click(object sender, EventArgs e)
         {
             ShowAboutBox();
-        }        
+        }
+      
     }
 }
