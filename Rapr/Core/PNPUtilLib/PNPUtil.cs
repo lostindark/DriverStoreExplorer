@@ -118,14 +118,14 @@ namespace Utils
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
                     start.Arguments = @"-a " + Path.GetFileName(infName);
-                    AppState.TraceInformation(String.Format("[Add] workDir = {0}, arguments = {1}", start.WorkingDirectory,
+                    AppContext.TraceInformation(String.Format("[Add] workDir = {0}, arguments = {1}", start.WorkingDirectory,
                         start.Arguments));
                     break;
                 case PnpUtilOptions.AddInstall:
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
-                    start.Arguments = @"-i " + Path.GetFileName(infName);
-                    AppState.TraceInformation(String.Format("[AddInstall] workDir = {0}, arguments = {1}", start.WorkingDirectory,
+                    start.Arguments = @"-i -a " + Path.GetFileName(infName);
+                    AppContext.TraceInformation(String.Format("[AddInstall] workDir = {0}, arguments = {1}", start.WorkingDirectory,
                         start.Arguments));
 
                     break;
@@ -147,7 +147,7 @@ namespace Utils
                         result = reader.ReadToEnd();
                         output = result;
                         if (fDebugPrintOutput == true)
-                            AppState.TraceInformation(String.Format("[Result_start] ---- {0}{1}[----- Result_End]{0}", Environment.NewLine, result));
+                            AppContext.TraceInformation(String.Format("[Result_start] ---- {0}{1}[----- Result_End]{0}", Environment.NewLine, result));
 
                         if (option == PnpUtilOptions.Delete || option == PnpUtilOptions.ForceDelete)
                         {
@@ -161,7 +161,7 @@ namespace Utils
                         {
                             if (!output.Contains(@"Driver package added successfully"))
                             {
-                                AppState.TraceError("[Error] failed to add " + infName);
+                                AppContext.TraceError("[Error] failed to add " + infName);
                                 retVal = false;
                             }                            
                         }
@@ -171,7 +171,7 @@ namespace Utils
             catch (Exception e)
             {
                 // dont catch all exceptions -- but will do for our needs!
-                AppState.TraceError(String.Format(@"{0}\n{1}" + Environment.NewLine, e.Message, e.StackTrace));
+                AppContext.TraceError(String.Format(@"{0}\n{1}" + Environment.NewLine, e.Message, e.StackTrace));
                 output = "";
                 retVal = false;
             }

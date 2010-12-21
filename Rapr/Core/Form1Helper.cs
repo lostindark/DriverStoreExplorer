@@ -145,22 +145,22 @@ namespace Rapr
                 case Status.Error:
                     lblStatus.BackColor = Color.FromArgb(0xFF, 0x00, 0x33);
                     lblStatus.ForeColor = Color.White;
-                    AppState.TraceError(String.Format("[Error] {0}{1}", text, Environment.NewLine));
+                    AppContext.TraceError(String.Format("[Error] {0}{1}", text, Environment.NewLine));
                     break;
                 case Status.Success:
                     lblStatus.BackColor = Color.LightGreen;
                     lblStatus.ForeColor = Color.Black;
-                    AppState.TraceInformation(String.Format("[Success] {0}{1}", text, Environment.NewLine));
+                    AppContext.TraceInformation(String.Format("[Success] {0}{1}", text, Environment.NewLine));
                     break;
                 case Status.Warning:
                     lblStatus.BackColor = Color.Yellow;
                     lblStatus.ForeColor = Color.Black;
-                    AppState.TraceWarning(String.Format("[Warning] {0}{1}", text, Environment.NewLine));
+                    AppContext.TraceWarning(String.Format("[Warning] {0}{1}", text, Environment.NewLine));
                     break;
                 case Status.Normal:
                     lblStatus.BackColor = SavedBackColor;
                     lblStatus.ForeColor = SavedForeColor;
-                    AppState.TraceInformation(String.Format("[Info] {0}{1}", text, Environment.NewLine));
+                    AppContext.TraceInformation(String.Format("[Info] {0}{1}", text, Environment.NewLine));
                     break;               
             }            
         }

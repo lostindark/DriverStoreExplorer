@@ -5,7 +5,7 @@ using System.Diagnostics;
 using System.IO;
 namespace Rapr
 {
-    public static class AppState
+    public static class AppContext
     {
         static Stream logFile;
         public static Form MainForm { get; set; }
