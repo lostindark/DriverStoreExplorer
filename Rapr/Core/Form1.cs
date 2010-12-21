@@ -18,10 +18,10 @@ namespace Rapr
         public Form1()
         {
             InitializeComponent();            
-            AppState.MainForm = this;
-            AppState.EnableLogging();
-            driverStore = AppState.GetDriverStoreHandler();
-            if (!AppState.IsOSSupported())
+            AppContext.MainForm = this;
+            AppContext.EnableLogging();
+            driverStore = AppContext.GetDriverStoreHandler();
+            if (!AppContext.IsOSSupported())
             {
                 MessageBox.Show("This utility cannot be run in pre-Vista OS", "Rapr", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
@@ -47,8 +47,8 @@ namespace Rapr
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            AppState.TraceInformation("Shutting down - reason " + e.CloseReason);
-            AppState.Cleanup();
+            AppContext.TraceInformation("Shutting down - reason " + e.CloseReason);
+            AppContext.Cleanup();
         }  
 
         private void buttonEnumerate_Click(object sender, EventArgs e)
@@ -147,7 +147,7 @@ namespace Rapr
                             temp = driverStore.DeletePackage(dse, false);
                             resultTxt = String.Format("Delete({0}) {1}", dse.driverPublishedName,
                                 temp == true ? "succeeded" : "failed");
-                            AppState.TraceInformation(resultTxt + Environment.NewLine);
+                            AppContext.TraceInformation(resultTxt + Environment.NewLine);
 
                             sb.AppendLine(resultTxt);
 
@@ -170,7 +170,7 @@ namespace Rapr
                             temp = driverStore.DeletePackage(dse, true);
                             resultTxt = String.Format("ForceDelete({0}) {1}", dse.driverPublishedName,
                                     temp == true ? "succeeded" : "failed");
-                            AppState.TraceInformation(resultTxt + Environment.NewLine);
+                            AppContext.TraceInformation(resultTxt + Environment.NewLine);
 
                             sb.AppendLine(resultTxt);
 
@@ -190,7 +190,7 @@ namespace Rapr
                     throw new Exception("Invalid argument rcvd by bgroundWorker");
             }            
             e.Result = localContext;
-            AppState.FlushTrace();
+            AppContext.FlushTrace();
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -282,7 +282,7 @@ namespace Rapr
                     break;                    
             }
             ShowOperationInProgress(false);
-            AppState.FlushTrace();
+            AppContext.FlushTrace();
         }
 
         private static void ShowAboutBox()
