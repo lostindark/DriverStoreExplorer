@@ -29,7 +29,8 @@ namespace Rapr
             return ((os.Platform == PlatformID.Win32NT) && (version.Major >= 6));
         }
 
-        public static void EnableFileLogging()
+        #region DebugOutput
+        private static void EnableFileLogging()
         {
             // Create a file for output named TestFile.txt.
             logFile = File.Open("debug.log", FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.ReadWrite);
@@ -44,10 +45,17 @@ namespace Rapr
             Trace.WriteLine(("---------------------------------------------------------------"));
             Trace.WriteLine(String.Format("{0} - started {1} {2}", Application.ProductName, DateTime.Now.ToLongDateString(),
                 DateTime.Now.ToLongTimeString()));
+            FlushTrace();
+        }
+
+        public static void EnableLogging()
+        {
+            EnableFileLogging();
         }
 
         internal static void FlushTrace()
         {
+            Trace.Flush();
             logFile.Flush();
         }
 
@@ -57,5 +65,24 @@ namespace Rapr
             logFile.Close();
             logFile.Dispose();
         }
+
+        internal static void TraceError(string msg)
+        {
+            System.Diagnostics.Trace.TraceError(msg);
+            FlushTrace();
+        }
+
+        internal static void TraceInformation(string msg)
+        {
+            System.Diagnostics.Trace.TraceInformation(msg);
+            FlushTrace();
+        }
+
+        internal static void TraceWarning(string msg)
+        {
+            System.Diagnostics.Trace.TraceWarning(msg);
+            FlushTrace();
+        }
+        #endregion
     }
 }

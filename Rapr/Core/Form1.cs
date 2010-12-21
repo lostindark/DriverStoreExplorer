@@ -19,7 +19,7 @@ namespace Rapr
         {
             InitializeComponent();            
             AppState.MainForm = this;
-            AppState.EnableFileLogging();
+            AppState.EnableLogging();
             driverStore = AppState.GetDriverStoreHandler();
             if (!AppState.IsOSSupported())
             {
@@ -47,7 +47,7 @@ namespace Rapr
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
-            System.Diagnostics.Trace.TraceInformation("Shutting down - reason " + e.CloseReason);
+            AppState.TraceInformation("Shutting down - reason " + e.CloseReason);
             AppState.Cleanup();
         }  
 
@@ -119,7 +119,7 @@ namespace Rapr
                 string pkgFolder = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
                 string infName = System.IO.Path.GetFileName(openFileDialog.FileName);
 
-                AddDriverPackage(infName);
+                AddDriverPackage(openFileDialog.FileName);
             }
         }
 
@@ -147,7 +147,7 @@ namespace Rapr
                             temp = driverStore.DeletePackage(dse, false);
                             resultTxt = String.Format("Delete({0}) {1}", dse.driverPublishedName,
                                 temp == true ? "succeeded" : "failed");
-                            System.Diagnostics.Trace.TraceInformation(resultTxt + Environment.NewLine);
+                            AppState.TraceInformation(resultTxt + Environment.NewLine);
 
                             sb.AppendLine(resultTxt);
 
@@ -170,7 +170,7 @@ namespace Rapr
                             temp = driverStore.DeletePackage(dse, true);
                             resultTxt = String.Format("ForceDelete({0}) {1}", dse.driverPublishedName,
                                     temp == true ? "succeeded" : "failed");
-                            System.Diagnostics.Trace.TraceInformation(resultTxt + Environment.NewLine);
+                            AppState.TraceInformation(resultTxt + Environment.NewLine);
 
                             sb.AppendLine(resultTxt);
 
