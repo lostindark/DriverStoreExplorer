@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Diagnostics;
 using System.IO;
-
+using Rapr;
 namespace Utils
 {
 
@@ -20,7 +20,7 @@ namespace Utils
             bool result = PnpUtilHelper(PnpUtilOptions.Enumerate, "",  ref output);
             if (result == true)
             {                
-                Trace.TraceInformation("O/P of Enumeration : " + Environment.NewLine + output + Environment.NewLine);
+                //Trace.TraceInformation("O/P of Enumeration : " + Environment.NewLine + output + Environment.NewLine);
 
                 // Parse the output
                 using (StringReader sr = new StringReader(output))                
@@ -91,16 +91,17 @@ namespace Utils
         static bool PnpUtilHelper(PnpUtilOptions option, string infName, ref string output)
         {
             bool retVal = true;
+            bool fDebugPrintOutput = false;
             //
             // Setup the process with the ProcessStartInfo class.
             //
-            ProcessStartInfo start = new ProcessStartInfo 
-                                     { 
-                                        FileName = @"pnputil.exe" /* exe name.*/, 
-                                        UseShellExecute = false, 
-                                        RedirectStandardOutput = true,
-                                        CreateNoWindow = true, 
-                                        WindowStyle = ProcessWindowStyle.Hidden
+            ProcessStartInfo start = new ProcessStartInfo
+                                     {
+                                         FileName = @"pnputil.exe" /* exe name.*/,
+                                         UseShellExecute = false,
+                                         RedirectStandardOutput = true,
+                                         CreateNoWindow = true,
+                                         WindowStyle = ProcessWindowStyle.Hidden
                                      };
             switch (option)
             {
@@ -114,12 +115,19 @@ namespace Utils
                     start.Arguments = @"-f -d " + infName;
                     break;
                 case PnpUtilOptions.Add:
-                    start.WorkingDirectory = System.IO.Path.GetDirectoryName(infName);                    
-                    start.Arguments = @"-a " + infName;
+                    fDebugPrintOutput = true;
+                    start.WorkingDirectory = Path.GetDirectoryName(infName);
+                    start.Arguments = @"-a " + Path.GetFileName(infName);
+                    AppState.TraceInformation(String.Format("[Add] workDir = {0}, arguments = {1}", start.WorkingDirectory,
+                        start.Arguments));
                     break;
                 case PnpUtilOptions.AddInstall:
-                    start.WorkingDirectory = System.IO.Path.GetDirectoryName(infName);
-                    start.Arguments = @"-i -a " + infName;
+                    fDebugPrintOutput = true;
+                    start.WorkingDirectory = Path.GetDirectoryName(infName);
+                    start.Arguments = @"-i " + Path.GetFileName(infName);
+                    AppState.TraceInformation(String.Format("[AddInstall] workDir = {0}, arguments = {1}", start.WorkingDirectory,
+                        start.Arguments));
+
                     break;
             }
 
@@ -138,7 +146,8 @@ namespace Utils
                     {
                         result = reader.ReadToEnd();
                         output = result;
-                        Trace.TraceInformation(result + Environment.NewLine);
+                        if (fDebugPrintOutput == true)
+                            AppState.TraceInformation(String.Format("[Result_start] ---- {0}{1}[----- Result_End]{0}", Environment.NewLine, result));
 
                         if (option == PnpUtilOptions.Delete || option == PnpUtilOptions.ForceDelete)
                         {
@@ -150,10 +159,11 @@ namespace Utils
 
                         if ((option == PnpUtilOptions.Add || option == PnpUtilOptions.AddInstall))
                         {
-                            if (!output.Contains(@"Driver package added successfully."))
+                            if (!output.Contains(@"Driver package added successfully"))
                             {
+                                AppState.TraceError("[Error] failed to add " + infName);
                                 retVal = false;
-                            }
+                            }                            
                         }
                     }
                 }
@@ -161,7 +171,7 @@ namespace Utils
             catch (Exception e)
             {
                 // dont catch all exceptions -- but will do for our needs!
-                Trace.TraceError(String.Format(@"{0}\n{1}"+Environment.NewLine, e.Message, e.StackTrace));
+                AppState.TraceError(String.Format(@"{0}\n{1}" + Environment.NewLine, e.Message, e.StackTrace));
                 output = "";
                 retVal = false;
             }
