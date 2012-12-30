@@ -5,7 +5,14 @@ using System.Text;
 using System.Diagnostics;
 using System.IO;
 using Rapr;
-namespace Utils
+
+/*** 
+ * Change log:
+ * ------------------
+ * Dec 30, 2012 : Merged in user submitted patch (ID: 10344) to support non-English builds. Thanks jenda__. 
+ * 
+ */
+namespace Rapr.Utils
 {
 
     public class PNPUtil : IDriverStore
@@ -20,50 +27,51 @@ namespace Utils
             bool result = PnpUtilHelper(PnpUtilOptions.Enumerate, "",  ref output);
             if (result == true)
             {                
-                //Trace.TraceInformation("O/P of Enumeration : " + Environment.NewLine + output + Environment.NewLine);
+                // Trace.TraceInformation("O/P of Enumeration : " + Environment.NewLine + output + Environment.NewLine);
 
                 // Parse the output
+                // [jenda_] Didn't work on non-english Windows - changed from string recognition to counting lines
                 using (StringReader sr = new StringReader(output))                
                 {
                     string currentLine = "";
+                    string[] currentLineDivided = { };
                     DriverStoreEntry dse = new DriverStoreEntry();
+                    byte lineNum = 0;
                     while ((currentLine = sr.ReadLine()) != null)
                     {
-                        if ((currentLine.Contains(@"Published name :")))
+                        currentLineDivided = currentLine.Split(new char[] { ':' });
+                        if (currentLineDivided.Length == 2)
                         {
-                            dse.driverPublishedName = currentLine.Split(new char[] { ':' })[1].Trim();
-                            continue;
-                        }
+                            currentLineDivided[1] = currentLineDivided[1].Trim();
+                            switch (lineNum)
+                            {
+                                case 0:     // [jenda_] Published name :
+                                    dse.driverPublishedName = currentLineDivided[1];
+                                    break;
+                                case 1:     //Driver package provider :
+                                    dse.driverPkgProvider = currentLine.Split(new char[] { ':' })[1].Trim();
+                                    break;
+                                case 2:     // [jenda_] Class :
+                                    dse.driverClass = currentLine.Split(new char[] { ':' })[1].Trim();
+                                    break;
+                                case 3:     // [jenda_] Driver date and version :
+                                    string DateAndVersion = currentLine.Split(new char[] { ':' })[1].Trim();
+                                    dse.driverDate = DateAndVersion.Split(new char[] { ' ' })[0].Trim();
+                                    dse.driverVersion = DateAndVersion.Split(new char[] { ' ' })[1].Trim();
+                                    break;
+                                case 4:     // [jenda_] Signer name :
+                                    dse.driverSignerName = currentLine.Split(new char[] { ':' })[1].Trim();
 
-                        if ((currentLine.Contains(@"Driver package provider :")))
-                        {
-                            dse.driverPkgProvider = currentLine.Split(new char[] { ':' })[1].Trim();
-                            continue;
-                        }
+                                    ldse.Add(dse);
+                                    dse = new DriverStoreEntry();
+                                    break;
+                                default:
+                                    continue;
+                            }
+                            lineNum++;
+                            if (lineNum > 4)
+                                lineNum = 0;
 
-                        if ((currentLine.Contains(@"Class :")))
-                        {
-                            dse.driverClass = currentLine.Split(new char[] { ':' })[1].Trim();
-                            continue;
-                        }
-
-                        if ((currentLine.Contains(@"Driver date and version :")))
-                        {
-                            string DateAndVersion = currentLine.Split(new char[] { ':' })[1].Trim();
-                            dse.driverDate = DateAndVersion.Split(new char[] { ' ' })[0].Trim();
-                            dse.driverVersion = DateAndVersion.Split(new char[] { ' ' })[1].Trim();
-
-                            continue;
-                        }
-
-                        if ((currentLine.Contains(@"Signer name :")))
-                        {
-                            dse.driverSignerName = currentLine.Split(new char[] { ':' })[1].Trim();
-
-                            ldse.Add(dse);
-                            dse = new DriverStoreEntry();
-
-                            continue;
                         }
                     }
                 }
@@ -105,31 +113,37 @@ namespace Utils
                                      };
             switch (option)
             {
+                //
+                // [jenda_] I also had problems with some arguments starting "-". "/" works fine
+                //
                 case PnpUtilOptions.Enumerate:
-                    start.Arguments = @"-e";
+                    start.Arguments = @"/e";
                     break;
                 case PnpUtilOptions.Delete:
-                    start.Arguments = @"-d " + infName;
+                    start.Arguments = @"/d " + infName;
                     break;
                 case PnpUtilOptions.ForceDelete:
-                    start.Arguments = @"-f -d " + infName;
+                    start.Arguments = @"/f /d " + infName;
                     break;
                 case PnpUtilOptions.Add:
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
-                    start.Arguments = @"-a " + Path.GetFileName(infName);
+                    start.Arguments = @"/a " + Path.GetFileName(infName);
                     AppContext.TraceInformation(String.Format("[Add] workDir = {0}, arguments = {1}", start.WorkingDirectory,
                         start.Arguments));
                     break;
                 case PnpUtilOptions.AddInstall:
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
-                    start.Arguments = @"-i -a " + Path.GetFileName(infName);
+                    start.Arguments = @"/i /a " + Path.GetFileName(infName);
                     AppContext.TraceInformation(String.Format("[AddInstall] workDir = {0}, arguments = {1}", start.WorkingDirectory,
                         start.Arguments));
 
                     break;
             }
+
+
+
 
             //
             // Start the process.
@@ -151,7 +165,9 @@ namespace Utils
 
                         if (option == PnpUtilOptions.Delete || option == PnpUtilOptions.ForceDelete)
                         {
-                            if (output.Contains(@"Deleting the driver package failed"))
+                            // [jenda_] Really don't know, how to recognize error without language-specific string recognition :(
+                            // [jenda_] But those errors should contain ":"
+                            if (output.Contains(@":"))     //"Deleting the driver package failed"
                             {
                                 retVal = false;
                             }
@@ -159,11 +175,33 @@ namespace Utils
 
                         if ((option == PnpUtilOptions.Add || option == PnpUtilOptions.AddInstall))
                         {
-                            if (!output.Contains(@"Driver package added successfully"))
+                            /* [jenda_]
+                             This regex should recognize (~) this pattern:
+                             * MS PnP blah blah
+                             * 
+                             * blah blah blah
+                             * blah blah (...)
+                             * 
+                             * blah blah:    *number*
+                             * blah blah blah:    *number*
+                             * 
+                             */
+                            System.Text.RegularExpressions.Match MatchResult = System.Text.RegularExpressions.Regex.Match(output, @".+: +([0-9]+)[\r\n].+: +([0-9]+)[\r\n ]+", System.Text.RegularExpressions.RegexOptions.Singleline);
+
+                            if (MatchResult.Success)    // [jenda_] regex recognized successfully
                             {
-                                AppContext.TraceError("[Error] failed to add " + infName);
+                                // [jenda_] if trying to add "0" packages or if number packages and number added packages differs
+                                if (MatchResult.Groups[1].Value == "0" || MatchResult.Groups[1].Value != MatchResult.Groups[2].Value)
+                                {
+                                    AppContext.TraceError("[Error] failed to add " + infName);
+                                    retVal = false;
+                                }
+                            }
+                            else
+                            {
+                                AppContext.TraceError("[Error] unknown response while trying to add " + infName);
                                 retVal = false;
-                            }                            
+                            }                      
                         }
                     }
                 }

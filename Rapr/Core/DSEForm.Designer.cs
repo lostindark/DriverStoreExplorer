@@ -1,6 +1,6 @@
 ﻿namespace Rapr
 {
-    partial class Form1
+    partial class DSEForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,45 +31,46 @@
             this.components = new System.ComponentModel.Container();
             this.buttonEnumerate = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lstDriverStoreEntries = new BrightIdeasSoftware.ObjectListView();
-            this.olvColumn1 = new BrightIdeasSoftware.OLVColumn();
-            this.olvColumn6 = new BrightIdeasSoftware.OLVColumn();
-            this.olvColumn3 = new BrightIdeasSoftware.OLVColumn();
-            this.olvColumn2 = new BrightIdeasSoftware.OLVColumn();
-            this.olvColumn5 = new BrightIdeasSoftware.OLVColumn();
-            this.olvColumn4 = new BrightIdeasSoftware.OLVColumn();
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxtMenuSelect = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxtMenuExport = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxtMenuAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.buttonDeleteDriver = new System.Windows.Forms.Button();
             this.cbForceDeletion = new System.Windows.Forms.CheckBox();
             this.buttonAddDriver = new System.Windows.Forms.Button();
             this.cbAddInstall = new System.Windows.Forms.CheckBox();
-            this.groupBoxDeleteDriver = new System.Windows.Forms.GroupBox();
-            this.groupBoxAddDriver = new System.Windows.Forms.GroupBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.progressBar = new System.Windows.Forms.ProgressBar();
-            this.progressPane = new System.Windows.Forms.GroupBox();
             this.linkAbout = new System.Windows.Forms.LinkLabel();
+            this.InnerContainer = new System.Windows.Forms.SplitContainer();
+            this.gbOptions = new System.Windows.Forms.GroupBox();
+            this.lstDriverStoreEntries = new BrightIdeasSoftware.ObjectListView();
+            this.olvColumn1 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn6 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn3 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn2 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn5 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.olvColumn4 = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
-            this.groupBoxDeleteDriver.SuspendLayout();
-            this.groupBoxAddDriver.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            this.progressPane.SuspendLayout();
+            this.InnerContainer.Panel1.SuspendLayout();
+            this.InnerContainer.Panel2.SuspendLayout();
+            this.InnerContainer.SuspendLayout();
+            this.gbOptions.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonEnumerate
             // 
             this.buttonEnumerate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonEnumerate.Location = new System.Drawing.Point(15, 434);
+            this.buttonEnumerate.Location = new System.Drawing.Point(11, 31);
             this.buttonEnumerate.Name = "buttonEnumerate";
-            this.buttonEnumerate.Size = new System.Drawing.Size(75, 40);
+            this.buttonEnumerate.Size = new System.Drawing.Size(109, 23);
             this.buttonEnumerate.TabIndex = 0;
             this.buttonEnumerate.Text = "Enumerate";
             this.buttonEnumerate.UseVisualStyleBackColor = true;
@@ -78,21 +79,180 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.lstDriverStoreEntries);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 410);
+            this.groupBox1.Size = new System.Drawing.Size(811, 626);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Driver Store";
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ctxtMenuSelect,
+            this.ctxtMenuExport,
+            this.toolStripSeparator1,
+            this.ctxtMenuAbout});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(121, 76);
+            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
+            // 
+            // ctxtMenuSelect
+            // 
+            this.ctxtMenuSelect.Name = "ctxtMenuSelect";
+            this.ctxtMenuSelect.Size = new System.Drawing.Size(120, 22);
+            this.ctxtMenuSelect.Text = "Select all";
+            this.ctxtMenuSelect.Click += new System.EventHandler(this.ctxtMenuSelect_Click);
+            // 
+            // ctxtMenuExport
+            // 
+            this.ctxtMenuExport.Name = "ctxtMenuExport";
+            this.ctxtMenuExport.Size = new System.Drawing.Size(120, 22);
+            this.ctxtMenuExport.Text = "Export";
+            this.ctxtMenuExport.Click += new System.EventHandler(this.ctxtMenuExport_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(117, 6);
+            // 
+            // ctxtMenuAbout
+            // 
+            this.ctxtMenuAbout.Name = "ctxtMenuAbout";
+            this.ctxtMenuAbout.Size = new System.Drawing.Size(120, 22);
+            this.ctxtMenuAbout.Text = "About";
+            this.ctxtMenuAbout.Click += new System.EventHandler(this.ctxtMenuAbout_Click);
+            // 
+            // buttonDeleteDriver
+            // 
+            this.buttonDeleteDriver.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonDeleteDriver.Location = new System.Drawing.Point(11, 114);
+            this.buttonDeleteDriver.Name = "buttonDeleteDriver";
+            this.buttonDeleteDriver.Size = new System.Drawing.Size(109, 23);
+            this.buttonDeleteDriver.TabIndex = 3;
+            this.buttonDeleteDriver.Text = "Delete Package";
+            this.buttonDeleteDriver.UseVisualStyleBackColor = true;
+            this.buttonDeleteDriver.Click += new System.EventHandler(this.buttonDelete_Click);
+            // 
+            // cbForceDeletion
+            // 
+            this.cbForceDeletion.AutoSize = true;
+            this.cbForceDeletion.Location = new System.Drawing.Point(22, 143);
+            this.cbForceDeletion.Name = "cbForceDeletion";
+            this.cbForceDeletion.Size = new System.Drawing.Size(95, 17);
+            this.cbForceDeletion.TabIndex = 4;
+            this.cbForceDeletion.Text = "Force Deletion";
+            this.cbForceDeletion.UseVisualStyleBackColor = true;
+            // 
+            // buttonAddDriver
+            // 
+            this.buttonAddDriver.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.buttonAddDriver.Location = new System.Drawing.Point(11, 60);
+            this.buttonAddDriver.Name = "buttonAddDriver";
+            this.buttonAddDriver.Size = new System.Drawing.Size(109, 23);
+            this.buttonAddDriver.TabIndex = 5;
+            this.buttonAddDriver.Text = "Add Package";
+            this.buttonAddDriver.UseVisualStyleBackColor = true;
+            this.buttonAddDriver.Click += new System.EventHandler(this.buttonAddDriver_Click);
+            // 
+            // cbAddInstall
+            // 
+            this.cbAddInstall.AutoSize = true;
+            this.cbAddInstall.Location = new System.Drawing.Point(22, 89);
+            this.cbAddInstall.Name = "cbAddInstall";
+            this.cbAddInstall.Size = new System.Drawing.Size(84, 17);
+            this.cbAddInstall.TabIndex = 6;
+            this.cbAddInstall.Text = "Install Driver";
+            this.cbAddInstall.UseVisualStyleBackColor = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lblStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 626);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(945, 22);
+            this.statusStrip1.TabIndex = 9;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(39, 17);
+            this.lblStatus.Text = "Ready";
+            // 
+            // openFileDialog
+            // 
+            this.openFileDialog.Filter = "INF files | *.inf";
+            this.openFileDialog.SupportMultiDottedExtensions = true;
+            this.openFileDialog.Title = "Select the INF";
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            // 
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(10, 239);
+            this.progressBar.MarqueeAnimationSpeed = 50;
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(109, 19);
+            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
+            this.progressBar.TabIndex = 10;
+            this.progressBar.Visible = false;
+            // 
+            // linkAbout
+            // 
+            this.linkAbout.AutoSize = true;
+            this.linkAbout.Location = new System.Drawing.Point(1, 192);
+            this.linkAbout.Name = "linkAbout";
+            this.linkAbout.Size = new System.Drawing.Size(129, 13);
+            this.linkAbout.TabIndex = 12;
+            this.linkAbout.TabStop = true;
+            this.linkAbout.Text = "About DriverStoreExplorer";
+            this.linkAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAbout_LinkClicked);
+            // 
+            // InnerContainer
+            // 
+            this.InnerContainer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.InnerContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.InnerContainer.IsSplitterFixed = true;
+            this.InnerContainer.Location = new System.Drawing.Point(0, 0);
+            this.InnerContainer.Name = "InnerContainer";
+            // 
+            // InnerContainer.Panel1
+            // 
+            this.InnerContainer.Panel1.Controls.Add(this.groupBox1);
+            // 
+            // InnerContainer.Panel2
+            // 
+            this.InnerContainer.Panel2.Controls.Add(this.progressBar);
+            this.InnerContainer.Panel2.Controls.Add(this.gbOptions);
+            this.InnerContainer.Panel2.Controls.Add(this.linkAbout);
+            this.InnerContainer.Size = new System.Drawing.Size(945, 626);
+            this.InnerContainer.SplitterDistance = 811;
+            this.InnerContainer.SplitterWidth = 1;
+            this.InnerContainer.TabIndex = 12;
+            // 
+            // gbOptions
+            // 
+            this.gbOptions.Controls.Add(this.cbForceDeletion);
+            this.gbOptions.Controls.Add(this.buttonDeleteDriver);
+            this.gbOptions.Controls.Add(this.cbAddInstall);
+            this.gbOptions.Controls.Add(this.buttonAddDriver);
+            this.gbOptions.Controls.Add(this.buttonEnumerate);
+            this.gbOptions.Dock = System.Windows.Forms.DockStyle.Top;
+            this.gbOptions.Location = new System.Drawing.Point(0, 0);
+            this.gbOptions.Name = "gbOptions";
+            this.gbOptions.Size = new System.Drawing.Size(133, 183);
+            this.gbOptions.TabIndex = 13;
+            this.gbOptions.TabStop = false;
+            this.gbOptions.Text = " Operations ";
+            // 
             // lstDriverStoreEntries
             // 
-            this.lstDriverStoreEntries.AllColumns.Add(this.olvColumn1);
-            this.lstDriverStoreEntries.AllColumns.Add(this.olvColumn6);
-            this.lstDriverStoreEntries.AllColumns.Add(this.olvColumn3);
-            this.lstDriverStoreEntries.AllColumns.Add(this.olvColumn2);
-            this.lstDriverStoreEntries.AllColumns.Add(this.olvColumn5);
-            this.lstDriverStoreEntries.AllColumns.Add(this.olvColumn4);
             this.lstDriverStoreEntries.AllowColumnReorder = true;
             this.lstDriverStoreEntries.AlternateRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.lstDriverStoreEntries.CheckBoxes = true;
@@ -114,7 +274,7 @@
             this.lstDriverStoreEntries.Name = "lstDriverStoreEntries";
             this.lstDriverStoreEntries.ShowGroups = false;
             this.lstDriverStoreEntries.ShowItemToolTips = true;
-            this.lstDriverStoreEntries.Size = new System.Drawing.Size(794, 391);
+            this.lstDriverStoreEntries.Size = new System.Drawing.Size(805, 607);
             this.lstDriverStoreEntries.TabIndex = 1;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
             this.lstDriverStoreEntries.View = System.Windows.Forms.View.Details;
@@ -156,184 +316,29 @@
             this.olvColumn4.Text = "Driver Signer";
             this.olvColumn4.Width = 220;
             // 
-            // contextMenuStrip
-            // 
-            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ctxtMenuSelect,
-            this.toolStripSeparator1,
-            this.ctxtMenuAbout});
-            this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(121, 54);
-            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
-            // 
-            // ctxtMenuSelect
-            // 
-            this.ctxtMenuSelect.Name = "ctxtMenuSelect";
-            this.ctxtMenuSelect.Size = new System.Drawing.Size(120, 22);
-            this.ctxtMenuSelect.Text = "Select all";
-            this.ctxtMenuSelect.Click += new System.EventHandler(this.ctxtMenuSelect_Click);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(117, 6);
-            // 
-            // ctxtMenuAbout
-            // 
-            this.ctxtMenuAbout.Name = "ctxtMenuAbout";
-            this.ctxtMenuAbout.Size = new System.Drawing.Size(120, 22);
-            this.ctxtMenuAbout.Text = "About";
-            this.ctxtMenuAbout.Click += new System.EventHandler(this.ctxtMenuAbout_Click);
-            // 
-            // buttonDeleteDriver
-            // 
-            this.buttonDeleteDriver.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonDeleteDriver.Location = new System.Drawing.Point(6, 17);
-            this.buttonDeleteDriver.Name = "buttonDeleteDriver";
-            this.buttonDeleteDriver.Size = new System.Drawing.Size(75, 23);
-            this.buttonDeleteDriver.TabIndex = 3;
-            this.buttonDeleteDriver.Text = "Delete";
-            this.buttonDeleteDriver.UseVisualStyleBackColor = true;
-            this.buttonDeleteDriver.Click += new System.EventHandler(this.buttonDelete_Click);
-            // 
-            // cbForceDeletion
-            // 
-            this.cbForceDeletion.AutoSize = true;
-            this.cbForceDeletion.Location = new System.Drawing.Point(87, 21);
-            this.cbForceDeletion.Name = "cbForceDeletion";
-            this.cbForceDeletion.Size = new System.Drawing.Size(95, 17);
-            this.cbForceDeletion.TabIndex = 4;
-            this.cbForceDeletion.Text = "Force Deletion";
-            this.cbForceDeletion.UseVisualStyleBackColor = true;
-            // 
-            // buttonAddDriver
-            // 
-            this.buttonAddDriver.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonAddDriver.Location = new System.Drawing.Point(6, 17);
-            this.buttonAddDriver.Name = "buttonAddDriver";
-            this.buttonAddDriver.Size = new System.Drawing.Size(82, 23);
-            this.buttonAddDriver.TabIndex = 5;
-            this.buttonAddDriver.Text = "Add a Driver";
-            this.buttonAddDriver.UseVisualStyleBackColor = true;
-            this.buttonAddDriver.Click += new System.EventHandler(this.buttonAddDriver_Click);
-            // 
-            // cbAddInstall
-            // 
-            this.cbAddInstall.AutoSize = true;
-            this.cbAddInstall.Location = new System.Drawing.Point(94, 21);
-            this.cbAddInstall.Name = "cbAddInstall";
-            this.cbAddInstall.Size = new System.Drawing.Size(53, 17);
-            this.cbAddInstall.TabIndex = 6;
-            this.cbAddInstall.Text = "Install";
-            this.cbAddInstall.UseVisualStyleBackColor = true;
-            // 
-            // groupBoxDeleteDriver
-            // 
-            this.groupBoxDeleteDriver.Controls.Add(this.buttonDeleteDriver);
-            this.groupBoxDeleteDriver.Controls.Add(this.cbForceDeletion);
-            this.groupBoxDeleteDriver.Location = new System.Drawing.Point(255, 428);
-            this.groupBoxDeleteDriver.Name = "groupBoxDeleteDriver";
-            this.groupBoxDeleteDriver.Size = new System.Drawing.Size(186, 46);
-            this.groupBoxDeleteDriver.TabIndex = 7;
-            this.groupBoxDeleteDriver.TabStop = false;
-            // 
-            // groupBoxAddDriver
-            // 
-            this.groupBoxAddDriver.Controls.Add(this.buttonAddDriver);
-            this.groupBoxAddDriver.Controls.Add(this.cbAddInstall);
-            this.groupBoxAddDriver.Location = new System.Drawing.Point(96, 428);
-            this.groupBoxAddDriver.Name = "groupBoxAddDriver";
-            this.groupBoxAddDriver.Size = new System.Drawing.Size(153, 46);
-            this.groupBoxAddDriver.TabIndex = 8;
-            this.groupBoxAddDriver.TabStop = false;
-            // 
-            // statusStrip1
-            // 
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 481);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(824, 22);
-            this.statusStrip1.TabIndex = 9;
-            this.statusStrip1.Text = "statusStrip1";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(39, 17);
-            this.lblStatus.Text = "Ready";
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.Filter = "INF files | *.inf";
-            this.openFileDialog.SupportMultiDottedExtensions = true;
-            this.openFileDialog.Title = "Select the INF";
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
-            // 
-            // progressBar
-            // 
-            this.progressBar.Location = new System.Drawing.Point(11, 15);
-            this.progressBar.MarqueeAnimationSpeed = 50;
-            this.progressBar.Name = "progressBar";
-            this.progressBar.Size = new System.Drawing.Size(194, 19);
-            this.progressBar.Style = System.Windows.Forms.ProgressBarStyle.Marquee;
-            this.progressBar.TabIndex = 10;
-            // 
-            // progressPane
-            // 
-            this.progressPane.Controls.Add(this.progressBar);
-            this.progressPane.Location = new System.Drawing.Point(476, 428);
-            this.progressPane.Name = "progressPane";
-            this.progressPane.Size = new System.Drawing.Size(215, 46);
-            this.progressPane.TabIndex = 11;
-            this.progressPane.TabStop = false;
-            this.progressPane.Text = "Progress";
-            this.progressPane.Visible = false;
-            // 
-            // linkAbout
-            // 
-            this.linkAbout.AutoSize = true;
-            this.linkAbout.Location = new System.Drawing.Point(776, 1);
-            this.linkAbout.Name = "linkAbout";
-            this.linkAbout.Size = new System.Drawing.Size(35, 13);
-            this.linkAbout.TabIndex = 12;
-            this.linkAbout.TabStop = true;
-            this.linkAbout.Text = "About";
-            this.linkAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAbout_LinkClicked);
-            // 
-            // Form1
+            // DSEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(824, 503);
-            this.Controls.Add(this.linkAbout);
-            this.Controls.Add(this.progressPane);
+            this.ClientSize = new System.Drawing.Size(945, 648);
+            this.Controls.Add(this.InnerContainer);
             this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBoxAddDriver);
-            this.Controls.Add(this.groupBoxDeleteDriver);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.buttonEnumerate);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "DSEForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Driver Store Explorer";
-            this.Shown += new System.EventHandler(this.Form1_Shown);
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
+            this.Text = "Driver Store Explorer [RAPR]";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DSEForm_FormClosed);
+            this.Shown += new System.EventHandler(this.DSEForm_Shown);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
-            this.groupBoxDeleteDriver.ResumeLayout(false);
-            this.groupBoxDeleteDriver.PerformLayout();
-            this.groupBoxAddDriver.ResumeLayout(false);
-            this.groupBoxAddDriver.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.progressPane.ResumeLayout(false);
+            this.InnerContainer.Panel1.ResumeLayout(false);
+            this.InnerContainer.Panel2.ResumeLayout(false);
+            this.InnerContainer.Panel2.PerformLayout();
+            this.InnerContainer.ResumeLayout(false);
+            this.gbOptions.ResumeLayout(false);
+            this.gbOptions.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -354,19 +359,19 @@
         private BrightIdeasSoftware.OLVColumn olvColumn6;
         private System.Windows.Forms.Button buttonAddDriver;
         private System.Windows.Forms.CheckBox cbAddInstall;
-        private System.Windows.Forms.GroupBox groupBoxDeleteDriver;
-        private System.Windows.Forms.GroupBox groupBoxAddDriver;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ProgressBar progressBar;
-        private System.Windows.Forms.GroupBox progressPane;
         private System.Windows.Forms.LinkLabel linkAbout;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem ctxtMenuSelect;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ctxtMenuAbout;
+        private System.Windows.Forms.SplitContainer InnerContainer;
+        private System.Windows.Forms.GroupBox gbOptions;
+        private System.Windows.Forms.ToolStripMenuItem ctxtMenuExport;
     }
 }
 
