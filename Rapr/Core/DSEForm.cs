@@ -3,19 +3,20 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using Utils;
+using Rapr.Utils;
 using System.Security.Principal;
+using System.Text;
 
 namespace Rapr
 {
-    public partial class Form1 : Form
+    public partial class DSEForm : Form
     {
         IDriverStore driverStore;       
         Color SavedBackColor, SavedForeColor;
         OperationContext context = new OperationContext();
 
      
-        public Form1()
+        public DSEForm()
         {
             InitializeComponent();            
             AppContext.MainForm = this;
@@ -28,7 +29,7 @@ namespace Rapr
             }
         }
 
-        private void Form1_Shown(object sender, EventArgs e)
+        private void DSEForm_Shown(object sender, EventArgs e)
         {
             SavedBackColor = lblStatus.BackColor;
             SavedForeColor = lblStatus.ForeColor;
@@ -37,15 +38,17 @@ namespace Rapr
             {
                 Text = Text + " [Read-Only Mode]";
                 ShowStatus("Running in Read-Only mode", Status.Warning);
-                groupBoxAddDriver.Enabled = false;
-                groupBoxDeleteDriver.Enabled = false;
+                buttonAddDriver.Enabled = false;
+                cbAddInstall.Enabled = false;
+                buttonDeleteDriver.Enabled = false;
+                cbForceDeletion.Enabled = false;
                 MessageBox.Show("Started in non-admin mode. Some of the features are disabled.\nRestart the app in ADMIN mode to enable them"
                     , "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             }
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        private void DSEForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             AppContext.TraceInformation("Shutting down - reason " + e.CloseReason);
             AppContext.Cleanup();
@@ -204,8 +207,8 @@ namespace Rapr
                 case OperationCode.EnumerateStore:
                     List<DriverStoreEntry> ldse = localContext.resultData as List<DriverStoreEntry>;
                     lstDriverStoreEntries.SetObjects(ldse);
-                    //lstDriverStoreEntries.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                    //ShowStatus("Driver store enumerated", Status.Success);
+                    lstDriverStoreEntries.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    ShowStatus("Driver store enumerated", Status.Success);
                     break;
                 
                 case OperationCode.ForceDeleteDriver:
@@ -311,10 +314,13 @@ namespace Rapr
                 {
                     ctxtMenuSelect.Text = "Select All";
                 }
+
+                ctxtMenuExport.Enabled = true;
             }
             else
             {
                 ctxtMenuSelect.Enabled = false;
+                ctxtMenuExport.Enabled = false;
                 ctxtMenuSelect.Text = "No entries loaded";
             }
         }
@@ -339,6 +345,25 @@ namespace Rapr
         private void ctxtMenuAbout_Click(object sender, EventArgs e)
         {
             ShowAboutBox();
+        }
+
+        private void ctxtMenuExport_Click(object sender, EventArgs e)
+        {
+            // Check if there are any entries
+            if ((lstDriverStoreEntries.Objects != null))
+            {
+                try
+                {
+                    List<DriverStoreEntry> ldse = lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
+                    IExport exporter = new CSVExporter();   // TODO: Factory?? Change this when we add support for 
+                                                            // direct Excel export
+                    exporter.Export(ldse);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Export failed: " + ex.Message);
+                }
+            }  
         }
       
     }

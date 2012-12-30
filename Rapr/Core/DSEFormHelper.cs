@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using Utils;
+using Rapr.Utils;
 using System.Security.Principal;
 using System.Collections.Generic;
 namespace Rapr
 {
-    public partial class Form1     
+    public partial class DSEForm     
     {
         public enum OperationCode
         {
@@ -124,11 +124,11 @@ namespace Rapr
         {
             if (state == true)
             {
-                progressPane.Visible = true;
+                progressBar.Visible = true;
             }
             else
             {
-                progressPane.Visible = false;
+                progressBar.Visible = false;
             }
         }
         
