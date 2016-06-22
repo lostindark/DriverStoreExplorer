@@ -1,0 +1,9 @@
+﻿# VS config
+/**/.vs/**/*
+
+# Build generated files
+/**/bin/**/*
+/**/obj/**/*
+
+# Nuget packages
+/**/packages/**/*

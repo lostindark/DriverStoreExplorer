@@ -74,7 +74,7 @@ namespace Rapr
             bool fMultiPackageDeletion = false;
             if (lstDriverStoreEntries.CheckedObjects.Count == 0)
             {
-               dse = (DriverStoreEntry)lstDriverStoreEntries.GetSelectedObject();
+               dse = (DriverStoreEntry)lstDriverStoreEntries.SelectedObject;
                msgWarning = String.Format("About to {0} {1} from driver store.\nAre you sure?", 
                                             cbForceDeletion.Checked == true ? "force delete" : "delete", 
                                             dse.driverPublishedName

@@ -10,13 +10,14 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Rapr</RootNamespace>
     <AssemblyName>Rapr</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
     <OldToolsVersion>4.0</OldToolsVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,6 +37,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
+      <HintPath>..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core">
@@ -73,54 +78,6 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Core\IExport.cs" />
-    <Compile Include="ObjectListView\Adornments.cs" />
-    <Compile Include="ObjectListView\Attributes.cs" />
-    <Compile Include="ObjectListView\CellEditors.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ObjectListView\Comparers.cs" />
-    <Compile Include="ObjectListView\DataListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ObjectListView\Decorations.cs" />
-    <Compile Include="ObjectListView\DragSource.cs" />
-    <Compile Include="ObjectListView\DropSink.cs" />
-    <Compile Include="ObjectListView\Events.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ObjectListView\FastObjectListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ObjectListView\Filters.cs" />
-    <Compile Include="ObjectListView\Generator.cs" />
-    <Compile Include="ObjectListView\GlassPanelForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ObjectListView\Groups.cs" />
-    <Compile Include="ObjectListView\HeaderControl.cs" />
-    <Compile Include="ObjectListView\Munger.cs" />
-    <Compile Include="ObjectListView\NativeMethods.cs" />
-    <Compile Include="ObjectListView\ObjectListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ObjectListView\ObjectListView.DesignTime.cs" />
-    <Compile Include="ObjectListView\Overlays.cs" />
-    <Compile Include="ObjectListView\Renderers.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ObjectListView\Styles.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ObjectListView\ToolTipControl.cs" />
-    <Compile Include="ObjectListView\TreeListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="ObjectListView\TypedObjectListView.cs" />
-    <Compile Include="ObjectListView\VirtualGroups.cs" />
-    <Compile Include="ObjectListView\VirtualListDataSource.cs" />
-    <Compile Include="ObjectListView\VirtualObjectListView.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Core\PNPUtilLib\DriverStoreEntry.cs" />
     <Compile Include="Core\PNPUtilLib\IDriverStore.cs" />
     <Compile Include="Core\PNPUtilLib\PNPUtil.cs" />
@@ -142,6 +99,8 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -151,10 +110,6 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ObjectListView\CustomDictionary.xml" />
-    <Content Include="ObjectListView\ObjectListView.csproj" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
