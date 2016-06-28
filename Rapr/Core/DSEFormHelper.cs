@@ -1,41 +1,50 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
+using System.Security.Principal;
 using System.Windows.Forms;
 using Rapr.Utils;
-using System.Security.Principal;
-using System.Collections.Generic;
+
 namespace Rapr
 {
-    public partial class DSEForm     
+    public partial class DSEForm
     {
         public enum OperationCode
         {
-            EnumerateStore, AddDriver, AddInstallDriver, DeleteDriver, ForceDeleteDriver,Dummy
+            EnumerateStore,
+            AddDriver,
+            AddInstallDriver,
+            DeleteDriver,
+            ForceDeleteDriver,
+            Dummy,
         };
+
         public enum Status
         {
-            Success, Error, Warning,Normal
+            Success,
+            Error,
+            Warning,
+            Normal,
         }
+
         public struct OperationContext
         {
-            public OperationCode code;
-            public string infPath;  // Addition => Full path of the INF file, Others => INF filename in driverstore
-            public object resultData;
-            public object resultStatus;
+            public OperationCode Code;
+            public string InfPath;  // Addition => Full path of the INF file, Others => INF filename in driverstore
+            public object ResultData;
+            public bool ResultStatus;
 
-            public DriverStoreEntry dse;
-            public List<DriverStoreEntry> ldse;
-            public bool IsCollectionPassed;
+            public List<DriverStoreEntry> DriverStoreEntries;
         };
 
         private void CleanupContext(OperationContext context)
         {
-            context.code = OperationCode.Dummy;
-            context.infPath = "";
-            context.resultStatus = context.resultData = null;
+            context.Code = OperationCode.Dummy;
+            context.InfPath = "";
+            context.ResultStatus = false;
+            context.ResultData = null;
 
-            context.IsCollectionPassed = false;
-            context.ldse = null;
+            context.DriverStoreEntries = null;
         }
 
         private void PopulateUIWithDriverStoreEntries()
@@ -44,7 +53,7 @@ namespace Rapr
             {
                 CleanupContext(context);
                 this.lstDriverStoreEntries.ClearObjects();
-                context.code = OperationCode.EnumerateStore;
+                context.Code = OperationCode.EnumerateStore;
                 backgroundWorker1.RunWorkerAsync(context);
                 ShowOperationInProgress(true);
                 //ShowStatus("Enumerating driver store...");
@@ -56,13 +65,13 @@ namespace Rapr
             }
         }
 
-        private void AddDriverPackage(string infName )
+        private void AddDriverPackage(string infName)
         {
             if (!(backgroundWorker1.IsBusy))
             {
                 CleanupContext(context);
-                context.code = cbAddInstall.Checked == true ? OperationCode.AddInstallDriver: OperationCode.AddDriver;
-                context.infPath = infName;         
+                context.Code = cbAddInstall.Checked ? OperationCode.AddInstallDriver : OperationCode.AddDriver;
+                context.InfPath = infName;
 
                 backgroundWorker1.RunWorkerAsync(context);
 
@@ -76,41 +85,17 @@ namespace Rapr
             }
         }
 
-        private void DeleteDriverPackage(DriverStoreEntry dse)
-        {
-            if (!(backgroundWorker1.IsBusy))
-            {
-                CleanupContext(context);
-                context.code = cbForceDeletion.Checked == true ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
-                context.dse = dse;
-
-                context.IsCollectionPassed = false;
-                context.ldse = null;
-
-                backgroundWorker1.RunWorkerAsync(context);
-
-                ShowOperationInProgress(true);
-                ShowStatus("Deleting driver package...");
-            }
-            else
-            {
-                MessageBox.Show("Another operation in progress");
-                ShowStatus("Ready");
-            }
-        }
-
         private void DeleteDriverPackages(List<DriverStoreEntry> ldse)
         {
             if (!(backgroundWorker1.IsBusy))
             {
                 CleanupContext(context);
-                context.code = cbForceDeletion.Checked == true ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
-                context.IsCollectionPassed = true;
-                context.ldse = ldse;;
-                
-                backgroundWorker1.RunWorkerAsync(context);                
+                context.Code = cbForceDeletion.Checked ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
+                context.DriverStoreEntries = ldse;
+
+                backgroundWorker1.RunWorkerAsync(context);
                 ShowOperationInProgress(true);
-                ShowStatus("Deleting driver packages...");
+                ShowStatus("Deleting driver package(s)...");
             }
             else
             {
@@ -122,16 +107,9 @@ namespace Rapr
         // false = hide wait_form
         private void ShowOperationInProgress(bool state)
         {
-            if (state == true)
-            {
-                progressBar.Visible = true;
-            }
-            else
-            {
-                progressBar.Visible = false;
-            }
+            toolStripProgressBar1.Visible = state;
         }
-        
+
         private void ShowStatus(string text)
         {
             ShowStatus(text, Status.Normal);
@@ -161,8 +139,8 @@ namespace Rapr
                     lblStatus.BackColor = SavedBackColor;
                     lblStatus.ForeColor = SavedForeColor;
                     AppContext.TraceInformation(String.Format("[Info] {0}{1}", text, Environment.NewLine));
-                    break;               
-            }            
+                    break;
+            }
         }
 
         static bool IsAnAdministrator()

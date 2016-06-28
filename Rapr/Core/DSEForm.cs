@@ -1,24 +1,24 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
 using Rapr.Utils;
-using System.Security.Principal;
-using System.Text;
 
 namespace Rapr
 {
     public partial class DSEForm : Form
     {
-        IDriverStore driverStore;       
+        IDriverStore driverStore;
         Color SavedBackColor, SavedForeColor;
         OperationContext context = new OperationContext();
 
-     
         public DSEForm()
         {
-            InitializeComponent();            
+            InitializeComponent();
             AppContext.MainForm = this;
             AppContext.EnableLogging();
             driverStore = AppContext.GetDriverStoreHandler();
@@ -42,9 +42,11 @@ namespace Rapr
                 cbAddInstall.Enabled = false;
                 buttonDeleteDriver.Enabled = false;
                 cbForceDeletion.Enabled = false;
-                MessageBox.Show("Started in non-admin mode. Some of the features are disabled.\nRestart the app in ADMIN mode to enable them"
-                    , "Warning", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                MessageBox.Show(
+                    "Started in non-admin mode. Some of the features are disabled.\nRestart the app in ADMIN mode to enable them",
+                    "Warning",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
             }
         }
 
@@ -52,13 +54,13 @@ namespace Rapr
         {
             AppContext.TraceInformation("Shutting down - reason " + e.CloseReason);
             AppContext.Cleanup();
-        }  
+        }
 
         private void buttonEnumerate_Click(object sender, EventArgs e)
-        {            
-            PopulateUIWithDriverStoreEntries();            
+        {
+            PopulateUIWithDriverStoreEntries();
         }
-       
+
         private void buttonDelete_Click(object sender, EventArgs e)
         {
             if (lstDriverStoreEntries.CheckedObjects.Count == 0 && lstDriverStoreEntries.SelectedIndex == -1)
@@ -68,49 +70,54 @@ namespace Rapr
                 return;
             }
 
-            DriverStoreEntry dse = new DriverStoreEntry();  // for appeasing the compiler!
-            List<DriverStoreEntry> ldse = new List<DriverStoreEntry>();
-            string msgWarning = "";
-            bool fMultiPackageDeletion = false;
+            List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
             if (lstDriverStoreEntries.CheckedObjects.Count == 0)
             {
-               dse = (DriverStoreEntry)lstDriverStoreEntries.SelectedObject;
-               msgWarning = String.Format("About to {0} {1} from driver store.\nAre you sure?", 
-                                            cbForceDeletion.Checked == true ? "force delete" : "delete", 
-                                            dse.driverPublishedName
-                                            );
+                foreach (DriverStoreEntry o in lstDriverStoreEntries.SelectedObjects)
+                {
+                    driverStoreEntries.Add(o);
+                }
             }
-            else
+            else if (lstDriverStoreEntries.CheckedItems.Count > 0)
             {
-                if (lstDriverStoreEntries.CheckedItems.Count > 0)
+                foreach (DriverStoreEntry o in lstDriverStoreEntries.CheckedObjects)
                 {
-                    //string s = "";                    
-                    foreach (DriverStoreEntry o in lstDriverStoreEntries.CheckedObjects)
-                    {
-                        //s += o.driverPublishedName + "\n";
-                        ldse.Add(o);
-                    }
-                    //MessageBox.Show(s);
-                    fMultiPackageDeletion = true;
-                    msgWarning = String.Format("About to {0} {1} packages from driver store.\nAre you sure?",
-                                            cbForceDeletion.Checked == true ? "force delete" : "delete",
-                                            ldse.Count
-                                            );
-                }
-                else
-                {
-                    throw new Exception("Unknown state - CP100");   //Checkpoint - CP100
+                    driverStoreEntries.Add(o);
                 }
             }
-            if (DialogResult.OK == MessageBox.Show
-                                (msgWarning, 
-                                "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning)
-                                )
-            {                
-                if (fMultiPackageDeletion == false)
-                    DeleteDriverPackage(dse);
+
+            DeleteDriverStoreEntries(driverStoreEntries);
+        }
+
+        private void DeleteDriverStoreEntries(List<DriverStoreEntry> driverStoreEntries)
+        {
+            string msgWarning;
+
+            if (driverStoreEntries != null && driverStoreEntries.Count > 0)
+            {
+                if (driverStoreEntries.Count == 1)
+                {
+                    msgWarning = String.Format(
+                        "About to {0} {1} from driver store.\nAre you sure?",
+                        cbForceDeletion.Checked ? "force delete" : "delete",
+                        driverStoreEntries[0].DriverPublishedName);
+                }
                 else
-                    DeleteDriverPackages(ldse);
+                {
+                    msgWarning = String.Format(
+                        "About to {0} {1} packages from driver store.\nAre you sure?",
+                        cbForceDeletion.Checked ? "force delete" : "delete",
+                        driverStoreEntries.Count);
+                }
+
+                if (DialogResult.OK == MessageBox.Show(
+                    msgWarning,
+                    "Warning",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning))
+                {
+                    DeleteDriverPackages(driverStoreEntries);
+                }
             }
         }
 
@@ -129,71 +136,70 @@ namespace Rapr
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            OperationContext localContext = (OperationContext) e.Argument;
+            OperationContext localContext = (OperationContext)e.Argument;
 
-            switch (localContext.code)
+            switch (localContext.Code)
             {
                 case OperationCode.EnumerateStore:
                     List<DriverStoreEntry> ldse = driverStore.EnumeratePackages();
-                    localContext.resultData = ldse;                                                   
+                    ldse = ldse.OrderBy(i => i.DriverClass).ThenBy(i => i.DriverPkgProvider).ThenByDescending(i => i.DriverVersion).ThenBy(i => i.DriverDate).ToList();
+                    localContext.ResultData = ldse;
                     break;
+
                 case OperationCode.DeleteDriver:
-                    if (!localContext.IsCollectionPassed)
-                        localContext.resultStatus = driverStore.DeletePackage(localContext.dse, false);
-                    else
-                    {
-                        bool result = true, temp = true;
-                        string resultTxt;
-                        System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                        foreach (DriverStoreEntry dse in localContext.ldse)
-                        {
-                            temp = driverStore.DeletePackage(dse, false);
-                            resultTxt = String.Format("Delete({0}) {1}", dse.driverPublishedName,
-                                temp == true ? "succeeded" : "failed");
-                            AppContext.TraceInformation(resultTxt + Environment.NewLine);
-
-                            sb.AppendLine(resultTxt);
-
-                            result &= temp;
-                        }
-                        localContext.resultStatus = result;
-                        localContext.resultData = sb.ToString();
-                    }
+                    DeleteDriver(ref localContext, false);
                     break;
+
                 case OperationCode.ForceDeleteDriver:
-                    if (!localContext.IsCollectionPassed)
-                        localContext.resultStatus = driverStore.DeletePackage(localContext.dse, true);
-                    else
-                    {
-                        bool result = true, temp = true;
-                        string resultTxt;
-                        System.Text.StringBuilder sb = new System.Text.StringBuilder();
-                        foreach (DriverStoreEntry dse in localContext.ldse)
-                        {
-                            temp = driverStore.DeletePackage(dse, true);
-                            resultTxt = String.Format("ForceDelete({0}) {1}", dse.driverPublishedName,
-                                    temp == true ? "succeeded" : "failed");
-                            AppContext.TraceInformation(resultTxt + Environment.NewLine);
-
-                            sb.AppendLine(resultTxt);
-
-                            result &= temp;
-                        }
-                        localContext.resultStatus = result;
-                        localContext.resultData = sb.ToString();
-                    }
+                    DeleteDriver(ref localContext, true);
                     break;
+
                 case OperationCode.AddDriver:
-                    localContext.resultStatus = driverStore.AddPackage(localContext.infPath, false);
+                    localContext.ResultStatus = driverStore.AddPackage(localContext.InfPath, false);
                     break;
+
                 case OperationCode.AddInstallDriver:
-                    localContext.resultStatus = driverStore.AddPackage(localContext.infPath, true);
+                    localContext.ResultStatus = driverStore.AddPackage(localContext.InfPath, true);
                     break;
+
                 case OperationCode.Dummy:
                     throw new Exception("Invalid argument rcvd by bgroundWorker");
-            }            
+            }
+
             e.Result = localContext;
             AppContext.FlushTrace();
+        }
+
+        private void DeleteDriver(ref OperationContext localContext, bool force)
+        {
+            if (localContext.DriverStoreEntries != null)
+            {
+                bool totalResult = true;
+                StringBuilder sb = new StringBuilder();
+
+                if (localContext.DriverStoreEntries.Count == 1)
+                {
+                    localContext.ResultStatus = driverStore.DeletePackage(localContext.DriverStoreEntries[0], force);
+                }
+                else
+                {
+                    foreach (DriverStoreEntry dse in localContext.DriverStoreEntries)
+                    {
+                        bool result = driverStore.DeletePackage(dse, force);
+                        string resultTxt = String.Format(
+                            "Delete({0}) {1}",
+                            dse.DriverPublishedName,
+                            result ? "succeeded" : "failed");
+                        AppContext.TraceInformation(resultTxt + Environment.NewLine);
+
+                        sb.AppendLine(resultTxt);
+                        totalResult &= result;
+                    }
+
+                    localContext.ResultStatus = totalResult;
+                    localContext.ResultData = sb.ToString();
+                }
+            }
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -202,71 +208,67 @@ namespace Rapr
             OperationContext localContext = (OperationContext)e.Result;
             string result;
 
-            switch (localContext.code)
+            switch (localContext.Code)
             {
                 case OperationCode.EnumerateStore:
-                    List<DriverStoreEntry> ldse = localContext.resultData as List<DriverStoreEntry>;
+                    List<DriverStoreEntry> ldse = localContext.ResultData as List<DriverStoreEntry>;
                     lstDriverStoreEntries.SetObjects(ldse);
                     lstDriverStoreEntries.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                     ShowStatus("Driver store enumerated", Status.Success);
                     break;
-                
+
                 case OperationCode.ForceDeleteDriver:
                 case OperationCode.DeleteDriver:
-                    if (!(localContext.IsCollectionPassed))
+                    if ((bool)localContext.ResultStatus)
                     {
-                        if ((bool)localContext.resultStatus == true)
+                        if (localContext.DriverStoreEntries.Count == 1)
                         {
-                            result = String.Format("Removed the package {0} from driver store", localContext.dse.driverPublishedName);
-
-                            // refresh the UI
-                            PopulateUIWithDriverStoreEntries();
-                            ShowStatus(result, Status.Success);
+                            result = String.Format("Removed the package {0} from driver store", localContext.DriverStoreEntries[0].DriverPublishedName);
                         }
                         else
                         {
-                            result = String.Format("Error removing the package {0} from driver store{1}", localContext.dse.driverPublishedName,
-                                localContext.code == OperationCode.DeleteDriver ? " [TIP: Try FORCE deleting the package]" : "");
-
-                            ShowStatus(result, Status.Error);
+                            result = String.Format("Removed {0} packages from driver store", localContext.DriverStoreEntries.Count);
                         }
+
+                        // refresh the UI
+                        PopulateUIWithDriverStoreEntries();
+
+                        ShowStatus(result, Status.Success);
                     }
                     else
                     {
-                        if ((bool)localContext.resultStatus == true)
+                        if (localContext.DriverStoreEntries.Count == 1)
                         {
-                            result = String.Format("Removed {0} packages from driver store", localContext.ldse.Count);
+                            result = String.Format("Error removing the package {0} from driver store{1}", localContext.DriverStoreEntries[0].DriverPublishedName,
+                            localContext.Code == OperationCode.DeleteDriver ? " [TIP: Try FORCE deleting the package]" : "");
 
-                            // refresh the UI
-                            PopulateUIWithDriverStoreEntries();
-
-                            ShowStatus(result, Status.Success);
+                            ShowStatus(result, Status.Error);
                         }
                         else
                         {
-                            result = String.Format("Error removing the packages from driver store{1}", localContext.dse.driverPublishedName,
-                                localContext.code == OperationCode.DeleteDriver ? " [TIP: Try FORCE deleting the package]" : "");
+                            result = String.Format(
+                                "Error removing some packages from driver store{0}\r\n{1}",
+                                localContext.Code == OperationCode.DeleteDriver ? " [TIP: Try FORCE deleting the package]" : "",
+                                localContext.ResultData as string);
 
                             // refresh the UI
                             PopulateUIWithDriverStoreEntries();
 
-                            ShowStatus(result, Status.Error);
-
                             MessageBox.Show(
-                                localContext.resultData as string, 
-                                "Detailed Error Log", MessageBoxButtons.OK, MessageBoxIcon.Error );
+                                result,
+                                "Detailed Error Log", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     cbForceDeletion.Checked = false;
-                    
-                    break;                
+
+                    break;
 
                 case OperationCode.AddDriver:
-                case OperationCode.AddInstallDriver:                    
-                    if ((bool) localContext.resultStatus == true)
+                case OperationCode.AddInstallDriver:
+                    if ((bool)localContext.ResultStatus == true)
                     {
-                        result = String.Format("Added{1} the package {0} to driver store", localContext.infPath,
-                                                localContext.code == OperationCode.AddInstallDriver? " & installed " : "");
+                        result = String.Format("Added{1} the package {0} to driver store", localContext.InfPath,
+                                                localContext.Code == OperationCode.AddInstallDriver ? " & installed " : "");
 
                         // refresh the UI
                         PopulateUIWithDriverStoreEntries();
@@ -276,13 +278,13 @@ namespace Rapr
                     }
                     else
                     {
-                        result = String.Format("Error adding{1} the package {0} to driver store", 
-                                                localContext.infPath, 
-                                                localContext.code == OperationCode.AddInstallDriver ? " & installing " : "");                     
+                        result = String.Format("Error adding{1} the package {0} to driver store",
+                                                localContext.InfPath,
+                                                localContext.Code == OperationCode.AddInstallDriver ? " & installing " : "");
                         ShowStatus(result, Status.Error);
-                    }                    
+                    }
                     cbAddInstall.Checked = false;
-                    break;                    
+                    break;
             }
             ShowOperationInProgress(false);
             AppContext.FlushTrace();
@@ -305,28 +307,50 @@ namespace Rapr
             // Check if there are any entries
             if ((lstDriverStoreEntries.Objects != null))
             {
-                ctxtMenuSelect.Enabled = true;
-                if ((lstDriverStoreEntries.CheckedObjects != null) && lstDriverStoreEntries.CheckedObjects.Count != 0)
+                ctxMenuSelectAll.Enabled = true;
+                if (lstDriverStoreEntries.CheckedObjects != null && lstDriverStoreEntries.CheckedObjects.Count > 0)
                 {
-                    ctxtMenuSelect.Text = "Unselect All";
+                    ctxMenuSelectAll.Text = "Unselect All";
                 }
                 else
                 {
-                    ctxtMenuSelect.Text = "Select All";
+                    ctxMenuSelectAll.Text = "Select All";
                 }
 
-                ctxtMenuExport.Enabled = true;
+                if (lstDriverStoreEntries.SelectedObjects != null && lstDriverStoreEntries.SelectedObjects.Count > 0)
+                {
+                    ctxMenuDelete.Enabled = IsAnAdministrator();
+
+                    if (lstDriverStoreEntries.CheckedObjects != null
+                        && lstDriverStoreEntries.CheckedObjects.Count > 0
+                        && new ArrayList(lstDriverStoreEntries.SelectedObjects).ToArray().All(i => lstDriverStoreEntries.CheckedObjects.Contains(i)))
+                    {
+                        ctxMenuSelect.Text = "Unselect";
+                    }
+                    else
+                    {
+                        ctxMenuSelect.Text = "Select";
+                    }
+
+                    ctxMenuExport.Enabled = true;
+                }
+                else
+                {
+                    ctxMenuDelete.Enabled = false;
+                }
             }
             else
             {
-                ctxtMenuSelect.Enabled = false;
-                ctxtMenuExport.Enabled = false;
-                ctxtMenuSelect.Text = "No entries loaded";
+                ctxMenuSelect.Enabled = false;
+                ctxMenuSelectAll.Enabled = false;
+                ctxMenuDelete.Enabled = false;
+                ctxMenuExport.Enabled = false;
+                //ctxMenuSelectAll.Text = "No entries loaded";
             }
         }
 
         // Function to switch between "selected" and "unselected" states
-        private void ctxtMenuSelect_Click(object sender, EventArgs e)
+        private void ctxMenuSelectAll_Click(object sender, EventArgs e)
         {
             // Check if there are any entries
             if ((lstDriverStoreEntries.Objects != null))
@@ -339,15 +363,54 @@ namespace Rapr
                 {
                     lstDriverStoreEntries.CheckedObjects = lstDriverStoreEntries.Objects as System.Collections.IList;
                 }
-            }          
+            }
         }
 
-        private void ctxtMenuAbout_Click(object sender, EventArgs e)
+        private void ctxMenuSelect_Click(object sender, EventArgs e)
         {
-            ShowAboutBox();
+            if ((lstDriverStoreEntries.Objects != null))
+            {
+                ArrayList list = new ArrayList();
+                if (lstDriverStoreEntries.CheckedObjects != null && lstDriverStoreEntries.CheckedObjects.Count > 0)
+                {
+                    list.AddRange(lstDriverStoreEntries.CheckedObjects);
+                }
+
+                if (lstDriverStoreEntries.SelectedObjects != null && lstDriverStoreEntries.SelectedObjects.Count > 0)
+                {
+                    if (new ArrayList(lstDriverStoreEntries.SelectedObjects).ToArray().All(i => lstDriverStoreEntries.CheckedObjects.Contains(i)))
+                    {
+                        foreach (var item in lstDriverStoreEntries.SelectedObjects)
+                        {
+                            list.Remove(item);
+                        }
+                    }
+                    else
+                    {
+                        list.AddRange(lstDriverStoreEntries.SelectedObjects);
+                    }
+                }
+
+                lstDriverStoreEntries.CheckedObjects = list;
+            }
         }
 
-        private void ctxtMenuExport_Click(object sender, EventArgs e)
+        private void ctxMenuDelete_Click(object sender, EventArgs e)
+        {
+            if (lstDriverStoreEntries.SelectedObjects != null)
+            {
+                List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
+
+                foreach (DriverStoreEntry item in lstDriverStoreEntries.SelectedObjects)
+                {
+                    driverStoreEntries.Add(item);
+                }
+
+                DeleteDriverStoreEntries(driverStoreEntries);
+            }
+        }
+
+        private void ctxMenuExport_Click(object sender, EventArgs e)
         {
             // Check if there are any entries
             if ((lstDriverStoreEntries.Objects != null))
@@ -363,8 +426,7 @@ namespace Rapr
                 {
                     MessageBox.Show("Export failed: " + ex.Message);
                 }
-            }  
+            }
         }
-      
     }
 }

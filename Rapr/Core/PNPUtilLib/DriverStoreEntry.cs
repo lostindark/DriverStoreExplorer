@@ -9,36 +9,36 @@ namespace Rapr.Utils
     /// Data fields retrieved from Driver store for each driver
     /// </summary>
     public struct DriverStoreEntry
-    {        
+    {
         /// <summary>
         /// Name of the INF in driver store
         /// </summary>
-        public string driverPublishedName;
+        public string DriverPublishedName;
 
         /// <summary>
         /// Driver package provider
         /// </summary>
-        public string driverPkgProvider;
+        public string DriverPkgProvider;
 
         /// <summary>
         /// Driver class (ex., "System Devices")
         /// </summary>
-        public string driverClass;
+        public string DriverClass;
 
         /// <summary>
         /// Sys file date
         /// </summary>
-        public string driverDate;
+        public string DriverDate;
 
         /// <summary>
         /// Sys file version
         /// </summary>
-        public string driverVersion;
+        public string DriverVersion;
 
         /// <summary>
         /// Signer name. Empty if not WHQLd. 
         /// </summary>
-        public string driverSignerName;
+        public string DriverSignerName;
 
         /// <summary>
         /// Field count
@@ -52,25 +52,25 @@ namespace Rapr.Utils
 
         public string[] GetFieldNames()
         {
-            return new String[] {   "INF", 
-                                    "Package Provider", 
-                                    "Driver Class", 
-                                    "Driver Date", 
-                                    "Driver Version", 
-                                    "Driver Signer"
-                                };
+            return new String[] {
+                "INF",
+                "Package Provider",
+                "Driver Class",
+                "Driver Date",
+                "Driver Version",
+                "Driver Signer"};
         }
 
         public string[] GetFieldValues()
         {
             List<string> fieldValues = new List<string>();
 
-            fieldValues.Add(this.driverPublishedName);
-            fieldValues.Add(this.driverPkgProvider);
-            fieldValues.Add(this.driverClass);
-            fieldValues.Add(this.driverDate);
-            fieldValues.Add(this.driverVersion);
-            fieldValues.Add(this.driverSignerName);
+            fieldValues.Add(this.DriverPublishedName);
+            fieldValues.Add(this.DriverPkgProvider);
+            fieldValues.Add(this.DriverClass);
+            fieldValues.Add(this.DriverDate);
+            fieldValues.Add(this.DriverVersion);
+            fieldValues.Add(this.DriverSignerName);
 
             return fieldValues.ToArray();
         }

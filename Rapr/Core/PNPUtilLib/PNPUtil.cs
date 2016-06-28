@@ -46,21 +46,21 @@ namespace Rapr.Utils
                             switch (lineNum)
                             {
                                 case 0:     // [jenda_] Published name :
-                                    dse.driverPublishedName = currentLineDivided[1];
+                                    dse.DriverPublishedName = currentLineDivided[1];
                                     break;
                                 case 1:     //Driver package provider :
-                                    dse.driverPkgProvider = currentLine.Split(new char[] { ':' })[1].Trim();
+                                    dse.DriverPkgProvider = currentLine.Split(new char[] { ':' })[1].Trim();
                                     break;
                                 case 2:     // [jenda_] Class :
-                                    dse.driverClass = currentLine.Split(new char[] { ':' })[1].Trim();
+                                    dse.DriverClass = currentLine.Split(new char[] { ':' })[1].Trim();
                                     break;
                                 case 3:     // [jenda_] Driver date and version :
                                     string DateAndVersion = currentLine.Split(new char[] { ':' })[1].Trim();
-                                    dse.driverDate = DateAndVersion.Split(new char[] { ' ' })[0].Trim();
-                                    dse.driverVersion = DateAndVersion.Split(new char[] { ' ' })[1].Trim();
+                                    dse.DriverDate = DateAndVersion.Split(new char[] { ' ' })[0].Trim();
+                                    dse.DriverVersion = DateAndVersion.Split(new char[] { ' ' })[1].Trim();
                                     break;
                                 case 4:     // [jenda_] Signer name :
-                                    dse.driverSignerName = currentLine.Split(new char[] { ':' })[1].Trim();
+                                    dse.DriverSignerName = currentLine.Split(new char[] { ':' })[1].Trim();
 
                                     ldse.Add(dse);
                                     dse = new DriverStoreEntry();
@@ -84,7 +84,7 @@ namespace Rapr.Utils
         {
             string dummy = "";
             return PnpUtilHelper(forceDelete == true ? PnpUtilOptions.ForceDelete : PnpUtilOptions.Delete,
-                          dse.driverPublishedName, 
+                          dse.DriverPublishedName, 
                           ref dummy);
         }
 
