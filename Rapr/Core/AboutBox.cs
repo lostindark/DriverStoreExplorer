@@ -14,9 +14,7 @@ namespace Rapr
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
-            //this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("v{0} [by Kannan Ramanathan]", AssemblyVersion);
-            //this.textBoxDescription.Text = AssemblyDescription;
+            this.labelVersion.Text = String.Format("v{0} [by Kannan Ramanathan, Teddy Zhang]", AssemblyVersion);
         }
 
         #region Assembly Attribute Accessors

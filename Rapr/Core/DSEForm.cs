@@ -2,8 +2,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Rapr.Utils;
@@ -42,11 +44,8 @@ namespace Rapr
                 cbAddInstall.Enabled = false;
                 buttonDeleteDriver.Enabled = false;
                 cbForceDeletion.Enabled = false;
-                MessageBox.Show(
-                    "Started in non-admin mode. Some of the features are disabled.\nRestart the app in ADMIN mode to enable them",
-                    "Warning",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information);
+                labelRunAsAdmin.Visible = true;
+                buttonRunAsAdmin.Visible = true;
             }
         }
 
@@ -408,6 +407,16 @@ namespace Rapr
 
                 DeleteDriverStoreEntries(driverStoreEntries);
             }
+        }
+
+        private void buttonRunAsAdmin_Click(object sender, EventArgs e)
+        {
+            ProcessStartInfo processInfo = new ProcessStartInfo();
+            processInfo.Verb = "runas";
+            processInfo.FileName = Assembly.GetExecutingAssembly().Location;
+
+            Process.Start(processInfo);
+            Application.Exit();
         }
 
         private void ctxMenuExport_Click(object sender, EventArgs e)
