@@ -21,5 +21,8 @@ DriverStore Explorer [RAPR] makes it easier to deal with Windows [driver store] 
 ### Tested Operating Systems: 
 Windows 10 64 bit 
 
+### History
+The project was original hosted on https://driverstoreexplorer.codeplex.com/.
+
 ### Credits:
 This tool uses the excellent ObjectViewList  (http://www.codeproject.com/KB/list/ObjectListView.aspx)
