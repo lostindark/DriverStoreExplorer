@@ -1,10 +1,62 @@
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 
 namespace Rapr.Utils
 {
+    public class DriverDate : IComparable, IComparable<DriverDate>, IEquatable<DriverDate>
+    {
+        private DateTime date;
+
+        public DriverDate(string str)
+        {
+            this.date = DateTime.Parse(str);
+        }
+
+        public DriverDate(DateTime date)
+        {
+            this.date = date;
+        }
+
+        public int CompareTo(object value)
+        {
+            if (value == null)
+            {
+                return 1;
+            }
+
+            DriverDate driverDate = value as DriverDate;
+            if (driverDate == null)
+            {
+                throw new ArgumentException("The argument must be a DriverDate object.", "value");
+            }
+
+            return this.CompareTo(driverDate);
+        }
+
+        public int CompareTo(DriverDate value)
+        {
+            if (value == null)
+            {
+                return 1;
+            }
+
+            return this.date.CompareTo(value.date);
+        }
+
+        public bool Equals(DriverDate other)
+        {
+            return other != null && this.date.Equals(other.date);
+        }
+
+        public override string ToString()
+        {
+            return this.date.ToString("d", DateTimeFormatInfo.InvariantInfo);
+        }
+    }
+
     /// <summary>
     /// Data fields retrieved from Driver store for each driver
     /// </summary>
@@ -28,7 +80,7 @@ namespace Rapr.Utils
         /// <summary>
         /// Sys file date
         /// </summary>
-        public string DriverDate;
+        public DriverDate DriverDate;
 
         /// <summary>
         /// Sys file version
@@ -68,7 +120,7 @@ namespace Rapr.Utils
             fieldValues.Add(this.DriverPublishedName);
             fieldValues.Add(this.DriverPkgProvider);
             fieldValues.Add(this.DriverClass);
-            fieldValues.Add(this.DriverDate);
+            fieldValues.Add(this.DriverDate.ToString());
             fieldValues.Add(this.DriverVersion.ToString());
             fieldValues.Add(this.DriverSignerName);
 
