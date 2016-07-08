@@ -33,7 +33,7 @@ namespace Rapr.Utils
         /// <summary>
         /// Sys file version
         /// </summary>
-        public string DriverVersion;
+        public Version DriverVersion;
 
         /// <summary>
         /// Signer name. Empty if not WHQLd. 
@@ -69,7 +69,7 @@ namespace Rapr.Utils
             fieldValues.Add(this.DriverPkgProvider);
             fieldValues.Add(this.DriverClass);
             fieldValues.Add(this.DriverDate);
-            fieldValues.Add(this.DriverVersion);
+            fieldValues.Add(this.DriverVersion.ToString());
             fieldValues.Add(this.DriverSignerName);
 
             return fieldValues.ToArray();

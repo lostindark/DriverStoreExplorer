@@ -21,6 +21,12 @@ namespace Rapr
         public DSEForm()
         {
             InitializeComponent();
+            lstDriverStoreEntries.AlwaysGroupByColumn = this.driverClassColumn;
+            lstDriverStoreEntries.AlwaysGroupBySortOrder = SortOrder.Ascending;
+            lstDriverStoreEntries.PrimarySortColumn = this.driverProviderColumn;
+            lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
+            lstDriverStoreEntries.SecondarySortColumn = this.driverVersionColumn;
+            lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
             AppContext.MainForm = this;
             AppContext.EnableLogging();
             driverStore = AppContext.GetDriverStoreHandler();
@@ -47,6 +53,8 @@ namespace Rapr
                 labelRunAsAdmin.Visible = true;
                 buttonRunAsAdmin.Visible = true;
             }
+
+            PopulateUIWithDriverStoreEntries();
         }
 
         private void DSEForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -140,9 +148,7 @@ namespace Rapr
             switch (localContext.Code)
             {
                 case OperationCode.EnumerateStore:
-                    List<DriverStoreEntry> ldse = driverStore.EnumeratePackages();
-                    ldse = ldse.OrderBy(i => i.DriverClass).ThenBy(i => i.DriverPkgProvider).ThenByDescending(i => i.DriverVersion).ThenBy(i => i.DriverDate).ToList();
-                    localContext.ResultData = ldse;
+                    localContext.ResultData = driverStore.EnumeratePackages();
                     break;
 
                 case OperationCode.DeleteDriver:
