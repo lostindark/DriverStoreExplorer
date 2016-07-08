@@ -186,9 +186,9 @@ namespace Rapr
                     {
                         bool result = driverStore.DeletePackage(dse, force);
                         string resultTxt = String.Format(
-                            "Delete({0}) {1}",
+                            "Delete {0} {1}",
                             dse.DriverPublishedName,
-                            result ? "succeeded" : "failed");
+                            result ? "succeeded." : "failed.");
                         AppContext.TraceInformation(resultTxt + Environment.NewLine);
 
                         sb.AppendLine(resultTxt);
@@ -307,6 +307,7 @@ namespace Rapr
             if ((lstDriverStoreEntries.Objects != null))
             {
                 ctxMenuSelectAll.Enabled = true;
+                ctxMenuExport.Enabled = true;
                 if (lstDriverStoreEntries.CheckedObjects != null && lstDriverStoreEntries.CheckedObjects.Count > 0)
                 {
                     ctxMenuSelectAll.Text = "Unselect All";
@@ -331,11 +332,13 @@ namespace Rapr
                         ctxMenuSelect.Text = "Select";
                     }
 
-                    ctxMenuExport.Enabled = true;
+                    ctxMenuDelete.Enabled = true;
+                    ctxMenuSelect.Enabled = true;
                 }
                 else
                 {
                     ctxMenuDelete.Enabled = false;
+                    ctxMenuSelect.Enabled = false;
                 }
             }
             else

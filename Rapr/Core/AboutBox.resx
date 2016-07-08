@@ -604,6 +604,10 @@
     <value>This tool uses the excellent ObjectViewList  (http://www.codeproject.com/KB/list/ObjectListView.aspx)
 
 Changelog:
+v0.6
+- Now requires .Net 4.0.
+- A few UI tweak and code cleanup.
+
 v0.5 
  - Added support to export to Excel. 
  - Merged in user submitted patch to fix issues with non-English Windows builds. Thanks jenta_. 
