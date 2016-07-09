@@ -35,8 +35,8 @@
             this.driverInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverClassColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverProviderColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.driverDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverVersionColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.driverDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverSignerColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxMenuSelect = new System.Windows.Forms.ToolStripMenuItem();
@@ -87,7 +87,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(793, 587);
+            this.groupBox1.Size = new System.Drawing.Size(796, 587);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Driver Store";
@@ -120,7 +120,7 @@
             this.lstDriverStoreEntries.Location = new System.Drawing.Point(3, 16);
             this.lstDriverStoreEntries.Name = "lstDriverStoreEntries";
             this.lstDriverStoreEntries.ShowItemToolTips = true;
-            this.lstDriverStoreEntries.Size = new System.Drawing.Size(787, 568);
+            this.lstDriverStoreEntries.Size = new System.Drawing.Size(790, 568);
             this.lstDriverStoreEntries.SortGroupItemsByPrimaryColumn = false;
             this.lstDriverStoreEntries.TabIndex = 1;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
@@ -145,17 +145,18 @@
             this.driverProviderColumn.Text = "Pkg Provider";
             this.driverProviderColumn.Width = 160;
             // 
-            // driverDateColumn
-            // 
-            this.driverDateColumn.AspectName = "DriverDate";
-            this.driverDateColumn.Text = "Driver Date";
-            this.driverDateColumn.Width = 80;
-            // 
             // driverVersionColumn
             // 
             this.driverVersionColumn.AspectName = "DriverVersion";
             this.driverVersionColumn.Text = "Driver Version";
             this.driverVersionColumn.Width = 110;
+            // 
+            // driverDateColumn
+            // 
+            this.driverDateColumn.AspectName = "DriverDate";
+            this.driverDateColumn.AspectToStringFormat = "{0:d}";
+            this.driverDateColumn.Text = "Driver Date";
+            this.driverDateColumn.Width = 80;
             // 
             // driverSignerColumn
             // 
@@ -322,7 +323,7 @@
             this.InnerContainer.Panel2.Controls.Add(this.gbOptions);
             this.InnerContainer.Panel2.Controls.Add(this.linkAbout);
             this.InnerContainer.Size = new System.Drawing.Size(929, 587);
-            this.InnerContainer.SplitterDistance = 793;
+            this.InnerContainer.SplitterDistance = 796;
             this.InnerContainer.SplitterWidth = 1;
             this.InnerContainer.TabIndex = 12;
             // 
@@ -356,7 +357,7 @@
             this.gbOptions.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbOptions.Location = new System.Drawing.Point(0, 0);
             this.gbOptions.Name = "gbOptions";
-            this.gbOptions.Size = new System.Drawing.Size(135, 183);
+            this.gbOptions.Size = new System.Drawing.Size(132, 183);
             this.gbOptions.TabIndex = 13;
             this.gbOptions.TabStop = false;
             this.gbOptions.Text = " Operations ";

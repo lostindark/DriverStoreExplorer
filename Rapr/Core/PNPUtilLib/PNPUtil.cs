@@ -56,7 +56,7 @@ namespace Rapr.Utils
                                     break;
                                 case 3:     // [jenda_] Driver date and version :
                                     string DateAndVersion = currentLine.Split(new char[] { ':' })[1].Trim();
-                                    dse.DriverDate = new DriverDate(DateAndVersion.Split(new char[] { ' ' })[0].Trim());
+                                    dse.DriverDate = DateTime.Parse(DateAndVersion.Split(new char[] { ' ' })[0].Trim());
                                     dse.DriverVersion = Version.Parse(DateAndVersion.Split(new char[] { ' ' })[1].Trim());
                                     break;
                                 case 4:     // [jenda_] Signer name :
