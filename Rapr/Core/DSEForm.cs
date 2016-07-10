@@ -340,7 +340,6 @@ namespace Rapr
                         ctxMenuSelect.Text = "Select";
                     }
 
-                    ctxMenuDelete.Enabled = true;
                     ctxMenuSelect.Enabled = true;
                 }
                 else
