@@ -604,9 +604,13 @@
     <value>This tool uses the excellent ObjectViewList  (http://www.codeproject.com/KB/list/ObjectListView.aspx)
 
 Changelog:
+v0.7
+- Group the drivers by Driver Class. Fix sorting.
+- Show estimated disk usage for drivers.
+
 v0.6
 - Now requires .Net 4.0.
-- A few UI tweak and code cleanup.
+- A few UI tweaks and code cleanup.
 
 v0.5 
  - Added support to export to Excel. 
