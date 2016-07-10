@@ -23,10 +23,12 @@ namespace Rapr
             InitializeComponent();
             lstDriverStoreEntries.AlwaysGroupByColumn = this.driverClassColumn;
             lstDriverStoreEntries.AlwaysGroupBySortOrder = SortOrder.Ascending;
-            lstDriverStoreEntries.PrimarySortColumn = this.driverProviderColumn;
+            lstDriverStoreEntries.PrimarySortColumn = this.driverInfColumn;
             lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
             lstDriverStoreEntries.SecondarySortColumn = this.driverVersionColumn;
             lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
+            driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
+
             AppContext.MainForm = this;
             AppContext.EnableLogging();
             driverStore = AppContext.GetDriverStoreHandler();

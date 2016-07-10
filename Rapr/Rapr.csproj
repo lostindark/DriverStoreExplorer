@@ -73,6 +73,7 @@
     </Compile>
     <Compile Include="Core\IExport.cs" />
     <Compile Include="Core\PNPUtilLib\DriverStoreEntry.cs" />
+    <Compile Include="Core\PNPUtilLib\DriverStoreRepository.cs" />
     <Compile Include="Core\PNPUtilLib\IDriverStore.cs" />
     <Compile Include="Core\PNPUtilLib\PNPUtil.cs" />
     <Compile Include="Core\Program.cs" />

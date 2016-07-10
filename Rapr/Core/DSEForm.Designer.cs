@@ -33,10 +33,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstDriverStoreEntries = new BrightIdeasSoftware.ObjectListView();
             this.driverInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.driverOemInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverClassColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverProviderColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverVersionColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.driverSizeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverSignerColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxMenuSelect = new System.Windows.Forms.ToolStripMenuItem();
@@ -95,10 +97,12 @@
             // lstDriverStoreEntries
             // 
             this.lstDriverStoreEntries.AllColumns.Add(this.driverInfColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverOemInfColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverClassColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverProviderColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverVersionColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverDateColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverSizeColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverSignerColumn);
             this.lstDriverStoreEntries.AllowColumnReorder = true;
             this.lstDriverStoreEntries.AlternateRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -109,7 +113,7 @@
             this.driverProviderColumn,
             this.driverVersionColumn,
             this.driverDateColumn,
-            this.driverSignerColumn});
+            this.driverSizeColumn});
             this.lstDriverStoreEntries.ContextMenuStrip = this.contextMenuStrip;
             this.lstDriverStoreEntries.Cursor = System.Windows.Forms.Cursors.Default;
             this.lstDriverStoreEntries.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -128,9 +132,16 @@
             // 
             // driverInfColumn
             // 
-            this.driverInfColumn.AspectName = "DriverPublishedName";
+            this.driverInfColumn.AspectName = "DriverInfName";
             this.driverInfColumn.Text = "INF";
-            this.driverInfColumn.Width = 90;
+            this.driverInfColumn.Width = 120;
+            // 
+            // driverOemInfColumn
+            // 
+            this.driverOemInfColumn.AspectName = "DriverPublishedName";
+            this.driverOemInfColumn.IsVisible = false;
+            this.driverOemInfColumn.Text = "OEM INF";
+            this.driverOemInfColumn.Width = 90;
             // 
             // driverClassColumn
             // 
@@ -156,11 +167,20 @@
             this.driverDateColumn.AspectName = "DriverDate";
             this.driverDateColumn.AspectToStringFormat = "{0:d}";
             this.driverDateColumn.Text = "Driver Date";
+            this.driverDateColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             this.driverDateColumn.Width = 80;
+            // 
+            // driverSizeColumn
+            // 
+            this.driverSizeColumn.AspectName = "DriverSize";
+            this.driverSizeColumn.Text = "Size";
+            this.driverSizeColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.driverSizeColumn.Width = 120;
             // 
             // driverSignerColumn
             // 
             this.driverSignerColumn.AspectName = "DriverSignerName";
+            this.driverSignerColumn.IsVisible = false;
             this.driverSignerColumn.Text = "Driver Signer";
             this.driverSignerColumn.Width = 250;
             // 
@@ -395,7 +415,7 @@
 
         private System.Windows.Forms.Button buttonEnumerate;
         private BrightIdeasSoftware.ObjectListView lstDriverStoreEntries;
-        private BrightIdeasSoftware.OLVColumn driverInfColumn;
+        private BrightIdeasSoftware.OLVColumn driverOemInfColumn;
         private BrightIdeasSoftware.OLVColumn driverDateColumn;
         private BrightIdeasSoftware.OLVColumn driverClassColumn;
         private BrightIdeasSoftware.OLVColumn driverSignerColumn;
@@ -423,6 +443,8 @@
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
         private System.Windows.Forms.Button buttonRunAsAdmin;
         private System.Windows.Forms.Label labelRunAsAdmin;
+        private BrightIdeasSoftware.OLVColumn driverInfColumn;
+        private BrightIdeasSoftware.OLVColumn driverSizeColumn;
     }
 }
 
