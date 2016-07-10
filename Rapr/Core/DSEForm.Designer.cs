@@ -89,7 +89,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(799, 587);
+            this.groupBox1.Size = new System.Drawing.Size(794, 587);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Driver Store";
@@ -124,7 +124,7 @@
             this.lstDriverStoreEntries.Location = new System.Drawing.Point(3, 16);
             this.lstDriverStoreEntries.Name = "lstDriverStoreEntries";
             this.lstDriverStoreEntries.ShowItemToolTips = true;
-            this.lstDriverStoreEntries.Size = new System.Drawing.Size(793, 568);
+            this.lstDriverStoreEntries.Size = new System.Drawing.Size(788, 568);
             this.lstDriverStoreEntries.SortGroupItemsByPrimaryColumn = false;
             this.lstDriverStoreEntries.TabIndex = 1;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
@@ -343,7 +343,7 @@
             this.InnerContainer.Panel2.Controls.Add(this.gbOptions);
             this.InnerContainer.Panel2.Controls.Add(this.linkAbout);
             this.InnerContainer.Size = new System.Drawing.Size(929, 587);
-            this.InnerContainer.SplitterDistance = 799;
+            this.InnerContainer.SplitterDistance = 794;
             this.InnerContainer.SplitterWidth = 1;
             this.InnerContainer.TabIndex = 12;
             // 
@@ -377,7 +377,7 @@
             this.gbOptions.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbOptions.Location = new System.Drawing.Point(0, 0);
             this.gbOptions.Name = "gbOptions";
-            this.gbOptions.Size = new System.Drawing.Size(129, 183);
+            this.gbOptions.Size = new System.Drawing.Size(134, 183);
             this.gbOptions.TabIndex = 13;
             this.gbOptions.TabStop = false;
             this.gbOptions.Text = " Operations ";
