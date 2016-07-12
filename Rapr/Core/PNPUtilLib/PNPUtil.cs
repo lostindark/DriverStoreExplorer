@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -68,7 +69,7 @@ namespace Rapr.Utils
                                 case 3:     // [jenda_] Driver date and version :
                                     string[] dateAndVersion = currentLine.Split(NameValueDelimiter)[1].Trim().Split(new char[] { ' ' });
 
-                                    driverStoreEntry.DriverDate = DateTime.Parse(dateAndVersion[0].Trim());
+                                    driverStoreEntry.DriverDate = DateTime.Parse(dateAndVersion[0].Trim(), CultureInfo.InvariantCulture);
                                     driverStoreEntry.DriverVersion = Version.Parse(dateAndVersion[1].Trim());
                                     break;
 
