@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 using System.Text.RegularExpressions;
 
@@ -27,81 +26,208 @@ namespace Rapr.Utils
             AddInstall
         };
 
+        enum ParsingState
+        {
+            Header,
+            PublishedName,
+            PkgProvider,
+            Class,
+            DriverDateVersion,
+            Signer,
+        };
+
         #region IDriverStore Members
         public List<DriverStoreEntry> EnumeratePackages()
         {
             List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
-            DriverStoreRepository repository = new DriverStoreRepository();
             string output = "";
 
-            if (PnpUtilHelper(PnpUtilOptions.Enumerate, "", ref output))
+            if (PnpUtilHelper(PnpUtilOptions.Enumerate, null, ref output))
             {
-                // Trace.TraceInformation("O/P of Enumeration : " + Environment.NewLine + output + Environment.NewLine);
-
                 // Parse the output
-                // [jenda_] Didn't work on non-english Windows - changed from string recognition to counting lines
-                using (StringReader sr = new StringReader(output))
+                driverStoreEntries = ParsePnpUtilEnumerateResult(output);
+
+                DriverStoreRepository repository = new DriverStoreRepository();
+
+                for (int i = 0; i < driverStoreEntries.Count; i++)
                 {
-                    string currentLine = "";
-                    DriverStoreEntry driverStoreEntry = new DriverStoreEntry();
-                    byte lineNum = 0;
-
-                    while ((currentLine = sr.ReadLine()) != null)
-                    {
-                        string[] currentLineDivided = currentLine.Split(NameValueDelimiter);
-                        if (currentLineDivided.Length == 2)
-                        {
-                            currentLineDivided[1] = currentLineDivided[1].Trim();
-                            switch (lineNum)
-                            {
-                                case 0:     // [jenda_] Published name :
-                                    driverStoreEntry.DriverPublishedName = currentLineDivided[1];
-                                    break;
-
-                                case 1:     //Driver package provider :
-                                    driverStoreEntry.DriverPkgProvider = currentLine.Split(NameValueDelimiter)[1].Trim();
-                                    break;
-
-                                case 2:     // [jenda_] Class :
-                                    driverStoreEntry.DriverClass = currentLine.Split(NameValueDelimiter)[1].Trim();
-                                    break;
-
-                                case 3:     // [jenda_] Driver date and version :
-                                    string[] dateAndVersion = currentLine.Split(NameValueDelimiter)[1].Trim().Split(new char[] { ' ' });
-
-                                    driverStoreEntry.DriverDate = DateTime.Parse(dateAndVersion[0].Trim(), CultureInfo.InvariantCulture);
-                                    driverStoreEntry.DriverVersion = Version.Parse(dateAndVersion[1].Trim());
-                                    break;
-
-                                case 4:     // [jenda_] Signer name :
-                                    driverStoreEntry.DriverSignerName = currentLine.Split(NameValueDelimiter)[1].Trim();
-
-                                    string originalInfName = null;
-                                    long estimateSize = -1;
-                                    repository.FindInfInfo(driverStoreEntry.DriverPublishedName, out originalInfName, out estimateSize);
-                                    driverStoreEntry.DriverInfName = originalInfName;
-                                    driverStoreEntry.DriverSize = estimateSize;
-
-                                    driverStoreEntries.Add(driverStoreEntry);
-                                    driverStoreEntry = new DriverStoreEntry();
-                                    break;
-
-                                default:
-                                    continue;
-                            }
-
-                            lineNum++;
-
-                            if (lineNum > 4)
-                            {
-                                lineNum = 0;
-                            }
-                        }
-                    }
+                    DriverStoreEntry driverStoreEntry = driverStoreEntries[i];
+                    repository.FindInfInfo(driverStoreEntry.DriverPublishedName, out driverStoreEntry.DriverInfName, out driverStoreEntry.DriverSize);
+                    driverStoreEntries[i] = driverStoreEntry;
                 }
             }
 
             return driverStoreEntries;
+        }
+
+        public static List<DriverStoreEntry> ParsePnpUtilEnumerateResult(string pnpUtilOutput)
+        {
+            List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
+
+            using (StringReader sr = new StringReader(pnpUtilOutput))
+            {
+                DriverStoreEntry driverStoreEntry = new DriverStoreEntry();
+                string currentLine;
+                bool sawKey = false;
+                ParsingState state = ParsingState.Header;
+
+                while ((currentLine = sr.ReadLine()) != null)
+                {
+                    if (state == ParsingState.Header)
+                    {
+                        // We're expecting a header. Blank line marks the end of the header.
+                        if (currentLine.Length == 0)
+                        {
+                            state = ParsingState.PublishedName;
+                        }
+
+                        continue;
+                    }
+                    else if (currentLine.Length == 0)
+                    {
+                        // Blank line means the end of an driver entry.
+                        if (!driverStoreEntry.Equals(default(DriverStoreEntry)))
+                        {
+                            driverStoreEntries.Add(driverStoreEntry);
+                            driverStoreEntry = new DriverStoreEntry();
+                        }
+
+                        // The next line should be driver OEM INF name.
+                        state = ParsingState.PublishedName;
+                        sawKey = false;
+                        continue;
+                    }
+                    else
+                    {
+                        bool hasKeyValueDelimiter = currentLine.IndexOf(':') != -1;
+                        string value = null;
+
+                        if (hasKeyValueDelimiter)
+                        {
+                            string[] currentLineDivided = currentLine.Split(NameValueDelimiter, 2);
+
+                            if (currentLineDivided.Length > 1)
+                            {
+                                value = currentLineDivided[1].Trim();
+                            }
+                        }
+                        else
+                        {
+                            value = currentLine.Trim();
+                        }
+
+                        if (state == ParsingState.PublishedName)
+                        {
+                            string entryValue = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.PkgProvider, ref sawKey, ref state);
+
+                            if (!string.IsNullOrEmpty(entryValue))
+                            {
+                                driverStoreEntry.DriverPublishedName = entryValue;
+                                continue;
+                            }
+                        }
+
+                        if (state == ParsingState.PkgProvider)
+                        {
+                            string entryValue = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.Class, ref sawKey, ref state);
+
+                            if (!string.IsNullOrEmpty(entryValue))
+                            {
+                                driverStoreEntry.DriverPkgProvider = entryValue;
+                                continue;
+                            }
+                        }
+
+                        if (state == ParsingState.Class)
+                        {
+                            string entryValue = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.DriverDateVersion, ref sawKey, ref state);
+
+                            if (!string.IsNullOrEmpty(entryValue))
+                            {
+                                driverStoreEntry.DriverClass = entryValue;
+                                continue;
+                            }
+                        }
+
+                        if (state == ParsingState.DriverDateVersion)
+                        {
+                            string entryValue = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.Signer, ref sawKey, ref state);
+
+                            if (!string.IsNullOrEmpty(entryValue))
+                            {
+                                driverStoreEntry.DriverDateAndVersion = entryValue;
+                                continue;
+                            }
+                        }
+
+                        if (state == ParsingState.Signer)
+                        {
+                            string entryValue = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.PublishedName, ref sawKey, ref state);
+
+                            if (!string.IsNullOrEmpty(entryValue))
+                            {
+                                driverStoreEntry.DriverSignerName = entryValue;
+                                continue;
+                            }
+                        }
+                    }
+                }
+
+                if (!driverStoreEntry.Equals(default(DriverStoreEntry)))
+                {
+                    driverStoreEntries.Add(driverStoreEntry);
+                }
+            }
+
+            return driverStoreEntries;
+        }
+
+        private static string GetDriverPropAndUpdateParsingState(string value, bool hasKeyValueDelimiter, ParsingState nextState, ref bool sawKey, ref ParsingState state)
+        {
+            string entryValue = null;
+
+            if (!sawKey)
+            {
+                if (hasKeyValueDelimiter)
+                {
+                    if (!string.IsNullOrEmpty(value))
+                    {
+                        // We got a valid value for current driver property.
+                        entryValue = value;
+
+                        // Move to next state
+                        state = nextState;
+                        sawKey = false;
+                    }
+                    else
+                    {
+                        // We don't have the driver property value yet, the value may be in the next line.
+                        sawKey = true;
+                    }
+                }
+                else
+                {
+                    // Extra lines we don't care.
+                }
+            }
+            else
+            {
+                if (hasKeyValueDelimiter)
+                {
+                    // The driver property we've already saw doesn't have an value, and now we found a new property,
+                    // move to next state and let code for that property to handle it.
+                }
+                else
+                {
+                    // In last line we had driver property key, but didn't have the value. This line is the value.
+                    entryValue = value;
+                }
+
+                state = nextState;
+                sawKey = false;
+            }
+
+            return entryValue;
         }
 
         public bool DeletePackage(DriverStoreEntry dse, bool forceDelete)

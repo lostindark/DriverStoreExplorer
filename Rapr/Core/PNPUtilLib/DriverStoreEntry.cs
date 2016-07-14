@@ -49,6 +49,34 @@ namespace Rapr.Utils
         /// </summary>
         public long DriverSize;
 
+        public string DriverDateAndVersion
+        {
+            set
+            {
+                if (!string.IsNullOrEmpty(value))
+                {
+                    string[] dateAndVersion = value.Trim().Split(new char[] { ' ' }, 2);
+                    if (dateAndVersion.Length == 2)
+                    {
+                        DateTime driverDate;
+                        Version driverVersion;
+                        this.DriverDate = default(DateTime);
+                        this.DriverVersion = null;
+
+                        if (DateTime.TryParse(dateAndVersion[0].Trim(), CultureInfo.InvariantCulture, DateTimeStyles.None, out driverDate))
+                        {
+                            this.DriverDate = driverDate;
+                        }
+
+                        if (Version.TryParse(dateAndVersion[1].Trim(), out driverVersion))
+                        {
+                            this.DriverVersion = driverVersion;
+                        }
+                    }
+                }
+            }
+        }
+
         /// <summary>
         /// Field count
         /// </summary>
