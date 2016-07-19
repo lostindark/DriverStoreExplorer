@@ -15,6 +15,9 @@ DriverStore Explorer [RAPR] makes it easier to deal with Windows [driver store] 
 * Full fledged GUI Supports grouping / sorting on any column. 
 ** Supports re-arranging of / Selecting specific columns. 
 
+### Screenshots:
+![Screenshot of DriverStoreExplorer](https://github.com/lostindark/DriverStoreExplorer/raw/master/Screenshots/Screenshot.png "Screenshot of DriverStoreExplorer")
+
 ### Requirements: 
 .NET Framework 4.0
 
