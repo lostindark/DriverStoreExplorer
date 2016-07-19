@@ -604,6 +604,9 @@
     <value>This tool uses the excellent ObjectViewList  (http://www.codeproject.com/KB/list/ObjectListView.aspx)
 
 Changelog:
+v0.8
+- Improve PnpUtil result parsing logic for Russian language and error handling.
+
 v0.7
 - Group the drivers by Driver Class. Fix sorting.
 - Show estimated disk usage for drivers.
