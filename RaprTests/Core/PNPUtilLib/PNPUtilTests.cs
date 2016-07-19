@@ -18,6 +18,37 @@ Class :                     Human Interface Devices
 Driver date and version :   11/06/2015 9.9.114.0
 Signer name :               Microsoft Windows Hardware Compatibility Publisher";
 
+        private const string EnglishPnpUtilEnumerateOutputWithoutSignerName = @"Microsoft PnP Utility
+
+Published name :            oem4.inf
+Driver package provider :   Microsoft
+Class :                     Human Interface Devices
+Driver date and version :   11/06/2015 9.9.114.0
+Signer name :               ";
+
+        private const string EnglishPnpUtilEnumerateOutputWithDummyLine = @"Microsoft PnP Utility
+
+Published name :            oem4.inf
+Driver package provider :   Microsoft
+Class :                     
+Human Interface Devices
+Dummy line
+Driver date and version :   11/06/2015 9.9.114.0
+Signer name :               Microsoft Windows Hardware Compatibility Publisher";
+
+        private const string EnglishPnpUtilEnumerateOutputWithMissingLine = @"Microsoft PnP Utility
+
+Published name :            oem4.inf
+Driver package provider :   Microsoft
+Class :                     Human Interface Devices
+Driver date and version :   11/06/2015 9.9.114.0
+
+Published name :            oem18.inf
+Driver package provider :   Intel
+Class :                     System devices
+Driver date and version :   12/17/2012 9.0.0.1287
+Signer name :               Microsoft Windows Hardware Compatibility Publisher";
+
         private const string ChinesePnpUtilEnumerateOutput = @"Microsoft PnP 工具 
 
 发布名称:             oem0.inf 
@@ -930,6 +961,61 @@ oem47.inf
             Assert.AreEqual(new DateTime(2015, 11, 06, 0, 0, 0, DateTimeKind.Unspecified), entries[0].DriverDate);
             Assert.AreEqual(new Version(9, 9, 114, 0), entries[0].DriverVersion);
             Assert.AreEqual("Microsoft Windows Hardware Compatibility Publisher", entries[0].DriverSignerName);
+        }
+
+        [TestMethod()]
+        public void ParseEnglishPnpUtilEnumerateResultWithoutSignerNameTest()
+        {
+            List<DriverStoreEntry> entries = PNPUtil.ParsePnpUtilEnumerateResult(EnglishPnpUtilEnumerateOutputWithoutSignerName);
+
+            Assert.IsNotNull(entries);
+            Assert.AreEqual(1, entries.Count);
+
+            Assert.AreEqual("oem4.inf", entries[0].DriverPublishedName);
+            Assert.AreEqual("Microsoft", entries[0].DriverPkgProvider);
+            Assert.AreEqual("Human Interface Devices", entries[0].DriverClass);
+            Assert.AreEqual(new DateTime(2015, 11, 06, 0, 0, 0, DateTimeKind.Unspecified), entries[0].DriverDate);
+            Assert.AreEqual(new Version(9, 9, 114, 0), entries[0].DriverVersion);
+            Assert.AreEqual(null, entries[0].DriverSignerName);
+        }
+
+        [TestMethod()]
+        public void ParseEnglishPnpUtilEnumerateResultWithDummyLineTest()
+        {
+            List<DriverStoreEntry> entries = PNPUtil.ParsePnpUtilEnumerateResult(EnglishPnpUtilEnumerateOutputWithDummyLine);
+
+            Assert.IsNotNull(entries);
+            Assert.AreEqual(1, entries.Count);
+
+            Assert.AreEqual("oem4.inf", entries[0].DriverPublishedName);
+            Assert.AreEqual("Microsoft", entries[0].DriverPkgProvider);
+            Assert.AreEqual("Human Interface Devices", entries[0].DriverClass);
+            Assert.AreEqual(new DateTime(2015, 11, 06, 0, 0, 0, DateTimeKind.Unspecified), entries[0].DriverDate);
+            Assert.AreEqual(new Version(9, 9, 114, 0), entries[0].DriverVersion);
+            Assert.AreEqual("Microsoft Windows Hardware Compatibility Publisher", entries[0].DriverSignerName);
+        }
+
+        [TestMethod()]
+        public void ParseEnglishPnpUtilEnumerateResultWithMissingLineTest()
+        {
+            List<DriverStoreEntry> entries = PNPUtil.ParsePnpUtilEnumerateResult(EnglishPnpUtilEnumerateOutputWithMissingLine);
+
+            Assert.IsNotNull(entries);
+            Assert.AreEqual(2, entries.Count);
+
+            Assert.AreEqual("oem4.inf", entries[0].DriverPublishedName);
+            Assert.AreEqual("Microsoft", entries[0].DriverPkgProvider);
+            Assert.AreEqual("Human Interface Devices", entries[0].DriverClass);
+            Assert.AreEqual(new DateTime(2015, 11, 06, 0, 0, 0, DateTimeKind.Unspecified), entries[0].DriverDate);
+            Assert.AreEqual(new Version(9, 9, 114, 0), entries[0].DriverVersion);
+            Assert.AreEqual(null, entries[0].DriverSignerName);
+
+            Assert.AreEqual("oem18.inf", entries[1].DriverPublishedName);
+            Assert.AreEqual("Intel", entries[1].DriverPkgProvider);
+            Assert.AreEqual("System devices", entries[1].DriverClass);
+            Assert.AreEqual(new DateTime(2012, 12, 17, 0, 0, 0, DateTimeKind.Unspecified), entries[1].DriverDate);
+            Assert.AreEqual(new Version(9, 0, 0, 1287), entries[1].DriverVersion);
+            Assert.AreEqual("Microsoft Windows Hardware Compatibility Publisher", entries[1].DriverSignerName);
         }
 
         [TestMethod()]

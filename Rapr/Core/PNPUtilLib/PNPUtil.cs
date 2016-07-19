@@ -99,8 +99,9 @@ namespace Rapr.Utils
                     }
                     else
                     {
-                        bool hasKeyValueDelimiter = currentLine.IndexOf(':') != -1;
+                        bool finishProcessCurrentLine = false;
                         string value = null;
+                        bool hasKeyValueDelimiter = currentLine.IndexOf(':') != -1;
 
                         if (hasKeyValueDelimiter)
                         {
@@ -118,55 +119,50 @@ namespace Rapr.Utils
 
                         if (state == ParsingState.PublishedName)
                         {
-                            string entryValue = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.PkgProvider, ref sawKey, ref state);
+                            driverStoreEntry.DriverPublishedName = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.PkgProvider, out finishProcessCurrentLine, ref sawKey, ref state);
 
-                            if (!string.IsNullOrEmpty(entryValue))
+                            if (finishProcessCurrentLine)
                             {
-                                driverStoreEntry.DriverPublishedName = entryValue;
                                 continue;
                             }
                         }
 
                         if (state == ParsingState.PkgProvider)
                         {
-                            string entryValue = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.Class, ref sawKey, ref state);
+                            driverStoreEntry.DriverPkgProvider = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.Class, out finishProcessCurrentLine, ref sawKey, ref state);
 
-                            if (!string.IsNullOrEmpty(entryValue))
+                            if (finishProcessCurrentLine)
                             {
-                                driverStoreEntry.DriverPkgProvider = entryValue;
                                 continue;
                             }
                         }
 
                         if (state == ParsingState.Class)
                         {
-                            string entryValue = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.DriverDateVersion, ref sawKey, ref state);
+                            driverStoreEntry.DriverClass = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.DriverDateVersion, out finishProcessCurrentLine, ref sawKey, ref state);
 
-                            if (!string.IsNullOrEmpty(entryValue))
+                            if (finishProcessCurrentLine)
                             {
-                                driverStoreEntry.DriverClass = entryValue;
                                 continue;
                             }
                         }
 
                         if (state == ParsingState.DriverDateVersion)
                         {
-                            string entryValue = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.Signer, ref sawKey, ref state);
+                            driverStoreEntry.DriverDateAndVersion = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.Signer, out finishProcessCurrentLine, ref sawKey, ref state);
 
-                            if (!string.IsNullOrEmpty(entryValue))
+                            if (finishProcessCurrentLine)
                             {
-                                driverStoreEntry.DriverDateAndVersion = entryValue;
                                 continue;
                             }
                         }
 
                         if (state == ParsingState.Signer)
                         {
-                            string entryValue = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.PublishedName, ref sawKey, ref state);
+                            driverStoreEntry.DriverSignerName = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.PublishedName, out finishProcessCurrentLine, ref sawKey, ref state);
 
-                            if (!string.IsNullOrEmpty(entryValue))
+                            if (finishProcessCurrentLine)
                             {
-                                driverStoreEntry.DriverSignerName = entryValue;
                                 continue;
                             }
                         }
@@ -182,9 +178,10 @@ namespace Rapr.Utils
             return driverStoreEntries;
         }
 
-        private static string GetDriverPropAndUpdateParsingState(string value, bool hasKeyValueDelimiter, ParsingState nextState, ref bool sawKey, ref ParsingState state)
+        private static string GetDriverPropAndUpdateParsingState(string value, bool hasKeyValueDelimiter, ParsingState nextState, out bool finishProcessCurrentLine, ref bool sawKey, ref ParsingState state)
         {
             string entryValue = null;
+            finishProcessCurrentLine = true;
 
             if (!sawKey)
             {
@@ -216,6 +213,7 @@ namespace Rapr.Utils
                 {
                     // The driver property we've already saw doesn't have an value, and now we found a new property,
                     // move to next state and let code for that property to handle it.
+                    finishProcessCurrentLine = false;
                 }
                 else
                 {
