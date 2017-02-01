@@ -604,6 +604,9 @@
     <value>This tool uses the excellent ObjectViewList  (http://www.codeproject.com/KB/list/ObjectListView.aspx)
 
 Changelog:
+v0.81
+-  Add "Select Old Drivers" functionality.
+
 v0.8
 - Improve PnpUtil result parsing logic for Russian language and error handling.
 
