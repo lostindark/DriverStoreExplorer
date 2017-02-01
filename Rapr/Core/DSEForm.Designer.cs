@@ -43,6 +43,7 @@
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxMenuSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxMenuSelectOldDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -61,6 +62,7 @@
             this.labelRunAsAdmin = new System.Windows.Forms.Label();
             this.buttonRunAsAdmin = new System.Windows.Forms.Button();
             this.gbOptions = new System.Windows.Forms.GroupBox();
+            this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -189,49 +191,57 @@
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ctxMenuSelect,
             this.ctxMenuSelectAll,
+            this.ctxMenuSelectOldDrivers,
             this.toolStripSeparator1,
             this.ctxMenuDelete,
             this.toolStripSeparator2,
             this.ctxMenuExport});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(121, 104);
+            this.contextMenuStrip.Size = new System.Drawing.Size(167, 126);
             this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
             // 
             // ctxMenuSelect
             // 
             this.ctxMenuSelect.Name = "ctxMenuSelect";
-            this.ctxMenuSelect.Size = new System.Drawing.Size(120, 22);
+            this.ctxMenuSelect.Size = new System.Drawing.Size(166, 22);
             this.ctxMenuSelect.Text = "Select";
             this.ctxMenuSelect.Click += new System.EventHandler(this.ctxMenuSelect_Click);
             // 
             // ctxMenuSelectAll
             // 
             this.ctxMenuSelectAll.Name = "ctxMenuSelectAll";
-            this.ctxMenuSelectAll.Size = new System.Drawing.Size(120, 22);
-            this.ctxMenuSelectAll.Text = "Select all";
+            this.ctxMenuSelectAll.Size = new System.Drawing.Size(166, 22);
+            this.ctxMenuSelectAll.Text = "Select All";
             this.ctxMenuSelectAll.Click += new System.EventHandler(this.ctxMenuSelectAll_Click);
+            // 
+            // ctxMenuSelectOldDrivers
+            // 
+            this.ctxMenuSelectOldDrivers.Name = "ctxMenuSelectOldDrivers";
+            this.ctxMenuSelectOldDrivers.Size = new System.Drawing.Size(166, 22);
+            this.ctxMenuSelectOldDrivers.Text = "Select Old Drivers";
+            this.ctxMenuSelectOldDrivers.Click += new System.EventHandler(this.ctxMenuSelectOldDrivers_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(117, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
             // 
             // ctxMenuDelete
             // 
             this.ctxMenuDelete.Name = "ctxMenuDelete";
-            this.ctxMenuDelete.Size = new System.Drawing.Size(120, 22);
+            this.ctxMenuDelete.Size = new System.Drawing.Size(166, 22);
             this.ctxMenuDelete.Text = "Delete";
             this.ctxMenuDelete.Click += new System.EventHandler(this.ctxMenuDelete_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(117, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(163, 6);
             // 
             // ctxMenuExport
             // 
             this.ctxMenuExport.Name = "ctxMenuExport";
-            this.ctxMenuExport.Size = new System.Drawing.Size(120, 22);
+            this.ctxMenuExport.Size = new System.Drawing.Size(166, 22);
             this.ctxMenuExport.Text = "Export";
             this.ctxMenuExport.Click += new System.EventHandler(this.ctxMenuExport_Click);
             // 
@@ -316,7 +326,7 @@
             // linkAbout
             // 
             this.linkAbout.AutoSize = true;
-            this.linkAbout.Location = new System.Drawing.Point(2, 186);
+            this.linkAbout.Location = new System.Drawing.Point(2, 221);
             this.linkAbout.Name = "linkAbout";
             this.linkAbout.Size = new System.Drawing.Size(129, 13);
             this.linkAbout.TabIndex = 12;
@@ -349,7 +359,7 @@
             // 
             // labelRunAsAdmin
             // 
-            this.labelRunAsAdmin.Location = new System.Drawing.Point(2, 210);
+            this.labelRunAsAdmin.Location = new System.Drawing.Point(2, 245);
             this.labelRunAsAdmin.Name = "labelRunAsAdmin";
             this.labelRunAsAdmin.Size = new System.Drawing.Size(131, 44);
             this.labelRunAsAdmin.TabIndex = 15;
@@ -358,7 +368,7 @@
             // 
             // buttonRunAsAdmin
             // 
-            this.buttonRunAsAdmin.Location = new System.Drawing.Point(11, 257);
+            this.buttonRunAsAdmin.Location = new System.Drawing.Point(11, 292);
             this.buttonRunAsAdmin.Name = "buttonRunAsAdmin";
             this.buttonRunAsAdmin.Size = new System.Drawing.Size(109, 23);
             this.buttonRunAsAdmin.TabIndex = 14;
@@ -369,6 +379,7 @@
             // 
             // gbOptions
             // 
+            this.gbOptions.Controls.Add(this.buttonSelectOldDrivers);
             this.gbOptions.Controls.Add(this.cbForceDeletion);
             this.gbOptions.Controls.Add(this.buttonDeleteDriver);
             this.gbOptions.Controls.Add(this.cbAddInstall);
@@ -377,10 +388,20 @@
             this.gbOptions.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbOptions.Location = new System.Drawing.Point(0, 0);
             this.gbOptions.Name = "gbOptions";
-            this.gbOptions.Size = new System.Drawing.Size(134, 183);
+            this.gbOptions.Size = new System.Drawing.Size(128, 209);
             this.gbOptions.TabIndex = 13;
             this.gbOptions.TabStop = false;
             this.gbOptions.Text = " Operations ";
+            // 
+            // buttonSelectOldDrivers
+            // 
+            this.buttonSelectOldDrivers.Location = new System.Drawing.Point(11, 166);
+            this.buttonSelectOldDrivers.Name = "buttonSelectOldDrivers";
+            this.buttonSelectOldDrivers.Size = new System.Drawing.Size(109, 23);
+            this.buttonSelectOldDrivers.TabIndex = 7;
+            this.buttonSelectOldDrivers.Text = "Select Old Drivers";
+            this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
+            this.buttonSelectOldDrivers.Click += new System.EventHandler(this.buttonSelectOldDrivers_Click);
             // 
             // DSEForm
             // 
@@ -445,6 +466,8 @@
         private System.Windows.Forms.Label labelRunAsAdmin;
         private BrightIdeasSoftware.OLVColumn driverInfColumn;
         private BrightIdeasSoftware.OLVColumn driverSizeColumn;
+        private System.Windows.Forms.Button buttonSelectOldDrivers;
+        private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectOldDrivers;
     }
 }
 

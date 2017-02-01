@@ -9,6 +9,8 @@ namespace Rapr
 {
     public partial class DSEForm
     {
+        private static bool isRunAsAdministrator = IsRunAsAdministrator();
+
         public enum OperationCode
         {
             EnumerateStore,
@@ -143,7 +145,7 @@ namespace Rapr
             }
         }
 
-        static bool IsAnAdministrator()
+        static bool IsRunAsAdministrator()
         {
             WindowsIdentity identity = WindowsIdentity.GetCurrent();
             WindowsPrincipal principal = new WindowsPrincipal(identity);

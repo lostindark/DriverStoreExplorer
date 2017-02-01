@@ -27,6 +27,7 @@ namespace Rapr
             lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
             lstDriverStoreEntries.SecondarySortColumn = this.driverVersionColumn;
             lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
+            lstDriverStoreEntries.CheckBoxes = isRunAsAdministrator;
             driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
 
             AppContext.MainForm = this;
@@ -44,7 +45,7 @@ namespace Rapr
             SavedBackColor = lblStatus.BackColor;
             SavedForeColor = lblStatus.ForeColor;
 
-            if (!IsAnAdministrator())
+            if (!isRunAsAdministrator)
             {
                 Text = Text + " [Read-Only Mode]";
                 ShowStatus("Running in Read-Only mode", Status.Warning);
@@ -52,6 +53,7 @@ namespace Rapr
                 cbAddInstall.Enabled = false;
                 buttonDeleteDriver.Enabled = false;
                 cbForceDeletion.Enabled = false;
+                buttonSelectOldDrivers.Enabled = false;
                 labelRunAsAdmin.Visible = true;
                 buttonRunAsAdmin.Visible = true;
             }
@@ -247,7 +249,7 @@ namespace Rapr
                         if (localContext.DriverStoreEntries.Count == 1)
                         {
                             result = String.Format("Error removing the package {0} from driver store{1}", localContext.DriverStoreEntries[0].DriverPublishedName,
-                            localContext.Code == OperationCode.DeleteDriver ? " [TIP: Try FORCE deleting the package]" : "");
+                            localContext.Code == OperationCode.DeleteDriver ? " [TIP: The driver may still being used. Try FORCE deleting the package]" : "");
 
                             ShowStatus(result, Status.Error);
                         }
@@ -255,7 +257,7 @@ namespace Rapr
                         {
                             result = String.Format(
                                 "Error removing some packages from driver store{0}\r\n{1}",
-                                localContext.Code == OperationCode.DeleteDriver ? " [TIP: Try FORCE deleting the package]" : "",
+                                localContext.Code == OperationCode.DeleteDriver ? " [TIP: The driver may still being used. Try FORCE deleting the package]" : "",
                                 localContext.ResultData as string);
 
                             // refresh the UI
@@ -314,8 +316,10 @@ namespace Rapr
             // Check if there are any entries
             if ((lstDriverStoreEntries.Objects != null))
             {
-                ctxMenuSelectAll.Enabled = true;
+                ctxMenuSelectAll.Enabled = isRunAsAdministrator;
+                ctxMenuSelectOldDrivers.Enabled = isRunAsAdministrator;
                 ctxMenuExport.Enabled = true;
+
                 if (lstDriverStoreEntries.CheckedObjects != null && lstDriverStoreEntries.CheckedObjects.Count > 0)
                 {
                     ctxMenuSelectAll.Text = "Unselect All";
@@ -327,7 +331,7 @@ namespace Rapr
 
                 if (lstDriverStoreEntries.SelectedObjects != null && lstDriverStoreEntries.SelectedObjects.Count > 0)
                 {
-                    ctxMenuDelete.Enabled = IsAnAdministrator();
+                    ctxMenuDelete.Enabled = isRunAsAdministrator;
 
                     if (lstDriverStoreEntries.CheckedObjects != null
                         && lstDriverStoreEntries.CheckedObjects.Count > 0
@@ -340,7 +344,7 @@ namespace Rapr
                         ctxMenuSelect.Text = "Select";
                     }
 
-                    ctxMenuSelect.Enabled = true;
+                    ctxMenuSelect.Enabled = isRunAsAdministrator;
                 }
                 else
                 {
@@ -352,9 +356,9 @@ namespace Rapr
             {
                 ctxMenuSelect.Enabled = false;
                 ctxMenuSelectAll.Enabled = false;
+                ctxMenuSelectOldDrivers.Enabled = false;
                 ctxMenuDelete.Enabled = false;
                 ctxMenuExport.Enabled = false;
-                //ctxMenuSelectAll.Text = "No entries loaded";
             }
         }
 
@@ -429,10 +433,28 @@ namespace Rapr
             Application.Exit();
         }
 
+        private void ctxMenuSelectOldDrivers_Click(object sender, EventArgs e)
+        {
+            if (lstDriverStoreEntries.Objects != null)
+            {
+                List<DriverStoreEntry> driverStoreEntryList = lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
+
+                lstDriverStoreEntries.CheckedObjects = driverStoreEntryList
+                    .GroupBy(entry => entry.DriverInfName)
+                    .SelectMany(g => g.OrderByDescending(row => row.DriverDate).Skip(1))
+                    .ToArray();
+            }
+        }
+
+        private void buttonSelectOldDrivers_Click(object sender, EventArgs e)
+        {
+            ctxMenuSelectOldDrivers_Click(sender, e);
+        }
+
         private void ctxMenuExport_Click(object sender, EventArgs e)
         {
             // Check if there are any entries
-            if ((lstDriverStoreEntries.Objects != null))
+            if (lstDriverStoreEntries.Objects != null)
             {
                 try
                 {
