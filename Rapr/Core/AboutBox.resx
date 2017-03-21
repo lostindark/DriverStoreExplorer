@@ -604,7 +604,11 @@
     <value>This tool uses the excellent ObjectListView (http://objectlistview.sourceforge.net/).
 
 Changelog:
-v0.81
+v0.8.2
+ - Automatically group on sort column.
+ - Update About dialog to support links.
+
+v0.8.1
  -  Add "Select Old Drivers" functionality.
 
 v0.8
