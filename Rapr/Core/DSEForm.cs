@@ -21,14 +21,41 @@ namespace Rapr
         public DSEForm()
         {
             InitializeComponent();
-            lstDriverStoreEntries.AlwaysGroupByColumn = this.driverClassColumn;
-            lstDriverStoreEntries.AlwaysGroupBySortOrder = SortOrder.Ascending;
-            lstDriverStoreEntries.PrimarySortColumn = this.driverInfColumn;
+
+            lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
             lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
-            lstDriverStoreEntries.SecondarySortColumn = this.driverVersionColumn;
+            lstDriverStoreEntries.SecondarySortColumn = this.driverDateColumn;
             lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
             lstDriverStoreEntries.CheckBoxes = isRunAsAdministrator;
             driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
+
+            this.driverVersionColumn.GroupKeyGetter = delegate (object rowObject)
+            {
+                DriverStoreEntry driver = (DriverStoreEntry)rowObject;
+                return new Version(driver.DriverVersion.Major, driver.DriverVersion.Minor);
+            };
+
+            this.driverDateColumn.GroupKeyGetter = delegate (object rowObject)
+            {
+                DriverStoreEntry driver = (DriverStoreEntry)rowObject;
+                return new DateTime(driver.DriverDate.Year, driver.DriverDate.Month, 1);
+            };
+
+            this.driverDateColumn.GroupKeyToTitleConverter = delegate (object groupKey)
+            {
+                return ((DateTime)groupKey).ToString("yyyy-MM");
+            };
+
+            this.driverSizeColumn.GroupKeyGetter = delegate (object rowObject)
+            {
+                DriverStoreEntry driver = (DriverStoreEntry)rowObject;
+                return DriverStoreEntry.GetSizeRange(driver.DriverSize);
+            };
+
+            this.driverSizeColumn.GroupKeyToTitleConverter = delegate (object groupKey)
+            {
+                return DriverStoreEntry.GetSizeRangeName((long)groupKey);
+            };
 
             AppContext.MainForm = this;
             AppContext.EnableLogging();

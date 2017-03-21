@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
@@ -14,7 +15,7 @@ namespace Rapr
         {
             InitializeComponent();
             this.Text = String.Format("About {0}", AssemblyTitle);
-            this.labelVersion.Text = String.Format("v{0} [by Kannan Ramanathan, Teddy Zhang]", AssemblyVersion);
+            this.labelProductName.Text = string.Format("DriveStore Explorer v{0} [by Kannan Ramanathan, Teddy Zhang]", AssemblyVersion);
         }
 
         #region Assembly Attribute Accessors
@@ -96,5 +97,28 @@ namespace Rapr
             }
         }
         #endregion
+
+        private void labelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            string url;
+            LinkLabel linkLabel = (LinkLabel)sender;
+
+            if (e.Link.LinkData != null)
+            {
+                url = e.Link.LinkData.ToString();
+            }
+            else
+            {
+                url = linkLabel.Text.Substring(e.Link.Start, e.Link.Length);
+            }
+
+            Process.Start(url);
+            linkLabel.LinkVisited = true;
+        }
+
+        private void textBoxDescription_LinkClicked(object sender, LinkClickedEventArgs e)
+        {
+            Process.Start(e.LinkText);
+        }
     }
 }

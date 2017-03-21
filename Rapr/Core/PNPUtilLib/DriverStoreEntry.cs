@@ -148,5 +148,41 @@ namespace Rapr.Utils
             // Return formatted number with suffix
             return readable.ToString("0 ") + suffix;
         }
+
+        private static readonly Dictionary<long, string> SizeRangeToName = new Dictionary<long, string>
+        {
+            { 10 * 1024, "0 - 10 KB" },
+            { 100 * 1024, "10 - 100 KB" },
+            { 1024 * 1024, "100 KB - 1 MB" },
+            { 16 * 1024 * 1024, "1 - 16 MB" },
+            { 128 * 1024 * 1024, "16 - 128 MB" },
+            { long.MaxValue, "> 128 MB" },
+        };
+
+        public static long GetSizeRange(long size)
+        {
+            foreach (var item in SizeRangeToName)
+            {
+                if (size < item.Key)
+                {
+                    return item.Key;
+                }
+            }
+
+            return -1;
+        }
+
+        public static string GetSizeRangeName(long size)
+        {
+            string name;
+            if (SizeRangeToName.TryGetValue(size, out name))
+            {
+                return name;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
     };
 }

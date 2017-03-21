@@ -112,6 +112,7 @@
             this.lstDriverStoreEntries.CheckBoxes = true;
             this.lstDriverStoreEntries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.driverInfColumn,
+            this.driverClassColumn,
             this.driverProviderColumn,
             this.driverVersionColumn,
             this.driverDateColumn,
@@ -136,6 +137,7 @@
             // 
             this.driverInfColumn.AspectName = "DriverInfName";
             this.driverInfColumn.Text = "INF";
+            this.driverInfColumn.UseInitialLetterForGroup = true;
             this.driverInfColumn.Width = 120;
             // 
             // driverOemInfColumn
@@ -148,7 +150,6 @@
             // driverClassColumn
             // 
             this.driverClassColumn.AspectName = "DriverClass";
-            this.driverClassColumn.IsVisible = false;
             this.driverClassColumn.Text = "Driver Class";
             this.driverClassColumn.Width = 170;
             // 

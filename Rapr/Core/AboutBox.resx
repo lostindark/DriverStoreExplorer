@@ -601,22 +601,22 @@
 </value>
   </data>
   <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>This tool uses the excellent ObjectViewList  (http://www.codeproject.com/KB/list/ObjectListView.aspx)
+    <value>This tool uses the excellent ObjectListView (http://objectlistview.sourceforge.net/).
 
 Changelog:
 v0.81
--  Add "Select Old Drivers" functionality.
+ -  Add "Select Old Drivers" functionality.
 
 v0.8
-- Improve PnpUtil result parsing logic for Russian language and error handling.
+ - Improve PnpUtil result parsing logic for Russian language and error handling.
 
 v0.7
-- Group the drivers by Driver Class. Fix sorting.
-- Show estimated disk usage for drivers.
+ - Group the drivers by Driver Class. Fix sorting.
+ - Show estimated disk usage for drivers.
 
 v0.6
-- Now requires .Net 4.0.
-- A few UI tweaks and code cleanup.
+ - Now requires .Net 4.0.
+ - A few UI tweaks and code cleanup.
 
 v0.5 
  - Added support to export to Excel. 
