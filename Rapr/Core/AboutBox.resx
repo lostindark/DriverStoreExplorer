@@ -601,9 +601,10 @@
 </value>
   </data>
   <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>This tool uses the excellent ObjectListView (http://objectlistview.sourceforge.net/).
+    <value>Credits:
+    This tool uses the excellent ObjectListView (http://objectlistview.sourceforge.net/).
 
-Changelog:
+Release notes:
 v0.8.2
  - Automatically group on sort column.
  - Update About dialog to support links.

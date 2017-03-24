@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DSEForm));
             this.buttonEnumerate = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstDriverStoreEntries = new BrightIdeasSoftware.ObjectListView();
@@ -411,6 +412,7 @@
             this.ClientSize = new System.Drawing.Size(929, 609);
             this.Controls.Add(this.InnerContainer);
             this.Controls.Add(this.statusStrip1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DSEForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Driver Store Explorer [RAPR]";
