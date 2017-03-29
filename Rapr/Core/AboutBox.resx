@@ -605,6 +605,9 @@
     This tool uses the excellent ObjectListView (http://objectlistview.sourceforge.net/).
 
 Release notes:
+v0.8.3
+ - Update App Icon.
+
 v0.8.2
  - Automatically group on sort column.
  - Update About dialog to support links.
