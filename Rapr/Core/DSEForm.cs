@@ -22,6 +22,8 @@ namespace Rapr
         {
             InitializeComponent();
 
+            this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+
             lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
             lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
             lstDriverStoreEntries.SecondarySortColumn = this.driverDateColumn;
