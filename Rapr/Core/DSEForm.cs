@@ -458,7 +458,21 @@ namespace Rapr
             processInfo.Verb = "runas";
             processInfo.FileName = Assembly.GetExecutingAssembly().Location;
 
-            Process.Start(processInfo);
+            try
+            {
+                Process.Start(processInfo);
+            }
+            catch (Win32Exception ex)
+            {
+                // Ignore error 1223: The operation was canceled by the user.
+                if (ex.NativeErrorCode == 1223)
+                {
+                    return;
+                }
+
+                throw;
+            }
+
             Application.Exit();
         }
 
