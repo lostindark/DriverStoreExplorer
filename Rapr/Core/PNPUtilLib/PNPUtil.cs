@@ -284,20 +284,14 @@ namespace Rapr.Utils
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
                     start.Arguments = @"/a " + Path.GetFileName(infName);
-                    AppContext.TraceInformation(String.Format(
-                        "[Add] workDir = {0}, arguments = {1}",
-                        start.WorkingDirectory,
-                        start.Arguments));
+                    Trace.TraceInformation($"[Add] workDir = {start.WorkingDirectory}, arguments = {start.Arguments}");
                     break;
 
                 case PnpUtilOptions.AddInstall:
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
                     start.Arguments = @"/i /a " + Path.GetFileName(infName);
-                    AppContext.TraceInformation(String.Format(
-                        "[AddInstall] workDir = {0}, arguments = {1}",
-                        start.WorkingDirectory,
-                        start.Arguments));
+                    Trace.TraceInformation($"[AddInstall] workDir = {start.WorkingDirectory}, arguments = {start.Arguments}");
                     break;
             }
 
@@ -317,7 +311,7 @@ namespace Rapr.Utils
                         output = result;
                         if (fDebugPrintOutput)
                         {
-                            AppContext.TraceInformation(String.Format("[Result_start] ---- {0}{1}[----- Result_End]{0}", Environment.NewLine, result));
+                            Trace.TraceInformation($"[Result_start] ---- {Environment.NewLine}{result}[----- Result_End]");
                         }
 
                         if (option == PnpUtilOptions.Delete || option == PnpUtilOptions.ForceDelete)
@@ -350,13 +344,13 @@ namespace Rapr.Utils
                                 // [jenda_] if trying to add "0" packages or if number packages and number added packages differs
                                 if (matchResult.Groups[1].Value == "0" || matchResult.Groups[1].Value != matchResult.Groups[2].Value)
                                 {
-                                    AppContext.TraceError("[Error] failed to add " + infName);
+                                    Trace.TraceError($"Failed to add {infName}");
                                     retVal = false;
                                 }
                             }
                             else
                             {
-                                AppContext.TraceError("[Error] unknown response while trying to add " + infName);
+                                Trace.TraceError($"Unknown response while trying to add {infName}");
                                 retVal = false;
                             }
                         }
@@ -366,7 +360,7 @@ namespace Rapr.Utils
             catch (Exception e)
             {
                 // dont catch all exceptions -- but will do for our needs!
-                AppContext.TraceError(String.Format(@"{0}\n{1}" + Environment.NewLine, e.Message, e.StackTrace));
+                Trace.TraceError($"{e.Message}{Environment.NewLine}{e.StackTrace}");
                 output = "";
                 retVal = false;
             }

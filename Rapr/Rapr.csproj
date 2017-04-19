@@ -63,7 +63,6 @@
     <Compile Include="Core\AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\AppContext.cs" />
     <Compile Include="Core\CSVExporter.cs" />
     <Compile Include="Core\DSEForm.cs">
       <SubType>Form</SubType>
@@ -80,6 +79,7 @@
     <Compile Include="Core\PNPUtilLib\IDriverStore.cs" />
     <Compile Include="Core\PNPUtilLib\PNPUtil.cs" />
     <Compile Include="Core\Program.cs" />
+    <Compile Include="Core\TextFileTraceListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Core\AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>

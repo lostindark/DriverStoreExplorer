@@ -63,6 +63,7 @@
             this.buttonRunAsAdmin = new System.Windows.Forms.Button();
             this.gbOptions = new System.Windows.Forms.GroupBox();
             this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
+            this.toolStripViewLogsButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -292,7 +293,8 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1,
-            this.lblStatus});
+            this.lblStatus,
+            this.toolStripViewLogsButton});
             this.statusStrip1.Location = new System.Drawing.Point(0, 587);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(929, 22);
@@ -310,8 +312,10 @@
             // lblStatus
             // 
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(39, 17);
+            this.lblStatus.Size = new System.Drawing.Size(717, 17);
+            this.lblStatus.Spring = true;
             this.lblStatus.Text = "Ready";
+            this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // openFileDialog
             // 
@@ -404,6 +408,16 @@
             this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
             this.buttonSelectOldDrivers.Click += new System.EventHandler(this.buttonSelectOldDrivers_Click);
             // 
+            // toolStripViewLogsButton
+            // 
+            this.toolStripViewLogsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripViewLogsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripViewLogsButton.Name = "toolStripViewLogsButton";
+            this.toolStripViewLogsButton.ShowDropDownArrow = false;
+            this.toolStripViewLogsButton.Size = new System.Drawing.Size(64, 20);
+            this.toolStripViewLogsButton.Text = "View Logs";
+            this.toolStripViewLogsButton.Click += new System.EventHandler(this.toolStripViewLogsButton_Click);
+            // 
             // DSEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -469,6 +483,7 @@
         private BrightIdeasSoftware.OLVColumn driverSizeColumn;
         private System.Windows.Forms.Button buttonSelectOldDrivers;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectOldDrivers;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripViewLogsButton;
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using System.Security.Principal;
 using System.Windows.Forms;
@@ -125,22 +126,25 @@ namespace Rapr
                 case Status.Error:
                     lblStatus.BackColor = Color.FromArgb(0xFF, 0x00, 0x33);
                     lblStatus.ForeColor = Color.White;
-                    AppContext.TraceError(String.Format("[Error] {0}{1}", text, Environment.NewLine));
+                    Trace.TraceError(text);
                     break;
+
                 case Status.Success:
                     lblStatus.BackColor = Color.LightGreen;
                     lblStatus.ForeColor = Color.Black;
-                    AppContext.TraceInformation(String.Format("[Success] {0}{1}", text, Environment.NewLine));
+                    Trace.TraceInformation(text);
                     break;
+
                 case Status.Warning:
                     lblStatus.BackColor = Color.Yellow;
                     lblStatus.ForeColor = Color.Black;
-                    AppContext.TraceWarning(String.Format("[Warning] {0}{1}", text, Environment.NewLine));
+                    Trace.TraceWarning(text);
                     break;
+
                 case Status.Normal:
                     lblStatus.BackColor = SavedBackColor;
                     lblStatus.ForeColor = SavedForeColor;
-                    AppContext.TraceInformation(String.Format("[Info] {0}{1}", text, Environment.NewLine));
+                    Trace.TraceInformation(text);
                     break;
             }
         }
@@ -150,6 +154,17 @@ namespace Rapr
             WindowsIdentity identity = WindowsIdentity.GetCurrent();
             WindowsPrincipal principal = new WindowsPrincipal(identity);
             return principal.IsInRole(WindowsBuiltInRole.Administrator);
+        }
+
+        public static bool IsOSSupported()
+        {
+            //Get Operating system information.
+            OperatingSystem os = Environment.OSVersion;
+
+            //Get version information about the os.
+            Version version = os.Version;
+
+            return ((os.Platform == PlatformID.Win32NT) && (version.Major >= 6));
         }
     }
 }

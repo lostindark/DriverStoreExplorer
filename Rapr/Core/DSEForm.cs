@@ -8,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
+using Rapr.Core;
 using Rapr.Utils;
 
 namespace Rapr
@@ -59,10 +60,12 @@ namespace Rapr
                 return DriverStoreEntry.GetSizeRangeName((long)groupKey);
             };
 
-            AppContext.MainForm = this;
-            AppContext.EnableLogging();
-            driverStore = AppContext.GetDriverStoreHandler();
-            if (!AppContext.IsOSSupported())
+            Trace.TraceInformation("---------------------------------------------------------------");
+            Trace.TraceInformation($"{Application.ProductName} started");
+
+            driverStore = new PNPUtil();
+
+            if (!IsOSSupported())
             {
                 MessageBox.Show("This utility cannot be run in pre-Vista OS", "Rapr", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
@@ -92,8 +95,7 @@ namespace Rapr
 
         private void DSEForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            AppContext.TraceInformation("Shutting down - reason " + e.CloseReason);
-            AppContext.Cleanup();
+            Trace.TraceInformation($"Shutting down - reason {e.CloseReason}");
         }
 
         private void buttonEnumerate_Click(object sender, EventArgs e)
@@ -137,17 +139,11 @@ namespace Rapr
             {
                 if (driverStoreEntries.Count == 1)
                 {
-                    msgWarning = String.Format(
-                        "About to {0} {1} from driver store.\nAre you sure?",
-                        cbForceDeletion.Checked ? "force delete" : "delete",
-                        driverStoreEntries[0].DriverPublishedName);
+                    msgWarning = $"About to {(cbForceDeletion.Checked ? "force delete" : "delete")} {driverStoreEntries[0].DriverPublishedName} from driver store.{Environment.NewLine}Are you sure?";
                 }
                 else
                 {
-                    msgWarning = String.Format(
-                        "About to {0} {1} packages from driver store.\nAre you sure?",
-                        cbForceDeletion.Checked ? "force delete" : "delete",
-                        driverStoreEntries.Count);
+                    msgWarning = $"About to {(cbForceDeletion.Checked ? "force delete" : "delete")} {driverStoreEntries.Count} packages from driver store.{Environment.NewLine}Are you sure?";
                 }
 
                 if (DialogResult.OK == MessageBox.Show(
@@ -205,7 +201,6 @@ namespace Rapr
             }
 
             e.Result = localContext;
-            AppContext.FlushTrace();
         }
 
         private void DeleteDriver(ref OperationContext localContext, bool force)
@@ -224,11 +219,8 @@ namespace Rapr
                     foreach (DriverStoreEntry dse in localContext.DriverStoreEntries)
                     {
                         bool result = driverStore.DeletePackage(dse, force);
-                        string resultTxt = String.Format(
-                            "Delete {0} {1}",
-                            dse.DriverPublishedName,
-                            result ? "succeeded." : "failed.");
-                        AppContext.TraceInformation(resultTxt + Environment.NewLine);
+                        string resultTxt = $"Delete {dse.DriverPublishedName} {(result ? "succeeded." : "failed.")}";
+                        Trace.TraceInformation(resultTxt);
 
                         sb.AppendLine(resultTxt);
                         totalResult &= result;
@@ -261,11 +253,11 @@ namespace Rapr
                     {
                         if (localContext.DriverStoreEntries.Count == 1)
                         {
-                            result = String.Format("Removed the package {0} from driver store", localContext.DriverStoreEntries[0].DriverPublishedName);
+                            result = $"Removed the package {localContext.DriverStoreEntries[0].DriverPublishedName} from driver store";
                         }
                         else
                         {
-                            result = String.Format("Removed {0} packages from driver store", localContext.DriverStoreEntries.Count);
+                            result = $"Removed {localContext.DriverStoreEntries.Count} packages from driver store";
                         }
 
                         // refresh the UI
@@ -275,26 +267,28 @@ namespace Rapr
                     }
                     else
                     {
+                        string driverDeleteTip = localContext.Code == OperationCode.DeleteDriver
+                            ? " [TIP: The driver may still being used. Try FORCE deleting the package]"
+                            : string.Empty;
+
                         if (localContext.DriverStoreEntries.Count == 1)
                         {
-                            result = String.Format("Error removing the package {0} from driver store{1}", localContext.DriverStoreEntries[0].DriverPublishedName,
-                            localContext.Code == OperationCode.DeleteDriver ? " [TIP: The driver may still being used. Try FORCE deleting the package]" : "");
+                            result = $"Error removing the package {localContext.DriverStoreEntries[0].DriverPublishedName} from driver store{driverDeleteTip}";
 
                             ShowStatus(result, Status.Error);
                         }
                         else
                         {
-                            result = String.Format(
-                                "Error removing some packages from driver store{0}\r\n{1}",
-                                localContext.Code == OperationCode.DeleteDriver ? " [TIP: The driver may still being used. Try FORCE deleting the package]" : "",
-                                localContext.ResultData as string);
+                            result = $"Error removing some packages from driver store{driverDeleteTip}{Environment.NewLine}{localContext.ResultData as string}";
 
                             // refresh the UI
                             PopulateUIWithDriverStoreEntries();
 
                             MessageBox.Show(
                                 result,
-                                "Detailed Error Log", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                "Detailed Error Log",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Error);
                         }
                     }
                     cbForceDeletion.Checked = false;
@@ -305,8 +299,7 @@ namespace Rapr
                 case OperationCode.AddInstallDriver:
                     if ((bool)localContext.ResultStatus == true)
                     {
-                        result = String.Format("Added{1} the package {0} to driver store", localContext.InfPath,
-                                                localContext.Code == OperationCode.AddInstallDriver ? " & installed " : "");
+                        result = $"Added{(localContext.Code == OperationCode.AddInstallDriver ? " & installed " : "")} the package {localContext.InfPath} to driver store";
 
                         // refresh the UI
                         PopulateUIWithDriverStoreEntries();
@@ -316,16 +309,15 @@ namespace Rapr
                     }
                     else
                     {
-                        result = String.Format("Error adding{1} the package {0} to driver store",
-                                                localContext.InfPath,
-                                                localContext.Code == OperationCode.AddInstallDriver ? " & installing " : "");
+                        result = $"Error adding{(localContext.Code == OperationCode.AddInstallDriver ? " & installing " : "")} the package {localContext.InfPath} to driver store";
+
                         ShowStatus(result, Status.Error);
                     }
                     cbAddInstall.Checked = false;
                     break;
             }
+
             ShowOperationInProgress(false);
-            AppContext.FlushTrace();
         }
 
         private static void ShowAboutBox()
@@ -492,6 +484,18 @@ namespace Rapr
         private void buttonSelectOldDrivers_Click(object sender, EventArgs e)
         {
             ctxMenuSelectOldDrivers_Click(sender, e);
+        }
+
+        private void toolStripViewLogsButton_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(TextFileTraceListener.LastTraceFile))
+            {
+                Process.Start(TextFileTraceListener.LastTraceFile);
+            }
+            else
+            {
+                MessageBox.Show("The log file cannot be found.");
+            }
         }
 
         private void ctxMenuExport_Click(object sender, EventArgs e)
