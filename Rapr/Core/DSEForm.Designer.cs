@@ -357,8 +357,8 @@
             this.InnerContainer.Panel2.Controls.Add(this.buttonRunAsAdmin);
             this.InnerContainer.Panel2.Controls.Add(this.gbOptions);
             this.InnerContainer.Panel2.Controls.Add(this.linkAbout);
-            this.InnerContainer.Size = new System.Drawing.Size(929, 587);
-            this.InnerContainer.SplitterDistance = 794;
+            this.InnerContainer.Size = new System.Drawing.Size(1000, 587);
+            this.InnerContainer.SplitterDistance = 800;
             this.InnerContainer.SplitterWidth = 1;
             this.InnerContainer.TabIndex = 12;
             // 
@@ -423,6 +423,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(929, 609);
+            this.MinimumSize = new System.Drawing.Size(260, 325);
             this.Controls.Add(this.InnerContainer);
             this.Controls.Add(this.statusStrip1);
             this.Name = "DSEForm";
