@@ -605,6 +605,9 @@
     This tool uses the excellent ObjectListView (http://objectlistview.sourceforge.net/).
 
 Release notes:
+v0.8.4
+ - Show selected driver size. 
+
 v0.8.3
  - Update App Icon.
 
