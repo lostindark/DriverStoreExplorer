@@ -133,6 +133,7 @@
             this.lstDriverStoreEntries.TabIndex = 1;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
             this.lstDriverStoreEntries.View = System.Windows.Forms.View.Details;
+            this.lstDriverStoreEntries.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lstDriverStoreEntries_ItemChecked);
             // 
             // driverInfColumn
             // 

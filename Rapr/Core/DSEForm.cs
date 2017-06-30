@@ -244,7 +244,6 @@ namespace Rapr
                     List<DriverStoreEntry> ldse = localContext.ResultData as List<DriverStoreEntry>;
                     lstDriverStoreEntries.SetObjects(ldse);
                     lstDriverStoreEntries.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-                    ShowStatus("Driver store enumerated", Status.Success);
                     break;
 
                 case OperationCode.ForceDeleteDriver:
@@ -274,23 +273,25 @@ namespace Rapr
                         if (localContext.DriverStoreEntries.Count == 1)
                         {
                             result = $"Error removing the package {localContext.DriverStoreEntries[0].DriverPublishedName} from driver store{driverDeleteTip}";
-
-                            ShowStatus(result, Status.Error);
                         }
                         else
                         {
-                            result = $"Error removing some packages from driver store{driverDeleteTip}{Environment.NewLine}{localContext.ResultData as string}";
+                            result = $"Error removing some packages from driver store{driverDeleteTip}";
+                            string fullResult = $"{result}{Environment.NewLine}{localContext.ResultData as string}";
 
                             // refresh the UI
                             PopulateUIWithDriverStoreEntries();
 
                             MessageBox.Show(
-                                result,
+                                fullResult,
                                 "Detailed Error Log",
                                 MessageBoxButtons.OK,
                                 MessageBoxIcon.Error);
                         }
+
+                        ShowStatus(result, Status.Error);
                     }
+
                     cbForceDeletion.Checked = false;
 
                     break;
@@ -303,8 +304,6 @@ namespace Rapr
 
                         // refresh the UI
                         PopulateUIWithDriverStoreEntries();
-                        //MessageBox.Show(, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                         ShowStatus(result, Status.Success);
                     }
                     else
@@ -313,6 +312,7 @@ namespace Rapr
 
                         ShowStatus(result, Status.Error);
                     }
+
                     cbAddInstall.Checked = false;
                     break;
             }
@@ -395,7 +395,7 @@ namespace Rapr
                 }
                 else
                 {
-                    lstDriverStoreEntries.CheckedObjects = lstDriverStoreEntries.Objects as System.Collections.IList;
+                    lstDriverStoreEntries.CheckedObjects = lstDriverStoreEntries.Objects as IList;
                 }
             }
         }
@@ -514,6 +514,23 @@ namespace Rapr
                 {
                     MessageBox.Show("Export failed: " + ex.Message);
                 }
+            }
+        }
+
+        private void lstDriverStoreEntries_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            IList checkedObjects = lstDriverStoreEntries.CheckedObjects;
+
+            if (checkedObjects != null && checkedObjects.Count > 0)
+            {
+                long totalSize = 0;
+
+                foreach (DriverStoreEntry item in checkedObjects)
+                {
+                    totalSize += item.DriverSize;
+                }
+
+                ShowStatus($"Selected {checkedObjects.Count} Driver(s). Total size: {DriverStoreEntry.GetBytesReadable(totalSize)}.", Status.Normal);
             }
         }
     }
