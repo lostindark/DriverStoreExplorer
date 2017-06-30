@@ -55,6 +55,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripViewLogsButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.linkAbout = new System.Windows.Forms.LinkLabel();
@@ -63,7 +64,6 @@
             this.buttonRunAsAdmin = new System.Windows.Forms.Button();
             this.gbOptions = new System.Windows.Forms.GroupBox();
             this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
-            this.toolStripViewLogsButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -92,7 +92,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(794, 587);
+            this.groupBox1.Size = new System.Drawing.Size(796, 587);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Driver Store";
@@ -128,7 +128,7 @@
             this.lstDriverStoreEntries.Location = new System.Drawing.Point(3, 16);
             this.lstDriverStoreEntries.Name = "lstDriverStoreEntries";
             this.lstDriverStoreEntries.ShowItemToolTips = true;
-            this.lstDriverStoreEntries.Size = new System.Drawing.Size(788, 568);
+            this.lstDriverStoreEntries.Size = new System.Drawing.Size(790, 568);
             this.lstDriverStoreEntries.SortGroupItemsByPrimaryColumn = false;
             this.lstDriverStoreEntries.TabIndex = 1;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
@@ -312,10 +312,20 @@
             // lblStatus
             // 
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(717, 17);
+            this.lblStatus.Size = new System.Drawing.Size(850, 17);
             this.lblStatus.Spring = true;
             this.lblStatus.Text = "Ready";
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // toolStripViewLogsButton
+            // 
+            this.toolStripViewLogsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripViewLogsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripViewLogsButton.Name = "toolStripViewLogsButton";
+            this.toolStripViewLogsButton.ShowDropDownArrow = false;
+            this.toolStripViewLogsButton.Size = new System.Drawing.Size(64, 20);
+            this.toolStripViewLogsButton.Text = "View Logs";
+            this.toolStripViewLogsButton.Click += new System.EventHandler(this.toolStripViewLogsButton_Click);
             // 
             // openFileDialog
             // 
@@ -357,8 +367,8 @@
             this.InnerContainer.Panel2.Controls.Add(this.buttonRunAsAdmin);
             this.InnerContainer.Panel2.Controls.Add(this.gbOptions);
             this.InnerContainer.Panel2.Controls.Add(this.linkAbout);
-            this.InnerContainer.Size = new System.Drawing.Size(1000, 587);
-            this.InnerContainer.SplitterDistance = 800;
+            this.InnerContainer.Size = new System.Drawing.Size(929, 587);
+            this.InnerContainer.SplitterDistance = 796;
             this.InnerContainer.SplitterWidth = 1;
             this.InnerContainer.TabIndex = 12;
             // 
@@ -393,7 +403,7 @@
             this.gbOptions.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbOptions.Location = new System.Drawing.Point(0, 0);
             this.gbOptions.Name = "gbOptions";
-            this.gbOptions.Size = new System.Drawing.Size(128, 209);
+            this.gbOptions.Size = new System.Drawing.Size(132, 209);
             this.gbOptions.TabIndex = 13;
             this.gbOptions.TabStop = false;
             this.gbOptions.Text = " Operations ";
@@ -408,24 +418,14 @@
             this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
             this.buttonSelectOldDrivers.Click += new System.EventHandler(this.buttonSelectOldDrivers_Click);
             // 
-            // toolStripViewLogsButton
-            // 
-            this.toolStripViewLogsButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripViewLogsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripViewLogsButton.Name = "toolStripViewLogsButton";
-            this.toolStripViewLogsButton.ShowDropDownArrow = false;
-            this.toolStripViewLogsButton.Size = new System.Drawing.Size(64, 20);
-            this.toolStripViewLogsButton.Text = "View Logs";
-            this.toolStripViewLogsButton.Click += new System.EventHandler(this.toolStripViewLogsButton_Click);
-            // 
             // DSEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.ClientSize = new System.Drawing.Size(929, 609);
-            this.MinimumSize = new System.Drawing.Size(260, 325);
             this.Controls.Add(this.InnerContainer);
             this.Controls.Add(this.statusStrip1);
+            this.MinimumSize = new System.Drawing.Size(480, 360);
             this.Name = "DSEForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Driver Store Explorer [RAPR]";
