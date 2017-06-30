@@ -26,7 +26,7 @@ DriverStore Explorer [RAPR] makes it easier to deal with Windows [driver store] 
 Download the latest version here: https://github.com/lostindark/DriverStoreExplorer/releases/latest
 
 ### Tested Operating Systems: 
-Windows 10 RS1 64 bit 
+Windows 10 RS1/RS2 64 bit
 
 ### History:
 The project was original hosted on https://driverstoreexplorer.codeplex.com/.
