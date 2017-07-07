@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using Rapr.Utils;
 using System.Windows.Forms;
 
@@ -11,12 +9,13 @@ namespace Rapr
     {
         private const string CSV_DELIM = ",";
         private const string CSV_DELIM_SUBST = " ";
-        public void Export(List<DriverStoreEntry> ldse)
+
+        public string Export(List<DriverStoreEntry> ldse)
         {
             if (ldse.Count == 0)
             {
                 MessageBox.Show("No entries to export", "Error");
-                return;
+                return null;
             }
 
             SaveFileDialog saveFileDialog = new SaveFileDialog();
@@ -25,39 +24,42 @@ namespace Rapr
             saveFileDialog.Filter = "CSV Files | *.csv";
             saveFileDialog.SupportMultiDottedExtensions = true;
 
-            DialogResult dr = saveFileDialog.ShowDialog();  
+            DialogResult dr = saveFileDialog.ShowDialog();
             if (dr == DialogResult.OK)
             {
                 string csvFileName = saveFileDialog.FileName;   // Path                
-                
+
                 using (System.IO.StreamWriter file = new System.IO.StreamWriter(csvFileName))
                 {
                     // Write the header once
                     string headerLine = String.Join(CSV_DELIM, ldse[0].GetFieldNames());
                     file.WriteLine(headerLine);
 
-
                     // Write the values
                     foreach (DriverStoreEntry dse in ldse)
                     {
                         string[] values = dse.GetFieldValues();
-                        Sanitize(ref values);                        
+                        Sanitize(ref values);
 
                         string valueLine = String.Join(CSV_DELIM, values);
                         file.WriteLine(valueLine);
                     }
                 }
 
-                MessageBox.Show("Contents saved to " + csvFileName, "Export Completed");
+                return csvFileName;
             }
+
+            return null;
         }
 
         private void Sanitize(ref string[] values)
-        {            
+        {
             for (int i = 0; i < values.Length; i++)
             {
                 if (values[i].Contains(CSV_DELIM))
+                {
                     values[i] = "\"" + values[i] + "\"";//.Replace(CSV_DELIM, CSV_DELIM_SUBST);
+                }
             }
         }
     }

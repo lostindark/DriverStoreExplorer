@@ -89,27 +89,31 @@ namespace Rapr.Utils
 
         public string[] GetFieldNames()
         {
-            return new String[] {
+            return new [] {
+                "OEM INF",
                 "INF",
                 "Package Provider",
                 "Driver Class",
                 "Driver Date",
                 "Driver Version",
-                "Driver Signer"};
+                "Driver Signer",
+                "Driver Size"
+            };
         }
 
         public string[] GetFieldValues()
         {
-            List<string> fieldValues = new List<string>();
-
-            fieldValues.Add(this.DriverPublishedName);
-            fieldValues.Add(this.DriverPkgProvider);
-            fieldValues.Add(this.DriverClass);
-            fieldValues.Add(this.DriverDate.ToString("d", CultureInfo.InvariantCulture));
-            fieldValues.Add(this.DriverVersion.ToString());
-            fieldValues.Add(this.DriverSignerName);
-
-            return fieldValues.ToArray();
+            return new []
+            {
+                this.DriverPublishedName ?? "",
+                this.DriverInfName ?? "",
+                this.DriverPkgProvider ?? "",
+                this.DriverClass ?? "",
+                this.DriverDate.ToString("d", CultureInfo.InvariantCulture),
+                this.DriverVersion == null ? "" : this.DriverVersion.ToString(),
+                this.DriverSignerName ?? "",
+                this.DriverSize.ToString()
+            };
         }
 
         // Returns the human-readable file size for an arbitrary, 64-bit file size 

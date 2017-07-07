@@ -118,7 +118,7 @@ namespace Rapr
             ShowStatus(text, Status.Normal);
         }
 
-        private void ShowStatus(string text, Status status)
+        private void ShowStatus(string text, Status status, bool showPopup = false)
         {
             lblStatus.Text = text;
             switch (status)
@@ -146,6 +146,11 @@ namespace Rapr
                     lblStatus.ForeColor = SavedForeColor;
                     Trace.TraceInformation(text);
                     break;
+            }
+
+            if (showPopup)
+            {
+
             }
         }
 

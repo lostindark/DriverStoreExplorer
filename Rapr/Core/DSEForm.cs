@@ -391,11 +391,11 @@ namespace Rapr
             {
                 if (lstDriverStoreEntries.CheckedObjects != null && lstDriverStoreEntries.CheckedObjects.Count != 0)
                 {
-                    lstDriverStoreEntries.CheckedObjects = null;
+                    lstDriverStoreEntries.UncheckAll();
                 }
                 else
                 {
-                    lstDriverStoreEntries.CheckedObjects = lstDriverStoreEntries.Objects as IList;
+                    lstDriverStoreEntries.CheckAll();
                 }
             }
         }
@@ -494,7 +494,7 @@ namespace Rapr
             }
             else
             {
-                MessageBox.Show("The log file cannot be found.");
+                MessageBox.Show("The log file cannot be found.", "Error");
             }
         }
 
@@ -508,11 +508,20 @@ namespace Rapr
                     List<DriverStoreEntry> ldse = lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
                     IExport exporter = new CSVExporter();   // TODO: Factory?? Change this when we add support for 
                                                             // direct Excel export
-                    exporter.Export(ldse);
+                    string fileName = exporter.Export(ldse);
+
+                    if (!string.IsNullOrEmpty(fileName))
+                    {
+                        string message = $"Contents saved to {fileName}. Export Completed.";
+                        MessageBox.Show(message);
+                        ShowStatus(message, Status.Normal);
+                    }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Export failed: " + ex.Message);
+                    string message = $"Export failed: {ex.ToString()}";
+                    MessageBox.Show(message);
+                    ShowStatus(message, Status.Error);
                 }
             }
         }
@@ -531,6 +540,10 @@ namespace Rapr
                 }
 
                 ShowStatus($"Selected {checkedObjects.Count} Driver(s). Total size: {DriverStoreEntry.GetBytesReadable(totalSize)}.", Status.Normal);
+            }
+            else
+            {
+                ShowStatus($"Selected 0 Driver.", Status.Normal);
             }
         }
     }
