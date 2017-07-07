@@ -78,7 +78,7 @@
             // buttonEnumerate
             // 
             this.buttonEnumerate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonEnumerate.Location = new System.Drawing.Point(11, 31);
+            this.buttonEnumerate.Location = new System.Drawing.Point(20, 31);
             this.buttonEnumerate.Name = "buttonEnumerate";
             this.buttonEnumerate.Size = new System.Drawing.Size(109, 23);
             this.buttonEnumerate.TabIndex = 0;
@@ -92,7 +92,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(796, 587);
+            this.groupBox1.Size = new System.Drawing.Size(776, 583);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Driver Store";
@@ -128,7 +128,7 @@
             this.lstDriverStoreEntries.Location = new System.Drawing.Point(3, 16);
             this.lstDriverStoreEntries.Name = "lstDriverStoreEntries";
             this.lstDriverStoreEntries.ShowItemToolTips = true;
-            this.lstDriverStoreEntries.Size = new System.Drawing.Size(790, 568);
+            this.lstDriverStoreEntries.Size = new System.Drawing.Size(770, 564);
             this.lstDriverStoreEntries.SortGroupItemsByPrimaryColumn = false;
             this.lstDriverStoreEntries.TabIndex = 1;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
@@ -251,7 +251,7 @@
             // buttonDeleteDriver
             // 
             this.buttonDeleteDriver.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonDeleteDriver.Location = new System.Drawing.Point(11, 114);
+            this.buttonDeleteDriver.Location = new System.Drawing.Point(20, 114);
             this.buttonDeleteDriver.Name = "buttonDeleteDriver";
             this.buttonDeleteDriver.Size = new System.Drawing.Size(109, 23);
             this.buttonDeleteDriver.TabIndex = 3;
@@ -262,7 +262,7 @@
             // cbForceDeletion
             // 
             this.cbForceDeletion.AutoSize = true;
-            this.cbForceDeletion.Location = new System.Drawing.Point(22, 143);
+            this.cbForceDeletion.Location = new System.Drawing.Point(27, 143);
             this.cbForceDeletion.Name = "cbForceDeletion";
             this.cbForceDeletion.Size = new System.Drawing.Size(95, 17);
             this.cbForceDeletion.TabIndex = 4;
@@ -272,7 +272,7 @@
             // buttonAddDriver
             // 
             this.buttonAddDriver.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonAddDriver.Location = new System.Drawing.Point(11, 60);
+            this.buttonAddDriver.Location = new System.Drawing.Point(20, 60);
             this.buttonAddDriver.Name = "buttonAddDriver";
             this.buttonAddDriver.Size = new System.Drawing.Size(109, 23);
             this.buttonAddDriver.TabIndex = 5;
@@ -283,7 +283,7 @@
             // cbAddInstall
             // 
             this.cbAddInstall.AutoSize = true;
-            this.cbAddInstall.Location = new System.Drawing.Point(22, 89);
+            this.cbAddInstall.Location = new System.Drawing.Point(32, 89);
             this.cbAddInstall.Name = "cbAddInstall";
             this.cbAddInstall.Size = new System.Drawing.Size(84, 17);
             this.cbAddInstall.TabIndex = 6;
@@ -296,9 +296,9 @@
             this.toolStripProgressBar1,
             this.lblStatus,
             this.toolStripViewLogsButton});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 587);
+            this.statusStrip1.Location = new System.Drawing.Point(2, 585);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(929, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(925, 22);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -342,7 +342,7 @@
             // linkAbout
             // 
             this.linkAbout.AutoSize = true;
-            this.linkAbout.Location = new System.Drawing.Point(2, 221);
+            this.linkAbout.Location = new System.Drawing.Point(10, 221);
             this.linkAbout.Name = "linkAbout";
             this.linkAbout.Size = new System.Drawing.Size(129, 13);
             this.linkAbout.TabIndex = 12;
@@ -355,7 +355,7 @@
             this.InnerContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InnerContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.InnerContainer.IsSplitterFixed = true;
-            this.InnerContainer.Location = new System.Drawing.Point(0, 0);
+            this.InnerContainer.Location = new System.Drawing.Point(2, 2);
             this.InnerContainer.Name = "InnerContainer";
             // 
             // InnerContainer.Panel1
@@ -368,14 +368,14 @@
             this.InnerContainer.Panel2.Controls.Add(this.buttonRunAsAdmin);
             this.InnerContainer.Panel2.Controls.Add(this.gbOptions);
             this.InnerContainer.Panel2.Controls.Add(this.linkAbout);
-            this.InnerContainer.Size = new System.Drawing.Size(929, 587);
-            this.InnerContainer.SplitterDistance = 796;
+            this.InnerContainer.Size = new System.Drawing.Size(925, 583);
+            this.InnerContainer.SplitterDistance = 776;
             this.InnerContainer.SplitterWidth = 1;
             this.InnerContainer.TabIndex = 12;
             // 
             // labelRunAsAdmin
             // 
-            this.labelRunAsAdmin.Location = new System.Drawing.Point(2, 245);
+            this.labelRunAsAdmin.Location = new System.Drawing.Point(9, 245);
             this.labelRunAsAdmin.Name = "labelRunAsAdmin";
             this.labelRunAsAdmin.Size = new System.Drawing.Size(131, 44);
             this.labelRunAsAdmin.TabIndex = 15;
@@ -384,7 +384,7 @@
             // 
             // buttonRunAsAdmin
             // 
-            this.buttonRunAsAdmin.Location = new System.Drawing.Point(11, 292);
+            this.buttonRunAsAdmin.Location = new System.Drawing.Point(20, 292);
             this.buttonRunAsAdmin.Name = "buttonRunAsAdmin";
             this.buttonRunAsAdmin.Size = new System.Drawing.Size(109, 23);
             this.buttonRunAsAdmin.TabIndex = 14;
@@ -404,14 +404,14 @@
             this.gbOptions.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbOptions.Location = new System.Drawing.Point(0, 0);
             this.gbOptions.Name = "gbOptions";
-            this.gbOptions.Size = new System.Drawing.Size(132, 209);
+            this.gbOptions.Size = new System.Drawing.Size(148, 209);
             this.gbOptions.TabIndex = 13;
             this.gbOptions.TabStop = false;
             this.gbOptions.Text = " Operations ";
             // 
             // buttonSelectOldDrivers
             // 
-            this.buttonSelectOldDrivers.Location = new System.Drawing.Point(11, 166);
+            this.buttonSelectOldDrivers.Location = new System.Drawing.Point(20, 166);
             this.buttonSelectOldDrivers.Name = "buttonSelectOldDrivers";
             this.buttonSelectOldDrivers.Size = new System.Drawing.Size(109, 23);
             this.buttonSelectOldDrivers.TabIndex = 7;
@@ -428,6 +428,7 @@
             this.Controls.Add(this.statusStrip1);
             this.MinimumSize = new System.Drawing.Size(480, 360);
             this.Name = "DSEForm";
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Driver Store Explorer [RAPR]";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DSEForm_FormClosed);
