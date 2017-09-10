@@ -475,7 +475,7 @@ namespace Rapr
                 List<DriverStoreEntry> driverStoreEntryList = lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
 
                 lstDriverStoreEntries.CheckedObjects = driverStoreEntryList
-                    .GroupBy(entry => entry.DriverInfName)
+                    .GroupBy(entry => new { entry.DriverClass, entry.DriverPkgProvider, entry.DriverInfName })
                     .SelectMany(g => g.OrderByDescending(row => row.DriverDate).Skip(1))
                     .ToArray();
             }
