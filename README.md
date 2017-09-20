@@ -1,6 +1,8 @@
 DriverStore Explorer [RAPR]
 ===================================================
 
+[![Build Status](https://ci.appveyor.com/api/projects/status/kqtvhfq23am2gq26/branch/master?svg=true)](https://ci.appveyor.com/project/lostindark/driverstoreexplorer/branch/master)
+
 ### Overview
 --------
 DriverStore Explorer [RAPR] makes it easier to deal with Windows [driver store](https://msdn.microsoft.com/en-us/library/ff544868(VS.85).aspx). Supported operations include enumeration, adding a driver package (stage), adding & installing, deletion and force deletion from the driver store.
