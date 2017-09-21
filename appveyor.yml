@@ -1,0 +1,22 @@
+version: 0.9.{build}
+pull_requests:
+  do_not_increment_build_number: true
+skip_tags: true
+image: Visual Studio 2017
+configuration: Release
+platform: Any CPU
+assembly_info:
+  patch: true
+  file: '**\AssemblyInfo.*'
+  assembly_version: '{version}'
+  assembly_file_version: '{version}'
+  assembly_informational_version: '{version}'
+before_build:
+- cmd: nuget restore
+build:
+  parallel: true
+  verbosity: normal
+artifacts:
+- path: Rapr\bin\$(configuration)
+  name: DriverStoreExplorer.v$(appveyor_build_version)
+deploy: off
