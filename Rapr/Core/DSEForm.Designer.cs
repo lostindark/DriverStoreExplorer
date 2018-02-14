@@ -58,12 +58,13 @@
             this.toolStripViewLogsButton = new System.Windows.Forms.ToolStripDropDownButton();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.linkAbout = new System.Windows.Forms.LinkLabel();
             this.InnerContainer = new System.Windows.Forms.SplitContainer();
             this.labelRunAsAdmin = new System.Windows.Forms.Label();
             this.buttonRunAsAdmin = new System.Windows.Forms.Button();
             this.gbOptions = new System.Windows.Forms.GroupBox();
             this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
+            this.toolStripAboutButton = new System.Windows.Forms.ToolStripDropDownButton();
+            this.checkBoxRunAsAdmin = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
@@ -295,7 +296,8 @@
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1,
             this.lblStatus,
-            this.toolStripViewLogsButton});
+            this.toolStripViewLogsButton,
+            this.toolStripAboutButton});
             this.statusStrip1.Location = new System.Drawing.Point(2, 585);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(925, 22);
@@ -339,17 +341,6 @@
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
             // 
-            // linkAbout
-            // 
-            this.linkAbout.AutoSize = true;
-            this.linkAbout.Location = new System.Drawing.Point(10, 221);
-            this.linkAbout.Name = "linkAbout";
-            this.linkAbout.Size = new System.Drawing.Size(129, 13);
-            this.linkAbout.TabIndex = 12;
-            this.linkAbout.TabStop = true;
-            this.linkAbout.Text = "About DriverStoreExplorer";
-            this.linkAbout.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkAbout_LinkClicked);
-            // 
             // InnerContainer
             // 
             this.InnerContainer.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -364,10 +355,10 @@
             // 
             // InnerContainer.Panel2
             // 
+            this.InnerContainer.Panel2.Controls.Add(this.checkBoxRunAsAdmin);
             this.InnerContainer.Panel2.Controls.Add(this.labelRunAsAdmin);
             this.InnerContainer.Panel2.Controls.Add(this.buttonRunAsAdmin);
             this.InnerContainer.Panel2.Controls.Add(this.gbOptions);
-            this.InnerContainer.Panel2.Controls.Add(this.linkAbout);
             this.InnerContainer.Size = new System.Drawing.Size(925, 583);
             this.InnerContainer.SplitterDistance = 776;
             this.InnerContainer.SplitterWidth = 1;
@@ -419,6 +410,26 @@
             this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
             this.buttonSelectOldDrivers.Click += new System.EventHandler(this.buttonSelectOldDrivers_Click);
             // 
+            // toolStripAboutButton
+            // 
+            this.toolStripAboutButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripAboutButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripAboutButton.Name = "toolStripAboutButton";
+            this.toolStripAboutButton.ShowDropDownArrow = false;
+            this.toolStripAboutButton.Size = new System.Drawing.Size(44, 20);
+            this.toolStripAboutButton.Text = "About";
+            this.toolStripAboutButton.Click += new System.EventHandler(this.toolStripAboutButton_Click);
+            // 
+            // checkBoxRunAsAdmin
+            // 
+            this.checkBoxRunAsAdmin.AutoSize = true;
+            this.checkBoxRunAsAdmin.Location = new System.Drawing.Point(28, 215);
+            this.checkBoxRunAsAdmin.Name = "checkBoxRunAsAdmin";
+            this.checkBoxRunAsAdmin.Size = new System.Drawing.Size(93, 17);
+            this.checkBoxRunAsAdmin.TabIndex = 16;
+            this.checkBoxRunAsAdmin.Text = "Run As Admin";
+            this.checkBoxRunAsAdmin.UseVisualStyleBackColor = true;
+            // 
             // DSEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -469,7 +480,6 @@
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
-        private System.Windows.Forms.LinkLabel linkAbout;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -487,6 +497,8 @@
         private System.Windows.Forms.Button buttonSelectOldDrivers;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectOldDrivers;
         private System.Windows.Forms.ToolStripDropDownButton toolStripViewLogsButton;
+        private System.Windows.Forms.ToolStripDropDownButton toolStripAboutButton;
+        private System.Windows.Forms.CheckBox checkBoxRunAsAdmin;
     }
 }
 

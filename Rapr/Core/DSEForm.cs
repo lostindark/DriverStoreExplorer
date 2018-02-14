@@ -5,7 +5,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Windows.Forms;
 using Rapr.Core;
@@ -21,6 +20,12 @@ namespace Rapr
 
         public DSEForm()
         {
+            if (!IsOSSupported())
+            {
+                MessageBox.Show("This utility cannot be run in pre-Vista OS", "Rapr", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                Application.Exit();
+            }
+
             InitializeComponent();
 
             this.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
@@ -64,18 +69,15 @@ namespace Rapr
             Trace.TraceInformation($"{Application.ProductName} started");
 
             driverStore = new PNPUtil();
-
-            if (!IsOSSupported())
-            {
-                MessageBox.Show("This utility cannot be run in pre-Vista OS", "Rapr", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                Application.Exit();
-            }
         }
 
         private void DSEForm_Shown(object sender, EventArgs e)
         {
             SavedBackColor = lblStatus.BackColor;
             SavedForeColor = lblStatus.ForeColor;
+
+            checkBoxRunAsAdmin.Checked = RunAsAdmin;
+            checkBoxRunAsAdmin.CheckedChanged += CheckBoxRunAsAdmin_CheckedChanged;
 
             if (!isRunAsAdministrator)
             {
@@ -91,6 +93,11 @@ namespace Rapr
             }
 
             PopulateUIWithDriverStoreEntries();
+        }
+
+        private void CheckBoxRunAsAdmin_CheckedChanged(object sender, EventArgs e)
+        {
+            RunAsAdmin = checkBoxRunAsAdmin.Checked;
         }
 
         private void DSEForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -327,10 +334,6 @@ namespace Rapr
                 ab.ShowDialog();
             }
         }
-        private void linkAbout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            ShowAboutBox();
-        }
 
         private void contextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
@@ -446,26 +449,7 @@ namespace Rapr
 
         private void buttonRunAsAdmin_Click(object sender, EventArgs e)
         {
-            ProcessStartInfo processInfo = new ProcessStartInfo();
-            processInfo.Verb = "runas";
-            processInfo.FileName = Assembly.GetExecutingAssembly().Location;
-
-            try
-            {
-                Process.Start(processInfo);
-            }
-            catch (Win32Exception ex)
-            {
-                // Ignore error 1223: The operation was canceled by the user.
-                if (ex.NativeErrorCode == 1223)
-                {
-                    return;
-                }
-
-                throw;
-            }
-
-            Application.Exit();
+            RunAsAdministrator();
         }
 
         private void ctxMenuSelectOldDrivers_Click(object sender, EventArgs e)
@@ -524,6 +508,11 @@ namespace Rapr
                     ShowStatus(message, Status.Error);
                 }
             }
+        }
+
+        private void toolStripAboutButton_Click(object sender, EventArgs e)
+        {
+            ShowAboutBox();
         }
 
         private void lstDriverStoreEntries_ItemChecked(object sender, ItemCheckedEventArgs e)
