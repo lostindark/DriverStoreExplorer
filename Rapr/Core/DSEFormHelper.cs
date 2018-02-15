@@ -16,7 +16,7 @@ namespace Rapr
     {
         private const string AppCompatRegistry = @"Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers";
         private const string RunAsAdminRegistryValue = "RUNASADMIN";
-        private static bool isRunAsAdministrator = IsRunAsAdministrator();
+        private static readonly bool isRunAsAdministrator = IsRunAsAdministrator();
 
         public enum OperationCode
         {
@@ -208,7 +208,7 @@ namespace Rapr
             {
                 using (var key = Registry.CurrentUser.OpenSubKey(AppCompatRegistry))
                 {
-                    string valueStr = (string)key.GetValue(Assembly.GetExecutingAssembly().Location);
+                    string valueStr = (string)key?.GetValue(Assembly.GetExecutingAssembly().Location);
                     return !string.IsNullOrEmpty(valueStr)
                         && valueStr.Split(' ').Any(s => s == RunAsAdminRegistryValue);
                 }
@@ -216,31 +216,34 @@ namespace Rapr
 
             set
             {
-                using (var key = Registry.CurrentUser.OpenSubKey(AppCompatRegistry, RegistryKeyPermissionCheck.ReadWriteSubTree))
+                using (var key = Registry.CurrentUser.CreateSubKey(AppCompatRegistry, RegistryKeyPermissionCheck.ReadWriteSubTree))
                 {
-                    List<string> values = new List<string> { "~" };
-                    string keyStr = Assembly.GetExecutingAssembly().Location;
-                    string valueStr = (string)key.GetValue(keyStr);
-
-                    if (!string.IsNullOrEmpty(valueStr))
+                    if (key != null)
                     {
-                        values = valueStr.Split(' ').ToList();
-                    }
+                        List<string> values = new List<string> { "~" };
+                        string keyStr = Assembly.GetExecutingAssembly().Location;
+                        string valueStr = (string)key.GetValue(keyStr);
 
-                    values.Remove(RunAsAdminRegistryValue);
+                        if (!string.IsNullOrEmpty(valueStr))
+                        {
+                            values = valueStr.Split(' ').ToList();
+                        }
 
-                    if (value)
-                    {
-                        values.Add(RunAsAdminRegistryValue);
-                    }
+                        values.Remove(RunAsAdminRegistryValue);
 
-                    if (values.Count == 1 && values[0] == "~")
-                    {
-                        key.DeleteValue(keyStr);
-                    }
-                    else
-                    {
-                        key.SetValue(keyStr, string.Join(" ", values), RegistryValueKind.String);
+                        if (value)
+                        {
+                            values.Add(RunAsAdminRegistryValue);
+                        }
+
+                        if (values.Count == 1 && values[0] == "~")
+                        {
+                            key.DeleteValue(keyStr);
+                        }
+                        else
+                        {
+                            key.SetValue(keyStr, string.Join(" ", values), RegistryValueKind.String);
+                        }
                     }
                 }
             }
