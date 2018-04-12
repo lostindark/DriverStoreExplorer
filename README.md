@@ -24,13 +24,13 @@ DriverStore Explorer [RAPR] makes it easier to deal with Windows [driver store](
 .NET Framework 4.0
 
 ### Releases:
-Download the latest version here: https://github.com/lostindark/DriverStoreExplorer/releases/latest
+Download the latest version here: https://github.com/lostindark/DriverStoreExplorer/releases/latest.
 
 ### Tested Operating Systems:
-Windows 10 RS1/RS2 64 bit
+Windows 10 64 bit
 
 ### History:
 The project was original hosted on https://driverstoreexplorer.codeplex.com/.
 
 ### Credits:
-This tool uses the excellent [ObjectListView](http://objectlistview.sourceforge.net/cs/index.html)
+This tool uses the excellent [ObjectListView](http://objectlistview.sourceforge.net/cs/index.html).
