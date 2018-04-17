@@ -18,11 +18,13 @@ namespace Rapr
                 return null;
             }
 
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.CheckFileExists = false;
-            saveFileDialog.DefaultExt = "csv";
-            saveFileDialog.Filter = "CSV Files | *.csv";
-            saveFileDialog.SupportMultiDottedExtensions = true;
+            SaveFileDialog saveFileDialog = new SaveFileDialog
+            {
+                CheckFileExists = false,
+                DefaultExt = "csv",
+                Filter = "CSV Files | *.csv",
+                SupportMultiDottedExtensions = true
+            };
 
             DialogResult dr = saveFileDialog.ShowDialog();
             if (dr == DialogResult.OK)

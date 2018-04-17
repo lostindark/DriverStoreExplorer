@@ -85,7 +85,7 @@
             this.buttonEnumerate.TabIndex = 0;
             this.buttonEnumerate.Text = "Refresh";
             this.buttonEnumerate.UseVisualStyleBackColor = true;
-            this.buttonEnumerate.Click += new System.EventHandler(this.buttonEnumerate_Click);
+            this.buttonEnumerate.Click += new System.EventHandler(this.ButtonEnumerate_Click);
             // 
             // groupBox1
             // 
@@ -258,7 +258,7 @@
             this.buttonDeleteDriver.TabIndex = 3;
             this.buttonDeleteDriver.Text = "Delete Package";
             this.buttonDeleteDriver.UseVisualStyleBackColor = true;
-            this.buttonDeleteDriver.Click += new System.EventHandler(this.buttonDelete_Click);
+            this.buttonDeleteDriver.Click += new System.EventHandler(this.ButtonDelete_Click);
             // 
             // cbForceDeletion
             // 

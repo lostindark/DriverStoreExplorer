@@ -31,9 +31,9 @@ namespace Rapr
 
     public partial class DSEForm : Form
     {
-        IDriverStore driverStore;
-        Color SavedBackColor, SavedForeColor;
-        OperationContext context = new OperationContext();
+        private IDriverStore driverStore;
+        private Color SavedBackColor, SavedForeColor;
+        private OperationContext context = new OperationContext();
 
         public DSEForm()
         {
@@ -54,33 +54,27 @@ namespace Rapr
             lstDriverStoreEntries.CheckBoxes = isRunAsAdministrator;
             driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
 
-            this.driverVersionColumn.GroupKeyGetter = delegate (object rowObject)
+            this.driverVersionColumn.GroupKeyGetter = (object rowObject) =>
             {
                 DriverStoreEntry driver = (DriverStoreEntry)rowObject;
                 return new Version(driver.DriverVersion.Major, driver.DriverVersion.Minor);
             };
 
-            this.driverDateColumn.GroupKeyGetter = delegate (object rowObject)
+            this.driverDateColumn.GroupKeyGetter = (object rowObject) =>
             {
                 DriverStoreEntry driver = (DriverStoreEntry)rowObject;
                 return new DateTime(driver.DriverDate.Year, driver.DriverDate.Month, 1);
             };
 
-            this.driverDateColumn.GroupKeyToTitleConverter = delegate (object groupKey)
-            {
-                return ((DateTime)groupKey).ToString("yyyy-MM");
-            };
+            this.driverDateColumn.GroupKeyToTitleConverter = (object groupKey) => ((DateTime)groupKey).ToString("yyyy-MM");
 
-            this.driverSizeColumn.GroupKeyGetter = delegate (object rowObject)
+            this.driverSizeColumn.GroupKeyGetter = (object rowObject) =>
             {
                 DriverStoreEntry driver = (DriverStoreEntry)rowObject;
                 return DriverStoreEntry.GetSizeRange(driver.DriverSize);
             };
 
-            this.driverSizeColumn.GroupKeyToTitleConverter = delegate (object groupKey)
-            {
-                return DriverStoreEntry.GetSizeRangeName((long)groupKey);
-            };
+            this.driverSizeColumn.GroupKeyToTitleConverter = (object groupKey) => DriverStoreEntry.GetSizeRangeName((long)groupKey);
 
             Trace.TraceInformation("---------------------------------------------------------------");
             Trace.TraceInformation($"{Application.ProductName} started");
@@ -144,7 +138,7 @@ namespace Rapr
 
             if (!isRunAsAdministrator)
             {
-                Text = Text + " [Read-Only Mode]";
+                Text += " [Read-Only Mode]";
                 ShowStatus("Running in Read-Only mode", Status.Warning);
                 buttonAddDriver.Enabled = false;
                 cbAddInstall.Enabled = false;
@@ -168,12 +162,12 @@ namespace Rapr
             Trace.TraceInformation($"Shutting down - reason {e.CloseReason}");
         }
 
-        private void buttonEnumerate_Click(object sender, EventArgs e)
+        private void ButtonEnumerate_Click(object sender, EventArgs e)
         {
             PopulateUIWithDriverStoreEntries();
         }
 
-        private void buttonDelete_Click(object sender, EventArgs e)
+        private void ButtonDelete_Click(object sender, EventArgs e)
         {
             if (lstDriverStoreEntries.CheckedObjects.Count == 0 && lstDriverStoreEntries.SelectedIndex == -1)
             {
@@ -401,7 +395,7 @@ namespace Rapr
         private void contextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
             // Check if there are any entries
-            if ((lstDriverStoreEntries.Objects != null))
+            if (lstDriverStoreEntries.Objects != null)
             {
                 ctxMenuSelectAll.Enabled = isRunAsAdministrator;
                 ctxMenuSelectOldDrivers.Enabled = isRunAsAdministrator;
@@ -453,7 +447,7 @@ namespace Rapr
         private void ctxMenuSelectAll_Click(object sender, EventArgs e)
         {
             // Check if there are any entries
-            if ((lstDriverStoreEntries.Objects != null))
+            if (lstDriverStoreEntries.Objects != null)
             {
                 if (lstDriverStoreEntries.CheckedObjects != null && lstDriverStoreEntries.CheckedObjects.Count != 0)
                 {
@@ -468,7 +462,7 @@ namespace Rapr
 
         private void ctxMenuSelect_Click(object sender, EventArgs e)
         {
-            if ((lstDriverStoreEntries.Objects != null))
+            if (lstDriverStoreEntries.Objects != null)
             {
                 ArrayList list = new ArrayList();
                 if (lstDriverStoreEntries.CheckedObjects != null && lstDriverStoreEntries.CheckedObjects.Count > 0)

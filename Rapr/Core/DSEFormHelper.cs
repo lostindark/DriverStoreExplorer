@@ -58,7 +58,7 @@ namespace Rapr
 
         private void PopulateUIWithDriverStoreEntries()
         {
-            if (!(backgroundWorker1.IsBusy))
+            if (!backgroundWorker1.IsBusy)
             {
                 CleanupContext(context);
                 this.lstDriverStoreEntries.ClearObjects();
@@ -76,7 +76,7 @@ namespace Rapr
 
         private void AddDriverPackage(string infName)
         {
-            if (!(backgroundWorker1.IsBusy))
+            if (!backgroundWorker1.IsBusy)
             {
                 CleanupContext(context);
                 context.Code = cbAddInstall.Checked ? OperationCode.AddInstallDriver : OperationCode.AddDriver;
@@ -96,7 +96,7 @@ namespace Rapr
 
         private void DeleteDriverPackages(List<DriverStoreEntry> ldse)
         {
-            if (!(backgroundWorker1.IsBusy))
+            if (!backgroundWorker1.IsBusy)
             {
                 CleanupContext(context);
                 context.Code = cbForceDeletion.Checked ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
@@ -175,14 +175,16 @@ namespace Rapr
             //Get version information about the os.
             Version version = os.Version;
 
-            return ((os.Platform == PlatformID.Win32NT) && (version.Major >= 6));
+            return os.Platform == PlatformID.Win32NT && (version.Major >= 6);
         }
 
         public static void RunAsAdministrator()
         {
-            ProcessStartInfo processInfo = new ProcessStartInfo();
-            processInfo.Verb = "runas";
-            processInfo.FileName = Assembly.GetExecutingAssembly().Location;
+            ProcessStartInfo processInfo = new ProcessStartInfo
+            {
+                Verb = "runas",
+                FileName = Assembly.GetExecutingAssembly().Location
+            };
 
             try
             {

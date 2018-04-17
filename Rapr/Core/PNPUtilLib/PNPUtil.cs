@@ -17,7 +17,7 @@ namespace Rapr.Utils
         private static readonly Regex AddResultRegex = new Regex(@".+: +([0-9]+)[\r\n].+: +([0-9]+)[\r\n ]+", RegexOptions.Compiled | RegexOptions.Singleline);
         private static readonly char[] NameValueDelimiter = new char[] { ':' };
 
-        enum PnpUtilOptions
+        public enum PnpUtilOptions
         {
             Enumerate,
             Delete,
@@ -26,7 +26,7 @@ namespace Rapr.Utils
             AddInstall
         };
 
-        enum ParsingState
+        public enum ParsingState
         {
             Header,
             PublishedName,
@@ -324,7 +324,7 @@ namespace Rapr.Utils
                             }
                         }
 
-                        if ((option == PnpUtilOptions.Add || option == PnpUtilOptions.AddInstall))
+                        if (option == PnpUtilOptions.Add || option == PnpUtilOptions.AddInstall)
                         {
                             /* [jenda_]
                              This regex should recognize (~) this pattern:

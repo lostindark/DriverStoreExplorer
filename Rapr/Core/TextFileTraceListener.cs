@@ -27,7 +27,7 @@ namespace Rapr.Core
 
         public override void TraceEvent(TraceEventCache eventCache, string source, TraceEventType eventType, int id, string format, params object[] args)
         {
-            if (this.Filter != null && !this.Filter.ShouldTrace(eventCache, source, eventType, id, format, args, null, null))
+            if (this.Filter?.ShouldTrace(eventCache, source, eventType, id, format, args, null, null) == false)
             {
                 return;
             }

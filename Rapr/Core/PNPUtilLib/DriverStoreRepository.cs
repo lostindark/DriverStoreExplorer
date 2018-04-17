@@ -19,9 +19,9 @@ namespace Rapr.Utils
         private static readonly string SystemRootInf = Path.Combine(SystemRoot, "INF");
         private static readonly string DriverStoreFileRepository = Path.Combine(SystemRoot, @"system32\DriverStore\FileRepository");
 
-        private DirectoryInfo driverStoreFileRepository = new DirectoryInfo(DriverStoreFileRepository);
-        private List<DriverStoreContent> driverStoreContents = new List<DriverStoreContent>();
-        private IEnumerator<DirectoryInfo> directoryInfoEnumerator;
+        private readonly DirectoryInfo driverStoreFileRepository = new DirectoryInfo(DriverStoreFileRepository);
+        private readonly List<DriverStoreContent> driverStoreContents = new List<DriverStoreContent>();
+        private readonly IEnumerator<DirectoryInfo> directoryInfoEnumerator;
 
         public DriverStoreRepository()
         {
@@ -105,22 +105,20 @@ namespace Rapr.Utils
             }
 
             return content;
-        }             
+        }
 
         private static long GetFolderSize(DirectoryInfo directory)
         {
             long size = 0;
 
             // Add file sizes.
-            FileInfo[] fileInfos = directory.GetFiles();
-            foreach (FileInfo fileInfo in fileInfos)
+            foreach (FileInfo fileInfo in directory.GetFiles())
             {
                 size += fileInfo.Length;
             }
 
             // Add subdirectory sizes.
-            DirectoryInfo[] directoryInfos = directory.GetDirectories();
-            foreach (DirectoryInfo dirInfo in directoryInfos)
+            foreach (DirectoryInfo dirInfo in directory.GetDirectories())
             {
                 size += GetFolderSize(dirInfo);
             }
