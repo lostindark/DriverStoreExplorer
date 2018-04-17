@@ -30,20 +30,27 @@ namespace Rapr.Utils
 
         public void FindInfInfo(string infName, out string originalInfName, out long estimateSize)
         {
-            originalInfName = null;
+            originalInfName = "[Unknown]";
             estimateSize = -1;
 
-            string content = GetSystemRootInfContent(infName);
-
-            if (!string.IsNullOrEmpty(content))
+            try
             {
-                DriverStoreContent driverStoreContent = FindInfInfo(content);
+                string content = GetSystemRootInfContent(infName);
 
-                if (driverStoreContent != null)
+                if (!string.IsNullOrEmpty(content))
                 {
-                    originalInfName = driverStoreContent.InfName;
-                    estimateSize = driverStoreContent.EstimateSize;
+                    DriverStoreContent driverStoreContent = FindInfInfo(content);
+
+                    if (driverStoreContent != null)
+                    {
+                        originalInfName = driverStoreContent.InfName;
+                        estimateSize = driverStoreContent.EstimateSize;
+                    }
                 }
+            }
+            catch (UnauthorizedAccessException)
+            {
+                // Ignore this entry if we don't have access to it.
             }
         }
 
@@ -70,23 +77,30 @@ namespace Rapr.Utils
                     string infPath = Path.Combine(item.FullName, infName);
                     if (File.Exists(infPath))
                     {
-                        string infContent = File.ReadAllText(infPath);
-                        long estimateSize = GetFolderSize(item);
-
-                        DriverStoreContent driverStoreContent = new DriverStoreContent()
+                        try
                         {
-                            InfName = infName,
-                            Content = infContent,
-                            EstimateSize = estimateSize
-                        };
+                            string infContent = File.ReadAllText(infPath);
+                            long estimateSize = GetFolderSize(item);
 
-                        if (infContent == content)
-                        {
-                            return driverStoreContent;
+                            DriverStoreContent driverStoreContent = new DriverStoreContent()
+                            {
+                                InfName = infName,
+                                Content = infContent,
+                                EstimateSize = estimateSize
+                            };
+
+                            if (infContent == content)
+                            {
+                                return driverStoreContent;
+                            }
+                            else
+                            {
+                                driverStoreContents.Add(driverStoreContent);
+                            }
                         }
-                        else
+                        catch (UnauthorizedAccessException)
                         {
-                            driverStoreContents.Add(driverStoreContent);
+                            // Ignore this entry if we don't have access to it.
                         }
                     }
                 }
