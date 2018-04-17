@@ -209,7 +209,7 @@ namespace Rapr
             {
                 if (driverStoreEntries.Count == 1)
                 {
-                    msgWarning = $"About to {(cbForceDeletion.Checked ? "force delete" : "delete")} {driverStoreEntries[0].DriverPublishedName} from driver store.{Environment.NewLine}Are you sure?";
+                    msgWarning = $"About to {(cbForceDeletion.Checked ? "force delete" : "delete")} {driverStoreEntries[0].DriverInfName} ({driverStoreEntries[0].DriverPublishedName}) from driver store.{Environment.NewLine}Are you sure?";
                 }
                 else
                 {
@@ -289,7 +289,7 @@ namespace Rapr
                     foreach (DriverStoreEntry dse in localContext.DriverStoreEntries)
                     {
                         bool result = driverStore.DeletePackage(dse, force);
-                        string resultTxt = $"Delete {dse.DriverPublishedName} {(result ? "succeeded." : "failed.")}";
+                        string resultTxt = $"Delete {dse.DriverInfName} ({dse.DriverPublishedName}) {(result ? "succeeded." : "failed.")}";
                         Trace.TraceInformation(resultTxt);
 
                         sb.AppendLine(resultTxt);
@@ -318,11 +318,11 @@ namespace Rapr
 
                 case OperationCode.ForceDeleteDriver:
                 case OperationCode.DeleteDriver:
-                    if ((bool)localContext.ResultStatus)
+                    if (localContext.ResultStatus)
                     {
                         if (localContext.DriverStoreEntries.Count == 1)
                         {
-                            result = $"Removed the package {localContext.DriverStoreEntries[0].DriverPublishedName} from driver store";
+                            result = $"Removed {localContext.DriverStoreEntries[0].DriverInfName} ({localContext.DriverStoreEntries[0].DriverPublishedName}) from driver store";
                         }
                         else
                         {
@@ -342,7 +342,7 @@ namespace Rapr
 
                         if (localContext.DriverStoreEntries.Count == 1)
                         {
-                            result = $"Error removing the package {localContext.DriverStoreEntries[0].DriverPublishedName} from driver store{driverDeleteTip}";
+                            result = $"Error removing {localContext.DriverStoreEntries[0].DriverInfName} ({localContext.DriverStoreEntries[0].DriverPublishedName}) from driver store{driverDeleteTip}";
                         }
                         else
                         {
@@ -566,7 +566,7 @@ namespace Rapr
                 }
                 catch (Exception ex)
                 {
-                    string message = $"Export failed: {ex.ToString()}";
+                    string message = $"Export failed: {ex}";
                     MessageBox.Show(message);
                     ShowStatus(message, Status.Error);
                 }
