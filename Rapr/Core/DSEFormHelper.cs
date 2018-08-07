@@ -58,12 +58,12 @@ namespace Rapr
 
         private void PopulateUIWithDriverStoreEntries()
         {
-            if (!backgroundWorker1.IsBusy)
+            if (!this.backgroundWorker1.IsBusy)
             {
-                CleanupContext(context);
+                CleanupContext(this.context);
                 this.lstDriverStoreEntries.ClearObjects();
-                context.Code = OperationCode.EnumerateStore;
-                backgroundWorker1.RunWorkerAsync(context);
+                this.context.Code = OperationCode.EnumerateStore;
+                this.backgroundWorker1.RunWorkerAsync(this.context);
                 ShowOperationInProgress(true);
                 //ShowStatus("Enumerating driver store...");
             }
@@ -76,13 +76,13 @@ namespace Rapr
 
         private void AddDriverPackage(string infName)
         {
-            if (!backgroundWorker1.IsBusy)
+            if (!this.backgroundWorker1.IsBusy)
             {
-                CleanupContext(context);
-                context.Code = cbAddInstall.Checked ? OperationCode.AddInstallDriver : OperationCode.AddDriver;
-                context.InfPath = infName;
+                CleanupContext(this.context);
+                this.context.Code = this.cbAddInstall.Checked ? OperationCode.AddInstallDriver : OperationCode.AddDriver;
+                this.context.InfPath = infName;
 
-                backgroundWorker1.RunWorkerAsync(context);
+                this.backgroundWorker1.RunWorkerAsync(this.context);
 
                 ShowOperationInProgress(true);
                 ShowStatus("Adding driver package...");
@@ -96,13 +96,13 @@ namespace Rapr
 
         private void DeleteDriverPackages(List<DriverStoreEntry> ldse)
         {
-            if (!backgroundWorker1.IsBusy)
+            if (!this.backgroundWorker1.IsBusy)
             {
-                CleanupContext(context);
-                context.Code = cbForceDeletion.Checked ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
-                context.DriverStoreEntries = ldse;
+                CleanupContext(this.context);
+                this.context.Code = this.cbForceDeletion.Checked ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
+                this.context.DriverStoreEntries = ldse;
 
-                backgroundWorker1.RunWorkerAsync(context);
+                this.backgroundWorker1.RunWorkerAsync(this.context);
                 ShowOperationInProgress(true);
                 ShowStatus("Deleting driver package(s)...");
             }
@@ -116,7 +116,7 @@ namespace Rapr
         // false = hide wait_form
         private void ShowOperationInProgress(bool state)
         {
-            toolStripProgressBar1.Visible = state;
+            this.toolStripProgressBar1.Visible = state;
         }
 
         private void ShowStatus(string text)
@@ -126,30 +126,30 @@ namespace Rapr
 
         private void ShowStatus(string text, Status status, bool showPopup = false)
         {
-            lblStatus.Text = text;
+            this.lblStatus.Text = text;
             switch (status)
             {
                 case Status.Error:
-                    lblStatus.BackColor = Color.FromArgb(0xFF, 0x00, 0x33);
-                    lblStatus.ForeColor = Color.White;
+                    this.lblStatus.BackColor = Color.FromArgb(0xFF, 0x00, 0x33);
+                    this.lblStatus.ForeColor = Color.White;
                     Trace.TraceError(text);
                     break;
 
                 case Status.Success:
-                    lblStatus.BackColor = Color.LightGreen;
-                    lblStatus.ForeColor = Color.Black;
+                    this.lblStatus.BackColor = Color.LightGreen;
+                    this.lblStatus.ForeColor = Color.Black;
                     Trace.TraceInformation(text);
                     break;
 
                 case Status.Warning:
-                    lblStatus.BackColor = Color.Yellow;
-                    lblStatus.ForeColor = Color.Black;
+                    this.lblStatus.BackColor = Color.Yellow;
+                    this.lblStatus.ForeColor = Color.Black;
                     Trace.TraceWarning(text);
                     break;
 
                 case Status.Normal:
-                    lblStatus.BackColor = SavedBackColor;
-                    lblStatus.ForeColor = SavedForeColor;
+                    this.lblStatus.BackColor = this.SavedBackColor;
+                    this.lblStatus.ForeColor = this.SavedForeColor;
                     Trace.TraceInformation(text);
                     break;
             }

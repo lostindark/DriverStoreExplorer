@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace Rapr
 {
-    class CSVExporter : IExport
+    public class CSVExporter : IExport
     {
         private const string CSV_DELIM = ",";
         private const string CSV_DELIM_SUBST = " ";

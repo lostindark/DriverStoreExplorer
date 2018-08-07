@@ -3,7 +3,7 @@ using Rapr.Utils;
 
 namespace Rapr
 {
-    interface IExport
+    public interface IExport
     {
         string Export(List<DriverStoreEntry> ldse);
     }

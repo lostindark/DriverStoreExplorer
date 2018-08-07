@@ -32,12 +32,12 @@ namespace Rapr
 
             this.Icon = ExtractAssociatedIcon(Application.ExecutablePath);
 
-            lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
-            lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
-            lstDriverStoreEntries.SecondarySortColumn = this.driverDateColumn;
-            lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
-            lstDriverStoreEntries.CheckBoxes = isRunAsAdministrator;
-            driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
+            this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
+            this.lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
+            this.lstDriverStoreEntries.SecondarySortColumn = this.driverDateColumn;
+            this.lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
+            this.lstDriverStoreEntries.CheckBoxes = isRunAsAdministrator;
+            this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
 
             this.driverVersionColumn.GroupKeyGetter = (object rowObject) =>
             {
@@ -64,7 +64,7 @@ namespace Rapr
             Trace.TraceInformation("---------------------------------------------------------------");
             Trace.TraceInformation($"{Application.ProductName} started");
 
-            driverStore = new PNPUtil();
+            this.driverStore = new PNPUtil();
         }
 
         /// <summary>
@@ -115,23 +115,23 @@ namespace Rapr
 
         private void DSEForm_Shown(object sender, EventArgs e)
         {
-            SavedBackColor = lblStatus.BackColor;
-            SavedForeColor = lblStatus.ForeColor;
+            this.SavedBackColor = this.lblStatus.BackColor;
+            this.SavedForeColor = this.lblStatus.ForeColor;
 
-            checkBoxRunAsAdmin.Checked = RunAsAdmin;
-            checkBoxRunAsAdmin.CheckedChanged += CheckBoxRunAsAdmin_CheckedChanged;
+            this.checkBoxRunAsAdmin.Checked = RunAsAdmin;
+            this.checkBoxRunAsAdmin.CheckedChanged += this.CheckBoxRunAsAdmin_CheckedChanged;
 
             if (!isRunAsAdministrator)
             {
-                Text += " [Read-Only Mode]";
+                this.Text += " [Read-Only Mode]";
                 ShowStatus("Running in Read-Only mode", Status.Warning);
-                buttonAddDriver.Enabled = false;
-                cbAddInstall.Enabled = false;
-                buttonDeleteDriver.Enabled = false;
-                cbForceDeletion.Enabled = false;
-                buttonSelectOldDrivers.Enabled = false;
-                labelRunAsAdmin.Visible = true;
-                buttonRunAsAdmin.Visible = true;
+                this.buttonAddDriver.Enabled = false;
+                this.cbAddInstall.Enabled = false;
+                this.buttonDeleteDriver.Enabled = false;
+                this.cbForceDeletion.Enabled = false;
+                this.buttonSelectOldDrivers.Enabled = false;
+                this.labelRunAsAdmin.Visible = true;
+                this.buttonRunAsAdmin.Visible = true;
             }
 
             PopulateUIWithDriverStoreEntries();
@@ -139,7 +139,7 @@ namespace Rapr
 
         private void CheckBoxRunAsAdmin_CheckedChanged(object sender, EventArgs e)
         {
-            RunAsAdmin = checkBoxRunAsAdmin.Checked;
+            RunAsAdmin = this.checkBoxRunAsAdmin.Checked;
         }
 
         private void DSEForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -154,7 +154,7 @@ namespace Rapr
 
         private void ButtonDelete_Click(object sender, EventArgs e)
         {
-            if (lstDriverStoreEntries.CheckedObjects.Count == 0 && lstDriverStoreEntries.SelectedIndex == -1)
+            if (this.lstDriverStoreEntries.CheckedObjects.Count == 0 && this.lstDriverStoreEntries.SelectedIndex == -1)
             {
                 // No entry is selected 
                 ShowStatus("Select a driver entry first", Status.Warning);
@@ -162,16 +162,16 @@ namespace Rapr
             }
 
             List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
-            if (lstDriverStoreEntries.CheckedObjects.Count == 0)
+            if (this.lstDriverStoreEntries.CheckedObjects.Count == 0)
             {
-                foreach (DriverStoreEntry o in lstDriverStoreEntries.SelectedObjects)
+                foreach (DriverStoreEntry o in this.lstDriverStoreEntries.SelectedObjects)
                 {
                     driverStoreEntries.Add(o);
                 }
             }
-            else if (lstDriverStoreEntries.CheckedItems.Count > 0)
+            else if (this.lstDriverStoreEntries.CheckedItems.Count > 0)
             {
-                foreach (DriverStoreEntry o in lstDriverStoreEntries.CheckedObjects)
+                foreach (DriverStoreEntry o in this.lstDriverStoreEntries.CheckedObjects)
                 {
                     driverStoreEntries.Add(o);
                 }
@@ -188,11 +188,11 @@ namespace Rapr
             {
                 if (driverStoreEntries.Count == 1)
                 {
-                    msgWarning = $"About to {(cbForceDeletion.Checked ? "force delete" : "delete")} {driverStoreEntries[0].DriverInfName} ({driverStoreEntries[0].DriverPublishedName}) from driver store.{Environment.NewLine}Are you sure?";
+                    msgWarning = $"About to {(this.cbForceDeletion.Checked ? "force delete" : "delete")} {driverStoreEntries[0].DriverInfName} ({driverStoreEntries[0].DriverPublishedName}) from driver store.{Environment.NewLine}Are you sure?";
                 }
                 else
                 {
-                    msgWarning = $"About to {(cbForceDeletion.Checked ? "force delete" : "delete")} {driverStoreEntries.Count} packages from driver store.{Environment.NewLine}Are you sure?";
+                    msgWarning = $"About to {(this.cbForceDeletion.Checked ? "force delete" : "delete")} {driverStoreEntries.Count} packages from driver store.{Environment.NewLine}Are you sure?";
                 }
 
                 if (DialogResult.OK == MessageBox.Show(
@@ -208,13 +208,13 @@ namespace Rapr
 
         private void buttonAddDriver_Click(object sender, EventArgs e)
         {
-            DialogResult dr = openFileDialog.ShowDialog();
+            DialogResult dr = this.openFileDialog.ShowDialog();
             if (dr == DialogResult.OK)
             {
-                string pkgFolder = System.IO.Path.GetDirectoryName(openFileDialog.FileName);
-                string infName = System.IO.Path.GetFileName(openFileDialog.FileName);
+                string pkgFolder = Path.GetDirectoryName(this.openFileDialog.FileName);
+                string infName = Path.GetFileName(this.openFileDialog.FileName);
 
-                AddDriverPackage(openFileDialog.FileName);
+                AddDriverPackage(this.openFileDialog.FileName);
             }
         }
 
@@ -226,7 +226,7 @@ namespace Rapr
             switch (localContext.Code)
             {
                 case OperationCode.EnumerateStore:
-                    localContext.ResultData = driverStore.EnumeratePackages();
+                    localContext.ResultData = this.driverStore.EnumeratePackages();
                     break;
 
                 case OperationCode.DeleteDriver:
@@ -238,11 +238,11 @@ namespace Rapr
                     break;
 
                 case OperationCode.AddDriver:
-                    localContext.ResultStatus = driverStore.AddPackage(localContext.InfPath, false);
+                    localContext.ResultStatus = this.driverStore.AddPackage(localContext.InfPath, false);
                     break;
 
                 case OperationCode.AddInstallDriver:
-                    localContext.ResultStatus = driverStore.AddPackage(localContext.InfPath, true);
+                    localContext.ResultStatus = this.driverStore.AddPackage(localContext.InfPath, true);
                     break;
 
                 case OperationCode.Dummy:
@@ -261,13 +261,13 @@ namespace Rapr
 
                 if (localContext.DriverStoreEntries.Count == 1)
                 {
-                    localContext.ResultStatus = driverStore.DeletePackage(localContext.DriverStoreEntries[0], force);
+                    localContext.ResultStatus = this.driverStore.DeletePackage(localContext.DriverStoreEntries[0], force);
                 }
                 else
                 {
                     foreach (DriverStoreEntry dse in localContext.DriverStoreEntries)
                     {
-                        bool result = driverStore.DeletePackage(dse, force);
+                        bool result = this.driverStore.DeletePackage(dse, force);
                         string resultTxt = $"Delete {dse.DriverInfName} ({dse.DriverPublishedName}) {(result ? "succeeded." : "failed.")}";
                         Trace.TraceInformation(resultTxt);
 
@@ -291,8 +291,8 @@ namespace Rapr
             {
                 case OperationCode.EnumerateStore:
                     List<DriverStoreEntry> ldse = localContext.ResultData as List<DriverStoreEntry>;
-                    lstDriverStoreEntries.SetObjects(ldse);
-                    lstDriverStoreEntries.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    this.lstDriverStoreEntries.SetObjects(ldse);
+                    this.lstDriverStoreEntries.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
                     break;
 
                 case OperationCode.ForceDeleteDriver:
@@ -341,7 +341,7 @@ namespace Rapr
                         ShowStatus(result, Status.Error);
                     }
 
-                    cbForceDeletion.Checked = false;
+                    this.cbForceDeletion.Checked = false;
 
                     break;
 
@@ -362,7 +362,7 @@ namespace Rapr
                         ShowStatus(result, Status.Error);
                     }
 
-                    cbAddInstall.Checked = false;
+                    this.cbAddInstall.Checked = false;
                     break;
             }
 
@@ -380,51 +380,51 @@ namespace Rapr
         private void contextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
             // Check if there are any entries
-            if (lstDriverStoreEntries.Objects != null)
+            if (this.lstDriverStoreEntries.Objects != null)
             {
-                ctxMenuSelectAll.Enabled = isRunAsAdministrator;
-                ctxMenuSelectOldDrivers.Enabled = isRunAsAdministrator;
-                ctxMenuExport.Enabled = true;
+                this.ctxMenuSelectAll.Enabled = isRunAsAdministrator;
+                this.ctxMenuSelectOldDrivers.Enabled = isRunAsAdministrator;
+                this.ctxMenuExport.Enabled = true;
 
-                if (lstDriverStoreEntries.CheckedObjects != null && lstDriverStoreEntries.CheckedObjects.Count > 0)
+                if (this.lstDriverStoreEntries.CheckedObjects != null && this.lstDriverStoreEntries.CheckedObjects.Count > 0)
                 {
-                    ctxMenuSelectAll.Text = "Unselect All";
+                    this.ctxMenuSelectAll.Text = "Unselect All";
                 }
                 else
                 {
-                    ctxMenuSelectAll.Text = "Select All";
+                    this.ctxMenuSelectAll.Text = "Select All";
                 }
 
-                if (lstDriverStoreEntries.SelectedObjects != null && lstDriverStoreEntries.SelectedObjects.Count > 0)
+                if (this.lstDriverStoreEntries.SelectedObjects != null && this.lstDriverStoreEntries.SelectedObjects.Count > 0)
                 {
-                    ctxMenuDelete.Enabled = isRunAsAdministrator;
+                    this.ctxMenuDelete.Enabled = isRunAsAdministrator;
 
-                    if (lstDriverStoreEntries.CheckedObjects != null
-                        && lstDriverStoreEntries.CheckedObjects.Count > 0
-                        && new ArrayList(lstDriverStoreEntries.SelectedObjects).ToArray().All(i => lstDriverStoreEntries.CheckedObjects.Contains(i)))
+                    if (this.lstDriverStoreEntries.CheckedObjects != null
+                        && this.lstDriverStoreEntries.CheckedObjects.Count > 0
+                        && new ArrayList(this.lstDriverStoreEntries.SelectedObjects).ToArray().All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
                     {
-                        ctxMenuSelect.Text = "Unselect";
+                        this.ctxMenuSelect.Text = "Unselect";
                     }
                     else
                     {
-                        ctxMenuSelect.Text = "Select";
+                        this.ctxMenuSelect.Text = "Select";
                     }
 
-                    ctxMenuSelect.Enabled = isRunAsAdministrator;
+                    this.ctxMenuSelect.Enabled = isRunAsAdministrator;
                 }
                 else
                 {
-                    ctxMenuDelete.Enabled = false;
-                    ctxMenuSelect.Enabled = false;
+                    this.ctxMenuDelete.Enabled = false;
+                    this.ctxMenuSelect.Enabled = false;
                 }
             }
             else
             {
-                ctxMenuSelect.Enabled = false;
-                ctxMenuSelectAll.Enabled = false;
-                ctxMenuSelectOldDrivers.Enabled = false;
-                ctxMenuDelete.Enabled = false;
-                ctxMenuExport.Enabled = false;
+                this.ctxMenuSelect.Enabled = false;
+                this.ctxMenuSelectAll.Enabled = false;
+                this.ctxMenuSelectOldDrivers.Enabled = false;
+                this.ctxMenuDelete.Enabled = false;
+                this.ctxMenuExport.Enabled = false;
             }
         }
 
@@ -432,55 +432,55 @@ namespace Rapr
         private void ctxMenuSelectAll_Click(object sender, EventArgs e)
         {
             // Check if there are any entries
-            if (lstDriverStoreEntries.Objects != null)
+            if (this.lstDriverStoreEntries.Objects != null)
             {
-                if (lstDriverStoreEntries.CheckedObjects != null && lstDriverStoreEntries.CheckedObjects.Count != 0)
+                if (this.lstDriverStoreEntries.CheckedObjects != null && this.lstDriverStoreEntries.CheckedObjects.Count != 0)
                 {
-                    lstDriverStoreEntries.UncheckAll();
+                    this.lstDriverStoreEntries.UncheckAll();
                 }
                 else
                 {
-                    lstDriverStoreEntries.CheckAll();
+                    this.lstDriverStoreEntries.CheckAll();
                 }
             }
         }
 
         private void ctxMenuSelect_Click(object sender, EventArgs e)
         {
-            if (lstDriverStoreEntries.Objects != null)
+            if (this.lstDriverStoreEntries.Objects != null)
             {
                 ArrayList list = new ArrayList();
-                if (lstDriverStoreEntries.CheckedObjects != null && lstDriverStoreEntries.CheckedObjects.Count > 0)
+                if (this.lstDriverStoreEntries.CheckedObjects != null && this.lstDriverStoreEntries.CheckedObjects.Count > 0)
                 {
-                    list.AddRange(lstDriverStoreEntries.CheckedObjects);
+                    list.AddRange(this.lstDriverStoreEntries.CheckedObjects);
                 }
 
-                if (lstDriverStoreEntries.SelectedObjects != null && lstDriverStoreEntries.SelectedObjects.Count > 0)
+                if (this.lstDriverStoreEntries.SelectedObjects != null && this.lstDriverStoreEntries.SelectedObjects.Count > 0)
                 {
-                    if (new ArrayList(lstDriverStoreEntries.SelectedObjects).ToArray().All(i => lstDriverStoreEntries.CheckedObjects.Contains(i)))
+                    if (new ArrayList(this.lstDriverStoreEntries.SelectedObjects).ToArray().All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
                     {
-                        foreach (var item in lstDriverStoreEntries.SelectedObjects)
+                        foreach (var item in this.lstDriverStoreEntries.SelectedObjects)
                         {
                             list.Remove(item);
                         }
                     }
                     else
                     {
-                        list.AddRange(lstDriverStoreEntries.SelectedObjects);
+                        list.AddRange(this.lstDriverStoreEntries.SelectedObjects);
                     }
                 }
 
-                lstDriverStoreEntries.CheckedObjects = list;
+                this.lstDriverStoreEntries.CheckedObjects = list;
             }
         }
 
         private void ctxMenuDelete_Click(object sender, EventArgs e)
         {
-            if (lstDriverStoreEntries.SelectedObjects != null)
+            if (this.lstDriverStoreEntries.SelectedObjects != null)
             {
                 List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
 
-                foreach (DriverStoreEntry item in lstDriverStoreEntries.SelectedObjects)
+                foreach (DriverStoreEntry item in this.lstDriverStoreEntries.SelectedObjects)
                 {
                     driverStoreEntries.Add(item);
                 }
@@ -496,11 +496,11 @@ namespace Rapr
 
         private void ctxMenuSelectOldDrivers_Click(object sender, EventArgs e)
         {
-            if (lstDriverStoreEntries.Objects != null)
+            if (this.lstDriverStoreEntries.Objects != null)
             {
-                List<DriverStoreEntry> driverStoreEntryList = lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
+                List<DriverStoreEntry> driverStoreEntryList = this.lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
 
-                lstDriverStoreEntries.CheckedObjects = driverStoreEntryList
+                this.lstDriverStoreEntries.CheckedObjects = driverStoreEntryList
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverPkgProvider, entry.DriverInfName })
                     .SelectMany(g => g.OrderByDescending(row => row.DriverVersion).Skip(1))
                     .ToArray();
@@ -527,11 +527,11 @@ namespace Rapr
         private void ctxMenuExport_Click(object sender, EventArgs e)
         {
             // Check if there are any entries
-            if (lstDriverStoreEntries.Objects != null)
+            if (this.lstDriverStoreEntries.Objects != null)
             {
                 try
                 {
-                    List<DriverStoreEntry> ldse = lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
+                    List<DriverStoreEntry> ldse = this.lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
                     IExport exporter = new CSVExporter();   // TODO: Factory?? Change this when we add support for 
                                                             // direct Excel export
                     string fileName = exporter.Export(ldse);
@@ -559,7 +559,7 @@ namespace Rapr
 
         private void lstDriverStoreEntries_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            IList checkedObjects = lstDriverStoreEntries.CheckedObjects;
+            IList checkedObjects = this.lstDriverStoreEntries.CheckedObjects;
 
             if (checkedObjects != null && checkedObjects.Count > 0)
             {

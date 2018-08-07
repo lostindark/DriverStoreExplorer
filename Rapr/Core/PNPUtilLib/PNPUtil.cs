@@ -256,7 +256,7 @@ namespace Rapr.Utils
             //
             ProcessStartInfo start = new ProcessStartInfo
             {
-                FileName = @"pnputil.exe" /* exe name.*/,
+                FileName = "pnputil.exe" /* exe name.*/,
                 UseShellExecute = false,
                 RedirectStandardOutput = true,
                 CreateNoWindow = true,
@@ -269,28 +269,28 @@ namespace Rapr.Utils
                 // [jenda_] I also had problems with some arguments starting "-". "/" works fine
                 //
                 case PnpUtilOptions.Enumerate:
-                    start.Arguments = @"/e";
+                    start.Arguments = "/e";
                     break;
 
                 case PnpUtilOptions.Delete:
-                    start.Arguments = @"/d " + infName;
+                    start.Arguments = "/d " + infName;
                     break;
 
                 case PnpUtilOptions.ForceDelete:
-                    start.Arguments = @"/f /d " + infName;
+                    start.Arguments = "/f /d " + infName;
                     break;
 
                 case PnpUtilOptions.Add:
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
-                    start.Arguments = @"/a " + Path.GetFileName(infName);
+                    start.Arguments = "/a " + Path.GetFileName(infName);
                     Trace.TraceInformation($"[Add] workDir = {start.WorkingDirectory}, arguments = {start.Arguments}");
                     break;
 
                 case PnpUtilOptions.AddInstall:
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
-                    start.Arguments = @"/i /a " + Path.GetFileName(infName);
+                    start.Arguments = "/i /a " + Path.GetFileName(infName);
                     Trace.TraceInformation($"[AddInstall] workDir = {start.WorkingDirectory}, arguments = {start.Arguments}");
                     break;
             }
@@ -318,7 +318,7 @@ namespace Rapr.Utils
                         {
                             // [jenda_] Really don't know, how to recognize error without language-specific string recognition :(
                             // [jenda_] But those errors should contain ":"
-                            if (output.Contains(@":"))     //"Deleting the driver package failed"
+                            if (output.Contains(":"))     //"Deleting the driver package failed"
                             {
                                 retVal = false;
                             }

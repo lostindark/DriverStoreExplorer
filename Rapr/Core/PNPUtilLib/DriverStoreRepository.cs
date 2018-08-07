@@ -56,12 +56,12 @@ namespace Rapr.Utils
 
         private DriverStoreContent FindInfInfo(string content)
         {
-            for (int i = 0; i < driverStoreContents.Count; i++)
+            for (int i = 0; i < this.driverStoreContents.Count; i++)
             {
-                if (driverStoreContents[i].Content == content)
+                if (this.driverStoreContents[i].Content == content)
                 {
-                    DriverStoreContent driverStoreContent = driverStoreContents[i];
-                    driverStoreContents.RemoveAt(i);
+                    DriverStoreContent driverStoreContent = this.driverStoreContents[i];
+                    this.driverStoreContents.RemoveAt(i);
 
                     return driverStoreContent;
                 }
@@ -95,7 +95,7 @@ namespace Rapr.Utils
                             }
                             else
                             {
-                                driverStoreContents.Add(driverStoreContent);
+                                this.driverStoreContents.Add(driverStoreContent);
                             }
                         }
                         catch (UnauthorizedAccessException)

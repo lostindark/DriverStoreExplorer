@@ -4,7 +4,7 @@ using System.Windows.Forms;
 
 namespace Rapr
 {
-    static class Program
+    public static class Program
     {
         private static Assembly ResolveEventHandler(Object sender, ResolveEventArgs args)
         {
@@ -23,7 +23,7 @@ namespace Rapr
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
-        static void Main()
+        public static void Main()
         {
             AppDomain.CurrentDomain.AssemblyResolve += ResolveEventHandler;
             Application.EnableVisualStyles();

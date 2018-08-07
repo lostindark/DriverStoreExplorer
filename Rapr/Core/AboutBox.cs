@@ -5,13 +5,13 @@ using System.Windows.Forms;
 
 namespace Rapr
 {
-    partial class AboutBox : Form
+    public partial class AboutBox : Form
     {
         public AboutBox()
         {
             InitializeComponent();
-            this.Text = String.Format("About {0}", AssemblyTitle);
-            this.labelProductName.Text = string.Format("DriveStore Explorer v{0} [by Kannan Ramanathan, Teddy Zhang]", AssemblyVersion);
+            this.Text = String.Format("About {0}", this.AssemblyTitle);
+            this.labelProductName.Text = string.Format("DriveStore Explorer v{0} [by Kannan Ramanathan, Teddy Zhang]", this.AssemblyVersion);
         }
 
         #region Assembly Attribute Accessors
