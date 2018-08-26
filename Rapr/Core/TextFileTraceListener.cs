@@ -49,9 +49,9 @@ namespace Rapr.Core
             this.TraceEvent(eventCache, source, eventType, id, message, null);
         }
 
-        public override void WriteLine(string str)
+        public override void WriteLine(string message)
         {
-            base.WriteLine($"{DateTime.UtcNow:u}: {str}");
+            base.WriteLine($"{DateTime.UtcNow:u}: {message}");
         }
     }
 }

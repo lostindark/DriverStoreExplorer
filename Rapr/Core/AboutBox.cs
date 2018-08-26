@@ -9,7 +9,7 @@ namespace Rapr
     {
         public AboutBox()
         {
-            InitializeComponent();
+            this.InitializeComponent();
             this.Text = String.Format("About {0}", this.AssemblyTitle);
             this.labelProductName.Text = string.Format("DriveStore Explorer v{0} [by Kannan Ramanathan, Teddy Zhang]", this.AssemblyVersion);
         }

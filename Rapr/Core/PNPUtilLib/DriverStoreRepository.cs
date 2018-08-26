@@ -39,7 +39,7 @@ namespace Rapr.Utils
 
                 if (!string.IsNullOrEmpty(content))
                 {
-                    DriverStoreContent driverStoreContent = FindInfInfo(content);
+                    DriverStoreContent driverStoreContent = this.FindInfInfo(content);
 
                     if (driverStoreContent != null)
                     {

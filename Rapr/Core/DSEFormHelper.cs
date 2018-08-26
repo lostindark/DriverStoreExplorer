@@ -60,17 +60,17 @@ namespace Rapr
         {
             if (!this.backgroundWorker1.IsBusy)
             {
-                CleanupContext(this.context);
+                this.CleanupContext(this.context);
                 this.lstDriverStoreEntries.ClearObjects();
                 this.context.Code = OperationCode.EnumerateStore;
                 this.backgroundWorker1.RunWorkerAsync(this.context);
-                ShowOperationInProgress(true);
+                this.ShowOperationInProgress(true);
                 //ShowStatus("Enumerating driver store...");
             }
             else
             {
                 MessageBox.Show("Another operation in progress");
-                ShowStatus("Ready");
+                this.ShowStatus("Ready");
             }
         }
 
@@ -78,19 +78,19 @@ namespace Rapr
         {
             if (!this.backgroundWorker1.IsBusy)
             {
-                CleanupContext(this.context);
+                this.CleanupContext(this.context);
                 this.context.Code = this.cbAddInstall.Checked ? OperationCode.AddInstallDriver : OperationCode.AddDriver;
                 this.context.InfPath = infName;
 
                 this.backgroundWorker1.RunWorkerAsync(this.context);
 
-                ShowOperationInProgress(true);
-                ShowStatus("Adding driver package...");
+                this.ShowOperationInProgress(true);
+                this.ShowStatus("Adding driver package...");
             }
             else
             {
                 MessageBox.Show("Another operation in progress");
-                ShowStatus("Ready");
+                this.ShowStatus("Ready");
             }
         }
 
@@ -98,18 +98,18 @@ namespace Rapr
         {
             if (!this.backgroundWorker1.IsBusy)
             {
-                CleanupContext(this.context);
+                this.CleanupContext(this.context);
                 this.context.Code = this.cbForceDeletion.Checked ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
                 this.context.DriverStoreEntries = ldse;
 
                 this.backgroundWorker1.RunWorkerAsync(this.context);
-                ShowOperationInProgress(true);
-                ShowStatus("Deleting driver package(s)...");
+                this.ShowOperationInProgress(true);
+                this.ShowStatus("Deleting driver package(s)...");
             }
             else
             {
                 MessageBox.Show("Another operation in progress");
-                ShowStatus("Ready");
+                this.ShowStatus("Ready");
             }
         }
         // true = show wait_form
@@ -121,7 +121,7 @@ namespace Rapr
 
         private void ShowStatus(string text)
         {
-            ShowStatus(text, Status.Normal);
+            this.ShowStatus(text, Status.Normal);
         }
 
         private void ShowStatus(string text, Status status, bool showPopup = false)

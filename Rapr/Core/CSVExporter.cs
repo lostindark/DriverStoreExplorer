@@ -8,7 +8,6 @@ namespace Rapr
     public class CSVExporter : IExport
     {
         private const string CSV_DELIM = ",";
-        private const string CSV_DELIM_SUBST = " ";
 
         public string Export(List<DriverStoreEntry> ldse)
         {
@@ -41,7 +40,7 @@ namespace Rapr
                     foreach (DriverStoreEntry dse in ldse)
                     {
                         string[] values = dse.GetFieldValues();
-                        Sanitize(ref values);
+                        this.Sanitize(ref values);
 
                         string valueLine = String.Join(CSV_DELIM, values);
                         file.WriteLine(valueLine);

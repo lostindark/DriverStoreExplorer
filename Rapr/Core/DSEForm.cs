@@ -16,7 +16,7 @@ namespace Rapr
 {
     public partial class DSEForm : Form
     {
-        private IDriverStore driverStore;
+        private readonly IDriverStore driverStore;
         private Color SavedBackColor, SavedForeColor;
         private OperationContext context = new OperationContext();
 
@@ -28,7 +28,7 @@ namespace Rapr
                 Application.Exit();
             }
 
-            InitializeComponent();
+            this.InitializeComponent();
 
             this.Icon = ExtractAssociatedIcon(Application.ExecutablePath);
 
@@ -124,7 +124,7 @@ namespace Rapr
             if (!isRunAsAdministrator)
             {
                 this.Text += " [Read-Only Mode]";
-                ShowStatus("Running in Read-Only mode", Status.Warning);
+                this.ShowStatus("Running in Read-Only mode", Status.Warning);
                 this.buttonAddDriver.Enabled = false;
                 this.cbAddInstall.Enabled = false;
                 this.buttonDeleteDriver.Enabled = false;
@@ -134,7 +134,7 @@ namespace Rapr
                 this.buttonRunAsAdmin.Visible = true;
             }
 
-            PopulateUIWithDriverStoreEntries();
+            this.PopulateUIWithDriverStoreEntries();
         }
 
         private void CheckBoxRunAsAdmin_CheckedChanged(object sender, EventArgs e)
@@ -149,7 +149,7 @@ namespace Rapr
 
         private void ButtonEnumerate_Click(object sender, EventArgs e)
         {
-            PopulateUIWithDriverStoreEntries();
+            this.PopulateUIWithDriverStoreEntries();
         }
 
         private void ButtonDelete_Click(object sender, EventArgs e)
@@ -157,7 +157,7 @@ namespace Rapr
             if (this.lstDriverStoreEntries.CheckedObjects.Count == 0 && this.lstDriverStoreEntries.SelectedIndex == -1)
             {
                 // No entry is selected 
-                ShowStatus("Select a driver entry first", Status.Warning);
+                this.ShowStatus("Select a driver entry first", Status.Warning);
                 return;
             }
 
@@ -177,14 +177,14 @@ namespace Rapr
                 }
             }
 
-            DeleteDriverStoreEntries(driverStoreEntries);
+            this.DeleteDriverStoreEntries(driverStoreEntries);
         }
 
         private void DeleteDriverStoreEntries(List<DriverStoreEntry> driverStoreEntries)
         {
             string msgWarning;
 
-            if (driverStoreEntries != null && driverStoreEntries.Count > 0)
+            if (driverStoreEntries?.Count > 0)
             {
                 if (driverStoreEntries.Count == 1)
                 {
@@ -201,7 +201,7 @@ namespace Rapr
                     MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Warning))
                 {
-                    DeleteDriverPackages(driverStoreEntries);
+                    this.DeleteDriverPackages(driverStoreEntries);
                 }
             }
         }
@@ -214,7 +214,7 @@ namespace Rapr
                 string pkgFolder = Path.GetDirectoryName(this.openFileDialog.FileName);
                 string infName = Path.GetFileName(this.openFileDialog.FileName);
 
-                AddDriverPackage(this.openFileDialog.FileName);
+                this.AddDriverPackage(this.openFileDialog.FileName);
             }
         }
 
@@ -230,11 +230,11 @@ namespace Rapr
                     break;
 
                 case OperationCode.DeleteDriver:
-                    DeleteDriver(ref localContext, false);
+                    this.DeleteDriver(ref localContext, false);
                     break;
 
                 case OperationCode.ForceDeleteDriver:
-                    DeleteDriver(ref localContext, true);
+                    this.DeleteDriver(ref localContext, true);
                     break;
 
                 case OperationCode.AddDriver:
@@ -309,9 +309,9 @@ namespace Rapr
                         }
 
                         // refresh the UI
-                        PopulateUIWithDriverStoreEntries();
+                        this.PopulateUIWithDriverStoreEntries();
 
-                        ShowStatus(result, Status.Success);
+                        this.ShowStatus(result, Status.Success);
                     }
                     else
                     {
@@ -329,7 +329,7 @@ namespace Rapr
                             string fullResult = $"{result}{Environment.NewLine}{localContext.ResultData as string}";
 
                             // refresh the UI
-                            PopulateUIWithDriverStoreEntries();
+                            this.PopulateUIWithDriverStoreEntries();
 
                             MessageBox.Show(
                                 fullResult,
@@ -338,7 +338,7 @@ namespace Rapr
                                 MessageBoxIcon.Error);
                         }
 
-                        ShowStatus(result, Status.Error);
+                        this.ShowStatus(result, Status.Error);
                     }
 
                     this.cbForceDeletion.Checked = false;
@@ -347,26 +347,26 @@ namespace Rapr
 
                 case OperationCode.AddDriver:
                 case OperationCode.AddInstallDriver:
-                    if ((bool)localContext.ResultStatus == true)
+                    if (localContext.ResultStatus)
                     {
                         result = $"Added{(localContext.Code == OperationCode.AddInstallDriver ? " & installed " : "")} the package {localContext.InfPath} to driver store";
 
                         // refresh the UI
-                        PopulateUIWithDriverStoreEntries();
-                        ShowStatus(result, Status.Success);
+                        this.PopulateUIWithDriverStoreEntries();
+                        this.ShowStatus(result, Status.Success);
                     }
                     else
                     {
                         result = $"Error adding{(localContext.Code == OperationCode.AddInstallDriver ? " & installing " : "")} the package {localContext.InfPath} to driver store";
 
-                        ShowStatus(result, Status.Error);
+                        this.ShowStatus(result, Status.Error);
                     }
 
                     this.cbAddInstall.Checked = false;
                     break;
             }
 
-            ShowOperationInProgress(false);
+            this.ShowOperationInProgress(false);
         }
 
         private static void ShowAboutBox()
@@ -386,7 +386,7 @@ namespace Rapr
                 this.ctxMenuSelectOldDrivers.Enabled = isRunAsAdministrator;
                 this.ctxMenuExport.Enabled = true;
 
-                if (this.lstDriverStoreEntries.CheckedObjects != null && this.lstDriverStoreEntries.CheckedObjects.Count > 0)
+                if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0)
                 {
                     this.ctxMenuSelectAll.Text = "Unselect All";
                 }
@@ -395,12 +395,11 @@ namespace Rapr
                     this.ctxMenuSelectAll.Text = "Select All";
                 }
 
-                if (this.lstDriverStoreEntries.SelectedObjects != null && this.lstDriverStoreEntries.SelectedObjects.Count > 0)
+                if (this.lstDriverStoreEntries.SelectedObjects?.Count > 0)
                 {
                     this.ctxMenuDelete.Enabled = isRunAsAdministrator;
 
-                    if (this.lstDriverStoreEntries.CheckedObjects != null
-                        && this.lstDriverStoreEntries.CheckedObjects.Count > 0
+                    if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0
                         && new ArrayList(this.lstDriverStoreEntries.SelectedObjects).ToArray().All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
                     {
                         this.ctxMenuSelect.Text = "Unselect";
@@ -450,12 +449,12 @@ namespace Rapr
             if (this.lstDriverStoreEntries.Objects != null)
             {
                 ArrayList list = new ArrayList();
-                if (this.lstDriverStoreEntries.CheckedObjects != null && this.lstDriverStoreEntries.CheckedObjects.Count > 0)
+                if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0)
                 {
                     list.AddRange(this.lstDriverStoreEntries.CheckedObjects);
                 }
 
-                if (this.lstDriverStoreEntries.SelectedObjects != null && this.lstDriverStoreEntries.SelectedObjects.Count > 0)
+                if (this.lstDriverStoreEntries.SelectedObjects?.Count > 0)
                 {
                     if (new ArrayList(this.lstDriverStoreEntries.SelectedObjects).ToArray().All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
                     {
@@ -485,7 +484,7 @@ namespace Rapr
                     driverStoreEntries.Add(item);
                 }
 
-                DeleteDriverStoreEntries(driverStoreEntries);
+                this.DeleteDriverStoreEntries(driverStoreEntries);
             }
         }
 
@@ -509,7 +508,7 @@ namespace Rapr
 
         private void buttonSelectOldDrivers_Click(object sender, EventArgs e)
         {
-            ctxMenuSelectOldDrivers_Click(sender, e);
+            this.ctxMenuSelectOldDrivers_Click(sender, e);
         }
 
         private void toolStripViewLogsButton_Click(object sender, EventArgs e)
@@ -540,14 +539,14 @@ namespace Rapr
                     {
                         string message = $"Contents saved to {fileName}. Export Completed.";
                         MessageBox.Show(message);
-                        ShowStatus(message, Status.Normal);
+                        this.ShowStatus(message, Status.Normal);
                     }
                 }
                 catch (Exception ex)
                 {
                     string message = $"Export failed: {ex}";
                     MessageBox.Show(message);
-                    ShowStatus(message, Status.Error);
+                    this.ShowStatus(message, Status.Error);
                 }
             }
         }
@@ -561,7 +560,7 @@ namespace Rapr
         {
             IList checkedObjects = this.lstDriverStoreEntries.CheckedObjects;
 
-            if (checkedObjects != null && checkedObjects.Count > 0)
+            if (checkedObjects?.Count > 0)
             {
                 long totalSize = 0;
 
@@ -570,11 +569,11 @@ namespace Rapr
                     totalSize += item.DriverSize;
                 }
 
-                ShowStatus($"Selected {checkedObjects.Count} Driver(s). Total size: {DriverStoreEntry.GetBytesReadable(totalSize)}.", Status.Normal);
+                this.ShowStatus($"Selected {checkedObjects.Count} Driver(s). Total size: {DriverStoreEntry.GetBytesReadable(totalSize)}.", Status.Normal);
             }
             else
             {
-                ShowStatus($"Selected 0 Driver.", Status.Normal);
+                this.ShowStatus($"Selected 0 Driver.", Status.Normal);
             }
         }
     }

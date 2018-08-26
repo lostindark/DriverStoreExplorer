@@ -637,7 +637,6 @@ oem0.inf
 02/26/2014 3.1.6019.0
 Имя подписавшего :               Microsoft Windows Hardware Compatibility Publisher";
 
-
         private const string LongRussianPnpUtilEnumerateOutput = @"Служебная программа PnP Майкрософт
 
 Опубликованное имя :            
@@ -1031,7 +1030,7 @@ oem47.inf
             Assert.AreEqual(new Version(6, 1, 7600, 16385), entries[0].DriverVersion);
             Assert.AreEqual("Microsoft Windows", entries[0].DriverSignerName);
         }
-                  
+
         [TestMethod()]
         public void ParseLongChinesePnpUtilEnumerateResultTest()
         {
