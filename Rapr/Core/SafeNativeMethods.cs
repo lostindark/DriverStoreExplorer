@@ -15,7 +15,7 @@ namespace Rapr
     [SuppressUnmanagedCodeSecurity]
     public static class SafeNativeMethods
     {
-        [DllImport("shell32.dll", EntryPoint = "ExtractAssociatedIcon", CharSet = CharSet.Auto)]
+        [DllImport("shell32.dll", EntryPoint = "ExtractAssociatedIcon", CharSet = CharSet.Unicode)]
         internal static extern IntPtr ExtractAssociatedIcon(HandleRef hInst, StringBuilder iconPath, ref int index);
     }
 }

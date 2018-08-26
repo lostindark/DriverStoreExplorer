@@ -134,7 +134,7 @@
             this.lstDriverStoreEntries.TabIndex = 1;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
             this.lstDriverStoreEntries.View = System.Windows.Forms.View.Details;
-            this.lstDriverStoreEntries.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.lstDriverStoreEntries_ItemChecked);
+            this.lstDriverStoreEntries.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.LstDriverStoreEntries_ItemChecked);
             // 
             // driverInfColumn
             // 
@@ -202,28 +202,28 @@
             this.ctxMenuExport});
             this.contextMenuStrip.Name = "contextMenuStrip";
             this.contextMenuStrip.Size = new System.Drawing.Size(167, 126);
-            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.contextMenuStrip_Opening);
+            this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
             // 
             // ctxMenuSelect
             // 
             this.ctxMenuSelect.Name = "ctxMenuSelect";
             this.ctxMenuSelect.Size = new System.Drawing.Size(166, 22);
             this.ctxMenuSelect.Text = "Select";
-            this.ctxMenuSelect.Click += new System.EventHandler(this.ctxMenuSelect_Click);
+            this.ctxMenuSelect.Click += new System.EventHandler(this.CtxMenuSelect_Click);
             // 
             // ctxMenuSelectAll
             // 
             this.ctxMenuSelectAll.Name = "ctxMenuSelectAll";
             this.ctxMenuSelectAll.Size = new System.Drawing.Size(166, 22);
             this.ctxMenuSelectAll.Text = "Select All";
-            this.ctxMenuSelectAll.Click += new System.EventHandler(this.ctxMenuSelectAll_Click);
+            this.ctxMenuSelectAll.Click += new System.EventHandler(this.CtxMenuSelectAll_Click);
             // 
             // ctxMenuSelectOldDrivers
             // 
             this.ctxMenuSelectOldDrivers.Name = "ctxMenuSelectOldDrivers";
             this.ctxMenuSelectOldDrivers.Size = new System.Drawing.Size(166, 22);
             this.ctxMenuSelectOldDrivers.Text = "Select Old Drivers";
-            this.ctxMenuSelectOldDrivers.Click += new System.EventHandler(this.ctxMenuSelectOldDrivers_Click);
+            this.ctxMenuSelectOldDrivers.Click += new System.EventHandler(this.CtxMenuSelectOldDrivers_Click);
             // 
             // toolStripSeparator1
             // 
@@ -235,7 +235,7 @@
             this.ctxMenuDelete.Name = "ctxMenuDelete";
             this.ctxMenuDelete.Size = new System.Drawing.Size(166, 22);
             this.ctxMenuDelete.Text = "Delete";
-            this.ctxMenuDelete.Click += new System.EventHandler(this.ctxMenuDelete_Click);
+            this.ctxMenuDelete.Click += new System.EventHandler(this.CtxMenuDelete_Click);
             // 
             // toolStripSeparator2
             // 
@@ -247,7 +247,7 @@
             this.ctxMenuExport.Name = "ctxMenuExport";
             this.ctxMenuExport.Size = new System.Drawing.Size(166, 22);
             this.ctxMenuExport.Text = "Export";
-            this.ctxMenuExport.Click += new System.EventHandler(this.ctxMenuExport_Click);
+            this.ctxMenuExport.Click += new System.EventHandler(this.CtxMenuExport_Click);
             // 
             // buttonDeleteDriver
             // 
@@ -279,7 +279,7 @@
             this.buttonAddDriver.TabIndex = 5;
             this.buttonAddDriver.Text = "Add Package";
             this.buttonAddDriver.UseVisualStyleBackColor = true;
-            this.buttonAddDriver.Click += new System.EventHandler(this.buttonAddDriver_Click);
+            this.buttonAddDriver.Click += new System.EventHandler(this.ButtonAddDriver_Click);
             // 
             // cbAddInstall
             // 
@@ -328,7 +328,7 @@
             this.toolStripViewLogsButton.ShowDropDownArrow = false;
             this.toolStripViewLogsButton.Size = new System.Drawing.Size(64, 20);
             this.toolStripViewLogsButton.Text = "View Logs";
-            this.toolStripViewLogsButton.Click += new System.EventHandler(this.toolStripViewLogsButton_Click);
+            this.toolStripViewLogsButton.Click += new System.EventHandler(this.ToolStripViewLogsButton_Click);
             // 
             // openFileDialog
             // 
@@ -338,8 +338,8 @@
             // 
             // backgroundWorker1
             // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.backgroundWorker1_RunWorkerCompleted);
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
+            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
             // 
             // InnerContainer
             // 
@@ -382,7 +382,7 @@
             this.buttonRunAsAdmin.Text = "Restart As Admin";
             this.buttonRunAsAdmin.UseVisualStyleBackColor = true;
             this.buttonRunAsAdmin.Visible = false;
-            this.buttonRunAsAdmin.Click += new System.EventHandler(this.buttonRunAsAdmin_Click);
+            this.buttonRunAsAdmin.Click += new System.EventHandler(this.ButtonRunAsAdmin_Click);
             // 
             // gbOptions
             // 
@@ -408,7 +408,7 @@
             this.buttonSelectOldDrivers.TabIndex = 7;
             this.buttonSelectOldDrivers.Text = "Select Old Drivers";
             this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
-            this.buttonSelectOldDrivers.Click += new System.EventHandler(this.buttonSelectOldDrivers_Click);
+            this.buttonSelectOldDrivers.Click += new System.EventHandler(this.ButtonSelectOldDrivers_Click);
             // 
             // toolStripAboutButton
             // 
@@ -418,7 +418,7 @@
             this.toolStripAboutButton.ShowDropDownArrow = false;
             this.toolStripAboutButton.Size = new System.Drawing.Size(44, 20);
             this.toolStripAboutButton.Text = "About";
-            this.toolStripAboutButton.Click += new System.EventHandler(this.toolStripAboutButton_Click);
+            this.toolStripAboutButton.Click += new System.EventHandler(this.ToolStripAboutButton_Click);
             // 
             // checkBoxRunAsAdmin
             // 

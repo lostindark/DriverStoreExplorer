@@ -58,17 +58,15 @@ namespace Rapr.Utils
                     string[] dateAndVersion = value.Trim().Split(new char[] { ' ' }, 2);
                     if (dateAndVersion.Length == 2)
                     {
-                        DateTime driverDate;
-                        Version driverVersion;
                         this.DriverDate = default(DateTime);
                         this.DriverVersion = null;
 
-                        if (DateTime.TryParse(dateAndVersion[0].Trim(), CultureInfo.InvariantCulture, DateTimeStyles.None, out driverDate))
+                        if (DateTime.TryParse(dateAndVersion[0].Trim(), CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime driverDate))
                         {
                             this.DriverDate = driverDate;
                         }
 
-                        if (Version.TryParse(dateAndVersion[1].Trim(), out driverVersion))
+                        if (Version.TryParse(dateAndVersion[1].Trim(), out Version driverVersion))
                         {
                             this.DriverVersion = driverVersion;
                         }
@@ -178,8 +176,7 @@ namespace Rapr.Utils
 
         public static string GetSizeRangeName(long size)
         {
-            string name;
-            if (SizeRangeToName.TryGetValue(size, out name))
+            if (SizeRangeToName.TryGetValue(size, out string name))
             {
                 return name;
             }

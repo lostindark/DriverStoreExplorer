@@ -206,7 +206,7 @@ namespace Rapr
             }
         }
 
-        private void buttonAddDriver_Click(object sender, EventArgs e)
+        private void ButtonAddDriver_Click(object sender, EventArgs e)
         {
             DialogResult dr = this.openFileDialog.ShowDialog();
             if (dr == DialogResult.OK)
@@ -218,7 +218,7 @@ namespace Rapr
             }
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
             OperationContext localContext = (OperationContext)e.Argument;
@@ -281,7 +281,7 @@ namespace Rapr
             }
         }
 
-        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
             OperationContext localContext = (OperationContext)e.Result;
@@ -377,7 +377,7 @@ namespace Rapr
             }
         }
 
-        private void contextMenuStrip_Opening(object sender, CancelEventArgs e)
+        private void ContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
             // Check if there are any entries
             if (this.lstDriverStoreEntries.Objects != null)
@@ -428,7 +428,7 @@ namespace Rapr
         }
 
         // Function to switch between "selected" and "unselected" states
-        private void ctxMenuSelectAll_Click(object sender, EventArgs e)
+        private void CtxMenuSelectAll_Click(object sender, EventArgs e)
         {
             // Check if there are any entries
             if (this.lstDriverStoreEntries.Objects != null)
@@ -444,7 +444,7 @@ namespace Rapr
             }
         }
 
-        private void ctxMenuSelect_Click(object sender, EventArgs e)
+        private void CtxMenuSelect_Click(object sender, EventArgs e)
         {
             if (this.lstDriverStoreEntries.Objects != null)
             {
@@ -473,7 +473,7 @@ namespace Rapr
             }
         }
 
-        private void ctxMenuDelete_Click(object sender, EventArgs e)
+        private void CtxMenuDelete_Click(object sender, EventArgs e)
         {
             if (this.lstDriverStoreEntries.SelectedObjects != null)
             {
@@ -488,12 +488,12 @@ namespace Rapr
             }
         }
 
-        private void buttonRunAsAdmin_Click(object sender, EventArgs e)
+        private void ButtonRunAsAdmin_Click(object sender, EventArgs e)
         {
             RunAsAdministrator();
         }
 
-        private void ctxMenuSelectOldDrivers_Click(object sender, EventArgs e)
+        private void CtxMenuSelectOldDrivers_Click(object sender, EventArgs e)
         {
             if (this.lstDriverStoreEntries.Objects != null)
             {
@@ -506,12 +506,12 @@ namespace Rapr
             }
         }
 
-        private void buttonSelectOldDrivers_Click(object sender, EventArgs e)
+        private void ButtonSelectOldDrivers_Click(object sender, EventArgs e)
         {
-            this.ctxMenuSelectOldDrivers_Click(sender, e);
+            this.CtxMenuSelectOldDrivers_Click(sender, e);
         }
 
-        private void toolStripViewLogsButton_Click(object sender, EventArgs e)
+        private void ToolStripViewLogsButton_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(TextFileTraceListener.LastTraceFile))
             {
@@ -523,7 +523,7 @@ namespace Rapr
             }
         }
 
-        private void ctxMenuExport_Click(object sender, EventArgs e)
+        private void CtxMenuExport_Click(object sender, EventArgs e)
         {
             // Check if there are any entries
             if (this.lstDriverStoreEntries.Objects != null)
@@ -551,12 +551,12 @@ namespace Rapr
             }
         }
 
-        private void toolStripAboutButton_Click(object sender, EventArgs e)
+        private void ToolStripAboutButton_Click(object sender, EventArgs e)
         {
             ShowAboutBox();
         }
 
-        private void lstDriverStoreEntries_ItemChecked(object sender, ItemCheckedEventArgs e)
+        private void LstDriverStoreEntries_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             IList checkedObjects = this.lstDriverStoreEntries.CheckedObjects;
 
