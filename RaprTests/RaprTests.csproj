@@ -52,6 +52,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Core\PNPUtilLib\PNPUtilTests.cs" />
+    <Compile Include="Core\RaprTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

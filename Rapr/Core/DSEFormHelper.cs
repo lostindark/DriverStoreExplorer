@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using Rapr.Core.lang;
+using Rapr.Utils;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -7,8 +10,6 @@ using System.Linq;
 using System.Reflection;
 using System.Security.Principal;
 using System.Windows.Forms;
-using Microsoft.Win32;
-using Rapr.Utils;
 
 namespace Rapr
 {
@@ -56,6 +57,12 @@ namespace Rapr
             context.DriverStoreEntries = null;
         }
 
+        private void InProgress()
+        {
+            MessageBox.Show(Language.Message_Operation_In_Progress);
+            this.ShowStatus(Language.Status_Label);
+        }
+
         private void PopulateUIWithDriverStoreEntries()
         {
             if (!this.backgroundWorker1.IsBusy)
@@ -69,8 +76,7 @@ namespace Rapr
             }
             else
             {
-                MessageBox.Show("Another operation in progress");
-                this.ShowStatus("Ready");
+                InProgress();
             }
         }
 
@@ -85,12 +91,11 @@ namespace Rapr
                 this.backgroundWorker1.RunWorkerAsync(this.context);
 
                 this.ShowOperationInProgress(true);
-                this.ShowStatus("Adding driver package...");
+                this.ShowStatus(Language.Status_Adding_Package);
             }
             else
             {
-                MessageBox.Show("Another operation in progress");
-                this.ShowStatus("Ready");
+                InProgress();
             }
         }
 
@@ -104,12 +109,11 @@ namespace Rapr
 
                 this.backgroundWorker1.RunWorkerAsync(this.context);
                 this.ShowOperationInProgress(true);
-                this.ShowStatus("Deleting driver package(s)...");
+                this.ShowStatus(Language.Status_Deleting_Packages);
             }
             else
             {
-                MessageBox.Show("Another operation in progress");
-                this.ShowStatus("Ready");
+                InProgress();
             }
         }
         // true = show wait_form

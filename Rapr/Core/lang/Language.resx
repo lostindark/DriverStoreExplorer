@@ -1,0 +1,385 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Button_Add_Package" xml:space="preserve">
+    <value>Add Package</value>
+  </data>
+  <data name="Button_Delete_Package" xml:space="preserve">
+    <value>Delete Package</value>
+  </data>
+  <data name="Button_OK" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="Button_Refresh" xml:space="preserve">
+    <value>Refresh</value>
+  </data>
+  <data name="Button_RunAs_Admin" xml:space="preserve">
+    <value>Run As Admin</value>
+  </data>
+  <data name="Button_Select_Old" xml:space="preserve">
+    <value>Select Old Drivers</value>
+  </data>
+  <data name="Button_View_Logs" xml:space="preserve">
+    <value>View Logs</value>
+  </data>
+  <data name="Check_Force_Delete" xml:space="preserve">
+    <value>Force Deletion</value>
+  </data>
+  <data name="Check_Install_Driver" xml:space="preserve">
+    <value>Install Driver</value>
+  </data>
+  <data name="Check_RunAs_Admin" xml:space="preserve">
+    <value>Run As Admin</value>
+  </data>
+  <data name="Column_Date" xml:space="preserve">
+    <value>Driver Date</value>
+  </data>
+  <data name="Column_Driver_Class" xml:space="preserve">
+    <value>Driver Class</value>
+  </data>
+  <data name="Column_Inf" xml:space="preserve">
+    <value>INF</value>
+  </data>
+  <data name="Column_Oem_Inf" xml:space="preserve">
+    <value>OEM INF</value>
+  </data>
+  <data name="Column_Provider" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="Column_Signed_By" xml:space="preserve">
+    <value>Signed By</value>
+  </data>
+  <data name="Column_Size" xml:space="preserve">
+    <value>Size</value>
+  </data>
+  <data name="Column_Version" xml:space="preserve">
+    <value>Driver Version</value>
+  </data>
+  <data name="Context_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Context_Deselect" xml:space="preserve">
+    <value>Deselect</value>
+  </data>
+  <data name="Context_Deselect_All" xml:space="preserve">
+    <value>Deselect All</value>
+  </data>
+  <data name="Context_Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Context_Select" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="Context_Select_All" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="Context_Select_Old" xml:space="preserve">
+    <value>Select Old Drivers</value>
+  </data>
+  <data name="Group_DriverStore" xml:space="preserve">
+    <value>Driver Store</value>
+  </data>
+  <data name="Label_RunAsAdmin" xml:space="preserve">
+    <value>Started without admin priveleges. Some features are disabled.</value>
+  </data>
+  <data name="Message_Delete" xml:space="preserve">
+    <value>delete</value>
+  </data>
+  <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
+    <value>About to {0} {1} packages from driver store.</value>
+  </data>
+  <data name="Message_Delete_Result" xml:space="preserve">
+    <value>Deletion of {0} ({1}) {2}.</value>
+  </data>
+  <data name="Message_Delete_Single_Package" xml:space="preserve">
+    <value>About to {0} {1} ({2}) from driver store.</value>
+  </data>
+  <data name="Message_Failed" xml:space="preserve">
+    <value>failed</value>
+  </data>
+  <data name="Message_Force_Delete" xml:space="preserve">
+    <value>force delete</value>
+  </data>
+  <data name="Message_Requires_Later_OS" xml:space="preserve">
+    <value>This utility cannot be run in pre-Vista OS</value>
+  </data>
+  <data name="Message_Select_Driver_Entry" xml:space="preserve">
+    <value>Select a driver entry first</value>
+  </data>
+  <data name="Message_Success" xml:space="preserve">
+    <value>succeeded</value>
+  </data>
+  <data name="Message_Sure" xml:space="preserve">
+    <value>Are you sure?</value>
+  </data>
+  <data name="Message_Title_Warning" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="Options_Text" xml:space="preserve">
+    <value> Operations </value>
+  </data>
+  <data name="Product_Link" xml:space="preserve">
+    <value>https://github.com/lostindark/DriverStoreExplorer</value>
+  </data>
+  <data name="Product_Name" xml:space="preserve">
+    <value>Driver Store Explorer [RAPR]</value>
+  </data>
+  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
+    <value>[Read-Only Mode]</value>
+  </data>
+  <data name="StatusStrip_default" xml:space="preserve">
+    <value>statusStrip1</value>
+  </data>
+  <data name="Status_Label" xml:space="preserve">
+    <value>Ready</value>
+  </data>
+  <data name="Status_Running_ReadOnly" xml:space="preserve">
+    <value>Running in Read-Only mode</value>
+  </data>
+  <data name="Tip_Driver_In_Use" xml:space="preserve">
+    <value>[TIP: The driver may still being used. Try FORCE deleting the package]</value>
+  </data>
+  <data name="Title_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>File</value>
+  </data>
+  <data name="Menu_File_Export" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="Menu_File_Exit" xml:space="preserve">
+    <value>Exit</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Menu_Options_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
+  <data name="Menu_Options_Language_English" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Menu_Options_Language_French" xml:space="preserve">
+    <value>French</value>
+  </data>
+  <data name="Menu_File_View_Logs" xml:space="preserve">
+    <value>View Logs</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="Message_No_Entries" xml:space="preserve">
+    <value>No entries loaded.</value>
+  </data>
+  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
+    <value>Select the INF</value>
+  </data>
+  <data name="Dialog_Open_Filters" xml:space="preserve">
+    <value>INF files | *.inf</value>
+  </data>
+  <data name="Product_Credits" xml:space="preserve">
+    <value>DriveStore Explorer v{0}
+by Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
+  </data>
+  <data name="Product_About_Title" xml:space="preserve">
+    <value>About {0}</value>
+  </data>
+  <data name="Export_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="About_Project_Description" xml:space="preserve">
+    <value>You can find latest version and release notes here:
+
+https://github.com/lostindark/DriverStoreExplorer/releases
+
+Credits:
+
+ObjectListView http://objectlistview.sourceforge.net/	</value>
+  </data>
+  <data name="UnitTest_Language" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="Dialog_Export_Filters" xml:space="preserve">
+    <value>CSV Files | *.csv</value>
+  </data>
+  <data name="Message_Operation_In_Progress" xml:space="preserve">
+    <value>Another operation in progress</value>
+  </data>
+  <data name="Status_Adding_Package" xml:space="preserve">
+    <value>Adding driver package...</value>
+  </data>
+  <data name="Status_Deleting_Packages" xml:space="preserve">
+    <value>Deleting driver package(s)...</value>
+  </data>
+  <data name="Message_Detailed_Log" xml:space="preserve">
+    <value>Detailed Error Log</value>
+  </data>
+  <data name="Message_Delete_Package" xml:space="preserve">
+    <value>Removed {0} ({1}) from driver store</value>
+  </data>
+  <data name="Message_Delete_Packages" xml:space="preserve">
+    <value>Removed {0} packages from driver store</value>
+  </data>
+  <data name="Message_Delete_Package_Error" xml:space="preserve">
+    <value>Error removing {0} ({1}) from driver store {2}</value>
+  </data>
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+    <value>Error removing some packages from driver store {0}</value>
+  </data>
+  <data name="Message_Driver_Added" xml:space="preserve">
+    <value>Added {0} the package {1} to driver store</value>
+  </data>
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
+    <value>Error adding {0} the package {1} to driver store</value>
+  </data>
+  <data name="Message_Driver_And_Installed" xml:space="preserve">
+    <value> &amp; installed</value>
+  </data>
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>The log file cannot be found.</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="Export_Complete" xml:space="preserve">
+    <value>Contents saved to {0}. Export Completed.</value>
+  </data>
+  <data name="Export_Failed" xml:space="preserve">
+    <value>Export failed: {0}</value>
+  </data>
+  <data name="Status_Selected_Drivers" xml:space="preserve">
+    <value>Selected {0} Driver(s). Total size: {1}.</value>
+  </data>
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+    <value>No drivers selected.</value>
+  </data>
+  <data name="Menu_Options_RunAs_Admin" xml:space="preserve">
+    <value>Run As Admin</value>
+  </data>
+</root>
