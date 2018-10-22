@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Rapr.Core.lang;
+using System;
 using System.Diagnostics;
 using System.Reflection;
 using System.Windows.Forms;
@@ -10,8 +11,10 @@ namespace Rapr
         public AboutBox()
         {
             this.InitializeComponent();
-            this.Text = String.Format("About {0}", this.AssemblyTitle);
-            this.labelProductName.Text = string.Format("DriveStore Explorer v{0} [by Kannan Ramanathan, Teddy Zhang]", this.AssemblyVersion);
+            this.Text = String.Format(Language.Product_About_Title, this.AssemblyTitle);
+            this.labelProductName.Text = string.Format(Language.Product_Credits, this.AssemblyVersion);
+            this.labelLink.Text = Language.Product_Link;
+            this.textBoxDescription.Text = Language.About_Project_Description;
         }
 
         #region Assembly Attribute Accessors

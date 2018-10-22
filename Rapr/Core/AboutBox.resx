@@ -600,11 +600,4 @@
         cJWw3xX9u6JfoPW7on9X9Ku1flf074p+tdbviv5d0a/S+r//+/8BPTxUq6Ub7iwAAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="textBoxDescription.Text" xml:space="preserve">
-    <value>You can find latest version and release notes here:
-  https://github.com/lostindark/DriverStoreExplorer/releases
-
-Credits:
-  ObjectListView http://objectlistview.sourceforge.net/</value>
-  </data>
 </root>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Rapr.Utils;
 using System.Windows.Forms;
+using Rapr.Core.lang;
 
 namespace Rapr
 {
@@ -13,7 +14,7 @@ namespace Rapr
         {
             if (ldse.Count == 0)
             {
-                MessageBox.Show("No entries to export", "Error");
+                MessageBox.Show(Language.Message_No_Entries, Language.Export_Error);
                 return null;
             }
 
@@ -21,7 +22,7 @@ namespace Rapr
             {
                 CheckFileExists = false,
                 DefaultExt = "csv",
-                Filter = "CSV Files | *.csv",
+                Filter = Language.Dialog_Export_Filters,
                 SupportMultiDottedExtensions = true
             };
 
