@@ -279,15 +279,6 @@
   <data name="Menu_Options" xml:space="preserve">
     <value>Options</value>
   </data>
-  <data name="Menu_Options_Language" xml:space="preserve">
-    <value>Language</value>
-  </data>
-  <data name="Menu_Options_Language_English" xml:space="preserve">
-    <value>English</value>
-  </data>
-  <data name="Menu_Options_Language_French" xml:space="preserve">
-    <value>French</value>
-  </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>View Logs</value>
   </data>
@@ -379,7 +370,10 @@ ObjectListView http://objectlistview.sourceforge.net/	</value>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>No drivers selected.</value>
   </data>
-  <data name="Menu_Options_RunAs_Admin" xml:space="preserve">
+  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
     <value>Run As Admin</value>
+  </data>
+  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
+    <value>Always Run As Admin</value>
   </data>
 </root>

@@ -418,6 +418,15 @@ namespace Rapr.Core.lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Run As Admin.
+        /// </summary>
+        public static string Menu_File_RunAs_Admin {
+            get {
+                return ResourceManager.GetString("Menu_File_RunAs_Admin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to View Logs.
         /// </summary>
         public static string Menu_File_View_Logs {
@@ -445,47 +454,20 @@ namespace Rapr.Core.lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Always Run As Admin.
+        /// </summary>
+        public static string Menu_Option_Always_RunAs_Admin {
+            get {
+                return ResourceManager.GetString("Menu_Option_Always_RunAs_Admin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Options.
         /// </summary>
         public static string Menu_Options {
             get {
                 return ResourceManager.GetString("Menu_Options", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Language.
-        /// </summary>
-        public static string Menu_Options_Language {
-            get {
-                return ResourceManager.GetString("Menu_Options_Language", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to English.
-        /// </summary>
-        public static string Menu_Options_Language_English {
-            get {
-                return ResourceManager.GetString("Menu_Options_Language_English", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to French.
-        /// </summary>
-        public static string Menu_Options_Language_French {
-            get {
-                return ResourceManager.GetString("Menu_Options_Language_French", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Run As Admin.
-        /// </summary>
-        public static string Menu_Options_RunAs_Admin {
-            get {
-                return ResourceManager.GetString("Menu_Options_RunAs_Admin", resourceCulture);
             }
         }
         

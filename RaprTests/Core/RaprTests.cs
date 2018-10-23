@@ -29,6 +29,5 @@ namespace Rapr.Utils.Tests
 
             Assert.IsTrue(Language.UnitTest_Language == "Français");
         }
-
     }
 }

@@ -42,8 +42,6 @@ namespace Rapr
             this.lstDriverStoreEntries.CheckBoxes = isRunAsAdministrator;
             this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
 
-            this.labelRunAsAdmin.Text = Language.Label_RunAsAdmin;
-
             this.driverVersionColumn.GroupKeyGetter = (object rowObject) =>
             {
                 DriverStoreEntry driver = (DriverStoreEntry)rowObject;
@@ -123,29 +121,22 @@ namespace Rapr
             this.SavedBackColor = this.lblStatus.BackColor;
             this.SavedForeColor = this.lblStatus.ForeColor;
 
-            this.checkBoxRunAsAdmin.Checked = RunAsAdmin;
-            this.checkBoxRunAsAdmin.CheckedChanged += this.CheckBoxRunAsAdmin_CheckedChanged;
+            this.alwaysRunAsAdminToolStripMenuItem.Checked = RunAsAdmin;
+            this.alwaysRunAsAdminToolStripMenuItem.CheckedChanged += (f, g) => RunAsAdmin = this.alwaysRunAsAdminToolStripMenuItem.Checked;
 
             if (!isRunAsAdministrator)
             {
                 this.Text += " " + Language.Product_Name_Additional_ReadOnly;
-                this.ShowStatus(Language.Status_Running_ReadOnly, Status.Warning);
+                this.ShowStatus(Language.Label_RunAsAdmin, Status.Warning);
                 this.buttonAddDriver.Enabled = false;
                 this.cbAddInstall.Enabled = false;
                 this.buttonDeleteDriver.Enabled = false;
                 this.cbForceDeletion.Enabled = false;
                 this.buttonSelectOldDrivers.Enabled = false;
-                this.labelRunAsAdmin.Visible = true;
-                this.buttonRunAsAdmin.Visible = true;
                 this.runAsAdminToolStripMenuItem.Enabled = true;
             }
 
             this.PopulateUIWithDriverStoreEntries();
-        }
-
-        private void CheckBoxRunAsAdmin_CheckedChanged(object sender, EventArgs e)
-        {
-            RunAsAdmin = this.checkBoxRunAsAdmin.Checked;
         }
 
         private void DSEForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -194,13 +185,15 @@ namespace Rapr
             {
                 if (driverStoreEntries.Count == 1)
                 {
-                    msgWarning = string.Format(Language.Message_Delete_Single_Package, (this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete), driverStoreEntries[0].DriverInfName, driverStoreEntries[0].DriverPublishedName);                                        
-                    //msgWarning = $"About to {(this.cbForceDeletion.Checked ? "force delete" : "delete")} {driverStoreEntries[0].DriverInfName} ({driverStoreEntries[0].DriverPublishedName}) from driver store.{Environment.NewLine}Are you sure?";
+                    msgWarning = string.Format(
+                        Language.Message_Delete_Single_Package,
+                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete, driverStoreEntries[0].DriverInfName, driverStoreEntries[0].DriverPublishedName);
                 }
                 else
-                {                    
-                    msgWarning = string.Format(Language.Message_Delete_Multiple_Packages, (this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete), driverStoreEntries.Count);
-                    //msgWarning = $"About to {(this.cbForceDeletion.Checked ? "force delete" : "delete")} {driverStoreEntries.Count} packages from driver store.{Environment.NewLine}Are you sure?";
+                {
+                    msgWarning = string.Format(
+                        Language.Message_Delete_Multiple_Packages,
+                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete, driverStoreEntries.Count);
                 }
 
                 msgWarning += Environment.NewLine + Language.Message_Sure;
@@ -278,9 +271,12 @@ namespace Rapr
                     foreach (DriverStoreEntry dse in localContext.DriverStoreEntries)
                     {
                         bool result = this.driverStore.DeletePackage(dse, force);
-                        // string resultTxt = $"Delete {dse.DriverInfName} ({dse.DriverPublishedName}) {(result ? "succeeded." : "failed.")}";
-                        string resultTxt = string.Format(Language.Message_Delete_Result, dse.DriverInfName, dse.DriverPublishedName,
-                                                            (result ? Language.Message_Success : Language.Message_Failed));
+                        string resultTxt = string.Format(
+                            Language.Message_Delete_Result,
+                            dse.DriverInfName,
+                            dse.DriverPublishedName,
+                            result ? Language.Message_Success : Language.Message_Failed);
+
                         Trace.TraceInformation(resultTxt);
 
                         sb.AppendLine(resultTxt);
@@ -313,12 +309,10 @@ namespace Rapr
                     {
                         if (localContext.DriverStoreEntries.Count == 1)
                         {
-                            //result = $"Removed {localContext.DriverStoreEntries[0].DriverInfName} ({localContext.DriverStoreEntries[0].DriverPublishedName}) from driver store";
                             result = string.Format(Language.Message_Delete_Package, localContext.DriverStoreEntries[0].DriverInfName, localContext.DriverStoreEntries[0].DriverPublishedName);
                         }
                         else
                         {
-                            //result = $"Removed {localContext.DriverStoreEntries.Count} packages from driver store";
                             result = string.Format(Language.Message_Delete_Packages, localContext.DriverStoreEntries.Count.ToString());
                         }
 
@@ -330,18 +324,16 @@ namespace Rapr
                     else
                     {
                         string driverDeleteTip = localContext.Code == OperationCode.DeleteDriver
-                            ? " "+Language.Tip_Driver_In_Use
+                            ? " " + Language.Tip_Driver_In_Use
                             : string.Empty;
 
                         if (localContext.DriverStoreEntries.Count == 1)
                         {
-                            //result = $"Error removing {localContext.DriverStoreEntries[0].DriverInfName} ({localContext.DriverStoreEntries[0].DriverPublishedName}) from driver store{driverDeleteTip}";
                             result = string.Format(Language.Message_Delete_Package_Error, localContext.DriverStoreEntries[0].DriverInfName,
                                                         localContext.DriverStoreEntries[0].DriverPublishedName, driverDeleteTip);
                         }
                         else
                         {
-                            //result = $"Error removing some packages from driver store{driverDeleteTip}";
                             result = string.Format(Language.Message_Delete_Packages_Error, driverDeleteTip);
                             string fullResult = $"{result}{Environment.NewLine}{localContext.ResultData as string}";
 
@@ -366,9 +358,10 @@ namespace Rapr
                 case OperationCode.AddInstallDriver:
                     if (localContext.ResultStatus)
                     {
-                        //result = $"Added{(localContext.Code == OperationCode.AddInstallDriver ? " & installed " : "")} the package {localContext.InfPath} to driver store";
-                        result = string.Format(Language.Message_Driver_Added, (localContext.Code == OperationCode.AddInstallDriver ? Language.Message_Driver_And_Installed : ""),
-                                                localContext.InfPath);
+                        result = string.Format(
+                            Language.Message_Driver_Added,
+                            localContext.Code == OperationCode.AddInstallDriver ? Language.Message_Driver_And_Installed : "",
+                            localContext.InfPath);
 
                         // refresh the UI
                         this.PopulateUIWithDriverStoreEntries();
@@ -376,8 +369,10 @@ namespace Rapr
                     }
                     else
                     {
-                        result = string.Format(Language.Message_Driver_Added_Error, (localContext.Code == OperationCode.AddInstallDriver ? Language.Message_Driver_And_Installed : ""),
-                                                localContext.InfPath);
+                        result = string.Format(
+                            Language.Message_Driver_Added_Error,
+                            localContext.Code == OperationCode.AddInstallDriver ? Language.Message_Driver_And_Installed : "",
+                            localContext.InfPath);
 
                         this.ShowStatus(result, Status.Error);
                     }
@@ -404,7 +399,6 @@ namespace Rapr
             {
                 this.ctxMenuSelectAll.Enabled = isRunAsAdministrator;
                 this.ctxMenuSelectOldDrivers.Enabled = isRunAsAdministrator;
-                this.ctxMenuExport.Enabled = true;
 
                 if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0)
                 {
@@ -443,7 +437,6 @@ namespace Rapr
                 this.ctxMenuSelectAll.Enabled = false;
                 this.ctxMenuSelectOldDrivers.Enabled = false;
                 this.ctxMenuDelete.Enabled = false;
-                this.ctxMenuExport.Enabled = false;
             }
         }
 
@@ -543,11 +536,6 @@ namespace Rapr
             }
         }
 
-        private void CtxMenuExport_Click(object sender, EventArgs e)
-        {
-            ExportList();
-        }
-
         private void ExportList()
         {
             // Check if there are any entries
@@ -576,49 +564,40 @@ namespace Rapr
             }
         }
 
-        private void ToolStripAboutButton_Click(object sender, EventArgs e)
-        {
-            ShowAboutBox();
-        }
-
-        private void englishToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-        
-        private void aboutToolStripMenuItem1_Click(object sender, EventArgs e)
+
+        private void FrenchToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowAboutBox();
+            this.SwitchCulture(sender, e, "fr-FR");
         }
 
-        private void frenchToolStripMenuItem_Click(object sender, EventArgs e)
+        private void EnglishToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SwitchCulture(sender, e, "fr-FR");
-        }
-
-
-        private void englishToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            SwitchCulture(sender, e, "EN");
+            this.SwitchCulture(sender, e, "EN");
         }
 
         private void SwitchCulture(object sender, EventArgs e, string cultureString)
         {
-            CultureInfo ci = new CultureInfo(CultureInfo.CurrentCulture.Name);
-            ci = CultureInfo.GetCultureInfo(cultureString);
+            CultureInfo ci = CultureInfo.GetCultureInfo(cultureString);
             Thread.CurrentThread.CurrentCulture = ci;
             Thread.CurrentThread.CurrentUICulture = ci;
 
             // Clear and redraw the window
-            Controls.Clear();
+            this.Controls.Clear();
             this.InitializeComponent();
+            this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
+            this.lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
+            this.lstDriverStoreEntries.SecondarySortColumn = this.driverDateColumn;
+            this.lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
             this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
-            this.labelRunAsAdmin.Text = Language.Label_RunAsAdmin;
-            DSEForm_Shown(sender, e);
+            this.DSEForm_Shown(sender, e);
             Application.DoEvents();
         }
 
-        private void toolStripMenuItem1_Click(object sender, EventArgs e)
+        private void ViewLogsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             if (!string.IsNullOrEmpty(TextFileTraceListener.LastTraceFile))
             {
@@ -630,17 +609,17 @@ namespace Rapr
             }
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        private void ExportToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ExportList();
+            this.ExportList();
         }
 
-        private void runAsAdminToolStripMenuItem_Click(object sender, EventArgs e)
+        private void RunAsAdminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             RunAsAdministrator();
         }
 
-        private void aboutToolStripMenuItem1_Click_1(object sender, EventArgs e)
+        private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowAboutBox();
         }
@@ -658,8 +637,11 @@ namespace Rapr
                     totalSize += item.DriverSize;
                 }
 
-                //this.ShowStatus($"Selected {checkedObjects.Count} Driver(s). Total size: {DriverStoreEntry.GetBytesReadable(totalSize)}.", Status.Normal);
-                this.ShowStatus(string.Format(Language.Status_Selected_Drivers, checkedObjects.Count.ToString(), DriverStoreEntry.GetBytesReadable(totalSize)), Status.Normal);
+                this.ShowStatus(string.Format(
+                    Language.Status_Selected_Drivers,
+                    checkedObjects.Count.ToString(),
+                    DriverStoreEntry.GetBytesReadable(totalSize)),
+                    Status.Normal);
             }
             else
             {

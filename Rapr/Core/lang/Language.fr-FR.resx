@@ -261,12 +261,6 @@
   <data name="Title_About" xml:space="preserve">
     <value>A propos</value>
   </data>
-  <data name="Menu_Options_Language_English" xml:space="preserve">
-    <value>Anglais</value>
-  </data>
-  <data name="Menu_Options_Language_French" xml:space="preserve">
-    <value>Français</value>
-  </data>
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Aucune entrée chargée.</value>
   </data>
@@ -281,9 +275,6 @@
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
-  </data>
-  <data name="Menu_Options_Language" xml:space="preserve">
-    <value>Langue</value>
   </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>Options</value>
@@ -379,7 +370,10 @@ ObjectListView http://objectlistview.sourceforge.net/ </value>
   <data name="Export_Complete" xml:space="preserve">
     <value>Contenu enregistré dans {0}. Exportation terminée.</value>
   </data>
-  <data name="Menu_Options_RunAs_Admin" xml:space="preserve">
+  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
+    <value>Redémarrer en tant qu'admin</value>
+  </data>
+  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
     <value>Redémarrer en tant qu'admin</value>
   </data>
 </root>

@@ -74,8 +74,11 @@
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Core\IExport.cs" />
-    <Compile Include="Core\lang\Language.Designer.cs" />
-    <Compile Include="Core\lang\Language.fr-FR.Designer.cs" />
+    <Compile Include="Core\lang\Language.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Language.resx</DependentUpon>
+    </Compile>
     <Compile Include="Core\PNPUtilLib\DriverStoreEntry.cs" />
     <Compile Include="Core\PNPUtilLib\DriverStoreRepository.cs" />
     <Compile Include="Core\PNPUtilLib\IDriverStore.cs" />
@@ -90,8 +93,13 @@
     <EmbeddedResource Include="Core\DSEForm.resx">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Core\lang\Language.fr-FR.resx" />
-    <EmbeddedResource Include="Core\lang\Language.resx" />
+    <EmbeddedResource Include="Core\lang\Language.fr-FR.resx">
+      <LastGenOutput>Language.fr-FR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Core\lang\Language.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Language.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
