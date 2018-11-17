@@ -27,6 +27,7 @@ namespace Rapr
         {
             new CultureInfo("en"),
             new CultureInfo("fr-FR"),
+            new CultureInfo("ja-JP"),
             new CultureInfo("zh-CN"),
         };
 
