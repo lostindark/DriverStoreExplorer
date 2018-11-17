@@ -62,25 +62,14 @@ namespace Rapr.Core.lang {
         
         /// <summary>
         ///   Looks up a localized string similar to You can find latest version and release notes here:
-        ///
         ///https://github.com/lostindark/DriverStoreExplorer/releases
         ///
         ///Credits:
-        ///
         ///ObjectListView http://objectlistview.sourceforge.net/	.
         /// </summary>
         public static string About_Project_Description {
             get {
                 return ResourceManager.GetString("About_Project_Description", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to About.
-        /// </summary>
-        public static string Button_About {
-            get {
-                return ResourceManager.GetString("Button_About", resourceCulture);
             }
         }
         
@@ -121,29 +110,11 @@ namespace Rapr.Core.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run As Admin.
-        /// </summary>
-        public static string Button_RunAs_Admin {
-            get {
-                return ResourceManager.GetString("Button_RunAs_Admin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Select Old Drivers.
         /// </summary>
         public static string Button_Select_Old {
             get {
                 return ResourceManager.GetString("Button_Select_Old", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to View Logs.
-        /// </summary>
-        public static string Button_View_Logs {
-            get {
-                return ResourceManager.GetString("Button_View_Logs", resourceCulture);
             }
         }
         
@@ -162,15 +133,6 @@ namespace Rapr.Core.lang {
         public static string Check_Install_Driver {
             get {
                 return ResourceManager.GetString("Check_Install_Driver", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Run As Admin.
-        /// </summary>
-        public static string Check_RunAs_Admin {
-            get {
-                return ResourceManager.GetString("Check_RunAs_Admin", resourceCulture);
             }
         }
         
@@ -274,15 +236,6 @@ namespace Rapr.Core.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export.
-        /// </summary>
-        public static string Context_Export {
-            get {
-                return ResourceManager.GetString("Context_Export", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Select.
         /// </summary>
         public static string Context_Select {
@@ -382,7 +335,7 @@ namespace Rapr.Core.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Started without admin priveleges. Some features are disabled..
+        ///   Looks up a localized string similar to Started without admin privileges. Some features are disabled..
         /// </summary>
         public static string Label_RunAsAdmin {
             get {
@@ -681,9 +634,9 @@ namespace Rapr.Core.lang {
         /// <summary>
         ///   Looks up a localized string similar to  Operations .
         /// </summary>
-        public static string Options_Text {
+        public static string Operations_Text {
             get {
-                return ResourceManager.GetString("Options_Text", resourceCulture);
+                return ResourceManager.GetString("Operations_Text", resourceCulture);
             }
         }
         
@@ -784,15 +737,6 @@ namespace Rapr.Core.lang {
         public static string Status_Selected_Drivers {
             get {
                 return ResourceManager.GetString("Status_Selected_Drivers", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to statusStrip1.
-        /// </summary>
-        public static string StatusStrip_default {
-            get {
-                return ResourceManager.GetString("StatusStrip_default", resourceCulture);
             }
         }
         

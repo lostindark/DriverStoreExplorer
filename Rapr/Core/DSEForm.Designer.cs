@@ -362,7 +362,7 @@ namespace Rapr
             this.gbOptions.Size = new System.Drawing.Size(124, 196);
             this.gbOptions.TabIndex = 13;
             this.gbOptions.TabStop = false;
-            this.gbOptions.Text = " Operations ";
+            this.gbOptions.Text = global::Rapr.Core.lang.Language.Operations_Text;
             // 
             // buttonSelectOldDrivers
             // 
@@ -370,7 +370,7 @@ namespace Rapr
             this.buttonSelectOldDrivers.Name = "buttonSelectOldDrivers";
             this.buttonSelectOldDrivers.Size = new System.Drawing.Size(109, 23);
             this.buttonSelectOldDrivers.TabIndex = 7;
-            this.buttonSelectOldDrivers.Text = global::Rapr.Core.lang.Language.Context_Select_Old;
+            this.buttonSelectOldDrivers.Text = global::Rapr.Core.lang.Language.Button_Select_Old;
             this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
             this.buttonSelectOldDrivers.Click += new System.EventHandler(this.ButtonSelectOldDrivers_Click);
             // 

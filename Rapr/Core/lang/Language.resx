@@ -117,9 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="Button_About" xml:space="preserve">
-    <value>About</value>
-  </data>
   <data name="Button_Add_Package" xml:space="preserve">
     <value>Add Package</value>
   </data>
@@ -132,23 +129,14 @@
   <data name="Button_Refresh" xml:space="preserve">
     <value>Refresh</value>
   </data>
-  <data name="Button_RunAs_Admin" xml:space="preserve">
-    <value>Run As Admin</value>
-  </data>
   <data name="Button_Select_Old" xml:space="preserve">
     <value>Select Old Drivers</value>
-  </data>
-  <data name="Button_View_Logs" xml:space="preserve">
-    <value>View Logs</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Force Deletion</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
     <value>Install Driver</value>
-  </data>
-  <data name="Check_RunAs_Admin" xml:space="preserve">
-    <value>Run As Admin</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
     <value>Driver Date</value>
@@ -183,9 +171,6 @@
   <data name="Context_Deselect_All" xml:space="preserve">
     <value>Deselect All</value>
   </data>
-  <data name="Context_Export" xml:space="preserve">
-    <value>Export</value>
-  </data>
   <data name="Context_Select" xml:space="preserve">
     <value>Select</value>
   </data>
@@ -199,7 +184,7 @@
     <value>Driver Store</value>
   </data>
   <data name="Label_RunAsAdmin" xml:space="preserve">
-    <value>Started without admin priveleges. Some features are disabled.</value>
+    <value>Started without admin privileges. Some features are disabled.</value>
   </data>
   <data name="Message_Delete" xml:space="preserve">
     <value>delete</value>
@@ -234,7 +219,7 @@
   <data name="Message_Title_Warning" xml:space="preserve">
     <value>Warning</value>
   </data>
-  <data name="Options_Text" xml:space="preserve">
+  <data name="Operations_Text" xml:space="preserve">
     <value> Operations </value>
   </data>
   <data name="Product_Link" xml:space="preserve">
@@ -245,9 +230,6 @@
   </data>
   <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
     <value>[Read-Only Mode]</value>
-  </data>
-  <data name="StatusStrip_default" xml:space="preserve">
-    <value>statusStrip1</value>
   </data>
   <data name="Status_Label" xml:space="preserve">
     <value>Ready</value>
@@ -306,11 +288,9 @@ by Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
     <value>You can find latest version and release notes here:
-
 https://github.com/lostindark/DriverStoreExplorer/releases
 
 Credits:
-
 ObjectListView http://objectlistview.sourceforge.net/	</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">

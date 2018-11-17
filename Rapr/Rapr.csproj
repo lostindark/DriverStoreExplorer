@@ -93,6 +93,9 @@
     <EmbeddedResource Include="Core\DSEForm.resx">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Core\lang\Language.zh-CN.resx">
+      <LastGenOutput>Language.fr-FR.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Core\lang\Language.fr-FR.resx">
       <LastGenOutput>Language.fr-FR.Designer.cs</LastGenOutput>
     </EmbeddedResource>

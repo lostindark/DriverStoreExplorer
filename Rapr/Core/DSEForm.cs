@@ -27,6 +27,7 @@ namespace Rapr
         {
             new CultureInfo("en"),
             new CultureInfo("fr-FR"),
+            new CultureInfo("zh-CN"),
         };
 
         public DSEForm()
