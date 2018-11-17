@@ -23,6 +23,12 @@ namespace Rapr
         private Color SavedBackColor, SavedForeColor;
         private OperationContext context = new OperationContext();
 
+        private static readonly CultureInfo[] SupportedLanauage = new[]
+        {
+            new CultureInfo("en"),
+            new CultureInfo("fr-FR"),
+        };
+
         public DSEForm()
         {
             if (!IsOSSupported())
@@ -34,6 +40,7 @@ namespace Rapr
             this.InitializeComponent();
 
             this.Icon = ExtractAssociatedIcon(Application.ExecutablePath);
+            this.BuildLanguageMenu();
 
             this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
             this.lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
@@ -114,6 +121,41 @@ namespace Rapr
             }
 
             return null;
+        }
+
+        private void BuildLanguageMenu()
+        {
+            ToolStripMenuItem defaultLanguageMenuItem = null;
+            bool currentUILanauageSupported = false;
+            foreach (var item in SupportedLanauage)
+            {
+                ToolStripMenuItem menuItem = new ToolStripMenuItem
+                {
+                    CheckOnClick = true,
+                    Text = item.NativeName,
+                    Tag = item
+                };
+
+                menuItem.Click += this.SwitchCulture;
+
+                if (CultureInfo.CurrentUICulture.Equals(item))
+                {
+                    menuItem.Checked = true;
+                    currentUILanauageSupported = true;
+                }
+
+                if (defaultLanguageMenuItem == null)
+                {
+                    defaultLanguageMenuItem = menuItem;
+                }
+
+                this.languageToolStripMenuItem.DropDownItems.Add(menuItem);
+            }
+
+            if (!currentUILanauageSupported && defaultLanguageMenuItem != null)
+            {
+                defaultLanguageMenuItem.Checked = true;
+            }
         }
 
         private void DSEForm_Shown(object sender, EventArgs e)
@@ -569,32 +611,25 @@ namespace Rapr
             Application.Exit();
         }
 
-        private void FrenchToolStripMenuItem_Click(object sender, EventArgs e)
+        private void SwitchCulture(object sender, EventArgs e)
         {
-            this.SwitchCulture(sender, e, "fr-FR");
-        }
+            if ((sender as ToolStripMenuItem)?.Tag is CultureInfo ci)
+            {
+                Thread.CurrentThread.CurrentCulture = ci;
+                Thread.CurrentThread.CurrentUICulture = ci;
 
-        private void EnglishToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.SwitchCulture(sender, e, "EN");
-        }
-
-        private void SwitchCulture(object sender, EventArgs e, string cultureString)
-        {
-            CultureInfo ci = CultureInfo.GetCultureInfo(cultureString);
-            Thread.CurrentThread.CurrentCulture = ci;
-            Thread.CurrentThread.CurrentUICulture = ci;
-
-            // Clear and redraw the window
-            this.Controls.Clear();
-            this.InitializeComponent();
-            this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
-            this.lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
-            this.lstDriverStoreEntries.SecondarySortColumn = this.driverDateColumn;
-            this.lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
-            this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
-            this.DSEForm_Shown(sender, e);
-            Application.DoEvents();
+                // Clear and redraw the window
+                this.Controls.Clear();
+                this.InitializeComponent();
+                this.BuildLanguageMenu();
+                this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
+                this.lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
+                this.lstDriverStoreEntries.SecondarySortColumn = this.driverDateColumn;
+                this.lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
+                this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
+                this.DSEForm_Shown(sender, e);
+                Application.DoEvents();
+            }
         }
 
         private void ViewLogsToolStripMenuItem_Click(object sender, EventArgs e)
