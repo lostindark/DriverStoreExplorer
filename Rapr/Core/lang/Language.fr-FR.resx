@@ -120,7 +120,7 @@
     <value>Ajouter un package</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>Supprimer le package</value>
+    <value>Supprimer le(s) package(s)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
@@ -295,7 +295,7 @@ de Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
     <value>Vous pouvez trouver la dernière version et les notes de version à cette adresse:
 https://github.com/lostindark/DriverStoreExplorer/releases
 
-Credits:
+Crédits:
 ObjectListView http://objectlistview.sourceforge.net/ </value>
   </data>
   <data name="Message_Operation_In_Progress" xml:space="preserve">
@@ -350,9 +350,9 @@ ObjectListView http://objectlistview.sourceforge.net/ </value>
     <value>Contenu enregistré dans {0}. Export terminé.</value>
   </data>
   <data name="Menu_File_RunAs_Admin" xml:space="preserve">
-    <value>Redémarrer en mode administrateur</value>
+    <value>Exécuter en mode administrateur</value>
   </data>
   <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
-    <value>Redémarrer en mode administrateur</value>
+    <value>Toujours exécuter en mode administrateur</value>
   </data>
 </root>
