@@ -28,6 +28,7 @@ namespace Rapr
             new CultureInfo("en"),
             new CultureInfo("fr-FR"),
             new CultureInfo("ja-JP"),
+            new CultureInfo("ru-RU"),
             new CultureInfo("zh-CN"),
         };
 
@@ -37,6 +38,13 @@ namespace Rapr
             {
                 MessageBox.Show(Language.Message_Requires_Later_OS, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
                 Application.Exit();
+            }
+
+            var lang = Properties.Settings.Default.Language;
+            if (lang != null && CultureInfo.InvariantCulture != lang)
+            {
+                Thread.CurrentThread.CurrentCulture = lang;
+                Thread.CurrentThread.CurrentUICulture = lang;
             }
 
             this.InitializeComponent();
@@ -129,6 +137,7 @@ namespace Rapr
         {
             ToolStripMenuItem defaultLanguageMenuItem = null;
             bool currentUILanauageSupported = false;
+
             foreach (var item in SupportedLanauage)
             {
                 ToolStripMenuItem menuItem = new ToolStripMenuItem
@@ -373,8 +382,11 @@ namespace Rapr
 
                         if (localContext.DriverStoreEntries.Count == 1)
                         {
-                            result = string.Format(Language.Message_Delete_Package_Error, localContext.DriverStoreEntries[0].DriverInfName,
-                                                        localContext.DriverStoreEntries[0].DriverPublishedName, driverDeleteTip);
+                            result = string.Format(
+                                Language.Message_Delete_Package_Error,
+                                localContext.DriverStoreEntries[0].DriverInfName,
+                                localContext.DriverStoreEntries[0].DriverPublishedName,
+                                driverDeleteTip);
                         }
                         else
                         {
@@ -631,6 +643,9 @@ namespace Rapr
                 this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
                 this.DSEForm_Shown(sender, e);
                 Application.DoEvents();
+
+                Properties.Settings.Default.Language = ci;
+                Properties.Settings.Default.Save();
             }
         }
 

@@ -7,3 +7,4 @@
 
 # Nuget packages
 /**/packages/**/*
+*.user

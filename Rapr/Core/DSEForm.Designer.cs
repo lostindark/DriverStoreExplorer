@@ -88,9 +88,9 @@ namespace Rapr
             // buttonEnumerate
             // 
             this.buttonEnumerate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonEnumerate.Location = new System.Drawing.Point(9, 19);
+            this.buttonEnumerate.Location = new System.Drawing.Point(18, 19);
             this.buttonEnumerate.Name = "buttonEnumerate";
-            this.buttonEnumerate.Size = new System.Drawing.Size(109, 23);
+            this.buttonEnumerate.Size = new System.Drawing.Size(149, 23);
             this.buttonEnumerate.TabIndex = 0;
             this.buttonEnumerate.Text = global::Rapr.Core.lang.Language.Button_Refresh;
             this.buttonEnumerate.UseVisualStyleBackColor = true;
@@ -102,7 +102,7 @@ namespace Rapr
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(800, 583);
+            this.groupBox1.Size = new System.Drawing.Size(823, 679);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = global::Rapr.Core.lang.Language.Group_DriverStore;
@@ -138,7 +138,7 @@ namespace Rapr
             this.lstDriverStoreEntries.Location = new System.Drawing.Point(3, 16);
             this.lstDriverStoreEntries.Name = "lstDriverStoreEntries";
             this.lstDriverStoreEntries.ShowItemToolTips = true;
-            this.lstDriverStoreEntries.Size = new System.Drawing.Size(794, 564);
+            this.lstDriverStoreEntries.Size = new System.Drawing.Size(817, 660);
             this.lstDriverStoreEntries.SortGroupItemsByPrimaryColumn = false;
             this.lstDriverStoreEntries.TabIndex = 1;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
@@ -252,9 +252,9 @@ namespace Rapr
             // buttonDeleteDriver
             // 
             this.buttonDeleteDriver.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonDeleteDriver.Location = new System.Drawing.Point(9, 102);
+            this.buttonDeleteDriver.Location = new System.Drawing.Point(18, 124);
             this.buttonDeleteDriver.Name = "buttonDeleteDriver";
-            this.buttonDeleteDriver.Size = new System.Drawing.Size(109, 23);
+            this.buttonDeleteDriver.Size = new System.Drawing.Size(149, 23);
             this.buttonDeleteDriver.TabIndex = 3;
             this.buttonDeleteDriver.Text = global::Rapr.Core.lang.Language.Button_Delete_Package;
             this.buttonDeleteDriver.UseVisualStyleBackColor = true;
@@ -263,7 +263,7 @@ namespace Rapr
             // cbForceDeletion
             // 
             this.cbForceDeletion.AutoSize = true;
-            this.cbForceDeletion.Location = new System.Drawing.Point(9, 131);
+            this.cbForceDeletion.Location = new System.Drawing.Point(20, 154);
             this.cbForceDeletion.Name = "cbForceDeletion";
             this.cbForceDeletion.Size = new System.Drawing.Size(95, 17);
             this.cbForceDeletion.TabIndex = 4;
@@ -273,9 +273,9 @@ namespace Rapr
             // buttonAddDriver
             // 
             this.buttonAddDriver.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonAddDriver.Location = new System.Drawing.Point(9, 48);
+            this.buttonAddDriver.Location = new System.Drawing.Point(18, 56);
             this.buttonAddDriver.Name = "buttonAddDriver";
-            this.buttonAddDriver.Size = new System.Drawing.Size(109, 23);
+            this.buttonAddDriver.Size = new System.Drawing.Size(149, 23);
             this.buttonAddDriver.TabIndex = 5;
             this.buttonAddDriver.Text = global::Rapr.Core.lang.Language.Button_Add_Package;
             this.buttonAddDriver.UseVisualStyleBackColor = true;
@@ -284,7 +284,7 @@ namespace Rapr
             // cbAddInstall
             // 
             this.cbAddInstall.AutoSize = true;
-            this.cbAddInstall.Location = new System.Drawing.Point(9, 79);
+            this.cbAddInstall.Location = new System.Drawing.Point(20, 86);
             this.cbAddInstall.Name = "cbAddInstall";
             this.cbAddInstall.Size = new System.Drawing.Size(84, 17);
             this.cbAddInstall.TabIndex = 6;
@@ -296,9 +296,9 @@ namespace Rapr
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1,
             this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(2, 608);
+            this.statusStrip1.Location = new System.Drawing.Point(2, 705);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(933, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(1004, 22);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -331,9 +331,10 @@ namespace Rapr
             // 
             // InnerContainer
             // 
+            this.InnerContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InnerContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.InnerContainer.IsSplitterFixed = true;
-            this.InnerContainer.Location = new System.Drawing.Point(5, 24);
+            this.InnerContainer.Location = new System.Drawing.Point(2, 26);
             this.InnerContainer.Name = "InnerContainer";
             // 
             // InnerContainer.Panel1
@@ -343,8 +344,8 @@ namespace Rapr
             // InnerContainer.Panel2
             // 
             this.InnerContainer.Panel2.Controls.Add(this.gbOptions);
-            this.InnerContainer.Size = new System.Drawing.Size(925, 583);
-            this.InnerContainer.SplitterDistance = 800;
+            this.InnerContainer.Size = new System.Drawing.Size(1004, 679);
+            this.InnerContainer.SplitterDistance = 823;
             this.InnerContainer.SplitterWidth = 1;
             this.InnerContainer.TabIndex = 12;
             // 
@@ -359,16 +360,16 @@ namespace Rapr
             this.gbOptions.Dock = System.Windows.Forms.DockStyle.Top;
             this.gbOptions.Location = new System.Drawing.Point(0, 0);
             this.gbOptions.Name = "gbOptions";
-            this.gbOptions.Size = new System.Drawing.Size(124, 196);
+            this.gbOptions.Size = new System.Drawing.Size(180, 229);
             this.gbOptions.TabIndex = 13;
             this.gbOptions.TabStop = false;
             this.gbOptions.Text = global::Rapr.Core.lang.Language.Operations_Text;
             // 
             // buttonSelectOldDrivers
             // 
-            this.buttonSelectOldDrivers.Location = new System.Drawing.Point(9, 154);
+            this.buttonSelectOldDrivers.Location = new System.Drawing.Point(18, 192);
             this.buttonSelectOldDrivers.Name = "buttonSelectOldDrivers";
-            this.buttonSelectOldDrivers.Size = new System.Drawing.Size(109, 23);
+            this.buttonSelectOldDrivers.Size = new System.Drawing.Size(149, 23);
             this.buttonSelectOldDrivers.TabIndex = 7;
             this.buttonSelectOldDrivers.Text = global::Rapr.Core.lang.Language.Button_Select_Old;
             this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
@@ -383,7 +384,7 @@ namespace Rapr
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(2, 2);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(933, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1004, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -445,7 +446,7 @@ namespace Rapr
             // 
             this.alwaysRunAsAdminToolStripMenuItem.CheckOnClick = true;
             this.alwaysRunAsAdminToolStripMenuItem.Name = "alwaysRunAsAdminToolStripMenuItem";
-            this.alwaysRunAsAdminToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.alwaysRunAsAdminToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
             this.alwaysRunAsAdminToolStripMenuItem.Text = global::Rapr.Core.lang.Language.Menu_Option_Always_RunAs_Admin;
             // 
             // languageToolStripMenuItem
@@ -473,7 +474,7 @@ namespace Rapr
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(937, 632);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.InnerContainer);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);

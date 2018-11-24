@@ -93,15 +93,10 @@
     <EmbeddedResource Include="Core\DSEForm.resx">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Core\lang\Language.zh-CN.resx">
-      <LastGenOutput>Language.fr-FR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\lang\Language.ja-JP.resx">
-      <LastGenOutput>Language.fr-FR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Core\lang\Language.fr-FR.resx">
-      <LastGenOutput>Language.fr-FR.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Core\lang\Language.fr-FR.resx" />
+    <EmbeddedResource Include="Core\lang\Language.ja-JP.resx" />
+    <EmbeddedResource Include="Core\lang\Language.ru-RU.resx" />
+    <EmbeddedResource Include="Core\lang\Language.zh-CN.resx" />
     <EmbeddedResource Include="Core\lang\Language.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Language.Designer.cs</LastGenOutput>
