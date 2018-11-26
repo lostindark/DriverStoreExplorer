@@ -143,7 +143,7 @@ namespace Rapr
                 ToolStripMenuItem menuItem = new ToolStripMenuItem
                 {
                     CheckOnClick = true,
-                    Text = item.NativeName,
+                    Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(item.NativeName),
                     Tag = item
                 };
 

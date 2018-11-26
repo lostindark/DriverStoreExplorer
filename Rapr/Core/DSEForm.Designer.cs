@@ -32,7 +32,6 @@ namespace Rapr
         {
             this.components = new System.ComponentModel.Container();
             this.buttonEnumerate = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lstDriverStoreEntries = new BrightIdeasSoftware.ObjectListView();
             this.driverInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverOemInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -58,8 +57,8 @@ namespace Rapr
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            this.InnerContainer = new System.Windows.Forms.SplitContainer();
             this.gbOptions = new System.Windows.Forms.GroupBox();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,39 +72,28 @@ namespace Rapr
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.groupBox1.SuspendLayout();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
             this.contextMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.InnerContainer)).BeginInit();
-            this.InnerContainer.Panel1.SuspendLayout();
-            this.InnerContainer.Panel2.SuspendLayout();
-            this.InnerContainer.SuspendLayout();
             this.gbOptions.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonEnumerate
             // 
+            this.buttonEnumerate.AutoSize = true;
+            this.buttonEnumerate.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonEnumerate.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonEnumerate.Location = new System.Drawing.Point(18, 19);
+            this.buttonEnumerate.Location = new System.Drawing.Point(9, 9);
             this.buttonEnumerate.Name = "buttonEnumerate";
-            this.buttonEnumerate.Size = new System.Drawing.Size(149, 23);
+            this.buttonEnumerate.Size = new System.Drawing.Size(124, 23);
             this.buttonEnumerate.TabIndex = 0;
             this.buttonEnumerate.Text = global::Rapr.Core.lang.Language.Button_Refresh;
             this.buttonEnumerate.UseVisualStyleBackColor = true;
             this.buttonEnumerate.Click += new System.EventHandler(this.ButtonEnumerate_Click);
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.lstDriverStoreEntries);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(823, 679);
-            this.groupBox1.TabIndex = 2;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = global::Rapr.Core.lang.Language.Group_DriverStore;
             // 
             // lstDriverStoreEntries
             // 
@@ -135,10 +123,10 @@ namespace Rapr
             this.lstDriverStoreEntries.FullRowSelect = true;
             this.lstDriverStoreEntries.GridLines = true;
             this.lstDriverStoreEntries.HideSelection = false;
-            this.lstDriverStoreEntries.Location = new System.Drawing.Point(3, 16);
+            this.lstDriverStoreEntries.Location = new System.Drawing.Point(3, 3);
             this.lstDriverStoreEntries.Name = "lstDriverStoreEntries";
             this.lstDriverStoreEntries.ShowItemToolTips = true;
-            this.lstDriverStoreEntries.Size = new System.Drawing.Size(817, 660);
+            this.lstDriverStoreEntries.Size = new System.Drawing.Size(748, 599);
             this.lstDriverStoreEntries.SortGroupItemsByPrimaryColumn = false;
             this.lstDriverStoreEntries.TabIndex = 1;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
@@ -190,7 +178,7 @@ namespace Rapr
             this.driverSizeColumn.AspectName = "DriverSize";
             this.driverSizeColumn.Text = global::Rapr.Core.lang.Language.Column_Size;
             this.driverSizeColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.driverSizeColumn.Width = 120;
+            this.driverSizeColumn.Width = 59;
             // 
             // driverSignerColumn
             // 
@@ -251,10 +239,12 @@ namespace Rapr
             // 
             // buttonDeleteDriver
             // 
+            this.buttonDeleteDriver.AutoSize = true;
+            this.buttonDeleteDriver.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonDeleteDriver.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonDeleteDriver.Location = new System.Drawing.Point(18, 124);
+            this.buttonDeleteDriver.Location = new System.Drawing.Point(9, 90);
             this.buttonDeleteDriver.Name = "buttonDeleteDriver";
-            this.buttonDeleteDriver.Size = new System.Drawing.Size(149, 23);
+            this.buttonDeleteDriver.Size = new System.Drawing.Size(124, 23);
             this.buttonDeleteDriver.TabIndex = 3;
             this.buttonDeleteDriver.Text = global::Rapr.Core.lang.Language.Button_Delete_Package;
             this.buttonDeleteDriver.UseVisualStyleBackColor = true;
@@ -263,19 +253,22 @@ namespace Rapr
             // cbForceDeletion
             // 
             this.cbForceDeletion.AutoSize = true;
-            this.cbForceDeletion.Location = new System.Drawing.Point(20, 154);
+            this.cbForceDeletion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbForceDeletion.Location = new System.Drawing.Point(9, 119);
             this.cbForceDeletion.Name = "cbForceDeletion";
-            this.cbForceDeletion.Size = new System.Drawing.Size(95, 17);
+            this.cbForceDeletion.Size = new System.Drawing.Size(124, 17);
             this.cbForceDeletion.TabIndex = 4;
             this.cbForceDeletion.Text = global::Rapr.Core.lang.Language.Check_Force_Delete;
             this.cbForceDeletion.UseVisualStyleBackColor = true;
             // 
             // buttonAddDriver
             // 
+            this.buttonAddDriver.AutoSize = true;
+            this.buttonAddDriver.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonAddDriver.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.buttonAddDriver.Location = new System.Drawing.Point(18, 56);
+            this.buttonAddDriver.Location = new System.Drawing.Point(9, 38);
             this.buttonAddDriver.Name = "buttonAddDriver";
-            this.buttonAddDriver.Size = new System.Drawing.Size(149, 23);
+            this.buttonAddDriver.Size = new System.Drawing.Size(124, 23);
             this.buttonAddDriver.TabIndex = 5;
             this.buttonAddDriver.Text = global::Rapr.Core.lang.Language.Button_Add_Package;
             this.buttonAddDriver.UseVisualStyleBackColor = true;
@@ -284,9 +277,10 @@ namespace Rapr
             // cbAddInstall
             // 
             this.cbAddInstall.AutoSize = true;
-            this.cbAddInstall.Location = new System.Drawing.Point(20, 86);
+            this.cbAddInstall.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbAddInstall.Location = new System.Drawing.Point(9, 67);
             this.cbAddInstall.Name = "cbAddInstall";
-            this.cbAddInstall.Size = new System.Drawing.Size(84, 17);
+            this.cbAddInstall.Size = new System.Drawing.Size(124, 17);
             this.cbAddInstall.TabIndex = 6;
             this.cbAddInstall.Text = global::Rapr.Core.lang.Language.Check_Install_Driver;
             this.cbAddInstall.UseVisualStyleBackColor = true;
@@ -296,9 +290,9 @@ namespace Rapr
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripProgressBar1,
             this.lblStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(2, 705);
+            this.statusStrip1.Location = new System.Drawing.Point(2, 631);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(1004, 22);
+            this.statusStrip1.Size = new System.Drawing.Size(908, 22);
             this.statusStrip1.TabIndex = 9;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -313,7 +307,7 @@ namespace Rapr
             // lblStatus
             // 
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(918, 17);
+            this.lblStatus.Size = new System.Drawing.Size(852, 17);
             this.lblStatus.Spring = true;
             this.lblStatus.Text = global::Rapr.Core.lang.Language.Status_Label;
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -329,47 +323,42 @@ namespace Rapr
             this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
             this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
             // 
-            // InnerContainer
-            // 
-            this.InnerContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InnerContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
-            this.InnerContainer.IsSplitterFixed = true;
-            this.InnerContainer.Location = new System.Drawing.Point(2, 26);
-            this.InnerContainer.Name = "InnerContainer";
-            // 
-            // InnerContainer.Panel1
-            // 
-            this.InnerContainer.Panel1.Controls.Add(this.groupBox1);
-            // 
-            // InnerContainer.Panel2
-            // 
-            this.InnerContainer.Panel2.Controls.Add(this.gbOptions);
-            this.InnerContainer.Size = new System.Drawing.Size(1004, 679);
-            this.InnerContainer.SplitterDistance = 823;
-            this.InnerContainer.SplitterWidth = 1;
-            this.InnerContainer.TabIndex = 12;
-            // 
             // gbOptions
             // 
-            this.gbOptions.Controls.Add(this.buttonSelectOldDrivers);
-            this.gbOptions.Controls.Add(this.cbForceDeletion);
-            this.gbOptions.Controls.Add(this.buttonDeleteDriver);
-            this.gbOptions.Controls.Add(this.cbAddInstall);
-            this.gbOptions.Controls.Add(this.buttonAddDriver);
-            this.gbOptions.Controls.Add(this.buttonEnumerate);
-            this.gbOptions.Dock = System.Windows.Forms.DockStyle.Top;
-            this.gbOptions.Location = new System.Drawing.Point(0, 0);
+            this.gbOptions.AutoSize = true;
+            this.gbOptions.Controls.Add(this.flowLayoutPanel1);
+            this.gbOptions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.gbOptions.Location = new System.Drawing.Point(757, 3);
             this.gbOptions.Name = "gbOptions";
-            this.gbOptions.Size = new System.Drawing.Size(180, 229);
+            this.gbOptions.Size = new System.Drawing.Size(148, 599);
             this.gbOptions.TabIndex = 13;
             this.gbOptions.TabStop = false;
             this.gbOptions.Text = global::Rapr.Core.lang.Language.Operations_Text;
             // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.buttonEnumerate);
+            this.flowLayoutPanel1.Controls.Add(this.buttonAddDriver);
+            this.flowLayoutPanel1.Controls.Add(this.cbAddInstall);
+            this.flowLayoutPanel1.Controls.Add(this.buttonDeleteDriver);
+            this.flowLayoutPanel1.Controls.Add(this.cbForceDeletion);
+            this.flowLayoutPanel1.Controls.Add(this.buttonSelectOldDrivers);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(6);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(142, 580);
+            this.flowLayoutPanel1.TabIndex = 0;
+            // 
             // buttonSelectOldDrivers
             // 
-            this.buttonSelectOldDrivers.Location = new System.Drawing.Point(18, 192);
+            this.buttonSelectOldDrivers.AutoSize = true;
+            this.buttonSelectOldDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSelectOldDrivers.Location = new System.Drawing.Point(9, 142);
             this.buttonSelectOldDrivers.Name = "buttonSelectOldDrivers";
-            this.buttonSelectOldDrivers.Size = new System.Drawing.Size(149, 23);
+            this.buttonSelectOldDrivers.Size = new System.Drawing.Size(124, 23);
             this.buttonSelectOldDrivers.TabIndex = 7;
             this.buttonSelectOldDrivers.Text = global::Rapr.Core.lang.Language.Button_Select_Old;
             this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
@@ -384,7 +373,7 @@ namespace Rapr
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(2, 2);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1004, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(908, 24);
             this.menuStrip1.TabIndex = 13;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -470,12 +459,28 @@ namespace Rapr
             this.aboutToolStripMenuItem1.Text = global::Rapr.Core.lang.Language.Menu_Help_About;
             this.aboutToolStripMenuItem1.Click += new System.EventHandler(this.AboutToolStripMenuItem_Click);
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.AutoSize = true;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.gbOptions, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lstDriverStoreEntries, 0, 0);
+            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 26);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(908, 605);
+            this.tableLayoutPanel1.TabIndex = 14;
+            // 
             // DSEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.InnerContainer);
+            this.ClientSize = new System.Drawing.Size(912, 655);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -486,19 +491,18 @@ namespace Rapr
             this.Text = "Driver Store Explorer [RAPR]";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DSEForm_FormClosed);
             this.Shown += new System.EventHandler(this.DSEForm_Shown);
-            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            this.InnerContainer.Panel1.ResumeLayout(false);
-            this.InnerContainer.Panel2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.InnerContainer)).EndInit();
-            this.InnerContainer.ResumeLayout(false);
             this.gbOptions.ResumeLayout(false);
             this.gbOptions.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -513,7 +517,6 @@ namespace Rapr
         private BrightIdeasSoftware.OLVColumn driverClassColumn;
         private BrightIdeasSoftware.OLVColumn driverSignerColumn;
         private BrightIdeasSoftware.OLVColumn driverVersionColumn;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonDeleteDriver;
         private System.Windows.Forms.CheckBox cbForceDeletion;
         private BrightIdeasSoftware.OLVColumn driverProviderColumn;
@@ -526,7 +529,6 @@ namespace Rapr
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.SplitContainer InnerContainer;
         private System.Windows.Forms.GroupBox gbOptions;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuDelete;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
@@ -548,6 +550,8 @@ namespace Rapr
         private System.Windows.Forms.ToolStripMenuItem runAsAdminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem alwaysRunAsAdminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
     }
 }
 
