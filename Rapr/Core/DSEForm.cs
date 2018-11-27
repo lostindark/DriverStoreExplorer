@@ -58,7 +58,18 @@ namespace Rapr
             this.lstDriverStoreEntries.SecondarySortColumn = this.driverDateColumn;
             this.lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
             this.lstDriverStoreEntries.CheckBoxes = isRunAsAdministrator;
+
             this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
+
+            this.driverOemInfColumn.GroupKeyGetter = (object rowObject) => ((DriverStoreEntry)rowObject).OemId / 10;
+            this.driverOemInfColumn.GroupKeyToTitleConverter = (object groupKey) =>
+            {
+                int? valueBase = (groupKey as int?) * 10;
+
+                return valueBase == null
+                    ? null
+                    : $"oem {valueBase} - {valueBase + 9}";
+            };
 
             this.driverVersionColumn.GroupKeyGetter = (object rowObject) =>
             {
@@ -74,12 +85,7 @@ namespace Rapr
 
             this.driverDateColumn.GroupKeyToTitleConverter = (object groupKey) => ((DateTime)groupKey).ToString("yyyy-MM");
 
-            this.driverSizeColumn.GroupKeyGetter = (object rowObject) =>
-            {
-                DriverStoreEntry driver = (DriverStoreEntry)rowObject;
-                return DriverStoreEntry.GetSizeRange(driver.DriverSize);
-            };
-
+            this.driverSizeColumn.GroupKeyGetter = (object rowObject) => DriverStoreEntry.GetSizeRange(((DriverStoreEntry)rowObject).DriverSize);
             this.driverSizeColumn.GroupKeyToTitleConverter = (object groupKey) => DriverStoreEntry.GetSizeRangeName((long)groupKey);
 
             Trace.TraceInformation("---------------------------------------------------------------");

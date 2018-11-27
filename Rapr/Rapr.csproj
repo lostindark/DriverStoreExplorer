@@ -83,6 +83,9 @@
     <Compile Include="Core\PNPUtilLib\DriverStoreRepository.cs" />
     <Compile Include="Core\PNPUtilLib\IDriverStore.cs" />
     <Compile Include="Core\PNPUtilLib\PNPUtil.cs" />
+    <Compile Include="Core\MyObjectListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Core\Program.cs" />
     <Compile Include="Core\SafeNativeMethods.cs" />
     <Compile Include="Core\TextFileTraceListener.cs" />

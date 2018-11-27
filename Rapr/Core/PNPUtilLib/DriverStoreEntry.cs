@@ -75,6 +75,34 @@ namespace Rapr.Utils
             }
         }
 
+        public int? OemId
+        {
+            get
+            {
+                string oemInfName = this.DriverPublishedName;
+
+                if (!string.IsNullOrEmpty(oemInfName))
+                {
+                    if (oemInfName.StartsWith("oem", StringComparison.OrdinalIgnoreCase))
+                    {
+                        oemInfName = oemInfName.Substring(3);
+                    }
+
+                    if (oemInfName.EndsWith(".inf", StringComparison.OrdinalIgnoreCase))
+                    {
+                        oemInfName = oemInfName.Substring(0, oemInfName.Length - 4);
+                    }
+
+                    if (int.TryParse(oemInfName, out int id))
+                    {
+                        return id;
+                    }
+                }
+
+                return null;
+            }
+        }
+
         /// <summary>
         /// Field count
         /// </summary>

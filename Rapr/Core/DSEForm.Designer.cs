@@ -32,7 +32,7 @@ namespace Rapr
         {
             this.components = new System.ComponentModel.Container();
             this.buttonEnumerate = new System.Windows.Forms.Button();
-            this.lstDriverStoreEntries = new BrightIdeasSoftware.ObjectListView();
+            this.lstDriverStoreEntries = new Rapr.MyObjectListView();
             this.driverInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverOemInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverClassColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -307,7 +307,7 @@ namespace Rapr
             // lblStatus
             // 
             this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(852, 17);
+            this.lblStatus.Size = new System.Drawing.Size(893, 17);
             this.lblStatus.Spring = true;
             this.lblStatus.Text = global::Rapr.Core.lang.Language.Status_Label;
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -513,7 +513,7 @@ namespace Rapr
         #endregion
 
         private System.Windows.Forms.Button buttonEnumerate;
-        private BrightIdeasSoftware.ObjectListView lstDriverStoreEntries;
+        private MyObjectListView lstDriverStoreEntries;
         private BrightIdeasSoftware.OLVColumn driverOemInfColumn;
         private BrightIdeasSoftware.OLVColumn driverDateColumn;
         private BrightIdeasSoftware.OLVColumn driverClassColumn;

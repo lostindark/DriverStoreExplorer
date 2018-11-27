@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Globalization;
 using System.Reflection;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace Rapr
@@ -15,9 +13,16 @@ namespace Rapr
 
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             {
-                Byte[] assemblyData = new Byte[stream.Length];
-                stream.Read(assemblyData, 0, assemblyData.Length);
-                return Assembly.Load(assemblyData);
+                if (stream != null)
+                {
+                    Byte[] assemblyData = new Byte[stream.Length];
+                    stream.Read(assemblyData, 0, assemblyData.Length);
+                    return Assembly.Load(assemblyData);
+                }
+                else
+                {
+                    return null;
+                }
             }
         }
 
