@@ -13,6 +13,7 @@ using System.Threading;
 using System.Windows.Forms;
 using Rapr.Core;
 using Rapr.Core.lang;
+using Rapr.Properties;
 using Rapr.Utils;
 
 namespace Rapr
@@ -674,6 +675,41 @@ namespace Rapr
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ShowAboutBox();
+        }
+
+        private void DSEForm_Load(object sender, EventArgs e)
+        {
+            if (Settings.Default.WindowState != default(FormWindowState))
+            {
+                this.WindowState = Settings.Default.WindowState;
+            }
+
+            if (Settings.Default.WindowLocation != default(Point))
+            {
+                this.Location = Settings.Default.WindowLocation;
+            }
+
+            if (Settings.Default.WindowSize != default(Size))
+            {
+                this.Size = Settings.Default.WindowSize;
+            }
+        }
+
+        private void DSEForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Settings.Default.WindowState = this.WindowState;
+            Settings.Default.WindowLocation = this.Location;
+
+            if (this.WindowState == FormWindowState.Normal)
+            {
+                Settings.Default.WindowSize = this.Size;
+            }
+            else
+            {
+                Settings.Default.WindowSize = this.RestoreBounds.Size;
+            }
+
+            Settings.Default.Save();
         }
 
         private void LstDriverStoreEntries_ItemChecked(object sender, ItemCheckedEventArgs e)

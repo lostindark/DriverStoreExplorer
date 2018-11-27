@@ -489,7 +489,9 @@ namespace Rapr
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Driver Store Explorer [RAPR]";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DSEForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DSEForm_FormClosed);
+            this.Load += new System.EventHandler(this.DSEForm_Load);
             this.Shown += new System.EventHandler(this.DSEForm_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
