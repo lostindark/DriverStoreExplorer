@@ -76,7 +76,7 @@ namespace Rapr
             }
             else
             {
-                InProgress();
+                this.InProgress();
             }
         }
 
@@ -95,7 +95,7 @@ namespace Rapr
             }
             else
             {
-                InProgress();
+                this.InProgress();
             }
         }
 
@@ -113,7 +113,7 @@ namespace Rapr
             }
             else
             {
-                InProgress();
+                this.InProgress();
             }
         }
         // true = show wait_form

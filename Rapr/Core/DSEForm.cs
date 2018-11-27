@@ -630,23 +630,25 @@ namespace Rapr
         {
             if ((sender as ToolStripMenuItem)?.Tag is CultureInfo ci)
             {
+                Size windowSize = this.Size;
+                byte[] driverStoreViewState = this.lstDriverStoreEntries.SaveState();
+
                 Thread.CurrentThread.CurrentCulture = ci;
                 Thread.CurrentThread.CurrentUICulture = ci;
 
                 // Clear and redraw the window
+                this.SuspendLayout();
                 this.Controls.Clear();
                 this.InitializeComponent();
                 this.BuildLanguageMenu();
-                this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
-                this.lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
-                this.lstDriverStoreEntries.SecondarySortColumn = this.driverDateColumn;
-                this.lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
-                this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
+                this.Size = windowSize;
+                this.lstDriverStoreEntries.RestoreState(driverStoreViewState);
+
                 this.DSEForm_Shown(sender, e);
+                this.ResumeLayout();
                 Application.DoEvents();
 
                 Properties.Settings.Default.Language = ci;
-                Properties.Settings.Default.Save();
             }
         }
 
@@ -679,6 +681,8 @@ namespace Rapr
 
         private void DSEForm_Load(object sender, EventArgs e)
         {
+            this.lstDriverStoreEntries.RestoreState(Convert.FromBase64String(Settings.Default.DriverStoreViewState));
+
             if (Settings.Default.WindowState != default(FormWindowState))
             {
                 this.WindowState = Settings.Default.WindowState;
@@ -697,6 +701,8 @@ namespace Rapr
 
         private void DSEForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            Settings.Default.DriverStoreViewState = Convert.ToBase64String(this.lstDriverStoreEntries.SaveState());
+
             Settings.Default.WindowState = this.WindowState;
             Settings.Default.WindowLocation = this.Location;
 

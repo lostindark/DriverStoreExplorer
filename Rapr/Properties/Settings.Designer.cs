@@ -70,5 +70,17 @@ namespace Rapr.Properties {
                 this["WindowState"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DriverStoreViewState {
+            get {
+                return ((string)(this["DriverStoreViewState"]));
+            }
+            set {
+                this["DriverStoreViewState"] = value;
+            }
+        }
     }
 }
