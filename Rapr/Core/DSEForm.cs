@@ -21,11 +21,11 @@ namespace Rapr
     public partial class DSEForm : Form
     {
         private readonly IDriverStore driverStore;
-        private Color SavedBackColor, SavedForeColor;
+        private Color savedBackColor;
+        private Color savedForeColor;
         private OperationContext context = new OperationContext();
 
-        private static readonly CultureInfo[] SupportedLanauage = new[]
-        {
+        private static readonly CultureInfo[] SupportedLanguage = {
             new CultureInfo("en"),
             new CultureInfo("fr-FR"),
             new CultureInfo("ja-JP"),
@@ -41,8 +41,8 @@ namespace Rapr
                 Application.Exit();
             }
 
-            var lang = Properties.Settings.Default.Language;
-            if (lang != null && CultureInfo.InvariantCulture != lang)
+            var lang = Settings.Default.Language;
+            if (lang != null && !CultureInfo.InvariantCulture.Equals(lang))
             {
                 Thread.CurrentThread.CurrentCulture = lang;
                 Thread.CurrentThread.CurrentUICulture = lang;
@@ -59,10 +59,20 @@ namespace Rapr
             this.lstDriverStoreEntries.SecondarySortOrder = SortOrder.Descending;
             this.lstDriverStoreEntries.CheckBoxes = isRunAsAdministrator;
 
+            this.SetupListViewColumns();
+
+            Trace.TraceInformation("---------------------------------------------------------------");
+            Trace.TraceInformation($"{Application.ProductName} started");
+
+            this.driverStore = new PNPUtil();
+        }
+
+        private void SetupListViewColumns()
+        {
             this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
 
-            this.driverOemInfColumn.GroupKeyGetter = (object rowObject) => ((DriverStoreEntry)rowObject).OemId / 10;
-            this.driverOemInfColumn.GroupKeyToTitleConverter = (object groupKey) =>
+            this.driverOemInfColumn.GroupKeyGetter = rowObject => ((DriverStoreEntry)rowObject).OemId / 10;
+            this.driverOemInfColumn.GroupKeyToTitleConverter = groupKey =>
             {
                 int? valueBase = (groupKey as int?) * 10;
 
@@ -71,27 +81,22 @@ namespace Rapr
                     : $"oem {valueBase} - {valueBase + 9}";
             };
 
-            this.driverVersionColumn.GroupKeyGetter = (object rowObject) =>
+            this.driverVersionColumn.GroupKeyGetter = rowObject =>
             {
                 DriverStoreEntry driver = (DriverStoreEntry)rowObject;
                 return new Version(driver.DriverVersion.Major, driver.DriverVersion.Minor);
             };
 
-            this.driverDateColumn.GroupKeyGetter = (object rowObject) =>
+            this.driverDateColumn.GroupKeyGetter = rowObject =>
             {
                 DriverStoreEntry driver = (DriverStoreEntry)rowObject;
                 return new DateTime(driver.DriverDate.Year, driver.DriverDate.Month, 1);
             };
 
-            this.driverDateColumn.GroupKeyToTitleConverter = (object groupKey) => ((DateTime)groupKey).ToString("yyyy-MM");
+            this.driverDateColumn.GroupKeyToTitleConverter = groupKey => ((DateTime)groupKey).ToString("yyyy-MM");
 
-            this.driverSizeColumn.GroupKeyGetter = (object rowObject) => DriverStoreEntry.GetSizeRange(((DriverStoreEntry)rowObject).DriverSize);
-            this.driverSizeColumn.GroupKeyToTitleConverter = (object groupKey) => DriverStoreEntry.GetSizeRangeName((long)groupKey);
-
-            Trace.TraceInformation("---------------------------------------------------------------");
-            Trace.TraceInformation($"{Application.ProductName} started");
-
-            this.driverStore = new PNPUtil();
+            this.driverSizeColumn.GroupKeyGetter = rowObject => DriverStoreEntry.GetSizeRange(((DriverStoreEntry)rowObject).DriverSize);
+            this.driverSizeColumn.GroupKeyToTitleConverter = groupKey => DriverStoreEntry.GetSizeRangeName((long)groupKey);
         }
 
         /// <summary>
@@ -145,7 +150,7 @@ namespace Rapr
             ToolStripMenuItem defaultLanguageMenuItem = null;
             bool currentUILanauageSupported = false;
 
-            foreach (var item in SupportedLanauage)
+            foreach (var item in SupportedLanguage)
             {
                 ToolStripMenuItem menuItem = new ToolStripMenuItem
                 {
@@ -178,8 +183,8 @@ namespace Rapr
 
         private void DSEForm_Shown(object sender, EventArgs e)
         {
-            this.SavedBackColor = this.lblStatus.BackColor;
-            this.SavedForeColor = this.lblStatus.ForeColor;
+            this.savedBackColor = this.lblStatus.BackColor;
+            this.savedForeColor = this.lblStatus.ForeColor;
 
             this.alwaysRunAsAdminToolStripMenuItem.Checked = RunAsAdmin;
             this.alwaysRunAsAdminToolStripMenuItem.CheckedChanged += (f, g) => RunAsAdmin = this.alwaysRunAsAdminToolStripMenuItem.Checked;
@@ -351,16 +356,14 @@ namespace Rapr
 
         private void BackgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
-            BackgroundWorker worker = sender as BackgroundWorker;
             OperationContext localContext = (OperationContext)e.Result;
             string result;
 
             switch (localContext.Code)
             {
                 case OperationCode.EnumerateStore:
-                    List<DriverStoreEntry> ldse = localContext.ResultData as List<DriverStoreEntry>;
-                    this.lstDriverStoreEntries.SetObjects(ldse);
-                    this.lstDriverStoreEntries.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                    this.lstDriverStoreEntries.SetObjects(localContext.ResultData as List<DriverStoreEntry>);
+                    this.UpdateColumnSize();
                     break;
 
                 case OperationCode.ForceDeleteDriver:
@@ -564,11 +567,6 @@ namespace Rapr
             }
         }
 
-        private void ButtonRunAsAdmin_Click(object sender, EventArgs e)
-        {
-            RunAsAdministrator();
-        }
-
         private void CtxMenuSelectOldDrivers_Click(object sender, EventArgs e)
         {
             if (this.lstDriverStoreEntries.Objects != null)
@@ -585,18 +583,6 @@ namespace Rapr
         private void ButtonSelectOldDrivers_Click(object sender, EventArgs e)
         {
             this.CtxMenuSelectOldDrivers_Click(sender, e);
-        }
-
-        private void ToolStripViewLogsButton_Click(object sender, EventArgs e)
-        {
-            if (!string.IsNullOrEmpty(TextFileTraceListener.LastTraceFile))
-            {
-                Process.Start(TextFileTraceListener.LastTraceFile);
-            }
-            else
-            {
-                MessageBox.Show(Language.Message_Log_File_NotFound, Language.Message_Error);
-            }
         }
 
         private void ExportList()
@@ -648,13 +634,14 @@ namespace Rapr
                 this.InitializeComponent();
                 this.BuildLanguageMenu();
                 this.Size = windowSize;
+                this.SetupListViewColumns();
                 this.lstDriverStoreEntries.RestoreState(driverStoreViewState);
 
                 this.DSEForm_Shown(sender, e);
                 this.ResumeLayout();
                 Application.DoEvents();
 
-                Properties.Settings.Default.Language = ci;
+                Settings.Default.Language = ci;
             }
         }
 
@@ -746,6 +733,15 @@ namespace Rapr
             else
             {
                 this.ShowStatus(Language.Status_No_Drivers_Selected, Status.Normal);
+            }
+        }
+
+        private void UpdateColumnSize()
+        {
+            // Make the column size fit both header and content.
+            for (var i = 0; i < this.lstDriverStoreEntries.Columns.Count - 1; i++)
+            {
+                this.lstDriverStoreEntries.Columns[i].Width = -2;
             }
         }
     }

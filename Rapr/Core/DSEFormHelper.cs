@@ -152,8 +152,8 @@ namespace Rapr
                     break;
 
                 case Status.Normal:
-                    this.lblStatus.BackColor = this.SavedBackColor;
-                    this.lblStatus.ForeColor = this.SavedForeColor;
+                    this.lblStatus.BackColor = this.savedBackColor;
+                    this.lblStatus.ForeColor = this.savedForeColor;
                     Trace.TraceInformation(text);
                     break;
             }

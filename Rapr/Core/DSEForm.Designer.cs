@@ -32,14 +32,7 @@ namespace Rapr
         {
             this.components = new System.ComponentModel.Container();
             this.buttonEnumerate = new System.Windows.Forms.Button();
-            this.lstDriverStoreEntries = new Rapr.MyObjectListView();
-            this.driverInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverOemInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.driverClassColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.driverProviderColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.driverVersionColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.driverDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.driverSizeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverSignerColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxMenuSelect = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,13 +66,21 @@ namespace Rapr
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
+            this.lstDriverStoreEntries = new Rapr.MyObjectListView();
+            this.driverInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.driverClassColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.driverProviderColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.driverVersionColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.driverDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.driverSizeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.dummyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.contextMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.gbOptions.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonEnumerate
@@ -95,90 +96,12 @@ namespace Rapr
             this.buttonEnumerate.UseVisualStyleBackColor = true;
             this.buttonEnumerate.Click += new System.EventHandler(this.ButtonEnumerate_Click);
             // 
-            // lstDriverStoreEntries
-            // 
-            this.lstDriverStoreEntries.AllColumns.Add(this.driverInfColumn);
-            this.lstDriverStoreEntries.AllColumns.Add(this.driverOemInfColumn);
-            this.lstDriverStoreEntries.AllColumns.Add(this.driverClassColumn);
-            this.lstDriverStoreEntries.AllColumns.Add(this.driverProviderColumn);
-            this.lstDriverStoreEntries.AllColumns.Add(this.driverVersionColumn);
-            this.lstDriverStoreEntries.AllColumns.Add(this.driverDateColumn);
-            this.lstDriverStoreEntries.AllColumns.Add(this.driverSizeColumn);
-            this.lstDriverStoreEntries.AllColumns.Add(this.driverSignerColumn);
-            this.lstDriverStoreEntries.AllowColumnReorder = true;
-            this.lstDriverStoreEntries.AlternateRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.lstDriverStoreEntries.CellEditUseWholeCell = false;
-            this.lstDriverStoreEntries.CheckBoxes = true;
-            this.lstDriverStoreEntries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.driverInfColumn,
-            this.driverClassColumn,
-            this.driverProviderColumn,
-            this.driverVersionColumn,
-            this.driverDateColumn,
-            this.driverSizeColumn});
-            this.lstDriverStoreEntries.ContextMenuStrip = this.contextMenuStrip;
-            this.lstDriverStoreEntries.Cursor = System.Windows.Forms.Cursors.Default;
-            this.lstDriverStoreEntries.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lstDriverStoreEntries.EmptyListMsg = global::Rapr.Core.lang.Language.Message_No_Entries;
-            this.lstDriverStoreEntries.FullRowSelect = true;
-            this.lstDriverStoreEntries.GridLines = true;
-            this.lstDriverStoreEntries.HideSelection = false;
-            this.lstDriverStoreEntries.Location = new System.Drawing.Point(3, 3);
-            this.lstDriverStoreEntries.Name = "lstDriverStoreEntries";
-            this.lstDriverStoreEntries.ShowItemToolTips = true;
-            this.lstDriverStoreEntries.Size = new System.Drawing.Size(748, 599);
-            this.lstDriverStoreEntries.SortGroupItemsByPrimaryColumn = false;
-            this.lstDriverStoreEntries.TabIndex = 1;
-            this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
-            this.lstDriverStoreEntries.View = System.Windows.Forms.View.Details;
-            this.lstDriverStoreEntries.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.LstDriverStoreEntries_ItemChecked);
-            // 
-            // driverInfColumn
-            // 
-            this.driverInfColumn.AspectName = "DriverInfName";
-            this.driverInfColumn.Text = global::Rapr.Core.lang.Language.Column_Inf;
-            this.driverInfColumn.UseInitialLetterForGroup = true;
-            this.driverInfColumn.Width = 120;
-            // 
             // driverOemInfColumn
             // 
             this.driverOemInfColumn.AspectName = "DriverPublishedName";
             this.driverOemInfColumn.IsVisible = false;
             this.driverOemInfColumn.Text = global::Rapr.Core.lang.Language.Column_Oem_Inf;
             this.driverOemInfColumn.Width = 90;
-            // 
-            // driverClassColumn
-            // 
-            this.driverClassColumn.AspectName = "DriverClass";
-            this.driverClassColumn.Text = global::Rapr.Core.lang.Language.Column_Driver_Class;
-            this.driverClassColumn.Width = 170;
-            // 
-            // driverProviderColumn
-            // 
-            this.driverProviderColumn.AspectName = "DriverPkgProvider";
-            this.driverProviderColumn.Text = global::Rapr.Core.lang.Language.Column_Provider;
-            this.driverProviderColumn.Width = 160;
-            // 
-            // driverVersionColumn
-            // 
-            this.driverVersionColumn.AspectName = "DriverVersion";
-            this.driverVersionColumn.Text = global::Rapr.Core.lang.Language.Column_Version;
-            this.driverVersionColumn.Width = 110;
-            // 
-            // driverDateColumn
-            // 
-            this.driverDateColumn.AspectName = "DriverDate";
-            this.driverDateColumn.AspectToStringFormat = global::Rapr.Core.lang.Language.Date_Format;
-            this.driverDateColumn.Text = global::Rapr.Core.lang.Language.Column_Date;
-            this.driverDateColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.driverDateColumn.Width = 80;
-            // 
-            // driverSizeColumn
-            // 
-            this.driverSizeColumn.AspectName = "DriverSize";
-            this.driverSizeColumn.Text = global::Rapr.Core.lang.Language.Column_Size;
-            this.driverSizeColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.driverSizeColumn.Width = 59;
             // 
             // driverSignerColumn
             // 
@@ -475,6 +398,91 @@ namespace Rapr
             this.tableLayoutPanel1.Size = new System.Drawing.Size(908, 605);
             this.tableLayoutPanel1.TabIndex = 14;
             // 
+            // lstDriverStoreEntries
+            // 
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverInfColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverOemInfColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverClassColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverProviderColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverVersionColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverDateColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverSizeColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverSignerColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.dummyColumn);
+            this.lstDriverStoreEntries.AllowColumnReorder = true;
+            this.lstDriverStoreEntries.AlternateRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.lstDriverStoreEntries.CellEditUseWholeCell = false;
+            this.lstDriverStoreEntries.CheckBoxes = true;
+            this.lstDriverStoreEntries.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.driverInfColumn,
+            this.driverClassColumn,
+            this.driverProviderColumn,
+            this.driverVersionColumn,
+            this.driverDateColumn,
+            this.driverSizeColumn,
+            this.dummyColumn});
+            this.lstDriverStoreEntries.ContextMenuStrip = this.contextMenuStrip;
+            this.lstDriverStoreEntries.Cursor = System.Windows.Forms.Cursors.Default;
+            this.lstDriverStoreEntries.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lstDriverStoreEntries.EmptyListMsg = global::Rapr.Core.lang.Language.Message_No_Entries;
+            this.lstDriverStoreEntries.FullRowSelect = true;
+            this.lstDriverStoreEntries.GridLines = true;
+            this.lstDriverStoreEntries.HideSelection = false;
+            this.lstDriverStoreEntries.Location = new System.Drawing.Point(3, 3);
+            this.lstDriverStoreEntries.Name = "lstDriverStoreEntries";
+            this.lstDriverStoreEntries.ShowItemToolTips = true;
+            this.lstDriverStoreEntries.Size = new System.Drawing.Size(748, 599);
+            this.lstDriverStoreEntries.SortGroupItemsByPrimaryColumn = false;
+            this.lstDriverStoreEntries.TabIndex = 1;
+            this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
+            this.lstDriverStoreEntries.View = System.Windows.Forms.View.Details;
+            this.lstDriverStoreEntries.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.LstDriverStoreEntries_ItemChecked);
+            // 
+            // driverInfColumn
+            // 
+            this.driverInfColumn.AspectName = "DriverInfName";
+            this.driverInfColumn.Text = global::Rapr.Core.lang.Language.Column_Inf;
+            this.driverInfColumn.UseInitialLetterForGroup = true;
+            this.driverInfColumn.Width = 120;
+            // 
+            // driverClassColumn
+            // 
+            this.driverClassColumn.AspectName = "DriverClass";
+            this.driverClassColumn.Text = global::Rapr.Core.lang.Language.Column_Driver_Class;
+            this.driverClassColumn.Width = 170;
+            // 
+            // driverProviderColumn
+            // 
+            this.driverProviderColumn.AspectName = "DriverPkgProvider";
+            this.driverProviderColumn.Text = global::Rapr.Core.lang.Language.Column_Provider;
+            this.driverProviderColumn.Width = 160;
+            // 
+            // driverVersionColumn
+            // 
+            this.driverVersionColumn.AspectName = "DriverVersion";
+            this.driverVersionColumn.Text = global::Rapr.Core.lang.Language.Column_Version;
+            this.driverVersionColumn.Width = 110;
+            // 
+            // driverDateColumn
+            // 
+            this.driverDateColumn.AspectName = "DriverDate";
+            this.driverDateColumn.AspectToStringFormat = global::Rapr.Core.lang.Language.Date_Format;
+            this.driverDateColumn.Text = global::Rapr.Core.lang.Language.Column_Date;
+            this.driverDateColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.driverDateColumn.Width = 80;
+            // 
+            // driverSizeColumn
+            // 
+            this.driverSizeColumn.AspectName = "DriverSize";
+            this.driverSizeColumn.Text = global::Rapr.Core.lang.Language.Column_Size;
+            this.driverSizeColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.driverSizeColumn.Width = 59;
+            // 
+            // dummyColumn
+            // 
+            this.dummyColumn.FillsFreeSpace = true;
+            this.dummyColumn.Text = "";
+            // 
             // DSEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -493,7 +501,6 @@ namespace Rapr
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DSEForm_FormClosed);
             this.Load += new System.EventHandler(this.DSEForm_Load);
             this.Shown += new System.EventHandler(this.DSEForm_Shown);
-            ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).EndInit();
             this.contextMenuStrip.ResumeLayout(false);
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
@@ -505,6 +512,7 @@ namespace Rapr
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -554,6 +562,7 @@ namespace Rapr
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private BrightIdeasSoftware.OLVColumn dummyColumn;
     }
 }
 
