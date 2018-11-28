@@ -24,7 +24,9 @@ namespace Rapr
                     if (e.Column == this.SecondarySortColumn.Index)
                     {
                         // Toggle the secondary column sorting direction.
-                        this.SecondarySortOrder = (this.SecondarySortOrder == SortOrder.Descending ? SortOrder.Ascending : SortOrder.Descending);
+                        this.SecondarySortOrder = (this.SecondarySortOrder == SortOrder.Descending
+                            ? SortOrder.Ascending
+                            : SortOrder.Descending);
                     }
                     else
                     {
@@ -37,7 +39,9 @@ namespace Rapr
                     if (e.Column == this.PrimarySortColumn.Index)
                     {
                         // Toggle the primary column sorting direction.
-                        this.PrimarySortOrder = (this.PrimarySortOrder == SortOrder.Descending ? SortOrder.Ascending : SortOrder.Descending);
+                        this.PrimarySortOrder = (this.PrimarySortOrder == SortOrder.Descending
+                            ? SortOrder.Ascending
+                            : SortOrder.Descending);
                     }
                     else
                     {

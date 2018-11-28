@@ -37,7 +37,12 @@ namespace Rapr
         {
             if (!IsOSSupported())
             {
-                MessageBox.Show(Language.Message_Requires_Later_OS, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(
+                    Language.Message_Requires_Later_OS,
+                    Language.Product_Name,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+
                 Application.Exit();
             }
 
@@ -95,8 +100,11 @@ namespace Rapr
 
             this.driverDateColumn.GroupKeyToTitleConverter = groupKey => ((DateTime)groupKey).ToString("yyyy-MM");
 
-            this.driverSizeColumn.GroupKeyGetter = rowObject => DriverStoreEntry.GetSizeRange(((DriverStoreEntry)rowObject).DriverSize);
-            this.driverSizeColumn.GroupKeyToTitleConverter = groupKey => DriverStoreEntry.GetSizeRangeName((long)groupKey);
+            this.driverSizeColumn.GroupKeyGetter =
+                rowObject => DriverStoreEntry.GetSizeRange(((DriverStoreEntry)rowObject).DriverSize);
+
+            this.driverSizeColumn.GroupKeyToTitleConverter =
+                groupKey => DriverStoreEntry.GetSizeRangeName((long)groupKey);
         }
 
         /// <summary>
@@ -135,7 +143,12 @@ namespace Rapr
                 }
 
                 StringBuilder iconPath = new StringBuilder(filePath, 260);
-                IntPtr handle = SafeNativeMethods.ExtractAssociatedIcon(new HandleRef(null, IntPtr.Zero), iconPath, ref index);
+
+                IntPtr handle = SafeNativeMethods.ExtractAssociatedIcon(
+                    new HandleRef(null, IntPtr.Zero),
+                    iconPath,
+                    ref index);
+
                 if (handle != IntPtr.Zero)
                 {
                     return Icon.FromHandle(handle);
@@ -187,7 +200,8 @@ namespace Rapr
             this.savedForeColor = this.lblStatus.ForeColor;
 
             this.alwaysRunAsAdminToolStripMenuItem.Checked = RunAsAdmin;
-            this.alwaysRunAsAdminToolStripMenuItem.CheckedChanged += (f, g) => RunAsAdmin = this.alwaysRunAsAdminToolStripMenuItem.Checked;
+            this.alwaysRunAsAdminToolStripMenuItem.CheckedChanged +=
+                (f, g) => RunAsAdmin = this.alwaysRunAsAdminToolStripMenuItem.Checked;
 
             if (!isRunAsAdministrator)
             {
@@ -252,13 +266,16 @@ namespace Rapr
                 {
                     msgWarning = string.Format(
                         Language.Message_Delete_Single_Package,
-                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete, driverStoreEntries[0].DriverInfName, driverStoreEntries[0].DriverPublishedName);
+                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete,
+                        driverStoreEntries[0].DriverInfName,
+                        driverStoreEntries[0].DriverPublishedName);
                 }
                 else
                 {
                     msgWarning = string.Format(
                         Language.Message_Delete_Multiple_Packages,
-                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete, driverStoreEntries.Count);
+                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete,
+                        driverStoreEntries.Count);
                 }
 
                 msgWarning += Environment.NewLine + Language.Message_Sure;
@@ -372,11 +389,16 @@ namespace Rapr
                     {
                         if (localContext.DriverStoreEntries.Count == 1)
                         {
-                            result = string.Format(Language.Message_Delete_Package, localContext.DriverStoreEntries[0].DriverInfName, localContext.DriverStoreEntries[0].DriverPublishedName);
+                            result = string.Format(
+                                Language.Message_Delete_Package,
+                                localContext.DriverStoreEntries[0].DriverInfName,
+                                localContext.DriverStoreEntries[0].DriverPublishedName);
                         }
                         else
                         {
-                            result = string.Format(Language.Message_Delete_Packages, localContext.DriverStoreEntries.Count.ToString());
+                            result = string.Format(
+                                Language.Message_Delete_Packages,
+                                localContext.DriverStoreEntries.Count.ToString());
                         }
 
                         // refresh the UI
@@ -426,7 +448,9 @@ namespace Rapr
                     {
                         result = string.Format(
                             Language.Message_Driver_Added,
-                            localContext.Code == OperationCode.AddInstallDriver ? Language.Message_Driver_And_Installed : "",
+                            localContext.Code == OperationCode.AddInstallDriver
+                                ? Language.Message_Driver_And_Installed
+                                : "",
                             localContext.InfPath);
 
                         // refresh the UI
@@ -437,7 +461,9 @@ namespace Rapr
                     {
                         result = string.Format(
                             Language.Message_Driver_Added_Error,
-                            localContext.Code == OperationCode.AddInstallDriver ? Language.Message_Driver_And_Installed : "",
+                            localContext.Code == OperationCode.AddInstallDriver
+                                ? Language.Message_Driver_And_Installed
+                                : "",
                             localContext.InfPath);
 
                         this.ShowStatus(result, Status.Error);
@@ -480,7 +506,10 @@ namespace Rapr
                     this.ctxMenuDelete.Enabled = isRunAsAdministrator;
 
                     if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0
-                        && new ArrayList(this.lstDriverStoreEntries.SelectedObjects).ToArray().All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
+                        && this.lstDriverStoreEntries
+                            .SelectedObjects
+                            .Cast<object>()
+                            .All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
                     {
                         this.ctxMenuSelect.Text = Language.Context_Deselect;
                     }
@@ -512,7 +541,8 @@ namespace Rapr
             // Check if there are any entries
             if (this.lstDriverStoreEntries.Objects != null)
             {
-                if (this.lstDriverStoreEntries.CheckedObjects != null && this.lstDriverStoreEntries.CheckedObjects.Count != 0)
+                if (this.lstDriverStoreEntries.CheckedObjects != null
+                    && this.lstDriverStoreEntries.CheckedObjects.Count != 0)
                 {
                     this.lstDriverStoreEntries.UncheckAll();
                 }
@@ -535,7 +565,10 @@ namespace Rapr
 
                 if (this.lstDriverStoreEntries.SelectedObjects?.Count > 0)
                 {
-                    if (new ArrayList(this.lstDriverStoreEntries.SelectedObjects).ToArray().All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
+                    if (this.lstDriverStoreEntries
+                        .SelectedObjects
+                        .Cast<object>()
+                        .All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
                     {
                         foreach (var item in this.lstDriverStoreEntries.SelectedObjects)
                         {
