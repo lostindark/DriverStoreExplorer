@@ -8,6 +8,7 @@ namespace Rapr.Utils
     public class DriverStoreContent
     {
         public string InfName;
+        public string FolderPath;
         public string Content;
         public long EstimateSize;
     }
@@ -28,9 +29,10 @@ namespace Rapr.Utils
             this.directoryInfoEnumerator = this.driverStoreFileRepository.EnumerateDirectories().GetEnumerator();
         }
 
-        public void FindInfInfo(string infName, out string originalInfName, out long estimateSize)
+        public void FindInfInfo(string infName, out string originalInfName, out string driverFolderLocation, out long estimateSize)
         {
             originalInfName = "[Unknown]";
+            driverFolderLocation = string.Empty;
             estimateSize = -1;
 
             try
@@ -44,6 +46,7 @@ namespace Rapr.Utils
                     if (driverStoreContent != null)
                     {
                         originalInfName = driverStoreContent.InfName;
+                        driverFolderLocation = driverStoreContent.FolderPath;
                         estimateSize = driverStoreContent.EstimateSize;
                     }
                 }
@@ -85,6 +88,7 @@ namespace Rapr.Utils
                             DriverStoreContent driverStoreContent = new DriverStoreContent()
                             {
                                 InfName = infName,
+                                FolderPath = item.FullName,
                                 Content = infContent,
                                 EstimateSize = estimateSize
                             };

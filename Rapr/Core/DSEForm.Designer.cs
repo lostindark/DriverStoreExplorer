@@ -74,6 +74,8 @@ namespace Rapr
             this.driverDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverSizeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.dummyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctxMenuOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.gbOptions.SuspendLayout();
@@ -117,41 +119,43 @@ namespace Rapr
             this.ctxMenuSelectAll,
             this.ctxMenuSelectOldDrivers,
             this.toolStripSeparator1,
+            this.ctxMenuOpenFolder,
+            this.toolStripSeparator3,
             this.ctxMenuDelete});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(167, 98);
+            this.contextMenuStrip.Size = new System.Drawing.Size(189, 148);
             this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
             // 
             // ctxMenuSelect
             // 
             this.ctxMenuSelect.Name = "ctxMenuSelect";
-            this.ctxMenuSelect.Size = new System.Drawing.Size(166, 22);
+            this.ctxMenuSelect.Size = new System.Drawing.Size(188, 22);
             this.ctxMenuSelect.Text = global::Rapr.Core.lang.Language.Context_Select;
             this.ctxMenuSelect.Click += new System.EventHandler(this.CtxMenuSelect_Click);
             // 
             // ctxMenuSelectAll
             // 
             this.ctxMenuSelectAll.Name = "ctxMenuSelectAll";
-            this.ctxMenuSelectAll.Size = new System.Drawing.Size(166, 22);
+            this.ctxMenuSelectAll.Size = new System.Drawing.Size(188, 22);
             this.ctxMenuSelectAll.Text = global::Rapr.Core.lang.Language.Context_Select_All;
             this.ctxMenuSelectAll.Click += new System.EventHandler(this.CtxMenuSelectAll_Click);
             // 
             // ctxMenuSelectOldDrivers
             // 
             this.ctxMenuSelectOldDrivers.Name = "ctxMenuSelectOldDrivers";
-            this.ctxMenuSelectOldDrivers.Size = new System.Drawing.Size(166, 22);
+            this.ctxMenuSelectOldDrivers.Size = new System.Drawing.Size(188, 22);
             this.ctxMenuSelectOldDrivers.Text = global::Rapr.Core.lang.Language.Context_Select_Old;
             this.ctxMenuSelectOldDrivers.Click += new System.EventHandler(this.CtxMenuSelectOldDrivers_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(163, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
             // 
             // ctxMenuDelete
             // 
             this.ctxMenuDelete.Name = "ctxMenuDelete";
-            this.ctxMenuDelete.Size = new System.Drawing.Size(166, 22);
+            this.ctxMenuDelete.Size = new System.Drawing.Size(188, 22);
             this.ctxMenuDelete.Text = global::Rapr.Core.lang.Language.Context_Delete;
             this.ctxMenuDelete.Click += new System.EventHandler(this.CtxMenuDelete_Click);
             // 
@@ -483,6 +487,18 @@ namespace Rapr
             this.dummyColumn.FillsFreeSpace = true;
             this.dummyColumn.Text = "";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(185, 6);
+            // 
+            // ctxMenuOpenFolder
+            // 
+            this.ctxMenuOpenFolder.Name = "ctxMenuOpenFolder";
+            this.ctxMenuOpenFolder.Size = new System.Drawing.Size(188, 22);
+            this.ctxMenuOpenFolder.Text = global::Rapr.Core.lang.Language.Context_Open_Folder;
+            this.ctxMenuOpenFolder.Click += new System.EventHandler(this.CtxMenuOpenFolder_Click);
+            // 
             // DSEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -563,6 +579,8 @@ namespace Rapr
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private BrightIdeasSoftware.OLVColumn dummyColumn;
+        private System.Windows.Forms.ToolStripMenuItem ctxMenuOpenFolder;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
     }
 }
 

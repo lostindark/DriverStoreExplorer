@@ -220,7 +220,7 @@
     <value>Warning</value>
   </data>
   <data name="Operations_Text" xml:space="preserve">
-    <value> Operations </value>
+    <value>Operations</value>
   </data>
   <data name="Product_Link" xml:space="preserve">
     <value>https://github.com/lostindark/DriverStoreExplorer</value>
@@ -355,5 +355,8 @@ ObjectListView http://objectlistview.sourceforge.net/	</value>
   </data>
   <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
     <value>Always Run As Admin</value>
+  </data>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>Open Folder Location</value>
   </data>
 </root>

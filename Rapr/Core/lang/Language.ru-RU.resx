@@ -220,7 +220,7 @@
     <value>Предупреждение</value>
   </data>
   <data name="Operations_Text" xml:space="preserve">
-    <value> Операции </value>
+    <value>Операции</value>
   </data>
   <data name="Product_Link" xml:space="preserve">
     <value>https://github.com/lostindark/DriverStoreExplorer</value>

@@ -519,9 +519,12 @@ namespace Rapr
                     }
 
                     this.ctxMenuSelect.Enabled = isRunAsAdministrator;
+
+                    this.ctxMenuOpenFolder.Enabled = this.lstDriverStoreEntries.SelectedObjects.Count == 1;
                 }
                 else
                 {
+                    this.ctxMenuOpenFolder.Enabled = false;
                     this.ctxMenuDelete.Enabled = false;
                     this.ctxMenuSelect.Enabled = false;
                 }
@@ -531,6 +534,7 @@ namespace Rapr
                 this.ctxMenuSelect.Enabled = false;
                 this.ctxMenuSelectAll.Enabled = false;
                 this.ctxMenuSelectOldDrivers.Enabled = false;
+                this.ctxMenuOpenFolder.Enabled = false;
                 this.ctxMenuDelete.Enabled = false;
             }
         }
@@ -775,6 +779,15 @@ namespace Rapr
             for (var i = 0; i < this.lstDriverStoreEntries.Columns.Count - 1; i++)
             {
                 this.lstDriverStoreEntries.Columns[i].Width = -2;
+            }
+        }
+
+        private void CtxMenuOpenFolder_Click(object sender, EventArgs e)
+        {
+            if (this.lstDriverStoreEntries.SelectedObject != null)
+            {
+                DriverStoreEntry item = (DriverStoreEntry)this.lstDriverStoreEntries.SelectedObject;
+                Process.Start("explorer.exe", "/select, " + Path.Combine(item.DriverFolderLocation, item.DriverInfName));
             }
         }
     }

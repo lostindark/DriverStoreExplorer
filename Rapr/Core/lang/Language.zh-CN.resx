@@ -356,4 +356,7 @@ ObjectListView http://objectlistview.sourceforge.net/ </value>
   <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
     <value>始终以管理员身份运行</value>
   </data>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>打开文件夹</value>
+  </data>
 </root>

@@ -49,6 +49,11 @@ namespace Rapr.Utils
         /// </summary>
         public long DriverSize;
 
+        /// <summary>
+        /// The folder that contains the driver.
+        /// </summary>
+        public string DriverFolderLocation;
+
         public string DriverDateAndVersion
         {
             set
@@ -115,7 +120,7 @@ namespace Rapr.Utils
 
         public string[] GetFieldNames()
         {
-            return new [] {
+            return new[] {
                 "OEM INF",
                 "INF",
                 "Package Provider",
@@ -123,22 +128,24 @@ namespace Rapr.Utils
                 "Driver Date",
                 "Driver Version",
                 "Driver Signer",
-                "Driver Size"
+                "Driver Size",
+                "Driver Folder",
             };
         }
 
         public string[] GetFieldValues()
         {
-            return new []
+            return new[]
             {
                 this.DriverPublishedName ?? "",
                 this.DriverInfName ?? "",
                 this.DriverPkgProvider ?? "",
                 this.DriverClass ?? "",
-                this.DriverDate.ToString("d", CultureInfo.InvariantCulture),
+                this.DriverDate.ToString("d"),
                 this.DriverVersion == null ? "" : this.DriverVersion.ToString(),
                 this.DriverSignerName ?? "",
-                this.DriverSize.ToString()
+                this.DriverSize.ToString(),
+                this.DriverFolderLocation ?? string.Empty
             };
         }
 

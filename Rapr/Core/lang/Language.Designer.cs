@@ -236,6 +236,15 @@ namespace Rapr.Core.lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Open Folder Location.
+        /// </summary>
+        public static string Context_Open_Folder {
+            get {
+                return ResourceManager.GetString("Context_Open_Folder", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select.
         /// </summary>
         public static string Context_Select {
@@ -632,7 +641,7 @@ namespace Rapr.Core.lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to  Operations .
+        ///   Looks up a localized string similar to Operations.
         /// </summary>
         public static string Operations_Text {
             get {
