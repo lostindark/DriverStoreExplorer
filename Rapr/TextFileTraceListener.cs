@@ -33,7 +33,7 @@ namespace Rapr
 
             this.Write($"{DateTime.UtcNow:u} [{eventType}]: ");
 
-            if (args.Length > 0)
+            if (args?.Length > 0)
             {
                 base.WriteLine(string.Format(format, args));
             }

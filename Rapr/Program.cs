@@ -6,23 +6,21 @@ namespace Rapr
 {
     public static class Program
     {
-        private static Assembly ResolveEventHandler(Object sender, ResolveEventArgs args)
+        private static Assembly ResolveEventHandler(object sender, ResolveEventArgs args)
         {
             Assembly assembly = Assembly.GetEntryAssembly();
-            String resourceName = string.Format("{0}.{1}.dll", assembly.EntryPoint.DeclaringType.Namespace, new AssemblyName(args.Name).Name);
+            string resourceName = $"{assembly.EntryPoint.DeclaringType.Namespace}.{new AssemblyName(args.Name).Name}.dll";
 
             using (var stream = assembly.GetManifestResourceStream(resourceName))
             {
-                if (stream != null)
-                {
-                    Byte[] assemblyData = new Byte[stream.Length];
-                    stream.Read(assemblyData, 0, assemblyData.Length);
-                    return Assembly.Load(assemblyData);
-                }
-                else
+                if (stream == null)
                 {
                     return null;
                 }
+
+                byte[] assemblyData = new byte[stream.Length];
+                stream.Read(assemblyData, 0, assemblyData.Length);
+                return Assembly.Load(assemblyData);
             }
         }
 
