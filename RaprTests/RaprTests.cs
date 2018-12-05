@@ -1,9 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Rapr.Core.lang;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Threading;
 
-namespace Rapr.Utils.Tests
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+using Rapr.Lang;
+
+namespace Rapr.Tests
 {
     [TestClass]
     public class RaprTests

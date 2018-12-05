@@ -57,50 +57,50 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\AboutBox.cs">
+    <Compile Include="AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Core\AboutBox.Designer.cs">
+    <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\CSVExporter.cs" />
-    <Compile Include="Core\DSEForm.cs">
+    <Compile Include="CSVExporter.cs" />
+    <Compile Include="DSEForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Core\DSEForm.Designer.cs">
+    <Compile Include="DSEForm.Designer.cs">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Core\DSEFormHelper.cs">
+    <Compile Include="DSEFormHelper.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Core\IExport.cs" />
-    <Compile Include="Core\lang\Language.Designer.cs">
+    <Compile Include="IExport.cs" />
+    <Compile Include="Lang\Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Language.resx</DependentUpon>
     </Compile>
-    <Compile Include="Core\PNPUtilLib\DriverStoreEntry.cs" />
-    <Compile Include="Core\PNPUtilLib\DriverStoreRepository.cs" />
-    <Compile Include="Core\PNPUtilLib\IDriverStore.cs" />
-    <Compile Include="Core\PNPUtilLib\PNPUtil.cs" />
-    <Compile Include="Core\MyObjectListView.cs">
+    <Compile Include="Utils\DriverStoreEntry.cs" />
+    <Compile Include="Utils\DriverStoreRepository.cs" />
+    <Compile Include="Utils\IDriverStore.cs" />
+    <Compile Include="Utils\PnpUtil.cs" />
+    <Compile Include="MyObjectListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Core\Program.cs" />
-    <Compile Include="Core\SafeNativeMethods.cs" />
-    <Compile Include="Core\TextFileTraceListener.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="SafeNativeMethods.cs" />
+    <Compile Include="TextFileTraceListener.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Core\AboutBox.resx">
+    <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Core\DSEForm.resx">
+    <EmbeddedResource Include="DSEForm.resx">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Core\lang\Language.fr-FR.resx" />
-    <EmbeddedResource Include="Core\lang\Language.ja-JP.resx" />
-    <EmbeddedResource Include="Core\lang\Language.ru-RU.resx" />
-    <EmbeddedResource Include="Core\lang\Language.zh-CN.resx" />
-    <EmbeddedResource Include="Core\lang\Language.resx">
+    <EmbeddedResource Include="Lang\Language.fr-FR.resx" />
+    <EmbeddedResource Include="Lang\Language.ja-JP.resx" />
+    <EmbeddedResource Include="Lang\Language.ru-RU.resx" />
+    <EmbeddedResource Include="Lang\Language.zh-CN.resx" />
+    <EmbeddedResource Include="Lang\Language.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Language.Designer.cs</LastGenOutput>
     </EmbeddedResource>
@@ -132,6 +132,7 @@
   <ItemGroup>
     <Content Include="icon.ico" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

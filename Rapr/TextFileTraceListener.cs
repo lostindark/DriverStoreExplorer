@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Globalization;
 using System.IO;
 
-namespace Rapr.Core
+namespace Rapr
 {
     public class TextFileTraceListener : TextWriterTraceListener
     {
@@ -18,7 +17,7 @@ namespace Rapr.Core
         {
             string filePath = Environment.ExpandEnvironmentVariables(fileName);
 
-            new FileInfo(filePath).Directory.Create();
+            new FileInfo(filePath).Directory?.Create();
 
             LastTraceFile = filePath;
 
@@ -34,9 +33,9 @@ namespace Rapr.Core
 
             this.Write($"{DateTime.UtcNow:u} [{eventType}]: ");
 
-            if (args != null)
+            if (args.Length > 0)
             {
-                base.WriteLine(string.Format(CultureInfo.InvariantCulture, format, args));
+                base.WriteLine(string.Format(format, args));
             }
             else
             {
