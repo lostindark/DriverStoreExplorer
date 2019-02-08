@@ -125,7 +125,7 @@ namespace Rapr.Utils
             return content;
         }
 
-        private static long GetFolderSize(DirectoryInfo directory)
+        public static long GetFolderSize(DirectoryInfo directory)
         {
             long size = 0;
 

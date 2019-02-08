@@ -323,11 +323,11 @@ namespace Rapr
                     break;
 
                 case OperationCode.AddDriver:
-                    localContext.ResultStatus = this.driverStore.AddPackage(localContext.InfPath, false);
+                    localContext.ResultStatus = this.driverStore.AddDriver(localContext.InfPath, false);
                     break;
 
                 case OperationCode.AddInstallDriver:
-                    localContext.ResultStatus = this.driverStore.AddPackage(localContext.InfPath, true);
+                    localContext.ResultStatus = this.driverStore.AddDriver(localContext.InfPath, true);
                     break;
 
                 case OperationCode.Dummy:
@@ -346,13 +346,13 @@ namespace Rapr
 
                 if (localContext.DriverStoreEntries.Count == 1)
                 {
-                    localContext.ResultStatus = this.driverStore.DeletePackage(localContext.DriverStoreEntries[0], force);
+                    localContext.ResultStatus = this.driverStore.DeleteDriver(localContext.DriverStoreEntries[0], force);
                 }
                 else
                 {
                     foreach (DriverStoreEntry dse in localContext.DriverStoreEntries)
                     {
-                        bool result = this.driverStore.DeletePackage(dse, force);
+                        bool result = this.driverStore.DeleteDriver(dse, force);
                         string resultTxt = string.Format(
                             Language.Message_Delete_Result,
                             dse.DriverInfName,

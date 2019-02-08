@@ -54,6 +54,10 @@ namespace Rapr.Utils
         /// </summary>
         public string DriverFolderLocation;
 
+        public bool? BootCritical;
+
+        public bool? Inbox;
+
         public string DriverDateAndVersion
         {
             set

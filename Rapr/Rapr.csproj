@@ -40,6 +40,10 @@
     <ApplicationIcon>icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Dism, Version=1.0.0.0, Culture=neutral, PublicKeyToken=5bba90053b345501, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Dism.2.0.2\lib\net40\Microsoft.Dism.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
       <HintPath>..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
       <Private>False</Private>
@@ -82,6 +86,7 @@
     <Compile Include="Utils\DriverStoreEntry.cs" />
     <Compile Include="Utils\DriverStoreRepository.cs" />
     <Compile Include="Utils\IDriverStore.cs" />
+    <Compile Include="Utils\DismUtil.cs" />
     <Compile Include="Utils\PnpUtil.cs" />
     <Compile Include="MyObjectListView.cs">
       <SubType>Component</SubType>
@@ -130,6 +135,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll" />
+    <EmbeddedResource Include="..\packages\Microsoft.Dism.2.0.2\lib\net40\Microsoft.Dism.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />

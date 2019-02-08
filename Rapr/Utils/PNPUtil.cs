@@ -232,7 +232,7 @@ namespace Rapr.Utils
             return entryValue;
         }
 
-        public bool DeletePackage(DriverStoreEntry dse, bool forceDelete)
+        public bool DeleteDriver(DriverStoreEntry dse, bool forceDelete)
         {
             string dummy = "";
             return PnpUtilHelper(
@@ -241,7 +241,7 @@ namespace Rapr.Utils
                 ref dummy);
         }
 
-        public bool AddPackage(string infFullPath, bool install)
+        public bool AddDriver(string infFullPath, bool install)
         {
             string dummy = "";
             return PnpUtilHelper(
