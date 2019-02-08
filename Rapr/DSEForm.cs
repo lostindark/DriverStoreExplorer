@@ -204,10 +204,6 @@ namespace Rapr
             this.savedBackColor = this.lblStatus.BackColor;
             this.savedForeColor = this.lblStatus.ForeColor;
 
-            this.alwaysRunAsAdminToolStripMenuItem.Checked = RunAsAdmin;
-            this.alwaysRunAsAdminToolStripMenuItem.CheckedChanged +=
-                (f, g) => RunAsAdmin = this.alwaysRunAsAdminToolStripMenuItem.Checked;
-
             if (!isRunAsAdministrator)
             {
                 this.Text += " " + Language.Product_Name_Additional_ReadOnly;
@@ -217,7 +213,6 @@ namespace Rapr
                 this.buttonDeleteDriver.Enabled = false;
                 this.cbForceDeletion.Enabled = false;
                 this.buttonSelectOldDrivers.Enabled = false;
-                this.runAsAdminToolStripMenuItem.Enabled = true;
             }
 
             this.PopulateUIWithDriverStoreEntries();

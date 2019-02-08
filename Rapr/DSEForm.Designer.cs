@@ -38,6 +38,8 @@ namespace Rapr
             this.ctxMenuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenuSelectOldDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctxMenuOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.buttonDeleteDriver = new System.Windows.Forms.Button();
@@ -56,11 +58,8 @@ namespace Rapr
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLogsTtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.runAsAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.alwaysRunAsAdminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -73,8 +72,6 @@ namespace Rapr
             this.driverDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverSizeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.dummyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ctxMenuOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.gbOptions.SuspendLayout();
@@ -122,7 +119,7 @@ namespace Rapr
             this.toolStripSeparator3,
             this.ctxMenuDelete});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(189, 148);
+            this.contextMenuStrip.Size = new System.Drawing.Size(189, 126);
             this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
             // 
             // ctxMenuSelect
@@ -150,6 +147,18 @@ namespace Rapr
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+            // 
+            // ctxMenuOpenFolder
+            // 
+            this.ctxMenuOpenFolder.Name = "ctxMenuOpenFolder";
+            this.ctxMenuOpenFolder.Size = new System.Drawing.Size(188, 22);
+            this.ctxMenuOpenFolder.Text = global::Rapr.Lang.Language.Context_Open_Folder;
+            this.ctxMenuOpenFolder.Click += new System.EventHandler(this.CtxMenuOpenFolder_Click);
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(185, 6);
             // 
             // ctxMenuDelete
             // 
@@ -294,7 +303,6 @@ namespace Rapr
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
-            this.optionToolStripMenuItem,
             this.languageToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(2, 2);
@@ -308,7 +316,6 @@ namespace Rapr
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.exportToolStripMenuItem,
             this.viewLogsTtoolStripMenuItem,
-            this.runAsAdminToolStripMenuItem,
             this.toolStripSeparator4,
             this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
@@ -318,51 +325,28 @@ namespace Rapr
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Export;
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportToolStripMenuItem_Click);
             // 
             // viewLogsTtoolStripMenuItem
             // 
             this.viewLogsTtoolStripMenuItem.Name = "viewLogsTtoolStripMenuItem";
-            this.viewLogsTtoolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.viewLogsTtoolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewLogsTtoolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_View_Logs;
             this.viewLogsTtoolStripMenuItem.Click += new System.EventHandler(this.ViewLogsToolStripMenuItem_Click);
-            // 
-            // runAsAdminToolStripMenuItem
-            // 
-            this.runAsAdminToolStripMenuItem.Enabled = false;
-            this.runAsAdminToolStripMenuItem.Name = "runAsAdminToolStripMenuItem";
-            this.runAsAdminToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
-            this.runAsAdminToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_RunAs_Admin;
-            this.runAsAdminToolStripMenuItem.Click += new System.EventHandler(this.RunAsAdminToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(147, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Exit;
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            // 
-            // optionToolStripMenuItem
-            // 
-            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.alwaysRunAsAdminToolStripMenuItem});
-            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
-            this.optionToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
-            this.optionToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_Options;
-            // 
-            // alwaysRunAsAdminToolStripMenuItem
-            // 
-            this.alwaysRunAsAdminToolStripMenuItem.CheckOnClick = true;
-            this.alwaysRunAsAdminToolStripMenuItem.Name = "alwaysRunAsAdminToolStripMenuItem";
-            this.alwaysRunAsAdminToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
-            this.alwaysRunAsAdminToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_Option_Always_RunAs_Admin;
             // 
             // languageToolStripMenuItem
             // 
@@ -486,18 +470,6 @@ namespace Rapr
             this.dummyColumn.FillsFreeSpace = true;
             this.dummyColumn.Text = "";
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(185, 6);
-            // 
-            // ctxMenuOpenFolder
-            // 
-            this.ctxMenuOpenFolder.Name = "ctxMenuOpenFolder";
-            this.ctxMenuOpenFolder.Size = new System.Drawing.Size(188, 22);
-            this.ctxMenuOpenFolder.Text = global::Rapr.Lang.Language.Context_Open_Folder;
-            this.ctxMenuOpenFolder.Click += new System.EventHandler(this.CtxMenuOpenFolder_Click);
-            // 
             // DSEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -566,14 +538,11 @@ namespace Rapr
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem viewLogsTtoolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
-        private System.Windows.Forms.ToolStripMenuItem runAsAdminToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem alwaysRunAsAdminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
