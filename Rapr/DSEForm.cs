@@ -46,6 +46,11 @@ namespace Rapr
                 Application.Exit();
             }
 
+            if (!isRunAsAdministrator)
+            {
+                RunAsAdministrator();
+            }
+
             var lang = Settings.Default.Language;
             if (lang != null && !CultureInfo.InvariantCulture.Equals(lang))
             {
@@ -69,7 +74,7 @@ namespace Rapr
             Trace.TraceInformation("---------------------------------------------------------------");
             Trace.TraceInformation($"{Application.ProductName} started");
 
-            this.driverStore = new PnpUtil();
+            this.driverStore = new DismUtil();
         }
 
         private void SetupListViewColumns()
