@@ -357,4 +357,7 @@ ObjectListView http://objectlistview.sourceforge.net/
   <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
     <value>常に管理者として実行</value>
   </data>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>フォルダーの場所を開く</value>
+  </data>
 </root>

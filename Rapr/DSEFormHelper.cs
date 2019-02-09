@@ -87,7 +87,7 @@ namespace Rapr
             if (!this.backgroundWorker1.IsBusy)
             {
                 this.CleanupContext(this.context);
-                this.context.Code = this.cbAddInstall.Checked ? OperationCode.AddInstallDriver : OperationCode.AddDriver;
+                this.context.Code = OperationCode.AddDriver;
                 this.context.InfPath = infName;
 
                 this.backgroundWorker1.RunWorkerAsync(this.context);
@@ -106,7 +106,7 @@ namespace Rapr
             if (!this.backgroundWorker1.IsBusy)
             {
                 this.CleanupContext(this.context);
-                this.context.Code = this.cbForceDeletion.Checked ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
+                this.context.Code = OperationCode.DeleteDriver;
                 this.context.DriverStoreEntries = ldse;
 
                 this.backgroundWorker1.RunWorkerAsync(this.context);

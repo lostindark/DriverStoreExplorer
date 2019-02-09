@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -355,5 +355,8 @@ ObjectListView http://objectlistview.sourceforge.net/ </value>
   </data>
   <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
     <value>Toujours exécuter en mode administrateur</value>
+  </data>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>Ouvrir l'emplacement du dossier</value>
   </data>
 </root>

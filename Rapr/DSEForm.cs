@@ -209,9 +209,7 @@ namespace Rapr
                 this.Text += " " + Language.Product_Name_Additional_ReadOnly;
                 this.ShowStatus(Language.Label_RunAsAdmin, Status.Warning);
                 this.buttonAddDriver.Enabled = false;
-                this.cbAddInstall.Enabled = false;
                 this.buttonDeleteDriver.Enabled = false;
-                this.cbForceDeletion.Enabled = false;
                 this.buttonSelectOldDrivers.Enabled = false;
             }
 
@@ -266,7 +264,7 @@ namespace Rapr
                 {
                     msgWarning = string.Format(
                         Language.Message_Delete_Single_Package,
-                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete,
+                        Language.Message_Delete,
                         driverStoreEntries[0].DriverInfName,
                         driverStoreEntries[0].DriverPublishedName);
                 }
@@ -274,7 +272,7 @@ namespace Rapr
                 {
                     msgWarning = string.Format(
                         Language.Message_Delete_Multiple_Packages,
-                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete,
+                        Language.Message_Delete,
                         driverStoreEntries.Count);
                 }
 
@@ -438,8 +436,6 @@ namespace Rapr
                         this.ShowStatus(result, Status.Error);
                     }
 
-                    this.cbForceDeletion.Checked = false;
-
                     break;
 
                 case OperationCode.AddDriver:
@@ -469,7 +465,6 @@ namespace Rapr
                         this.ShowStatus(result, Status.Error);
                     }
 
-                    this.cbAddInstall.Checked = false;
                     break;
             }
 

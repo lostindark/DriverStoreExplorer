@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>Add Package</value>
+    <value>Add Driver</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>Delete Package</value>
+    <value>Delete Driver</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>

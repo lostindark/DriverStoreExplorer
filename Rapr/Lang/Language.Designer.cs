@@ -74,7 +74,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Package.
+        ///   Looks up a localized string similar to Add Driver.
         /// </summary>
         public static string Button_Add_Package {
             get {
@@ -83,7 +83,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete Package.
+        ///   Looks up a localized string similar to Delete Driver.
         /// </summary>
         public static string Button_Delete_Package {
             get {
