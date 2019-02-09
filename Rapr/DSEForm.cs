@@ -607,7 +607,7 @@ namespace Rapr
 
                 this.lstDriverStoreEntries.CheckedObjects = driverStoreEntryList
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverPkgProvider, entry.DriverInfName })
-                    .SelectMany(g => g.OrderByDescending(row => row.DriverVersion).Skip(1))
+                    .SelectMany(g => g.OrderByDescending(row => row.DriverVersion).ThenByDescending(row => row.DriverDate).Skip(1))
                     .ToArray();
             }
         }
