@@ -10,9 +10,8 @@ DriverStore Explorer [RAPR] makes it easier to deal with Windows [driver store](
 ### Features:
 * Enumerate / List all the packages staged in the current driver store.
 * Export the list as CSV.
-* Add a driver package to the driver store (called staging)
-* Install & Add a driver package to the store.
-* Delete a package from the store. Force deletion supported.
+* Add a driver package to the driver store.
+* Delete a package from the store.
 * Deletion of multiple driver packages (batch mode)
 * Full fledged GUI Supports grouping / sorting on any column.
 * Supports re-arranging of / Selecting specific columns.
