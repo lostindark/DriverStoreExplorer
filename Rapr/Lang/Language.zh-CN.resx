@@ -265,7 +265,7 @@
     <value>退出</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>导出</value>
+    <value>导出驱动列表</value>
   </data>
   <data name="Menu_File" xml:space="preserve">
     <value>文件</value>

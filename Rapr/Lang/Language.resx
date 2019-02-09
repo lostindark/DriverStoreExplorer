@@ -253,7 +253,7 @@
     <value>File</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>Export</value>
+    <value>Export Driver List</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Exit</value>

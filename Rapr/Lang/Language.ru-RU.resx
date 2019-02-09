@@ -253,7 +253,7 @@
     <value>Файл</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>Экспорт</value>
+    <value>Экспорт списка драйверов</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Выход</value>

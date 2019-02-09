@@ -371,7 +371,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export.
+        ///   Looks up a localized string similar to Export Driver List.
         /// </summary>
         public static string Menu_File_Export {
             get {
