@@ -20,7 +20,7 @@ namespace Rapr
 {
     public partial class DSEForm : Form
     {
-        private readonly IDriverStore driverStore;
+        private IDriverStore driverStore;
         private Color savedBackColor;
         private Color savedForeColor;
         private OperationContext context = new OperationContext();
@@ -74,7 +74,21 @@ namespace Rapr
             Trace.TraceInformation("---------------------------------------------------------------");
             Trace.TraceInformation($"{Application.ProductName} started");
 
-            this.driverStore = new DismUtil();
+            this.UpdateDriverStoreLocation(new DismUtil());
+        }
+
+        private void UpdateDriverStoreLocation(DismUtil dismUtil)
+        {
+            this.driverStore = dismUtil;
+
+            if (dismUtil.Type == DriverStoreType.Online)
+            {
+                this.Text = Language.Product_Name + " - " + Language.DriverStore_LocalMachine;
+            }
+            else
+            {
+                this.Text = Language.Product_Name + " - " + dismUtil.OfflineStoreLocation;
+            }
         }
 
         private void SetupListViewColumns()
@@ -783,6 +797,27 @@ namespace Rapr
             {
                 DriverStoreEntry item = (DriverStoreEntry)this.lstDriverStoreEntries.SelectedObject;
                 Process.Start("explorer.exe", "/select, " + Path.Combine(item.DriverFolderLocation, item.DriverInfName));
+            }
+        }
+
+        private void ChooseDriverStoreToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (ChooseDriverStore chooseDriverStore = new ChooseDriverStore())
+            {
+                DialogResult result = chooseDriverStore.ShowDialog();
+
+                if (result == DialogResult.OK)
+                {
+                    if (!this.backgroundWorker1.IsBusy)
+                    {
+                        this.UpdateDriverStoreLocation(new DismUtil(chooseDriverStore.StoreType, chooseDriverStore.OfflineStoreLocation));
+                        this.PopulateUIWithDriverStoreEntries();
+                    }
+                    else
+                    {
+                        this.InProgress();
+                    }
+                }
             }
         }
     }

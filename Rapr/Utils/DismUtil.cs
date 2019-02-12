@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 
 using Microsoft.Dism;
@@ -7,6 +8,27 @@ namespace Rapr.Utils
 {
     public class DismUtil : IDriverStore
     {
+        public DriverStoreType Type { get; }
+
+        public string OfflineStoreLocation { get; }
+
+        public DismUtil()
+        {
+            this.Type = DriverStoreType.Online;
+        }
+
+        public DismUtil(string imagePath)
+        {
+            this.Type = DriverStoreType.Offline;
+            this.OfflineStoreLocation = imagePath;
+        }
+
+        public DismUtil(DriverStoreType type, string imagePath)
+        {
+            this.Type = type;
+            this.OfflineStoreLocation = imagePath;
+        }
+
         #region IDriverStore Members
         public List<DriverStoreEntry> EnumeratePackages()
         {
@@ -16,7 +38,7 @@ namespace Rapr.Utils
 
             try
             {
-                using (DismSession session = DismApi.OpenOnlineSession())
+                using (DismSession session = this.GetSession())
                 {
                     foreach (var driverPackage in DismApi.GetDrivers(session, false))
                     {
@@ -45,13 +67,28 @@ namespace Rapr.Utils
             return driverStoreEntries;
         }
 
+        private DismSession GetSession()
+        {
+            switch (this.Type)
+            {
+                case DriverStoreType.Online:
+                    return DismApi.OpenOnlineSession();
+
+                case DriverStoreType.Offline:
+                    return DismApi.OpenOfflineSession(this.OfflineStoreLocation);
+
+                default:
+                    throw new NotSupportedException();
+            }
+        }
+
         public bool DeleteDriver(DriverStoreEntry dse, bool forceDelete)
         {
             DismApi.Initialize(DismLogLevel.LogErrors);
 
             try
             {
-                using (DismSession session = DismApi.OpenOnlineSession())
+                using (DismSession session = this.GetSession())
                 {
                     DismApi.RemoveDriver(session, dse.DriverFolderLocation);
                 }
@@ -70,7 +107,7 @@ namespace Rapr.Utils
 
             try
             {
-                using (DismSession session = DismApi.OpenOnlineSession())
+                using (DismSession session = this.GetSession())
                 {
                     DismApi.AddDriver(session, infFullPath, false);
                 }

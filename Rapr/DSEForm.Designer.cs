@@ -70,6 +70,8 @@ namespace Rapr
             this.driverDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverSizeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.dummyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.chooseDriverStoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.contextMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.gbOptions.SuspendLayout();
@@ -288,6 +290,8 @@ namespace Rapr
             // fileToolStripMenuItem
             // 
             this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.chooseDriverStoreToolStripMenuItem,
+            this.toolStripSeparator5,
             this.exportToolStripMenuItem,
             this.viewLogsTtoolStripMenuItem,
             this.toolStripSeparator4,
@@ -299,26 +303,26 @@ namespace Rapr
             // exportToolStripMenuItem
             // 
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exportToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Export;
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportToolStripMenuItem_Click);
             // 
             // viewLogsTtoolStripMenuItem
             // 
             this.viewLogsTtoolStripMenuItem.Name = "viewLogsTtoolStripMenuItem";
-            this.viewLogsTtoolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.viewLogsTtoolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.viewLogsTtoolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_View_Logs;
             this.viewLogsTtoolStripMenuItem.Click += new System.EventHandler(this.ViewLogsToolStripMenuItem_Click);
             // 
             // toolStripSeparator4
             // 
             this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(124, 6);
+            this.toolStripSeparator4.Size = new System.Drawing.Size(177, 6);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.exitToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Exit;
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
             // 
@@ -444,6 +448,18 @@ namespace Rapr
             this.dummyColumn.FillsFreeSpace = true;
             this.dummyColumn.Text = "";
             // 
+            // chooseDriverStoreToolStripMenuItem
+            // 
+            this.chooseDriverStoreToolStripMenuItem.Name = "chooseDriverStoreToolStripMenuItem";
+            this.chooseDriverStoreToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.chooseDriverStoreToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Choose_Driver_Store;
+            this.chooseDriverStoreToolStripMenuItem.Click += new System.EventHandler(this.ChooseDriverStoreToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(177, 6);
+            // 
             // DSEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -457,7 +473,7 @@ namespace Rapr
             this.Name = "DSEForm";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Driver Store Explorer [RAPR]";
+            this.Text = global::Rapr.Lang.Language.Product_Name;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.DSEForm_FormClosing);
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DSEForm_FormClosed);
             this.Load += new System.EventHandler(this.DSEForm_Load);
@@ -521,6 +537,8 @@ namespace Rapr
         private BrightIdeasSoftware.OLVColumn dummyColumn;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuOpenFolder;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+        private System.Windows.Forms.ToolStripMenuItem chooseDriverStoreToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
 

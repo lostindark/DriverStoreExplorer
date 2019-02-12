@@ -47,6 +47,14 @@
       <HintPath>..\packages\Microsoft.Dism.2.0.2\lib\net40\Microsoft.Dism.dll</HintPath>
       <Private>False</Private>
     </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAPICodePack.Shell, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
     <Reference Include="ObjectListView, Version=2.9.1.1072, Culture=neutral, PublicKeyToken=b1c5bf581481bcd4, processorArchitecture=MSIL">
       <HintPath>..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll</HintPath>
       <Private>False</Private>
@@ -62,6 +70,7 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AboutBox.cs">
@@ -70,7 +79,14 @@
     <Compile Include="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChooseDriverStore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseDriverStore.Designer.cs">
+      <DependentUpon>ChooseDriverStore.cs</DependentUpon>
+    </Compile>
     <Compile Include="CSVExporter.cs" />
+    <Compile Include="DriverStoreType.cs" />
     <Compile Include="DSEForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +117,9 @@
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChooseDriverStore.resx">
+      <DependentUpon>ChooseDriverStore.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DSEForm.resx">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,7 +147,9 @@
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -142,6 +163,8 @@
   <ItemGroup>
     <EmbeddedResource Include="..\packages\ObjectListView.Official.2.9.1\lib\net20\ObjectListView.dll" />
     <EmbeddedResource Include="..\packages\Microsoft.Dism.2.0.2\lib\net40\Microsoft.Dism.dll" />
+    <EmbeddedResource Include="..\packages\WindowsAPICodePack-Core.1.1.1\lib\Microsoft.WindowsAPICodePack.dll" />
+    <EmbeddedResource Include="..\packages\WindowsAPICodePack-Shell.1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />

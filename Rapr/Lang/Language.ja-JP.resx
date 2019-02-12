@@ -226,7 +226,7 @@
     <value>https://github.com/lostindark/DriverStoreExplorer</value>
   </data>
   <data name="Product_Name" xml:space="preserve">
-    <value>Driver Store Explorer [RAPR]</value>
+    <value>Driver Store Explorer</value>
   </data>
   <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
     <value>[読み取り専用モード]</value>
@@ -359,5 +359,8 @@ ObjectListView http://objectlistview.sourceforge.net/
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>フォルダーの場所を開く</value>
+  </data>
+  <data name="DriverStore_LocalMachine" xml:space="preserve">
+    <value>ローカル コンピューター</value>
   </data>
 </root>

@@ -226,7 +226,7 @@
     <value>https://github.com/lostindark/DriverStoreExplorer</value>
   </data>
   <data name="Product_Name" xml:space="preserve">
-    <value>Driver Store Explorer [RAPR]</value>
+    <value>Driver Store Explorer</value>
   </data>
   <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
     <value>[只读模式]</value>
@@ -358,5 +358,17 @@ ObjectListView http://objectlistview.sourceforge.net/ </value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>打开文件夹</value>
+  </data>
+  <data name="DriverStore_LocalMachine" xml:space="preserve">
+    <value>本机</value>
+  </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>选择驱动存储</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>离线驱动存储</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>选择驱动存储</value>
   </data>
 </root>

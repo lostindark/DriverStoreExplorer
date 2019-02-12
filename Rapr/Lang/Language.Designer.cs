@@ -137,6 +137,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Choose Driver Store.
+        /// </summary>
+        public static string ChooseDriverStore_Title {
+            get {
+                return ResourceManager.GetString("ChooseDriverStore_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Driver Date.
         /// </summary>
         public static string Column_Date {
@@ -308,6 +317,24 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Local Machine.
+        /// </summary>
+        public static string DriverStore_LocalMachine {
+            get {
+                return ResourceManager.GetString("DriverStore_LocalMachine", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Offline Driver Store.
+        /// </summary>
+        public static string DriverStore_Offline {
+            get {
+                return ResourceManager.GetString("DriverStore_Offline", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Contents saved to {0}. Export Completed..
         /// </summary>
         public static string Export_Complete {
@@ -358,6 +385,15 @@ namespace Rapr.Lang {
         public static string Menu_File {
             get {
                 return ResourceManager.GetString("Menu_File", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Choose Driver Store.
+        /// </summary>
+        public static string Menu_File_Choose_Driver_Store {
+            get {
+                return ResourceManager.GetString("Menu_File_Choose_Driver_Store", resourceCulture);
             }
         }
         
@@ -678,7 +714,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Driver Store Explorer [RAPR].
+        ///   Looks up a localized string similar to Driver Store Explorer.
         /// </summary>
         public static string Product_Name {
             get {
