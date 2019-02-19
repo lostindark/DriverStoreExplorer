@@ -17,6 +17,10 @@ namespace Rapr.Utils
         private static readonly Regex AddResultRegex = new Regex(@".+: +([0-9]+)[\r\n].+: +([0-9]+)[\r\n ]+", RegexOptions.Compiled | RegexOptions.Singleline);
         private static readonly char[] NameValueDelimiter = new char[] { ':' };
 
+        public DriverStoreType Type => DriverStoreType.Online;
+
+        public string OfflineStoreLocation => throw new NotSupportedException();
+
         public enum PnpUtilOptions
         {
             Enumerate,
@@ -232,12 +236,12 @@ namespace Rapr.Utils
             return entryValue;
         }
 
-        public bool DeleteDriver(DriverStoreEntry dse, bool forceDelete)
+        public bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
         {
             string dummy = "";
             return PnpUtilHelper(
                 forceDelete ? PnpUtilOptions.ForceDelete : PnpUtilOptions.Delete,
-                dse.DriverPublishedName,
+                driverStoreEntry.DriverPublishedName,
                 ref dummy);
         }
 

@@ -74,20 +74,30 @@ namespace Rapr
             Trace.TraceInformation("---------------------------------------------------------------");
             Trace.TraceInformation($"{Application.ProductName} started");
 
-            this.UpdateDriverStoreLocation(new DismUtil());
+            this.UpdateDriverStore(new PnpUtil());
         }
 
-        private void UpdateDriverStoreLocation(DismUtil dismUtil)
+        private void UpdateDriverStore(IDriverStore driverStore)
         {
-            this.driverStore = dismUtil;
+            this.driverStore = driverStore;
 
-            if (dismUtil.Type == DriverStoreType.Online)
+            switch (driverStore.Type)
             {
-                this.Text = Language.Product_Name + " - " + Language.DriverStore_LocalMachine;
-            }
-            else
-            {
-                this.Text = Language.Product_Name + " - " + dismUtil.OfflineStoreLocation;
+                case DriverStoreType.Online:
+                    {
+                        this.Text = Language.Product_Name + " - " + Language.DriverStore_LocalMachine;
+                        this.cbAddInstall.Enabled = true;
+                        this.cbForceDeletion.Enabled = true;
+                        break;
+                    }
+
+                case DriverStoreType.Offline:
+                    {
+                        this.Text = Language.Product_Name + " - " + driverStore.OfflineStoreLocation;
+                        this.cbAddInstall.Enabled = false;
+                        this.cbForceDeletion.Enabled = false;
+                        break;
+                    }
             }
         }
 
@@ -223,7 +233,9 @@ namespace Rapr
                 this.Text += " " + Language.Product_Name_Additional_ReadOnly;
                 this.ShowStatus(Language.Label_RunAsAdmin, Status.Warning);
                 this.buttonAddDriver.Enabled = false;
+                this.cbAddInstall.Enabled = false;
                 this.buttonDeleteDriver.Enabled = false;
+                this.cbForceDeletion.Enabled = false;
                 this.buttonSelectOldDrivers.Enabled = false;
             }
 
@@ -278,7 +290,7 @@ namespace Rapr
                 {
                     msgWarning = string.Format(
                         Language.Message_Delete_Single_Package,
-                        Language.Message_Delete,
+                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete,
                         driverStoreEntries[0].DriverInfName,
                         driverStoreEntries[0].DriverPublishedName);
                 }
@@ -286,7 +298,7 @@ namespace Rapr
                 {
                     msgWarning = string.Format(
                         Language.Message_Delete_Multiple_Packages,
-                        Language.Message_Delete,
+                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete,
                         driverStoreEntries.Count);
                 }
 
@@ -450,6 +462,8 @@ namespace Rapr
                         this.ShowStatus(result, Status.Error);
                     }
 
+                    this.cbForceDeletion.Checked = false;
+
                     break;
 
                 case OperationCode.AddDriver:
@@ -479,6 +493,7 @@ namespace Rapr
                         this.ShowStatus(result, Status.Error);
                     }
 
+                    this.cbAddInstall.Checked = false;
                     break;
             }
 
@@ -804,13 +819,29 @@ namespace Rapr
         {
             using (ChooseDriverStore chooseDriverStore = new ChooseDriverStore())
             {
+                chooseDriverStore.StoreType = this.driverStore.Type;
+                if (this.driverStore.Type == DriverStoreType.Offline)
+                {
+                    chooseDriverStore.OfflineStoreLocation = this.driverStore.OfflineStoreLocation;
+                }
+
                 DialogResult result = chooseDriverStore.ShowDialog();
 
                 if (result == DialogResult.OK)
                 {
                     if (!this.backgroundWorker1.IsBusy)
                     {
-                        this.UpdateDriverStoreLocation(new DismUtil(chooseDriverStore.StoreType, chooseDriverStore.OfflineStoreLocation));
+                        switch (chooseDriverStore.StoreType)
+                        {
+                            case DriverStoreType.Online:
+                                this.UpdateDriverStore(new PnpUtil());
+                                break;
+
+                            case DriverStoreType.Offline:
+                                this.UpdateDriverStore(new DismUtil(chooseDriverStore.OfflineStoreLocation));
+                                break;
+                        }
+
                         this.PopulateUIWithDriverStoreEntries();
                     }
                     else

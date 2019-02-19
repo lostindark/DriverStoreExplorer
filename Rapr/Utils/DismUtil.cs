@@ -23,12 +23,6 @@ namespace Rapr.Utils
             this.OfflineStoreLocation = imagePath;
         }
 
-        public DismUtil(DriverStoreType type, string imagePath)
-        {
-            this.Type = type;
-            this.OfflineStoreLocation = imagePath;
-        }
-
         #region IDriverStore Members
         public List<DriverStoreEntry> EnumeratePackages()
         {
@@ -82,7 +76,7 @@ namespace Rapr.Utils
             }
         }
 
-        public bool DeleteDriver(DriverStoreEntry dse, bool forceDelete)
+        public bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
         {
             DismApi.Initialize(DismLogLevel.LogErrors);
 
@@ -90,7 +84,7 @@ namespace Rapr.Utils
             {
                 using (DismSession session = this.GetSession())
                 {
-                    DismApi.RemoveDriver(session, dse.DriverFolderLocation);
+                    DismApi.RemoveDriver(session, driverStoreEntry.DriverPublishedName);
                 }
             }
             finally
