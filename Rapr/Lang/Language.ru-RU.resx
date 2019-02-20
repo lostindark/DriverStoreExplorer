@@ -278,7 +278,7 @@
   </data>
   <data name="Product_Credits" xml:space="preserve">
     <value>DriveStore Explorer v{0}
-by Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
+Авторы: Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>О {0}</value>
@@ -361,5 +361,17 @@ ObjectListView http://objectlistview.sourceforge.net/	</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Локальный компьютер</value>
+  </data>
+    <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>Выбрать Driver Store</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>Offline Driver Store</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>Выбор Driver Store</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Язык</value>
   </data>
 </root>
