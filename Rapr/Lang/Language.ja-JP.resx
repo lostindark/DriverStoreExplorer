@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>パッケージを追加...</value>
+    <value>ドライバーを追加...</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>パッケージを削除</value>
+    <value>ドライバーを削除</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
@@ -130,13 +130,13 @@
     <value>最新の情報に更新</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>古いドライバー選択</value>
+    <value>古いドライバーのみ選択</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
-    <value>強制削除</value>
+    <value>強制削除モード</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
-    <value>インストール</value>
+    <value>追加と同時にインストール</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
     <value>日付</value>
@@ -154,7 +154,7 @@
     <value>プロバイダー</value>
   </data>
   <data name="Column_Signed_By" xml:space="preserve">
-    <value>署名</value>
+    <value>デジタル署名者</value>
   </data>
   <data name="Column_Size" xml:space="preserve">
     <value>サイズ</value>
@@ -178,7 +178,7 @@
     <value>すべて選択</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>古いドライバー選択</value>
+    <value>古いドライバーのみ選択</value>
   </data>
   <data name="Group_DriverStore" xml:space="preserve">
     <value>ドライバー ストア</value>
@@ -190,13 +190,13 @@
     <value>削除</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>ドライバー ストアから {1} 個のパッケージを{0}しようとしています。</value>
+    <value>ドライバー ストアから {1} 個のパッケージを{0}します。</value>
   </data>
   <data name="Message_Delete_Result" xml:space="preserve">
-    <value>{0} ({1}) {2} を削除しました。</value>
+    <value>{0} ({1}) の削除に{2}しました。</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>ドライバー ストアから {1} ({2}) を{0}しようとしています。</value>
+    <value>ドライバー ストアから {1} ({2}) を{0}します。</value>
   </data>
   <data name="Message_Failed" xml:space="preserve">
     <value>失敗</value>
@@ -238,7 +238,7 @@
     <value>読み取り専用モードで実行しています</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[ヒント: ドライバーが使用中である可能性があります。強制削除を試してください。]</value>
+    <value>[ヒント: ドライバーが使用中である可能性があります。強制削除モードを試してください。]</value>
   </data>
   <data name="Title_About" xml:space="preserve">
     <value>バージョン情報</value>
@@ -253,7 +253,7 @@
     <value>ファイル</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>エクスポート...</value>
+    <value>リストのエクスポート...</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>終了</value>
@@ -304,34 +304,34 @@ ObjectListView http://objectlistview.sourceforge.net/
     <value>別の操作が進行中です</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>ドライバー パッケージを追加中...</value>
+    <value>ドライバー パッケージを追加しています...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>ドライバー パッケージを追加中...</value>
+    <value>ドライバー パッケージを削除しています...</value>
   </data>
   <data name="Message_Detailed_Log" xml:space="preserve">
     <value>詳細なエラー ログ</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>ドライバー ストアから {0} ({1}) を削除</value>
+    <value>ドライバー ストアから {0} ({1}) を削除しました</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>ドライバー ストアから {0} 個のパッケージを削除</value>
+    <value>ドライバー ストアから {0} 個のパッケージを削除しました</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>ドライバー ストア {2} から {0} ({1}) 削除中にエラーが発生</value>
+    <value>ドライバー ストア {2} から {0} ({1}) 削除中にエラーが発生しました</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>ドライバー ストア {0} からいくつかのパッケージを削除する際にエラーが発生</value>
+    <value>ドライバー ストア {0} からいくつかのパッケージを削除する際にエラーが発生しました</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>ドライバー ストアに {0} パッケージ {1} を追加</value>
+    <value>ドライバー ストアに {0} パッケージ {1} を追加しました</value>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>ドライバー ストアに {0} パッケージ {1} を追加中にエラーが発生</value>
+    <value>ドライバー ストアに {0} パッケージ {1} を追加中にエラーが発生しました</value>
   </data>
   <data name="Message_Driver_And_Installed" xml:space="preserve">
-    <value>とインストール</value>
+    <value> (インストールあり)</value>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>ログ ファイルが見つかりません。</value>
@@ -358,9 +358,18 @@ ObjectListView http://objectlistview.sourceforge.net/
     <value>常に管理者として実行</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>フォルダーの場所を開く</value>
+    <value>ファイルの場所を開く</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>ローカル コンピューター</value>
+  </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>ドライバー ストアの選択</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>オフライン ドライバー ストア</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>ドライバー ストアの選択</value>
   </data>
 </root>
