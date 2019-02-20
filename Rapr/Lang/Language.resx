@@ -371,4 +371,7 @@ ObjectListView http://objectlistview.sourceforge.net/	</value>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
     <value>Choose Driver Store</value>
   </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Language</value>
+  </data>
 </root>

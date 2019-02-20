@@ -371,4 +371,7 @@ ObjectListView http://objectlistview.sourceforge.net/ </value>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
     <value>选择驱动存储</value>
   </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>语言</value>
+  </data>
 </root>

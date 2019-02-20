@@ -356,7 +356,7 @@ namespace Rapr
             // 
             this.languageToolStripMenuItem.Name = "languageToolStripMenuItem";
             this.languageToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
-            this.languageToolStripMenuItem.Text = "Language";
+            this.languageToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_Language;
             // 
             // helpToolStripMenuItem
             // 
