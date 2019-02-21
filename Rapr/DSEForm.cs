@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading;
@@ -25,13 +26,7 @@ namespace Rapr
         private Color savedForeColor;
         private OperationContext context = new OperationContext();
 
-        private static readonly CultureInfo[] SupportedLanguage = {
-            new CultureInfo("en"),
-            new CultureInfo("fr-FR"),
-            new CultureInfo("ja-JP"),
-            new CultureInfo("ru-RU"),
-            new CultureInfo("zh-CN"),
-        };
+        private static readonly List<CultureInfo> SupportedLanguage = GetSupportedLanguage();
 
         public DSEForm()
         {
@@ -187,39 +182,72 @@ namespace Rapr
             return null;
         }
 
-        private void BuildLanguageMenu()
+        public static List<CultureInfo> GetSupportedLanguage()
         {
-            ToolStripMenuItem defaultLanguageMenuItem = null;
-            bool currentUILanauageSupported = false;
-
-            foreach (var item in SupportedLanguage)
+            List<CultureInfo> supportedLanguage = new List<CultureInfo>
             {
-                ToolStripMenuItem menuItem = new ToolStripMenuItem
-                {
-                    CheckOnClick = true,
-                    Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(item.NativeName),
-                    Tag = item
-                };
+                new CultureInfo("en")
+            };
 
-                menuItem.Click += this.SwitchCulture;
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string currentFolder = Path.GetDirectoryName(assembly.Location);
+            DirectoryInfo dir = new DirectoryInfo(currentFolder);
 
-                if (CultureInfo.CurrentUICulture.Equals(item))
+            foreach (var file in dir.EnumerateFiles($"{assembly.EntryPoint.DeclaringType.Namespace}.resources.dll", SearchOption.AllDirectories))
+            {
+                string folderName = file.Directory.Name;
+                try
                 {
-                    menuItem.Checked = true;
-                    currentUILanauageSupported = true;
+                    supportedLanguage.Add(new CultureInfo(folderName));
                 }
-
-                if (defaultLanguageMenuItem == null)
+                catch (CultureNotFoundException)
                 {
-                    defaultLanguageMenuItem = menuItem;
                 }
-
-                this.languageToolStripMenuItem.DropDownItems.Add(menuItem);
             }
 
-            if (!currentUILanauageSupported && defaultLanguageMenuItem != null)
+            return supportedLanguage;
+        }
+
+        private void BuildLanguageMenu()
+        {
+            if (SupportedLanguage.Count == 1)
             {
-                defaultLanguageMenuItem.Checked = true;
+                this.languageToolStripMenuItem.Visible = false;
+            }
+            else
+            {
+                ToolStripMenuItem defaultLanguageMenuItem = null;
+                bool currentUILanauageSupported = false;
+
+                foreach (var item in SupportedLanguage)
+                {
+                    ToolStripMenuItem menuItem = new ToolStripMenuItem
+                    {
+                        CheckOnClick = true,
+                        Text = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(item.NativeName),
+                        Tag = item
+                    };
+
+                    menuItem.Click += this.SwitchCulture;
+
+                    if (CultureInfo.CurrentUICulture.Equals(item))
+                    {
+                        menuItem.Checked = true;
+                        currentUILanauageSupported = true;
+                    }
+
+                    if (defaultLanguageMenuItem == null)
+                    {
+                        defaultLanguageMenuItem = menuItem;
+                    }
+
+                    this.languageToolStripMenuItem.DropDownItems.Add(menuItem);
+                }
+
+                if (!currentUILanauageSupported && defaultLanguageMenuItem != null)
+                {
+                    defaultLanguageMenuItem.Checked = true;
+                }
             }
         }
 
