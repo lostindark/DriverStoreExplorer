@@ -55,17 +55,15 @@ namespace Rapr
             context.InfPath = "";
             context.ResultStatus = false;
             context.ResultData = null;
-
             context.DriverStoreEntries = null;
         }
 
         private void InProgress()
         {
-            MessageBox.Show(Language.Message_Operation_In_Progress);
-            this.ShowStatus(Language.Status_Label);
+            MessageBox.Show(this, Language.Message_Operation_In_Progress, Language.Message_Title_Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
-        private void PopulateUIWithDriverStoreEntries()
+        private void PopulateUIWithDriverStoreEntries(bool updateStatus = false)
         {
             if (!this.backgroundWorker1.IsBusy)
             {
@@ -73,8 +71,11 @@ namespace Rapr
                 this.lstDriverStoreEntries.ClearObjects();
                 this.context.Code = OperationCode.EnumerateStore;
                 this.backgroundWorker1.RunWorkerAsync(this.context);
-                this.ShowOperationInProgress(true);
-                //ShowStatus("Enumerating driver store...");
+
+                if (updateStatus)
+                {
+                    this.ShowStatus(Language.Status_Label);
+                }
             }
             else
             {
@@ -92,7 +93,6 @@ namespace Rapr
 
                 this.backgroundWorker1.RunWorkerAsync(this.context);
 
-                this.ShowOperationInProgress(true);
                 this.ShowStatus(Language.Status_Adding_Package);
             }
             else
@@ -110,7 +110,6 @@ namespace Rapr
                 this.context.DriverStoreEntries = ldse;
 
                 this.backgroundWorker1.RunWorkerAsync(this.context);
-                this.ShowOperationInProgress(true);
                 this.ShowStatus(Language.Status_Deleting_Packages);
             }
             else
@@ -118,8 +117,7 @@ namespace Rapr
                 this.InProgress();
             }
         }
-        // true = show wait_form
-        // false = hide wait_form
+
         private void ShowOperationInProgress(bool state)
         {
             this.toolStripProgressBar1.Visible = state;
@@ -127,36 +125,62 @@ namespace Rapr
 
         private void ShowStatus(string text)
         {
-            this.ShowStatus(text, Status.Normal);
+            this.ShowStatus(Status.Normal, text);
         }
 
-        private void ShowStatus(string text, Status status)
+        private void ShowStatus(Status status, string text, string detail = null, bool usePopup = false)
         {
-            this.lblStatus.Text = text;
+            this.lblStatus.Text = text.Replace("\r\n", "\n").Replace("\n", " ");
+            string detailToLog = string.IsNullOrEmpty(detail) ? text : detail;
+
             switch (status)
             {
                 case Status.Error:
                     this.lblStatus.BackColor = Color.FromArgb(0xFF, 0x00, 0x33);
                     this.lblStatus.ForeColor = Color.White;
-                    Trace.TraceError(text);
+                    Trace.TraceError(detailToLog);
+
+                    if (usePopup)
+                    {
+                        MessageBox.Show(this, text, Language.Message_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
                     break;
 
                 case Status.Success:
                     this.lblStatus.BackColor = Color.LightGreen;
                     this.lblStatus.ForeColor = Color.Black;
-                    Trace.TraceInformation(text);
+                    Trace.TraceInformation(detailToLog);
+
+                    if (usePopup)
+                    {
+                        MessageBox.Show(this, text, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                     break;
 
                 case Status.Warning:
                     this.lblStatus.BackColor = Color.Yellow;
                     this.lblStatus.ForeColor = Color.Black;
-                    Trace.TraceWarning(text);
+                    Trace.TraceWarning(detailToLog);
+
+                    if (usePopup)
+                    {
+                        MessageBox.Show(this, text, Language.Message_Title_Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+
                     break;
 
                 case Status.Normal:
                     this.lblStatus.BackColor = this.savedBackColor;
                     this.lblStatus.ForeColor = this.savedForeColor;
-                    Trace.TraceInformation(text);
+                    Trace.TraceInformation(detailToLog);
+
+                    if (usePopup)
+                    {
+                        MessageBox.Show(this, text, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+
                     break;
             }
         }
