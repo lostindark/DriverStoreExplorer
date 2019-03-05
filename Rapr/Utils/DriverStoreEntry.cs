@@ -58,6 +58,15 @@ namespace Rapr.Utils
 
         public bool? Inbox;
 
+        public string DeviceName;
+
+        public bool? DevicePresent;
+
+        public override string ToString()
+        {
+            return $"PublishedName: {this.DriverPublishedName}, InfName: {this.DriverInfName}, Class: {this.DriverClass}, Version: {this.DriverVersion}, DeviceName: {this.DeviceName}";
+        }
+
         public string DriverDateAndVersion
         {
             set

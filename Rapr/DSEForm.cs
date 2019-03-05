@@ -83,6 +83,7 @@ namespace Rapr
                         this.Text = Language.Product_Name + " - " + Language.DriverStore_LocalMachine;
                         this.cbAddInstall.Enabled = true;
                         this.cbForceDeletion.Enabled = true;
+                        this.deviceNameColumn.IsVisible = true;
                         break;
                     }
 
@@ -91,6 +92,7 @@ namespace Rapr
                         this.Text = Language.Product_Name + " - " + driverStore.OfflineStoreLocation;
                         this.cbAddInstall.Enabled = false;
                         this.cbForceDeletion.Enabled = false;
+                        this.deviceNameColumn.IsVisible = false;
                         break;
                     }
             }
@@ -664,6 +666,7 @@ namespace Rapr
                 List<DriverStoreEntry> driverStoreEntryList = this.lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
 
                 this.lstDriverStoreEntries.CheckedObjects = driverStoreEntryList
+                    .Where(entry => string.IsNullOrEmpty(entry.DeviceName))
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverPkgProvider, entry.DriverInfName })
                     .SelectMany(g => g.OrderByDescending(row => row.DriverVersion).ThenByDescending(row => row.DriverDate).Skip(1))
                     .ToArray();
@@ -872,6 +875,18 @@ namespace Rapr
                     {
                         this.InProgress();
                     }
+                }
+            }
+        }
+
+        private void LstDriverStoreEntries_FormatCell(object sender, BrightIdeasSoftware.FormatCellEventArgs e)
+        {
+            if (e.ColumnIndex == this.deviceNameColumn.Index)
+            {
+                DriverStoreEntry entry = (DriverStoreEntry)e.Model;
+                if (entry.DevicePresent == false)
+                {
+                    e.SubItem.ForeColor = Color.Gray;
                 }
             }
         }

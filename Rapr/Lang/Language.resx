@@ -374,4 +374,7 @@ ObjectListView http://objectlistview.sourceforge.net/	</value>
   <data name="Menu_Language" xml:space="preserve">
     <value>Language</value>
   </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>Device Name</value>
+  </data>
 </root>
