@@ -14,9 +14,9 @@ namespace Rapr.Utils
 
             public string DriverInf { get; }
 
-            public bool IsPresent { get; }
+            public bool? IsPresent { get; }
 
-            public DeviceDriverInfo(string name, string inf, bool isPresent)
+            public DeviceDriverInfo(string name, string inf, bool? isPresent)
             {
                 this.DeviceName = name;
                 this.DriverInf = inf;
@@ -58,7 +58,7 @@ namespace Rapr.Utils
                             TryGetDeviceRegistryProperty(deviceInfoSet, deviceInfo, DeviceRegistryProperty.SPDRP_FRIENDLYNAME)
                                 ?? TryGetDeviceRegistryProperty(deviceInfoSet, deviceInfo, DeviceRegistryProperty.SPDRP_DEVICEDESC),
                             GetDriverInf(deviceInfoSet, deviceInfo),
-                            GetDevicePropertyInfo<bool>(deviceInfoSet, deviceInfo, DEVPKEY_Device_IsPresent)
+                            TryGetDevicePropertyInfo<bool?>(deviceInfoSet, deviceInfo, DEVPKEY_Device_IsPresent)
                         ));
                     }
                     catch (Win32Exception)
@@ -103,29 +103,63 @@ namespace Rapr.Utils
 
             try
             {
-                SP_DRVINFO_DATA drvInfo = new SP_DRVINFO_DATA();
-                drvInfo.cbSize = Marshal.SizeOf(drvInfo);
-
-                if (NativeMethods.SetupDiEnumDriverInfo(deviceInfoSet, ref deviceInfo, SPDIT.SPDIT_COMPATDRIVER, 0, ref drvInfo))
+                if (Environment.Is64BitProcess)
                 {
-                    SP_DRVINFO_DETAIL_DATA driverInfoDetailData = new SP_DRVINFO_DETAIL_DATA
+                    SP_DRVINFO_DATA drvInfo = new SP_DRVINFO_DATA
                     {
-                        cbSize = Marshal.SizeOf(typeof(SP_DRVINFO_DETAIL_DATA))
+                        cbSize = Marshal.SizeOf(typeof(SP_DRVINFO_DATA))
                     };
 
-                    if (NativeMethods.SetupDiGetDriverInfoDetail(deviceInfoSet, ref deviceInfo, ref drvInfo, ref driverInfoDetailData, Marshal.SizeOf(driverInfoDetailData), out _)
-                        || Marshal.GetLastWin32Error() == ERROR_INSUFFICIENT_BUFFER)
+                    if (NativeMethods.SetupDiEnumDriverInfo(deviceInfoSet, ref deviceInfo, SPDIT.SPDIT_COMPATDRIVER, 0, ref drvInfo))
                     {
-                        return driverInfoDetailData.InfFileName;
+                        SP_DRVINFO_DETAIL_DATA driverInfoDetailData = new SP_DRVINFO_DETAIL_DATA
+                        {
+                            cbSize = Marshal.SizeOf(typeof(SP_DRVINFO_DETAIL_DATA))
+                        };
+
+                        if (NativeMethods.SetupDiGetDriverInfoDetail(deviceInfoSet, ref deviceInfo, ref drvInfo, ref driverInfoDetailData, Marshal.SizeOf(driverInfoDetailData), out _)
+                            || Marshal.GetLastWin32Error() == ERROR_INSUFFICIENT_BUFFER)
+                        {
+                            return driverInfoDetailData.InfFileName;
+                        }
+                        else
+                        {
+                            throw new Win32Exception();
+                        }
                     }
-                    else
+                    else if (Marshal.GetLastWin32Error() != ERROR_NO_MORE_ITEMS)
                     {
                         throw new Win32Exception();
                     }
                 }
-                else if (Marshal.GetLastWin32Error() != ERROR_NO_MORE_ITEMS)
+                else
                 {
-                    throw new Win32Exception();
+                    SP_DRVINFO_DATA32 drvInfo = new SP_DRVINFO_DATA32
+                    {
+                        cbSize = Marshal.SizeOf(typeof(SP_DRVINFO_DATA32))
+                    };
+
+                    if (NativeMethods.SetupDiEnumDriverInfo32(deviceInfoSet, ref deviceInfo, SPDIT.SPDIT_COMPATDRIVER, 0, ref drvInfo))
+                    {
+                        SP_DRVINFO_DETAIL_DATA32 driverInfoDetailData = new SP_DRVINFO_DETAIL_DATA32
+                        {
+                            cbSize = Marshal.SizeOf(typeof(SP_DRVINFO_DETAIL_DATA32))
+                        };
+
+                        if (NativeMethods.SetupDiGetDriverInfoDetail32(deviceInfoSet, ref deviceInfo, ref drvInfo, ref driverInfoDetailData, Marshal.SizeOf(driverInfoDetailData), out _)
+                            || Marshal.GetLastWin32Error() == ERROR_INSUFFICIENT_BUFFER)
+                        {
+                            return driverInfoDetailData.InfFileName;
+                        }
+                        else
+                        {
+                            throw new Win32Exception();
+                        }
+                    }
+                    else if (Marshal.GetLastWin32Error() != ERROR_NO_MORE_ITEMS)
+                    {
+                        throw new Win32Exception();
+                    }
                 }
             }
             finally
@@ -139,7 +173,7 @@ namespace Rapr.Utils
             return null;
         }
 
-        public static string TryGetDeviceRegistryProperty(IntPtr deviceInfoSet, SP_DEVINFO_DATA deviceInfo, DeviceRegistryProperty property)
+        private static string TryGetDeviceRegistryProperty(IntPtr deviceInfoSet, SP_DEVINFO_DATA deviceInfo, DeviceRegistryProperty property)
         {
             try
             {
@@ -152,7 +186,7 @@ namespace Rapr.Utils
             return null;
         }
 
-        public static string GetDeviceRegistryProperty(IntPtr deviceInfoSet, SP_DEVINFO_DATA deviceInfo, DeviceRegistryProperty property)
+        private static string GetDeviceRegistryProperty(IntPtr deviceInfoSet, SP_DEVINFO_DATA deviceInfo, DeviceRegistryProperty property)
         {
             const int BufferSize = 2048;
             IntPtr propertyBufferPtr = Marshal.AllocHGlobal(BufferSize);
@@ -186,7 +220,20 @@ namespace Rapr.Utils
             return null;
         }
 
-        public static T GetDevicePropertyInfo<T>(
+        private static T TryGetDevicePropertyInfo<T>(IntPtr deviceInfoSet, SP_DEVINFO_DATA deviceInfo, DevPropKey propertyKey)
+        {
+            try
+            {
+                return GetDevicePropertyInfo<T>(deviceInfoSet, deviceInfo, propertyKey);
+            }
+            catch (Win32Exception)
+            {
+            }
+
+            return default(T);
+        }
+
+        private static T GetDevicePropertyInfo<T>(
             IntPtr deviceInfoSet,
             SP_DEVINFO_DATA deviceInfo,
             DevPropKey propertyKey)
@@ -291,7 +338,7 @@ namespace Rapr.Utils
         // Flags controlling what is included in the device information set built
         // by SetupDiGetClassDevs
         //
-        public enum DIGCF
+        internal enum DIGCF
         {
             DIGCF_DEFAULT = 0x00000001,  // only valid with DIGCF_DEVICEINTERFACE
             DIGCF_PRESENT = 0x00000002,
@@ -305,7 +352,7 @@ namespace Rapr.Utils
         // device drivers.
         // (Passed in 'DriverType' parameter of driver information list APIs)
         //
-        public enum SPDIT
+        internal enum SPDIT
         {
             SPDIT_NODRIVER = 0x00000000,
             SPDIT_CLASSDRIVER = 0x00000001,
@@ -315,7 +362,7 @@ namespace Rapr.Utils
         /// <summary>
         /// Flags for SetupDiGetDeviceRegistryProperty().
         /// </summary>
-        public enum DeviceRegistryProperty : uint
+        internal enum DeviceRegistryProperty : uint
         {
             SPDRP_DEVICEDESC = 0x00000000, // DeviceDesc (R/W)
             SPDRP_HARDWAREID = 0x00000001, // HardwareID (R/W)
@@ -357,13 +404,13 @@ namespace Rapr.Utils
         }
 
         [Flags]
-        public enum DI_FLAGS
+        internal enum DI_FLAGS
         {
             DI_FLAGSEX_INSTALLEDDRIVER = (0x04000000),
             DI_FLAGSEX_ALLOWEXCLUDEDDRVS = (0x00000800)
         }
 
-        public static readonly DevPropKey DEVPKEY_Device_IsPresent = new DevPropKey
+        internal static readonly DevPropKey DEVPKEY_Device_IsPresent = new DevPropKey
         {
             fmtid = new Guid(0x540b947e, 0x8b40, 0x45bc, 0xa8, 0xa2, 0x6a, 0x0b, 0x89, 0x4c, 0xbd, 0xa2),
             pid = 5
@@ -373,14 +420,14 @@ namespace Rapr.Utils
         /// The DevPropKey struct needed by drvstore.dll's DriverStoreSetObjectProperty and DriverPackageGetProperty function.
         /// </summary>
         [StructLayout(LayoutKind.Sequential)]
-        public struct DevPropKey
+        internal struct DevPropKey
         {
             public Guid fmtid;
             public uint pid;
         }
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-        public struct SP_DEVINSTALL_PARAMS
+        internal struct SP_DEVINSTALL_PARAMS
         {
             public int cbSize;
             public int Flags;
@@ -395,7 +442,7 @@ namespace Rapr.Utils
         }
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-        public struct SP_DRVINFO_DATA
+        internal struct SP_DRVINFO_DATA
         {
             public int cbSize;
             public int DriverType;
@@ -421,8 +468,35 @@ namespace Rapr.Utils
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)] public string HardwareID;
         };
 
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
+        internal struct SP_DRVINFO_DATA32
+        {
+            public int cbSize;
+            public int DriverType;
+            private IntPtr Reserved;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string Description;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string MfgName;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string ProviderName;
+            public System.Runtime.InteropServices.ComTypes.FILETIME DriverDate;
+            public long DriverVersion;
+        }
+
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode, Pack = 1)]
+        internal struct SP_DRVINFO_DETAIL_DATA32
+        {
+            public int cbSize;
+            public System.Runtime.InteropServices.ComTypes.FILETIME InfDate;
+            public int CompatIDsOffset;
+            public int CompatIDsLength;
+            public IntPtr Reserved;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string SectionName;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MAX_PATH)] public string InfFileName;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string DrvDescription;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)] public string HardwareID;
+        };
+
         [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
-        public struct SP_DEVINFO_DATA
+        internal struct SP_DEVINFO_DATA
         {
             public int cbSize;
             public Guid ClassGuid;
@@ -456,6 +530,12 @@ namespace Rapr.Utils
                 ref SP_DEVINFO_DATA deviceInfoData);
 
             [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+            internal static extern bool SetupDiSetDeviceInstallParams(
+                IntPtr deviceInfoSet,
+                ref SP_DEVINFO_DATA deviceInfoData,
+                ref SP_DEVINSTALL_PARAMS deviceInstallParams);
+
+            [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
             [return: MarshalAs(UnmanagedType.Bool)]
             internal static extern bool SetupDiEnumDriverInfo(
                 IntPtr lpInfoSet,
@@ -463,12 +543,6 @@ namespace Rapr.Utils
                 SPDIT driverType,
                 int memberIndex,
                 ref SP_DRVINFO_DATA driverInfoData);
-
-            [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-            public static extern bool SetupDiSetDeviceInstallParams(
-                IntPtr deviceInfoSet,
-                ref SP_DEVINFO_DATA deviceInfoData,
-                ref SP_DEVINSTALL_PARAMS deviceInstallParams);
 
             [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
             internal static extern bool SetupDiGetDriverInfoDetail(
@@ -479,8 +553,26 @@ namespace Rapr.Utils
                int driverInfoDetailDataSize,
                out int requiredSize);
 
+            [DllImport("setupapi.dll", EntryPoint = "SetupDiEnumDriverInfo", CharSet = CharSet.Unicode, SetLastError = true)]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            internal static extern bool SetupDiEnumDriverInfo32(
+                IntPtr lpInfoSet,
+                ref SP_DEVINFO_DATA deviceInfoData,
+                SPDIT driverType,
+                int memberIndex,
+                ref SP_DRVINFO_DATA32 driverInfoData);
+
+            [DllImport("setupapi.dll", EntryPoint = "SetupDiGetDriverInfoDetail", CharSet = CharSet.Unicode, SetLastError = true)]
+            internal static extern bool SetupDiGetDriverInfoDetail32(
+               IntPtr deviceInfoSet,
+               ref SP_DEVINFO_DATA deviceInfoData,
+               ref SP_DRVINFO_DATA32 driverInfoData,
+               ref SP_DRVINFO_DETAIL_DATA32 driverInfoDetailData,
+               int driverInfoDetailDataSize,
+               out int requiredSize);
+
             [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-            public static extern bool SetupDiGetDeviceRegistryProperty(
+            internal static extern bool SetupDiGetDeviceRegistryProperty(
                 IntPtr deviceInfoSet,
                 ref SP_DEVINFO_DATA deviceInfoData,
                 DeviceRegistryProperty property,
