@@ -8,27 +8,6 @@ namespace Rapr.Utils
 {
     public static class SetupAPI
     {
-        public class DeviceDriverInfo
-        {
-            public string DeviceName { get; }
-
-            public string DriverInf { get; }
-
-            public bool? IsPresent { get; }
-
-            public DeviceDriverInfo(string name, string inf, bool? isPresent)
-            {
-                this.DeviceName = name;
-                this.DriverInf = inf;
-                this.IsPresent = isPresent;
-            }
-
-            public override string ToString()
-            {
-                return $"Name: {this.DeviceName}, Inf: {this.DriverInf}, Present: {this.IsPresent}";
-            }
-        }
-
         public static List<DeviceDriverInfo> GetDeviceDriverInfo()
         {
             List<DeviceDriverInfo> deviceDriverInfos = new List<DeviceDriverInfo>();
@@ -58,7 +37,7 @@ namespace Rapr.Utils
                             TryGetDeviceRegistryProperty(deviceInfoSet, deviceInfo, DeviceRegistryProperty.SPDRP_FRIENDLYNAME)
                                 ?? TryGetDeviceRegistryProperty(deviceInfoSet, deviceInfo, DeviceRegistryProperty.SPDRP_DEVICEDESC),
                             GetDriverInf(deviceInfoSet, deviceInfo),
-                            TryGetDevicePropertyInfo<bool?>(deviceInfoSet, deviceInfo, DEVPKEY_Device_IsPresent)
+                            TryGetDevicePropertyInfo<bool?>(deviceInfoSet, deviceInfo, DeviceHelper.DEVPKEY_Device_IsPresent)
                         ));
                     }
                     catch (Win32Exception)
@@ -255,7 +234,7 @@ namespace Rapr.Utils
                 {
                     if (propertySize > 0)
                     {
-                        return ConvertPropToType<T>(propertyBufferPtr, propertyType);
+                        return DeviceHelper.ConvertPropToType<T>(propertyBufferPtr, propertyType);
                     }
                 }
                 else
@@ -271,68 +250,11 @@ namespace Rapr.Utils
             return default(T);
         }
 
-        internal static T ConvertPropToType<T>(IntPtr propertyBufferPtr, DevPropType propertyType)
-        {
-            if (propertyType == DevPropType.String && typeof(T) == typeof(string))
-            {
-                return (T)(object)Marshal.PtrToStringUni(propertyBufferPtr);
-            }
-            else if (propertyType == DevPropType.FileTime && typeof(T) == typeof(DateTime))
-            {
-                var time = (System.Runtime.InteropServices.ComTypes.FILETIME)Marshal.PtrToStructure(propertyBufferPtr, typeof(System.Runtime.InteropServices.ComTypes.FILETIME));
-                ulong high = (ulong)time.dwHighDateTime;
-                uint low = (uint)time.dwLowDateTime;
-                long fileTime = (long)((high << 32) + low);
-                return (T)(object)DateTime.FromFileTimeUtc(fileTime);
-            }
-            else if (propertyType == DevPropType.Uint64 && typeof(T) == typeof(ulong))
-            {
-                return (T)(object)(ulong)Marshal.ReadInt64(propertyBufferPtr);
-            }
-            else if (propertyType == DevPropType.Uint32 && typeof(T) == typeof(uint))
-            {
-                return (T)(object)(uint)Marshal.ReadInt32(propertyBufferPtr);
-            }
-            else if (propertyType == DevPropType.Guid && typeof(T) == typeof(Guid))
-            {
-                return (T)Marshal.PtrToStructure(propertyBufferPtr, typeof(Guid));
-            }
-            else if (propertyType == DevPropType.Boolean && typeof(T) == typeof(bool))
-            {
-                return (T)(object)(Marshal.ReadByte(propertyBufferPtr) != 0);
-            }
-
-            return default(T);
-        }
-
         private const int LINE_LEN = 256;
         private const int MAX_PATH = 260;
 
         private const int ERROR_INSUFFICIENT_BUFFER = 122;
         private const int ERROR_NO_MORE_ITEMS = 259;
-
-        internal enum DevPropType : uint
-        {
-            Empty = 0x00000000,  // nothing, no property data
-            Null = 0x00000001,  // null property data
-            Sbyte = 0x00000002,  // 8-bit signed int (SBYTE)
-            Byte = 0x00000003,  // 8-bit unsigned int (BYTE)
-            Int16 = 0x00000004,  // 16-bit signed int (SHORT)
-            Uint16 = 0x00000005,  // 16-bit unsigned int (USHORT)
-            Int32 = 0x00000006,  // 32-bit signed int (LONG)
-            Uint32 = 0x00000007,  // 32-bit unsigned int (ULONG)
-            Int64 = 0x00000008,  // 64-bit signed int (LONG64)
-            Uint64 = 0x00000009,  // 64-bit unsigned int (ULONG64)
-            Float = 0x0000000A,  // 32-bit floating-point (FLOAT)
-            Double = 0x0000000B,  // 64-bit floating-point (DOUBLE)
-            Decimal = 0x0000000C,  // 128-bit data (DECIMAL)
-            Guid = 0x0000000D,  // 128-bit unique identifier (GUID)
-            Currency = 0x0000000E,  // 64 bit signed int currency value (CURRENCY)
-            Date = 0x0000000F,  // date (DATE)
-            FileTime = 0x00000010,  // file time (FILETIME)
-            Boolean = 0x00000011,  // 8-bit boolean (DEVPROP_BOOLEAN)
-            String = 0x00000012,  // null-terminated string
-        }
 
         //
         // Flags controlling what is included in the device information set built
@@ -408,22 +330,6 @@ namespace Rapr.Utils
         {
             DI_FLAGSEX_INSTALLEDDRIVER = (0x04000000),
             DI_FLAGSEX_ALLOWEXCLUDEDDRVS = (0x00000800)
-        }
-
-        internal static readonly DevPropKey DEVPKEY_Device_IsPresent = new DevPropKey
-        {
-            fmtid = new Guid(0x540b947e, 0x8b40, 0x45bc, 0xa8, 0xa2, 0x6a, 0x0b, 0x89, 0x4c, 0xbd, 0xa2),
-            pid = 5
-        };
-
-        /// <summary>
-        /// The DevPropKey struct needed by drvstore.dll's DriverStoreSetObjectProperty and DriverPackageGetProperty function.
-        /// </summary>
-        [StructLayout(LayoutKind.Sequential)]
-        internal struct DevPropKey
-        {
-            public Guid fmtid;
-            public uint pid;
         }
 
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
@@ -505,7 +411,7 @@ namespace Rapr.Utils
         }
 
         /// <summary>
-        /// The managed interop layer to drvstore.dll
+        /// The managed interop layer to setupapi.dll
         /// </summary>
         internal static class NativeMethods
         {

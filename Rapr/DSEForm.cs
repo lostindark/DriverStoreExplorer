@@ -666,9 +666,9 @@ namespace Rapr
                 List<DriverStoreEntry> driverStoreEntryList = this.lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
 
                 this.lstDriverStoreEntries.CheckedObjects = driverStoreEntryList
-                    .Where(entry => string.IsNullOrEmpty(entry.DeviceName))
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverPkgProvider, entry.DriverInfName })
                     .SelectMany(g => g.OrderByDescending(row => row.DriverVersion).ThenByDescending(row => row.DriverDate).Skip(1))
+                    .Where(entry => string.IsNullOrEmpty(entry.DeviceName))
                     .ToArray();
             }
         }

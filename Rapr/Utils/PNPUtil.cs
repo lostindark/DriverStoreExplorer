@@ -54,7 +54,7 @@ namespace Rapr.Utils
 
                 DriverStoreRepository repository = new DriverStoreRepository();
 
-                List<SetupAPI.DeviceDriverInfo> driverInfo = SetupAPI.GetDeviceDriverInfo();
+                List<DeviceDriverInfo> driverInfo = ConfigManager.GetDeviceDriverInfo();
 
                 for (int i = 0; i < driverStoreEntries.Count; i++)
                 {
