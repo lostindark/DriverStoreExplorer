@@ -62,10 +62,17 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to You can find latest version and release notes here:
-        ///https://github.com/lostindark/DriverStoreExplorer/releases
+        ///    https://github.com/lostindark/DriverStoreExplorer/releases
+        ///
+        ///Filing bug/feature request:
+        ///    https://github.com/lostindark/DriverStoreExplorer/issues
+        ///
+        ///Contributors:
+        ///    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
         ///
         ///Credits:
-        ///ObjectListView http://objectlistview.sourceforge.net/	.
+        ///    ObjectListView http://objectlistview.sourceforge.net/
+        ///    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism.
         /// </summary>
         public static string About_Project_Description {
             get {
@@ -713,21 +720,11 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DriveStore Explorer v{0}
-        ///by Kannan Ramanathan, Teddy Zhang, Paul Vernon.
+        ///   Looks up a localized string similar to DriveStore Explorer v{0}.
         /// </summary>
         public static string Product_Credits {
             get {
                 return ResourceManager.GetString("Product_Credits", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to https://github.com/lostindark/DriverStoreExplorer.
-        /// </summary>
-        public static string Product_Link {
-            get {
-                return ResourceManager.GetString("Product_Link", resourceCulture);
             }
         }
         

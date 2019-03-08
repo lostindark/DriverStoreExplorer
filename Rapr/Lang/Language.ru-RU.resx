@@ -222,9 +222,6 @@
   <data name="Operations_Text" xml:space="preserve">
     <value>Операции</value>
   </data>
-  <data name="Product_Link" xml:space="preserve">
-    <value>https://github.com/lostindark/DriverStoreExplorer</value>
-  </data>
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
@@ -277,8 +274,7 @@
     <value>INF-файлы | *.inf</value>
   </data>
   <data name="Product_Credits" xml:space="preserve">
-    <value>DriveStore Explorer v{0}
-Авторы: Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
+    <value>DriveStore Explorer v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>О {0}</value>
@@ -288,10 +284,11 @@
   </data>
   <data name="About_Project_Description" xml:space="preserve">
     <value>Вы можете найти последнюю версию программы и сведения об изменениях по адресу:
-https://github.com/lostindark/DriverStoreExplorer/releases
+    https://github.com/lostindark/DriverStoreExplorer/releases
 
 Благодарность:
-ObjectListView http://objectlistview.sourceforge.net/	</value>
+    ObjectListView http://objectlistview.sourceforge.net/
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>Russian</value>
@@ -362,7 +359,7 @@ ObjectListView http://objectlistview.sourceforge.net/	</value>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Локальный компьютер</value>
   </data>
-    <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
     <value>Выбрать Driver Store</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">

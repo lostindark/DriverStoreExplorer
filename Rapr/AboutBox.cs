@@ -12,10 +12,8 @@ namespace Rapr
         public AboutBox()
         {
             this.InitializeComponent();
-            this.Text = String.Format(Language.Product_About_Title, this.AssemblyTitle);
+            this.Text = string.Format(Language.Product_About_Title, this.AssemblyTitle);
             this.labelProductName.Text = string.Format(Language.Product_Credits, this.AssemblyVersion);
-            this.labelLink.Text = Language.Product_Link;
-            this.textBoxDescription.Text = Language.About_Project_Description;
         }
 
         #region Assembly Attribute Accessors

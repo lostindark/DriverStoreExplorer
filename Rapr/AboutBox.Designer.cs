@@ -52,11 +52,10 @@
             this.tableLayoutPanel.Location = new System.Drawing.Point(9, 9);
             this.tableLayoutPanel.Name = "tableLayoutPanel";
             this.tableLayoutPanel.RowCount = 4;
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.991228F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 6.359649F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 74.12281F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.27919F));
-            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 40F));
             this.tableLayoutPanel.Size = new System.Drawing.Size(671, 456);
             this.tableLayoutPanel.TabIndex = 0;
             // 
@@ -68,7 +67,7 @@
             this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelProductName.MaximumSize = new System.Drawing.Size(0, 34);
             this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(441, 34);
+            this.labelProductName.Size = new System.Drawing.Size(441, 13);
             this.labelProductName.TabIndex = 19;
             this.labelProductName.Text = "Driver Store Explorer [RAPR]";
             // 
@@ -76,7 +75,7 @@
             // 
             this.labelLink.AutoSize = true;
             this.labelLink.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelLink.Location = new System.Drawing.Point(227, 41);
+            this.labelLink.Location = new System.Drawing.Point(227, 13);
             this.labelLink.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelLink.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelLink.Name = "labelLink";
@@ -103,16 +102,14 @@
             // 
             this.textBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDescription.Location = new System.Drawing.Point(224, 73);
+            this.textBoxDescription.Location = new System.Drawing.Point(224, 56);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.textBoxDescription.Size = new System.Drawing.Size(444, 332);
+            this.textBoxDescription.Size = new System.Drawing.Size(444, 356);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
-            this.textBoxDescription.Text = "You can find latest version and release notes here:\n\nhttps://github.com/lostindar" +
-    "k/DriverStoreExplorer/releases\n\nCredits:\n\nObjectListView http://objectlistview.s" +
-    "ourceforge.net/\t";
+            this.textBoxDescription.Text = global::Rapr.Lang.Language.About_Project_Description;
             this.textBoxDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.textBoxDescription_LinkClicked);
             // 
             // okButton

@@ -222,9 +222,6 @@
   <data name="Operations_Text" xml:space="preserve">
     <value>Operations</value>
   </data>
-  <data name="Product_Link" xml:space="preserve">
-    <value>https://github.com/lostindark/DriverStoreExplorer</value>
-  </data>
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
@@ -277,8 +274,7 @@
     <value>INF files | *.inf</value>
   </data>
   <data name="Product_Credits" xml:space="preserve">
-    <value>DriveStore Explorer v{0}
-by Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
+    <value>DriveStore Explorer v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>About {0}</value>
@@ -288,10 +284,17 @@ by Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
     <value>You can find latest version and release notes here:
-https://github.com/lostindark/DriverStoreExplorer/releases
+    https://github.com/lostindark/DriverStoreExplorer/releases
+
+Filing bug/feature request:
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+Contributors:
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
 
 Credits:
-ObjectListView http://objectlistview.sourceforge.net/	</value>
+    ObjectListView http://objectlistview.sourceforge.net/
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>English</value>

@@ -222,9 +222,6 @@
   <data name="Operations_Text" xml:space="preserve">
     <value>操作</value>
   </data>
-  <data name="Product_Link" xml:space="preserve">
-    <value>https://github.com/lostindark/DriverStoreExplorer</value>
-  </data>
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
@@ -277,8 +274,7 @@
     <value>セットアップ情報 | *.inf</value>
   </data>
   <data name="Product_Credits" xml:space="preserve">
-    <value>DriveStore Explorer v{0}
-by Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
+    <value>DriveStore Explorer v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>{0} のバージョン情報</value>
@@ -288,11 +284,11 @@ by Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
     <value>最新バージョンの入手とリリース ノート:
-https://github.com/lostindark/DriverStoreExplorer/releases
+    https://github.com/lostindark/DriverStoreExplorer/releases
 
 謝辞:
-ObjectListView http://objectlistview.sourceforge.net/
-</value>
+    ObjectListView http://objectlistview.sourceforge.net/
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>日本語</value>

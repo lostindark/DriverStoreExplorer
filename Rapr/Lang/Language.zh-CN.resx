@@ -222,9 +222,6 @@
   <data name="Operations_Text" xml:space="preserve">
     <value>操作</value>
   </data>
-  <data name="Product_Link" xml:space="preserve">
-    <value>https://github.com/lostindark/DriverStoreExplorer</value>
-  </data>
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
@@ -277,8 +274,7 @@
     <value>帮助</value>
   </data>
   <data name="Product_Credits" xml:space="preserve">
-    <value>DriveStore Explorer v{0}
-作者Kannan Ramanathan, Teddy Zhang, Paul Vernon</value>
+    <value>DriveStore Explorer v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>关于 {0}</value>
@@ -294,10 +290,17 @@
   </data>
   <data name="About_Project_Description" xml:space="preserve">
     <value>你可以从下方链接获取该程序的最新版本和更新说明：
-https://github.com/lostindark/DriverStoreExplorer/releases
+    https://github.com/lostindark/DriverStoreExplorer/releases
+
+报告错误/新需求：
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+贡献者：
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
 
 鸣谢：
-ObjectListView http://objectlistview.sourceforge.net/ </value>
+    ObjectListView http://objectlistview.sourceforge.net/
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism</value>
   </data>
   <data name="Message_Operation_In_Progress" xml:space="preserve">
     <value>另外一个操作正在进行中</value>
@@ -373,5 +376,8 @@ ObjectListView http://objectlistview.sourceforge.net/ </value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
     <value>语言</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>设备名称</value>
   </data>
 </root>
