@@ -121,17 +121,7 @@ namespace Rapr.Utils
             }
         }
 
-        /// <summary>
-        /// Field count
-        /// </summary>
-        private const int FIELD_COUNT = 6;
-
-        public int GetFieldCount()
-        {
-            return FIELD_COUNT;
-        }
-
-        public string[] GetFieldNames()
+        public static string[] GetFieldNames()
         {
             return new[] {
                 "OEM INF",
@@ -143,6 +133,8 @@ namespace Rapr.Utils
                 "Driver Signer",
                 "Driver Size",
                 "Driver Folder",
+                "Device Name",
+                "Device Present",
             };
         }
 
@@ -150,15 +142,17 @@ namespace Rapr.Utils
         {
             return new[]
             {
-                this.DriverPublishedName ?? "",
-                this.DriverInfName ?? "",
-                this.DriverPkgProvider ?? "",
-                this.DriverClass ?? "",
+                this.DriverPublishedName ?? string.Empty,
+                this.DriverInfName ?? string.Empty,
+                this.DriverPkgProvider ?? string.Empty,
+                this.DriverClass ?? string.Empty,
                 this.DriverDate.ToString("d"),
-                this.DriverVersion == null ? "" : this.DriverVersion.ToString(),
-                this.DriverSignerName ?? "",
+                this.DriverVersion?.ToString() ?? string.Empty,
+                this.DriverSignerName ?? string.Empty,
                 this.DriverSize.ToString(),
-                this.DriverFolderLocation ?? string.Empty
+                this.DriverFolderLocation ?? string.Empty,
+                this.DeviceName ?? string.Empty,
+                this.DevicePresent?.ToString() ?? string.Empty,
             };
         }
 

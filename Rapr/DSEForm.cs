@@ -686,9 +686,7 @@ namespace Rapr
                 try
                 {
                     List<DriverStoreEntry> ldse = this.lstDriverStoreEntries.Objects as List<DriverStoreEntry>;
-                    IExport exporter = new CSVExporter();   // TODO: Factory?? Change this when we add support for 
-                                                            // direct Excel export
-                    string fileName = exporter.Export(ldse);
+                    string fileName = new CsvExporter().Export(ldse);
 
                     if (!string.IsNullOrEmpty(fileName))
                     {

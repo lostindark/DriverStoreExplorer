@@ -1,18 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.IO;
+
 using Rapr.Utils;
 using System.Windows.Forms;
 using Rapr.Lang;
 
 namespace Rapr
 {
-    public class CSVExporter : IExport
+    public class CsvExporter : IExport
     {
-        private const string CSV_DELIM = ",";
+        private const string CsvDelimiter = ",";
+        private const string CsvQuote = "\"";
 
-        public string Export(List<DriverStoreEntry> ldse)
+        public string Export(List<DriverStoreEntry> driverStoreEntries)
         {
-            if (ldse.Count == 0)
+            if (driverStoreEntries.Count == 0)
             {
                 MessageBox.Show(Language.Message_No_Entries, Language.Export_Error);
                 return null;
@@ -31,19 +33,16 @@ namespace Rapr
             {
                 string csvFileName = saveFileDialog.FileName;   // Path                
 
-                using (System.IO.StreamWriter file = new System.IO.StreamWriter(csvFileName))
+                using (StreamWriter file = new StreamWriter(csvFileName))
                 {
                     // Write the header once
-                    string headerLine = String.Join(CSV_DELIM, ldse[0].GetFieldNames());
+                    string headerLine = string.Join(CsvDelimiter, DriverStoreEntry.GetFieldNames());
                     file.WriteLine(headerLine);
 
                     // Write the values
-                    foreach (DriverStoreEntry dse in ldse)
+                    foreach (DriverStoreEntry entry in driverStoreEntries)
                     {
-                        string[] values = dse.GetFieldValues();
-                        this.Sanitize(ref values);
-
-                        string valueLine = String.Join(CSV_DELIM, values);
+                        string valueLine = string.Join(CsvDelimiter, Sanitize(entry.GetFieldValues()));
                         file.WriteLine(valueLine);
                     }
                 }
@@ -54,15 +53,18 @@ namespace Rapr
             return null;
         }
 
-        private void Sanitize(ref string[] values)
+        private static string[] Sanitize(string[] values)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i].Contains(CSV_DELIM))
+                if (values[i].Contains(CsvDelimiter)
+                    || values[i].Contains(CsvQuote))
                 {
-                    values[i] = "\"" + values[i] + "\"";//.Replace(CSV_DELIM, CSV_DELIM_SUBST);
+                    values[i] = CsvQuote + values[i].Replace(CsvQuote, "\\\"") + CsvQuote;
                 }
             }
+
+            return values;
         }
     }
 }
