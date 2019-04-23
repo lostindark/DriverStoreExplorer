@@ -2,7 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Text;
+
+using FILETIME = System.Runtime.InteropServices.ComTypes.FILETIME;
 
 namespace Rapr.Utils
 {
@@ -59,6 +63,90 @@ namespace Rapr.Utils
             }
 
             return deviceDriverInfos;
+        }
+
+        public static string GetDriverSignerInfo(string driverStoreFilename)
+        {
+            const int ERROR_AUTHENTICODE_TRUSTED_PUBLISHER = unchecked((int)0xe0000241);
+            const int ERROR_AUTHENTICODE_TRUST_NOT_ESTABLISHED = unchecked((int)0xe0000242);
+
+            SP_INF_SIGNER_INFO signerInfo = new SP_INF_SIGNER_INFO
+            {
+                cbSize = Marshal.SizeOf(typeof(SP_INF_SIGNER_INFO))
+            };
+
+            if ((NativeMethods.SetupVerifyInfFile(driverStoreFilename, IntPtr.Zero, ref signerInfo)
+                || Marshal.GetLastWin32Error() == ERROR_AUTHENTICODE_TRUSTED_PUBLISHER
+                || Marshal.GetLastWin32Error() == ERROR_AUTHENTICODE_TRUST_NOT_ESTABLISHED)
+                && !string.IsNullOrEmpty(signerInfo.DigitalSigner))
+            {
+                return signerInfo.DigitalSigner;
+            }
+            else
+            {
+                return string.Empty;
+            }
+        }
+
+        public static bool AddDriver(string infFullPath, bool install)
+        {
+            bool result;
+
+            if (install)
+            {
+                result = NativeMethods.DiInstallDriver(IntPtr.Zero, infFullPath, 0, out _);
+            }
+            else
+            {
+                StringBuilder destInfFullPath = new StringBuilder(MAX_PATH);
+                uint requiredSize = 0;
+
+                result = NativeMethods.SetupCopyOEMInf(
+                    infFullPath,
+                    null,
+                    OemSourceMediaType.SPOST_PATH,
+                    OemCopyStyle.NONE,
+                    destInfFullPath,
+                    (uint)destInfFullPath.Capacity,
+                    ref requiredSize,
+                    IntPtr.Zero);
+            }
+
+            if (!result)
+            {
+                try
+                {
+                    throw new Win32Exception();
+                }
+                catch (Win32Exception e)
+                {
+                    Trace.TraceError(e.ToString());
+                }
+            }
+
+            return result;
+        }
+
+        public static bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
+        {
+            bool result = NativeMethods.SetupUninstallOEMInf(
+                driverStoreEntry.DriverPublishedName,
+                forceDelete ? SetupUOInfFlags.SUOI_FORCEDELETE : SetupUOInfFlags.NONE,
+                IntPtr.Zero);
+
+            if (!result)
+            {
+                try
+                {
+                    throw new Win32Exception();
+                }
+                catch (Win32Exception e)
+                {
+                    Trace.TraceError(e.ToString());
+                }
+            }
+
+            return result;
         }
 
         private static string GetDriverInf(IntPtr deviceInfoSet, SP_DEVINFO_DATA deviceInfo)
@@ -250,11 +338,11 @@ namespace Rapr.Utils
             return default(T);
         }
 
-        private const int LINE_LEN = 256;
-        private const int MAX_PATH = 260;
+        internal const int LINE_LEN = 256;
+        internal const int MAX_PATH = 260;
 
-        private const int ERROR_INSUFFICIENT_BUFFER = 122;
-        private const int ERROR_NO_MORE_ITEMS = 259;
+        internal const int ERROR_INSUFFICIENT_BUFFER = 122;
+        internal const int ERROR_NO_MORE_ITEMS = 259;
 
         //
         // Flags controlling what is included in the device information set built
@@ -332,6 +420,54 @@ namespace Rapr.Utils
             DI_FLAGSEX_ALLOWEXCLUDEDDRVS = (0x00000800)
         }
 
+        [Flags]
+        internal enum SetupUOInfFlags : uint
+        {
+            NONE = 0x0000,
+            SUOI_FORCEDELETE = 0x0001
+        };
+
+        /// <summary>
+        /// Driver media type
+        /// </summary>
+        internal enum OemSourceMediaType
+        {
+            SPOST_NONE = 0,
+            SPOST_PATH = 1,
+            SPOST_URL = 2,
+            SPOST_MAX = 3
+        }
+
+        /// <summary>
+        /// Driver file copy style
+        /// </summary>
+        internal enum OemCopyStyle
+        {
+            NONE = 0x0,
+            SP_COPY_DELETESOURCE = 0x0000001,   // delete source file on successful copy
+            SP_COPY_REPLACEONLY = 0x0000002,   // copy only if target file already present
+            SP_COPY_NEWER = 0x0000004,   // copy only if source newer than or same as target
+            SP_COPY_NEWER_OR_SAME = SP_COPY_NEWER,
+            SP_COPY_NOOVERWRITE = 0x0000008,   // copy only if target doesn't exist
+            SP_COPY_NODECOMP = 0x0000010,   // don't decompress source file while copying
+            SP_COPY_LANGUAGEAWARE = 0x0000020,   // don't overwrite file of different language
+            SP_COPY_SOURCE_ABSOLUTE = 0x0000040,   // SourceFile is a full source path
+            SP_COPY_SOURCEPATH_ABSOLUTE = 0x0000080,   // SourcePathRoot is the full path
+            SP_COPY_IN_USE_NEEDS_REBOOT = 0x0000100,   // System needs reboot if file in use
+            SP_COPY_FORCE_IN_USE = 0x0000200,   // Force target-in-use behavior
+            SP_COPY_NOSKIP = 0x0000400,   // Skip is disallowed for this file or section
+            SP_FLAG_CABINETCONTINUATION = 0x0000800,   // Used with need media notification
+            SP_COPY_FORCE_NOOVERWRITE = 0x0001000,   // like NOOVERWRITE but no callback nofitication
+            SP_COPY_FORCE_NEWER = 0x0002000,   // like NEWER but no callback nofitication
+            SP_COPY_WARNIFSKIP = 0x0004000,   // system critical file: warn if user tries to skip
+            SP_COPY_NOBROWSE = 0x0008000,   // Browsing is disallowed for this file or section
+            SP_COPY_NEWER_ONLY = 0x0010000,   // copy only if source file newer than target
+            SP_COPY_SOURCE_SIS_MASTER = 0x0020000,   // source is single-instance store master
+            SP_COPY_OEMINF_CATALOG_ONLY = 0x0040000,   // (SetupCopyOEMInf only) don't copy INF--just catalog
+            SP_COPY_REPLACE_BOOT_FILE = 0x0080000,   // file must be present upon reboot (i.e., it's needed by the loader), this flag implies a reboot
+            SP_COPY_NOPRUNE = 0x0100000   // never prune this file
+        }
+
         [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         internal struct SP_DEVINSTALL_PARAMS
         {
@@ -356,7 +492,7 @@ namespace Rapr.Utils
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string Description;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string MfgName;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string ProviderName;
-            public System.Runtime.InteropServices.ComTypes.FILETIME DriverDate;
+            public FILETIME DriverDate;
             public long DriverVersion;
         }
 
@@ -364,7 +500,7 @@ namespace Rapr.Utils
         internal struct SP_DRVINFO_DETAIL_DATA
         {
             public int cbSize;
-            public System.Runtime.InteropServices.ComTypes.FILETIME InfDate;
+            public FILETIME InfDate;
             public int CompatIDsOffset;
             public int CompatIDsLength;
             public IntPtr Reserved;
@@ -383,7 +519,7 @@ namespace Rapr.Utils
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string Description;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string MfgName;
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = LINE_LEN)] public string ProviderName;
-            public System.Runtime.InteropServices.ComTypes.FILETIME DriverDate;
+            public FILETIME DriverDate;
             public long DriverVersion;
         }
 
@@ -391,7 +527,7 @@ namespace Rapr.Utils
         internal struct SP_DRVINFO_DETAIL_DATA32
         {
             public int cbSize;
-            public System.Runtime.InteropServices.ComTypes.FILETIME InfDate;
+            public FILETIME InfDate;
             public int CompatIDsOffset;
             public int CompatIDsLength;
             public IntPtr Reserved;
@@ -401,7 +537,7 @@ namespace Rapr.Utils
             [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 1)] public string HardwareID;
         };
 
-        [StructLayoutAttribute(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
         internal struct SP_DEVINFO_DATA
         {
             public int cbSize;
@@ -410,11 +546,29 @@ namespace Rapr.Utils
             private IntPtr Reserved;
         }
 
+        [StructLayout(LayoutKind.Sequential, CharSet = CharSet.Unicode)]
+        internal struct SP_INF_SIGNER_INFO
+        {
+            public int cbSize;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MAX_PATH)] public string CatalogFile;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MAX_PATH)] public string DigitalSigner;
+            [MarshalAs(UnmanagedType.ByValTStr, SizeConst = MAX_PATH)] public string DigitalSignerVersion;
+            public int SignerScore;
+        };
+
         /// <summary>
         /// The managed interop layer to setupapi.dll
         /// </summary>
         internal static class NativeMethods
         {
+            [DllImport("newdev.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+            internal static extern bool DiInstallDriver(
+                [In] IntPtr hwndParent,
+                [In] string infPath,
+                [In] uint flags,
+                [Out] out bool needReboot
+            );
+
             [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
             internal static extern IntPtr SetupDiGetClassDevs(
                IntPtr classGuid,
@@ -512,6 +666,31 @@ namespace Rapr.Utils
 
             [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
             internal static extern bool SetupDiDestroyDeviceInfoList(IntPtr deviceInfoSet);
+
+            [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+            internal static extern bool SetupVerifyInfFile(
+                string infName,
+                IntPtr altPlatformInfo,
+                ref SP_INF_SIGNER_INFO infSignerInfo);
+
+            [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            internal static extern bool SetupCopyOEMInf(
+                [MarshalAs(UnmanagedType.LPWStr)] string infName,
+                [MarshalAs(UnmanagedType.LPWStr)] string sourceMediaLocation,
+                OemSourceMediaType sourceMediaType,
+                OemCopyStyle copyStyle,
+                [In, Out, MarshalAs(UnmanagedType.LPWStr)] StringBuilder destInfFullPath,
+                uint destInfFullPathSize,
+                ref uint desInfFullPathReqSize,
+                IntPtr destInfFilename);
+
+            [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            internal static extern bool SetupUninstallOEMInf(
+                [MarshalAs(UnmanagedType.LPWStr)] string infName,
+                SetupUOInfFlags flags,
+                IntPtr reserved);
         }
     }
 }
