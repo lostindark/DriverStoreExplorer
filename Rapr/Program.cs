@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -24,12 +25,20 @@ namespace Rapr
             }
         }
 
+        private static void AddEnvironmentPaths(string path)
+        {
+            var paths = new[] { Environment.GetEnvironmentVariable("PATH") ?? string.Empty, path };
+            string newPath = string.Join(Path.PathSeparator.ToString(), paths);
+            Environment.SetEnvironmentVariable("PATH", newPath);
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
         public static void Main()
         {
+            AddEnvironmentPaths(@"C:\Windows\System32\CompatTel");
             AppDomain.CurrentDomain.AssemblyResolve += ResolveEventHandler;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
