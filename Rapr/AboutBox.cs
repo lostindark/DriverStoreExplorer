@@ -13,7 +13,37 @@ namespace Rapr
         {
             this.InitializeComponent();
             this.Text = string.Format(Language.Product_About_Title, this.AssemblyTitle);
-            this.labelProductName.Text = string.Format(Language.Product_Credits, this.AssemblyVersion);
+            this.labelVersionInfo.Text = $"v{this.AssemblyVersion}";
+
+            (Version latestVersion, string pageUrl, string downloadUrl) = UpdateManager.GetLatestVersionInfo();
+
+            if (latestVersion != null)
+            {
+                if (this.AssemblyVersion >= latestVersion)
+                {
+                    this.labelLink.Text = Language.About_VersionUpToDate;
+                    this.labelLink.Links.Clear();
+                }
+                else
+                {
+                    string versionStr = latestVersion.ToString();
+                    this.labelLink.Text = string.Format(Language.About_FoundNewVersion, versionStr, Language.About_Download);
+
+                    int versionStart = this.labelLink.Text.IndexOf(versionStr, 0);
+
+                    if (versionStart >= 0)
+                    {
+                        this.labelLink.Links.Add(new LinkLabel.Link(versionStart, versionStr.Length, pageUrl));
+                    }
+
+                    int linkStart = this.labelLink.Text.IndexOf(Language.About_Download, 0);
+
+                    if (linkStart >= 0)
+                    {
+                        this.labelLink.Links.Add(new LinkLabel.Link(linkStart, Language.About_Download.Length, downloadUrl));
+                    }
+                }
+            }
         }
 
         #region Assembly Attribute Accessors
@@ -35,11 +65,11 @@ namespace Rapr
             }
         }
 
-        public string AssemblyVersion
+        public Version AssemblyVersion
         {
             get
             {
-                return Assembly.GetExecutingAssembly().GetName().Version.ToString();
+                return Assembly.GetExecutingAssembly().GetName().Version;
             }
         }
 
@@ -96,7 +126,7 @@ namespace Rapr
         }
         #endregion
 
-        private void labelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void LabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             string url;
             LinkLabel linkLabel = (LinkLabel)sender;
@@ -114,7 +144,7 @@ namespace Rapr
             linkLabel.LinkVisited = true;
         }
 
-        private void textBoxDescription_LinkClicked(object sender, LinkClickedEventArgs e)
+        private void TextBoxDescription_LinkClicked(object sender, LinkClickedEventArgs e)
         {
             Process.Start(e.LinkText);
         }

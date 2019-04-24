@@ -380,4 +380,13 @@ Credits:
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Device Name</value>
   </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(Up to date)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(Found New Version v{0} {1})</value>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>Download</value>
+  </data>
 </root>

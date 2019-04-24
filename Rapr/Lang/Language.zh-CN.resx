@@ -380,4 +380,13 @@
   <data name="Column_DeviceName" xml:space="preserve">
     <value>设备名称</value>
   </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(已是最新版)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(发现新版本 v{0} {1})</value>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>下载</value>
+  </data>
 </root>

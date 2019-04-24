@@ -30,11 +30,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AboutBox));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.labelProductName = new System.Windows.Forms.Label();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.labelVersionInfo = new System.Windows.Forms.Label();
             this.labelLink = new System.Windows.Forms.LinkLabel();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.textBoxDescription = new System.Windows.Forms.RichTextBox();
             this.okButton = new System.Windows.Forms.Button();
             this.tableLayoutPanel.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +47,7 @@
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33F));
             this.tableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 67F));
             this.tableLayoutPanel.Controls.Add(this.labelProductName, 1, 0);
-            this.tableLayoutPanel.Controls.Add(this.labelLink, 1, 1);
+            this.tableLayoutPanel.Controls.Add(this.flowLayoutPanel1, 1, 1);
             this.tableLayoutPanel.Controls.Add(this.logoPictureBox, 0, 0);
             this.tableLayoutPanel.Controls.Add(this.textBoxDescription, 1, 2);
             this.tableLayoutPanel.Controls.Add(this.okButton, 1, 3);
@@ -63,28 +66,46 @@
             // 
             this.labelProductName.AutoSize = true;
             this.labelProductName.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.labelProductName.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.labelProductName.Location = new System.Drawing.Point(227, 0);
             this.labelProductName.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
             this.labelProductName.MaximumSize = new System.Drawing.Size(0, 34);
             this.labelProductName.Name = "labelProductName";
-            this.labelProductName.Size = new System.Drawing.Size(441, 13);
+            this.labelProductName.Size = new System.Drawing.Size(441, 21);
             this.labelProductName.TabIndex = 19;
-            this.labelProductName.Text = "Driver Store Explorer [RAPR]";
+            this.labelProductName.Text = "Driver Store Explorer";
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.AutoSize = true;
+            this.flowLayoutPanel1.Controls.Add(this.labelVersionInfo);
+            this.flowLayoutPanel1.Controls.Add(this.labelLink);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(224, 24);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(444, 33);
+            this.flowLayoutPanel1.TabIndex = 1;
+            // 
+            // labelVersionInfo
+            // 
+            this.labelVersionInfo.AutoSize = true;
+            this.labelVersionInfo.Location = new System.Drawing.Point(3, 0);
+            this.labelVersionInfo.Name = "labelVersionInfo";
+            this.labelVersionInfo.Size = new System.Drawing.Size(0, 13);
+            this.labelVersionInfo.TabIndex = 1;
             // 
             // labelLink
             // 
             this.labelLink.AutoSize = true;
             this.labelLink.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.labelLink.Location = new System.Drawing.Point(227, 13);
-            this.labelLink.Margin = new System.Windows.Forms.Padding(6, 0, 3, 0);
+            this.labelLink.Location = new System.Drawing.Point(6, 0);
+            this.labelLink.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
             this.labelLink.MaximumSize = new System.Drawing.Size(0, 17);
             this.labelLink.Name = "labelLink";
-            this.labelLink.Size = new System.Drawing.Size(441, 17);
+            this.labelLink.Size = new System.Drawing.Size(0, 13);
             this.labelLink.TabIndex = 0;
-            this.labelLink.TabStop = true;
-            this.labelLink.Text = "https://github.com/lostindark/DriverStoreExplorer";
             this.labelLink.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.labelLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.labelLink_LinkClicked);
+            this.labelLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.LabelLink_LinkClicked);
             // 
             // logoPictureBox
             // 
@@ -102,15 +123,15 @@
             // 
             this.textBoxDescription.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBoxDescription.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxDescription.Location = new System.Drawing.Point(224, 56);
+            this.textBoxDescription.Location = new System.Drawing.Point(224, 63);
             this.textBoxDescription.Name = "textBoxDescription";
             this.textBoxDescription.ReadOnly = true;
             this.textBoxDescription.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
-            this.textBoxDescription.Size = new System.Drawing.Size(444, 356);
+            this.textBoxDescription.Size = new System.Drawing.Size(444, 349);
             this.textBoxDescription.TabIndex = 23;
             this.textBoxDescription.TabStop = false;
             this.textBoxDescription.Text = global::Rapr.Lang.Language.About_Project_Description;
-            this.textBoxDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.textBoxDescription_LinkClicked);
+            this.textBoxDescription.LinkClicked += new System.Windows.Forms.LinkClickedEventHandler(this.TextBoxDescription_LinkClicked);
             // 
             // okButton
             // 
@@ -140,6 +161,8 @@
             this.Text = "About";
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
+            this.flowLayoutPanel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.logoPictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -153,5 +176,7 @@
         private System.Windows.Forms.LinkLabel labelLink;
         private System.Windows.Forms.RichTextBox textBoxDescription;
         private System.Windows.Forms.Button okButton;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Label labelVersionInfo;
     }
 }

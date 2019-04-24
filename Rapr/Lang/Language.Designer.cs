@@ -61,6 +61,24 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Download.
+        /// </summary>
+        public static string About_Download {
+            get {
+                return ResourceManager.GetString("About_Download", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Found New Version v{0} {1}).
+        /// </summary>
+        public static string About_FoundNewVersion {
+            get {
+                return ResourceManager.GetString("About_FoundNewVersion", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to You can find latest version and release notes here:
         ///    https://github.com/lostindark/DriverStoreExplorer/releases
         ///
@@ -77,6 +95,15 @@ namespace Rapr.Lang {
         public static string About_Project_Description {
             get {
                 return ResourceManager.GetString("About_Project_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Up to date).
+        /// </summary>
+        public static string About_VersionUpToDate {
+            get {
+                return ResourceManager.GetString("About_VersionUpToDate", resourceCulture);
             }
         }
         
