@@ -13,8 +13,7 @@ namespace Rapr.Tests
         [TestMethod]
         public void TestEnglish()
         {
-            CultureInfo ci = new CultureInfo(CultureInfo.CurrentCulture.Name);
-            ci = CultureInfo.GetCultureInfo("EN");
+            CultureInfo ci = CultureInfo.GetCultureInfo("EN");
             Thread.CurrentThread.CurrentCulture = ci;
             Thread.CurrentThread.CurrentUICulture = ci;
 
@@ -24,8 +23,7 @@ namespace Rapr.Tests
         [TestMethod]
         public void TestFrench()
         {
-            CultureInfo ci = new CultureInfo(CultureInfo.CurrentCulture.Name);
-            ci = CultureInfo.GetCultureInfo("fr-FR");
+            CultureInfo ci = CultureInfo.GetCultureInfo("fr-FR");
             Thread.CurrentThread.CurrentCulture = ci;
             Thread.CurrentThread.CurrentUICulture = ci;
 
