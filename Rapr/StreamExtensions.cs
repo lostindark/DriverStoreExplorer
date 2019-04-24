@@ -12,7 +12,7 @@ namespace Rapr
             Stream destination,
             int bufferSize,
             IProgress<long> progress = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             if (source == null)
             {

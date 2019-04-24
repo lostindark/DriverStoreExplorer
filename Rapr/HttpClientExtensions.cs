@@ -13,7 +13,7 @@ namespace Rapr
             string requestUri,
             Stream destination,
             IProgress<float> progress = null,
-            CancellationToken cancellationToken = default)
+            CancellationToken cancellationToken = default(CancellationToken))
         {
             // Get the http headers first to examine the content length
             using (var response = await client.GetAsync(requestUri, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false))
