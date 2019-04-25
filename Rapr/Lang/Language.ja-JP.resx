@@ -190,13 +190,13 @@
     <value>削除</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>ドライバー ストアから {1} 個のパッケージを{0}します。</value>
+    <value>ドライバー ストアから {1} 個のパッケージを{0}します</value>
   </data>
   <data name="Message_Delete_Result" xml:space="preserve">
-    <value>{0} ({1}) の削除に{2}しました。</value>
+    <value>{0} ({1}) の削除に{2}しました</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>ドライバー ストアから {1} ({2}) を{0}します。</value>
+    <value>ドライバー ストアから {1} ({2}) を{0}します</value>
   </data>
   <data name="Message_Failed" xml:space="preserve">
     <value>失敗</value>
@@ -235,7 +235,7 @@
     <value>読み取り専用モードで実行しています</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[ヒント: ドライバーが使用中である可能性があります。強制削除モードを試してください。]</value>
+    <value>[ヒント: ドライバーが使用中の可能性があります。強制削除モードを試してください。]</value>
   </data>
   <data name="Title_About" xml:space="preserve">
     <value>バージョン情報</value>
@@ -265,7 +265,7 @@
     <value>{0:d}</value>
   </data>
   <data name="Message_No_Entries" xml:space="preserve">
-    <value>エントリが読み込まれていません。</value>
+    <value>エントリが読み込まれていません</value>
   </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>INF の選択</value>
@@ -286,9 +286,16 @@
     <value>最新バージョンの入手とリリース ノート:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
+バグの報告/機能に関する要望:
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+貢献者:
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
+
 謝辞:
     ObjectListView http://objectlistview.sourceforge.net/
-    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism</value>
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>日本語</value>
@@ -315,10 +322,10 @@
     <value>ドライバー ストアから {0} 個のパッケージを削除しました</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>ドライバー ストア {2} から {0} ({1}) 削除中にエラーが発生しました</value>
+    <value>ドライバー ストアから {0} ({1}) 削除中にエラーが発生しました {2}</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>ドライバー ストア {0} からいくつかのパッケージを削除する際にエラーが発生しました</value>
+    <value>ドライバー ストアからいくつかのパッケージを削除する際にエラーが発生しました {0}</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>ドライバー ストアに {0} パッケージ {1} を追加しました</value>
@@ -330,13 +337,13 @@
     <value> (インストールあり)</value>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
-    <value>ログ ファイルが見つかりません。</value>
+    <value>ログ ファイルが見つかりません</value>
   </data>
   <data name="Message_Error" xml:space="preserve">
     <value>エラー</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>{0} に内容を保存しました。エクスポートは完了しました。</value>
+    <value>{0} に内容は保存され、エクスポートが完了しました</value>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>エクスポート失敗: {0}</value>
@@ -345,7 +352,7 @@
     <value>{0} 個のドライバーを選択 合計サイズ: {1}</value>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>ドライバーが選択されていません。</value>
+    <value>ドライバーが選択されていません</value>
   </data>
   <data name="Menu_File_RunAs_Admin" xml:space="preserve">
     <value>管理者として実行</value>
@@ -367,5 +374,20 @@
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
     <value>ドライバー ストアの選択</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>言語</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>デバイス名</value>
+  </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(最新)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(新しいバージョンがあります v{0} {1})</value>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>ダウンロード</value>
   </data>
 </root>
