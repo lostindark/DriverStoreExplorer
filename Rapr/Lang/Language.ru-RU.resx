@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -286,7 +286,13 @@
     <value>Вы можете найти последнюю версию программы и сведения об изменениях по адресу:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-Благодарность:
+Сообщить об ошибке/запросить новую функцию:
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+Авторы изменений:
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
+
+Благодарности:
     ObjectListView http://objectlistview.sourceforge.net/
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism</value>
   </data>
@@ -370,5 +376,17 @@
   </data>
   <data name="Menu_Language" xml:space="preserve">
     <value>Язык</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>Имя устройства</value>
+  </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(не требует обновления)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(Найдена новая версия v{0} {1})</value>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>Загрузить</value>
   </data>
 </root>
