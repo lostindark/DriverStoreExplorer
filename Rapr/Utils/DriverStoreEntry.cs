@@ -12,55 +12,55 @@ namespace Rapr.Utils
         /// <summary>
         /// Name of the OEM INF in driver store
         /// </summary>
-        public string DriverPublishedName;
+        public string DriverPublishedName { get; set; }
 
         /// <summary>
         /// Driver Original INF Name
         /// </summary>
-        public string DriverInfName;
+        public string DriverInfName { get; set; }
 
         /// <summary>
         /// Driver package provider
         /// </summary>
-        public string DriverPkgProvider;
+        public string DriverPkgProvider { get; set; }
 
         /// <summary>
         /// Driver class (ex., "System Devices")
         /// </summary>
-        public string DriverClass;
+        public string DriverClass { get; set; }
 
         /// <summary>
         /// Sys file date
         /// </summary>
-        public DateTime DriverDate;
+        public DateTime DriverDate { get; set; }
 
         /// <summary>
         /// Sys file version
         /// </summary>
-        public Version DriverVersion;
+        public Version DriverVersion { get; set; }
 
         /// <summary>
         /// Signer name. Empty if not WHQLd. 
         /// </summary>
-        public string DriverSignerName;
+        public string DriverSignerName { get; set; }
 
         /// <summary>
         /// Estimated driver size on disk.
         /// </summary>
-        public long DriverSize;
+        public long DriverSize { get; set; }
 
         /// <summary>
         /// The folder that contains the driver.
         /// </summary>
-        public string DriverFolderLocation;
+        public string DriverFolderLocation { get; set; }
 
-        public bool? BootCritical;
+        public bool? BootCritical { get; set; }
 
-        public bool? Inbox;
+        public bool? Inbox { get; set; }
 
-        public string DeviceName;
+        public string DeviceName { get; set; }
 
-        public bool? DevicePresent;
+        public bool? DevicePresent { get; set; }
 
         public override string ToString()
         {

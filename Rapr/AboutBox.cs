@@ -12,14 +12,14 @@ namespace Rapr
         public AboutBox()
         {
             this.InitializeComponent();
-            this.Text = string.Format(Language.Product_About_Title, this.AssemblyTitle);
-            this.labelVersionInfo.Text = $"v{this.AssemblyVersion}";
+            this.Text = string.Format(Language.Product_About_Title, AssemblyTitle);
+            this.labelVersionInfo.Text = $"v{AssemblyVersion}";
 
             (Version latestVersion, string pageUrl, string downloadUrl) = UpdateManager.GetLatestVersionInfo();
 
             if (latestVersion != null)
             {
-                if (this.AssemblyVersion >= latestVersion)
+                if (AssemblyVersion >= latestVersion)
                 {
                     this.labelLink.Text = Language.About_VersionUpToDate;
                     this.labelLink.Links.Clear();
@@ -29,14 +29,14 @@ namespace Rapr
                     string versionStr = latestVersion.ToString();
                     this.labelLink.Text = string.Format(Language.About_FoundNewVersion, versionStr, Language.About_Download);
 
-                    int versionStart = this.labelLink.Text.IndexOf(versionStr, 0);
+                    int versionStart = this.labelLink.Text.IndexOf(versionStr, 0, StringComparison.Ordinal);
 
                     if (versionStart >= 0)
                     {
                         this.labelLink.Links.Add(new LinkLabel.Link(versionStart, versionStr.Length, pageUrl));
                     }
 
-                    int linkStart = this.labelLink.Text.IndexOf(Language.About_Download, 0);
+                    int linkStart = this.labelLink.Text.IndexOf(Language.About_Download, 0, StringComparison.Ordinal);
 
                     if (linkStart >= 0)
                     {
@@ -48,7 +48,7 @@ namespace Rapr
 
         #region Assembly Attribute Accessors
 
-        public string AssemblyTitle
+        public static string AssemblyTitle
         {
             get
             {
@@ -56,7 +56,7 @@ namespace Rapr
                 if (attributes.Length > 0)
                 {
                     AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
-                    if (titleAttribute.Title != "")
+                    if (!string.IsNullOrEmpty(titleAttribute.Title))
                     {
                         return titleAttribute.Title;
                     }
@@ -65,7 +65,7 @@ namespace Rapr
             }
         }
 
-        public Version AssemblyVersion
+        public static Version AssemblyVersion
         {
             get
             {
@@ -73,7 +73,7 @@ namespace Rapr
             }
         }
 
-        public string AssemblyDescription
+        public static string AssemblyDescription
         {
             get
             {
@@ -86,7 +86,7 @@ namespace Rapr
             }
         }
 
-        public string AssemblyProduct
+        public static string AssemblyProduct
         {
             get
             {
@@ -99,7 +99,7 @@ namespace Rapr
             }
         }
 
-        public string AssemblyCopyright
+        public static string AssemblyCopyright
         {
             get
             {
@@ -112,7 +112,7 @@ namespace Rapr
             }
         }
 
-        public string AssemblyCompany
+        public static string AssemblyCompany
         {
             get
             {

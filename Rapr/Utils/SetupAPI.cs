@@ -20,7 +20,7 @@ namespace Rapr.Utils
                 IntPtr.Zero,
                 null,
                 IntPtr.Zero,
-                DIGCF.DIGCF_ALLCLASSES);
+                DIGCF.ALLCLASSES);
 
             if (deviceInfoSet == IntPtr.Zero)
             {
@@ -155,7 +155,7 @@ namespace Rapr.Utils
             SP_DEVINSTALL_PARAMS deviceInstallParams = new SP_DEVINSTALL_PARAMS
             {
                 cbSize = Marshal.SizeOf(typeof(SP_DEVINSTALL_PARAMS)),
-                FlagsEx = DI_FLAGS.DI_FLAGSEX_ALLOWEXCLUDEDDRVS | DI_FLAGS.DI_FLAGSEX_INSTALLEDDRIVER
+                FlagsEx = DI_FLAGS.ALLOWEXCLUDEDDRVS | DI_FLAGS.INSTALLEDDRIVER
             };
 
             if (!NativeMethods.SetupDiSetDeviceInstallParams(deviceInfoSet, ref deviceInfo, ref deviceInstallParams))
@@ -163,7 +163,7 @@ namespace Rapr.Utils
                 throw new Win32Exception();
             }
 
-            if (!NativeMethods.SetupDiBuildDriverInfoList(deviceInfoSet, ref deviceInfo, SPDIT.SPDIT_COMPATDRIVER))
+            if (!NativeMethods.SetupDiBuildDriverInfoList(deviceInfoSet, ref deviceInfo, SPDIT.COMPATDRIVER))
             {
                 throw new Win32Exception();
             }
@@ -177,7 +177,7 @@ namespace Rapr.Utils
                         cbSize = Marshal.SizeOf(typeof(SP_DRVINFO_DATA))
                     };
 
-                    if (NativeMethods.SetupDiEnumDriverInfo(deviceInfoSet, ref deviceInfo, SPDIT.SPDIT_COMPATDRIVER, 0, ref drvInfo))
+                    if (NativeMethods.SetupDiEnumDriverInfo(deviceInfoSet, ref deviceInfo, SPDIT.COMPATDRIVER, 0, ref drvInfo))
                     {
                         SP_DRVINFO_DETAIL_DATA driverInfoDetailData = new SP_DRVINFO_DETAIL_DATA
                         {
@@ -206,7 +206,7 @@ namespace Rapr.Utils
                         cbSize = Marshal.SizeOf(typeof(SP_DRVINFO_DATA32))
                     };
 
-                    if (NativeMethods.SetupDiEnumDriverInfo32(deviceInfoSet, ref deviceInfo, SPDIT.SPDIT_COMPATDRIVER, 0, ref drvInfo))
+                    if (NativeMethods.SetupDiEnumDriverInfo32(deviceInfoSet, ref deviceInfo, SPDIT.COMPATDRIVER, 0, ref drvInfo))
                     {
                         SP_DRVINFO_DETAIL_DATA32 driverInfoDetailData = new SP_DRVINFO_DETAIL_DATA32
                         {
@@ -231,7 +231,7 @@ namespace Rapr.Utils
             }
             finally
             {
-                if (!NativeMethods.SetupDiDestroyDriverInfoList(deviceInfoSet, ref deviceInfo, SPDIT.SPDIT_COMPATDRIVER))
+                if (!NativeMethods.SetupDiDestroyDriverInfoList(deviceInfoSet, ref deviceInfo, SPDIT.COMPATDRIVER))
                 {
                     throw new Win32Exception();
                 }
@@ -350,11 +350,11 @@ namespace Rapr.Utils
         //
         internal enum DIGCF
         {
-            DIGCF_DEFAULT = 0x00000001,  // only valid with DIGCF_DEVICEINTERFACE
-            DIGCF_PRESENT = 0x00000002,
-            DIGCF_ALLCLASSES = 0x00000004,
-            DIGCF_PROFILE = 0x00000008,
-            DIGCF_DEVICEINTERFACE = 0x00000010,
+            DEFAULT = 0x00000001,  // only valid with DIGCF_DEVICEINTERFACE
+            PRESENT = 0x00000002,
+            ALLCLASSES = 0x00000004,
+            PROFILE = 0x00000008,
+            DEVICEINTERFACE = 0x00000010,
         }
 
         //
@@ -364,9 +364,9 @@ namespace Rapr.Utils
         //
         internal enum SPDIT
         {
-            SPDIT_NODRIVER = 0x00000000,
-            SPDIT_CLASSDRIVER = 0x00000001,
-            SPDIT_COMPATDRIVER = 0x00000002,
+            NODRIVER = 0x00000000,
+            CLASSDRIVER = 0x00000001,
+            COMPATDRIVER = 0x00000002,
         }
 
         /// <summary>
@@ -416,8 +416,8 @@ namespace Rapr.Utils
         [Flags]
         internal enum DI_FLAGS
         {
-            DI_FLAGSEX_INSTALLEDDRIVER = (0x04000000),
-            DI_FLAGSEX_ALLOWEXCLUDEDDRVS = (0x00000800)
+            INSTALLEDDRIVER = (0x04000000),
+            ALLOWEXCLUDEDDRVS = (0x00000800)
         }
 
         [Flags]
@@ -573,13 +573,6 @@ namespace Rapr.Utils
             internal static extern IntPtr SetupDiGetClassDevs(
                IntPtr classGuid,
                string enumerator,
-               IntPtr hwndParent,
-               DIGCF flags);
-
-            [DllImport("setupapi.dll", CharSet = CharSet.Unicode, SetLastError = true)]
-            internal static extern IntPtr SetupDiGetClassDevs(
-               Guid classGuid,
-               IntPtr enumerator,
                IntPtr hwndParent,
                DIGCF flags);
 

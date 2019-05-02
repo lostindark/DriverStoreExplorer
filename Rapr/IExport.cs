@@ -5,6 +5,6 @@ namespace Rapr
 {
     public interface IExport
     {
-        string Export(List<DriverStoreEntry> ldse);
+        string Export(List<DriverStoreEntry> driverStoreEntries);
     }
 }

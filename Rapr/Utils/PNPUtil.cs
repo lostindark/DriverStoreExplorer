@@ -61,9 +61,13 @@ namespace Rapr.Utils
                     DriverStoreEntry driverStoreEntry = driverStoreEntries[i];
                     repository.FindInfInfo(
                         driverStoreEntry.DriverPublishedName,
-                        out driverStoreEntry.DriverInfName,
-                        out driverStoreEntry.DriverFolderLocation,
-                        out driverStoreEntry.DriverSize);
+                        out string driverInfName,
+                        out string driverFolderLocation,
+                        out long driverSize);
+
+                    driverStoreEntry.DriverInfName = driverInfName;
+                    driverStoreEntry.DriverFolderLocation = driverFolderLocation;
+                    driverStoreEntry.DriverSize = driverSize;
 
                     var deviceInfo = driverInfo.OrderByDescending(d => d.IsPresent).FirstOrDefault(e => string.Equals(
                         Path.GetFileName(e.DriverInf),
