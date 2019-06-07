@@ -96,16 +96,17 @@ namespace Rapr
 
         private void ButtonBrowseLocation_Click(object sender, EventArgs e)
         {
-            var dialog = new CommonOpenFileDialog
+            using (var dialog = new CommonOpenFileDialog
             {
                 IsFolderPicker = true
-            };
-
-            CommonFileDialogResult result = dialog.ShowDialog();
-
-            if (result == CommonFileDialogResult.Ok)
+            })
             {
-                this.OfflineStoreLocation = dialog.FileName;
+                CommonFileDialogResult result = dialog.ShowDialog();
+
+                if (result == CommonFileDialogResult.Ok)
+                {
+                    this.OfflineStoreLocation = dialog.FileName;
+                }
             }
         }
     }

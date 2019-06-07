@@ -42,7 +42,10 @@ namespace Rapr
             AppDomain.CurrentDomain.AssemblyResolve += ResolveEventHandler;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new DSEForm());
+            using (DSEForm mainForm = new DSEForm())
+            {
+                Application.Run(mainForm);
+            }
         }
     }
 }

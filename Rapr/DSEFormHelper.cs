@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Reflection;
+using System.Security;
 using System.Security.Principal;
 using System.Windows.Forms;
 
@@ -39,17 +40,25 @@ namespace Rapr
             Normal,
         }
 
-        public struct OperationContext
+        private class OperationContext
         {
-            public OperationCode Code;
-            public string InfPath;  // Addition => Full path of the INF file, Others => INF filename in driverstore
-            public object ResultData;
-            public bool ResultStatus;
 
-            public List<DriverStoreEntry> DriverStoreEntries;
+            public OperationCode Code { get; set; }
+
+            public string InfPath // Addition => Full path of the INF file, Others => INF filename in driverstore
+            {
+                get;
+                set;
+            }
+
+            public object ResultData { get; set; }
+
+            public bool ResultStatus { get; set; }
+
+            public List<DriverStoreEntry> DriverStoreEntries { get; set; }
         };
 
-        private void CleanupContext(OperationContext context)
+        private static void CleanupContext(OperationContext context)
         {
             context.Code = OperationCode.Dummy;
             context.InfPath = "";
@@ -67,7 +76,7 @@ namespace Rapr
         {
             if (!this.backgroundWorker1.IsBusy)
             {
-                this.CleanupContext(this.context);
+                CleanupContext(this.context);
                 this.lstDriverStoreEntries.ClearObjects();
                 this.context.Code = OperationCode.EnumerateStore;
                 this.backgroundWorker1.RunWorkerAsync(this.context);
@@ -87,7 +96,7 @@ namespace Rapr
         {
             if (!this.backgroundWorker1.IsBusy)
             {
-                this.CleanupContext(this.context);
+                CleanupContext(this.context);
                 this.context.Code = this.cbAddInstall.Checked ? OperationCode.AddInstallDriver : OperationCode.AddDriver;
                 this.context.InfPath = infName;
 
@@ -105,7 +114,7 @@ namespace Rapr
         {
             if (!this.backgroundWorker1.IsBusy)
             {
-                this.CleanupContext(this.context);
+                CleanupContext(this.context);
                 this.context.Code = this.cbForceDeletion.Checked ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
                 this.context.DriverStoreEntries = ldse;
 
@@ -193,7 +202,7 @@ namespace Rapr
                 WindowsPrincipal principal = new WindowsPrincipal(identity);
                 return principal.IsInRole(WindowsBuiltInRole.Administrator);
             }
-            catch
+            catch (SecurityException)
             {
                 return false;
             }

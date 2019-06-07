@@ -56,10 +56,7 @@ namespace Rapr.Utils
             }
             finally
             {
-                if (!NativeMethods.SetupDiDestroyDeviceInfoList(deviceInfoSet))
-                {
-                    throw new Win32Exception();
-                }
+                NativeMethods.SetupDiDestroyDeviceInfoList(deviceInfoSet);
             }
 
             return deviceDriverInfos;
@@ -129,6 +126,11 @@ namespace Rapr.Utils
 
         public static bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
         {
+            if (driverStoreEntry == null)
+            {
+                throw new ArgumentNullException(nameof(driverStoreEntry));
+            }
+
             bool result = NativeMethods.SetupUninstallOEMInf(
                 driverStoreEntry.DriverPublishedName,
                 forceDelete ? SetupUOInfFlags.SUOI_FORCEDELETE : SetupUOInfFlags.NONE,
@@ -231,10 +233,7 @@ namespace Rapr.Utils
             }
             finally
             {
-                if (!NativeMethods.SetupDiDestroyDriverInfoList(deviceInfoSet, ref deviceInfo, SPDIT.COMPATDRIVER))
-                {
-                    throw new Win32Exception();
-                }
+                NativeMethods.SetupDiDestroyDriverInfoList(deviceInfoSet, ref deviceInfo, SPDIT.COMPATDRIVER);
             }
 
             return null;

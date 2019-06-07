@@ -10,11 +10,16 @@ namespace Rapr
     { 
         public static async Task DownloadAsync(
             this HttpClient client,
-            string requestUri,
+            Uri requestUri,
             Stream destination,
             IProgress<float> progress = null,
             CancellationToken cancellationToken = default(CancellationToken))
         {
+            if (client == null)
+            {
+                throw new ArgumentNullException(nameof(client));
+            }
+
             // Get the http headers first to examine the content length
             using (var response = await client.GetAsync(requestUri, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false))
             {

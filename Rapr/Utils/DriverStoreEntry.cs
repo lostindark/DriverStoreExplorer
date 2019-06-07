@@ -7,7 +7,7 @@ namespace Rapr.Utils
     /// <summary>
     /// Data fields retrieved from Driver store for each driver
     /// </summary>
-    public struct DriverStoreEntry
+    public class DriverStoreEntry
     {
         /// <summary>
         /// Name of the OEM INF in driver store
@@ -67,27 +67,24 @@ namespace Rapr.Utils
             return $"PublishedName: {this.DriverPublishedName}, InfName: {this.DriverInfName}, Class: {this.DriverClass}, Version: {this.DriverVersion}, DeviceName: {this.DeviceName}";
         }
 
-        public string DriverDateAndVersion
+        public void SetDriverDateAndVersion(string value)
         {
-            set
+            if (!string.IsNullOrEmpty(value))
             {
-                if (!string.IsNullOrEmpty(value))
+                string[] dateAndVersion = value.Trim().Split(new char[] { ' ' }, 2);
+                if (dateAndVersion.Length == 2)
                 {
-                    string[] dateAndVersion = value.Trim().Split(new char[] { ' ' }, 2);
-                    if (dateAndVersion.Length == 2)
+                    this.DriverDate = default(DateTime);
+                    this.DriverVersion = null;
+
+                    if (DateTime.TryParse(dateAndVersion[0].Trim(), CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime driverDate))
                     {
-                        this.DriverDate = default(DateTime);
-                        this.DriverVersion = null;
+                        this.DriverDate = driverDate;
+                    }
 
-                        if (DateTime.TryParse(dateAndVersion[0].Trim(), CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime driverDate))
-                        {
-                            this.DriverDate = driverDate;
-                        }
-
-                        if (Version.TryParse(dateAndVersion[1].Trim(), out Version driverVersion))
-                        {
-                            this.DriverVersion = driverVersion;
-                        }
+                    if (Version.TryParse(dateAndVersion[1].Trim(), out Version driverVersion))
+                    {
+                        this.DriverVersion = driverVersion;
                     }
                 }
             }

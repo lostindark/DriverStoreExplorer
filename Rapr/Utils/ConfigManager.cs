@@ -134,7 +134,9 @@ namespace Rapr.Utils
             CM_LOCATE_DEVNODE_BITS = 0x00000007,
         }
 
+#pragma warning disable CA1028 // Enum Storage should be Int32
         public enum ConfigManagerResult : uint
+#pragma warning restore CA1028 // Enum Storage should be Int32
         {
             Success = 0x00000000,
             Default = 0x00000001,

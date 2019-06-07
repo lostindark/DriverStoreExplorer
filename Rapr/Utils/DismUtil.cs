@@ -93,6 +93,11 @@ namespace Rapr.Utils
 
         public bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
         {
+            if (driverStoreEntry == null)
+            {
+                throw new ArgumentNullException(nameof(driverStoreEntry));
+            }
+
             switch (this.Type)
             {
                 case DriverStoreType.Online:

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Rapr.Utils
 
         public string OfflineStoreLocation => throw new NotSupportedException();
 
-        public enum PnpUtilOptions
+        public enum PnpUtilOption
         {
             Enumerate,
             Delete,
@@ -47,7 +48,7 @@ namespace Rapr.Utils
             List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
             string output = "";
 
-            if (PnpUtilHelper(PnpUtilOptions.Enumerate, null, ref output))
+            if (PnpUtilHelper(PnpUtilOption.Enumerate, null, ref output))
             {
                 // Parse the output
                 driverStoreEntries = ParsePnpUtilEnumerateResult(output);
@@ -173,7 +174,7 @@ namespace Rapr.Utils
 
                         if (state == ParsingState.DriverDateVersion)
                         {
-                            driverStoreEntry.DriverDateAndVersion = GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.Signer, out finishProcessCurrentLine, ref sawKey, ref state);
+                            driverStoreEntry.SetDriverDateAndVersion(GetDriverPropAndUpdateParsingState(value, hasKeyValueDelimiter, ParsingState.Signer, out finishProcessCurrentLine, ref sawKey, ref state));
 
                             if (finishProcessCurrentLine)
                             {
@@ -254,9 +255,14 @@ namespace Rapr.Utils
 
         public bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
         {
+            if (driverStoreEntry == null)
+            {
+                throw new ArgumentNullException(nameof(driverStoreEntry));
+            }
+
             string dummy = "";
             return PnpUtilHelper(
-                forceDelete ? PnpUtilOptions.ForceDelete : PnpUtilOptions.Delete,
+                forceDelete ? PnpUtilOption.ForceDelete : PnpUtilOption.Delete,
                 driverStoreEntry.DriverPublishedName,
                 ref dummy);
         }
@@ -265,13 +271,13 @@ namespace Rapr.Utils
         {
             string dummy = "";
             return PnpUtilHelper(
-                install ? PnpUtilOptions.AddInstall : PnpUtilOptions.Add,
+                install ? PnpUtilOption.AddInstall : PnpUtilOption.Add,
                 infFullPath,
                 ref dummy);
         }
         #endregion
 
-        private static bool PnpUtilHelper(PnpUtilOptions option, string infName, ref string output)
+        private static bool PnpUtilHelper(PnpUtilOption option, string infName, ref string output)
         {
             bool retVal = true;
             bool fDebugPrintOutput = false;
@@ -292,26 +298,26 @@ namespace Rapr.Utils
                 //
                 // [jenda_] I also had problems with some arguments starting "-". "/" works fine
                 //
-                case PnpUtilOptions.Enumerate:
+                case PnpUtilOption.Enumerate:
                     start.Arguments = "/e";
                     break;
 
-                case PnpUtilOptions.Delete:
+                case PnpUtilOption.Delete:
                     start.Arguments = "/d " + infName;
                     break;
 
-                case PnpUtilOptions.ForceDelete:
+                case PnpUtilOption.ForceDelete:
                     start.Arguments = "/f /d " + infName;
                     break;
 
-                case PnpUtilOptions.Add:
+                case PnpUtilOption.Add:
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
                     start.Arguments = "/a " + Path.GetFileName(infName);
                     Trace.TraceInformation($"[Add] workDir = {start.WorkingDirectory}, arguments = {start.Arguments}");
                     break;
 
-                case PnpUtilOptions.AddInstall:
+                case PnpUtilOption.AddInstall:
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
                     start.Arguments = "/i /a " + Path.GetFileName(infName);
@@ -338,7 +344,7 @@ namespace Rapr.Utils
                             Trace.TraceInformation($"[Result_start] ---- {Environment.NewLine}{result}[----- Result_End]");
                         }
 
-                        if (option == PnpUtilOptions.Delete || option == PnpUtilOptions.ForceDelete)
+                        if (option == PnpUtilOption.Delete || option == PnpUtilOption.ForceDelete)
                         {
                             // [jenda_] Really don't know, how to recognize error without language-specific string recognition :(
                             // [jenda_] But those errors should contain ":"
@@ -348,7 +354,7 @@ namespace Rapr.Utils
                             }
                         }
 
-                        if (option == PnpUtilOptions.Add || option == PnpUtilOptions.AddInstall)
+                        if (option == PnpUtilOption.Add || option == PnpUtilOption.AddInstall)
                         {
                             /* [jenda_]
                              This regex should recognize (~) this pattern:
@@ -381,10 +387,13 @@ namespace Rapr.Utils
                     }
                 }
             }
-            catch (Exception e)
+            catch (Exception ex) when (
+            ex is Win32Exception
+            || ex is IOException
+            || ex is InvalidOperationException)
             {
                 // dont catch all exceptions -- but will do for our needs!
-                Trace.TraceError($"{e.Message}{Environment.NewLine}{e.StackTrace}");
+                Trace.TraceError(ex.ToString());
                 output = "";
                 retVal = false;
             }

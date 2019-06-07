@@ -9,6 +9,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Security;
 using System.Text;
 using System.Threading;
 using System.Windows.Forms;
@@ -694,7 +695,7 @@ namespace Rapr
                         this.ShowStatus(Status.Normal, message, usePopup: true);
                     }
                 }
-                catch (Exception ex)
+                catch (Exception ex) when (ex is IOException || ex is SecurityException)
                 {
                     this.ShowStatus(Status.Error, string.Format(Language.Export_Failed, ex), usePopup: true);
                 }

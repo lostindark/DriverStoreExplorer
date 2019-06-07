@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using System.IO;
-
+﻿using Rapr.Lang;
 using Rapr.Utils;
+
+using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
-using Rapr.Lang;
 
 namespace Rapr
 {
@@ -14,40 +15,46 @@ namespace Rapr
 
         public string Export(List<DriverStoreEntry> driverStoreEntries)
         {
+            if (driverStoreEntries == null)
+            {
+                throw new ArgumentNullException(nameof(driverStoreEntries));
+            }
+
             if (driverStoreEntries.Count == 0)
             {
                 MessageBox.Show(Language.Message_No_Entries, Language.Export_Error);
                 return null;
             }
 
-            SaveFileDialog saveFileDialog = new SaveFileDialog
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 CheckFileExists = false,
                 DefaultExt = "csv",
                 Filter = Language.Dialog_Export_Filters,
                 SupportMultiDottedExtensions = true
-            };
-
-            DialogResult dr = saveFileDialog.ShowDialog();
-            if (dr == DialogResult.OK)
+            })
             {
-                string csvFileName = saveFileDialog.FileName;   // Path                
-
-                using (StreamWriter file = new StreamWriter(csvFileName))
+                DialogResult dr = saveFileDialog.ShowDialog();
+                if (dr == DialogResult.OK)
                 {
-                    // Write the header once
-                    string headerLine = string.Join(CsvDelimiter, DriverStoreEntry.GetFieldNames());
-                    file.WriteLine(headerLine);
+                    string csvFileName = saveFileDialog.FileName;   // Path                
 
-                    // Write the values
-                    foreach (DriverStoreEntry entry in driverStoreEntries)
+                    using (StreamWriter file = new StreamWriter(csvFileName))
                     {
-                        string valueLine = string.Join(CsvDelimiter, Sanitize(entry.GetFieldValues()));
-                        file.WriteLine(valueLine);
-                    }
-                }
+                        // Write the header once
+                        string headerLine = string.Join(CsvDelimiter, DriverStoreEntry.GetFieldNames());
+                        file.WriteLine(headerLine);
 
-                return csvFileName;
+                        // Write the values
+                        foreach (DriverStoreEntry entry in driverStoreEntries)
+                        {
+                            string valueLine = string.Join(CsvDelimiter, Sanitize(entry.GetFieldValues()));
+                            file.WriteLine(valueLine);
+                        }
+                    }
+
+                    return csvFileName;
+                }
             }
 
             return null;

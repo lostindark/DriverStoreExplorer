@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using BrightIdeasSoftware;
 
 namespace Rapr
@@ -7,6 +8,11 @@ namespace Rapr
     {
         protected override void HandleColumnClick(object sender, ColumnClickEventArgs e)
         {
+            if (e == null)
+            {
+                throw new ArgumentNullException(nameof(e));
+            }
+
             if (!this.PossibleFinishCellEditing())
             {
                 return;

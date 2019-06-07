@@ -7,10 +7,13 @@ namespace Rapr.Utils
 {
     public class DriverStoreContent
     {
-        public string InfName;
-        public string FolderPath;
-        public string Content;
-        public long EstimateSize;
+        public string InfName { get; set; }
+
+        public string FolderPath { get; set; }
+
+        public string Content { get; set; }
+
+        public long EstimateSize { get; set; }
     }
 
     public class DriverStoreRepository
@@ -128,6 +131,11 @@ namespace Rapr.Utils
         public static long GetFolderSize(DirectoryInfo directory)
         {
             long size = 0;
+
+            if (directory == null)
+            {
+                throw new ArgumentNullException(nameof(directory));
+            }
 
             // Add file sizes.
             foreach (FileInfo fileInfo in directory.GetFiles())
