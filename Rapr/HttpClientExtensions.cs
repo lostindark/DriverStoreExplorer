@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace Rapr
 {
     public static class HttpClientExtensions
-    { 
+    {
         public static async Task DownloadAsync(
             this HttpClient client,
             Uri requestUri,
