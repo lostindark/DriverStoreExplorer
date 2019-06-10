@@ -124,6 +124,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Lang\Language.de-DE.resx" />
     <EmbeddedResource Include="Lang\Language.fr-FR.resx" />
+    <EmbeddedResource Include="Lang\Language.it-IT.resx" />
     <EmbeddedResource Include="Lang\Language.ja-JP.resx" />
     <EmbeddedResource Include="Lang\Language.ru-RU.resx" />
     <EmbeddedResource Include="Lang\Language.zh-CN.resx" />
