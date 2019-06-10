@@ -294,7 +294,10 @@ Contributors:
 
 Credits:
     ObjectListView http://objectlistview.sourceforge.net/
-    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism</value>
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+
+License:
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>English</value>

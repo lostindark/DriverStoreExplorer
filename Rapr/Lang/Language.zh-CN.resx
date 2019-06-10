@@ -300,7 +300,10 @@
 
 鸣谢：
     ObjectListView http://objectlistview.sourceforge.net/
-    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism</value>
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+
+使用许可：
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   </data>
   <data name="Message_Operation_In_Progress" xml:space="preserve">
     <value>另外一个操作正在进行中</value>
