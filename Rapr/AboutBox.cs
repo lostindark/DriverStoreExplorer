@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Net.Http;
 using System.Reflection;
 using System.Windows.Forms;
 
@@ -15,34 +16,40 @@ namespace Rapr
             this.Text = string.Format(Language.Product_About_Title, AssemblyTitle);
             this.labelVersionInfo.Text = $"v{AssemblyVersion}";
 
-            (Version latestVersion, string pageUrl, string downloadUrl) = UpdateManager.GetLatestVersionInfo();
-
-            if (latestVersion != null)
+            try
             {
-                if (AssemblyVersion >= latestVersion)
+                (Version latestVersion, string pageUrl, string downloadUrl) = UpdateManager.GetLatestVersionInfo();
+
+                if (latestVersion != null)
                 {
-                    this.labelLink.Text = Language.About_VersionUpToDate;
-                    this.labelLink.Links.Clear();
-                }
-                else
-                {
-                    string versionStr = latestVersion.ToString();
-                    this.labelLink.Text = string.Format(Language.About_FoundNewVersion, versionStr, Language.About_Download);
-
-                    int versionStart = this.labelLink.Text.IndexOf(versionStr, 0, StringComparison.Ordinal);
-
-                    if (versionStart >= 0)
+                    if (AssemblyVersion >= latestVersion)
                     {
-                        this.labelLink.Links.Add(new LinkLabel.Link(versionStart, versionStr.Length, pageUrl));
+                        this.labelLink.Text = Language.About_VersionUpToDate;
+                        this.labelLink.Links.Clear();
                     }
-
-                    int linkStart = this.labelLink.Text.IndexOf(Language.About_Download, 0, StringComparison.Ordinal);
-
-                    if (linkStart >= 0)
+                    else
                     {
-                        this.labelLink.Links.Add(new LinkLabel.Link(linkStart, Language.About_Download.Length, downloadUrl));
+                        string versionStr = latestVersion.ToString();
+                        this.labelLink.Text = string.Format(Language.About_FoundNewVersion, versionStr, Language.About_Download);
+
+                        int versionStart = this.labelLink.Text.IndexOf(versionStr, 0, StringComparison.Ordinal);
+
+                        if (versionStart >= 0)
+                        {
+                            this.labelLink.Links.Add(new LinkLabel.Link(versionStart, versionStr.Length, pageUrl));
+                        }
+
+                        int linkStart = this.labelLink.Text.IndexOf(Language.About_Download, 0, StringComparison.Ordinal);
+
+                        if (linkStart >= 0)
+                        {
+                            this.labelLink.Links.Add(new LinkLabel.Link(linkStart, Language.About_Download.Length, downloadUrl));
+                        }
                     }
                 }
+            }
+            catch (HttpRequestException)
+            {
             }
         }
 
