@@ -99,6 +99,7 @@
     <Compile Include="Utils\DeviceDriverInfo.cs" />
     <Compile Include="Utils\DeviceHelper.cs" />
     <Compile Include="Utils\DriverStoreEntry.cs" />
+    <Compile Include="Utils\DriverStoreFactory.cs" />
     <Compile Include="Utils\DriverStoreRepository.cs" />
     <Compile Include="Utils\IDriverStore.cs" />
     <Compile Include="Utils\DismUtil.cs" />

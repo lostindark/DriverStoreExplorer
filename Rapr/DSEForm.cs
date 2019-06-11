@@ -70,7 +70,7 @@ namespace Rapr
             Trace.TraceInformation("---------------------------------------------------------------");
             Trace.TraceInformation($"{Application.ProductName} started");
 
-            this.UpdateDriverStore(new DismUtil());
+            this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore());
         }
 
         private void UpdateDriverStore(IDriverStore driverStore)
@@ -860,11 +860,11 @@ namespace Rapr
                         switch (chooseDriverStore.StoreType)
                         {
                             case DriverStoreType.Online:
-                                this.UpdateDriverStore(new DismUtil());
+                                this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore());
                                 break;
 
                             case DriverStoreType.Offline:
-                                this.UpdateDriverStore(new DismUtil(chooseDriverStore.OfflineStoreLocation));
+                                this.UpdateDriverStore(DriverStoreFactory.CreateOfflineDriverStore(chooseDriverStore.OfflineStoreLocation));
                                 break;
                         }
 

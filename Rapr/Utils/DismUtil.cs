@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-
+using System.Runtime.InteropServices;
 using Microsoft.Dism;
 
 namespace Rapr.Utils
@@ -23,6 +23,20 @@ namespace Rapr.Utils
             this.Type = DriverStoreType.Offline;
             this.OfflineStoreLocation = imagePath;
         }
+
+        public static bool IsDismAvailable { get; } = new Func<bool>(() =>
+        {
+            try
+            {
+                Marshal.PrelinkAll(typeof(NativeMethods));
+            }
+            catch (DllNotFoundException)
+            {
+                return false;
+            }
+
+            return true;
+        })();
 
         #region IDriverStore Members
         public List<DriverStoreEntry> EnumeratePackages()
@@ -155,5 +169,12 @@ namespace Rapr.Utils
         }
 
         #endregion
+
+        internal static class NativeMethods
+        {
+            [DllImport("DismApi", CharSet = CharSet.Unicode)]
+            [return: MarshalAs(UnmanagedType.Error)]
+            public static extern int DismInitialize(DismLogLevel logLevel, string logFilePath, string scratchDirectory);
+        }
     }
 }
