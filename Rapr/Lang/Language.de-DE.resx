@@ -130,7 +130,7 @@
     <value>Aktualisieren</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>Alter Treiber auswählen</value>
+    <value>Alte Treiber auswählen</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Löschen erzwingen</value>
@@ -142,7 +142,7 @@
     <value>Treiber Datum</value>
   </data>
   <data name="Column_Driver_Class" xml:space="preserve">
-    <value>Treiber Klasse</value>
+    <value>Gerätetyp</value>
   </data>
   <data name="Column_Inf" xml:space="preserve">
     <value>INF</value>
@@ -250,7 +250,7 @@
     <value>Datei</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>Treiber Liste esportieren</value>
+    <value>Treiber Liste exportieren</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Beenden</value>
@@ -360,7 +360,7 @@ Danksagungen:
     <value>Immer als Administrator ausführen</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>Open Folder Location</value>
+    <value>Speicherort öffnen</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Lokale Maschine</value>
@@ -372,7 +372,7 @@ Danksagungen:
     <value>Offline Driver Store</value>
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
-    <value>Choose Driver Store</value>
+    <value>Driver Store auswählen</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
     <value>Sprache</value>
