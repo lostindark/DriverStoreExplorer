@@ -362,7 +362,19 @@ Ringraziamenti:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Apri il percorso della cartella</value>
   </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>Seleziona Driver Store</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>Driver Store Offline</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>Seleziona Driver Store</value>
+  </data>    
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Computer locale</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Lingua</value>
   </data>
 </root>
