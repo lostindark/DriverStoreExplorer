@@ -40,17 +40,20 @@ namespace Rapr.Utils
 
             try
             {
-                string content = GetSystemRootInfContent(infName);
-
-                if (!string.IsNullOrEmpty(content))
+                if (string.IsNullOrEmpty(infName))
                 {
-                    DriverStoreContent driverStoreContent = this.FindInfInfo(content);
+                    string content = GetSystemRootInfContent(infName);
 
-                    if (driverStoreContent != null)
+                    if (!string.IsNullOrEmpty(content))
                     {
-                        originalInfName = driverStoreContent.InfName;
-                        driverFolderLocation = driverStoreContent.FolderPath;
-                        estimateSize = driverStoreContent.EstimateSize;
+                        DriverStoreContent driverStoreContent = this.FindInfInfo(content);
+
+                        if (driverStoreContent != null)
+                        {
+                            originalInfName = driverStoreContent.InfName;
+                            driverFolderLocation = driverStoreContent.FolderPath;
+                            estimateSize = driverStoreContent.EstimateSize;
+                        }
                     }
                 }
             }

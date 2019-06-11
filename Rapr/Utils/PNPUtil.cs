@@ -60,25 +60,29 @@ namespace Rapr.Utils
                 for (int i = 0; i < driverStoreEntries.Count; i++)
                 {
                     DriverStoreEntry driverStoreEntry = driverStoreEntries[i];
-                    repository.FindInfInfo(
-                        driverStoreEntry.DriverPublishedName,
-                        out string driverInfName,
-                        out string driverFolderLocation,
-                        out long driverSize);
 
-                    driverStoreEntry.DriverInfName = driverInfName;
-                    driverStoreEntry.DriverFolderLocation = driverFolderLocation;
-                    driverStoreEntry.DriverSize = driverSize;
+                    if (!string.IsNullOrEmpty(driverStoreEntry.DriverPublishedName))
+                    {
+                        repository.FindInfInfo(
+                            driverStoreEntry.DriverPublishedName,
+                            out string driverInfName,
+                            out string driverFolderLocation,
+                            out long driverSize);
 
-                    var deviceInfo = driverInfo.OrderByDescending(d => d.IsPresent).FirstOrDefault(e => string.Equals(
-                        Path.GetFileName(e.DriverInf),
-                        driverStoreEntry.DriverPublishedName,
-                        StringComparison.OrdinalIgnoreCase));
+                        driverStoreEntry.DriverInfName = driverInfName;
+                        driverStoreEntry.DriverFolderLocation = driverFolderLocation;
+                        driverStoreEntry.DriverSize = driverSize;
 
-                    driverStoreEntry.DeviceName = deviceInfo?.DeviceName;
-                    driverStoreEntry.DevicePresent = deviceInfo?.IsPresent;
+                        var deviceInfo = driverInfo.OrderByDescending(d => d.IsPresent).FirstOrDefault(e => string.Equals(
+                            Path.GetFileName(e.DriverInf),
+                            driverStoreEntry.DriverPublishedName,
+                            StringComparison.OrdinalIgnoreCase));
 
-                    driverStoreEntries[i] = driverStoreEntry;
+                        driverStoreEntry.DeviceName = deviceInfo?.DeviceName;
+                        driverStoreEntry.DevicePresent = deviceInfo?.IsPresent;
+
+                        driverStoreEntries[i] = driverStoreEntry;
+                    }
                 }
             }
 
