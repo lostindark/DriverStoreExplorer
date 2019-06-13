@@ -40,7 +40,7 @@ namespace Rapr.Utils
 
             try
             {
-                if (string.IsNullOrEmpty(infName))
+                if (!string.IsNullOrEmpty(infName))
                 {
                     string content = GetSystemRootInfContent(infName);
 

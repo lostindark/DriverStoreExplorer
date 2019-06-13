@@ -198,7 +198,7 @@ namespace Rapr.Utils
                     }
                 }
 
-                if (!driverStoreEntry.Equals(default(DriverStoreEntry)))
+                if (!string.IsNullOrEmpty(driverStoreEntry.DriverPublishedName))
                 {
                     driverStoreEntries.Add(driverStoreEntry);
                 }
