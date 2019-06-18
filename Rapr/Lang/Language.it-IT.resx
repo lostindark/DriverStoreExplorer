@@ -273,7 +273,7 @@
     <value>Aiuto</value>
   </data>
   <data name="Product_Credits" xml:space="preserve">
-    <value>DriveStore Explorer v{0}</value>
+    <value>DriverStore Explorer v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Informazioni su {0}</value>
