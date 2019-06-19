@@ -187,31 +187,31 @@
     <value>Ohne Administratorrechte gestartet. Einige Funktionen sind deaktiviert.</value>
   </data>
   <data name="Message_Delete" xml:space="preserve">
-    <value>löschen</value>
+    <value>Löschen</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Lösche {0} {1} Pakete aus dem driver store.</value>
+    <value>Lösche {0} {1} Pakete aus dem Driver Store.</value>
   </data>
   <data name="Message_Delete_Result" xml:space="preserve">
     <value>Löschen von {0} ({1}) {2}.</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Lösche {0} {1} ({2}) aus dem driver store.</value>
+    <value>Lösche {0} {1} ({2}) aus dem Driver Store.</value>
   </data>
   <data name="Message_Failed" xml:space="preserve">
-    <value>fehlgeschlagen</value>
+    <value>Fehlgeschlagen</value>
   </data>
   <data name="Message_Force_Delete" xml:space="preserve">
-    <value>löschen erzwingen</value>
+    <value>Löschen erzwingen</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Winodws Vista ist mindestens erforderlich!</value>
+    <value>Es ist mindestens Winodws Vista erforderlich!</value>
   </data>
   <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>Es muss zuerst ein Treiber ausgewählt werden</value>
+    <value>Es muss zunächst ein Treiber ausgewählt werden</value>
   </data>
   <data name="Message_Success" xml:space="preserve">
-    <value>erfolgreich</value>
+    <value>Erfolgreich</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Sind Sie sicher?</value>
@@ -256,7 +256,7 @@
     <value>Beenden</value>
   </data>
   <data name="Menu_Options" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Optionen</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>Protokoll anzeigen</value>
@@ -306,31 +306,31 @@ Danksagungen:
     <value>Eine Aktion ist noch in Bearbeitung</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Füge Treiber Paket hinzu...</value>
+    <value>Füge Treiber-Paket hinzu...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Lösche Treiber Packet(e)...</value>
+    <value>Lösche Treiber-Packet(e)...</value>
   </data>
   <data name="Message_Detailed_Log" xml:space="preserve">
     <value>Ausführliches Fehlerprotokoll</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Es wurde {0} ({1}) Treiber aus dem driver store gelöscht</value>
+    <value>Es wurde {0} ({1}) Treiber aus dem Driver Store gelöscht</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>{0} Packete aus dem driver store gelöscht</value>
+    <value>{0} Packete aus dem Driver Store gelöscht</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Fehler beim Löschen {0} ({1}) aus dem driver store {2}</value>
+    <value>Fehler beim Löschen {0} ({1}) aus dem Driver Store {2}</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>Fehler beim Löschen einiger Treiber-Dateien {0}</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Es wurde(n) {0} Treiber {1} zum driver store hinzugefügt</value>
+    <value>Es wurde(n) {0} Treiber {1} zum Driver Store hinzugefügt</value>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Fehler beim Hinzufügen {0} des Pakets {1} zum driver store</value>
+    <value>Fehler beim Hinzufügen {0} des Pakets {1} zum Driver Store</value>
   </data>
   <data name="Message_Driver_And_Installed" xml:space="preserve">
     <value> &amp; installiert</value>
@@ -342,16 +342,16 @@ Danksagungen:
     <value>Fehler</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>Gespeichert nach {0}. Export erfolgreich.</value>
+    <value>Gespeichert nach {0}. Die Exportierung war erfolgreich.</value>
   </data>
   <data name="Export_Failed" xml:space="preserve">
-    <value>Export fehlgeschlagen: {0}</value>
+    <value>Exportierung ist fehlgeschlagen: {0}</value>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>{0} Treiber ausgewählt. Gesamtgröße: {1}.</value>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>Keine Treiber ausgewählt.</value>
+    <value>Es wurden keine Treiber ausgewählt.</value>
   </data>
   <data name="Menu_File_RunAs_Admin" xml:space="preserve">
     <value>Als Administrator ausführen</value>
