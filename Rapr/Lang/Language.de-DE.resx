@@ -139,7 +139,7 @@
     <value>Treiber installieren</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
-    <value>Treiber Datum</value>
+    <value>Treiber-Datum</value>
   </data>
   <data name="Column_Driver_Class" xml:space="preserve">
     <value>Gerätetyp</value>
@@ -148,7 +148,7 @@
     <value>INF</value>
   </data>
   <data name="Column_Oem_Inf" xml:space="preserve">
-    <value>OEM INF</value>
+    <value>OEM-INF</value>
   </data>
   <data name="Column_Provider" xml:space="preserve">
     <value>Anbieter</value>
@@ -160,19 +160,19 @@
     <value>Größe</value>
   </data>
   <data name="Column_Version" xml:space="preserve">
-    <value>Treiber Version</value>
+    <value>Treiber-Version</value>
   </data>
   <data name="Context_Delete" xml:space="preserve">
     <value>Löschen</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
-    <value>abwählen</value>
+    <value>Abwählen</value>
   </data>
   <data name="Context_Deselect_All" xml:space="preserve">
     <value>Alle abwählen</value>
   </data>
   <data name="Context_Select" xml:space="preserve">
-    <value>auswählen</value>
+    <value>Auswählen</value>
   </data>
   <data name="Context_Select_All" xml:space="preserve">
     <value>Alle auswählen</value>
@@ -184,37 +184,37 @@
     <value>Driver Store</value>
   </data>
   <data name="Label_RunAsAdmin" xml:space="preserve">
-    <value>Keine Administrator Rechte. Einige Funktionen deaktiviert.</value>
+    <value>Ohne Administratorrechte gestartet. Einige Funktionen sind deaktiviert.</value>
   </data>
   <data name="Message_Delete" xml:space="preserve">
-    <value>löschen</value>
+    <value>Löschen</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Lösche {0} {1} Pakete aus dem driver store.</value>
+    <value>Lösche {0} {1} Pakete aus dem Driver Store.</value>
   </data>
   <data name="Message_Delete_Result" xml:space="preserve">
     <value>Löschen von {0} ({1}) {2}.</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Lösche {0} {1} ({2}) aus dem driver store.</value>
+    <value>Lösche {0} {1} ({2}) aus dem Driver Store.</value>
   </data>
   <data name="Message_Failed" xml:space="preserve">
-    <value>fehlgeschlagen</value>
+    <value>Fehlgeschlagen</value>
   </data>
   <data name="Message_Force_Delete" xml:space="preserve">
-    <value>löschen erzwingen</value>
+    <value>Löschen erzwingen</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Winodws Vista ist mindestens erforderlich!</value>
+    <value>Es ist mindestens Winodws Vista erforderlich!</value>
   </data>
   <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>Es muss zuerst ein Treiber ausgewählt werden</value>
+    <value>Es muss zunächst ein Treiber ausgewählt werden</value>
   </data>
   <data name="Message_Success" xml:space="preserve">
-    <value>erfolgreich</value>
+    <value>Erfolgreich</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
-    <value>Bist du sicher?</value>
+    <value>Sind Sie sicher?</value>
   </data>
   <data name="Message_Title_Warning" xml:space="preserve">
     <value>Warnung</value>
@@ -226,16 +226,16 @@
     <value>Driver Store Explorer</value>
   </data>
   <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
-    <value>[Nur-Lese Modus]</value>
+    <value>[Schreibgeschützter Modus]</value>
   </data>
   <data name="Status_Label" xml:space="preserve">
     <value>Bereit</value>
   </data>
   <data name="Status_Running_ReadOnly" xml:space="preserve">
-    <value>Nur-Lese Modus aktiv</value>
+    <value>Schreibgeschützter Modus aktiv</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[TIP: Treiber scheint noch in Benutzung zu sein. Versuche das löschen des Treiber Paketes zu erzwingen.]</value>
+    <value>[TIPP: Der Treiber scheint noch in Benutzung zu sein. Versuchen Sie das Löschen des Treiber-Pakets zu erzwingen.]</value>
   </data>
   <data name="Title_About" xml:space="preserve">
     <value>Über</value>
@@ -250,13 +250,13 @@
     <value>Datei</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>Treiber Liste exportieren</value>
+    <value>Treiber-Liste exportieren</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Beenden</value>
   </data>
   <data name="Menu_Options" xml:space="preserve">
-    <value>Einstellungen</value>
+    <value>Optionen</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>Protokoll anzeigen</value>
@@ -265,16 +265,16 @@
     <value>{0:d}</value>
   </data>
   <data name="Message_No_Entries" xml:space="preserve">
-    <value>Keine Einträge geladen.</value>
+    <value>Es wurden keine Einträge geladen.</value>
   </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>INF auswählen</value>
   </data>
   <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>INF Datei | *.inf</value>
+    <value>INF-Datei | *.inf</value>
   </data>
   <data name="Product_Credits" xml:space="preserve">
-    <value>DriveStore Explorer v{0}</value>
+    <value>DriverStore Explorer v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Über {0}</value>
@@ -283,10 +283,10 @@
     <value>Fehler</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
-    <value>Die neueste Version und Versionshinweise finden Sie hier:
+    <value>Die neueste Version und Versionshinweise finden Sie unter:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-Fehler melden/Feature anfragen:
+Fehler melden/Funktion anfragen:
     https://github.com/lostindark/DriverStoreExplorer/issues
 
 Mitwirkende:
@@ -300,58 +300,58 @@ Danksagungen:
     <value>Deutsch</value>
   </data>
   <data name="Dialog_Export_Filters" xml:space="preserve">
-    <value>CSV Dateien | *.csv</value>
+    <value>CSV-Dateien | *.csv</value>
   </data>
   <data name="Message_Operation_In_Progress" xml:space="preserve">
     <value>Eine Aktion ist noch in Bearbeitung</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Füge Treiber Paket hinzu...</value>
+    <value>Füge Treiber-Paket hinzu...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Lösche Treiber Packet(e)...</value>
+    <value>Lösche Treiber-Packet(e)...</value>
   </data>
   <data name="Message_Detailed_Log" xml:space="preserve">
     <value>Ausführliches Fehlerprotokoll</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Es wurde {0} ({1}) Treiber aus dem driver store gelöscht</value>
+    <value>Es wurde {0} ({1}) Treiber aus dem Driver Store gelöscht</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>{0} Packete aus dem driver store gelöscht</value>
+    <value>{0} Packete aus dem Driver Store gelöscht</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Fehler beim löschen {0} ({1}) aus dem driver store {2}</value>
+    <value>Fehler beim Löschen {0} ({1}) aus dem Driver Store {2}</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Fehler beim löschen einiger Treiber Dateien {0}</value>
+    <value>Fehler beim Löschen einiger Treiber-Dateien {0}</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Es wurde(n) {0} Treiber {1} zum driver store hinzugefügt</value>
+    <value>Es wurde(n) {0} Treiber {1} zum Driver Store hinzugefügt</value>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Fehler beim hinzufügen {0} des Paketes {1} zum driver store</value>
+    <value>Fehler beim Hinzufügen {0} des Pakets {1} zum Driver Store</value>
   </data>
   <data name="Message_Driver_And_Installed" xml:space="preserve">
     <value> &amp; installiert</value>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
-    <value>Fehlerprotokoll nicht gefunden.</value>
+    <value>Das Fehlerprotokoll wurde nicht gefunden.</value>
   </data>
   <data name="Message_Error" xml:space="preserve">
     <value>Fehler</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>Gespeichert nach {0}. Export erfolgreich.</value>
+    <value>Gespeichert nach {0}. Die Exportierung war erfolgreich.</value>
   </data>
   <data name="Export_Failed" xml:space="preserve">
-    <value>Export fehlgeschlagen: {0}</value>
+    <value>Exportierung ist fehlgeschlagen: {0}</value>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>{0} Treiber ausgewählt. Gesamt Größe: {1}.</value>
+    <value>{0} Treiber ausgewählt. Gesamtgröße: {1}.</value>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>Keine Treiber ausgewählt.</value>
+    <value>Es wurden keine Treiber ausgewählt.</value>
   </data>
   <data name="Menu_File_RunAs_Admin" xml:space="preserve">
     <value>Als Administrator ausführen</value>
@@ -378,10 +378,10 @@ Danksagungen:
     <value>Sprache</value>
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
-    <value>Geräte Name</value>
+    <value>Gerätename</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
-    <value>(Version aktuell)</value>
+    <value>(Auf dem neuesten Stand)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(Neue Version gefunden v{0} {1})</value>
