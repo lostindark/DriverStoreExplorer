@@ -139,7 +139,7 @@
     <value>Treiber installieren</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
-    <value>Treiber-Datum</value>
+    <value>Treiberdatum</value>
   </data>
   <data name="Column_Driver_Class" xml:space="preserve">
     <value>Gerätetyp</value>
@@ -160,7 +160,7 @@
     <value>Größe</value>
   </data>
   <data name="Column_Version" xml:space="preserve">
-    <value>Treiber-Version</value>
+    <value>Treiberversion</value>
   </data>
   <data name="Context_Delete" xml:space="preserve">
     <value>Löschen</value>
@@ -235,7 +235,7 @@
     <value>Schreibgeschützter Modus aktiv</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[TIPP: Der Treiber scheint noch in Benutzung zu sein. Versuchen Sie das Löschen des Treiber-Pakets zu erzwingen.]</value>
+    <value>[TIPP: Der Treiber scheint noch in Benutzung zu sein. Versuchen Sie das Löschen des Treiberpakets zu erzwingen.]</value>
   </data>
   <data name="Title_About" xml:space="preserve">
     <value>Über</value>
@@ -250,7 +250,7 @@
     <value>Datei</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>Treiber-Liste exportieren</value>
+    <value>Treiberliste exportieren</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Beenden</value>
@@ -306,25 +306,25 @@ Danksagungen:
     <value>Eine Aktion ist noch in Bearbeitung</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Füge Treiber-Paket hinzu...</value>
+    <value>Treiberpaket wird hinzugefügt...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Lösche Treiber-Packet(e)...</value>
+    <value>Lösche Treiberpaket(e)...</value>
   </data>
   <data name="Message_Detailed_Log" xml:space="preserve">
     <value>Ausführliches Fehlerprotokoll</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Es wurde {0} ({1}) Treiber aus dem Driver Store gelöscht</value>
+    <value>{0} ({1}) aus dem Driver Store gelöscht</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>{0} Packete aus dem Driver Store gelöscht</value>
+    <value>{0} Pakete aus dem Driver Store gelöscht</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Fehler beim Löschen {0} ({1}) aus dem Driver Store {2}</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Fehler beim Löschen einiger Treiber-Dateien {0}</value>
+    <value>Fehler beim Löschen einiger Treiberpakete {0}</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>Es wurde(n) {0} Treiber {1} zum Driver Store hinzugefügt</value>
