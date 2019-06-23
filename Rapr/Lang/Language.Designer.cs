@@ -759,7 +759,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Driver Store Explorer.
+        ///   Looks up a localized string similar to DriverStore Explorer.
         /// </summary>
         public static string Product_Name {
             get {
