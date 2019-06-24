@@ -5,8 +5,8 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("DriverStore Explorer")]
-[assembly: AssemblyDescription("DriverStore Explorer (PNPUtil Wrapper)")]
+[assembly: AssemblyTitle("Driver Store Explorer")]
+[assembly: AssemblyDescription("Driver Store Explorer (PNPUtil Wrapper)")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Rapr")]
