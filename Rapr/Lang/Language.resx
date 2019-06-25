@@ -274,7 +274,7 @@
     <value>INF files | *.inf</value>
   </data>
   <data name="Product_Credits" xml:space="preserve">
-    <value>DriverStore Explorer v{0}</value>
+    <value>Driver Store Explorer v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>About {0}</value>
