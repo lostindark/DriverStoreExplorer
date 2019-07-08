@@ -9,10 +9,12 @@ Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store]
 
 ### Features:
 * Enumerate / List all the packages staged in the current driver store.
+* Support offline driver store.
+* Showing device associated with drivers.
 * Export the list as CSV.
 * Add a driver package to the driver store.
 * Delete a package from the store.
-* Deletion of multiple driver packages (batch mode)
+* Deletion of multiple driver packages (batch mode).
 * Full fledged GUI Supports grouping / sorting on any column.
 * Supports re-arranging of / Selecting specific columns.
 
@@ -20,13 +22,13 @@ Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store]
 ![Screenshot of DriverStoreExplorer](https://github.com/lostindark/DriverStoreExplorer/raw/master/Screenshots/Screenshot.png "Screenshot of Driver Store Explorer")
 
 ### Requirements: 
-.NET Framework 4.0
+.NET Framework 4.5
 
 ### Releases:
 Download the latest version here: https://github.com/lostindark/DriverStoreExplorer/releases/latest.
 
 ### Tested Operating Systems:
-Windows 10 64 bit
+Windows 7 32 bit and Windows 10 64 bit
 
 ### History:
 The project was original hosted on https://driverstoreexplorer.codeplex.com/.
