@@ -265,7 +265,7 @@
     <value>Opciones</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>Ver logs</value>
+    <value>Ver registros</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
