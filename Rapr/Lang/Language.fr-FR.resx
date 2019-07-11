@@ -294,7 +294,8 @@
 
 Crédits:
     ObjectListView http://objectlistview.sourceforge.net/
-    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism</value>
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+</value>
   </data>
   <data name="Message_Operation_In_Progress" xml:space="preserve">
     <value>Une autre opération est en cours</value>

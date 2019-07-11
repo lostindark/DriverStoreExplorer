@@ -297,7 +297,8 @@ Credits:
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
 
 License:
-    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
+</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>English</value>

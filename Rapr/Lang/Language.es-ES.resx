@@ -303,7 +303,8 @@ Créditos:
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
 
 Licencia:
-    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
+</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>Español</value>
