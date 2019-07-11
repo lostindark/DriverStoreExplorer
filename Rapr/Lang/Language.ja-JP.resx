@@ -296,8 +296,9 @@
     ObjectListView http://objectlistview.sourceforge.net/
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
 
-使用許可:
-    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
+ライセンス:
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
+</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>日本語</value>

@@ -294,7 +294,8 @@
 
 Благодарности:
     ObjectListView http://objectlistview.sourceforge.net/
-    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism</value>
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>Russian</value>
