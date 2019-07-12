@@ -187,16 +187,16 @@
     <value>Ohne Administratorrechte gestartet. Einige Funktionen sind deaktiviert.</value>
   </data>
   <data name="Message_Delete" xml:space="preserve">
-    <value>Löschen</value>
+    <value>entfernen</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Lösche {0} {1} Pakete aus dem Driver Store.</value>
+    <value>Sie sind im Begriff {1} Pakete aus dem Driver Store zu {0}.</value>
   </data>
   <data name="Message_Delete_Result" xml:space="preserve">
     <value>Löschen von {0} ({1}) {2}.</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Lösche {0} {1} ({2}) aus dem Driver Store.</value>
+    <value>Sie sind im Begriff {1} ({2}) aus dem Driver Store zu {0}.</value>
   </data>
   <data name="Message_Failed" xml:space="preserve">
     <value>Fehlgeschlagen</value>
@@ -322,7 +322,7 @@ Danksagungen:
     <value>{0} Pakete wurden aus dem Driver Store gelöscht</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Fehler beim Löschen {0} ({1}) aus dem Driver Store {2}</value>
+    <value>Fehler beim Löschen von {0} ({1}) aus dem Driver Store {2}</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>Fehler beim Löschen einiger Treiberpakete {0}</value>
