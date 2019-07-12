@@ -316,10 +316,10 @@ Danksagungen:
     <value>Ausführliches Fehlerprotokoll</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>{0} ({1}) aus dem Driver Store gelöscht</value>
+    <value>{0} ({1}) wurde aus dem Driver Store gelöscht</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>{0} Pakete aus dem Driver Store gelöscht</value>
+    <value>{0} Pakete wurden aus dem Driver Store gelöscht</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Fehler beim Löschen {0} ({1}) aus dem Driver Store {2}</value>
@@ -385,7 +385,7 @@ Danksagungen:
     <value>(Auf dem neuesten Stand)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
-    <value>(Neue Version gefunden v{0} {1})</value>
+    <value>(Neue Version v{0} gefunden - {1})</value>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Herunterladen</value>
