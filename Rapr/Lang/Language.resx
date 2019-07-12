@@ -388,7 +388,7 @@ License:
     <value>(Up to date)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
-    <value>(Found New Version v{0} {1})</value>
+    <value>(Found New Version v{0} - {1})</value>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Download</value>
