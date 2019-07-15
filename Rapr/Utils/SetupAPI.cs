@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -50,9 +51,10 @@ namespace Rapr.Utils
                     }
                 }
 
-                if (Marshal.GetLastWin32Error() != ERROR_NO_MORE_ITEMS)
+                int lastWin32Error = Marshal.GetLastWin32Error();
+                if (lastWin32Error != ERROR_NO_MORE_ITEMS)
                 {
-                    throw new Win32Exception();
+                    throw new Win32Exception(lastWin32Error);
                 }
             }
             finally
@@ -110,19 +112,7 @@ namespace Rapr.Utils
                     IntPtr.Zero);
             }
 
-            if (!result)
-            {
-                try
-                {
-                    throw new Win32Exception();
-                }
-                catch (Win32Exception e)
-                {
-                    Trace.TraceError(e.ToString());
-                }
-            }
-
-            return result;
+            return TraceWin32ErrorMessage(result);
         }
 
         public static bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
@@ -132,24 +122,20 @@ namespace Rapr.Utils
                 throw new ArgumentNullException(nameof(driverStoreEntry));
             }
 
-            bool result = NativeMethods.SetupUninstallOEMInf(
-                driverStoreEntry.DriverPublishedName,
-                forceDelete ? SetupUOInfFlags.SUOI_FORCEDELETE : SetupUOInfFlags.NONE,
-                IntPtr.Zero);
-
-            if (!result)
+            if (forceDelete
+                && !TraceWin32ErrorMessage(NativeMethods.DiUninstallDriver(
+                        IntPtr.Zero,
+                        Path.Combine(driverStoreEntry.DriverFolderLocation, driverStoreEntry.DriverInfName),
+                        DIURFLAG.NO_REMOVE_INF,
+                        out _)))
             {
-                try
-                {
-                    throw new Win32Exception();
-                }
-                catch (Win32Exception e)
-                {
-                    Trace.TraceError(e.ToString());
-                }
+                return false;
             }
 
-            return result;
+            return TraceWin32ErrorMessage(NativeMethods.SetupUninstallOEMInf(
+                driverStoreEntry.DriverPublishedName,
+                forceDelete ? SetupUOInfFlags.SUOI_FORCEDELETE : SetupUOInfFlags.NONE,
+                IntPtr.Zero));
         }
 
         private static string GetDriverInf(IntPtr deviceInfoSet, SP_DEVINFO_DATA deviceInfo)
@@ -197,9 +183,13 @@ namespace Rapr.Utils
                             throw new Win32Exception();
                         }
                     }
-                    else if (Marshal.GetLastWin32Error() != ERROR_NO_MORE_ITEMS)
+                    else
                     {
-                        throw new Win32Exception();
+                        int lastWin32Error = Marshal.GetLastWin32Error();
+                        if (lastWin32Error != ERROR_NO_MORE_ITEMS)
+                        {
+                            throw new Win32Exception(lastWin32Error);
+                        }
                     }
                 }
                 else
@@ -226,9 +216,13 @@ namespace Rapr.Utils
                             throw new Win32Exception();
                         }
                     }
-                    else if (Marshal.GetLastWin32Error() != ERROR_NO_MORE_ITEMS)
+                    else
                     {
-                        throw new Win32Exception();
+                        int lastWin32Error = Marshal.GetLastWin32Error();
+                        if (lastWin32Error != ERROR_NO_MORE_ITEMS)
+                        {
+                            throw new Win32Exception(lastWin32Error);
+                        }
                     }
                 }
             }
@@ -338,6 +332,23 @@ namespace Rapr.Utils
             return default(T);
         }
 
+        private static bool TraceWin32ErrorMessage(bool result)
+        {
+            if (!result)
+            {
+                try
+                {
+                    throw new Win32Exception();
+                }
+                catch (Win32Exception e)
+                {
+                    Trace.TraceError(e.ToString());
+                }
+            }
+
+            return result;
+        }
+
         internal const int LINE_LEN = 256;
         internal const int MAX_PATH = 260;
 
@@ -418,6 +429,16 @@ namespace Rapr.Utils
         {
             INSTALLEDDRIVER = (0x04000000),
             ALLOWEXCLUDEDDRVS = (0x00000800)
+        }
+
+        /// <summary>
+        /// Flags for DiUninstallDriver
+        /// </summary>
+        [Flags]
+        internal enum DIURFLAG
+        {
+            NO_REMOVE_INF = 0x00000001, // Do not remove inf from the system
+            UNCONFIGURE_INF = 0x00000002, // Unconfigure inf, if possible
         }
 
         [Flags]
@@ -566,6 +587,14 @@ namespace Rapr.Utils
                 [In] IntPtr hwndParent,
                 [In] string infPath,
                 [In] uint flags,
+                [Out] out bool needReboot
+            );
+
+            [DllImport("newdev.dll", CharSet = CharSet.Unicode, SetLastError = true)]
+            internal static extern bool DiUninstallDriver(
+                [In] IntPtr hwndParent,
+                [In] string infPath,
+                [In] DIURFLAG flags,
                 [Out] out bool needReboot
             );
 
