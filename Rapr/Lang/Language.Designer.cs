@@ -535,6 +535,8 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to About to {0} {1} packages from driver store..
+        ///   {0} - Placeholder for Message_Delete
+        ///   {1} - Placeholder for number of packages
         /// </summary>
         public static string Message_Delete_Multiple_Packages {
             get {
@@ -544,6 +546,8 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Removed {0} ({1}) from driver store.
+        ///   {0} - Placeholder for INF package file
+        ///   {1} - Placeholder for oem inf
         /// </summary>
         public static string Message_Delete_Package {
             get {
@@ -553,6 +557,9 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Error removing {0} ({1}) from driver store {2}.
+        ///   {0} - Placeholder for INF package file
+        ///   {1} - Placeholder for oem inf
+        ///   {2} - Placeholder for Tip_Driver_In_Use
         /// </summary>
         public static string Message_Delete_Package_Error {
             get {
@@ -562,6 +569,7 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Removed {0} packages from driver store.
+        ///   {0} - Placeholder for number of packages
         /// </summary>
         public static string Message_Delete_Packages {
             get {
@@ -571,6 +579,7 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Error removing some packages from driver store {0}.
+        ///   {0} - Placeholder for Tip_Driver_In_Use
         /// </summary>
         public static string Message_Delete_Packages_Error {
             get {
