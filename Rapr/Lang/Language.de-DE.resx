@@ -193,13 +193,13 @@
     <value>Sie sind im Begriff {1} Pakete aus dem Driver Store zu {0}.</value>
   </data>
   <data name="Message_Delete_Result" xml:space="preserve">
-    <value>Löschen von {0} ({1}) {2}.</value>
+    <value>Das Löschen von {0} ({1}) {2}.</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>Sie sind im Begriff {1} ({2}) aus dem Driver Store zu {0}.</value>
   </data>
   <data name="Message_Failed" xml:space="preserve">
-    <value>Fehlgeschlagen</value>
+    <value>ist fehlgeschlagen</value>
   </data>
   <data name="Message_Force_Delete" xml:space="preserve">
     <value>Löschen erzwingen</value>
@@ -211,7 +211,7 @@
     <value>Es muss zunächst ein Treiber ausgewählt werden</value>
   </data>
   <data name="Message_Success" xml:space="preserve">
-    <value>Erfolgreich</value>
+    <value>war erfolgreich</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Sind Sie sicher?</value>
@@ -232,7 +232,7 @@
     <value>Bereit</value>
   </data>
   <data name="Status_Running_ReadOnly" xml:space="preserve">
-    <value>Schreibgeschützter Modus aktiv</value>
+    <value>Der schreibgeschützte Modus ist aktiv</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[TIPP: Der Treiber scheint noch in Benutzung zu sein. Versuchen Sie das Löschen des Treiberpakets zu erzwingen.]</value>
@@ -328,7 +328,7 @@ Danksagungen:
     <value>Fehler beim Löschen einiger Treiberpakete {0}</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Es wurde(n) {0} Treiber {1} zum Driver Store hinzugefügt</value>
+    <value>Der Treiber {1} wurde {0} zum Driver Store hinzugefügt</value>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
     <value>Fehler beim Hinzufügen {0} des Pakets {1} zum Driver Store</value>
