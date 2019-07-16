@@ -627,7 +627,7 @@ namespace Rapr.Lang {
         /// <summary>
         ///   Looks up a localized string similar to Added {0} the package {1} to driver store.
         ///   {0} - Placeholder for 
-        ///   {1} - Placeholder for 
+        ///   {1} - Placeholder for path to inf
         /// </summary>
         public static string Message_Driver_Added {
             get {
@@ -638,7 +638,7 @@ namespace Rapr.Lang {
         /// <summary>
         ///   Looks up a localized string similar to Error adding {0} the package {1} to driver store.
         ///   {0} - Placeholder for 
-        ///   {1} - Placeholder for 
+        ///   {1} - Placeholder for path to inf
         /// </summary>
         public static string Message_Driver_Added_Error {
             get {
