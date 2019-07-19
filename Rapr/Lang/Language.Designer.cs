@@ -70,7 +70,9 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to (Found New Version v{0} {1}).
+        ///   Looks up a localized string similar to (Found New Version v{0} - {1}).
+        ///   {0} - Placeholder for version number
+        ///   {1} - Placeholder for About_Download
         /// </summary>
         public static string About_FoundNewVersion {
             get {
@@ -382,6 +384,7 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Contents saved to {0}. Export Completed..
+        ///   {0} - Placeholder for export path
         /// </summary>
         public static string Export_Complete {
             get {
@@ -400,6 +403,7 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Export failed: {0}.
+        ///   {0} - Placeholder for 
         /// </summary>
         public static string Export_Failed {
             get {
@@ -535,6 +539,8 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to About to {0} {1} packages from driver store..
+        ///   {0} - Placeholder for Message_Delete
+        ///   {1} - Placeholder for number of packages
         /// </summary>
         public static string Message_Delete_Multiple_Packages {
             get {
@@ -544,6 +550,8 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Removed {0} ({1}) from driver store.
+        ///   {0} - Placeholder for inf package file
+        ///   {1} - Placeholder for oem inf file
         /// </summary>
         public static string Message_Delete_Package {
             get {
@@ -553,6 +561,9 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Error removing {0} ({1}) from driver store {2}.
+        ///   {0} - Placeholder for inf package file
+        ///   {1} - Placeholder for oem inf file
+        ///   {2} - Placeholder for Tip_Driver_In_Use
         /// </summary>
         public static string Message_Delete_Package_Error {
             get {
@@ -562,6 +573,7 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Removed {0} packages from driver store.
+        ///   {0} - Placeholder for number of packages
         /// </summary>
         public static string Message_Delete_Packages {
             get {
@@ -571,6 +583,7 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Error removing some packages from driver store {0}.
+        ///   {0} - Placeholder for Tip_Driver_In_Use
         /// </summary>
         public static string Message_Delete_Packages_Error {
             get {
@@ -580,6 +593,9 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Deletion of {0} ({1}) {2}..
+        ///   {0} - Placeholder for inf package file
+        ///   {1} - Placeholder for oem inf file
+        ///   {2} - Placeholder for Message_Success or Message_Failed
         /// </summary>
         public static string Message_Delete_Result {
             get {
@@ -589,6 +605,9 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to About to {0} {1} ({2}) from driver store..
+        ///   {0} - Placeholder for Message_Delete
+        ///   {1} - Placeholder for inf package file
+        ///   {2} - Placeholder for oem inf file
         /// </summary>
         public static string Message_Delete_Single_Package {
             get {
@@ -607,6 +626,8 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Added {0} the package {1} to driver store.
+        ///   {0} - Placeholder for 
+        ///   {1} - Placeholder for path to inf
         /// </summary>
         public static string Message_Driver_Added {
             get {
@@ -616,6 +637,8 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Error adding {0} the package {1} to driver store.
+        ///   {0} - Placeholder for 
+        ///   {1} - Placeholder for path to inf
         /// </summary>
         public static string Message_Driver_Added_Error {
             get {
@@ -742,6 +765,7 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to About {0}.
+        ///   {0} - Placeholder for Product_Name
         /// </summary>
         public static string Product_About_Title {
             get {
@@ -750,7 +774,8 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to DriveStore Explorer v{0}.
+        ///   Looks up a localized string similar to Driver Store Explorer v{0}.
+        ///   {0} - Placeholder for installed version number
         /// </summary>
         public static string Product_Credits {
             get {
@@ -823,6 +848,8 @@ namespace Rapr.Lang {
         
         /// <summary>
         ///   Looks up a localized string similar to Selected {0} Driver(s). Total size: {1}..
+        ///   {0} - Placeholder for number of selected Drivers
+        ///   {1} - Placeholder for disk space
         /// </summary>
         public static string Status_Selected_Drivers {
             get {
