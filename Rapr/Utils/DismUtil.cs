@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -115,21 +117,43 @@ namespace Rapr.Utils
             switch (this.Type)
             {
                 case DriverStoreType.Online:
-                    return SetupAPI.DeleteDriver(driverStoreEntry, forceDelete);
-
-                case DriverStoreType.Offline:
-                    DismApi.Initialize(DismLogLevel.LogErrors);
-
                     try
                     {
-                        using (DismSession session = this.GetSession())
+                        SetupAPI.DeleteDriver(driverStoreEntry, forceDelete);
+                    }
+                    catch (Win32Exception ex)
+                    {
+                        Trace.TraceError(ex.ToString());
+                        return false;
+                    }
+
+                    return true;
+
+                case DriverStoreType.Offline:
+                    try
+                    {
+                        DismApi.Initialize(DismLogLevel.LogErrors);
+
+                        try
                         {
-                            DismApi.RemoveDriver(session, driverStoreEntry.DriverPublishedName);
+                            using (DismSession session = this.GetSession())
+                            {
+                                DismApi.RemoveDriver(session, driverStoreEntry.DriverPublishedName);
+                            }
+                        }
+                        finally
+                        {
+                            DismApi.Shutdown();
                         }
                     }
-                    finally
+                    catch (DismRebootRequiredException)
                     {
-                        DismApi.Shutdown();
+                        return true;
+                    }
+                    catch (DismException ex)
+                    {
+                        Trace.TraceError(ex.ToString());
+                        return false;
                     }
 
                     return true;
@@ -144,21 +168,43 @@ namespace Rapr.Utils
             switch (this.Type)
             {
                 case DriverStoreType.Online:
-                    return SetupAPI.AddDriver(infFullPath, install);
-
-                case DriverStoreType.Offline:
-                    DismApi.Initialize(DismLogLevel.LogErrors);
-
                     try
                     {
-                        using (DismSession session = this.GetSession())
+                        SetupAPI.AddDriver(infFullPath, install);
+                    }
+                    catch (Win32Exception ex)
+                    {
+                        Trace.TraceError(ex.ToString());
+                        return false;
+                    }
+
+                    return true;
+
+                case DriverStoreType.Offline:
+                    try
+                    {
+                        DismApi.Initialize(DismLogLevel.LogErrors);
+
+                        try
                         {
-                            DismApi.AddDriver(session, infFullPath, false);
+                            using (DismSession session = this.GetSession())
+                            {
+                                DismApi.AddDriver(session, infFullPath, false);
+                            }
+                        }
+                        finally
+                        {
+                            DismApi.Shutdown();
                         }
                     }
-                    finally
+                    catch (DismRebootRequiredException)
                     {
-                        DismApi.Shutdown();
+                        return true;
+                    }
+                    catch (DismException ex)
+                    {
+                        Trace.TraceError(ex.ToString());
+                        return false;
                     }
 
                     return true;

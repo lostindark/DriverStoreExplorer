@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -88,7 +89,7 @@ namespace Rapr.Utils
             }
         }
 
-        public static bool AddDriver(string infFullPath, bool install)
+        public static void AddDriver(string infFullPath, bool install)
         {
             bool result;
 
@@ -112,10 +113,13 @@ namespace Rapr.Utils
                     IntPtr.Zero);
             }
 
-            return TraceWin32ErrorMessage(result);
+            if (!result)
+            {
+                throw new Win32Exception();
+            }
         }
 
-        public static bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
+        public static void DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
         {
             if (driverStoreEntry == null)
             {
@@ -123,19 +127,22 @@ namespace Rapr.Utils
             }
 
             if (forceDelete
-                && !TraceWin32ErrorMessage(NativeMethods.DiUninstallDriver(
+                && !NativeMethods.DiUninstallDriver(
                         IntPtr.Zero,
                         Path.Combine(driverStoreEntry.DriverFolderLocation, driverStoreEntry.DriverInfName),
                         DIURFLAG.NO_REMOVE_INF,
-                        out _)))
+                        out _))
             {
-                return false;
+                throw new Win32Exception();
             }
 
-            return TraceWin32ErrorMessage(NativeMethods.SetupUninstallOEMInf(
+            if (!NativeMethods.SetupUninstallOEMInf(
                 driverStoreEntry.DriverPublishedName,
                 forceDelete ? SetupUOInfFlags.SUOI_FORCEDELETE : SetupUOInfFlags.NONE,
-                IntPtr.Zero));
+                IntPtr.Zero))
+            {
+                throw new Win32Exception();
+            }
         }
 
         private static string GetDriverInf(IntPtr deviceInfoSet, SP_DEVINFO_DATA deviceInfo)
@@ -330,23 +337,6 @@ namespace Rapr.Utils
             }
 
             return default(T);
-        }
-
-        private static bool TraceWin32ErrorMessage(bool result)
-        {
-            if (!result)
-            {
-                try
-                {
-                    throw new Win32Exception();
-                }
-                catch (Win32Exception e)
-                {
-                    Trace.TraceError(e.ToString());
-                }
-            }
-
-            return result;
         }
 
         internal const int LINE_LEN = 256;

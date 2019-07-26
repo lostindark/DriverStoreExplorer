@@ -7,6 +7,7 @@ using System.Linq;
 using System.Reflection;
 using System.Security;
 using System.Security.Principal;
+using System.Text;
 using System.Windows.Forms;
 
 using Microsoft.Win32;
@@ -118,8 +119,18 @@ namespace Rapr
                 this.context.Code = this.cbForceDeletion.Checked ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
                 this.context.DriverStoreEntries = ldse;
 
+                StringBuilder details = new StringBuilder();
+
+                foreach (DriverStoreEntry item in ldse)
+                {
+                    details.AppendLine($"{item.DriverPublishedName} - {item.DriverInfName}");
+                }
+
                 this.backgroundWorker1.RunWorkerAsync(this.context);
-                this.ShowStatus(Language.Status_Deleting_Packages);
+                this.ShowStatus(
+                    Status.Normal,
+                    Language.Status_Deleting_Packages,
+                    $"{Language.Status_Deleting_Packages}{Environment.NewLine}{details.ToString().Trim()}");
             }
             else
             {
