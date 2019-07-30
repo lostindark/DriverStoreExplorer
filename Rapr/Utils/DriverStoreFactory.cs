@@ -1,10 +1,14 @@
-﻿namespace Rapr.Utils
+﻿using System;
+
+namespace Rapr.Utils
 {
     public static class DriverStoreFactory
     {
+        private static readonly Version Win8Version = new Version(6, 2);
+
         public static IDriverStore CreateOnlineDriverStore()
         {
-            if (DismUtil.IsDismAvailable)
+            if (IsWin8OrNewer && DismUtil.IsDismAvailable)
             {
                 return new DismUtil();
             }
@@ -17,6 +21,16 @@
         public static IDriverStore CreateOfflineDriverStore(string imagePath)
         {
             return new DismUtil(imagePath);
+        }
+
+        private static bool IsWin8OrNewer
+        {
+            get
+            {
+                OperatingSystem os = Environment.OSVersion;
+
+                return os.Platform == PlatformID.Win32NT && os.Version >= Win8Version;
+            }
         }
     }
 }
