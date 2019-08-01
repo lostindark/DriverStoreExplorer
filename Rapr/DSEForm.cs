@@ -116,7 +116,10 @@ namespace Rapr
             this.driverVersionColumn.GroupKeyGetter = rowObject =>
             {
                 DriverStoreEntry driver = (DriverStoreEntry)rowObject;
-                return new Version(driver.DriverVersion.Major, driver.DriverVersion.Minor);
+
+                return driver.DriverVersion == null
+                    ? null
+                    : new Version(driver.DriverVersion.Major, driver.DriverVersion.Minor);
             };
 
             this.driverDateColumn.GroupKeyGetter = rowObject =>
