@@ -128,6 +128,8 @@
     <EmbeddedResource Include="Lang\Language.fr-FR.resx" />
     <EmbeddedResource Include="Lang\Language.it-IT.resx" />
     <EmbeddedResource Include="Lang\Language.ja-JP.resx" />
+    <EmbeddedResource Include="Lang\Language.ko-KR.resx" />
+    <EmbeddedResource Include="Lang\Language.pt-BR.resx" />
     <EmbeddedResource Include="Lang\Language.ru-RU.resx" />
     <EmbeddedResource Include="Lang\Language.zh-CN.resx" />
     <EmbeddedResource Include="Lang\Language.resx">
