@@ -21,6 +21,7 @@ namespace Rapr.Utils
 
         public DriverStoreType Type => DriverStoreType.Online;
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1065:Do not raise exceptions in unexpected locations", Justification = "False positive.")]
         public string OfflineStoreLocation => throw new NotSupportedException();
 
         public enum PnpUtilOption
