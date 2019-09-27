@@ -43,12 +43,12 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Dism" Version="2.0.20" />
-    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
-    <PackageReference Include="ObjectListView.Official" Version="2.9.1" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
-    <PackageReference Include="WindowsAPICodePack-Core" Version="1.1.1" />
-    <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" />
+    <PackageReference Include="Microsoft.Dism" Version="2.0.20" GeneratePathProperty="true" />
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" GeneratePathProperty="true" />
+    <PackageReference Include="ObjectListView.Official" Version="2.9.1" GeneratePathProperty="true" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" GeneratePathProperty="true" />
+    <PackageReference Include="WindowsAPICodePack-Core" Version="1.1.1" GeneratePathProperty="true" />
+    <PackageReference Include="WindowsAPICodePack-Shell" Version="1.1.1" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -166,12 +166,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(NuGetPackageRoot)Microsoft.Dism\2.0.20\lib\net40\Microsoft.Dism.dll" />
-    <EmbeddedResource Include="$(NuGetPackageRoot)Newtonsoft.Json\12.0.2\lib\net45\Newtonsoft.Json.dll" />
-    <EmbeddedResource Include="$(NuGetPackageRoot)ObjectListView.Official\2.9.1\lib\net20\ObjectListView.dll" />
-    <EmbeddedResource Include="$(NuGetPackageRoot)System.ValueTuple\4.5.0\lib\netstandard1.0\System.ValueTuple.dll" />
-    <EmbeddedResource Include="$(NuGetPackageRoot)WindowsAPICodePack-Core\1.1.1\lib\Microsoft.WindowsAPICodePack.dll" />
-    <EmbeddedResource Include="$(NuGetPackageRoot)WindowsAPICodePack-Shell\1.1.1\lib\Microsoft.WindowsAPICodePack.Shell.dll" />
+    <EmbeddedResource Include="$(PkgMicrosoft_Dism)\lib\net40\Microsoft.Dism.dll" />
+    <EmbeddedResource Include="$(PkgNewtonsoft_Json)\lib\net45\Newtonsoft.Json.dll" />
+    <EmbeddedResource Include="$(PkgObjectListView_Official)\lib\net20\ObjectListView.dll" />
+    <EmbeddedResource Include="$(PkgSystem_ValueTuple)\lib\netstandard1.0\System.ValueTuple.dll" />
+    <EmbeddedResource Include="$(PkgWindowsAPICodePack-Core)\lib\Microsoft.WindowsAPICodePack.dll" />
+    <EmbeddedResource Include="$(PkgWindowsAPICodePack-Shell)\lib\Microsoft.WindowsAPICodePack.Shell.dll" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
