@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Reflection;
+using System.Runtime.CompilerServices;
+using System.Security;
 using System.Windows.Forms;
 
 namespace Rapr
@@ -32,6 +35,29 @@ namespace Rapr
             Environment.SetEnvironmentVariable("PATH", newPath);
         }
 
+        private static void CleanUpOldConfig()
+        {
+            FileInfo fileInfo = new FileInfo(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
+            DirectoryInfo strongAssemblyConfigDirectory = fileInfo.Directory.Parent;
+
+            // Remove old version of config.
+            foreach (var dir in strongAssemblyConfigDirectory.EnumerateDirectories("*", SearchOption.TopDirectoryOnly))
+            {
+                if (Version.TryParse(dir.Name, out Version version) && version < Assembly.GetExecutingAssembly().GetName().Version)
+                {
+                    dir.Delete(recursive: true);
+                }
+            }
+
+            DirectoryInfo configDirectory = strongAssemblyConfigDirectory.Parent;
+
+            // Remove configurations created by not strong signed app.
+            foreach (var dir in configDirectory.EnumerateDirectories(Assembly.GetEntryAssembly().ManifestModule.Name + "_Url_*", SearchOption.TopDirectoryOnly))
+            {
+                dir.Delete(recursive: true);
+            }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -42,6 +68,24 @@ namespace Rapr
             AppDomain.CurrentDomain.AssemblyResolve += ResolveEventHandler;
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            if (Properties.Settings.Default.UpgradeRequired)
+            {
+                Properties.Settings.Default.Upgrade();
+                Properties.Settings.Default.UpgradeRequired = false;
+                Properties.Settings.Default.Save();
+
+                try
+                {
+                    CleanUpOldConfig();
+                }
+                catch (Exception e) when (
+                    e is SecurityException
+                    || e is IOException)
+                {
+                }
+            }
+
             using (DSEForm mainForm = new DSEForm())
             {
                 Application.Run(mainForm);
