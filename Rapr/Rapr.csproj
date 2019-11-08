@@ -173,12 +173,12 @@
     <None Include="Rapr.snk" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="$(PkgMicrosoft_Dism)\lib\net40\Microsoft.Dism.dll" />
-    <EmbeddedResource Include="$(PkgNewtonsoft_Json)\lib\net45\Newtonsoft.Json.dll" />
-    <EmbeddedResource Include="$(PkgObjectListView_Official)\lib\net20\ObjectListView.dll" />
-    <EmbeddedResource Include="$(PkgSystem_ValueTuple)\lib\netstandard1.0\System.ValueTuple.dll" />
-    <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Core)\lib\Microsoft.WindowsAPICodePack.dll" />
-    <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Shell)\lib\Microsoft.WindowsAPICodePack.Shell.dll" />
+    <EmbeddedResource Include="$(PkgMicrosoft_Dism)\lib\net40\Microsoft.Dism.dll" Visible="false" />
+    <EmbeddedResource Include="$(PkgNewtonsoft_Json)\lib\net45\Newtonsoft.Json.dll" Visible="false" />
+    <EmbeddedResource Include="$(PkgObjectListView_Official)\lib\net20\ObjectListView.dll" Visible="false" />
+    <EmbeddedResource Include="$(PkgSystem_ValueTuple)\lib\netstandard1.0\System.ValueTuple.dll" Visible="false" />
+    <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Core)\lib\Microsoft.WindowsAPICodePack.dll" Visible="false" />
+    <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Shell)\lib\Microsoft.WindowsAPICodePack.Shell.dll" Visible="false" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
