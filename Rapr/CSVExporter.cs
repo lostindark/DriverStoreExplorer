@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Windows.Forms;
 
@@ -10,7 +11,6 @@ namespace Rapr
 {
     public class CsvExporter : IExport
     {
-        private const string CsvDelimiter = ",";
         private const string CsvQuote = "\"";
 
         public string Export(List<DriverStoreEntry> driverStoreEntries)
@@ -37,18 +37,19 @@ namespace Rapr
                 DialogResult dr = saveFileDialog.ShowDialog();
                 if (dr == DialogResult.OK)
                 {
-                    string csvFileName = saveFileDialog.FileName;   // Path                
+                    var csvDelimiter = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
+                    string csvFileName = saveFileDialog.FileName;
 
                     using (StreamWriter file = new StreamWriter(csvFileName))
                     {
                         // Write the header once
-                        string headerLine = string.Join(CsvDelimiter, DriverStoreEntry.GetFieldNames());
+                        string headerLine = string.Join(csvDelimiter, DriverStoreEntry.GetFieldNames());
                         file.WriteLine(headerLine);
 
                         // Write the values
                         foreach (DriverStoreEntry entry in driverStoreEntries)
                         {
-                            string valueLine = string.Join(CsvDelimiter, Sanitize(entry.GetFieldValues()));
+                            string valueLine = string.Join(csvDelimiter, Sanitize(entry.GetFieldValues(), csvDelimiter));
                             file.WriteLine(valueLine);
                         }
                     }
@@ -60,11 +61,11 @@ namespace Rapr
             return null;
         }
 
-        private static string[] Sanitize(string[] values)
+        private static string[] Sanitize(string[] values, string csvDelimiter)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if (values[i].Contains(CsvDelimiter)
+                if (values[i].Contains(csvDelimiter)
                     || values[i].Contains(CsvQuote))
                 {
                     values[i] = CsvQuote + values[i].Replace(CsvQuote, "\\\"") + CsvQuote;
