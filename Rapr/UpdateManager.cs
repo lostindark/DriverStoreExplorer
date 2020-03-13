@@ -2,36 +2,63 @@
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
-
+using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 
 namespace Rapr
 {
-    public static class UpdateManager
+    public class UpdateManager : IUpdateManager, IDisposable
     {
-        public static (Version version, string pageUrl, string downloadUrl) GetLatestVersionInfo()
+        private const string versionInfoUrl = "https://api.github.com/repos/lostindark/DriverStoreExplorer/releases/latest";
+        private readonly HttpClient httpClient = new HttpClient();
+        private bool disposedValue = false; // To detect redundant calls
+
+        public async Task<VersionInfo> GetLatestVersionInfo()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            using (HttpClient httpClient = new HttpClient())
-            {
-                httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
-                httpClient.DefaultRequestHeaders.Add("User-Agent", "System.Net.Http Agent");
-                using (HttpResponseMessage response = httpClient.GetAsync(new Uri("https://api.github.com/repos/lostindark/DriverStoreExplorer/releases/latest")).GetAwaiter().GetResult())
-                {
-                    if (response.IsSuccessStatusCode)
-                    {
-                        JObject releaseInfo = JObject.Parse(response.Content.ReadAsStringAsync().GetAwaiter().GetResult());
-                        Version latestVersion = Version.Parse(releaseInfo["tag_name"].ToString().TrimStart('v', 'V'));
-                        string pageUrl = releaseInfo["html_url"].ToString();
-                        string downloadUrl = releaseInfo.SelectToken("assets[0].browser_download_url").ToObject<string>();
+            httpClient.DefaultRequestHeaders
+                .Accept
+                .Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
 
-                        return (latestVersion, pageUrl, downloadUrl);
-                    }
-                }
+            httpClient.DefaultRequestHeaders
+                .Add("User-Agent", "System.Net.Http Agent");
+
+            var response = await httpClient.GetAsync(new Uri(versionInfoUrl)).ConfigureAwait(false);
+
+            if (response.IsSuccessStatusCode)
+            {
+                var releaseInfo = JObject.Parse(response.Content.ReadAsStringAsync().GetAwaiter().GetResult());
+
+                return new VersionInfo
+                {
+                    Version = Version.Parse(releaseInfo["tag_name"].ToString().TrimStart('v', 'V')),
+                    PageUrl = new Uri(releaseInfo["html_url"].ToString()),
+                    DownloadUrl = new Uri(releaseInfo.SelectToken("assets[0].browser_download_url").ToObject<string>())
+                };
             }
 
-            return (null, null, null);
+            return null;
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposedValue)
+            {
+                if (disposing)
+                {
+                    httpClient.Dispose();
+                }
+
+                disposedValue = true;
+            }
+        }
+
+        // This code added to correctly implement the disposable pattern.
+        public void Dispose()
+        {
+            // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
+            Dispose(true);
         }
     }
 }

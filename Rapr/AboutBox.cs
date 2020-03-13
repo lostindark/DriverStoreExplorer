@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Net.Http;
 using System.Reflection;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 using Rapr.Lang;
@@ -10,40 +11,44 @@ namespace Rapr
 {
     public partial class AboutBox : Form
     {
-        public AboutBox()
+        private readonly IUpdateManager _updateManager;
+
+        public AboutBox(IUpdateManager updateManager)
         {
-            this.InitializeComponent();
-            this.Text = string.Format(Language.Product_About_Title, AssemblyTitle);
-            this.labelVersionInfo.Text = $"v{AssemblyVersion}";
+            _updateManager = updateManager ?? throw new ArgumentNullException(nameof(updateManager));
+
+            InitializeComponent();
+            Text = string.Format(Language.Product_About_Title, AssemblyTitle);
+            labelVersionInfo.Text = $"v{AssemblyVersion}";
 
             try
             {
-                (Version latestVersion, string pageUrl, string downloadUrl) = UpdateManager.GetLatestVersionInfo();
-
-                if (latestVersion != null)
+                var result = getLatestVersion().GetAwaiter().GetResult();
+               
+                if (result?.Version != null)
                 {
-                    if (AssemblyVersion >= latestVersion)
+                    if (AssemblyVersion >= result.Version)
                     {
-                        this.labelLink.Text = Language.About_VersionUpToDate;
-                        this.labelLink.Links.Clear();
+                        labelLink.Text = Language.About_VersionUpToDate;
+                        labelLink.Links.Clear();
                     }
                     else
                     {
-                        string versionStr = latestVersion.ToString();
-                        this.labelLink.Text = string.Format(Language.About_FoundNewVersion, versionStr, Language.About_Download);
+                        var versionStr = result.Version.ToString();
+                        labelLink.Text = string.Format(Language.About_FoundNewVersion, versionStr, Language.About_Download);
 
-                        int versionStart = this.labelLink.Text.IndexOf(versionStr, 0, StringComparison.Ordinal);
+                        var versionStart = labelLink.Text.IndexOf(versionStr, 0, StringComparison.Ordinal);
 
                         if (versionStart >= 0)
                         {
-                            this.labelLink.Links.Add(new LinkLabel.Link(versionStart, versionStr.Length, pageUrl));
+                            labelLink.Links.Add(new LinkLabel.Link(versionStart, versionStr.Length, result.PageUrl));
                         }
 
-                        int linkStart = this.labelLink.Text.IndexOf(Language.About_Download, 0, StringComparison.Ordinal);
+                        var linkStart = labelLink.Text.IndexOf(Language.About_Download, 0, StringComparison.Ordinal);
 
                         if (linkStart >= 0)
                         {
-                            this.labelLink.Links.Add(new LinkLabel.Link(linkStart, Language.About_Download.Length, downloadUrl));
+                            labelLink.Links.Add(new LinkLabel.Link(linkStart, Language.About_Download.Length, result.DownloadUrl));
                         }
                     }
                 }
@@ -53,13 +58,19 @@ namespace Rapr
             }
         }
 
+        private async Task<VersionInfo> getLatestVersion()
+        {
+            return await _updateManager.GetLatestVersionInfo().ConfigureAwait(false);
+        }
+
         #region Assembly Attribute Accessors
 
         public static string AssemblyTitle
         {
             get
             {
-                object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
+                
                 if (attributes.Length > 0)
                 {
                     AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
@@ -68,6 +79,7 @@ namespace Rapr
                         return titleAttribute.Title;
                     }
                 }
+                
                 return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
             }
         }
@@ -87,7 +99,7 @@ namespace Rapr
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyDescriptionAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return "";
+                    return string.Empty;
                 }
                 return ((AssemblyDescriptionAttribute)attributes[0]).Description;
             }
@@ -100,7 +112,7 @@ namespace Rapr
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyProductAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return "";
+                    return string.Empty;
                 }
                 return ((AssemblyProductAttribute)attributes[0]).Product;
             }
@@ -113,7 +125,7 @@ namespace Rapr
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCopyrightAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return "";
+                    return string.Empty;
                 }
                 return ((AssemblyCopyrightAttribute)attributes[0]).Copyright;
             }
@@ -126,7 +138,7 @@ namespace Rapr
                 object[] attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyCompanyAttribute), false);
                 if (attributes.Length == 0)
                 {
-                    return "";
+                    return string.Empty;
                 }
                 return ((AssemblyCompanyAttribute)attributes[0]).Company;
             }
