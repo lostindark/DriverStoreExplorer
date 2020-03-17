@@ -23,8 +23,8 @@ namespace Rapr
 
             try
             {
-                var result = getLatestVersion().GetAwaiter().GetResult();
-               
+                var result = GetLatestVersion().Result;
+
                 if (result?.Version != null)
                 {
                     if (AssemblyVersion >= result.Version)
@@ -58,7 +58,7 @@ namespace Rapr
             }
         }
 
-        private async Task<VersionInfo> getLatestVersion()
+        private async Task<VersionInfo> GetLatestVersion()
         {
             return await _updateManager.GetLatestVersionInfo().ConfigureAwait(false);
         }

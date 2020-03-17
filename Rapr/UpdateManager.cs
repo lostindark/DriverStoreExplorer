@@ -28,7 +28,8 @@ namespace Rapr
 
             if (response.IsSuccessStatusCode)
             {
-                var releaseInfo = JObject.Parse(response.Content.ReadAsStringAsync().GetAwaiter().GetResult());
+                var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                var releaseInfo = JObject.Parse(responseBody);
 
                 return new VersionInfo
                 {
