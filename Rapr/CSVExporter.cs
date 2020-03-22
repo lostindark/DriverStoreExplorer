@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
+using System.Text;
 using System.Windows.Forms;
 
 using Rapr.Lang;
@@ -40,17 +41,18 @@ namespace Rapr
                     var csvDelimiter = CultureInfo.CurrentCulture.TextInfo.ListSeparator;
                     string csvFileName = saveFileDialog.FileName;
 
-                    using (StreamWriter file = new StreamWriter(csvFileName))
+                    using (FileStream fileStream = new FileStream(csvFileName, FileMode.Create))
+                    using (StreamWriter fileWriter = new StreamWriter(fileStream, new UTF8Encoding(false)))
                     {
                         // Write the header once
                         string headerLine = string.Join(csvDelimiter, DriverStoreEntry.GetFieldNames());
-                        file.WriteLine(headerLine);
+                        fileWriter.WriteLine(headerLine);
 
                         // Write the values
                         foreach (DriverStoreEntry entry in driverStoreEntries)
                         {
                             string valueLine = string.Join(csvDelimiter, Sanitize(entry.GetFieldValues(), csvDelimiter));
-                            file.WriteLine(valueLine);
+                            fileWriter.WriteLine(valueLine);
                         }
                     }
 
