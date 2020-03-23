@@ -27,6 +27,8 @@ namespace Rapr
         private Color savedForeColor;
         private OperationContext context = new OperationContext();
 
+        private static readonly IUpdateManager _updateManager = new UpdateManager();
+
         private static readonly List<CultureInfo> SupportedLanguage = GetSupportedLanguage();
 
         public DSEForm()
@@ -532,12 +534,11 @@ namespace Rapr
                         break;
                 }
             }
-
         }
 
         private static void ShowAboutBox()
         {
-            using (AboutBox ab = new AboutBox())
+            using (AboutBox ab = new AboutBox(_updateManager))
             {
                 ab.ShowDialog();
             }

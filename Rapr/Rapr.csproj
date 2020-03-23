@@ -98,6 +98,7 @@
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HttpClientExtensions.cs" />
     <Compile Include="IExport.cs" />
+    <Compile Include="IUpdateManager.cs" />
     <Compile Include="Lang\Language.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -122,6 +123,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\ConfigManager.cs" />
     <Compile Include="Utils\SetupAPI.cs" />
+    <Compile Include="VersionInfo.cs" />
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
       <SubType>Designer</SubType>
