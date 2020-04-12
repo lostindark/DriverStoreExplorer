@@ -17,14 +17,14 @@ namespace Rapr
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
-            httpClient.DefaultRequestHeaders
+            this.httpClient.DefaultRequestHeaders
                 .Accept
                 .Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
 
-            httpClient.DefaultRequestHeaders
+            this.httpClient.DefaultRequestHeaders
                 .Add("User-Agent", "System.Net.Http Agent");
 
-            var response = await httpClient.GetAsync(new Uri(versionInfoUrl)).ConfigureAwait(false);
+            var response = await this.httpClient.GetAsync(new Uri(versionInfoUrl)).ConfigureAwait(false);
 
             if (response.IsSuccessStatusCode)
             {
@@ -44,14 +44,14 @@ namespace Rapr
 
         protected virtual void Dispose(bool disposing)
         {
-            if (!disposedValue)
+            if (!this.disposedValue)
             {
                 if (disposing)
                 {
-                    httpClient.Dispose();
+                    this.httpClient.Dispose();
                 }
 
-                disposedValue = true;
+                this.disposedValue = true;
             }
         }
 
@@ -59,7 +59,8 @@ namespace Rapr
         public void Dispose()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
-            Dispose(true);
+            this.Dispose(true);
+            GC.SuppressFinalize(this);
         }
     }
 }
