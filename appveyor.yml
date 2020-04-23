@@ -1,4 +1,4 @@
-version: 0.10.{build}
+version: 0.11.{build}
 pull_requests:
   do_not_increment_build_number: true
 skip_tags: true
