@@ -44,6 +44,8 @@ namespace Rapr.Utils
                             TryGetDeviceRegistryProperty(deviceInfoSet, deviceInfo, DeviceRegistryProperty.SPDRP_FRIENDLYNAME)
                                 ?? TryGetDeviceRegistryProperty(deviceInfoSet, deviceInfo, DeviceRegistryProperty.SPDRP_DEVICEDESC),
                             GetDriverInf(deviceInfoSet, deviceInfo),
+                            TryGetDevicePropertyInfo<DateTime>(deviceInfoSet, deviceInfo, DeviceHelper.DEVPKEY_Device_DriverDate),
+                            TryGetDevicePropertyInfo<Version>(deviceInfoSet, deviceInfo, DeviceHelper.DEVPKEY_Device_DriverVersion),
                             TryGetDevicePropertyInfo<bool?>(deviceInfoSet, deviceInfo, DeviceHelper.DEVPKEY_Device_IsPresent)
                         ));
                     }

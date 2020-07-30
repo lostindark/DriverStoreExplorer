@@ -38,9 +38,11 @@ namespace Rapr.Utils
                             try
                             {
                                 deviceDriverInfos.Add(new DeviceDriverInfo(
-                                    GetProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_FriendlyName)
-                                        ?? GetProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DeviceDesc),
-                                    GetProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DriverInfPath),
+                                    GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_FriendlyName)
+                                        ?? GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DeviceDesc),
+                                    GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DriverInfPath),
+                                    GetDevNodeProperty<DateTime>(devInst, DeviceHelper.DEVPKEY_Device_DriverDate),
+                                    GetDevNodeProperty<Version>(devInst, DeviceHelper.DEVPKEY_Device_DriverVersion),
                                     IsDevicePresent(devInst)));
                             }
                             catch (Win32Exception)
@@ -72,7 +74,7 @@ namespace Rapr.Utils
             }
         }
 
-        internal static T GetProperty<T>(uint devInst, DevPropKey propertyKey)
+        internal static T GetDevNodeProperty<T>(uint devInst, DevPropKey propertyKey)
         {
             const int bufferSize = 2048;
             IntPtr propertyBufferPtr = Marshal.AllocHGlobal(bufferSize);
@@ -82,6 +84,36 @@ namespace Rapr.Utils
             {
                 if (NativeMethods.CM_Get_DevNode_Property(
                     devInst,
+                    ref propertyKey,
+                    out DevPropType propertyType,
+                    propertyBufferPtr,
+                    ref propertySize,
+                    0) == 0)
+                {
+                    if (propertySize > 0)
+                    {
+                        return DeviceHelper.ConvertPropToType<T>(propertyBufferPtr, propertyType);
+                    }
+                }
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(propertyBufferPtr);
+            }
+
+            return default(T);
+        }
+
+        internal static T GetClassProperty<T>(Guid classGuid, DevPropKey propertyKey)
+        {
+            const int bufferSize = 2048;
+            IntPtr propertyBufferPtr = Marshal.AllocHGlobal(bufferSize);
+            uint propertySize = bufferSize;
+
+            try
+            {
+                if (NativeMethods.CM_Get_Class_Property(
+                    classGuid,
                     ref propertyKey,
                     out DevPropType propertyType,
                     propertyBufferPtr,
@@ -207,16 +239,25 @@ namespace Rapr.Utils
         /// </summary>
         internal static class NativeMethods
         {
-            [DllImport("CfgMgr32.dll", CharSet = CharSet.Unicode)]
+            [DllImport("CfgMgr32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+            internal static extern ConfigManagerResult CM_Get_Class_Property(
+                Guid classGUID,
+                ref DevPropKey propertyKey,
+                out DevPropType propertyType,
+                IntPtr buffer,
+                ref uint bufferSize,
+                uint flags);
+
+            [DllImport("CfgMgr32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
             internal static extern ConfigManagerResult CM_Get_Device_ID_List_Size(ref int length, string filter, CM_GETIDLIST_FILTER flags);
 
-            [DllImport("CfgMgr32.dll", CharSet = CharSet.Unicode)]
+            [DllImport("CfgMgr32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
             internal static extern ConfigManagerResult CM_Get_Device_ID_List(string filter, byte[] buffer, int bufferLength, CM_GETIDLIST_FILTER flags);
 
-            [DllImport("CfgMgr32.dll", CharSet = CharSet.Unicode)]
+            [DllImport("CfgMgr32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
             internal static extern ConfigManagerResult CM_Locate_DevNode(ref uint devInst, string deviceID, CM_LOCATE_DEVNODE_FLAG flags);
 
-            [DllImport("CfgMgr32.dll", CharSet = CharSet.Unicode)]
+            [DllImport("CfgMgr32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
             internal static extern ConfigManagerResult CM_Get_DevNode_Property(
                 uint devInst,
                 ref DevPropKey propertyKey,
@@ -225,7 +266,7 @@ namespace Rapr.Utils
                 ref uint bufferSize,
                 uint flags);
 
-            [DllImport("CfgMgr32.dll", CharSet = CharSet.Unicode)]
+            [DllImport("CfgMgr32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
             internal static extern ConfigManagerResult CM_Get_DevNode_Status(
               out uint status,
               out uint problemNumber,

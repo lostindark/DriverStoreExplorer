@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+
 using Microsoft.Dism;
 
 namespace Rapr.Utils
@@ -72,10 +73,10 @@ namespace Rapr.Utils
                             Inbox = driverPackage.InBox,
                         };
 
-                        var deviceInfo = driverInfo?.OrderByDescending(d => d.IsPresent)?.FirstOrDefault(e => string.Equals(
-                            Path.GetFileName(e.DriverInf),
-                            driverStoreEntry.DriverPublishedName,
-                            StringComparison.OrdinalIgnoreCase));
+                        var deviceInfo = driverInfo?.OrderByDescending(d => d.IsPresent)?.FirstOrDefault(e =>
+                            string.Equals(Path.GetFileName(e.DriverInf), driverStoreEntry.DriverPublishedName, StringComparison.OrdinalIgnoreCase)
+                            && e.DriverVersion == driverStoreEntry.DriverVersion
+                            && e.DriverDate == driverStoreEntry.DriverDate);
 
                         driverStoreEntry.DeviceName = deviceInfo?.DeviceName;
                         driverStoreEntry.DevicePresent = deviceInfo?.IsPresent;

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 namespace Rapr.Utils
@@ -8,25 +9,40 @@ namespace Rapr.Utils
     /// </summary>
     internal enum DevPropType : uint
     {
-        Empty = 0x00000000,  // nothing, no property data
-        Null = 0x00000001,  // null property data
-        Sbyte = 0x00000002,  // 8-bit signed int (SBYTE)
-        Byte = 0x00000003,  // 8-bit unsigned int (BYTE)
-        Int16 = 0x00000004,  // 16-bit signed int (SHORT)
-        Uint16 = 0x00000005,  // 16-bit unsigned int (USHORT)
-        Int32 = 0x00000006,  // 32-bit signed int (LONG)
-        Uint32 = 0x00000007,  // 32-bit unsigned int (ULONG)
-        Int64 = 0x00000008,  // 64-bit signed int (LONG64)
-        Uint64 = 0x00000009,  // 64-bit unsigned int (ULONG64)
-        Float = 0x0000000A,  // 32-bit floating-point (FLOAT)
-        Double = 0x0000000B,  // 64-bit floating-point (DOUBLE)
-        Decimal = 0x0000000C,  // 128-bit data (DECIMAL)
-        Guid = 0x0000000D,  // 128-bit unique identifier (GUID)
-        Currency = 0x0000000E,  // 64 bit signed int currency value (CURRENCY)
-        Date = 0x0000000F,  // date (DATE)
-        FileTime = 0x00000010,  // file time (FILETIME)
-        Boolean = 0x00000011,  // 8-bit boolean (DEVPROP_BOOLEAN)
-        String = 0x00000012,  // null-terminated string
+        TYPEMOD_ARRAY = 0x00001000,  // array of fixed-sized data elements
+        TYPEMOD_LIST = 0x00002000,  // list of variable-sized data elements
+
+        //
+        // Property data types.
+        //
+        Empty = 0x00000000, // nothing, no property data
+        Null = 0x00000001, // null property data
+        Sbyte = 0x00000002, // 8-bit signed int (sbyte)
+        Byte = 0x00000003, // 8-bit unsigned int (byte)
+        Int16 = 0x00000004, // 16-bit signed int (short)
+        Uint16 = 0x00000005, // 16-bit unsigned int (ushort)
+        Int32 = 0x00000006, // 32-bit signed int (long)
+        Uint32 = 0x00000007, // 32-bit unsigned int (ulong)
+        Int64 = 0x00000008, // 64-bit signed int (long64)
+        Uint64 = 0x00000009, // 64-bit unsigned int (ulong64)
+        Float = 0x0000000a, // 32-bit floating-point (float)
+        Double = 0x0000000b, // 64-bit floating-point (double)
+        Decimal = 0x0000000c, // 128-bit data (decimal)
+        Guid = 0x0000000d, // 128-bit unique identifier (guid)
+        Currency = 0x0000000e, // 64 bit signed int currency value (currency)
+        Date = 0x0000000f, // date (date)
+        FileTime = 0x00000010, // file time (filetime)
+        Boolean = 0x00000011, // 8-bit boolean (devprop_boolean)
+        String = 0x00000012, // null-terminated string
+        StringList = (String | TYPEMOD_LIST), // multi-sz string list
+        SecurityDescriptor = 0x00000013, // self-relative binary security_descriptor
+        SecurityDescriptorString = 0x00000014, // security descriptor string (sddl format)
+        Devpropkey = 0x00000015, // device property key (devpropkey)
+        Devproptype = 0x00000016, // device property type (devproptype)
+        Binary = (Byte | TYPEMOD_ARRAY), // custom binary data
+        Error = 0x00000017, // 32-bit win32 system error code
+        Ntstatus = 0x00000018, // 32-bit ntstatus code
+        StringIndirect = 0x00000019, // string resource (@[path\]<dllname>,-<strid>)
     }
 
     /// <summary>
@@ -198,9 +214,68 @@ namespace Rapr.Utils
         internal static readonly DevPropKey DEVPKEY_Device_SafeRemovalRequired =      new DevPropKey(0xafd97640,  0x86a3, 0x4210, 0xb6, 0x7c, 0x28, 0x9c, 0x41, 0xaa, 0xbe, 0x55, 2);    // DEVPROP_TYPE_BOOLEAN
         internal static readonly DevPropKey DEVPKEY_Device_SafeRemovalRequiredOverride =   new DevPropKey(0xafd97640,  0x86a3, 0x4210, 0xb6, 0x7c, 0x28, 0x9c, 0x41, 0xaa, 0xbe, 0x55, 3); // DEVPROP_TYPE_BOOLEAN
 
-        internal static T ConvertPropToType<T>(IntPtr propertyBufferPtr, DevPropType propertyType)
+        //                                                                            
+        // Device setup class properties                                              
+        //                                                                            
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_Name = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 2);      // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_ClassName = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 3);      // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_Icon = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 4);      // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_ClassInstaller = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 5);      // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_PropPageProvider = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 6);      // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_NoInstallClass = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 7);      // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_NoDisplayClass = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 8);      // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_SilentInstall = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 9);      // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_NoUseClass = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 10);     // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_DefaultService = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 11);     // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_IconPath = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 12);     // DEVPROP_TYPE_STRING_LIST
+
+        //
+        // Driver database - driver package properties
+        //
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_DriverInfName =           new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 2);    // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_OriginalInfName =         new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 3);    // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_SourceMediaPath =         new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 4);    // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_Inbox =                   new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 5);    // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_Published =               new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 6);    // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_SignerName =              new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 7);    // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_SignerScore =             new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 8);    // DEVPROP_TYPE_UINT32
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_F6 =                      new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 9);    // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ProcessorArchitecture =   new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 10);   // DEVPROP_TYPE_UINT16
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_Locale =                  new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 11);   // DEVPROP_TYPE_UINT32
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ProviderName =            new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 12);   // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ClassGuid =               new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 13);   // DEVPROP_TYPE_GUID
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_DriverDate =              new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 14);   // DEVPROP_TYPE_FILETIME
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_DriverVersion =           new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 15);   // DEVPROP_TYPE_UINT64
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_BootCritical =            new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 16);   // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ConfigurableFlags =       new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 17);   // DEVPROP_TYPE_UINT32
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_Configurable =            new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 18);   // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ConfigurableOverride =    new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 19);   // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ExtensionId =             new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 20);   // DEVPROP_TYPE_GUID
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_StatusFlags =             new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 21);   // DEVPROP_TYPE_UINT32
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_LockLevel =               new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 22);   // DEVPROP_TYPE_UINT32
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ProductName =             new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 23);   // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_TargetComputerIds =       new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 24);   // DEVPROP_TYPE_STRING_LIST
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_SystemCritical =          new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 25);   // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ImportDate =              new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 26);   // DEVPROP_TYPE_FILETIME
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ClassVersion =            new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 27);   // DEVPROP_TYPE_UINT32
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_NeedsReconfig =           new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 28);   // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_Configurations =          new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 29);   // DEVPROP_TYPE_STRING_LIST
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ConfigurationScopes =     new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 30);   // DEVPROP_TYPE_STRING_LIST
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_RelatedDriverPackages =   new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 31);   // DEVPROP_TYPE_STRING_LIST
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_DriverPackageId =         new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 32);   // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_FamilyId =                new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 33);   // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_ExtensionContractIds =    new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 34);   // DEVPROP_TYPE_GUID | DEVPROP_TYPEMOD_ARRAY
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_FileSize =                new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 35);   // DEVPROP_TYPE_UINT64
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_EffectiveFileSize =       new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 36);   // DEVPROP_TYPE_UINT64
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_CatalogFile =             new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 37);   // DEVPROP_TYPE_STRING
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_Integrated =              new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 38);   // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_PrimitiveFlags =          new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 39);   // DEVPROP_TYPE_UINT32
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_Primitive =               new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 40);   // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DriverPackage_Invalidated =             new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 41);   // DEVPROP_TYPE_BOOLEAN
+
+       internal static T ConvertPropToType<T>(IntPtr propertyBufferPtr, DevPropType propertyType)
         {
-            if (propertyType == DevPropType.String && typeof(T) == typeof(string))
+            if ((propertyType == DevPropType.String || propertyType == DevPropType.StringIndirect) && typeof(T) == typeof(string))
             {
                 return (T)(object)Marshal.PtrToStringUni(propertyBufferPtr);
             }
@@ -216,6 +291,19 @@ namespace Rapr.Utils
             {
                 return (T)(object)(ulong)Marshal.ReadInt64(propertyBufferPtr);
             }
+            else if (propertyType == DevPropType.Uint64 && typeof(T) == typeof(Version))
+            {
+                ulong driverVersion = (ulong)Marshal.ReadInt64(propertyBufferPtr);
+                return (T)(object)new Version(
+                    (int)((driverVersion >> 48) & 0xFFFF),
+                    (int)((driverVersion >> 32) & 0xFFFF),
+                    (int)((driverVersion >> 16) & 0xFFFF),
+                    (int)((driverVersion >> 0) & 0xFFFF));
+            }
+            else if (propertyType == DevPropType.String && typeof(T) == typeof(Version))
+            {
+                return (T)(object)Version.Parse(Marshal.PtrToStringUni(propertyBufferPtr));
+            }
             else if (propertyType == DevPropType.Uint32 && typeof(T) == typeof(uint))
             {
                 return (T)(object)(uint)Marshal.ReadInt32(propertyBufferPtr);
@@ -227,6 +315,25 @@ namespace Rapr.Utils
             else if (propertyType == DevPropType.Boolean && (typeof(T) == typeof(bool) || typeof(T) == typeof(bool?)))
             {
                 return (T)(object)(Marshal.ReadByte(propertyBufferPtr) != 0);
+            }
+            else if (propertyType == DevPropType.StringList && typeof(T) == typeof(IList<string>))
+            {
+                IntPtr curStringPos = propertyBufferPtr;
+                List<string> strings = new List<string>();
+
+                while (true)
+                {
+                    string curStr = Marshal.PtrToStringUni(curStringPos);
+                    if (string.IsNullOrEmpty(curStr))
+                    {
+                        break;
+                    }
+
+                    strings.Add(curStr);
+                    curStringPos = new IntPtr(curStringPos.ToInt64() + ((curStr.Length + 1) * sizeof(char)));
+                }
+
+                return (T)(object)strings;
             }
             else
             {
