@@ -50,7 +50,6 @@ namespace Rapr
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.gbOptions = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
@@ -255,11 +254,6 @@ namespace Rapr
             this.openFileDialog.Filter = global::Rapr.Lang.Language.Dialog_Open_Filters;
             this.openFileDialog.SupportMultiDottedExtensions = true;
             this.openFileDialog.Title = global::Rapr.Lang.Language.Dialog_Open_Filter_Text;
-            // 
-            // backgroundWorker1
-            // 
-            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.BackgroundWorker1_DoWork);
-            this.backgroundWorker1.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.BackgroundWorker1_RunWorkerCompleted);
             // 
             // gbOptions
             // 
@@ -549,7 +543,6 @@ namespace Rapr
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectAll;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;

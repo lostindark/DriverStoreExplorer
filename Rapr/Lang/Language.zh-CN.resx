@@ -393,4 +393,7 @@
   <data name="About_Download" xml:space="preserve">
     <value>下载</value>
   </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>正在扫描驱动存储...</value>
+  </data>
 </root>

@@ -68,7 +68,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("About_Download", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to (Found New Version v{0} - {1}).
         ///   {0} - Placeholder for version number
@@ -381,7 +381,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("DriverStore_Offline", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Contents saved to {0}. Export Completed..
         ///   {0} - Placeholder for export path
@@ -400,7 +400,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Export_Error", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Export failed: {0}.
         ///   {0} - Placeholder for 
@@ -536,7 +536,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Message_Delete", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to About to {0} {1} packages from driver store..
         ///   {0} - Placeholder for Message_Delete
@@ -547,7 +547,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Message_Delete_Multiple_Packages", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removed {0} ({1}) from driver store.
         ///   {0} - Placeholder for inf package file
@@ -558,7 +558,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Message_Delete_Package", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error removing {0} ({1}) from driver store {2}.
         ///   {0} - Placeholder for inf package file
@@ -570,7 +570,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Message_Delete_Package_Error", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Removed {0} packages from driver store.
         ///   {0} - Placeholder for number of packages
@@ -580,7 +580,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Message_Delete_Packages", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error removing some packages from driver store {0}.
         ///   {0} - Placeholder for Tip_Driver_In_Use
@@ -590,7 +590,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Message_Delete_Packages_Error", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Deletion of {0} ({1}) {2}..
         ///   {0} - Placeholder for inf package file
@@ -602,7 +602,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Message_Delete_Result", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to About to {0} {1} ({2}) from driver store..
         ///   {0} - Placeholder for Message_Delete
@@ -623,7 +623,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Message_Detailed_Log", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Added {0} the package {1} to driver store.
         ///   {0} - Placeholder for 
@@ -634,7 +634,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Message_Driver_Added", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Error adding {0} the package {1} to driver store.
         ///   {0} - Placeholder for 
@@ -719,6 +719,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Scanning driver store....
+        /// </summary>
+        public static string Message_Scanning_Driver_Store {
+            get {
+                return ResourceManager.GetString("Message_Scanning_Driver_Store", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Select a driver entry first.
         /// </summary>
         public static string Message_Select_Driver_Entry {
@@ -762,7 +771,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Operations_Text", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to About {0}.
         ///   {0} - Placeholder for Product_Name
@@ -772,7 +781,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Product_About_Title", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Driver Store Explorer v{0}.
         ///   {0} - Placeholder for installed version number
@@ -845,7 +854,7 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Status_Running_ReadOnly", resourceCulture);
             }
         }
-        
+
         /// <summary>
         ///   Looks up a localized string similar to Selected {0} Driver(s). Total size: {1}..
         ///   {0} - Placeholder for number of selected Drivers

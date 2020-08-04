@@ -2,208 +2,22 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
 using System.Linq;
 using System.Reflection;
 using System.Security;
 using System.Security.Principal;
-using System.Text;
 using System.Windows.Forms;
 
 using Microsoft.Win32;
 
-using Rapr.Lang;
-using Rapr.Utils;
-
 namespace Rapr
 {
-    public partial class DSEForm
+    public static class DSEFormHelper
     {
         private const string AppCompatRegistry = @"Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers";
         private const string RunAsAdminRegistryValue = "RUNASADMIN";
-        private static readonly bool isRunAsAdministrator = IsRunAsAdministrator();
 
-        public enum OperationCode
-        {
-            EnumerateStore,
-            AddDriver,
-            AddInstallDriver,
-            DeleteDriver,
-            ForceDeleteDriver,
-            Dummy,
-        };
-
-        public enum Status
-        {
-            Success,
-            Error,
-            Warning,
-            Normal,
-        }
-
-        private class OperationContext
-        {
-
-            public OperationCode Code { get; set; }
-
-            public string InfPath // Addition => Full path of the INF file, Others => INF filename in driverstore
-            {
-                get;
-                set;
-            }
-
-            public object ResultData { get; set; }
-
-            public bool ResultStatus { get; set; }
-
-            public List<DriverStoreEntry> DriverStoreEntries { get; set; }
-        };
-
-        private static void CleanupContext(OperationContext context)
-        {
-            context.Code = OperationCode.Dummy;
-            context.InfPath = "";
-            context.ResultStatus = false;
-            context.ResultData = null;
-            context.DriverStoreEntries = null;
-        }
-
-        private void InProgress()
-        {
-            MessageBox.Show(this, Language.Message_Operation_In_Progress, Language.Message_Title_Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-        }
-
-        private void PopulateUIWithDriverStoreEntries(bool updateStatus = false)
-        {
-            if (!this.backgroundWorker1.IsBusy)
-            {
-                CleanupContext(this.context);
-                this.lstDriverStoreEntries.ClearObjects();
-                this.context.Code = OperationCode.EnumerateStore;
-                this.backgroundWorker1.RunWorkerAsync(this.context);
-
-                if (updateStatus)
-                {
-                    this.ShowStatus(Language.Status_Label);
-                }
-            }
-            else
-            {
-                this.InProgress();
-            }
-        }
-
-        private void AddDriverPackage(string infName)
-        {
-            if (!this.backgroundWorker1.IsBusy)
-            {
-                CleanupContext(this.context);
-                this.context.Code = this.cbAddInstall.Checked ? OperationCode.AddInstallDriver : OperationCode.AddDriver;
-                this.context.InfPath = infName;
-
-                this.backgroundWorker1.RunWorkerAsync(this.context);
-
-                this.ShowStatus(Language.Status_Adding_Package);
-            }
-            else
-            {
-                this.InProgress();
-            }
-        }
-
-        private void DeleteDriverPackages(List<DriverStoreEntry> ldse)
-        {
-            if (!this.backgroundWorker1.IsBusy)
-            {
-                CleanupContext(this.context);
-                this.context.Code = this.cbForceDeletion.Checked ? OperationCode.ForceDeleteDriver : OperationCode.DeleteDriver;
-                this.context.DriverStoreEntries = ldse;
-
-                StringBuilder details = new StringBuilder();
-
-                foreach (DriverStoreEntry item in ldse)
-                {
-                    details.AppendLine($"{item.DriverPublishedName} - {item.DriverInfName}");
-                }
-
-                this.backgroundWorker1.RunWorkerAsync(this.context);
-                this.ShowStatus(
-                    Status.Normal,
-                    Language.Status_Deleting_Packages,
-                    $"{Language.Status_Deleting_Packages}{Environment.NewLine}{details.ToString().Trim()}");
-            }
-            else
-            {
-                this.InProgress();
-            }
-        }
-
-        private void ShowOperationInProgress(bool state)
-        {
-            this.toolStripProgressBar1.Visible = state;
-        }
-
-        private void ShowStatus(string text)
-        {
-            this.ShowStatus(Status.Normal, text);
-        }
-
-        private void ShowStatus(Status status, string text, string detail = null, bool usePopup = false)
-        {
-            this.lblStatus.Text = text.Replace("\r\n", "\n").Replace("\n", " ");
-            string detailToLog = string.IsNullOrEmpty(detail) ? text : detail;
-
-            switch (status)
-            {
-                case Status.Error:
-                    this.lblStatus.BackColor = Color.FromArgb(0xFF, 0x00, 0x33);
-                    this.lblStatus.ForeColor = Color.White;
-                    Trace.TraceError(detailToLog);
-
-                    if (usePopup)
-                    {
-                        MessageBox.Show(this, text, Language.Message_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                    break;
-
-                case Status.Success:
-                    this.lblStatus.BackColor = Color.LightGreen;
-                    this.lblStatus.ForeColor = Color.Black;
-                    Trace.TraceInformation(detailToLog);
-
-                    if (usePopup)
-                    {
-                        MessageBox.Show(this, text, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-                    break;
-
-                case Status.Warning:
-                    this.lblStatus.BackColor = Color.Yellow;
-                    this.lblStatus.ForeColor = Color.Black;
-                    Trace.TraceWarning(detailToLog);
-
-                    if (usePopup)
-                    {
-                        MessageBox.Show(this, text, Language.Message_Title_Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-
-                    break;
-
-                case Status.Normal:
-                    this.lblStatus.BackColor = this.savedBackColor;
-                    this.lblStatus.ForeColor = this.savedForeColor;
-                    Trace.TraceInformation(detailToLog);
-
-                    if (usePopup)
-                    {
-                        MessageBox.Show(this, text, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-
-                    break;
-            }
-        }
+        public static bool IsRunAsAdmin { get; } = IsRunAsAdministrator();
 
         private static bool IsRunAsAdministrator()
         {

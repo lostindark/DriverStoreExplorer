@@ -92,9 +92,7 @@
     <Compile Include="DSEForm.Designer.cs">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DSEFormHelper.cs">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="DSEFormHelper.cs" />
     <Compile Include="GlobalSuppressions.cs" />
     <Compile Include="HttpClientExtensions.cs" />
     <Compile Include="IExport.cs" />
