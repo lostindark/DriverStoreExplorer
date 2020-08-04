@@ -1,6 +1,6 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
+	<!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,235 +59,235 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-    <xsd:element name="root" msdata:IsDataSet="true">
-      <xsd:complexType>
-        <xsd:choice maxOccurs="unbounded">
-          <xsd:element name="metadata">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" />
-              </xsd:sequence>
-              <xsd:attribute name="name" use="required" type="xsd:string" />
-              <xsd:attribute name="type" type="xsd:string" />
-              <xsd:attribute name="mimetype" type="xsd:string" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="assembly">
-            <xsd:complexType>
-              <xsd:attribute name="alias" type="xsd:string" />
-              <xsd:attribute name="name" type="xsd:string" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="data">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-              <xsd:attribute ref="xml:space" />
-            </xsd:complexType>
-          </xsd:element>
-          <xsd:element name="resheader">
-            <xsd:complexType>
-              <xsd:sequence>
-                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-              </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" use="required" />
-            </xsd:complexType>
-          </xsd:element>
-        </xsd:choice>
-      </xsd:complexType>
-    </xsd:element>
-  </xsd:schema>
-  <resheader name="resmimetype">
-    <value>text/microsoft-resx</value>
-  </resheader>
-  <resheader name="version">
-    <value>2.0</value>
-  </resheader>
-  <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader>
-  <data name="Button_Add_Package" xml:space="preserve">
+	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+		<xsd:element name="root" msdata:IsDataSet="true">
+			<xsd:complexType>
+				<xsd:choice maxOccurs="unbounded">
+					<xsd:element name="metadata">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" />
+							</xsd:sequence>
+							<xsd:attribute name="name" use="required" type="xsd:string" />
+							<xsd:attribute name="type" type="xsd:string" />
+							<xsd:attribute name="mimetype" type="xsd:string" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="assembly">
+						<xsd:complexType>
+							<xsd:attribute name="alias" type="xsd:string" />
+							<xsd:attribute name="name" type="xsd:string" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="data">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+							<xsd:attribute ref="xml:space" />
+						</xsd:complexType>
+					</xsd:element>
+					<xsd:element name="resheader">
+						<xsd:complexType>
+							<xsd:sequence>
+								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+							</xsd:sequence>
+							<xsd:attribute name="name" type="xsd:string" use="required" />
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:choice>
+			</xsd:complexType>
+		</xsd:element>
+	</xsd:schema>
+	<resheader name="resmimetype">
+		<value>text/microsoft-resx</value>
+	</resheader>
+	<resheader name="version">
+		<value>2.0</value>
+	</resheader>
+	<resheader name="reader">
+		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<resheader name="writer">
+		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+	</resheader>
+	<data name="Button_Add_Package" xml:space="preserve">
     <value>Aggiungi driver</value>
   </data>
-  <data name="Button_Delete_Package" xml:space="preserve">
+	<data name="Button_Delete_Package" xml:space="preserve">
     <value>Elimina driver</value>
   </data>
-  <data name="Button_OK" xml:space="preserve">
+	<data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
   </data>
-  <data name="Button_Refresh" xml:space="preserve">
+	<data name="Button_Refresh" xml:space="preserve">
     <value>Aggiorna</value>
   </data>
-  <data name="Button_Select_Old" xml:space="preserve">
+	<data name="Button_Select_Old" xml:space="preserve">
     <value>Seleziona driver obsoleti</value>
   </data>
-  <data name="Check_Force_Delete" xml:space="preserve">
+	<data name="Check_Force_Delete" xml:space="preserve">
     <value>Forza eliminazione</value>
   </data>
-  <data name="Check_Install_Driver" xml:space="preserve">
+	<data name="Check_Install_Driver" xml:space="preserve">
     <value>Installa driver</value>
   </data>
-  <data name="Column_Date" xml:space="preserve">
+	<data name="Column_Date" xml:space="preserve">
     <value>Data driver</value>
   </data>
-  <data name="Column_Driver_Class" xml:space="preserve">
+	<data name="Column_Driver_Class" xml:space="preserve">
     <value>Tipo driver</value>
   </data>
-  <data name="Column_Inf" xml:space="preserve">
+	<data name="Column_Inf" xml:space="preserve">
     <value>INF</value>
   </data>
-  <data name="Column_Oem_Inf" xml:space="preserve">
+	<data name="Column_Oem_Inf" xml:space="preserve">
     <value>INF OEM</value>
   </data>
-  <data name="Column_Provider" xml:space="preserve">
+	<data name="Column_Provider" xml:space="preserve">
     <value>Fornitore</value>
   </data>
-  <data name="Column_Signed_By" xml:space="preserve">
+	<data name="Column_Signed_By" xml:space="preserve">
     <value>Firmato da</value>
   </data>
-  <data name="Column_Size" xml:space="preserve">
+	<data name="Column_Size" xml:space="preserve">
     <value>Dimensione</value>
   </data>
-  <data name="Column_Version" xml:space="preserve">
+	<data name="Column_Version" xml:space="preserve">
     <value>Versione driver</value>
   </data>
-  <data name="Context_Delete" xml:space="preserve">
+	<data name="Context_Delete" xml:space="preserve">
     <value>Elimina</value>
   </data>
-  <data name="Context_Deselect" xml:space="preserve">
+	<data name="Context_Deselect" xml:space="preserve">
     <value>Deseleziona</value>
   </data>
-  <data name="Context_Deselect_All" xml:space="preserve">
+	<data name="Context_Deselect_All" xml:space="preserve">
     <value>Deseleziona tutto</value>
   </data>
-  <data name="Context_Select" xml:space="preserve">
+	<data name="Context_Select" xml:space="preserve">
     <value>Selezione</value>
   </data>
-  <data name="Context_Select_All" xml:space="preserve">
+	<data name="Context_Select_All" xml:space="preserve">
     <value>Seleziona tutto</value>
   </data>
-  <data name="Context_Select_Old" xml:space="preserve">
+	<data name="Context_Select_Old" xml:space="preserve">
     <value>Seleziona driver obsoleti</value>
   </data>
-  <data name="Group_DriverStore" xml:space="preserve">
+	<data name="Group_DriverStore" xml:space="preserve">
     <value>DriverStore</value>
   </data>
-  <data name="Label_RunAsAdmin" xml:space="preserve">
+	<data name="Label_RunAsAdmin" xml:space="preserve">
     <value>Avvia in modalità non amministratore. Alcune funzionalità saranno disattivate.</value>
   </data>
-  <data name="Message_Delete" xml:space="preserve">
+	<data name="Message_Delete" xml:space="preserve">
     <value>Elimina</value>
   </data>
-  <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
+	<data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Eliminazione di {1} driver dall'archivio dei driver.</value>
   </data>
-  <data name="Message_Delete_Result" xml:space="preserve">
+	<data name="Message_Delete_Result" xml:space="preserve">
     <value>Eliminazione da  '{0}' di '('{1}') '{2}'.</value>
   </data>
-  <data name="Message_Delete_Single_Package" xml:space="preserve">
+	<data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>Eliminazione di '{1}'' ('{2}') dall'archivio dei driver.</value>
   </data>
-  <data name="Message_Failed" xml:space="preserve">
+	<data name="Message_Failed" xml:space="preserve">
     <value>Operazione fallita</value>
   </data>
-  <data name="Message_Force_Delete" xml:space="preserve">
+	<data name="Message_Force_Delete" xml:space="preserve">
     <value>Forza eliminazione</value>
   </data>
-  <data name="Message_Requires_Later_OS" xml:space="preserve">
+	<data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Questo programma può essere eseguito solo in Windows Vista o versioni successive.</value>
   </data>
-  <data name="Message_Select_Driver_Entry" xml:space="preserve">
+	<data name="Message_Select_Driver_Entry" xml:space="preserve">
     <value>Prima seleziona un driver</value>
   </data>
-  <data name="Message_Success" xml:space="preserve">
+	<data name="Message_Success" xml:space="preserve">
     <value>Operazione completat</value>
   </data>
-  <data name="Message_Sure" xml:space="preserve">
+	<data name="Message_Sure" xml:space="preserve">
     <value>
 Sei sicuro di voler procedere?</value>
   </data>
-  <data name="Message_Title_Warning" xml:space="preserve">
+	<data name="Message_Title_Warning" xml:space="preserve">
     <value>Attenzione</value>
   </data>
-  <data name="Operations_Text" xml:space="preserve">
+	<data name="Operations_Text" xml:space="preserve">
     <value>Operazioni</value>
   </data>
-  <data name="Product_Name" xml:space="preserve">
+	<data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
-  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
+	<data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
     <value>[Modalità sola lettura]</value>
   </data>
-  <data name="Status_Label" xml:space="preserve">
+	<data name="Status_Label" xml:space="preserve">
     <value>Pronto</value>
   </data>
-  <data name="Status_Running_ReadOnly" xml:space="preserve">
+	<data name="Status_Running_ReadOnly" xml:space="preserve">
     <value>Esecuzione in modalità sola lettura</value>
   </data>
-  <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>Suggerimkento: il driver sembra essere ancora in uso. 
+	<data name="Tip_Driver_In_Use" xml:space="preserve">
+    <value>Suggerimento: il driver sembra essere ancora in uso. 
 Prova a forzare l'eliminazione del pacchetto driver.</value>
   </data>
-  <data name="Title_About" xml:space="preserve">
+	<data name="Title_About" xml:space="preserve">
     <value>Info programma</value>
   </data>
-  <data name="Menu_Help" xml:space="preserve">
+	<data name="Menu_Help" xml:space="preserve">
     <value>Aiuto</value>
   </data>
-  <data name="Menu_Help_About" xml:space="preserve">
+	<data name="Menu_Help_About" xml:space="preserve">
     <value>Info programma</value>
   </data>
-  <data name="Menu_File" xml:space="preserve">
+	<data name="Menu_File" xml:space="preserve">
     <value>File</value>
   </data>
-  <data name="Menu_File_Export" xml:space="preserve">
+	<data name="Menu_File_Export" xml:space="preserve">
     <value>Esporta</value>
   </data>
-  <data name="Menu_File_Exit" xml:space="preserve">
+	<data name="Menu_File_Exit" xml:space="preserve">
     <value>Esci</value>
   </data>
-  <data name="Menu_Options" xml:space="preserve">
+	<data name="Menu_Options" xml:space="preserve">
     <value>Opzioni</value>
   </data>
-  <data name="Menu_File_View_Logs" xml:space="preserve">
+	<data name="Menu_File_View_Logs" xml:space="preserve">
     <value>Visualizza registri attività</value>
   </data>
-  <data name="Date_Format" xml:space="preserve">
+	<data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
   </data>
-  <data name="Message_No_Entries" xml:space="preserve">
+	<data name="Message_No_Entries" xml:space="preserve">
     <value>Aggiornamento elenco driver....</value>
   </data>
-  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
+	<data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>Seleziona file INF</value>
   </data>
-  <data name="Dialog_Open_Filters" xml:space="preserve">
+	<data name="Dialog_Open_Filters" xml:space="preserve">
     <value>File INF | *.inf</value>
   </data>
-  <data name="Product_Credits" xml:space="preserve">
+	<data name="Product_Credits" xml:space="preserve">
     <value>Driver Store Explorer v. {0}</value>
   </data>
-  <data name="Product_About_Title" xml:space="preserve">
+	<data name="Product_About_Title" xml:space="preserve">
     <value>Informazioni su {0}</value>
   </data>
-  <data name="Export_Error" xml:space="preserve">
+	<data name="Export_Error" xml:space="preserve">
     <value>Errore</value>
   </data>
-  <data name="Dialog_Export_Filters" xml:space="preserve">
+	<data name="Dialog_Export_Filters" xml:space="preserve">
     <value>File CSV | *.csv</value>
   </data>
-  <data name="About_Project_Description" xml:space="preserve">
+	<data name="About_Project_Description" xml:space="preserve">
     <value>Puoi trovare la versione aggiornata e le note di rilascio nel sito:
 
     https://github.com/lostindark/DriverStoreExplorer/releases
@@ -307,97 +307,97 @@ Ringraziamenti:
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
 </value>
   </data>
-  <data name="UnitTest_Language" xml:space="preserve">
+	<data name="UnitTest_Language" xml:space="preserve">
     <value>Italiano</value>
   </data>
-  <data name="Dialog_Export_Filters" xml:space="preserve">
+	<data name="Dialog_Export_Filters" xml:space="preserve">
     <value>File CSV | *.csv</value>
   </data>
-  <data name="Message_Operation_In_Progress" xml:space="preserve">
+	<data name="Message_Operation_In_Progress" xml:space="preserve">
     <value>È già in corso un'altra operazione</value>
   </data>
-  <data name="Status_Adding_Package" xml:space="preserve">
+	<data name="Status_Adding_Package" xml:space="preserve">
     <value>Aggiunta driver...</value>
   </data>
-  <data name="Status_Deleting_Packages" xml:space="preserve">
+	<data name="Status_Deleting_Packages" xml:space="preserve">
     <value>Eliminazione driver ...</value>
   </data>
-  <data name="Message_Detailed_Log" xml:space="preserve">
+	<data name="Message_Detailed_Log" xml:space="preserve">
     <value>Registro dettagliato errori</value>
   </data>
-  <data name="Message_Delete_Package" xml:space="preserve">
+	<data name="Message_Delete_Package" xml:space="preserve">
     <value>Eliminazione di {0} ({1}) dall'archivio driver</value>
   </data>
-  <data name="Message_Delete_Packages" xml:space="preserve">
+	<data name="Message_Delete_Packages" xml:space="preserve">
     <value>{0} driver eliminati dall'archivio driver</value>
   </data>
-  <data name="Message_Delete_Package_Error" xml:space="preserve">
+	<data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Errore durante la rimozione di {0} ({1}) dall'archivio driver {2}</value>
   </data>
-  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+	<data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>Errore durante l'eliminazione di alcuni driver dall'archivio driver {0}</value>
   </data>
-  <data name="Message_Driver_Added" xml:space="preserve">
+	<data name="Message_Driver_Added" xml:space="preserve">
     <value>Aggiunto {0} il driver {1} all'archivio driver</value>
   </data>
-  <data name="Message_Driver_Added_Error" xml:space="preserve">
+	<data name="Message_Driver_Added_Error" xml:space="preserve">
     <value>Errore nell'aggiunta del driver {0} {1} all'archivio driver.</value>
   </data>
-  <data name="Message_Driver_And_Installed" xml:space="preserve">
+	<data name="Message_Driver_And_Installed" xml:space="preserve">
     <value> &amp; installato</value>
   </data>
-  <data name="Message_Log_File_NotFound" xml:space="preserve">
-    <value>Non è stato trovato il file di registro.</value>
+	<data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>Non è stato trovato il file registro eventi.</value>
   </data>
-  <data name="Message_Error" xml:space="preserve">
+	<data name="Message_Error" xml:space="preserve">
     <value>Errore</value>
   </data>
-  <data name="Export_Complete" xml:space="preserve">
+	<data name="Export_Complete" xml:space="preserve">
     <value>Contenuto salvato in {0}. Esportazione completata.</value>
   </data>
-  <data name="Export_Failed" xml:space="preserve">
+	<data name="Export_Failed" xml:space="preserve">
     <value>Esportazione fallita: {0}</value>
   </data>
-  <data name="Status_Selected_Drivers" xml:space="preserve">
+	<data name="Status_Selected_Drivers" xml:space="preserve">
     <value>{0} driver selezionati. Errori totali: {1}.</value>
   </data>
-  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+	<data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Nessun driver selezionato.</value>
   </data>
-  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
+	<data name="Menu_File_RunAs_Admin" xml:space="preserve">
     <value>Esegui in modalità amministratore</value>
   </data>
-  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
+	<data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
     <value>Esegui sempre in modalità amministratore</value>
   </data>
-  <data name="Context_Open_Folder" xml:space="preserve">
+	<data name="Context_Open_Folder" xml:space="preserve">
     <value>Apri percorso cartella</value>
   </data>
-  <data name="DriverStore_LocalMachine" xml:space="preserve">
+	<data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Computer locale</value>
   </data>
-  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+	<data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
     <value>Seleziona locazione Driver Store</value>
   </data>
-  <data name="DriverStore_Offline" xml:space="preserve">
+	<data name="DriverStore_Offline" xml:space="preserve">
     <value>Driver Store Offline</value>
   </data>
-  <data name="ChooseDriverStore_Title" xml:space="preserve">
+	<data name="ChooseDriverStore_Title" xml:space="preserve">
     <value>Seleziona sorgente Driver Store</value>
   </data>
-  <data name="Menu_Language" xml:space="preserve">
+	<data name="Menu_Language" xml:space="preserve">
     <value>Lingua</value>
   </data>
-  <data name="Column_DeviceName" xml:space="preserve">
+	<data name="Column_DeviceName" xml:space="preserve">
     <value>Nome dispositivo</value>
   </data>
-  <data name="About_VersionUpToDate" xml:space="preserve">
+	<data name="About_VersionUpToDate" xml:space="preserve">
     <value>(aggiornato)</value>
   </data>
-  <data name="About_FoundNewVersion" xml:space="preserve">
+	<data name="About_FoundNewVersion" xml:space="preserve">
     <value>(Disponibile nuova versione v. {0} - {1})</value>
   </data>
-  <data name="About_Download" xml:space="preserve">
+	<data name="About_Download" xml:space="preserve">
     <value>Download</value>
   </data>
 </root>
