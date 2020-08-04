@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
 	<!-- 
     Microsoft ResX Schema 
@@ -400,4 +400,7 @@ Ringraziamenti:
 	<data name="About_Download" xml:space="preserve">
     <value>Download</value>
   </data>
+	<data name="Message_Scanning_Driver_Store" xml:space="preserve">
+		<value>Scansione store driver...</value>
+	</data>
 </root>
