@@ -392,7 +392,7 @@ namespace Rapr
                     Language.Status_Deleting_Packages,
                     $"{Language.Status_Deleting_Packages}{Environment.NewLine}{details.ToString().Trim()}");
 
-                (bool totalResult, string detailResult, List<DriverStoreEntry> allDriverStoreEntries) = await Task.Run(() =>
+                (bool allSucceeded, string detailResult, List<DriverStoreEntry> allDriverStoreEntries) = await Task.Run(() =>
                 {
                     bool totalResult = true;
                     StringBuilder sb = new StringBuilder();
@@ -405,28 +405,28 @@ namespace Rapr
                     {
                         foreach (DriverStoreEntry entry in driverStoreEntries)
                         {
-                            bool result = this.driverStore.DeleteDriver(entry, force);
+                            bool succeeded = this.driverStore.DeleteDriver(entry, force);
                             string resultTxt = string.Format(
                                 Language.Message_Delete_Result,
                                 entry.DriverInfName,
                                 entry.DriverPublishedName,
-                                result ? Language.Message_Success : Language.Message_Failed);
+                                succeeded ? Language.Message_Success : Language.Message_Failed);
 
                             Trace.TraceInformation(resultTxt);
 
                             sb.AppendLine(resultTxt);
-                            totalResult &= result;
+                            totalResult &= succeeded;
                         }
                     }
 
-                    var allDriverStoreEntries = totalResult
+                    var updatedDriverStoreEntries = totalResult
                         ? new List<DriverStoreEntry>()
                         : this.driverStore.EnumeratePackages();
 
-                    return (totalResult, sb.ToString(), allDriverStoreEntries);
+                    return (totalResult, sb.ToString(), updatedDriverStoreEntries);
                 }).ConfigureAwait(true);
 
-                if (totalResult)
+                if (allSucceeded)
                 {
                     this.lstDriverStoreEntries.RemoveObjects(driverStoreEntries);
                 }
@@ -437,7 +437,7 @@ namespace Rapr
                 }
 
                 string resultText;
-                if (totalResult)
+                if (allSucceeded)
                 {
                     if (driverStoreEntries.Count == 1)
                     {
