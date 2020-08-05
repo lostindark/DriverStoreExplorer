@@ -484,6 +484,7 @@ namespace Rapr
             // 
             this.deviceNameColumn.AspectName = "DeviceName";
             this.deviceNameColumn.Text = global::Rapr.Lang.Language.Column_DeviceName;
+            this.deviceNameColumn.UseInitialLetterForGroup = true;
             this.deviceNameColumn.Width = 170;
             // 
             // dummyColumn
