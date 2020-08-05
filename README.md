@@ -22,13 +22,14 @@ Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store]
 ![Screenshot of DriverStoreExplorer](https://github.com/lostindark/DriverStoreExplorer/raw/master/Screenshots/Screenshot.png "Screenshot of Driver Store Explorer")
 
 ### Requirements: 
-.NET Framework 4.5
+This tool requires:
+* .NET Framework 4.5 or newer
+* Windows 7 or newer
+
+To build the code yourself, open Rapr.sln in Visual Studio 2019. Visual Studio 2017 may also work but it is not guaranteed.
 
 ### Releases:
 Download the latest version here: https://github.com/lostindark/DriverStoreExplorer/releases/latest.
-
-### Tested Operating Systems:
-Windows 7 32 bit and Windows 10 64 bit
 
 ### History:
 The project was original hosted on https://driverstoreexplorer.codeplex.com/.
