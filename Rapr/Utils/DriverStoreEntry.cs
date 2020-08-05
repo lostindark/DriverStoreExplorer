@@ -152,28 +152,29 @@ namespace Rapr.Utils
         }
 
         // Returns the human-readable file size for an arbitrary, 64-bit file size 
-        // The default format is "0.### XB", e.g. "4.2 KB" or "1.434 GB"
+        // The default format is "0.### XB", e.g. "4 KB" or "1.4 GB"
         public static string GetBytesReadable(long i)
         {
             // Get absolute value
             long absolute_i = (i < 0 ? -i : i);
-            // Determine the suffix and readable value
-            string suffix;
+
+            // Determine the format of the readable value
+            string format;
             double readable;
 
             if (absolute_i >= 0x40000000) // Gigabyte
             {
-                suffix = "GB";
+                format = "0.0 \\GB";
                 readable = (i >> 20);
             }
             else if (absolute_i >= 0x100000) // Megabyte
             {
-                suffix = "MB";
+                format = "0 \\MB";
                 readable = (i >> 10);
             }
             else if (absolute_i >= 0x400) // Kilobyte
             {
-                suffix = "KB";
+                format = "0 \\KB";
                 readable = i;
             }
             else
@@ -185,7 +186,7 @@ namespace Rapr.Utils
             readable /= 1024;
 
             // Return formatted number with suffix
-            return readable.ToString("0 ") + suffix;
+            return readable.ToString(format);
         }
 
         private static readonly Dictionary<long, string> SizeRangeToName = new Dictionary<long, string>
