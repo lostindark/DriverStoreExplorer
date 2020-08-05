@@ -186,32 +186,20 @@
   <data name="Label_RunAsAdmin" xml:space="preserve">
     <value>Started without admin privileges. Some features are disabled.</value>
   </data>
-  <data name="Message_Delete" xml:space="preserve">
-    <value>delete</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>About to {0} {1} packages from driver store.</value>
-  </data>
-  <data name="Message_Delete_Result" xml:space="preserve">
-    <value>Deletion of {0} ({1}) {2}.</value>
+    <value>About to delete {0} packages from driver store.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>About to {0} {1} ({2}) from driver store.</value>
-  </data>
-  <data name="Message_Failed" xml:space="preserve">
-    <value>failed</value>
-  </data>
-  <data name="Message_Force_Delete" xml:space="preserve">
-    <value>force delete</value>
+    <value>About to delete {0} ({1}) from driver store.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>This utility cannot be run in pre-Vista OS</value>
+    <value>This utility cannot be run in pre-Vista OS.</value>
   </data>
   <data name="Message_Select_Driver_Entry" xml:space="preserve">
     <value>Select a driver entry first</value>
-  </data>
-  <data name="Message_Success" xml:space="preserve">
-    <value>succeeded</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Are you sure?</value>
@@ -275,9 +263,11 @@
   </data>
   <data name="Product_Credits" xml:space="preserve">
     <value>Driver Store Explorer v{0}</value>
+    <comment>{0} - Placeholder for installed version number</comment>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>About {0}</value>
+    <comment>{0} - Placeholder for Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>Error</value>
@@ -319,25 +309,31 @@ License:
     <value>Detailed Error Log</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Removed {0} ({1}) from driver store</value>
+    <value>Removed {0} ({1}) from driver store.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>Removed {0} packages from driver store</value>
+    <value>Removed {0} packages from driver store.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Error removing {0} ({1}) from driver store {2}</value>
+    <value>Error removing {0} ({1}) from driver store.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Error removing some packages from driver store {0}</value>
+    <value>Error removing some packages from driver store.</value>
+    
+    
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Added {0} the package {1} to driver store</value>
+    <value>Added the package {0} to driver store.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Error adding {0} the package {1} to driver store</value>
-  </data>
-  <data name="Message_Driver_And_Installed" xml:space="preserve">
-    <value> &amp; installed</value>
+    <value>Error adding {0} the package to driver store.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>The log file cannot be found.</value>
@@ -347,12 +343,16 @@ License:
   </data>
   <data name="Export_Complete" xml:space="preserve">
     <value>Contents saved to {0}. Export Completed.</value>
+    <comment>{0} - Placeholder for export path</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>Export failed: {0}</value>
+    <comment>{0} - Placeholder for error message</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>Selected {0} Driver(s). Total size: {1}.</value>
+    <comment>{0} - Placeholder for number of selected Drivers
+{1} - Placeholder for disk space</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>No drivers selected.</value>
@@ -389,11 +389,40 @@ License:
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(Found New Version v{0} - {1})</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for About_Download</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Download</value>
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>Scanning driver store...</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>About to force delete {0} ({1}) from driver store.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>About to force delete {0} packages from driver store.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>Deletion of {0} ({1}) succeeded.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>Deletion of {0} ({1}) failed.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>Added the package {0} &amp; installed to driver store.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>Error adding the package {0} &amp; installed to driver store.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
 </root>

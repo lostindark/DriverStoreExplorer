@@ -346,16 +346,14 @@ namespace Rapr
                 if (driverStoreEntries.Count == 1)
                 {
                     msgWarning = string.Format(
-                        Language.Message_Delete_Single_Package,
-                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete,
+                        this.cbForceDeletion.Checked ? Language.Message_ForceDelete_Single_Package : Language.Message_Delete_Single_Package,
                         driverStoreEntries[0].DriverInfName,
                         driverStoreEntries[0].DriverPublishedName);
                 }
                 else
                 {
                     msgWarning = string.Format(
-                        Language.Message_Delete_Multiple_Packages,
-                        this.cbForceDeletion.Checked ? Language.Message_Force_Delete : Language.Message_Delete,
+                        this.cbForceDeletion.Checked ? Language.Message_ForceDelete_Multiple_Packages : Language.Message_Delete_Multiple_Packages,
                         driverStoreEntries.Count);
                 }
 
@@ -407,10 +405,9 @@ namespace Rapr
                         {
                             bool succeeded = this.driverStore.DeleteDriver(entry, force);
                             string resultTxt = string.Format(
-                                Language.Message_Delete_Result,
+                                succeeded ? Language.Message_Delete_Success : Language.Message_Delete_Fail,
                                 entry.DriverInfName,
-                                entry.DriverPublishedName,
-                                succeeded ? Language.Message_Success : Language.Message_Failed);
+                                entry.DriverPublishedName);
 
                             Trace.TraceInformation(resultTxt);
 
@@ -457,10 +454,6 @@ namespace Rapr
                 }
                 else
                 {
-                    string driverDeleteTip = !force
-                        ? " " + Language.Tip_Driver_In_Use
-                        : string.Empty;
-
                     string fullResult = null;
 
                     if (driverStoreEntries.Count == 1)
@@ -468,12 +461,22 @@ namespace Rapr
                         resultText = string.Format(
                             Language.Message_Delete_Package_Error,
                             driverStoreEntries[0].DriverInfName,
-                            driverStoreEntries[0].DriverPublishedName,
-                            driverDeleteTip);
+                            driverStoreEntries[0].DriverPublishedName);
+
+                        if (!force)
+                        {
+                            resultText += Environment.NewLine + Language.Tip_Driver_In_Use;
+                        }
                     }
                     else
                     {
-                        resultText = string.Format(Language.Message_Delete_Packages_Error, driverDeleteTip);
+                        resultText = Language.Message_Delete_Packages_Error;
+
+                        if (!force)
+                        {
+                            resultText += Environment.NewLine + Language.Tip_Driver_In_Use;
+                        }
+
                         fullResult = $"{resultText}{Environment.NewLine}{detailResult}";
                     }
 
@@ -509,10 +512,7 @@ namespace Rapr
                     if (result)
                     {
                         var message = string.Format(
-                            Language.Message_Driver_Added,
-                            installDriver
-                                ? Language.Message_Driver_And_Installed
-                                : "",
+                            installDriver ? Language.Message_Driver_Added_Installed : Language.Message_Driver_Added,
                             infPath);
 
                         this.ShowStatus(Status.Success, message);
@@ -520,10 +520,7 @@ namespace Rapr
                     else
                     {
                         var message = string.Format(
-                            Language.Message_Driver_Added_Error,
-                            installDriver
-                                ? Language.Message_Driver_And_Installed
-                                : "",
+                            installDriver ? Language.Message_Driver_Added_Installed_Error : Language.Message_Driver_Added_Error,
                             infPath);
 
                         this.ShowStatus(Status.Error, message, usePopup: true);

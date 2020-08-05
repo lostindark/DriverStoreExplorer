@@ -192,32 +192,17 @@
   <data name="Label_RunAsAdmin" xml:space="preserve">
     <value>El software se ejecutó sin privilegios de administrador. Algunas características fueron deshabilitadas.</value>
   </data>
-  <data name="Message_Delete" xml:space="preserve">
-    <value>eliminar</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Se eliminarán {0} {1} paquetes del almacén de drivers</value>
-  </data>
-  <data name="Message_Delete_Result" xml:space="preserve">
-    <value>Se eliminará {0} ({1}) {2}.</value>
+    <value>Se eliminarán {0} paquetes del almacén de drivers.</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Se eliminará {0} {1} ({2}) del almacén de drivers</value>
-  </data>
-  <data name="Message_Failed" xml:space="preserve">
-    <value>fallo</value>
-  </data>
-  <data name="Message_Force_Delete" xml:space="preserve">
-    <value>Forzar eliminación</value>
+    <value>Se eliminará {0} ({1}) del almacén de drivers.</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Esta herramienta no puede ejecutarse en un sistema operativo "pre-Vista"</value>
+    <value>Esta herramienta no puede ejecutarse en un sistema operativo "pre-Vista".</value>
   </data>
   <data name="Message_Select_Driver_Entry" xml:space="preserve">
     <value>Primero seleccione un driver de la lista</value>
-  </data>
-  <data name="Message_Success" xml:space="preserve">
-    <value>éxito</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>¿Estás seguro?</value>
@@ -325,25 +310,22 @@ Licencia:
     <value>Registro detallado del error</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Eliminado {0} ({1}) del almacén de drivers</value>
+    <value>Eliminado {0} ({1}) del almacén de drivers.</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>Eliminados {0} paquetes del almacén de drivers</value>
+    <value>Eliminados {0} paquetes del almacén de drivers.</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Error al remover {0} ({1}) del almacén de drivers {2}</value>
+    <value>Error al remover {0} ({1}) del almacén de drivers.</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Error al remover algunos paquetes del almacén de drivers {0}</value>
+    <value>Error al remover algunos paquetes del almacén de drivers.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Agregado {0} al paquete {0} del almacén de drivers</value>
+    <value>Agregado {0} al paquete del almacén de drivers.</value>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Error al añadir {0} al paquete {1} del almacén de drivers</value>
-  </data>
-  <data name="Message_Driver_And_Installed" xml:space="preserve">
-    <value>&amp; instalado</value>
+    <value>Error al añadir {0} al paquete del almacén de drivers.</value>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>El archivo de registro no se ha encontrado.</value>
@@ -364,10 +346,10 @@ Licencia:
     <value>No se han seleccinado drivers.</value>
   </data>
   <data name="Menu_File_RunAs_Admin" xml:space="preserve">
-    <value>Ejecutar como administrador.</value>
+    <value>Ejecutar como administrador</value>
   </data>
   <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
-    <value>Ejecutar siempre como administrador.</value>
+    <value>Ejecutar siempre como administrador</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Abrir carpeta</value>
@@ -392,5 +374,23 @@ Licencia:
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(Versión actualizada)</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>Se forzar eliminará {0} ({1}) del almacén de drivers.</value>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>Se forzar eliminará {0} paquetes del almacén de drivers.</value>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>Se eliminará {0} ({1}) éxito.</value>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>Se eliminará {0} ({1}) fallo.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>Agregado {0} al paquete &amp; instalado del almacén de drivers.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>Error al añadir {0} al paquete&amp; instalado del almacén de drivers.</value>
   </data>
 </root>

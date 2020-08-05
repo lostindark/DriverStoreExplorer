@@ -186,32 +186,17 @@
   <data name="Label_RunAsAdmin" xml:space="preserve">
     <value>Ohne Administratorrechte gestartet. Einige Funktionen sind deaktiviert.</value>
   </data>
-  <data name="Message_Delete" xml:space="preserve">
-    <value>entfernen</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Sie sind im Begriff {1} Pakete aus dem Driver Store zu {0}.</value>
-  </data>
-  <data name="Message_Delete_Result" xml:space="preserve">
-    <value>Das Löschen von {0} ({1}) {2}.</value>
+    <value>Sie sind im Begriff {0} Pakete aus dem Driver Store zu entfernen.</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Sie sind im Begriff {1} ({2}) aus dem Driver Store zu {0}.</value>
-  </data>
-  <data name="Message_Failed" xml:space="preserve">
-    <value>ist fehlgeschlagen</value>
-  </data>
-  <data name="Message_Force_Delete" xml:space="preserve">
-    <value>Löschen erzwingen</value>
+    <value>Sie sind im Begriff {0} ({1}) aus dem Driver Store zu Löschen entfernen.</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Es ist mindestens Winodws Vista erforderlich!</value>
   </data>
   <data name="Message_Select_Driver_Entry" xml:space="preserve">
     <value>Es muss zunächst ein Treiber ausgewählt werden</value>
-  </data>
-  <data name="Message_Success" xml:space="preserve">
-    <value>war erfolgreich</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Sind Sie sicher?</value>
@@ -316,25 +301,22 @@ Danksagungen:
     <value>Ausführliches Fehlerprotokoll</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>{0} ({1}) wurde aus dem Driver Store gelöscht</value>
+    <value>{0} ({1}) wurde aus dem Driver Store gelöscht.</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>{0} Pakete wurden aus dem Driver Store gelöscht</value>
+    <value>{0} Pakete wurden aus dem Driver Store gelöscht.</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Fehler beim Löschen von {0} ({1}) aus dem Driver Store {2}</value>
+    <value>Fehler beim Löschen von {0} ({1}) aus dem Driver Store.</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Fehler beim Löschen einiger Treiberpakete {0}</value>
+    <value>Fehler beim Löschen einiger Treiberpakete.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Der Treiber {1} wurde {0} zum Driver Store hinzugefügt</value>
+    <value>Der Treiber wurde {0} zum Driver Store hinzugefügt.</value>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Fehler beim Hinzufügen {0} des Pakets {1} zum Driver Store</value>
-  </data>
-  <data name="Message_Driver_And_Installed" xml:space="preserve">
-    <value> &amp; installiert</value>
+    <value>Fehler beim Hinzufügen {0} des Pakets zum Driver Store.</value>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>Das Fehlerprotokoll wurde nicht gefunden.</value>
@@ -389,5 +371,23 @@ Danksagungen:
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Herunterladen</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>Sie sind im Begriff {0} ({1}) aus dem Driver Store zu Löschen erzwingen.</value>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>Sie sind im Begriff {0} Pakete aus dem Driver Store zu Löschen entfernen.</value>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>Das Löschen von {0} ({1}) war erfolgreich.</value>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>Das Löschen von {0} ({1}) ist fehlgeschlagen.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>Der Treiber {0} wurde &amp; installiert zum Driver Store hinzugefügt.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>Fehler beim Hinzufügen des Pakets {0} &amp; installiert zum Driver Store.</value>
   </data>
 </root>

@@ -186,32 +186,17 @@
   <data name="Label_RunAsAdmin" xml:space="preserve">
     <value>Lancé en mode non-administrateur. Certaines fonctionnalités sont désactivées.</value>
   </data>
-  <data name="Message_Delete" xml:space="preserve">
-    <value>delete</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Sur le point de {0} {1} packages à partir du magasin de pilotes.</value>
-  </data>
-  <data name="Message_Delete_Result" xml:space="preserve">
-    <value>Suppression de {0} ({1}) {2}.</value>
+    <value>Sur le point de delete {0} packages à partir du magasin de pilotes.</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Sur le point de {0} {1} ({2}) from driver store.</value>
-  </data>
-  <data name="Message_Failed" xml:space="preserve">
-    <value>échoué</value>
-  </data>
-  <data name="Message_Force_Delete" xml:space="preserve">
-    <value>Forcer la suppression</value>
+    <value>Sur le point de Forcer la suppression {0} ({1}) from driver store.</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Cet utilitaire ne peut pas être exécuté avec un système d'exploitation "pre-Vista"</value>
+    <value>Cet utilitaire ne peut pas être exécuté avec un système d'exploitation "pre-Vista".</value>
   </data>
   <data name="Message_Select_Driver_Entry" xml:space="preserve">
     <value>Selectionnez d'abord un pilote</value>
-  </data>
-  <data name="Message_Success" xml:space="preserve">
-    <value>réussi</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Êtes-vous sûr?</value>
@@ -322,25 +307,22 @@ Crédits:
     <value>Erreur</value>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Erreur lors de l'ajout de {0} le package {1} au magasin de pilotes.</value>
-  </data>
-  <data name="Message_Driver_And_Installed" xml:space="preserve">
-    <value> &amp; installé</value>
+    <value>Erreur lors de l'ajout de {0} le package au magasin de pilotes.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Ajouté {0} le package {1} au magasin de pilotes</value>
+    <value>Ajouté {0} le package au magasin de pilotes.</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Erreur lors de la suppression de certains packages du magasin de pilotes {0}</value>
+    <value>Erreur lors de la suppression de certains packages du magasin de pilotes.</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>{0} packages supprimés du magasin de pilotes</value>
+    <value>{0} packages supprimés du magasin de pilotes.</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Erreur lors de la suppression de {0} ({1}) du magasin de pilotes {2}</value>
+    <value>Erreur lors de la suppression de {0} ({1}) du magasin de pilotes.</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Suppression de {0} ({1}) du magasin de pilotes</value>
+    <value>Suppression de {0} ({1}) du magasin de pilotes.</value>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>L'export a échoué: {0}</value>
@@ -359,5 +341,23 @@ Crédits:
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Ordinateur local</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>Sur le point de Forcer la suppression {0} ({1}) from driver store.</value>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>Sur le point de Forcer la suppression {0} packages à partir du magasin de pilotes.</value>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>Suppression de {0} ({1}) réussi.</value>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>Suppression de {0} ({1}) échoué.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>Ajouté {0} le package &amp; installé au magasin de pilotes.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>Erreur lors de l'ajout de {0} le package &amp; installé au magasin de pilotes.</value>
   </data>
 </root>

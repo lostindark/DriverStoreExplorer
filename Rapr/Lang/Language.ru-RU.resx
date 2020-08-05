@@ -186,32 +186,17 @@
   <data name="Label_RunAsAdmin" xml:space="preserve">
     <value>Выполнен запуск без прав администратора. Некоторые функции отключены.</value>
   </data>
-  <data name="Message_Delete" xml:space="preserve">
-    <value>удален</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>{0} {1} пакетов из хранилища драйверов.</value>
-  </data>
-  <data name="Message_Delete_Result" xml:space="preserve">
-    <value>Удаление {0} ({1}) {2}.</value>
+    <value>удален {0} пакетов из хранилища драйверов.</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>{0} {1} ({2}) из хранилища драйверов.</value>
-  </data>
-  <data name="Message_Failed" xml:space="preserve">
-    <value>не удалось</value>
-  </data>
-  <data name="Message_Force_Delete" xml:space="preserve">
-    <value>удалено с форсированием</value>
+    <value>удалено с форсированием {0} ({1}) из хранилища драйверов.</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Эта программа не может быть запущена на ОС старше Vista</value>
+    <value>Эта программа не может быть запущена на ОС старше Vista.</value>
   </data>
   <data name="Message_Select_Driver_Entry" xml:space="preserve">
     <value>Сначала выберите запись с драйвером</value>
-  </data>
-  <data name="Message_Success" xml:space="preserve">
-    <value>успешно</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Вы уверены?</value>
@@ -316,25 +301,22 @@
     <value>Детальный лог ошибок</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Удален {0} ({1}) из хранилища драйверов</value>
+    <value>Удален {0} ({1}) из хранилища драйверов.</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>Удалено {0} пакетов из хранилища драйверов</value>
+    <value>Удалено {0} пакетов из хранилища драйверов.</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Ошибка удаления {0} ({1}) из хранилища драйверов {2}</value>
+    <value>Ошибка удаления {0} ({1}) из хранилища драйверов.</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Ошибка удаления пакетов из хранилища драйверов {0}</value>
+    <value>Ошибка удаления пакетов из хранилища драйверов.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Добавлен {0} пакет {1} в хранилище драйверов</value>
+    <value>Добавлен {0} пакет в хранилище драйверов.</value>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Ошибка добавления {0} пакета {1} в хранилище драйверов</value>
-  </data>
-  <data name="Message_Driver_And_Installed" xml:space="preserve">
-    <value> &amp; установлен</value>
+    <value>Ошибка добавления {0} пакета в хранилище драйверов.</value>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>Файл лога не найден.</value>
@@ -389,5 +371,23 @@
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Загрузить</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>удалено с форсированием {0} ({1}) из хранилища драйверов.</value>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>удален {0} пакетов из хранилища драйверов.</value>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>Удаление {0} ({1}) успешно.</value>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>Удаление {0} ({1}) не удалось.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>Добавлен {0} пакет &amp; установлен в хранилище драйверов.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>Ошибка добавления {0} пакета &amp; установлен в хранилище драйверов.</value>
   </data>
 </root>

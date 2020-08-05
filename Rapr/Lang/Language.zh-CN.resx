@@ -186,32 +186,17 @@
   <data name="Label_RunAsAdmin" xml:space="preserve">
     <value>以非管理员身份运行，部分功能不可用。</value>
   </data>
-  <data name="Message_Delete" xml:space="preserve">
-    <value>删除</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>正准备从驱动存储中{0} {1} 驱动包。</value>
-  </data>
-  <data name="Message_Delete_Result" xml:space="preserve">
-    <value>已删除{0} ({1}) {2}。</value>
+    <value>正准备从驱动存储中删除 {0} 驱动包。</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>正准备从驱动存储中 {0} {1} ({2})。</value>
-  </data>
-  <data name="Message_Failed" xml:space="preserve">
-    <value>失败</value>
-  </data>
-  <data name="Message_Force_Delete" xml:space="preserve">
-    <value>强制删除</value>
+    <value>正准备从驱动存储中删除 {0} ({1})。</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>此工具无法在比Windows Vista老的操作系统中运行</value>
+    <value>此工具无法在比Windows Vista老的操作系统中运行。</value>
   </data>
   <data name="Message_Select_Driver_Entry" xml:space="preserve">
     <value>请先选择一个驱动</value>
-  </data>
-  <data name="Message_Success" xml:space="preserve">
-    <value>成功</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>你确定吗？</value>
@@ -241,7 +226,7 @@
     <value>关于</value>
   </data>
   <data name="Message_No_Entries" xml:space="preserve">
-    <value>无项目被加载</value>
+    <value>无项目被加载。</value>
   </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>选择INF文件</value>
@@ -319,7 +304,7 @@
     <value>详细错误日志</value>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>无已选中驱动</value>
+    <value>无已选中驱动。</value>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>已选中{0}个驱动。总磁盘空间占用：{1}。</value>
@@ -331,22 +316,19 @@
     <value>错误</value>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>添加 {0} 驱动包 {1} 到驱动存储出错。</value>
-  </data>
-  <data name="Message_Driver_And_Installed" xml:space="preserve">
-    <value> &amp; 已安装</value>
+    <value>添加 {0} 驱动包到驱动存储出错。</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>已添加 {0} 个驱动包 {1} 到驱动存储。</value>
+    <value>已添加驱动包 {0} 到驱动存储。</value>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>从驱动存储中删除部分驱动包出错 {0}</value>
+    <value>从驱动存储中删除部分驱动包出错。</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
     <value>已从驱动存储中删除了 {0} 个驱动包。</value>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>从驱动存储中移除{0} ({1}) 失败 {2}</value>
+    <value>从驱动存储中移除{0} ({1}) 失败。</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>已从驱动存储中删除{0} ({1})。</value>
@@ -395,5 +377,23 @@
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>正在扫描驱动存储...</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>正准备从驱动存储中强制删除 {0} ({1})。</value>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>正准备从驱动存储中强制删除 {0} 个驱动包。</value>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>已成功删除{0} ({1})。</value>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>删除{0} ({1}) 失败。</value>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>已添加并安装驱动包 {0} 到驱动存储。</value>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>添加并安装驱动包 {0} 到驱动存储出错。</value>
   </data>
 </root>
