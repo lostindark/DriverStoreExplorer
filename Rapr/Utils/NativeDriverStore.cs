@@ -190,7 +190,6 @@ namespace Rapr.Utils
                 DriverFolderLocation = Path.GetDirectoryName(driverStoreFilename),
                 DriverSize = DriverStoreRepository.GetFolderSize(new DirectoryInfo(Path.GetDirectoryName(driverStoreFilename))),
                 BootCritical = GetObjectPropertyInfo<bool?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_BootCritical),
-                Inbox = GetObjectPropertyInfo<bool?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_Inbox),
             };
 
             driverStoreEntries.Add(driverStoreEntry);

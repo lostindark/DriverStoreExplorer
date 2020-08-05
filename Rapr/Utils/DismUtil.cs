@@ -70,7 +70,6 @@ namespace Rapr.Utils
                             DriverFolderLocation = Path.GetDirectoryName(driverPackage.OriginalFileName),
                             DriverSize = DriverStoreRepository.GetFolderSize(new DirectoryInfo(Path.GetDirectoryName(driverPackage.OriginalFileName))),
                             BootCritical = driverPackage.BootCritical,
-                            Inbox = driverPackage.InBox,
                         };
 
                         var deviceInfo = driverInfo?.OrderByDescending(d => d.IsPresent)?.FirstOrDefault(e =>

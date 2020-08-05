@@ -56,8 +56,6 @@ namespace Rapr.Utils
 
         public bool? BootCritical { get; set; }
 
-        public bool? Inbox { get; set; }
-
         public string DeviceName { get; set; }
 
         public bool? DevicePresent { get; set; }
