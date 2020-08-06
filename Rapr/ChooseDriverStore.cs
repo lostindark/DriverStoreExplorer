@@ -54,8 +54,8 @@ namespace Rapr
         public ChooseDriverStore()
         {
             this.InitializeComponent();
-            this.AddRadioCheckedBinding(this.radioButtonDriverStoreOnline, this, nameof(this.StoreType), DriverStoreType.Online);
-            this.AddRadioCheckedBinding(this.radioButtonDriverStoreOffline, this, nameof(this.StoreType), DriverStoreType.Offline);
+            AddRadioCheckedBinding(this.radioButtonDriverStoreOnline, this, nameof(this.StoreType), DriverStoreType.Online);
+            AddRadioCheckedBinding(this.radioButtonDriverStoreOffline, this, nameof(this.StoreType), DriverStoreType.Offline);
 
             this.textBoxOfflineStoreLocation.DataBindings.Add(
                 nameof(this.textBoxOfflineStoreLocation.Enabled),
@@ -78,7 +78,7 @@ namespace Rapr
                 nameof(this.OKButtonEnable));
         }
 
-        private void AddRadioCheckedBinding<T>(RadioButton radio, object dataSource, string dataMember, T trueValue)
+        private static void AddRadioCheckedBinding<T>(RadioButton radio, object dataSource, string dataMember, T trueValue)
         {
             var binding = new Binding(nameof(RadioButton.Checked), dataSource, dataMember, true, DataSourceUpdateMode.OnPropertyChanged);
 
