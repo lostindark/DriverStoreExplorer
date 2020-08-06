@@ -129,6 +129,7 @@ namespace Rapr.Utils
             }
 
             if (forceDelete
+                && MethodExists("newdev.dll", "DiUninstallDriverW")
                 && !NativeMethods.DiUninstallDriver(
                         IntPtr.Zero,
                         Path.Combine(driverStoreEntry.DriverFolderLocation, driverStoreEntry.DriverInfName),
@@ -145,6 +146,19 @@ namespace Rapr.Utils
             {
                 throw new Win32Exception();
             }
+        }
+
+        public static bool MethodExists(string libraryName, string methodName)
+        {
+            var libraryPtr = NativeMethods.LoadLibrary(libraryName);
+
+            if (libraryPtr != UIntPtr.Zero)
+            {
+                var procPtr = NativeMethods.GetProcAddress(libraryPtr, methodName);
+                return procPtr != UIntPtr.Zero;
+            }
+
+            return false;
         }
 
         private static string GetDriverInf(IntPtr deviceInfoSet, SP_DEVINFO_DATA deviceInfo)
@@ -574,6 +588,13 @@ namespace Rapr.Utils
         /// </summary>
         internal static class NativeMethods
         {
+            [DllImport("Kernel32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+            internal static extern UIntPtr LoadLibrary(string lpFileName);
+
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Globalization", "CA2101:Specify marshaling for P/Invoke string arguments", Justification = "GetProcAddress only comes in an ANSI flavor.")]
+            [DllImport("Kernel32.dll", SetLastError = true, CharSet = CharSet.Ansi, ExactSpelling = true)]
+            internal static extern UIntPtr GetProcAddress(UIntPtr hModule, string lpProcName);
+
             [DllImport("newdev.dll", CharSet = CharSet.Unicode, SetLastError = true)]
             internal static extern bool DiInstallDriver(
                 [In] IntPtr hwndParent,
