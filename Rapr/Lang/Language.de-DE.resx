@@ -330,7 +330,7 @@ Lizenz:
     <comment>{0} - Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Fehler beim Hinzufügen {0} des Pakets zum Driver Store.</value>
+    <value>Fehler beim Hinzufügen des Pakets unter {0} zum Driver Store.</value>
     <comment>{0} - Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
