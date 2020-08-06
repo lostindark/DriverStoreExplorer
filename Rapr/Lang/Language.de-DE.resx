@@ -326,7 +326,7 @@ Lizenz:
     <value>Fehler beim Löschen einiger Treiberpakete.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Der Treiber wurde {0} zum Driver Store hinzugefügt.</value>
+    <value>Der Treiber {0} wurde zum Driver Store hinzugefügt.</value>
     <comment>{0} - Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
@@ -397,12 +397,12 @@ Lizenz:
     <value>Driver Store wird überprüft...</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>Sie sind im Begriff {0} ({1}) aus dem Driver Store zu Löschen erzwingen.</value>
+    <value>Sie sind im Begriff {0} ({1}) aus dem Driver Store forciert zu löschen.</value>
     <comment>{0} - Platzhalter für die INF-Paketdatei
              {1} - Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>Sie sind im Begriff {0} Pakete aus dem Driver Store zu Löschen entfernen.</value>
+    <value>Sie sind im Begriff {0} Pakete aus dem Driver Store forciert zu löschen.</value>
     <comment>{0} - Platzhalter für die Paketanzahl</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
@@ -416,7 +416,7 @@ Lizenz:
              {1} - Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Der Treiber {0} wurde &amp; installiert zum Driver Store hinzugefügt.</value>
+    <value>Der Treiber {0} wurde installiert &amp; zum Driver Store hinzugefügt.</value>
     <comment>{0} - Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
