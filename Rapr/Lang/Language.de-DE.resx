@@ -191,12 +191,12 @@
     <comment>{0} - Platzhalter für die Paketanzahl</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Sie sind im Begriff {0} ({1}) aus dem Driver Store zu Löschen entfernen.</value>
+    <value>Sie sind im Begriff {0} ({1}) aus dem Driver Store zu entfernen.</value>
     <comment>{0} - Platzhalter für die INF-Paketdatei
              {1} - Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Es ist mindestens Winodws Vista erforderlich!</value>
+    <value>Es ist mindestens Winodws Vista erforderlich.</value>
   </data>
   <data name="Message_Select_Driver_Entry" xml:space="preserve">
     <value>Es muss zunächst ein Treiber ausgewählt werden</value>
