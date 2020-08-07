@@ -11,56 +11,62 @@ namespace Rapr
 {
     public partial class AboutBox : Form
     {
-        private readonly IUpdateManager _updateManager;
+        private readonly IUpdateManager updateManager;
 
         public AboutBox(IUpdateManager updateManager)
         {
-            _updateManager = updateManager ?? throw new ArgumentNullException(nameof(updateManager));
+            this.updateManager = updateManager ?? throw new ArgumentNullException(nameof(updateManager));
 
-            InitializeComponent();
-            Text = string.Format(Language.Product_About_Title, AssemblyTitle);
-            labelVersionInfo.Text = $"v{AssemblyVersion}";
+            this.InitializeComponent();
+            this.Text = string.Format(Language.Product_About_Title, AssemblyTitle);
+            this.labelVersionInfo.Text = $"v{AssemblyVersion}";
 
+            _ = this.UpdateLatestVersionInfo();
+        }
+
+        private async Task UpdateLatestVersionInfo()
+        {
             try
             {
-                var result = GetLatestVersion().Result;
+                var result = await this.updateManager.GetLatestVersionInfo().ConfigureAwait(false);
 
                 if (result?.Version != null)
                 {
-                    if (AssemblyVersion >= result.Version)
+                    this.labelLink.Invoke(new Action(() =>
                     {
-                        labelLink.Text = Language.About_VersionUpToDate;
-                        labelLink.Links.Clear();
-                    }
-                    else
-                    {
-                        var versionStr = result.Version.ToString();
-                        labelLink.Text = string.Format(Language.About_FoundNewVersion, versionStr, Language.About_Download);
-
-                        var versionStart = labelLink.Text.IndexOf(versionStr, 0, StringComparison.Ordinal);
-
-                        if (versionStart >= 0)
+                        if (AssemblyVersion >= result.Version)
                         {
-                            labelLink.Links.Add(new LinkLabel.Link(versionStart, versionStr.Length, result.PageUrl));
+                            this.labelLink.Text = Language.About_VersionUpToDate;
+                            this.labelLink.Links.Clear();
                         }
-
-                        var linkStart = labelLink.Text.IndexOf(Language.About_Download, 0, StringComparison.Ordinal);
-
-                        if (linkStart >= 0)
+                        else
                         {
-                            labelLink.Links.Add(new LinkLabel.Link(linkStart, Language.About_Download.Length, result.DownloadUrl));
+                            var versionStr = result.Version.ToString();
+                            this.labelLink.Text = string.Format(Language.About_FoundNewVersion, versionStr, Language.About_Download);
+
+                            var versionStart = this.labelLink.Text.IndexOf(versionStr, 0, StringComparison.Ordinal);
+
+                            if (versionStart >= 0)
+                            {
+                                this.labelLink.Links.Add(new LinkLabel.Link(versionStart, versionStr.Length, result.PageUrl));
+                            }
+
+                            var linkStart = this.labelLink.Text.IndexOf(Language.About_Download, 0, StringComparison.Ordinal);
+
+                            if (linkStart >= 0)
+                            {
+                                this.labelLink.Links.Add(new LinkLabel.Link(linkStart, Language.About_Download.Length, result.DownloadUrl));
+                            }
                         }
-                    }
+                    }));
                 }
+            }
+            catch (AggregateException ex) when (ex.InnerException is HttpRequestException)
+            {
             }
             catch (HttpRequestException)
             {
             }
-        }
-
-        private async Task<VersionInfo> GetLatestVersion()
-        {
-            return await _updateManager.GetLatestVersionInfo().ConfigureAwait(false);
         }
 
         #region Assembly Attribute Accessors
@@ -70,7 +76,7 @@ namespace Rapr
             get
             {
                 var attributes = Assembly.GetExecutingAssembly().GetCustomAttributes(typeof(AssemblyTitleAttribute), false);
-                
+
                 if (attributes.Length > 0)
                 {
                     AssemblyTitleAttribute titleAttribute = (AssemblyTitleAttribute)attributes[0];
@@ -79,7 +85,7 @@ namespace Rapr
                         return titleAttribute.Title;
                     }
                 }
-                
+
                 return System.IO.Path.GetFileNameWithoutExtension(Assembly.GetExecutingAssembly().CodeBase);
             }
         }
