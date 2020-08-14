@@ -288,6 +288,7 @@ namespace Rapr
             await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         private async Task PopulateUIWithDriverStoreEntries()
         {
             try
@@ -301,6 +302,10 @@ namespace Rapr
                 this.lstDriverStoreEntries.SetObjects(driverStoreEntries);
                 this.UpdateColumnSize();
                 this.ShowStatus(Status.Normal, Language.Status_Label);
+            }
+            catch (Exception ex)
+            {
+                this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
             }
             finally
             {
@@ -370,6 +375,7 @@ namespace Rapr
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         private async Task DeleteDriverStorePackages(List<DriverStoreEntry> driverStoreEntries)
         {
             StringBuilder details = new StringBuilder();
@@ -485,12 +491,17 @@ namespace Rapr
 
                 this.cbForceDeletion.Checked = false;
             }
+            catch (Exception ex)
+            {
+                this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
+            }
             finally
             {
                 this.EndOperation();
             }
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         private async void ButtonAddDriver_Click(object sender, EventArgs e)
         {
             DialogResult dr = this.openFileDialog.ShowDialog();
@@ -527,6 +538,10 @@ namespace Rapr
                     }
 
                     this.cbAddInstall.Checked = false;
+                }
+                catch (Exception ex)
+                {
+                    this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
                 }
                 finally
                 {
