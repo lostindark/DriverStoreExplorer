@@ -1,0 +1,428 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_Add_Package" xml:space="preserve">
+    <value>Dodaj sterownik</value>
+  </data>
+  <data name="Button_Delete_Package" xml:space="preserve">
+    <value>Usuń sterownik</value>
+  </data>
+  <data name="Button_OK" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="Button_Refresh" xml:space="preserve">
+    <value>Odśwież</value>
+  </data>
+  <data name="Button_Select_Old" xml:space="preserve">
+    <value>Wybierz przestarzałe sterowniki</value>
+  </data>
+  <data name="Check_Force_Delete" xml:space="preserve">
+    <value>Wymuś usunięcie</value>
+  </data>
+  <data name="Check_Install_Driver" xml:space="preserve">
+    <value>Zainstaluj sterownik</value>
+  </data>
+  <data name="Column_Date" xml:space="preserve">
+    <value>Data sterownika</value>
+  </data>
+  <data name="Column_Driver_Class" xml:space="preserve">
+    <value>Typ sterownika</value>
+  </data>
+  <data name="Column_Inf" xml:space="preserve">
+    <value>INF</value>
+  </data>
+  <data name="Column_Oem_Inf" xml:space="preserve">
+    <value>OEM INF</value>
+  </data>
+  <data name="Column_Provider" xml:space="preserve">
+    <value>Dostawca</value>
+  </data>
+  <data name="Column_Signed_By" xml:space="preserve">
+    <value>Podpis cyfrowy</value>
+  </data>
+  <data name="Column_Size" xml:space="preserve">
+    <value>Rozmiar</value>
+  </data>
+  <data name="Column_Version" xml:space="preserve">
+    <value>Wersja sterownika</value>
+  </data>
+  <data name="Context_Delete" xml:space="preserve">
+    <value>Usuń</value>
+  </data>
+  <data name="Context_Deselect" xml:space="preserve">
+    <value>Odznacz</value>
+  </data>
+  <data name="Context_Deselect_All" xml:space="preserve">
+    <value>Odznacz wszystkie</value>
+  </data>
+  <data name="Context_Select" xml:space="preserve">
+    <value>Zaznacz</value>
+  </data>
+  <data name="Context_Select_All" xml:space="preserve">
+    <value>Zaznacz wszystkie</value>
+  </data>
+  <data name="Context_Select_Old" xml:space="preserve">
+    <value>Zaznacz przestarzałe sterowniki</value>
+  </data>
+  <data name="Group_DriverStore" xml:space="preserve">
+    <value>Magazyn sterowników</value>
+  </data>
+  <data name="Label_RunAsAdmin" xml:space="preserve">
+    <value>Uruchomiono bez uprawnień administratora. Pewne funkcje będą nieaktywne.</value>
+  </data>
+  <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
+    <value>Zamierzasz usunąć {0} pakiet(y/ów) sterowników.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Single_Package" xml:space="preserve">
+    <value>Zamierzasz usunąć {0} ({1}) pakiet(y/ów) sterowników.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Requires_Later_OS" xml:space="preserve">
+    <value>Ta aplikacja nie działa z systemami starszymi jak Windows Vista.</value>
+  </data>
+  <data name="Message_Select_Driver_Entry" xml:space="preserve">
+    <value>Najpierw wybierz wpis sterownika</value>
+  </data>
+  <data name="Message_Sure" xml:space="preserve">
+    <value>Jesteś pewien?</value>
+  </data>
+  <data name="Message_Title_Warning" xml:space="preserve">
+    <value>Ostrzeżenie</value>
+  </data>
+  <data name="Operations_Text" xml:space="preserve">
+    <value>Operacje</value>
+  </data>
+  <data name="Product_Name" xml:space="preserve">
+    <value>Driver Store Explorer</value>
+  </data>
+  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
+    <value>[Tryb tylko do odczytu]</value>
+  </data>
+  <data name="Status_Label" xml:space="preserve">
+    <value>Gotowy</value>
+  </data>
+  <data name="Status_Running_ReadOnly" xml:space="preserve">
+    <value>Uruchomiony w trybie tylko do odczytu</value>
+  </data>
+  <data name="Tip_Driver_In_Use" xml:space="preserve">
+    <value>[INFO: Sterownik może być wciąż w użyciu. Użyj funkcji wymuszonego usunięcia]</value>
+  </data>
+  <data name="Title_About" xml:space="preserve">
+    <value>O programie</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Pomoc</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>O programie</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>Plik</value>
+  </data>
+  <data name="Menu_File_Export" xml:space="preserve">
+    <value>Eksportuj listę sterowników</value>
+  </data>
+  <data name="Menu_File_Exit" xml:space="preserve">
+    <value>Wyjdź</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>Opcje</value>
+  </data>
+  <data name="Menu_File_View_Logs" xml:space="preserve">
+    <value>Wyświetl logi</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="Message_No_Entries" xml:space="preserve">
+    <value>Nie załadowano wpisów.</value>
+  </data>
+  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
+    <value>Wybierz plik INF</value>
+  </data>
+  <data name="Dialog_Open_Filters" xml:space="preserve">
+    <value>Pliki INF | *.inf</value>
+  </data>
+  <data name="Product_Credits" xml:space="preserve">
+    <value>Driver Store Explorer v{0}</value>
+    <comment>{0} - Placeholder for installed version number</comment>
+  </data>
+  <data name="Product_About_Title" xml:space="preserve">
+    <value>O programie {0}</value>
+    <comment>{0} - Placeholder for Product_Name</comment>
+  </data>
+  <data name="Export_Error" xml:space="preserve">
+    <value>Błąd</value>
+  </data>
+  <data name="About_Project_Description" xml:space="preserve">
+    <value>Najnowszą wersję aplikacji oraz dziennik zmian znajdziesz tutaj:
+    https://github.com/lostindark/DriverStoreExplorer/releases
+
+Zgłaszanie błędów/sugerowanie funkcjonalności:
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+Autorzy:
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
+
+Podziękowania:
+    ObjectListView http://objectlistview.sourceforge.net/
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+
+Licencja użytkowania:
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
+</value>
+  </data>
+  <data name="UnitTest_Language" xml:space="preserve">
+    <value>Polski</value>
+  </data>
+  <data name="Dialog_Export_Filters" xml:space="preserve">
+    <value>Pliki CSV | *.csv</value>
+  </data>
+  <data name="Message_Operation_In_Progress" xml:space="preserve">
+    <value>Trwa inna operacja</value>
+  </data>
+  <data name="Status_Adding_Package" xml:space="preserve">
+    <value>Dodawanie pakietu sterownika...</value>
+  </data>
+  <data name="Status_Deleting_Packages" xml:space="preserve">
+    <value>Usuwanie pakietu sterownika(ów)...</value>
+  </data>
+  <data name="Message_Detailed_Log" xml:space="preserve">
+    <value>Szczegółowy log błędu</value>
+  </data>
+  <data name="Message_Delete_Package" xml:space="preserve">
+    <value>Usunięto{0} ({1}) z magazynu sterowników.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Packages" xml:space="preserve">
+    <value>Usunięto {0} pakiet(ów) z magazynu sterowników.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Package_Error" xml:space="preserve">
+    <value>Błąd w trakcie usuwania {0} ({1}) z magazynu sterowników.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+    <value>Błąd podczas usuwania pewnych pakietów z magazynu sterowników.</value>
+    
+    
+  </data>
+  <data name="Message_Driver_Added" xml:space="preserve">
+    <value>Dodano pakiet {0} do magazynu sterowników.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
+    <value>Błąd podczas dodawania pakietu {0} do magazynu sterowników.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>Nie znaleziono pliku log.</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>Błąd</value>
+  </data>
+  <data name="Export_Complete" xml:space="preserve">
+    <value>Zawartość zapisana do {0}. Eksport udany.</value>
+    <comment>{0} - Placeholder for export path</comment>
+  </data>
+  <data name="Export_Failed" xml:space="preserve">
+    <value>Błąd eksportowania: {0}</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data>
+  <data name="Status_Selected_Drivers" xml:space="preserve">
+    <value>Wybrano {0} sterownik(i/ów). Rozmiar całkowity: {1}.</value>
+    <comment>{0} - Placeholder for number of selected Drivers
+{1} - Placeholder for disk space</comment>
+  </data>
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+    <value>Nie wybrano sterowników.</value>
+  </data>
+  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
+    <value>Uruchom jako administrator</value>
+  </data>
+  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
+    <value>Zawsze uruchamiaj jako administrator</value>
+  </data>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>Otwórz folder zawierający</value>
+  </data>
+  <data name="DriverStore_LocalMachine" xml:space="preserve">
+    <value>Komputer lokalny</value>
+  </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>Wybierz lokalizację sterowników</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>Magazyn sterowników offline</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>Wybierz lokalizację sterowników</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Język</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>Nazwa urządzenia</value>
+  </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(aktualny)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(Znaleziono nową wersję v{0} - {1})</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for About_Download</comment>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>Pobierz</value>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>Skanowanie magazynu sterowników...</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>Zamierzasz wymusić usunięcie {0} ({1}) z magazynu sterowników.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>Zamierzasz wymusić usunięcie {0} pakiet(y/ów) z magazynu sterowników.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>Usuwanie {0} ({1}) powiodło się.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>Usuwanie {0} ({1}) nie powiodło się.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>Dodano pakiet {0} &amp; zainstalowanego do magazynu sterowników.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>Błąd podczas dodawania pakietu {0} &amp; zainstalowanego do magazynu sterowników.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+</root>
