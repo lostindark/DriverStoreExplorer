@@ -191,7 +191,7 @@
     <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Zamierzasz usunąć {0} ({1}) pakiet(y/ów) sterowników.</value>
+    <value>Zamierzasz usunąć pakiet sterowników {0} ({1}).</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
@@ -309,12 +309,12 @@ Licencja użytkowania:
     <value>Szczegółowy log błędu</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Usunięto{0} ({1}) z magazynu sterowników.</value>
+    <value>Usunięto {0} ({1}) z magazynu sterowników.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>Usunięto {0} pakiet(ów) z magazynu sterowników.</value>
+    <value>Usunięto {0} pakiet(y/ów) z magazynu sterowników.</value>
     <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
@@ -342,7 +342,7 @@ Licencja użytkowania:
     <value>Błąd</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>Zawartość zapisana do {0}. Eksport udany.</value>
+    <value>Eksport udany. Zawartość zapisana do {0}.</value>
     <comment>{0} - Placeholder for export path</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
@@ -404,7 +404,7 @@ Licencja użytkowania:
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>Zamierzasz wymusić usunięcie {0} pakiet(y/ów) z magazynu sterowników.</value>
+    <value>Zamierzasz wymusić usunięcie {0} pakietu(ów) z magazynu sterowników.</value>
     <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
@@ -418,11 +418,11 @@ Licencja użytkowania:
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Dodano pakiet {0} &amp; zainstalowanego do magazynu sterowników.</value>
+    <value>Dodano pakiet {0} &amp; zainstalowany w magazynie sterowników.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Błąd podczas dodawania pakietu {0} &amp; zainstalowanego do magazynu sterowników.</value>
+    <value>Błąd podczas dodawania pakietu {0} &amp; zainstalowany w magazynie sterowników.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
 </root>
