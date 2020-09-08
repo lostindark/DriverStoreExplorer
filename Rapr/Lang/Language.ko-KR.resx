@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -53,6 +53,7 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -138,7 +139,7 @@
     <value>드라이버 설치</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
-    <value>드라이바 날짜</value>
+    <value>드라이버 날짜</value>
   </data>
   <data name="Column_Driver_Class" xml:space="preserve">
     <value>드라이버 클래스</value>
@@ -186,16 +187,19 @@
     <value>관리자 권한 없이 시작되었습니다. 일부 기능을 사용할 수 없습니다.</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>드라이버 저장소에서 {0} 개의 패키지를삭제합니다。</value>
+    <value>드라이버 저장소에서 {0}개의 패키지를 삭제합니다.</value>
+    <comment>{0} - 패키지 수에 대한 자리 표시자</comment>
   </data>
-  <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>{0}({1}) 개를 삭제했습니다.</value>
+    <data name="Message_Delete_Single_Package" xml:space="preserve">
+    <value>드라이버 저장소에서 {0} ({1})을 삭제하려고 합니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>이 유틸리티는 Vista 이전 OS에서 실행할 수 없습니다。</value>
+    <value>이 유틸리티는 Vista 이전 OS에서 실행할 수 없습니다.</value>
   </data>
   <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>먼저 드라이버 항목을 선택합니다</value>
+    <value>드라이버 항목을 먼저 선택합니다</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>확실합니까?</value>
@@ -204,7 +208,7 @@
     <value>경고</value>
   </data>
   <data name="Operations_Text" xml:space="preserve">
-    <value>조작</value>
+    <value>작업</value>
   </data>
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
@@ -219,16 +223,16 @@
     <value>읽기 전용 모드로 실행 중</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[팁: 드라이버가 계속 사용중 일 수 있습니다. 패키지 삭제를 시도합니다]</value>
+    <value>[팁: 드라이버가 아직 사용 중일 수 있습니다. 패키지를 강제로 삭제합니다]</value>
   </data>
   <data name="Title_About" xml:space="preserve">
-    <value>버전 정보</value>
+    <value>정보</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>도움말</value>
   </data>
   <data name="Menu_Help_About" xml:space="preserve">
-    <value>버전 정보</value>
+    <value>프로그램 정보</value>
   </data>
   <data name="Menu_File" xml:space="preserve">
     <value>파일</value>
@@ -259,9 +263,11 @@
   </data>
   <data name="Product_Credits" xml:space="preserve">
     <value>Driver Store Explorer v{0}</value>
+	<comment>{0} - 설치된 버전 번호의 자리 표시자</comment>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
-    <value>버전 정보 {0}</value>
+    <value>프로그램 정보 {0}</value>
+    <comment>{0} - Product_Name의 자리 표시자</comment>	
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>오류</value>
@@ -270,7 +276,7 @@
     <value>최신 버전과 릴리스 정보는 다음에서 찾을 수 있습니다:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-파일 버그/기능 요청:
+버그/기능 요청:
     https://github.com/lostindark/DriverStoreExplorer/issues
 
 공헌자:
@@ -291,7 +297,7 @@
     <value>CSV 파일 | *.csv</value>
   </data>
   <data name="Message_Operation_In_Progress" xml:space="preserve">
-    <value>진행중인 다른 작업</value>
+    <value>다른 작업이 진행 중입니다</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>드라이버 패키지 추가 중...</value>
@@ -300,25 +306,34 @@
     <value>드라이버 패키지 삭제 중...</value>
   </data>
   <data name="Message_Detailed_Log" xml:space="preserve">
-    <value>세부 오류 로그</value>
+    <value>자세한 오류 로그</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>드라이버 저장소에서 {0} ({1})을 제거했습니다。</value>
+    <value>드라이버 저장소에서 {0} ({1})를 제거했습니다.</value>
+	<comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>드라이버 저장소에서 {0} 패키지가 제거되었습니다。</value>
+    <value>드라이버 저장소에서 {0} 패키지를 제거했습니다.</value>
+    <comment>{0} - 패키지 수에 대한 자리 표시자</comment>	
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>드라이버 저장소 에서 {0} ({1})을 제거하는 동안 오류가 발생했습니다。</value>
+    <value>드라이버 저장소 에서 {0} ({1})를 제거하는 중에 오류가 발생했습니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>드라이버 저장소 에서 일부 패키지를 제거하는 중 오류가 발생했습니다。</value>
+    <value>드라이버 저장소 에서 일부 패키지를 제거하는 중에 오류가 발생했습니다.</value>
+    
+    
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>드라이버 저장소에 패키지을 (를) {0} 추가했습니다。</value>
+    <value>드라이버 저장소에 {0} 패키지를 추가했습니다.</value>
+    <comment>{0} - inf 경로의 자리 표시자</comment>	
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>패키지 {0} 을 드라이버 저장소에 추가하는 중 오류가 발생했습니다。</value>
+    <value>{0} 패키지를 드라이버 저장소에 추가하는 중에 오류가 발생했습니다.</value>
+    <comment>{0} - inf 경로의 자리 표시자</comment>	
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>로그 파일을 찾을 수 없습니다.</value>
@@ -327,13 +342,17 @@
     <value>오류</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>내용이 {0}에 저장되었습니다. 내보내기가 완료되었습니다。</value>
-  </data>
+    <value>내용이 {0}에 저장되었습니다. 내보내기가 완료되었습니다.</value>
+    <comment>{0} - 내보내기 경로의 자리 표시자</comment> 
+ </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>내보내기 실패: {0}</value>
-  </data>
+    <comment>{0} - 내보내기 경로의 자리 표시자</comment> 
+ </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>{0}개의 드라이버를 선택했습니다. 총 크기: {1}.</value>
+    <value>{0}개의 드라이버를 선택했습니다. 총합 크기: {1}.</value>
+    <comment>{0} - 선택한 드라이버 수에 대한 자리 표시자
+{1} - 디스크 공간의 자리 표시자</comment>	
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>선택한 드라이버가 없습니다.</value>
@@ -366,30 +385,44 @@
     <value>장치 이름</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
-    <value>(최신 정보)</value>
+    <value>(최신 버전)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
-    <value>(새 버전 v{0} {1}을 찾았습니다)</value>
+    <value>(새 버전 v{0} - {1}을 찾았습니다)</value>
+    <comment>{0} - 버전 번호의 자리 표시자
+{1} - 정보_다운로드에 대한 자리 표시자</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>다운로드</value>
   </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>드라이버 저장소를 검색하는 중...</value>
+  </data>  
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>드라이버 저장소에서 {0} ({1}) 개의 패키지를 강제 삭제합니다。</value>
+    <value>드라이버 저장소에서 {0} ({1})을 강제로 삭제합니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>		
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>드라이버 저장소에서 {0} 개의 패키지를 삭제합니다.</value>
+    <value>드라이버 저장소에서 {0}개의 패키지를 강제로 삭제합니다.</value>
+    <comment>{0} - 패키지 수에 대한 자리 표시자</comment>  
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
-    <value>{0}({1}) 성공했습니다 개를 삭제했습니다.</value>
+    <value>{0} ({1}) 삭제를 성공했습니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
-    <value>{0}({1}) 실패 개를 삭제했습니다.</value>
+    <value>{0} ({1}) 삭제에 실패했습니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>드라이버 저장소에 패키지 &amp; 설치됨을 (를) {0} 추가했습니다。</value>
+    <value>드라이버 저장소에 설치된 {0} &amp; 패키지를 추가했습니다.</value>
+    <comment>{0} - inf 경로의 자리 표시자</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>패키지 {0} &amp; 설치됨을 드라이버 저장소에 추가하는 중 오류가 발생했습니다。</value>
+    <value>드라이버 저장소에 설치된 {0} &amp; 패키지를 추가하는 중에 오류가 발생했습니다.</value>
+    <comment>{0} - inf 경로의 자리 표시자</comment>
   </data>
 </root>
