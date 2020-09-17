@@ -438,6 +438,7 @@ namespace Rapr
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
             this.lstDriverStoreEntries.View = System.Windows.Forms.View.Details;
             this.lstDriverStoreEntries.FormatCell += new System.EventHandler<BrightIdeasSoftware.FormatCellEventArgs>(this.LstDriverStoreEntries_FormatCell);
+            this.lstDriverStoreEntries.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.LstDriverStoreEntries_FormatRow);
             this.lstDriverStoreEntries.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.LstDriverStoreEntries_ItemChecked);
             // 
             // driverInfColumn

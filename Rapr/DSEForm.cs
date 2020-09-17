@@ -810,6 +810,14 @@ namespace Rapr
             }
         }
 
+        private void LstDriverStoreEntries_FormatRow(object sender, BrightIdeasSoftware.FormatRowEventArgs e)
+        {
+            if (e.Item.Checked)
+            {
+                e.Item.BackColor = Color.FromArgb(unchecked((int)0xFFCBE8F6));
+            }
+        }
+
         private void StartOperation()
         {
             this.toolStripProgressBar1.Visible = true;
