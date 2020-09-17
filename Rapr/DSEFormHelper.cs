@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
+using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Security;
 using System.Security.Principal;
+using System.Text;
 using System.Windows.Forms;
 
 using Microsoft.Win32;
@@ -16,6 +21,7 @@ namespace Rapr
     {
         private const string AppCompatRegistry = @"Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers";
         private const string RunAsAdminRegistryValue = "RUNASADMIN";
+        private static readonly Version Win8Version = new Version(6, 2);
 
         public static bool IsRunAsAdmin { get; } = IsRunAsAdministrator();
 
@@ -33,16 +39,13 @@ namespace Rapr
             }
         }
 
-        public static bool IsOSSupported()
-        {
-            //Get Operating system information.
-            OperatingSystem os = Environment.OSVersion;
+        public static bool IsOSSupported =>
+            Environment.OSVersion.Platform == PlatformID.Win32NT
+            && (Environment.OSVersion.Version.Major >= 6);
 
-            //Get version information about the os.
-            Version version = os.Version;
-
-            return os.Platform == PlatformID.Win32NT && (version.Major >= 6);
-        }
+        public static bool IsWin8OrNewer =>
+            Environment.OSVersion.Platform == PlatformID.Win32NT
+            && Environment.OSVersion.Version >= Win8Version;
 
         public static void RunAsAdministrator()
         {
@@ -115,6 +118,83 @@ namespace Rapr
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns an icon representation of an image contained in the specified file.
+        /// This function is identical to System.Drawing.Icon.ExtractAssociatedIcon, except this version works.
+        /// </summary>
+        /// <param name="filePath">The path to the file that contains an image.</param>
+        /// <returns>The System.Drawing.Icon representation of the image contained in the specified file.</returns>
+        /// <exception cref="System.ArgumentException">filePath does not indicate a valid file.</exception>
+        public static Icon ExtractAssociatedIcon(string filePath)
+        {
+            int index = 0;
+
+            Uri uri;
+
+            if (filePath == null)
+            {
+                throw new ArgumentNullException(nameof(filePath));
+            }
+
+            try
+            {
+                uri = new Uri(filePath);
+            }
+            catch (UriFormatException)
+            {
+                filePath = Path.GetFullPath(filePath);
+                uri = new Uri(filePath);
+            }
+
+            if (uri.IsFile)
+            {
+                if (!File.Exists(filePath))
+                {
+                    throw new FileNotFoundException(filePath);
+                }
+
+                StringBuilder iconPath = new StringBuilder(filePath, 260);
+
+                IntPtr handle = SafeNativeMethods.ExtractAssociatedIcon(
+                    new HandleRef(null, IntPtr.Zero),
+                    iconPath,
+                    ref index);
+
+                if (handle != IntPtr.Zero)
+                {
+                    return Icon.FromHandle(handle);
+                }
+            }
+
+            return null;
+        }
+
+        public static List<CultureInfo> GetSupportedLanguage()
+        {
+            List<CultureInfo> supportedLanguage = new List<CultureInfo>
+            {
+                new CultureInfo("en")
+            };
+
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            string currentFolder = Path.GetDirectoryName(assembly.Location);
+            DirectoryInfo dir = new DirectoryInfo(currentFolder);
+
+            foreach (var file in dir.EnumerateFiles($"{assembly.EntryPoint.DeclaringType.Namespace}.resources.dll", SearchOption.AllDirectories))
+            {
+                string folderName = file.Directory.Name;
+                try
+                {
+                    supportedLanguage.Add(new CultureInfo(folderName));
+                }
+                catch (CultureNotFoundException)
+                {
+                }
+            }
+
+            return supportedLanguage;
         }
     }
 }

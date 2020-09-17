@@ -8,6 +8,12 @@ namespace Rapr.Utils
 
         string OfflineStoreLocation { get; }
 
+        bool SupportAddInstall { get; }
+
+        bool SupportForceDeletion { get; }
+
+        bool SupportDeviceNameColumn { get; }
+
         List<DriverStoreEntry> EnumeratePackages();
 
         bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete);

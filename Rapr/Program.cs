@@ -3,7 +3,6 @@ using System.Configuration;
 using System.Diagnostics;
 using System.IO;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 using System.Security;
 using System.Windows.Forms;
 
@@ -65,14 +64,15 @@ namespace Rapr
         [STAThread]
         public static void Main()
         {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+
             Trace.AutoFlush = true;
             Trace.IndentSize = 4;
             Trace.Listeners.Add(new TextFileTraceListener());
 
             AddEnvironmentPaths(@"C:\Windows\System32\CompatTel");
             AppDomain.CurrentDomain.AssemblyResolve += ResolveEventHandler;
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
 
             try
             {

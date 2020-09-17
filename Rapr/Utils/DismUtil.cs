@@ -41,6 +41,12 @@ namespace Rapr.Utils
             return true;
         })();
 
+        public bool SupportAddInstall => this.Type == DriverStoreType.Online;
+
+        public bool SupportForceDeletion => this.Type == DriverStoreType.Online;
+
+        public bool SupportDeviceNameColumn => this.Type == DriverStoreType.Online;
+
         #region IDriverStore Members
         public List<DriverStoreEntry> EnumeratePackages()
         {

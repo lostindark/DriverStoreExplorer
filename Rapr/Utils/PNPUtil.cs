@@ -24,6 +24,12 @@ namespace Rapr.Utils
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1065:Do not raise exceptions in unexpected locations", Justification = "False positive.")]
         public string OfflineStoreLocation => throw new NotSupportedException();
 
+        public bool SupportAddInstall => true;
+
+        public bool SupportForceDeletion => true;
+
+        public bool SupportDeviceNameColumn => true;
+
         public enum PnpUtilOption
         {
             Enumerate,

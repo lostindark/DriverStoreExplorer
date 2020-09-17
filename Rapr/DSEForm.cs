@@ -7,8 +7,6 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.InteropServices;
 using System.Security;
 using System.Text;
 using System.Threading;
@@ -27,13 +25,13 @@ namespace Rapr
         private Color savedBackColor;
         private Color savedForeColor;
 
-        private static readonly IUpdateManager _updateManager = new UpdateManager();
+        private static readonly IUpdateManager UpdateManager = new UpdateManager();
 
-        private static readonly List<CultureInfo> SupportedLanguage = GetSupportedLanguage();
+        private static readonly List<CultureInfo> SupportedLanguage = DSEFormHelper.GetSupportedLanguage();
 
         public DSEForm()
         {
-            if (!DSEFormHelper.IsOSSupported())
+            if (!DSEFormHelper.IsOSSupported)
             {
                 MessageBox.Show(
                     Language.Message_Requires_Later_OS,
@@ -58,7 +56,7 @@ namespace Rapr
 
             this.InitializeComponent();
 
-            this.Icon = ExtractAssociatedIcon(Application.ExecutablePath);
+            this.Icon = DSEFormHelper.ExtractAssociatedIcon(Application.ExecutablePath);
             this.BuildLanguageMenu();
 
             this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
@@ -78,24 +76,21 @@ namespace Rapr
         private void UpdateDriverStore(IDriverStore driverStore)
         {
             this.driverStore = driverStore;
+            this.cbAddInstall.Enabled = driverStore.SupportAddInstall;
+            this.cbForceDeletion.Enabled = driverStore.SupportForceDeletion;
+            this.deviceNameColumn.IsVisible = driverStore.SupportForceDeletion;
 
             switch (driverStore.Type)
             {
                 case DriverStoreType.Online:
                     {
                         this.Text = Language.Product_Name + " - " + Language.DriverStore_LocalMachine;
-                        this.cbAddInstall.Enabled = true;
-                        this.cbForceDeletion.Enabled = true;
-                        this.deviceNameColumn.IsVisible = true;
                         break;
                     }
 
                 case DriverStoreType.Offline:
                     {
                         this.Text = Language.Product_Name + " - " + driverStore.OfflineStoreLocation;
-                        this.cbAddInstall.Enabled = false;
-                        this.cbForceDeletion.Enabled = false;
-                        this.deviceNameColumn.IsVisible = false;
                         break;
                     }
             }
@@ -137,83 +132,6 @@ namespace Rapr
 
             this.driverSizeColumn.GroupKeyToTitleConverter =
                 groupKey => DriverStoreEntry.GetSizeRangeName((long)groupKey);
-        }
-
-        /// <summary>
-        /// Returns an icon representation of an image contained in the specified file.
-        /// This function is identical to System.Drawing.Icon.ExtractAssociatedIcon, except this version works.
-        /// </summary>
-        /// <param name="filePath">The path to the file that contains an image.</param>
-        /// <returns>The System.Drawing.Icon representation of the image contained in the specified file.</returns>
-        /// <exception cref="System.ArgumentException">filePath does not indicate a valid file.</exception>
-        public static Icon ExtractAssociatedIcon(string filePath)
-        {
-            int index = 0;
-
-            Uri uri;
-
-            if (filePath == null)
-            {
-                throw new ArgumentNullException(nameof(filePath));
-            }
-
-            try
-            {
-                uri = new Uri(filePath);
-            }
-            catch (UriFormatException)
-            {
-                filePath = Path.GetFullPath(filePath);
-                uri = new Uri(filePath);
-            }
-
-            if (uri.IsFile)
-            {
-                if (!File.Exists(filePath))
-                {
-                    throw new FileNotFoundException(filePath);
-                }
-
-                StringBuilder iconPath = new StringBuilder(filePath, 260);
-
-                IntPtr handle = SafeNativeMethods.ExtractAssociatedIcon(
-                    new HandleRef(null, IntPtr.Zero),
-                    iconPath,
-                    ref index);
-
-                if (handle != IntPtr.Zero)
-                {
-                    return Icon.FromHandle(handle);
-                }
-            }
-
-            return null;
-        }
-
-        public static List<CultureInfo> GetSupportedLanguage()
-        {
-            List<CultureInfo> supportedLanguage = new List<CultureInfo>
-            {
-                new CultureInfo("en")
-            };
-
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            string currentFolder = Path.GetDirectoryName(assembly.Location);
-            DirectoryInfo dir = new DirectoryInfo(currentFolder);
-
-            foreach (var file in dir.EnumerateFiles($"{assembly.EntryPoint.DeclaringType.Namespace}.resources.dll", SearchOption.AllDirectories))
-            {
-                string folderName = file.Directory.Name;
-                try
-                {
-                    supportedLanguage.Add(new CultureInfo(folderName));
-                }
-                catch (CultureNotFoundException)
-                {
-                }
-            }
-
-            return supportedLanguage;
         }
 
         private void BuildLanguageMenu()
@@ -263,17 +181,6 @@ namespace Rapr
         {
             this.savedBackColor = this.lblStatus.BackColor;
             this.savedForeColor = this.lblStatus.ForeColor;
-
-            if (!DSEFormHelper.IsRunAsAdmin)
-            {
-                this.Text += " " + Language.Product_Name_Additional_ReadOnly;
-                this.ShowStatus(Status.Warning, Language.Label_RunAsAdmin);
-                this.buttonAddDriver.Enabled = false;
-                this.cbAddInstall.Enabled = false;
-                this.buttonDeleteDriver.Enabled = false;
-                this.cbForceDeletion.Enabled = false;
-                this.buttonSelectOldDrivers.Enabled = false;
-            }
 
             await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
         }
@@ -552,7 +459,7 @@ namespace Rapr
 
         private static void ShowAboutBox()
         {
-            using (AboutBox ab = new AboutBox(_updateManager))
+            using (AboutBox ab = new AboutBox(UpdateManager))
             {
                 ab.ShowDialog();
             }
@@ -563,8 +470,8 @@ namespace Rapr
             // Check if there are any entries
             if (this.lstDriverStoreEntries.Objects != null)
             {
-                this.ctxMenuSelectAll.Enabled = DSEFormHelper.IsRunAsAdmin;
-                this.ctxMenuSelectOldDrivers.Enabled = DSEFormHelper.IsRunAsAdmin;
+                this.ctxMenuSelectAll.Enabled = true;
+                this.ctxMenuSelectOldDrivers.Enabled = true;
 
                 if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0)
                 {
@@ -577,7 +484,7 @@ namespace Rapr
 
                 if (this.lstDriverStoreEntries.SelectedObjects?.Count > 0)
                 {
-                    this.ctxMenuDelete.Enabled = DSEFormHelper.IsRunAsAdmin;
+                    this.ctxMenuDelete.Enabled = true;
 
                     if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0
                         && this.lstDriverStoreEntries
@@ -592,7 +499,7 @@ namespace Rapr
                         this.ctxMenuSelect.Text = Language.Context_Select;
                     }
 
-                    this.ctxMenuSelect.Enabled = DSEFormHelper.IsRunAsAdmin;
+                    this.ctxMenuSelect.Enabled = true;
 
                     this.ctxMenuOpenFolder.Enabled = this.lstDriverStoreEntries.SelectedObjects.Count == 1;
                 }
@@ -923,11 +830,11 @@ namespace Rapr
             this.toolStripProgressBar1.Visible = false;
             this.lstDriverStoreEntries.Enabled = true;
             this.buttonEnumerate.Enabled = true;
-            this.buttonAddDriver.Enabled = DSEFormHelper.IsRunAsAdmin;
-            this.cbAddInstall.Enabled = DSEFormHelper.IsRunAsAdmin && this.driverStore.Type == DriverStoreType.Online;
-            this.buttonDeleteDriver.Enabled = DSEFormHelper.IsRunAsAdmin;
-            this.cbForceDeletion.Enabled = DSEFormHelper.IsRunAsAdmin && this.driverStore.Type == DriverStoreType.Online;
-            this.buttonSelectOldDrivers.Enabled = DSEFormHelper.IsRunAsAdmin;
+            this.buttonAddDriver.Enabled = true;
+            this.cbAddInstall.Enabled = this.driverStore.SupportAddInstall;
+            this.buttonDeleteDriver.Enabled = true;
+            this.cbForceDeletion.Enabled = this.driverStore.SupportForceDeletion;
+            this.buttonSelectOldDrivers.Enabled = true;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
             this.exportToolStripMenuItem.Enabled = true;
             this.languageToolStripMenuItem.Enabled = true;

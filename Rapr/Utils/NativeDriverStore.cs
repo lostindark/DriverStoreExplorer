@@ -31,6 +31,12 @@ namespace Rapr.Utils
             this.OfflineStoreLocation = imagePath;
         }
 
+        public bool SupportAddInstall => this.Type == DriverStoreType.Online;
+
+        public bool SupportForceDeletion => this.Type == DriverStoreType.Online;
+
+        public bool SupportDeviceNameColumn => this.Type == DriverStoreType.Online;
+
         public List<DriverStoreEntry> EnumeratePackages()
         {
             var ptr = NativeMethods.DriverStoreOpen(null, null, 0, IntPtr.Zero);
