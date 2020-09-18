@@ -14,10 +14,18 @@ namespace Rapr.Utils
 
         bool SupportDeviceNameColumn { get; }
 
+        bool SupportExportDriver { get; }
+
+        bool SupportExportAllDrivers { get; }
+
         List<DriverStoreEntry> EnumeratePackages();
 
         bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete);
 
         bool AddDriver(string infFullPath, bool install);
+
+        bool ExportDriver(string infName, string destinationPath);
+
+        bool ExportAllDrivers(string destinationPath);
     }
 }

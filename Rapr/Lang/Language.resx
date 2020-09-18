@@ -121,7 +121,7 @@
     <value>Add Driver</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>Delete Driver</value>
+    <value>Delete Driver(s)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
@@ -324,8 +324,6 @@ License:
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>Error removing some packages from driver store.</value>
-    
-    
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>Added the package {0} to driver store.</value>
@@ -424,5 +422,14 @@ License:
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>Error adding the package {0} &amp; installed to driver store.</value>
     <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>Export Driver(s)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>Export Driver</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>Export All Drivers</value>
   </data>
 </root>

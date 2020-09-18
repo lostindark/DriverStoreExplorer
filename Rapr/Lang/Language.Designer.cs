@@ -120,11 +120,20 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete Driver.
+        ///   Looks up a localized string similar to Delete Driver(s).
         /// </summary>
         public static string Button_Delete_Package {
             get {
                 return ResourceManager.GetString("Button_Delete_Package", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export Driver(s).
+        /// </summary>
+        public static string Button_Export_Drivers {
+            get {
+                return ResourceManager.GetString("Button_Export_Drivers", resourceCulture);
             }
         }
         
@@ -287,6 +296,15 @@ namespace Rapr.Lang {
         public static string Context_Deselect_All {
             get {
                 return ResourceManager.GetString("Context_Deselect_All", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export Driver.
+        /// </summary>
+        public static string Context_Export_Driver {
+            get {
+                return ResourceManager.GetString("Context_Export_Driver", resourceCulture);
             }
         }
         
@@ -458,6 +476,15 @@ namespace Rapr.Lang {
         public static string Menu_File_Export {
             get {
                 return ResourceManager.GetString("Menu_File_Export", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export All Drivers.
+        /// </summary>
+        public static string Menu_File_Export_All_Drivers {
+            get {
+                return ResourceManager.GetString("Menu_File_Export_All_Drivers", resourceCulture);
             }
         }
         

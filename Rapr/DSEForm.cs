@@ -76,9 +76,13 @@ namespace Rapr
         private void UpdateDriverStore(IDriverStore driverStore)
         {
             this.driverStore = driverStore;
+            this.exportAllDriversToolStripMenuItem.Enabled = driverStore.SupportExportAllDrivers;
+            this.exportAllDriversToolStripMenuItem.Visible = driverStore.SupportExportAllDrivers;
             this.cbAddInstall.Enabled = driverStore.SupportAddInstall;
             this.cbForceDeletion.Enabled = driverStore.SupportForceDeletion;
+            this.buttonExportDrivers.Visible = driverStore.SupportExportDriver;
             this.deviceNameColumn.IsVisible = driverStore.SupportForceDeletion;
+            this.ctxMenuExportDriver.Visible = driverStore.SupportExportDriver;
 
             switch (driverStore.Type)
             {
@@ -828,6 +832,7 @@ namespace Rapr
             this.buttonDeleteDriver.Enabled = false;
             this.cbForceDeletion.Enabled = false;
             this.buttonSelectOldDrivers.Enabled = false;
+            this.buttonExportDrivers.Enabled = false;
             this.chooseDriverStoreToolStripMenuItem.Enabled = false;
             this.exportToolStripMenuItem.Enabled = false;
             this.languageToolStripMenuItem.Enabled = false;
@@ -843,6 +848,7 @@ namespace Rapr
             this.buttonDeleteDriver.Enabled = true;
             this.cbForceDeletion.Enabled = this.driverStore.SupportForceDeletion;
             this.buttonSelectOldDrivers.Enabled = true;
+            this.buttonExportDrivers.Enabled = true;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
             this.exportToolStripMenuItem.Enabled = true;
             this.languageToolStripMenuItem.Enabled = true;

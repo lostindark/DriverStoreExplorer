@@ -37,6 +37,10 @@ namespace Rapr.Utils
 
         public bool SupportDeviceNameColumn => this.Type == DriverStoreType.Online;
 
+        public bool SupportExportDriver => true;
+
+        public bool SupportExportAllDrivers => true;
+
         public List<DriverStoreEntry> EnumeratePackages()
         {
             var ptr = NativeMethods.DriverStoreOpen(null, null, 0, IntPtr.Zero);
@@ -233,6 +237,10 @@ namespace Rapr.Utils
 
             return default;
         }
+
+        public bool ExportDriver(string infName, string destinationPath) => throw new NotImplementedException();
+
+        public bool ExportAllDrivers(string destinationPath) => throw new NotImplementedException();
 
         // Define other methods and classes here
         private const int MAX_PATH = 260;

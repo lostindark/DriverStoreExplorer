@@ -30,6 +30,10 @@ namespace Rapr.Utils
 
         public bool SupportDeviceNameColumn => true;
 
+        public bool SupportExportDriver => false;
+
+        public bool SupportExportAllDrivers => false;
+
         public enum PnpUtilOption
         {
             Enumerate,
@@ -411,5 +415,9 @@ namespace Rapr.Utils
 
             return retVal;
         }
+
+        public bool ExportDriver(string infName, string destinationPath) => throw new NotSupportedException();
+
+        public bool ExportAllDrivers(string destinationPath) => throw new NotSupportedException();
     }
 }

@@ -58,6 +58,7 @@ namespace Rapr
             this.chooseDriverStoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportAllDriversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLogsTtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,6 +75,8 @@ namespace Rapr
             this.driverSizeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.deviceNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.dummyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.buttonExportDrivers = new System.Windows.Forms.Button();
+            this.ctxMenuExportDriver = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.gbOptions.SuspendLayout();
@@ -119,6 +122,7 @@ namespace Rapr
             this.toolStripSeparator1,
             this.ctxMenuOpenFolder,
             this.toolStripSeparator3,
+            this.ctxMenuExportDriver,
             this.ctxMenuDelete});
             this.contextMenuStrip.Name = "contextMenuStrip";
             this.contextMenuStrip.Size = new System.Drawing.Size(189, 126);
@@ -276,6 +280,7 @@ namespace Rapr
             this.flowLayoutPanel1.Controls.Add(this.buttonDeleteDriver);
             this.flowLayoutPanel1.Controls.Add(this.cbForceDeletion);
             this.flowLayoutPanel1.Controls.Add(this.buttonSelectOldDrivers);
+            this.flowLayoutPanel1.Controls.Add(this.buttonExportDrivers);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
@@ -296,6 +301,17 @@ namespace Rapr
             this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
             this.buttonSelectOldDrivers.Click += new System.EventHandler(this.ButtonSelectOldDrivers_Click);
             // 
+            // buttonExportSelectedDrivers
+            // 
+            this.buttonExportDrivers.AutoSize = true;
+            this.buttonExportDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonExportDrivers.Location = new System.Drawing.Point(9, 232);
+            this.buttonExportDrivers.Name = "buttonExportDrivers";
+            this.buttonSelectOldDrivers.Size = new System.Drawing.Size(124, 23);
+            this.buttonExportDrivers.TabIndex = 8;
+            this.buttonExportDrivers.Text = global::Rapr.Lang.Language.Button_Export_Drivers;
+            this.buttonExportDrivers.UseVisualStyleBackColor = true;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -314,6 +330,7 @@ namespace Rapr
             this.chooseDriverStoreToolStripMenuItem,
             this.toolStripSeparator5,
             this.exportToolStripMenuItem,
+            this.exportAllDriversToolStripMenuItem,
             this.viewLogsTtoolStripMenuItem,
             this.toolStripSeparator4,
             this.exitToolStripMenuItem});
@@ -339,6 +356,12 @@ namespace Rapr
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.exportToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Export;
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportToolStripMenuItem_Click);
+            // 
+            // exportAllDriversToolStripMenuItem
+            // 
+            this.exportAllDriversToolStripMenuItem.Name = "exportAllDriversToolStripMenuItem";
+            this.exportAllDriversToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.exportAllDriversToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Export_All_Drivers;
             // 
             // viewLogsTtoolStripMenuItem
             // 
@@ -493,6 +516,12 @@ namespace Rapr
             this.dummyColumn.FillsFreeSpace = true;
             this.dummyColumn.Text = "";
             // 
+            // ctxMenuExportDriver
+            // 
+            this.ctxMenuExportDriver.Name = "ctxMenuExportDriver";
+            this.ctxMenuExportDriver.Size = new System.Drawing.Size(188, 22);
+            this.ctxMenuExportDriver.Text = global::Rapr.Lang.Language.Context_Export_Driver;
+            // 
             // DSEForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -574,6 +603,9 @@ namespace Rapr
         private System.Windows.Forms.ToolStripMenuItem chooseDriverStoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private BrightIdeasSoftware.OLVColumn deviceNameColumn;
+        private System.Windows.Forms.ToolStripMenuItem exportAllDriversToolStripMenuItem;
+        private System.Windows.Forms.Button buttonExportDrivers;
+        private System.Windows.Forms.ToolStripMenuItem ctxMenuExportDriver;
     }
 }
 

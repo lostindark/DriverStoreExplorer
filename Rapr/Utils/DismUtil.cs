@@ -47,6 +47,10 @@ namespace Rapr.Utils
 
         public bool SupportDeviceNameColumn => this.Type == DriverStoreType.Online;
 
+        public bool SupportExportDriver => false;
+
+        public bool SupportExportAllDrivers => false;
+
         #region IDriverStore Members
         public List<DriverStoreEntry> EnumeratePackages()
         {
@@ -219,6 +223,10 @@ namespace Rapr.Utils
                     throw new NotSupportedException();
             }
         }
+
+        public bool ExportDriver(string infName, string destinationPath) => throw new NotSupportedException();
+
+        public bool ExportAllDrivers(string destinationPath) => throw new NotSupportedException();
 
         #endregion
 
