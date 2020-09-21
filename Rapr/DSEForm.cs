@@ -926,38 +926,36 @@ namespace Rapr
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         private async void ExportAllDriversToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using var dialog = new CommonOpenFileDialog
+            using (var dialog = new CommonOpenFileDialog { IsFolderPicker = true })
             {
-                IsFolderPicker = true
-            };
+                CommonFileDialogResult dialogResult = dialog.ShowDialog();
 
-            CommonFileDialogResult dialogResult = dialog.ShowDialog();
-
-            if (dialogResult == CommonFileDialogResult.Ok)
-            {
-                try
+                if (dialogResult == CommonFileDialogResult.Ok)
                 {
-                    this.StartOperation();
-                    this.ShowStatus(Status.Normal, Language.Status_Exporting_All_Drivers);
-
-                    bool result = await Task.Run(() => this.driverStore.ExportAllDrivers(dialog.FileName)).ConfigureAwait(true);
-
-                    if (result)
+                    try
                     {
-                        this.ShowStatus(Status.Success, Language.Message_Export_All_Drivers_Success);
+                        this.StartOperation();
+                        this.ShowStatus(Status.Normal, Language.Status_Exporting_All_Drivers);
+
+                        bool result = await Task.Run(() => this.driverStore.ExportAllDrivers(dialog.FileName)).ConfigureAwait(true);
+
+                        if (result)
+                        {
+                            this.ShowStatus(Status.Success, Language.Message_Export_All_Drivers_Success);
+                        }
+                        else
+                        {
+                            this.ShowStatus(Status.Error, Language.Message_Export_All_Drivers_Fail, usePopup: true);
+                        }
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        this.ShowStatus(Status.Error, Language.Message_Export_All_Drivers_Fail, usePopup: true);
+                        this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
                     }
-                }
-                catch (Exception ex)
-                {
-                    this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
-                }
-                finally
-                {
-                    this.EndOperation();
+                    finally
+                    {
+                        this.EndOperation();
+                    }
                 }
             }
         }
