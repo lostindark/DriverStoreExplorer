@@ -156,7 +156,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select Old Drivers.
+        ///   Looks up a localized string similar to Select Old Driver(s).
         /// </summary>
         public static string Button_Select_Old {
             get {
@@ -678,6 +678,24 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Export all driver packages failed..
+        /// </summary>
+        public static string Message_Export_All_Drivers_Fail {
+            get {
+                return ResourceManager.GetString("Message_Export_All_Drivers_Fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export all driver packages succeeded..
+        /// </summary>
+        public static string Message_Export_All_Drivers_Success {
+            get {
+                return ResourceManager.GetString("Message_Export_All_Drivers_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About to force delete {0} packages from driver store..
         /// </summary>
         public static string Message_ForceDelete_Multiple_Packages {
@@ -827,6 +845,15 @@ namespace Rapr.Lang {
         public static string Status_Deleting_Packages {
             get {
                 return ResourceManager.GetString("Status_Deleting_Packages", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporting all driver packages....
+        /// </summary>
+        public static string Status_Exporting_All_Drivers {
+            get {
+                return ResourceManager.GetString("Status_Exporting_All_Drivers", resourceCulture);
             }
         }
         

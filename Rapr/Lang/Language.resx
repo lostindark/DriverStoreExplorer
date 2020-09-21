@@ -130,7 +130,7 @@
     <value>Refresh</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>Select Old Drivers</value>
+    <value>Select Old Driver(s)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Force Deletion</value>
@@ -431,5 +431,14 @@ License:
   </data>
   <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
     <value>Export All Drivers</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Export all driver packages failed.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Export all driver packages succeeded.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Exporting all driver packages...</value>
   </data>
 </root>

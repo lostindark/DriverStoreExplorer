@@ -13,6 +13,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using Microsoft.WindowsAPICodePack.Dialogs;
+
 using Rapr.Lang;
 using Rapr.Properties;
 using Rapr.Utils;
@@ -835,6 +837,7 @@ namespace Rapr
             this.buttonExportDrivers.Enabled = false;
             this.chooseDriverStoreToolStripMenuItem.Enabled = false;
             this.exportToolStripMenuItem.Enabled = false;
+            this.exportAllDriversToolStripMenuItem.Enabled = false;
             this.languageToolStripMenuItem.Enabled = false;
         }
 
@@ -851,6 +854,7 @@ namespace Rapr
             this.buttonExportDrivers.Enabled = true;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
             this.exportToolStripMenuItem.Enabled = true;
+            this.exportAllDriversToolStripMenuItem.Enabled = true;
             this.languageToolStripMenuItem.Enabled = true;
         }
 
@@ -916,6 +920,45 @@ namespace Rapr
                     }
 
                     break;
+            }
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
+        private async void ExportAllDriversToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using var dialog = new CommonOpenFileDialog
+            {
+                IsFolderPicker = true
+            };
+
+            CommonFileDialogResult dialogResult = dialog.ShowDialog();
+
+            if (dialogResult == CommonFileDialogResult.Ok)
+            {
+                try
+                {
+                    this.StartOperation();
+                    this.ShowStatus(Status.Normal, Language.Status_Exporting_All_Drivers);
+
+                    bool result = await Task.Run(() => this.driverStore.ExportAllDrivers(dialog.FileName)).ConfigureAwait(true);
+
+                    if (result)
+                    {
+                        this.ShowStatus(Status.Success, Language.Message_Export_All_Drivers_Success);
+                    }
+                    else
+                    {
+                        this.ShowStatus(Status.Error, Language.Message_Export_All_Drivers_Fail, usePopup: true);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
+                }
+                finally
+                {
+                    this.EndOperation();
+                }
             }
         }
     }

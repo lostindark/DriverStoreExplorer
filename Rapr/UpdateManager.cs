@@ -11,7 +11,7 @@ namespace Rapr
     {
         private const string versionInfoUrl = "https://api.github.com/repos/lostindark/DriverStoreExplorer/releases/latest";
         private readonly HttpClient httpClient = new HttpClient();
-        private bool disposedValue = false; // To detect redundant calls
+        private bool disposedValue; // To detect redundant calls
 
         public async Task<VersionInfo> GetLatestVersionInfo()
         {

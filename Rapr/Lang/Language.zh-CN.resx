@@ -396,4 +396,13 @@
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>添加并安装驱动包 {0} 到驱动存储出错。</value>
   </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>导出所有驱动包失败。</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>导出所有驱动包成功。</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>导出所有驱动包…</value>
+  </data>
 </root>

@@ -21,7 +21,7 @@ namespace Rapr
             }
 
             // Get the http headers first to examine the content length
-            using (var response = await client.GetAsync(requestUri, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false))
+            using (var response = await client.GetAsync(requestUri, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false))
             {
                 var contentLength = response.Content.Headers.ContentLength;
 
