@@ -423,4 +423,22 @@ Lizenz:
     <value>Fehler beim Hinzufügen des Pakets {0} &amp; installiert zum Driver Store.</value>
     <comment>{0} - Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>Treiber exportieren</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>Treiber exportieren</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>Alle Treiber exportieren</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Das Exportieren aller Treiberpakete ist fehlgeschlagen.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Das Exportieren aller Treiberpakete war erfolgreich.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Alle Treiberpakete werden exportiert...</value>
+  </data>
 </root>
