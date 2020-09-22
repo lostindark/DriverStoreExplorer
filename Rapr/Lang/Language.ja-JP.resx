@@ -352,7 +352,7 @@
     <value>ローカル コンピューター</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>ドライバー ストアの選択</value>
+    <value>ドライバー ストアの選択...</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
     <value>オフライン ドライバー ストア</value>
@@ -395,5 +395,23 @@
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>ドライバー ストアにパッケージ {0} を追加してインストールする際にエラーが発生しました。</value>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>ドライバーのエクスポート</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>ドライバーのエクスポート</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>すべてのドライバーのエクスポート...</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>すべてのドライバー パッケージのエクスポートに失敗しました。</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>すべてのドライバー パッケージをエクスポートしました。</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>すべてのドライバー パッケージをエクスポートしています...</value>
   </data>
 </root>
