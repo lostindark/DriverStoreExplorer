@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>Установить пакет</value>
+    <value>Добавить драйвер</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>Удалить пакет</value>
+    <value>Удалить драйвер(ы)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
@@ -187,10 +187,10 @@
     <value>Выполнен запуск без прав администратора. Некоторые функции отключены.</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>удален {0} пакетов из хранилища драйверов.</value>
+    <value>Удалить {0} пакета(ов) из хранилища драйверов.</value>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>удалено с форсированием {0} ({1}) из хранилища драйверов.</value>
+    <value>Удалить {0} ({1}) из хранилища драйверов.</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Эта программа не может быть запущена на ОС старше Vista.</value>
@@ -292,10 +292,10 @@
     <value>Выполняется другая операция</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Добавления пакета драйверов...</value>
+    <value>Добавление пакета драйвера...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Удаления пакета дравера(ов)...</value>
+    <value>Удаление пакета дравера(ов)...</value>
   </data>
   <data name="Message_Detailed_Log" xml:space="preserve">
     <value>Детальный лог ошибок</value>
@@ -372,11 +372,14 @@
   <data name="About_Download" xml:space="preserve">
     <value>Загрузить</value>
   </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>Сканирование хранилища драйверов...</value>
+  </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>удалено с форсированием {0} ({1}) из хранилища драйверов.</value>
+    <value>Удалить с форсированием {0} ({1}) из хранилища драйверов.</value>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>удален {0} пакетов из хранилища драйверов.</value>
+    <value>Удалить с форсированием {0} пакета(ов) из хранилища драйверов.</value>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>Удаление {0} ({1}) успешно.</value>
@@ -385,9 +388,27 @@
     <value>Удаление {0} ({1}) не удалось.</value>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Добавлен {0} пакет &amp; установлен в хранилище драйверов.</value>
+    <value>Добавленный пакет {0} &amp; установлен в хранилище драйверов.</value>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Ошибка добавления {0} пакета &amp; установлен в хранилище драйверов.</value>
+    <value>Ошибка добавления пакета {0} &amp; при установке в хранилище драйверов.</value>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>Экспорт драйвера(ов)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>Экспорт драйверов</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>Экспорт всех драйверов</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Не удалось экспортировать все пакеты драйверов.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Экспорт всех пакетов драйверов выполнен успешно.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Экспорт всех пакетов драйверов...</value>
   </data>
 </root>
