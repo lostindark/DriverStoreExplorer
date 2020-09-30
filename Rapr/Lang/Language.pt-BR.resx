@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -392,5 +392,26 @@ License:
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>Erro ao adicionar {0} o pacote &amp; instalado ao armazenamento de drivers.</value>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>Verificando armazenamento de drivers...</value>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>Exportar Driver(s)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>Exportar Driver</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>Exportar Todos os Drivers</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Falha ao exportar todos os pacotes de drivers.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Todos os pacotes de drivers exportados com sucesso.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Exportando todos os pacotes de drivers...</value>
   </data>
 </root>
