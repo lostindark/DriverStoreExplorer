@@ -133,6 +133,7 @@
     <EmbeddedResource Include="DSEForm.resx">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Lang\Language.ar-SA.resx" />
     <EmbeddedResource Include="Lang\Language.de-DE.resx" />
     <EmbeddedResource Include="Lang\Language.es-ES.resx" />
     <EmbeddedResource Include="Lang\Language.fr-FR.resx" />

@@ -1,0 +1,413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_Add_Package" xml:space="preserve">
+    <value>إضافة تعريف</value>
+  </data>
+  <data name="Button_Delete_Package" xml:space="preserve">
+    <value>حذف التعريفا(ت)</value>
+  </data>
+  <data name="Button_OK" xml:space="preserve">
+    <value>موافق</value>
+  </data>
+  <data name="Button_Refresh" xml:space="preserve">
+    <value>تحديث</value>
+  </data>
+  <data name="Button_Select_Old" xml:space="preserve">
+    <value>إختيار تعريف(ات) أقدم</value>
+  </data>
+  <data name="Check_Force_Delete" xml:space="preserve">
+    <value>إجبار الحذف</value>
+  </data>
+  <data name="Check_Install_Driver" xml:space="preserve">
+    <value>تثبيت التعريف</value>
+  </data>
+  <data name="Column_Date" xml:space="preserve">
+    <value>تاريخ التعريف</value>
+  </data>
+  <data name="Column_Driver_Class" xml:space="preserve">
+    <value>صنف التعريف</value>
+  </data>
+  <data name="Column_Inf" xml:space="preserve">
+    <value>INF</value>
+  </data>
+  <data name="Column_Oem_Inf" xml:space="preserve">
+    <value>OEM-INF</value>
+  </data>
+  <data name="Column_Provider" xml:space="preserve">
+    <value>المزوّد</value>
+  </data>
+  <data name="Column_Signed_By" xml:space="preserve">
+    <value>التوقيع الرقمي</value>
+  </data>
+  <data name="Column_Size" xml:space="preserve">
+    <value>الحجم</value>
+  </data>
+  <data name="Column_Version" xml:space="preserve">
+    <value>نسخة التعريف</value>
+  </data>
+  <data name="Context_Delete" xml:space="preserve">
+    <value>حذف</value>
+  </data>
+  <data name="Context_Deselect" xml:space="preserve">
+    <value>إلغاء التحديد</value>
+  </data>
+  <data name="Context_Deselect_All" xml:space="preserve">
+    <value>إلغاء تحديد الكل</value>
+  </data>
+  <data name="Context_Select" xml:space="preserve">
+    <value>تحديد</value>
+  </data>
+  <data name="Context_Select_All" xml:space="preserve">
+    <value>تحديد الكل</value>
+  </data>
+  <data name="Context_Select_Old" xml:space="preserve">
+    <value>تحديد التعريفات القديمة</value>
+  </data>
+  <data name="Group_DriverStore" xml:space="preserve">
+    <value>مستودع التعريفات</value>
+  </data>
+  <data name="Label_RunAsAdmin" xml:space="preserve">
+    <value>البرنامج يشتغل بدون صلاحيات حساب المسؤول. بعض الخصائص تم تعطيلها.</value>
+  </data>
+  <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
+    <value>أنت على وشك حذف {0} تعريفات من مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Delete_Single_Package" xml:space="preserve">
+    <value>أنت على وشك حذف {0} ({1}) من مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Requires_Later_OS" xml:space="preserve">
+    <value>لا يمكن تشغيل البرنامج على نظام أقدم من Vista</value>
+  </data>
+  <data name="Message_Select_Driver_Entry" xml:space="preserve">
+    <value>قم بتحديد تعريف أولا</value>
+  </data>
+  <data name="Message_Sure" xml:space="preserve">
+    <value>هل أنت متأكد؟</value>
+  </data>
+  <data name="Message_Title_Warning" xml:space="preserve">
+    <value>تحذير</value>
+  </data>
+  <data name="Operations_Text" xml:space="preserve">
+    <value>مهام</value>
+  </data>
+  <data name="Product_Name" xml:space="preserve">
+    <value>مستكشف مستودع التعريفات</value>
+  </data>
+  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
+    <value>[وضع القراءة]</value>
+  </data>
+  <data name="Status_Label" xml:space="preserve">
+    <value>جاهز</value>
+  </data>
+  <data name="Status_Running_ReadOnly" xml:space="preserve">
+    <value>التشغيل تحت وضع القراءة فقط</value>
+  </data>
+  <data name="Tip_Driver_In_Use" xml:space="preserve">
+    <value>[تنبيه: قد يكون التعريف قيد الاستخدام. حاول إجبار حذفه.]</value>
+  </data>
+  <data name="Title_About" xml:space="preserve">
+    <value>حول</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>مساعدة</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>حول البرنامج</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>ملف</value>
+  </data>
+  <data name="Menu_File_Export" xml:space="preserve">
+    <value>تصدير قائمة التعريفات</value>
+  </data>
+  <data name="Menu_File_Exit" xml:space="preserve">
+    <value>خروج</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>إختيارات</value>
+  </data>
+  <data name="Menu_File_View_Logs" xml:space="preserve">
+    <value>رؤية السجلات</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="Message_No_Entries" xml:space="preserve">
+    <value>لا يوجد تعريفات بعد</value>
+  </data>
+  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
+    <value>إختيار ملف INF</value>
+  </data>
+  <data name="Dialog_Open_Filters" xml:space="preserve">
+    <value>INF ملفات | *.inf</value>
+  </data>
+  <data name="Product_Credits" xml:space="preserve">
+    <value>مستكشف مستودع التعريفات v{0}</value>
+  </data>
+  <data name="Product_About_Title" xml:space="preserve">
+    <value>حول {0}</value>
+  </data>
+  <data name="Export_Error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="About_Project_Description" xml:space="preserve">
+    <value>ستجد أحدث نسخة مع تغييرات النسخة هنا:
+    https://github.com/lostindark/DriverStoreExplorer/releases
+للاستعلام عن مشكلة أو لاقتراح ميزة جديدة من هنا:
+    https://github.com/lostindark/DriverStoreExplorer/issues
+المساهمون:
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
+حقوق الاعتماد:
+    http://objectlistview.sourceforge.net ObjectListView
+    https://github.com/jeffkl/ManagedDism Managed DismApi Wrapper
+الرخصة:
+https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
+  </data>
+  <data name="UnitTest_Language" xml:space="preserve">
+    <value>العربية</value>
+  </data>
+  <data name="Dialog_Export_Filters" xml:space="preserve">
+    <value>CSV ملفات | *.csv</value>
+  </data>
+  <data name="Message_Operation_In_Progress" xml:space="preserve">
+    <value>هناك عملية أخرى قيد التنفيذ</value>
+  </data>
+  <data name="Status_Adding_Package" xml:space="preserve">
+    <value>إضافة تعريف...</value>
+  </data>
+  <data name="Status_Deleting_Packages" xml:space="preserve">
+    <value>حذف التعريفات...</value>
+  </data>
+  <data name="Message_Detailed_Log" xml:space="preserve">
+    <value>سجل الأخطاء المفصل</value>
+  </data>
+  <data name="Message_Delete_Package" xml:space="preserve">
+    <value>تم حذف {0} ({1}) من مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Delete_Packages" xml:space="preserve">
+    <value>تم حذف {0} تعريفات من مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Delete_Package_Error" xml:space="preserve">
+    <value>فشل حذف {0} ({1}) من مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+    <value>فشل حذف بعض التعريفات من مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Driver_Added" xml:space="preserve">
+    <value>تم إضافة التعريف {0} إلى مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
+    <value>فشلت إضافة التعريف {0} إلى مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>ملف السجلات لا يمكن إيجاده.</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="Export_Complete" xml:space="preserve">
+    <value>تم حفظ المحتويات في {0}. انتهى التصدير.</value>
+  </data>
+  <data name="Export_Failed" xml:space="preserve">
+    <value>فشل التصدير: {0}</value>
+    <comment>{0} - مكان اسم الخطأ</comment>
+  </data>
+  <data name="Status_Selected_Drivers" xml:space="preserve">
+    <value>عدد التعريفات المختارة: {0}. الحجم الكلي: {1}.</value>
+  </data>
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+    <value>لا يوجد تعريفات محددة.</value>
+  </data>
+  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
+    <value>تشغيل بحساب المسؤول</value>
+  </data>
+  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
+    <value>دائما شغل بحساب المسؤول</value>
+  </data>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>فتح مسار المجلّد</value>
+  </data>
+  <data name="DriverStore_LocalMachine" xml:space="preserve">
+    <value>الجهاز المحلي</value>
+  </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>إختيار مستودع التعريفات</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>مستودع التعريفات الغير متصل</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>إختيار مستودع التعريفات</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>اللغة</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>إسم الجهاز</value>
+  </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(النسخة محدّثة)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(هناك نسخة جديدة v{0} - {1})</value>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>تحميل</value>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>جار فحص مستودع التعريفات...</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>أنت على وشك حذف {0} ({1}) من مستودع التعريفات.</value>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>أنت على وشك إجبار حذف {0} تعريفات من مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>تم حذف {0} ({1}) بنجاح.</value>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>فشل حذف {0} ({1}).</value>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>تم إضافة وثتبيت التعريف {0} إلى مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>فشلت إضافة التعريف {0} وتثبيته في مستودع التعريفات.</value>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>تصدير التعريفا(ت)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>تصدير التعريف</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>تصدير جميع التعريفات</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>فشل تصدير جميع التعريفات.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>تم تصدير جميع التعريفات.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>تصدير جميع التعريفات...</value>
+  </data>
+</root>
