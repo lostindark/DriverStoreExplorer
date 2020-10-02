@@ -73,36 +73,6 @@ namespace Rapr.Properties {
 
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("No")]
-        public global::System.Windows.Forms.RightToLeft FormRighToLeft
-        {
-            get
-            {
-                return ((global::System.Windows.Forms.RightToLeft)(this["FormRighToLeft"]));
-            }
-            set
-            {
-                this["FormRighToLeft"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
-        public bool FormRighToLeftLayout
-        {
-            get
-            {
-                return ((bool)(this["FormRighToLeftLayout"]));
-            }
-            set
-            {
-                this["FormRighToLeftLayout"] = value;
-            }
-        }
-
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("")]
         public string DriverStoreViewState {
             get {
