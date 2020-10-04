@@ -656,6 +656,8 @@ namespace Rapr
                 this.InitializeComponent();
                 this.BuildLanguageMenu();
                 this.Size = windowSize;
+                this.RightToLeft = (ci.TextInfo.IsRightToLeft) ? RightToLeft.Yes : RightToLeft.No;
+                this.RightToLeftLayout = ci.TextInfo.IsRightToLeft;
                 this.SetupListViewColumns();
                 this.lstDriverStoreEntries.RestoreState(driverStoreViewState);
 
@@ -697,6 +699,8 @@ namespace Rapr
         private void DSEForm_Load(object sender, EventArgs e)
         {
             this.lstDriverStoreEntries.RestoreState(Convert.FromBase64String(Settings.Default.DriverStoreViewState));
+            this.RightToLeft = (Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft) ? RightToLeft.Yes : RightToLeft.No;
+            this.RightToLeftLayout = Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft;
 
             if (Settings.Default.WindowState != default(FormWindowState))
             {
