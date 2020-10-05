@@ -425,4 +425,22 @@ Licencja użytkowania:
     <value>Błąd podczas dodawania pakietu {0} &amp; zainstalowany w magazynie sterowników.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>Eksportuj sterownik(i)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>Eksportuj sterownik</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>Eksportuj wszystkie sterowniki</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Eksportowanie wszystkich pakietów sterowników nie powiodło się.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Pomyślnie wyeksportowano wszystkie pakiety sterowników.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Eksportowanie wszystkich pakietów sterowników...</value>
+  </data>
 </root>
