@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
 using System.Threading;
@@ -463,14 +464,6 @@ namespace Rapr
             }
         }
 
-        private static void ShowAboutBox()
-        {
-            using (AboutBox ab = new AboutBox(UpdateManager))
-            {
-                ab.ShowDialog();
-            }
-        }
-
         private void ContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
             // Check if there are any entries
@@ -656,10 +649,12 @@ namespace Rapr
                 this.InitializeComponent();
                 this.BuildLanguageMenu();
                 this.Size = windowSize;
-                this.RightToLeft = (ci.TextInfo.IsRightToLeft) ? RightToLeft.Yes : RightToLeft.No;
+                this.RightToLeft = ci.TextInfo.IsRightToLeft ? RightToLeft.Yes : RightToLeft.No;
                 this.RightToLeftLayout = ci.TextInfo.IsRightToLeft;
                 this.SetupListViewColumns();
                 this.lstDriverStoreEntries.RestoreState(driverStoreViewState);
+                this.lstDriverStoreEntries.RightToLeft = this.RightToLeft;
+                this.lstDriverStoreEntries.RightToLeftLayout = this.RightToLeftLayout;
 
                 this.DSEForm_Shown(sender, e);
                 this.ResumeLayout();
@@ -693,14 +688,21 @@ namespace Rapr
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ShowAboutBox();
+            using (AboutBox ab = new AboutBox(UpdateManager))
+            {
+                ab.RightToLeft = this.RightToLeft;
+                ab.RightToLeftLayout = this.RightToLeftLayout;
+                ab.ShowDialog();
+            }
         }
 
         private void DSEForm_Load(object sender, EventArgs e)
         {
             this.lstDriverStoreEntries.RestoreState(Convert.FromBase64String(Settings.Default.DriverStoreViewState));
-            this.RightToLeft = (Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft) ? RightToLeft.Yes : RightToLeft.No;
+            this.RightToLeft = Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft ? RightToLeft.Yes : RightToLeft.No;
             this.RightToLeftLayout = Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft;
+            this.lstDriverStoreEntries.RightToLeft = this.RightToLeft;
+            this.lstDriverStoreEntries.RightToLeftLayout = this.RightToLeftLayout;
 
             if (Settings.Default.WindowState != default(FormWindowState))
             {
@@ -787,6 +789,9 @@ namespace Rapr
                 {
                     chooseDriverStore.OfflineStoreLocation = this.driverStore.OfflineStoreLocation;
                 }
+
+                chooseDriverStore.RightToLeft = this.RightToLeft;
+                chooseDriverStore.RightToLeftLayout = this.RightToLeftLayout;
 
                 DialogResult result = chooseDriverStore.ShowDialog();
 
