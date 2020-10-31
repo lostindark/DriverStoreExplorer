@@ -230,10 +230,8 @@ namespace Rapr
 
         private async void ButtonDelete_Click(object sender, EventArgs e)
         {
-            if (this.lstDriverStoreEntries.CheckedObjects.Count == 0 && this.lstDriverStoreEntries.SelectedIndex == -1)
+            if (this.lstDriverStoreEntries.CheckedObjects.Count == 0)
             {
-                // No entry is selected 
-                this.ShowStatus(Status.Warning, Language.Message_Select_Driver_Entry);
                 return;
             }
 
@@ -760,6 +758,9 @@ namespace Rapr
             {
                 this.ShowStatus(Status.Normal, Language.Status_No_Drivers_Selected);
             }
+
+            this.buttonDeleteDriver.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
+            this.cbForceDeletion.Enabled = this.buttonDeleteDriver.Enabled;
         }
 
         private void UpdateColumnSize()
@@ -857,8 +858,8 @@ namespace Rapr
             this.buttonEnumerate.Enabled = true;
             this.buttonAddDriver.Enabled = true;
             this.cbAddInstall.Enabled = this.driverStore.SupportAddInstall;
-            this.buttonDeleteDriver.Enabled = true;
-            this.cbForceDeletion.Enabled = this.driverStore.SupportForceDeletion;
+            this.buttonDeleteDriver.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
+            this.cbForceDeletion.Enabled = this.buttonDeleteDriver.Enabled && this.driverStore.SupportForceDeletion;
             this.buttonSelectOldDrivers.Enabled = true;
             this.buttonExportDrivers.Enabled = true;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
