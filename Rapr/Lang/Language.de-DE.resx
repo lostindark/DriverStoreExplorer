@@ -404,4 +404,7 @@ Lizenz:
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Alle Treiberpakete werden exportiert...</value>
   </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>&amp;Abbrechen</value>
+  </data>
 </root>
