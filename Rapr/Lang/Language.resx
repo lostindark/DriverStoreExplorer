@@ -441,4 +441,7 @@ License:
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Exporting all driver packages...</value>
   </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>&amp;Cancel</value>
+  </data>
 </root>

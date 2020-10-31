@@ -82,7 +82,7 @@
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 4;
-            this.buttonOK.Text = "OK";
+            this.buttonOK.Text = global::Rapr.Lang.Language.Button_OK;
             this.buttonOK.UseVisualStyleBackColor = true;
             // 
             // buttonCancel
@@ -92,7 +92,7 @@
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 5;
-            this.buttonCancel.Text = "Cancel";
+            this.buttonCancel.Text = global::Rapr.Lang.Language.Button_Cancel;
             this.buttonCancel.UseVisualStyleBackColor = true;
             // 
             // ChooseStoreLocation
