@@ -180,12 +180,6 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Sélectionnez les pilotes obsolètes</value>
   </data>
-  <data name="Group_DriverStore" xml:space="preserve">
-    <value>Magasin de pilotes</value>
-  </data>
-  <data name="Label_RunAsAdmin" xml:space="preserve">
-    <value>Lancé en mode non-administrateur. Certaines fonctionnalités sont désactivées.</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Sur le point de delete {0} packages à partir du magasin de pilotes.</value>
   </data>
@@ -194,9 +188,6 @@
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Cet utilitaire ne peut pas être exécuté avec un système d'exploitation "pre-Vista".</value>
-  </data>
-  <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>Selectionnez d'abord un pilote</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Êtes-vous sûr?</value>
@@ -210,20 +201,11 @@
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
-  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
-    <value>[Mode lecture seule]</value>
-  </data>
   <data name="Status_Label" xml:space="preserve">
     <value>Prêt</value>
   </data>
-  <data name="Status_Running_ReadOnly" xml:space="preserve">
-    <value>Exécution en mode lecture seule</value>
-  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[CONSEIL: le pilote est peut-être encore utilisé. Essayez de supprimer le paquet en sélectionnant l'option FORCE]</value>
-  </data>
-  <data name="Title_About" xml:space="preserve">
-    <value>A propos</value>
   </data>
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Aucune entrée chargée.</value>
@@ -240,9 +222,6 @@
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
   </data>
-  <data name="Menu_Options" xml:space="preserve">
-    <value>Options</value>
-  </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Quitter</value>
   </data>
@@ -257,9 +236,6 @@
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>Aide</value>
-  </data>
-  <data name="Product_Credits" xml:space="preserve">
-    <value>Driver Store Explorer v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>A propos {0}</value>
@@ -282,17 +258,11 @@ Crédits:
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
 </value>
   </data>
-  <data name="Message_Operation_In_Progress" xml:space="preserve">
-    <value>Une autre opération est en cours</value>
-  </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>Ajout du package de pilote...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>Suppression du package (s) de pilote ...</value>
-  </data>
-  <data name="Message_Detailed_Log" xml:space="preserve">
-    <value>Journal d'erreur détaillé</value>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Aucun pilote sélectionné.</value>
@@ -329,12 +299,6 @@ Crédits:
   </data>
   <data name="Export_Complete" xml:space="preserve">
     <value>Contenu enregistré dans {0}. Export terminé.</value>
-  </data>
-  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
-    <value>Exécuter en mode administrateur</value>
-  </data>
-  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
-    <value>Toujours exécuter en mode administrateur</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Ouvrir l'emplacement du dossier</value>

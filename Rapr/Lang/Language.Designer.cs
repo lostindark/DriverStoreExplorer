@@ -435,24 +435,6 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Driver Store.
-        /// </summary>
-        public static string Group_DriverStore {
-            get {
-                return ResourceManager.GetString("Group_DriverStore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Started without admin privileges. Some features are disabled..
-        /// </summary>
-        public static string Label_RunAsAdmin {
-            get {
-                return ResourceManager.GetString("Label_RunAsAdmin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to File.
         /// </summary>
         public static string Menu_File {
@@ -498,15 +480,6 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Run As Admin.
-        /// </summary>
-        public static string Menu_File_RunAs_Admin {
-            get {
-                return ResourceManager.GetString("Menu_File_RunAs_Admin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to View Logs.
         /// </summary>
         public static string Menu_File_View_Logs {
@@ -539,24 +512,6 @@ namespace Rapr.Lang {
         public static string Menu_Language {
             get {
                 return ResourceManager.GetString("Menu_Language", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Always Run As Admin.
-        /// </summary>
-        public static string Menu_Option_Always_RunAs_Admin {
-            get {
-                return ResourceManager.GetString("Menu_Option_Always_RunAs_Admin", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Options.
-        /// </summary>
-        public static string Menu_Options {
-            get {
-                return ResourceManager.GetString("Menu_Options", resourceCulture);
             }
         }
         
@@ -629,15 +584,6 @@ namespace Rapr.Lang {
         public static string Message_Delete_Success {
             get {
                 return ResourceManager.GetString("Message_Delete_Success", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Detailed Error Log.
-        /// </summary>
-        public static string Message_Detailed_Log {
-            get {
-                return ResourceManager.GetString("Message_Detailed_Log", resourceCulture);
             }
         }
         
@@ -741,15 +687,6 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Another operation in progress.
-        /// </summary>
-        public static string Message_Operation_In_Progress {
-            get {
-                return ResourceManager.GetString("Message_Operation_In_Progress", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to This utility cannot be run in pre-Vista OS..
         /// </summary>
         public static string Message_Requires_Later_OS {
@@ -764,15 +701,6 @@ namespace Rapr.Lang {
         public static string Message_Scanning_Driver_Store {
             get {
                 return ResourceManager.GetString("Message_Scanning_Driver_Store", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Select a driver entry first.
-        /// </summary>
-        public static string Message_Select_Driver_Entry {
-            get {
-                return ResourceManager.GetString("Message_Select_Driver_Entry", resourceCulture);
             }
         }
         
@@ -813,29 +741,11 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Driver Store Explorer v{0}.
-        /// </summary>
-        public static string Product_Credits {
-            get {
-                return ResourceManager.GetString("Product_Credits", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Driver Store Explorer.
         /// </summary>
         public static string Product_Name {
             get {
                 return ResourceManager.GetString("Product_Name", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to [Read-Only Mode].
-        /// </summary>
-        public static string Product_Name_Additional_ReadOnly {
-            get {
-                return ResourceManager.GetString("Product_Name_Additional_ReadOnly", resourceCulture);
             }
         }
         
@@ -881,15 +791,6 @@ namespace Rapr.Lang {
         public static string Status_No_Drivers_Selected {
             get {
                 return ResourceManager.GetString("Status_No_Drivers_Selected", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Running in Read-Only mode.
-        /// </summary>
-        public static string Status_Running_ReadOnly {
-            get {
-                return ResourceManager.GetString("Status_Running_ReadOnly", resourceCulture);
             }
         }
         

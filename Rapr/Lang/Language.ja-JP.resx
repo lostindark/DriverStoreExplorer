@@ -180,12 +180,6 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>古いドライバーのみ選択</value>
   </data>
-  <data name="Group_DriverStore" xml:space="preserve">
-    <value>ドライバー ストア</value>
-  </data>
-  <data name="Label_RunAsAdmin" xml:space="preserve">
-    <value>管理者権限なしで起動しました。一部の機能は無効になっています。</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>ドライバー ストアから {0} 個のパッケージを削除します。</value>
   </data>
@@ -194,9 +188,6 @@
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>このユーティリティは Windows Vista 以前の OS では実行できません。</value>
-  </data>
-  <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>最初にドライバー エントリを選択してください</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>よろしいですか?</value>
@@ -210,20 +201,11 @@
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
-  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
-    <value>[読み取り専用モード]</value>
-  </data>
   <data name="Status_Label" xml:space="preserve">
     <value>準備完了</value>
   </data>
-  <data name="Status_Running_ReadOnly" xml:space="preserve">
-    <value>読み取り専用モードで実行しています</value>
-  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[ヒント: ドライバーが使用中の可能性があります。強制削除モードを試してください。]</value>
-  </data>
-  <data name="Title_About" xml:space="preserve">
-    <value>バージョン情報</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>ヘルプ</value>
@@ -240,9 +222,6 @@
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>終了</value>
   </data>
-  <data name="Menu_Options" xml:space="preserve">
-    <value>設定</value>
-  </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>ログの表示...</value>
   </data>
@@ -257,9 +236,6 @@
   </data>
   <data name="Dialog_Open_Filters" xml:space="preserve">
     <value>セットアップ情報 | *.inf</value>
-  </data>
-  <data name="Product_Credits" xml:space="preserve">
-    <value>Driver Store Explorer v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>{0} のバージョン情報</value>
@@ -291,17 +267,11 @@
   <data name="Dialog_Export_Filters" xml:space="preserve">
     <value>CSV ファイル | *.csv</value>
   </data>
-  <data name="Message_Operation_In_Progress" xml:space="preserve">
-    <value>別の操作が進行中です</value>
-  </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>ドライバー パッケージを追加しています...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>ドライバー パッケージを削除しています...</value>
-  </data>
-  <data name="Message_Detailed_Log" xml:space="preserve">
-    <value>詳細なエラー ログ</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>ドライバー ストアから {0} ({1}) を削除しました。</value>
@@ -338,12 +308,6 @@
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>ドライバーが選択されていません。</value>
-  </data>
-  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
-    <value>管理者として実行</value>
-  </data>
-  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
-    <value>常に管理者として実行</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>ファイルの場所を開く</value>

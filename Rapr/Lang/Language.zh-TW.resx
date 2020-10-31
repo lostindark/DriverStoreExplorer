@@ -253,12 +253,6 @@
     <value>匯出失敗: {0}</value>
     <comment>{0} - Placeholder for error message</comment>
   </data>
-  <data name="Group_DriverStore" xml:space="preserve">
-    <value>驅動程式存放區</value>
-  </data>
-  <data name="Label_RunAsAdmin" xml:space="preserve">
-    <value>未以系統管理員身分啟動。部分功能會無法使用。</value>
-  </data>
   <data name="Menu_File" xml:space="preserve">
     <value>檔案</value>
   </data>
@@ -274,9 +268,6 @@
   <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
     <value>匯出所有驅動程式</value>
   </data>
-  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
-    <value>以系統管理員身分執行</value>
-  </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>檢視記錄</value>
   </data>
@@ -288,12 +279,6 @@
   </data>
   <data name="Menu_Language" xml:space="preserve">
     <value>語言</value>
-  </data>
-  <data name="Menu_Options" xml:space="preserve">
-    <value>選項</value>
-  </data>
-  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
-    <value>永遠以系統管理員身分執行</value>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>刪除 {0} ({1}) 失敗。</value>
@@ -330,9 +315,6 @@
     <value>成功刪除 {0} ({1})。</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
-  </data>
-  <data name="Message_Detailed_Log" xml:space="preserve">
-    <value>詳細錯誤記錄</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>已加入 {0} 封裝至驅動程式存放區。</value>
@@ -374,17 +356,11 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>未載入項目。</value>
   </data>
-  <data name="Message_Operation_In_Progress" xml:space="preserve">
-    <value>正在進行其他作業</value>
-  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>此公用程式不能在 Vista 以前的作業系統中執行。</value>
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>正在掃描驅動程式存放區…</value>
-  </data>
-  <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>請先選取驅動程式項目</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>您確定嗎?</value>
@@ -399,15 +375,8 @@
     <value>關於 {0}</value>
     <comment>{0} - Placeholder for Product_Name</comment>
   </data>
-  <data name="Product_Credits" xml:space="preserve">
-    <value>Driver Store Explorer v{0}</value>
-    <comment>{0} - Placeholder for installed version number</comment>
-  </data>
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
-  </data>
-  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
-    <value>[唯讀模式]</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>正在加入驅動程式封裝…</value>
@@ -424,9 +393,6 @@
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>未選取驅動程式。</value>
   </data>
-  <data name="Status_Running_ReadOnly" xml:space="preserve">
-    <value>正以唯讀模式執行</value>
-  </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>已選取 {0} 個驅動程式。總大小: {1}。</value>
     <comment>{0} - Placeholder for number of selected Drivers
@@ -434,9 +400,6 @@
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[小提示: 驅動程式可能正被使用。請嘗試「強制」刪除封裝]</value>
-  </data>
-  <data name="Title_About" xml:space="preserve">
-    <value>關於</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>中文 (台灣)</value>

@@ -180,12 +180,6 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Zaznacz przestarzałe sterowniki</value>
   </data>
-  <data name="Group_DriverStore" xml:space="preserve">
-    <value>Magazyn sterowników</value>
-  </data>
-  <data name="Label_RunAsAdmin" xml:space="preserve">
-    <value>Uruchomiono bez uprawnień administratora. Pewne funkcje będą nieaktywne.</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Zamierzasz usunąć {0} pakiet(y/ów) sterowników.</value>
     <comment>{0} - Placeholder for number of packages</comment>
@@ -197,9 +191,6 @@
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Ta aplikacja nie działa z systemami starszymi jak Windows Vista.</value>
-  </data>
-  <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>Najpierw wybierz wpis sterownika</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Jesteś pewien?</value>
@@ -213,20 +204,11 @@
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
-  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
-    <value>[Tryb tylko do odczytu]</value>
-  </data>
   <data name="Status_Label" xml:space="preserve">
     <value>Gotowy</value>
   </data>
-  <data name="Status_Running_ReadOnly" xml:space="preserve">
-    <value>Uruchomiony w trybie tylko do odczytu</value>
-  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[INFO: Sterownik może być wciąż w użyciu. Użyj funkcji wymuszonego usunięcia]</value>
-  </data>
-  <data name="Title_About" xml:space="preserve">
-    <value>O programie</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>Pomoc</value>
@@ -243,9 +225,6 @@
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Wyjdź</value>
   </data>
-  <data name="Menu_Options" xml:space="preserve">
-    <value>Opcje</value>
-  </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>Wyświetl logi</value>
   </data>
@@ -260,10 +239,6 @@
   </data>
   <data name="Dialog_Open_Filters" xml:space="preserve">
     <value>Pliki INF | *.inf</value>
-  </data>
-  <data name="Product_Credits" xml:space="preserve">
-    <value>Driver Store Explorer v{0}</value>
-    <comment>{0} - Placeholder for installed version number</comment>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>O programie {0}</value>
@@ -296,17 +271,11 @@ Licencja użytkowania:
   <data name="Dialog_Export_Filters" xml:space="preserve">
     <value>Pliki CSV | *.csv</value>
   </data>
-  <data name="Message_Operation_In_Progress" xml:space="preserve">
-    <value>Trwa inna operacja</value>
-  </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>Dodawanie pakietu sterownika...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>Usuwanie pakietu sterownika(ów)...</value>
-  </data>
-  <data name="Message_Detailed_Log" xml:space="preserve">
-    <value>Szczegółowy log błędu</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>Usunięto {0} ({1}) z magazynu sterowników.</value>
@@ -356,12 +325,6 @@ Licencja użytkowania:
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Nie wybrano sterowników.</value>
-  </data>
-  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
-    <value>Uruchom jako administrator</value>
-  </data>
-  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
-    <value>Zawsze uruchamiaj jako administrator</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Otwórz folder zawierający</value>

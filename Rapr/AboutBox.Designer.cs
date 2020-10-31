@@ -158,7 +158,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "About";
+            this.Text = global::Rapr.Lang.Language.Product_About_Title;
             this.tableLayoutPanel.ResumeLayout(false);
             this.tableLayoutPanel.PerformLayout();
             this.flowLayoutPanel1.ResumeLayout(false);

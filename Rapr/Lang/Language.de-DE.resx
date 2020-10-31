@@ -180,12 +180,6 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Alte Treiber auswählen</value>
   </data>
-  <data name="Group_DriverStore" xml:space="preserve">
-    <value>Driver Store</value>
-  </data>
-  <data name="Label_RunAsAdmin" xml:space="preserve">
-    <value>Ohne Administratorrechte gestartet. Einige Funktionen sind deaktiviert.</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Sie sind im Begriff {0} Pakete aus dem Driver Store zu entfernen.</value>
     <comment>{0} - Platzhalter für die Paketanzahl</comment>
@@ -197,9 +191,6 @@
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Es ist mindestens Winodws Vista erforderlich.</value>
-  </data>
-  <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>Es muss zunächst ein Treiber ausgewählt werden</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Sind Sie sicher?</value>
@@ -213,20 +204,11 @@
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
-  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
-    <value>[Schreibgeschützter Modus]</value>
-  </data>
   <data name="Status_Label" xml:space="preserve">
     <value>Bereit</value>
   </data>
-  <data name="Status_Running_ReadOnly" xml:space="preserve">
-    <value>Der schreibgeschützte Modus ist aktiv</value>
-  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[TIPP: Der Treiber scheint noch in Benutzung zu sein. Versuchen Sie das Löschen des Treiberpakets zu erzwingen.]</value>
-  </data>
-  <data name="Title_About" xml:space="preserve">
-    <value>Über</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>Hilfe</value>
@@ -243,9 +225,6 @@
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Beenden</value>
   </data>
-  <data name="Menu_Options" xml:space="preserve">
-    <value>Optionen</value>
-  </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>Protokoll anzeigen</value>
   </data>
@@ -260,10 +239,6 @@
   </data>
   <data name="Dialog_Open_Filters" xml:space="preserve">
     <value>INF-Datei | *.inf</value>
-  </data>
-  <data name="Product_Credits" xml:space="preserve">
-    <value>Driver Store Explorer v{0}</value>
-    <comment>{0} - Platzhalter für die installierte Versionsnummer</comment>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Über {0}</value>
@@ -296,17 +271,11 @@ Lizenz:
   <data name="Dialog_Export_Filters" xml:space="preserve">
     <value>CSV-Dateien | *.csv</value>
   </data>
-  <data name="Message_Operation_In_Progress" xml:space="preserve">
-    <value>Eine Aktion ist noch in Bearbeitung</value>
-  </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>Treiberpaket wird hinzugefügt...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>Lösche Treiberpaket(e)...</value>
-  </data>
-  <data name="Message_Detailed_Log" xml:space="preserve">
-    <value>Ausführliches Fehlerprotokoll</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>{0} ({1}) wurde aus dem Driver Store gelöscht.</value>
@@ -354,12 +323,6 @@ Lizenz:
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Es wurden keine Treiber ausgewählt.</value>
-  </data>
-  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
-    <value>Als Administrator ausführen</value>
-  </data>
-  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
-    <value>Immer als Administrator ausführen</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Speicherort öffnen</value>

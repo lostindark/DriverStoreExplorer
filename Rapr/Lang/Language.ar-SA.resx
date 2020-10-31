@@ -180,12 +180,6 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>تحديد التعريفات القديمة</value>
   </data>
-  <data name="Group_DriverStore" xml:space="preserve">
-    <value>مستودع التعريفات</value>
-  </data>
-  <data name="Label_RunAsAdmin" xml:space="preserve">
-    <value>البرنامج يشتغل بدون صلاحيات حساب المسؤول. بعض الخصائص تم تعطيلها.</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>أنت على وشك حذف {0} تعريفات من مستودع التعريفات.</value>
   </data>
@@ -194,9 +188,6 @@
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>لا يمكن تشغيل البرنامج على نظام أقدم من Vista</value>
-  </data>
-  <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>قم بتحديد تعريف أولا</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>هل أنت متأكد؟</value>
@@ -210,20 +201,11 @@
   <data name="Product_Name" xml:space="preserve">
     <value>مستكشف مستودع التعريفات</value>
   </data>
-  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
-    <value>[وضع القراءة]</value>
-  </data>
   <data name="Status_Label" xml:space="preserve">
     <value>جاهز</value>
   </data>
-  <data name="Status_Running_ReadOnly" xml:space="preserve">
-    <value>التشغيل تحت وضع القراءة فقط</value>
-  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[تنبيه: قد يكون التعريف قيد الاستخدام. حاول إجبار حذفه.]</value>
-  </data>
-  <data name="Title_About" xml:space="preserve">
-    <value>حول</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>مساعدة</value>
@@ -240,9 +222,6 @@
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>خروج</value>
   </data>
-  <data name="Menu_Options" xml:space="preserve">
-    <value>إختيارات</value>
-  </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>رؤية السجلات</value>
   </data>
@@ -257,9 +236,6 @@
   </data>
   <data name="Dialog_Open_Filters" xml:space="preserve">
     <value>INF ملفات | *.inf</value>
-  </data>
-  <data name="Product_Credits" xml:space="preserve">
-    <value>مستكشف مستودع التعريفات v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>حول {0}</value>
@@ -286,17 +262,11 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   <data name="Dialog_Export_Filters" xml:space="preserve">
     <value>CSV ملفات | *.csv</value>
   </data>
-  <data name="Message_Operation_In_Progress" xml:space="preserve">
-    <value>هناك عملية أخرى قيد التنفيذ</value>
-  </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>إضافة تعريف...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>حذف التعريفات...</value>
-  </data>
-  <data name="Message_Detailed_Log" xml:space="preserve">
-    <value>سجل الأخطاء المفصل</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>تم حذف {0} ({1}) من مستودع التعريفات.</value>
@@ -334,12 +304,6 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>لا يوجد تعريفات محددة.</value>
-  </data>
-  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
-    <value>تشغيل بحساب المسؤول</value>
-  </data>
-  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
-    <value>دائما شغل بحساب المسؤول</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>فتح مسار المجلّد</value>

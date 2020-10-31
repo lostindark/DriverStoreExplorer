@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -179,26 +179,17 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>이전 드라이버 선택</value>
   </data>
-  <data name="Group_DriverStore" xml:space="preserve">
-    <value>드라이버 저장소</value>
-  </data>
-  <data name="Label_RunAsAdmin" xml:space="preserve">
-    <value>관리자 권한 없이 시작되었습니다. 일부 기능을 사용할 수 없습니다.</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>드라이버 저장소에서 {0}개의 패키지를 삭제합니다.</value>
     <comment>{0} - 패키지 수에 대한 자리 표시자</comment>
   </data>
-    <data name="Message_Delete_Single_Package" xml:space="preserve">
+  <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>드라이버 저장소에서 {0} ({1})을 삭제하려고 합니다.</value>
     <comment>{0} - inf 패키지 파일의 자리 표시자
 {1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>이 유틸리티는 Vista 이전 OS에서 실행할 수 없습니다.</value>
-  </data>
-  <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>드라이버 항목을 먼저 선택합니다</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>확실합니까?</value>
@@ -212,20 +203,11 @@
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
-  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
-    <value>[읽기 전용 모드]</value>
-  </data>
   <data name="Status_Label" xml:space="preserve">
     <value>준비</value>
   </data>
-  <data name="Status_Running_ReadOnly" xml:space="preserve">
-    <value>읽기 전용 모드로 실행 중</value>
-  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[팁: 드라이버가 아직 사용 중일 수 있습니다. 패키지를 강제로 삭제합니다]</value>
-  </data>
-  <data name="Title_About" xml:space="preserve">
-    <value>정보</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>도움말</value>
@@ -242,9 +224,6 @@
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>종료</value>
   </data>
-  <data name="Menu_Options" xml:space="preserve">
-    <value>옵션</value>
-  </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>로그 보기</value>
   </data>
@@ -259,10 +238,6 @@
   </data>
   <data name="Dialog_Open_Filters" xml:space="preserve">
     <value>INF 파일 | *.inf</value>
-  </data>
-  <data name="Product_Credits" xml:space="preserve">
-    <value>Driver Store Explorer v{0}</value>
-	<comment>{0} - 설치된 버전 번호의 자리 표시자</comment>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>프로그램 정보 {0}</value>
@@ -295,17 +270,11 @@
   <data name="Dialog_Export_Filters" xml:space="preserve">
     <value>CSV 파일 | *.csv</value>
   </data>
-  <data name="Message_Operation_In_Progress" xml:space="preserve">
-    <value>다른 작업이 진행 중입니다</value>
-  </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>드라이버 패키지 추가 중...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>드라이버 패키지 삭제 중...</value>
-  </data>
-  <data name="Message_Detailed_Log" xml:space="preserve">
-    <value>자세한 오류 로그</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>드라이버 저장소에서 {0} ({1})를 제거했습니다.</value>
@@ -354,12 +323,6 @@
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>선택한 드라이버가 없습니다.</value>
   </data>
-  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
-    <value>관리자로 실행</value>
-  </data>
-  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
-    <value>항상 관리자로 실행</value>
-  </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>폴더 위치 열기</value>
   </data>
@@ -394,7 +357,7 @@
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>드라이버 저장소를 검색하는 중...</value>
-  </data>  
+  </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>드라이버 저장소에서 {0} ({1})을 강제로 삭제합니다.</value>
     <comment>{0} - inf 패키지 파일의 자리 표시자
@@ -422,7 +385,7 @@
     <value>드라이버 저장소에 설치된 {0} &amp; 패키지를 추가하는 중에 오류가 발생했습니다.</value>
     <comment>{0} - inf 경로의 자리 표시자</comment>
   </data>
- <data name="Button_Export_Drivers" xml:space="preserve">
+  <data name="Button_Export_Drivers" xml:space="preserve">
     <value>드라이버 내보내기</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">

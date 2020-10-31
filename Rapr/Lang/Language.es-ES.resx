@@ -186,12 +186,6 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Seleccionar drivers obsoletos</value>
   </data>
-  <data name="Group_DriverStore" xml:space="preserve">
-    <value>Almacén de drivers</value>
-  </data>
-  <data name="Label_RunAsAdmin" xml:space="preserve">
-    <value>El software se ejecutó sin privilegios de administrador. Algunas características fueron deshabilitadas.</value>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Se eliminarán {0} paquetes del almacén de drivers.</value>
   </data>
@@ -200,9 +194,6 @@
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Esta herramienta no puede ejecutarse en un sistema operativo "pre-Vista".</value>
-  </data>
-  <data name="Message_Select_Driver_Entry" xml:space="preserve">
-    <value>Primero seleccione un driver de la lista</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>¿Estás seguro?</value>
@@ -216,20 +207,11 @@
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
   </data>
-  <data name="Product_Name_Additional_ReadOnly" xml:space="preserve">
-    <value>[Modo sólo de lectura]</value>
-  </data>
   <data name="Status_Label" xml:space="preserve">
     <value>Listo</value>
   </data>
-  <data name="Status_Running_ReadOnly" xml:space="preserve">
-    <value>Corriendo en modo sólo lectura</value>
-  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[Consejo: El driver puede seguir siendo usado. Intenta forzar la eliminación del paquete]</value>
-  </data>
-  <data name="Title_About" xml:space="preserve">
-    <value>Acerca de</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>Ayuda</value>
@@ -246,9 +228,6 @@
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Salir</value>
   </data>
-  <data name="Menu_Options" xml:space="preserve">
-    <value>Opciones</value>
-  </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>Ver registros</value>
   </data>
@@ -263,9 +242,6 @@
   </data>
   <data name="Dialog_Open_Filters" xml:space="preserve">
     <value>Archivo INF | *.inf</value>
-  </data>
-  <data name="Product_Credits" xml:space="preserve">
-    <value>Driver Store Explorer v{0}</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Acerca de {0}</value>
@@ -297,17 +273,11 @@ Licencia:
   <data name="Dialog_Export_Filters" xml:space="preserve">
     <value>Archivo CSV | *.csv</value>
   </data>
-  <data name="Message_Operation_In_Progress" xml:space="preserve">
-    <value>Otra operación está en progreso</value>
-  </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>Agregando paquete de drivers...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>Eliminando paquete de drivers...</value>
-  </data>
-  <data name="Message_Detailed_Log" xml:space="preserve">
-    <value>Registro detallado del error</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>Eliminado {0} ({1}) del almacén de drivers.</value>
@@ -344,12 +314,6 @@ Licencia:
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>No se han seleccinado drivers.</value>
-  </data>
-  <data name="Menu_File_RunAs_Admin" xml:space="preserve">
-    <value>Ejecutar como administrador</value>
-  </data>
-  <data name="Menu_Option_Always_RunAs_Admin" xml:space="preserve">
-    <value>Ejecutar siempre como administrador</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Abrir carpeta</value>
