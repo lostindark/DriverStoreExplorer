@@ -124,7 +124,7 @@
     <value>删除驱动包</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
-    <value>确认</value>
+    <value>确认(&amp;O)</value>
   </data>
   <data name="Button_Refresh" xml:space="preserve">
     <value>刷新</value>
@@ -379,6 +379,15 @@
     <value>导出所有驱动包</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
-    <value>取消</value>
+    <value>取消(&amp;C)</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>启动关键</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>否</value>
   </data>
 </root>

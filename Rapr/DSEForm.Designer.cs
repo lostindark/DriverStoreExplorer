@@ -76,6 +76,7 @@ namespace Rapr
             this.driverDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverSizeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.deviceNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.bootCriticalColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.dummyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.contextMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -437,6 +438,7 @@ namespace Rapr
             this.lstDriverStoreEntries.AllColumns.Add(this.driverSizeColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverSignerColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.deviceNameColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.bootCriticalColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.dummyColumn);
             this.lstDriverStoreEntries.AllowColumnReorder = true;
             this.lstDriverStoreEntries.AlternateRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -517,6 +519,12 @@ namespace Rapr
             this.deviceNameColumn.Text = global::Rapr.Lang.Language.Column_DeviceName;
             this.deviceNameColumn.UseInitialLetterForGroup = true;
             this.deviceNameColumn.Width = 170;
+            // 
+            // bootCriticalColumn
+            // 
+            this.bootCriticalColumn.AspectName = "BootCritical";
+            this.bootCriticalColumn.IsVisible = false;
+            this.bootCriticalColumn.Text = global::Rapr.Lang.Language.Column_BootCritical;
             // 
             // dummyColumn
             // 
@@ -607,6 +615,7 @@ namespace Rapr
         private System.Windows.Forms.ToolStripMenuItem exportAllDriversToolStripMenuItem;
         private System.Windows.Forms.Button buttonExportDrivers;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuExportDriver;
+        private BrightIdeasSoftware.OLVColumn bootCriticalColumn;
     }
 }
 

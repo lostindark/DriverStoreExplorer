@@ -404,4 +404,16 @@
   <data name="UnitTest_Language" xml:space="preserve">
     <value>中文 (台灣)</value>
   </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>取消(&amp;C)</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>否</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>啟動關鍵</value>
+  </data>
 </root>

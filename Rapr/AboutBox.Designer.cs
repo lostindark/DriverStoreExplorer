@@ -73,7 +73,7 @@
             this.labelProductName.Name = "labelProductName";
             this.labelProductName.Size = new System.Drawing.Size(441, 21);
             this.labelProductName.TabIndex = 19;
-            this.labelProductName.Text = "Driver Store Explorer";
+            this.labelProductName.Text = global::Rapr.Lang.Language.Product_Name;
             // 
             // flowLayoutPanel1
             // 

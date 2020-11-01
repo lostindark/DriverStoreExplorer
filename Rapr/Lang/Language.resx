@@ -407,4 +407,13 @@ License:
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Cancel</value>
   </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>Boot Critical</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>True</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>False</value>
+  </data>
 </root>

@@ -139,6 +139,8 @@ namespace Rapr
 
             this.driverSizeColumn.GroupKeyToTitleConverter =
                 groupKey => DriverStoreEntry.GetSizeRangeName((long)groupKey);
+
+            this.bootCriticalColumn.AspectToStringConverter = condition => (bool)condition ? Language.Column_Text_True : Language.Column_Text_False;
         }
 
         private void BuildLanguageMenu()
@@ -573,6 +575,7 @@ namespace Rapr
                 this.lstDriverStoreEntries.CheckedObjects = this.lstDriverStoreEntries
                     .Objects
                     .OfType<DriverStoreEntry>()
+                    .Where(entry => entry.BootCritical != true)
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverPkgProvider, entry.DriverInfName })
                     .SelectMany(g => g.OrderByDescending(row => row.DriverVersion).ThenByDescending(row => row.DriverDate).Skip(1))
                     .Where(entry => string.IsNullOrEmpty(entry.DeviceName))

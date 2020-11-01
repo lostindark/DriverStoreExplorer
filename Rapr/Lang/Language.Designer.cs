@@ -201,6 +201,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Boot Critical.
+        /// </summary>
+        public static string Column_BootCritical {
+            get {
+                return ResourceManager.GetString("Column_BootCritical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Driver Date.
         /// </summary>
         public static string Column_Date {
@@ -269,6 +278,24 @@ namespace Rapr.Lang {
         public static string Column_Size {
             get {
                 return ResourceManager.GetString("Column_Size", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to False.
+        /// </summary>
+        public static string Column_Text_False {
+            get {
+                return ResourceManager.GetString("Column_Text_False", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to True.
+        /// </summary>
+        public static string Column_Text_True {
+            get {
+                return ResourceManager.GetString("Column_Text_True", resourceCulture);
             }
         }
         
