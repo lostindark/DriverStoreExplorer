@@ -7,7 +7,6 @@ using System.Drawing;
 using System.Globalization;
 using System.IO;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Security;
 using System.Text;
 using System.Threading;
@@ -36,7 +35,7 @@ namespace Rapr
         {
             if (!DSEFormHelper.IsOSSupported)
             {
-                MessageBox.Show(
+                this.ShowMessageBox(
                     Language.Message_Requires_Later_OS,
                     Language.Product_Name,
                     MessageBoxButtons.OK,
@@ -262,7 +261,7 @@ namespace Rapr
 
                 msgWarning += Environment.NewLine + Environment.NewLine + Language.Message_Sure;
 
-                if (DialogResult.OK == MessageBox.Show(
+                if (DialogResult.OK == this.ShowMessageBox(
                     msgWarning,
                     Language.Message_Title_Warning,
                     MessageBoxButtons.OKCancel,
@@ -590,15 +589,28 @@ namespace Rapr
 
         private void ExportList()
         {
-            // Check if there are any entries
+            // Check if there are any entries.
             if (this.lstDriverStoreEntries.Objects != null)
             {
+                List<DriverStoreEntry> driverStoreEntries = this.lstDriverStoreEntries
+                    .Objects
+                    .OfType<DriverStoreEntry>()
+                    .ToList();
+
+                if (driverStoreEntries.Count == 0)
+                {
+                    this.ShowMessageBox(
+                        Language.Message_No_Entries,
+                        Language.Export_Error,
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+
+                    return;
+                }
+
                 try
                 {
-                    string fileName = new CsvExporter().Export(this.lstDriverStoreEntries
-                        .Objects
-                        .OfType<DriverStoreEntry>()
-                        .ToList());
+                    string fileName = new CsvExporter().Export(driverStoreEntries);
 
                     if (!string.IsNullOrEmpty(fileName))
                     {
@@ -640,6 +652,7 @@ namespace Rapr
                 this.lstDriverStoreEntries.RestoreState(driverStoreViewState);
                 this.lstDriverStoreEntries.RightToLeft = this.RightToLeft;
                 this.lstDriverStoreEntries.RightToLeftLayout = this.RightToLeftLayout;
+                this.UpdateDriverStore(this.driverStore);
 
                 this.DSEForm_Shown(sender, e);
                 this.ResumeLayout();
@@ -657,7 +670,7 @@ namespace Rapr
             }
             else
             {
-                MessageBox.Show(Language.Message_Log_File_NotFound, Language.Message_Error);
+                this.ShowMessageBox(Language.Message_Log_File_NotFound, Language.Message_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -877,7 +890,7 @@ namespace Rapr
 
                     if (usePopup)
                     {
-                        MessageBox.Show(this, text, Language.Message_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.ShowMessageBox(text, Language.Message_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                     break;
@@ -889,7 +902,7 @@ namespace Rapr
 
                     if (usePopup)
                     {
-                        MessageBox.Show(this, text, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.ShowMessageBox(text, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                     break;
@@ -901,7 +914,7 @@ namespace Rapr
 
                     if (usePopup)
                     {
-                        MessageBox.Show(this, text, Language.Message_Title_Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        this.ShowMessageBox(text, Language.Message_Title_Warning, MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
 
                     break;
@@ -913,7 +926,7 @@ namespace Rapr
 
                     if (usePopup)
                     {
-                        MessageBox.Show(this, text, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.ShowMessageBox(text, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
 
                     break;
@@ -955,6 +968,18 @@ namespace Rapr
                     }
                 }
             }
+        }
+
+        private DialogResult ShowMessageBox(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon)
+        {
+            return MessageBox.Show(
+                this,
+                text,
+                caption,
+                buttons,
+                icon,
+                MessageBoxDefaultButton.Button1,
+                this.RightToLeftLayout ? MessageBoxOptions.RtlReading : 0);
         }
     }
 }

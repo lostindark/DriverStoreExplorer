@@ -21,12 +21,6 @@ namespace Rapr
                 throw new ArgumentNullException(nameof(driverStoreEntries));
             }
 
-            if (driverStoreEntries.Count == 0)
-            {
-                MessageBox.Show(Language.Message_No_Entries, Language.Export_Error);
-                return null;
-            }
-
             using (SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 CheckFileExists = false,
