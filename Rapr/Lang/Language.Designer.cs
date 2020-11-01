@@ -813,15 +813,6 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
-        /// </summary>
-        public static string Title_About {
-            get {
-                return ResourceManager.GetString("Title_About", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to English.
         /// </summary>
         public static string UnitTest_Language {

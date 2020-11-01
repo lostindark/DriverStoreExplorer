@@ -235,23 +235,7 @@ namespace Rapr
                 return;
             }
 
-            List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
-            if (this.lstDriverStoreEntries.CheckedObjects.Count == 0)
-            {
-                foreach (DriverStoreEntry o in this.lstDriverStoreEntries.SelectedObjects)
-                {
-                    driverStoreEntries.Add(o);
-                }
-            }
-            else if (this.lstDriverStoreEntries.CheckedItems.Count > 0)
-            {
-                foreach (DriverStoreEntry o in this.lstDriverStoreEntries.CheckedObjects)
-                {
-                    driverStoreEntries.Add(o);
-                }
-            }
-
-            await this.DeleteDriverStoreEntries(driverStoreEntries).ConfigureAwait(true);
+            await this.DeleteDriverStoreEntries(this.lstDriverStoreEntries.CheckedObjects.OfType<DriverStoreEntry>().ToList()).ConfigureAwait(true);
         }
 
         private async Task DeleteDriverStoreEntries(List<DriverStoreEntry> driverStoreEntries)
