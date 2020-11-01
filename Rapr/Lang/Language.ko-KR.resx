@@ -403,4 +403,7 @@
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>모든 드라이버 패키지를 내보내는 중...</value>
   </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>&amp;취소</value>
+  </data>
 </root>
