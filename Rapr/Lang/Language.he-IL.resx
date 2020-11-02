@@ -1,0 +1,393 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_Add_Package" xml:space="preserve">
+    <value>הוספת מנהל התקן</value>
+  </data>
+  <data name="Button_Delete_Package" xml:space="preserve">
+    <value>מחיקת מנהלי התקנים</value>
+  </data>
+  <data name="Button_OK" xml:space="preserve">
+    <value>&amp;אישור</value>
+  </data>
+  <data name="Button_Refresh" xml:space="preserve">
+    <value>רענון</value>
+  </data>
+  <data name="Button_Select_Old" xml:space="preserve">
+    <value>בחירת מנהלי התקנים ישנים</value>
+  </data>
+  <data name="Check_Force_Delete" xml:space="preserve">
+    <value>מחיקה בכוח</value>
+  </data>
+  <data name="Check_Install_Driver" xml:space="preserve">
+    <value>התקנת מנהל התקן</value>
+  </data>
+  <data name="Column_Date" xml:space="preserve">
+    <value>תאריך מנהל התקן</value>
+  </data>
+  <data name="Column_Driver_Class" xml:space="preserve">
+    <value>מחלקה של מנהל התקן</value>
+  </data>
+  <data name="Column_Inf" xml:space="preserve">
+    <value>INF</value>
+  </data>
+  <data name="Column_Oem_Inf" xml:space="preserve">
+    <value>OEM INF</value>
+  </data>
+  <data name="Column_Provider" xml:space="preserve">
+    <value>ספק</value>
+  </data>
+  <data name="Column_Signed_By" xml:space="preserve">
+    <value>חתום על־ידי</value>
+  </data>
+  <data name="Column_Size" xml:space="preserve">
+    <value>גודל</value>
+  </data>
+  <data name="Column_Version" xml:space="preserve">
+    <value>גרסת מנהל התקן</value>
+  </data>
+  <data name="Context_Delete" xml:space="preserve">
+    <value>מחיקה</value>
+  </data>
+  <data name="Context_Deselect" xml:space="preserve">
+    <value>ביטול בחירה</value>
+  </data>
+  <data name="Context_Deselect_All" xml:space="preserve">
+    <value>ביטול בחירה מהכל</value>
+  </data>
+  <data name="Context_Select" xml:space="preserve">
+    <value>בחירה</value>
+  </data>
+  <data name="Context_Select_All" xml:space="preserve">
+    <value>בחירה בהכל</value>
+  </data>
+  <data name="Context_Select_Old" xml:space="preserve">
+    <value>מחיקת מנהלי התקנים ישנים</value>
+  </data>
+  <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
+    <value>בחרת למחוק {0} חבילות ממאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_Delete_Single_Package" xml:space="preserve">
+    <value>בחרת למחוק את {0} ‏({1}) ממאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_Requires_Later_OS" xml:space="preserve">
+    <value>כלי זה לא יכול לפעול במערכת הפעלה הישנה מ־Vista.</value>
+  </data>
+  <data name="Message_Sure" xml:space="preserve">
+    <value>להמשיך?</value>
+  </data>
+  <data name="Message_Title_Warning" xml:space="preserve">
+    <value>אזהרה</value>
+  </data>
+  <data name="Operations_Text" xml:space="preserve">
+    <value>פעולות</value>
+  </data>
+  <data name="Product_Name" xml:space="preserve">
+    <value>Driver Store Explorer</value>
+  </data>
+  <data name="Status_Label" xml:space="preserve">
+    <value>מוכן</value>
+  </data>
+  <data name="Tip_Driver_In_Use" xml:space="preserve">
+    <value>[טיפ: ייתכן שמנהל ההתקן עדיין בשימוש. ניתן לנסות לבחור באפשרות למחיקה בכוח של החבילה]</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>עזרה</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>על אודות</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>קובץ</value>
+  </data>
+  <data name="Menu_File_Export" xml:space="preserve">
+    <value>ייצוא רשימה של מנהלי התקנים</value>
+  </data>
+  <data name="Menu_File_Exit" xml:space="preserve">
+    <value>יציאה</value>
+  </data>
+  <data name="Menu_File_View_Logs" xml:space="preserve">
+    <value>הצגת יומני רישום</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="Message_No_Entries" xml:space="preserve">
+    <value>לא נטענו רשומות.</value>
+  </data>
+  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
+    <value>בחירה בקובץ INF</value>
+  </data>
+  <data name="Dialog_Open_Filters" xml:space="preserve">
+    <value>INF files | *.inf</value>
+  </data>
+  <data name="Product_About_Title" xml:space="preserve">
+    <value>על אודות {0}</value>
+  </data>
+  <data name="Export_Error" xml:space="preserve">
+    <value>שגיאה</value>
+  </data>
+  <data name="About_Project_Description" xml:space="preserve">
+    <value>באפשרותך למצוא את הגרסה האחרונה והערות השחרור כאן:
+    https://github.com/lostindark/DriverStoreExplorer/releases
+
+הגשת בקשה לאפשרות חדשה או דיווח על תקלה:
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+תורמים:
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
+
+קרדיטים:
+    ObjectListView http://objectlistview.sourceforge.net/
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+
+רישיון:
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
+</value>
+  </data>
+  <data name="UnitTest_Language" xml:space="preserve">
+    <value>עברית</value>
+  </data>
+  <data name="Dialog_Export_Filters" xml:space="preserve">
+    <value>CSV Files | *.csv</value>
+  </data>
+  <data name="Status_Adding_Package" xml:space="preserve">
+    <value>בתהליך הוספת חבילה...</value>
+  </data>
+  <data name="Status_Deleting_Packages" xml:space="preserve">
+    <value>בתהליך מחיקת חבילות מנהל התקן...</value>
+  </data>
+  <data name="Message_Delete_Package" xml:space="preserve">
+    <value>{0} ‏({1}) הוסר ממאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_Delete_Packages" xml:space="preserve">
+    <value>{0} חבילות הוסרו ממאגר מנהל ההתקנים.</value>
+  </data>
+  <data name="Message_Delete_Package_Error" xml:space="preserve">
+    <value>אירעה שגיאה בהסרת {0} ‏({1}) ממאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+    <value>אירעה שגיאה בהסרת מספר חבילות ממאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_Driver_Added" xml:space="preserve">
+    <value>החבילה {0} נוספה למאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
+    <value>אירעה שגיאה בהוספת החבילה {0} למאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>לא ניתן היה למצוא את קובץ יומן הרישום.</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>שגיאה</value>
+  </data>
+  <data name="Export_Complete" xml:space="preserve">
+    <value>התכנים נשמרו אל {0}. הייצוא הושלם.</value>
+  </data>
+  <data name="Export_Failed" xml:space="preserve">
+    <value>הייצוא נכשל: {0}</value>
+  </data>
+  <data name="Status_Selected_Drivers" xml:space="preserve">
+    <value>נבחרו {0} מנהלי התקנים. הגודל הכולל: {1}‎.</value>
+  </data>
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+    <value>לא נבחרו מנהלי התקנים.</value>
+  </data>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>פתיחת מיקום התיקייה</value>
+  </data>
+  <data name="DriverStore_LocalMachine" xml:space="preserve">
+    <value>מערכת מקומית</value>
+  </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>בחירת מאגר מנהלי התקנים</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>מאגר מנהלי התקנים לא מקוון</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>בחירת מאגר מנהלי התקנים</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>שפה</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>שם התקן</value>
+  </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(עדכני)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(נמצאה גרסה חדשה v{0} - {1})</value>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>הורדה</value>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>בתהליך סריקת מאגר מנהלי ההתקנים...</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>בחרת למחוק בכוח את {0} ‏({1}) ממאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>בחרת למחוק בכוח {0} חבילות ממאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>המחיקה של {0} ‏({1}) הצליחה.</value>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>המחיקה של {0} ‏({1}) נכשלה.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>החבילה {0} נוספה והותקנה במאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>אירעה שגיאה בהוספה והתקנת החבילה {0} למאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>ייצוא מנהלי התקנים</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>ייצוא מנהל התקן</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>ייצוא כל מנהלי ההתקנים</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>ייצוא כל חבילות מנהלי ההתקנים נכשל.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>ייצוא כל חבילות מנהלי ההתקנים הצליח.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>בתהליך ייצוא כל חבילות מנהלי ההתקנים...</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>&amp;ביטול</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>קריטי לאתחול המערכת</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>כן</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>לא</value>
+  </data>
+</root>
