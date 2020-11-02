@@ -19,6 +19,8 @@ using Rapr.Lang;
 using Rapr.Properties;
 using Rapr.Utils;
 
+using Timer = System.Threading.Timer;
+
 namespace Rapr
 {
     public partial class DSEForm : Form
@@ -30,6 +32,10 @@ namespace Rapr
         private static readonly IUpdateManager UpdateManager = new UpdateManager();
 
         private static readonly List<CultureInfo> SupportedLanguage = DSEFormHelper.GetSupportedLanguage();
+
+        private readonly Timer UpdateCheckedItemSizeTimer;
+        private const long RefreshTime = Timeout.Infinite;
+        private const long Delay = 100;
 
         public DSEForm()
         {
@@ -73,6 +79,30 @@ namespace Rapr
             Trace.TraceInformation($"{Application.ProductName} started");
 
             this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore());
+
+            this.UpdateCheckedItemSizeTimer = new Timer(x => this.BeginInvoke((Action)(() => this.UpdateCheckedItemSize())));
+        }
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                if ((components != null))
+                {
+                    components.Dispose();
+                }
+
+                if (this.UpdateCheckedItemSizeTimer != null)
+                {
+                    this.UpdateCheckedItemSizeTimer.Dispose();
+                }
+            }
+
+            base.Dispose(disposing);
         }
 
         private void UpdateDriverStore(IDriverStore driverStore)
@@ -738,6 +768,11 @@ namespace Rapr
         }
 
         private void LstDriverStoreEntries_ItemChecked(object sender, ItemCheckedEventArgs e)
+        {
+            this.UpdateCheckedItemSizeTimer.Change(Delay, RefreshTime);
+        }
+
+        private void UpdateCheckedItemSize()
         {
             IList checkedObjects = this.lstDriverStoreEntries.CheckedObjects;
 
