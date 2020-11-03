@@ -1014,7 +1014,7 @@ namespace Rapr
                 buttons,
                 icon,
                 MessageBoxDefaultButton.Button1,
-                this.RightToLeftLayout ? MessageBoxOptions.RtlReading : 0);
+                this.RightToLeftLayout ? MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign : 0);
         }
     }
 }
