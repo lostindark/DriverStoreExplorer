@@ -378,4 +378,16 @@
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>すべてのドライバー パッケージをエクスポートしています...</value>
   </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>キャンセル(&amp;C)</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>ブートに不可欠</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>はい</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>いいえ</value>
+  </data>
 </root>
