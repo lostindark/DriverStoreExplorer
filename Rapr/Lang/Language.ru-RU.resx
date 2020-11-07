@@ -256,6 +256,9 @@
 Благодарности:
     ObjectListView http://objectlistview.sourceforge.net/
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+      
+Лицензионное соглашение:
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
 </value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
@@ -374,5 +377,17 @@
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Экспорт всех пакетов драйверов...</value>
-  </data>
+      </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>&amp;Отмена</value>
+      </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>Критично для загрузки ОС</value>
+      </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>Да</value>
+      </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>Нет</value>
+      </data>
 </root>
