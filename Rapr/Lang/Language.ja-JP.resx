@@ -130,10 +130,10 @@
     <value>最新の情報に更新(&amp;R)</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>古いドライバーのみ選択(&amp;S)</value>
+    <value>古いドライバーのみ選択(&amp;O)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
-    <value>強制削除モード(&amp;O)</value>
+    <value>強制削除モード(&amp;N)</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
     <value>追加と同時にインストール(&amp;I)</value>
@@ -163,22 +163,22 @@
     <value>バージョン</value>
   </data>
   <data name="Context_Delete" xml:space="preserve">
-    <value>削除(&amp;D)</value>
+    <value>削除</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
-    <value>選択解除</value>
+    <value>選択解除(&amp;D)</value>
   </data>
   <data name="Context_Deselect_All" xml:space="preserve">
-    <value>すべて選択解除</value>
+    <value>すべて選択解除(&amp;A)</value>
   </data>
   <data name="Context_Select" xml:space="preserve">
     <value>選択(&amp;S)</value>
   </data>
   <data name="Context_Select_All" xml:space="preserve">
-    <value>すべて選択</value>
+    <value>すべて選択(&amp;A)</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>古いドライバーのみ選択</value>
+    <value>古いドライバーのみ選択(&amp;O)</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>ドライバー ストアから {0} 個のパッケージを削除します。</value>
@@ -217,7 +217,7 @@
     <value>ファイル(&amp;F)</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>リストのエクスポート...</value>
+    <value>リストのエクスポート(&amp;E)...</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>終了(&amp;X)</value>
@@ -310,13 +310,13 @@
     <value>ドライバーが選択されていません。</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>ファイルの場所を開く(&amp;O)</value>
+    <value>ファイルの場所を開く(&amp;F)</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>ローカル コンピューター</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>ドライバー ストアの選択...</value>
+    <value>ドライバー ストアの選択(&amp;C)...</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
     <value>オフライン ドライバー ストア</value>
@@ -364,10 +364,10 @@
     <value>ドライバーのエクスポート(&amp;E)</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
-    <value>ドライバーのエクスポート</value>
+    <value>ドライバーのエクスポート(&amp;E)</value>
   </data>
   <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
-    <value>すべてのドライバーのエクスポート...</value>
+    <value>すべてのドライバーのエクスポート(&amp;P)...</value>
   </data>
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>すべてのドライバー パッケージのエクスポートに失敗しました。</value>

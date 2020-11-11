@@ -147,28 +147,28 @@
     <value>(最新版本)</value>
   </data>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>加入驅動程式</value>
+    <value>加入驅動程式(&amp;A)</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>刪除驅動程式</value>
+    <value>刪除驅動程式(&amp;D)</value>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>匯出驅動程式</value>
+    <value>匯出驅動程式(&amp;E)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>確定(&amp;O)</value>
   </data>
   <data name="Button_Refresh" xml:space="preserve">
-    <value>重新整理</value>
+    <value>重新整理(&amp;R)</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>選擇舊版驅動程式</value>
+    <value>選擇舊版驅動程式(&amp;O)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
-    <value>強制刪除</value>
+    <value>強制刪除(&amp;N)</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
-    <value>安裝驅動程式</value>
+    <value>安裝驅動程式(&amp;I)</value>
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
     <value>選擇驅動程式存放區</value>
@@ -204,25 +204,25 @@
     <value>刪除</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
-    <value>取消選取</value>
+    <value>取消選取(&amp;D)</value>
   </data>
   <data name="Context_Deselect_All" xml:space="preserve">
-    <value>全部取消選取</value>
+    <value>全部取消選取(&amp;A)</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
-    <value>匯出驅動程式</value>
+    <value>匯出驅動程式(&amp;E)</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>開啟資料夾位置</value>
+    <value>開啟資料夾位置(&amp;F)</value>
   </data>
   <data name="Context_Select" xml:space="preserve">
-    <value>選擇</value>
+    <value>選擇(&amp;S)</value>
   </data>
   <data name="Context_Select_All" xml:space="preserve">
-    <value>全部選擇</value>
+    <value>全部選擇(&amp;A)</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>選擇舊版驅動程式</value>
+    <value>選擇舊版驅動程式(&amp;O)</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
@@ -254,31 +254,31 @@
     <comment>{0} - Placeholder for error message</comment>
   </data>
   <data name="Menu_File" xml:space="preserve">
-    <value>檔案</value>
+    <value>檔案(&amp;F)</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>選擇驅動程式存放區</value>
+    <value>選擇驅動程式存放區(&amp;C)</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
-    <value>結束</value>
+    <value>結束(&amp;X)</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>匯出驅動程式清單</value>
+    <value>匯出驅動程式清單(&amp;E)</value>
   </data>
   <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
-    <value>匯出所有驅動程式</value>
+    <value>匯出所有驅動程式(&amp;P)</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>檢視記錄</value>
+    <value>檢視記錄(&amp;V)</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
-    <value>說明</value>
+    <value>說明(&amp;H)</value>
   </data>
   <data name="Menu_Help_About" xml:space="preserve">
-    <value>關於</value>
+    <value>關於(&amp;A)</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
-    <value>語言</value>
+    <value>語言(&amp;L)</value>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>刪除 {0} ({1}) 失敗。</value>

@@ -165,7 +165,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Select Old Driver(s).
+        ///   Looks up a localized string similar to Select &amp;Old Driver(s).
         /// </summary>
         public static string Button_Select_Old {
             get {
@@ -174,7 +174,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to F&amp;orce Deletion.
+        ///   Looks up a localized string similar to Force Deletio&amp;n.
         /// </summary>
         public static string Check_Force_Delete {
             get {
@@ -192,7 +192,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose Driver Store.
+        ///   Looks up a localized string similar to &amp;Choose Driver Store.
         /// </summary>
         public static string ChooseDriverStore_Title {
             get {
@@ -309,7 +309,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Delete.
+        ///   Looks up a localized string similar to Delete.
         /// </summary>
         public static string Context_Delete {
             get {
@@ -318,7 +318,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deselect.
+        ///   Looks up a localized string similar to &amp;Deselect.
         /// </summary>
         public static string Context_Deselect {
             get {
@@ -327,7 +327,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deselect All.
+        ///   Looks up a localized string similar to Deselect &amp;All.
         /// </summary>
         public static string Context_Deselect_All {
             get {
@@ -336,7 +336,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export Driver.
+        ///   Looks up a localized string similar to &amp;Export Driver.
         /// </summary>
         public static string Context_Export_Driver {
             get {
@@ -345,7 +345,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Open Folder Location.
+        ///   Looks up a localized string similar to Open &amp;Folder Location.
         /// </summary>
         public static string Context_Open_Folder {
             get {
@@ -363,7 +363,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select All.
+        ///   Looks up a localized string similar to Select &amp;All.
         /// </summary>
         public static string Context_Select_All {
             get {
@@ -372,7 +372,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select Old Drivers.
+        ///   Looks up a localized string similar to Select &amp;Old Drivers.
         /// </summary>
         public static string Context_Select_Old {
             get {
@@ -471,7 +471,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Choose Driver Store.
+        ///   Looks up a localized string similar to &amp;Choose Driver Store.
         /// </summary>
         public static string Menu_File_Choose_Driver_Store {
             get {
@@ -489,7 +489,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export Driver List.
+        ///   Looks up a localized string similar to &amp;Export Driver List.
         /// </summary>
         public static string Menu_File_Export {
             get {
@@ -498,7 +498,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export All Drivers.
+        ///   Looks up a localized string similar to Ex&amp;port All Drivers.
         /// </summary>
         public static string Menu_File_Export_All_Drivers {
             get {

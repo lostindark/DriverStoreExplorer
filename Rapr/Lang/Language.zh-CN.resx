@@ -118,25 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>添加驱动包</value>
+    <value>添加驱动包(&amp;A)</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>删除驱动包</value>
+    <value>删除驱动包(&amp;D)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>确认(&amp;O)</value>
   </data>
   <data name="Button_Refresh" xml:space="preserve">
-    <value>刷新</value>
+    <value>刷新(&amp;R)</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>选取旧的驱动</value>
+    <value>选取旧的驱动(&amp;O)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
-    <value>强制删除</value>
+    <value>强制删除(&amp;N)</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
-    <value>安装驱动</value>
+    <value>安装驱动(&amp;I)</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
     <value>日期</value>
@@ -166,19 +166,19 @@
     <value>删除</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
-    <value>取消选择</value>
+    <value>取消选择(&amp;D)</value>
   </data>
   <data name="Context_Deselect_All" xml:space="preserve">
-    <value>取消选择所有</value>
+    <value>取消选择所有(&amp;A)</value>
   </data>
   <data name="Context_Select" xml:space="preserve">
-    <value>选择</value>
+    <value>选择(&amp;S)</value>
   </data>
   <data name="Context_Select_All" xml:space="preserve">
-    <value>选择所有</value>
+    <value>选择所有(&amp;A)</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>选择旧的驱动</value>
+    <value>选择旧的驱动(&amp;O)</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>正准备从驱动存储中删除 {0} 驱动包。</value>
@@ -217,25 +217,25 @@
     <value>INF文件 | *.inf</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>查看日志</value>
+    <value>查看日志(&amp;V)</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
-    <value>退出</value>
+    <value>退出(&amp;X)</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>导出驱动列表</value>
+    <value>导出驱动列表(&amp;E)</value>
   </data>
   <data name="Menu_File" xml:space="preserve">
-    <value>文件</value>
+    <value>文件(&amp;F)</value>
   </data>
   <data name="Menu_Help_About" xml:space="preserve">
-    <value>关于</value>
+    <value>关于(&amp;A)</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
-    <value>帮助</value>
+    <value>帮助(&amp;H)</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>关于 {0}</value>
@@ -310,13 +310,13 @@
     <value>内容已保存到 {0}。导出完成。</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>打开文件夹</value>
+    <value>打开文件夹(&amp;F)</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>本机</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>选择驱动存储</value>
+    <value>选择驱动存储(&amp;C)</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
     <value>离线驱动存储</value>
@@ -325,7 +325,7 @@
     <value>选择驱动存储</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
-    <value>语言</value>
+    <value>语言(&amp;L)</value>
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>设备名称</value>
@@ -370,13 +370,13 @@
     <value>导出所有驱动包...</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
-    <value>导出驱动包</value>
+    <value>导出驱动包(&amp;E)</value>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>导出驱动包</value>
+    <value>导出驱动包(&amp;E)</value>
   </data>
   <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
-    <value>导出所有驱动包</value>
+    <value>导出所有驱动包(&amp;P)</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>取消(&amp;C)</value>

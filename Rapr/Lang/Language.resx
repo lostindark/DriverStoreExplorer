@@ -130,10 +130,10 @@
     <value>&amp;Refresh</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>&amp;Select Old Driver(s)</value>
+    <value>Select &amp;Old Driver(s)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
-    <value>F&amp;orce Deletion</value>
+    <value>Force Deletio&amp;n</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
     <value>&amp;Install Driver</value>
@@ -163,22 +163,22 @@
     <value>Driver Version</value>
   </data>
   <data name="Context_Delete" xml:space="preserve">
-    <value>&amp;Delete</value>
+    <value>Delete</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
-    <value>Deselect</value>
+    <value>&amp;Deselect</value>
   </data>
   <data name="Context_Deselect_All" xml:space="preserve">
-    <value>Deselect All</value>
+    <value>Deselect &amp;All</value>
   </data>
   <data name="Context_Select" xml:space="preserve">
     <value>&amp;Select</value>
   </data>
   <data name="Context_Select_All" xml:space="preserve">
-    <value>Select All</value>
+    <value>Select &amp;All</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>Select Old Drivers</value>
+    <value>Select &amp;Old Drivers</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>About to delete {0} packages from driver store.</value>
@@ -220,7 +220,7 @@
     <value>&amp;File</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>Export Driver List</value>
+    <value>&amp;Export Driver List</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -325,19 +325,19 @@ License:
     <value>No drivers selected.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>&amp;Open Folder Location</value>
+    <value>Open &amp;Folder Location</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Local Machine</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>Choose Driver Store</value>
+    <value>&amp;Choose Driver Store</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
     <value>Offline Driver Store</value>
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
-    <value>Choose Driver Store</value>
+    <value>&amp;Choose Driver Store</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
     <value>&amp;Language</value>
@@ -390,10 +390,10 @@ License:
     <value>&amp;Export Driver(s)</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
-    <value>Export Driver</value>
+    <value>&amp;Export Driver</value>
   </data>
   <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
-    <value>Export All Drivers</value>
+    <value>Ex&amp;port All Drivers</value>
   </data>
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>Export all driver packages failed.</value>
