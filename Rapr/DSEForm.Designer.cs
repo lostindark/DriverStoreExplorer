@@ -113,7 +113,7 @@ namespace Rapr
             this.ctxMenuExportDriver,
             this.ctxMenuDelete});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(189, 126);
+            this.contextMenuStrip.Size = new System.Drawing.Size(189, 170);
             this.contextMenuStrip.Opening += new System.ComponentModel.CancelEventHandler(this.ContextMenuStrip_Opening);
             // 
             // ctxMenuSelect
@@ -163,6 +163,7 @@ namespace Rapr
             // ctxMenuDelete
             // 
             this.ctxMenuDelete.Name = "ctxMenuDelete";
+            this.ctxMenuDelete.ShortcutKeys = System.Windows.Forms.Keys.Delete;
             this.ctxMenuDelete.Size = new System.Drawing.Size(188, 22);
             this.ctxMenuDelete.Text = global::Rapr.Lang.Language.Context_Delete;
             this.ctxMenuDelete.Click += new System.EventHandler(this.CtxMenuDelete_Click);
@@ -204,7 +205,7 @@ namespace Rapr
             this.buttonAddDriver.Location = new System.Drawing.Point(9, 38);
             this.buttonAddDriver.Name = "buttonAddDriver";
             this.buttonAddDriver.Size = new System.Drawing.Size(124, 23);
-            this.buttonAddDriver.TabIndex = 5;
+            this.buttonAddDriver.TabIndex = 1;
             this.buttonAddDriver.Text = global::Rapr.Lang.Language.Button_Add_Package;
             this.buttonAddDriver.UseVisualStyleBackColor = true;
             this.buttonAddDriver.Click += new System.EventHandler(this.ButtonAddDriver_Click);
@@ -216,7 +217,7 @@ namespace Rapr
             this.cbAddInstall.Location = new System.Drawing.Point(9, 67);
             this.cbAddInstall.Name = "cbAddInstall";
             this.cbAddInstall.Size = new System.Drawing.Size(124, 17);
-            this.cbAddInstall.TabIndex = 6;
+            this.cbAddInstall.TabIndex = 2;
             this.cbAddInstall.Text = global::Rapr.Lang.Language.Check_Install_Driver;
             this.cbAddInstall.UseVisualStyleBackColor = true;
             // 
@@ -228,7 +229,7 @@ namespace Rapr
             this.statusStrip1.Location = new System.Drawing.Point(2, 705);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1004, 22);
-            this.statusStrip1.TabIndex = 9;
+            this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripProgressBar1
@@ -261,7 +262,7 @@ namespace Rapr
             this.gbOptions.Location = new System.Drawing.Point(853, 3);
             this.gbOptions.Name = "gbOptions";
             this.gbOptions.Size = new System.Drawing.Size(148, 673);
-            this.gbOptions.TabIndex = 13;
+            this.gbOptions.TabIndex = 1;
             this.gbOptions.TabStop = false;
             this.gbOptions.Text = global::Rapr.Lang.Language.Operations_Text;
             // 
@@ -290,7 +291,7 @@ namespace Rapr
             this.buttonSelectOldDrivers.Location = new System.Drawing.Point(9, 142);
             this.buttonSelectOldDrivers.Name = "buttonSelectOldDrivers";
             this.buttonSelectOldDrivers.Size = new System.Drawing.Size(124, 23);
-            this.buttonSelectOldDrivers.TabIndex = 7;
+            this.buttonSelectOldDrivers.TabIndex = 5;
             this.buttonSelectOldDrivers.Text = global::Rapr.Lang.Language.Button_Select_Old;
             this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
             this.buttonSelectOldDrivers.Click += new System.EventHandler(this.ButtonSelectOldDrivers_Click);
@@ -302,7 +303,7 @@ namespace Rapr
             this.buttonExportDrivers.Location = new System.Drawing.Point(9, 171);
             this.buttonExportDrivers.Name = "buttonExportDrivers";
             this.buttonExportDrivers.Size = new System.Drawing.Size(124, 23);
-            this.buttonExportDrivers.TabIndex = 8;
+            this.buttonExportDrivers.TabIndex = 6;
             this.buttonExportDrivers.Text = global::Rapr.Lang.Language.Button_Export_Drivers;
             this.buttonExportDrivers.UseVisualStyleBackColor = true;
             // 
@@ -315,7 +316,7 @@ namespace Rapr
             this.menuStrip1.Location = new System.Drawing.Point(2, 2);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1004, 24);
-            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.TabIndex = 2;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // fileToolStripMenuItem
@@ -412,7 +413,7 @@ namespace Rapr
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 679);
-            this.tableLayoutPanel1.TabIndex = 14;
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // lstDriverStoreEntries
             // 
@@ -452,7 +453,7 @@ namespace Rapr
             this.lstDriverStoreEntries.ShowItemToolTips = true;
             this.lstDriverStoreEntries.Size = new System.Drawing.Size(844, 673);
             this.lstDriverStoreEntries.SortGroupItemsByPrimaryColumn = false;
-            this.lstDriverStoreEntries.TabIndex = 1;
+            this.lstDriverStoreEntries.TabIndex = 0;
             this.lstDriverStoreEntries.UseCellFormatEvents = true;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
             this.lstDriverStoreEntries.View = System.Windows.Forms.View.Details;

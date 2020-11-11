@@ -118,25 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>Add Driver</value>
+    <value>&amp;Add Driver</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>Delete Driver(s)</value>
+    <value>&amp;Delete Driver(s)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
   </data>
   <data name="Button_Refresh" xml:space="preserve">
-    <value>Refresh</value>
+    <value>&amp;Refresh</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>Select Old Driver(s)</value>
+    <value>&amp;Select Old Driver(s)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
-    <value>Force Deletion</value>
+    <value>F&amp;orce Deletion</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
-    <value>Install Driver</value>
+    <value>&amp;Install Driver</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
     <value>Driver Date</value>
@@ -163,7 +163,7 @@
     <value>Driver Version</value>
   </data>
   <data name="Context_Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>&amp;Delete</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
     <value>Deselect</value>
@@ -172,7 +172,7 @@
     <value>Deselect All</value>
   </data>
   <data name="Context_Select" xml:space="preserve">
-    <value>Select</value>
+    <value>&amp;Select</value>
   </data>
   <data name="Context_Select_All" xml:space="preserve">
     <value>Select All</value>
@@ -211,22 +211,22 @@
     <value>[TIP: The driver may still being used. Try FORCE deleting the package]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
-    <value>Help</value>
+    <value>&amp;Help</value>
   </data>
   <data name="Menu_Help_About" xml:space="preserve">
-    <value>About</value>
+    <value>&amp;About</value>
   </data>
   <data name="Menu_File" xml:space="preserve">
-    <value>File</value>
+    <value>&amp;File</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
     <value>Export Driver List</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
-    <value>Exit</value>
+    <value>E&amp;xit</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>View Logs</value>
+    <value>&amp;View Logs</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
@@ -325,7 +325,7 @@ License:
     <value>No drivers selected.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>Open Folder Location</value>
+    <value>&amp;Open Folder Location</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Local Machine</value>
@@ -340,7 +340,7 @@ License:
     <value>Choose Driver Store</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
-    <value>Language</value>
+    <value>&amp;Language</value>
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Device Name</value>
@@ -387,7 +387,7 @@ License:
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>Export Driver(s)</value>
+    <value>&amp;Export Driver(s)</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
     <value>Export Driver</value>

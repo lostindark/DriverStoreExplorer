@@ -111,7 +111,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Add Driver.
+        ///   Looks up a localized string similar to &amp;Add Driver.
         /// </summary>
         public static string Button_Add_Package {
             get {
@@ -129,7 +129,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete Driver(s).
+        ///   Looks up a localized string similar to &amp;Delete Driver(s).
         /// </summary>
         public static string Button_Delete_Package {
             get {
@@ -138,7 +138,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Export Driver(s).
+        ///   Looks up a localized string similar to &amp;Export Driver(s).
         /// </summary>
         public static string Button_Export_Drivers {
             get {
@@ -156,7 +156,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Refresh.
+        ///   Looks up a localized string similar to &amp;Refresh.
         /// </summary>
         public static string Button_Refresh {
             get {
@@ -165,7 +165,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select Old Driver(s).
+        ///   Looks up a localized string similar to &amp;Select Old Driver(s).
         /// </summary>
         public static string Button_Select_Old {
             get {
@@ -174,7 +174,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Force Deletion.
+        ///   Looks up a localized string similar to F&amp;orce Deletion.
         /// </summary>
         public static string Check_Force_Delete {
             get {
@@ -183,7 +183,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Install Driver.
+        ///   Looks up a localized string similar to &amp;Install Driver.
         /// </summary>
         public static string Check_Install_Driver {
             get {
@@ -309,7 +309,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Delete.
+        ///   Looks up a localized string similar to &amp;Delete.
         /// </summary>
         public static string Context_Delete {
             get {
@@ -345,7 +345,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Open Folder Location.
+        ///   Looks up a localized string similar to &amp;Open Folder Location.
         /// </summary>
         public static string Context_Open_Folder {
             get {
@@ -354,7 +354,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select.
+        ///   Looks up a localized string similar to &amp;Select.
         /// </summary>
         public static string Context_Select {
             get {
@@ -462,7 +462,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to File.
+        ///   Looks up a localized string similar to &amp;File.
         /// </summary>
         public static string Menu_File {
             get {
@@ -480,7 +480,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Exit.
+        ///   Looks up a localized string similar to E&amp;xit.
         /// </summary>
         public static string Menu_File_Exit {
             get {
@@ -507,7 +507,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to View Logs.
+        ///   Looks up a localized string similar to &amp;View Logs.
         /// </summary>
         public static string Menu_File_View_Logs {
             get {
@@ -516,7 +516,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Help.
+        ///   Looks up a localized string similar to &amp;Help.
         /// </summary>
         public static string Menu_Help {
             get {
@@ -525,7 +525,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to About.
+        ///   Looks up a localized string similar to &amp;About.
         /// </summary>
         public static string Menu_Help_About {
             get {
@@ -534,7 +534,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Language.
+        ///   Looks up a localized string similar to &amp;Language.
         /// </summary>
         public static string Menu_Language {
             get {
