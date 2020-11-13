@@ -53,6 +53,7 @@
     value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
+
     mimetype: application/x-microsoft.net.object.bytearray.base64
     value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
@@ -405,5 +406,14 @@
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;취소</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>중요 부팅</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>참</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>거짓</value>
   </data>
 </root>
