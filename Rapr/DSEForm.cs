@@ -62,6 +62,8 @@ namespace Rapr
                 Thread.CurrentThread.CurrentUICulture = lang;
             }
 
+            this.Font = SystemFonts.MessageBoxFont;
+
             this.InitializeComponent();
 
             this.Icon = DSEFormHelper.ExtractAssociatedIcon(Application.ExecutablePath);
