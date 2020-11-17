@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -182,9 +182,12 @@
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Eliminazione di {0} driver dall'archivio dei driver.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>Eliminazione di '{0}'' ('{1}') dall'archivio dei driver.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Questo programma può essere eseguito solo in Windows Vista o versioni successive.</value>
@@ -240,12 +243,10 @@ Prova a forzare l'eliminazione del pacchetto driver.</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Informazioni su {0}</value>
+    <comment>{0} - Placeholder for Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>Errore</value>
-  </data>
-  <data name="Dialog_Export_Filters" xml:space="preserve">
-    <value>File CSV | *.csv</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
     <value>Puoi trovare la versione aggiornata e le note di rilascio nel sito:
@@ -270,6 +271,9 @@ Ringraziamenti:
   <data name="UnitTest_Language" xml:space="preserve">
     <value>Italiano</value>
   </data>
+  <data name="Dialog_Export_Filters" xml:space="preserve">
+    <value>File CSV | *.csv</value>
+  </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>Aggiunta driver...</value>
   </data>
@@ -278,21 +282,28 @@ Ringraziamenti:
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>Eliminazione di {0} ({1}) dall'archivio driver.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
     <value>{0} driver eliminati dall'archivio driver.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Errore durante la rimozione di {0} ({1}) dall'archivio driver.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>Errore durante l'eliminazione di alcuni driver dall'archivio driver.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>Aggiunto {0} il driver all'archivio driver.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
     <value>Errore nell'aggiunta del driver {0} all'archivio driver.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>Non è stato trovato il file registro eventi.</value>
@@ -302,12 +313,16 @@ Ringraziamenti:
   </data>
   <data name="Export_Complete" xml:space="preserve">
     <value>Contenuto salvato in {0}. Esportazione completata.</value>
+    <comment>{0} - Placeholder for export path</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>Esportazione fallita: {0}</value>
+    <comment>{0} - Placeholder for error message</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>{0} driver selezionati. Errori totali: {1}.</value>
+    <comment>{0} - Placeholder for number of selected Drivers
+{1} - Placeholder for disk space</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Nessun driver selezionato.</value>
@@ -338,29 +353,70 @@ Ringraziamenti:
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(Disponibile nuova versione v. {0} - {1})</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for About_Download</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Download</value>
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
-		<value>Scansione store driver...</value>
-	</data>
+    <value>Scansione store driver...</value>
+  </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>Forza eliminazione di '{0}'' ('{1}') dall'archivio dei driver.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
     <value>Forza eliminazione di {0} driver dall'archivio dei driver.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>Eliminazione da  '{0}' di '('{1}') 'Operazione completata'.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Eliminazione da  '{0}' di '('{1}') 'Operazione fallita'.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
     <value>Aggiunto {0} il driver &amp; installato all'archivio driver.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>Errore nell'aggiunta del driver {0} &amp; installato all'archivio driver.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>&amp;Esporta driver</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>Esporta driver</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>Esporta tutti i driver</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Esportazione di tutti i pacchetti driver fallita.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Esportazione di tutti i pacchetti driver completata.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Esportazione di tutti i pacchetti driver...</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>Annulla</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>Critico per il boot</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>Vero</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>Falso</value>
   </data>
 </root>
