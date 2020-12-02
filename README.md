@@ -13,7 +13,7 @@ Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store]
 * Add a driver package to the driver store.
 * Delete one or multiple driver packages from the store.
 * Detect old and not used driver packages (best effort).
-* Full fledged GUI Supports grouping / sorting on any column. Supports re-arranging of / selecting specific columns.
+* Full-fledged GUI Supports grouping / sorting on any column. Supports re-arranging of / selecting specific columns.
 
 ### Screenshots:
 ![Screenshot of DriverStoreExplorer](https://github.com/lostindark/DriverStoreExplorer/raw/master/Screenshots/Screenshot.png "Screenshot of Driver Store Explorer")
@@ -29,7 +29,7 @@ To build the code yourself, open Rapr.sln in Visual Studio 2019. Visual Studio 2
 Download the latest version here: https://github.com/lostindark/DriverStoreExplorer/releases/latest.
 
 ### History:
-The project was original hosted on https://driverstoreexplorer.codeplex.com/.
+The project was originally hosted on https://driverstoreexplorer.codeplex.com/.
 
 ### Credits:
 This tool uses the excellent [ObjectListView](http://objectlistview.sourceforge.net/cs/index.html).
