@@ -180,18 +180,25 @@ namespace Rapr
 
             Assembly assembly = Assembly.GetExecutingAssembly();
             string currentFolder = Path.GetDirectoryName(assembly.Location);
-            DirectoryInfo dir = new DirectoryInfo(currentFolder);
 
-            foreach (var file in dir.EnumerateFiles($"{assembly.EntryPoint.DeclaringType.Namespace}.resources.dll", SearchOption.AllDirectories))
+            try
             {
-                string folderName = file.Directory.Name;
-                try
+                DirectoryInfo dir = new DirectoryInfo(currentFolder);
+
+                foreach (var file in dir.EnumerateFiles($"{assembly.EntryPoint.DeclaringType.Namespace}.resources.dll", SearchOption.AllDirectories))
                 {
-                    supportedLanguage.Add(new CultureInfo(folderName));
+                    string folderName = file.Directory.Name;
+                    try
+                    {
+                        supportedLanguage.Add(new CultureInfo(folderName));
+                    }
+                    catch (CultureNotFoundException)
+                    {
+                    }
                 }
-                catch (CultureNotFoundException)
-                {
-                }
+            }
+            catch (SecurityException)
+            {
             }
 
             return supportedLanguage;
