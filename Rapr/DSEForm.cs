@@ -171,7 +171,7 @@ namespace Rapr
             this.driverSizeColumn.GroupKeyToTitleConverter =
                 groupKey => DriverStoreEntry.GetSizeRangeName((long)groupKey);
 
-            this.bootCriticalColumn.AspectToStringConverter = condition => (bool)condition ? Language.Column_Text_True : Language.Column_Text_False;
+            this.bootCriticalColumn.AspectToStringConverter = condition => (bool)(condition ?? false) ? Language.Column_Text_True : Language.Column_Text_False;
         }
 
         private void BuildLanguageMenu()
