@@ -6,6 +6,8 @@ using System.Reflection;
 using System.Security;
 using System.Windows.Forms;
 
+using Rapr.Lang;
+
 namespace Rapr
 {
     public static class Program
@@ -93,15 +95,20 @@ namespace Rapr
                         Trace.TraceError(e.ToString());
                     }
                 }
+
+                using (DSEForm mainForm = new DSEForm())
+                {
+                    Application.Run(mainForm);
+                }
             }
             catch (ConfigurationException e)
             {
                 Trace.TraceError(e.ToString());
-            }
-
-            using (DSEForm mainForm = new DSEForm())
-            {
-                Application.Run(mainForm);
+                MessageBox.Show(
+                    e.Message,
+                    Language.Product_Name,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }
