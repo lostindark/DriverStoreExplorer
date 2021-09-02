@@ -20,7 +20,7 @@ Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store]
 
 ### Requirements: 
 This tool requires:
-* .NET Framework 4.5 or newer
+* .NET Framework 4.5.2 or newer
 * Windows 7 or newer
 
 To build the code yourself, open Rapr.sln in Visual Studio 2019. Visual Studio 2017 may also work but it is not guaranteed.
