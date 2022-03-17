@@ -117,38 +117,32 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About_FoundNewVersion" xml:space="preserve">
-    <value>(Encontrada nueva versión v{0} {1})</value>
-  </data>
-  <data name="About_Download" xml:space="preserve">
-    <value>Descargar</value>
-  </data>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>Agregar driver</value>
+    <value>&amp;Agregar controlador</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>Eliminar driver</value>
+    <value>&amp;Borrar controlador</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>&amp;Aceptar</value>
   </data>
   <data name="Button_Refresh" xml:space="preserve">
-    <value>Recargar</value>
+    <value>&amp;Actualizar</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>Seleccionar drivers obsoletos</value>
+    <value>Seleccionar controlador(es) &amp;antiguo(s)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
-    <value>Forzar eliminación</value>
+    <value>Forzar borrad&amp;o</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
-    <value>Instalar driver</value>
+    <value>&amp;Instalar controlador</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
-    <value>Fecha del driver</value>
+    <value>Fecha de controlador</value>
   </data>
   <data name="Column_Driver_Class" xml:space="preserve">
-    <value>Tipo de driver</value>
+    <value>Clase de controlador</value>
   </data>
   <data name="Column_Inf" xml:space="preserve">
     <value>INF</value>
@@ -166,34 +160,37 @@
     <value>Tamaño</value>
   </data>
   <data name="Column_Version" xml:space="preserve">
-    <value>Versión del driver</value>
+    <value>Versión de controlador</value>
   </data>
   <data name="Context_Delete" xml:space="preserve">
-    <value>Eliminar</value>
+    <value>Borrar</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
-    <value>Deseleccionar</value>
+    <value>&amp;Deseleccionar</value>
   </data>
   <data name="Context_Deselect_All" xml:space="preserve">
-    <value>Deseleccionar todo</value>
+    <value>Deseleccionar &amp;todo</value>
   </data>
   <data name="Context_Select" xml:space="preserve">
-    <value>Seleccionar</value>
+    <value>&amp;Seleccionar</value>
   </data>
   <data name="Context_Select_All" xml:space="preserve">
-    <value>Seleccionar todo</value>
+    <value>Seleccionar &amp;todo</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>Seleccionar drivers obsoletos</value>
+    <value>Seleccionar controladores &amp;antiguos</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Se eliminarán {0} paquetes del almacén de drivers.</value>
+    <value>A punto de borrar {0} paquetes desde el almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para el número de paquetes</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Se eliminará {0} ({1}) del almacén de drivers.</value>
+    <value>A punto de borrar {0} ({1}) desde el almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para archivo de paquete inf
+{1} - Marcador de posición para archivo oem inf</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Esta herramienta no puede ejecutarse en un sistema operativo "pre-Vista".</value>
+    <value>Esta utilidad no se puede ejecutar en SO previo a Vista.</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>¿Estás seguro?</value>
@@ -211,25 +208,25 @@
     <value>Listo</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[Consejo: El driver puede seguir siendo usado. Intenta forzar la eliminación del paquete]</value>
+    <value>[CONSEJO: El controlador todavía puede estar siendo usado. Intenta FORZAR el borrado del paquete]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
-    <value>Ayuda</value>
+    <value>&amp;Ayuda</value>
   </data>
   <data name="Menu_Help_About" xml:space="preserve">
-    <value>Acerca de</value>
+    <value>&amp;Acerca de</value>
   </data>
   <data name="Menu_File" xml:space="preserve">
-    <value>Archivo</value>
+    <value>&amp;Archivo</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>Exportar lista de drivers</value>
+    <value>&amp;Exportar lista de controladores</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
-    <value>Salir</value>
+    <value>Sa&amp;lir</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>Ver registros</value>
+    <value>&amp;Ver registros</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
@@ -238,22 +235,23 @@
     <value>No hay entradas cargadas.</value>
   </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>Seleccione el INF</value>
+    <value>Seleccionar el INF</value>
   </data>
   <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>Archivo INF | *.inf</value>
+    <value>Archivos INF | *.inf</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Acerca de {0}</value>
+    <comment>{0} - Marcador de posición para Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>Error</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
-    <value>Puedes encontrar la última versión y  las notas de lanzamiento aquí:
+    <value>Puedes encontrar la última versión y las notas de lanzamiento aquí:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-Notificar una característica/error:
+Presentar error/solicitar función:
     https://github.com/lostindark/DriverStoreExplorer/issues
 
 Contribuidores:
@@ -271,90 +269,151 @@ Licencia:
     <value>Español</value>
   </data>
   <data name="Dialog_Export_Filters" xml:space="preserve">
-    <value>Archivo CSV | *.csv</value>
+    <value>Archivos CSV | *.csv</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Agregando paquete de drivers...</value>
+    <value>Agregando paquete de controlador...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Eliminando paquete de drivers...</value>
+    <value>Borrando paquete de controlador(es)...</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Eliminado {0} ({1}) del almacén de drivers.</value>
+    <value>Removido {0} ({1}) del almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para archivo de paquete inf
+{1} - Marcador de posición para archivo oem inf</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>Eliminados {0} paquetes del almacén de drivers.</value>
+    <value>Removidos {0} paquetes del almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para el número de paquetes</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Error al remover {0} ({1}) del almacén de drivers.</value>
+    <value>Error removiendo {0} ({1}) del almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para archivo de paquete inf
+{1} - Marcador de posición para archivo oem inf</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Error al remover algunos paquetes del almacén de drivers.</value>
+    <value>Error removiendo algunos paquetes del almacén de controladores.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Agregado {0} al paquete del almacén de drivers.</value>
+    <value>Agregado el paquete {0} al almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para la ruta al inf</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Error al añadir {0} al paquete del almacén de drivers.</value>
+    <value>Error agregando {0} el paquete al almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para la ruta al inf</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
-    <value>El archivo de registro no se ha encontrado.</value>
+    <value>El archivo de registro no se puede encontrar.</value>
   </data>
   <data name="Message_Error" xml:space="preserve">
     <value>Error</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>Los contenidos se guardaron en {0}. Exportación completada.</value>
+    <value>Contenidos guardados en {0}. Exportación completada.</value>
+    <comment>{0} - Marcador de posición para la ruta de exportación</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
-    <value>La exportación falló: {0}</value>
+    <value>Exportación fallida: {0}</value>
+    <comment>{0} - Marcador de posición para mensaje de error</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>Seleccionados {0} driver(s). Tamaño total: {1}.</value>
+    <value>Seleccionado(s) {0} controlador(es). Tamaño total: {1}.</value>
+    <comment>{0} - Marcador de posición para el numero de controladores seleccionados
+{1} - Marcador de posición para espacio en disco</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>No se han seleccinado drivers.</value>
+    <value>No se han seleccionado controladores.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>Abrir carpeta</value>
+    <value>Abrir &amp;ubicación de carpeta</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Máquina local</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>Elegir almacén de drivers</value>
+    <value>&amp;Elegir almacén de controladores</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
-    <value>Almacén de drivers offline</value>
+    <value>Almacén de controladores sin conexión</value>
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
-    <value>Escoger almacén de drivers</value>
+    <value>&amp;Elegir almacén de controladores</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
-    <value>Idioma</value>
+    <value>Lenguaje</value>
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Nombre del dispositivo</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
-    <value>(Versión actualizada)</value>
+    <value>(Al día)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(Encontrada nueva versión v{0} - {1})</value>
+    <comment>{0} - Marcador de posición para número de versión
+{1} - Marcador de posición par About_Download</comment>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>Descargar</value>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>Escaneando almacén de controladores...</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>Se forzar eliminará {0} ({1}) del almacén de drivers.</value>
+    <value>A punto de forzar borrado {0} ({1}) del almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para archivo de paquete inf
+{1} - Marcador de posición para archivo oem inf</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>Se forzar eliminará {0} paquetes del almacén de drivers.</value>
+    <value>A punto de borrar {0} paquetes del almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para el número de paquetes</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
-    <value>Se eliminará {0} ({1}) éxito.</value>
+    <value>Borrado de {0} ({1}) logrado.</value>
+    <comment>{0} - Marcador de posición para archivo de paquete inf
+{1} - Marcador de posición para archivo oem inf</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
-    <value>Se eliminará {0} ({1}) fallo.</value>
+    <value>Borrado de {0} ({1}) fallido.</value>
+    <comment>{0} - Marcador de posición para archivo de paquete inf
+{1} - Marcador de posición para archivo oem inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Agregado {0} al paquete &amp; instalado del almacén de drivers.</value>
+    <value>Agregado el paquete {0} &amp; instalado al almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para la ruta al inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Error al añadir {0} al paquete&amp; instalado del almacén de drivers.</value>
+    <value>Error Agregando el paquete {0} &amp; instalado al almacén de controladores.</value>
+    <comment>{0} - Marcador de posición para la ruta al inf</comment>														
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>&amp;Exportar controlador(es)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>&amp;Exportar controlador</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>Ex&amp;portar todos los controladores</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Exportación de todos los paquetes de controladores fallida.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Exportación de paquetes de controladores lograda.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Exportando todos los paquetes de controladores...</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>&amp;Cancelar</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>Arranque crítico</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>Verdadero</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>Falso</value>
   </data>
 </root>
