@@ -121,7 +121,7 @@
     <value>&amp;Agregar controlador</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>&amp;Borrar controlador</value>
+    <value>&amp;Borrar controlador(es)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;Aceptar</value>
@@ -181,11 +181,11 @@
     <value>Seleccionar controladores &amp;antiguos</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>A punto de borrar {0} paquetes desde el almacén de controladores.</value>
+    <value>A punto de borrar {0} paquetes del almacén de controladores.</value>
     <comment>{0} - Marcador de posición para el número de paquetes</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>A punto de borrar {0} ({1}) desde el almacén de controladores.</value>
+    <value>A punto de borrar {0} ({1}) del almacén de controladores.</value>
     <comment>{0} - Marcador de posición para archivo de paquete inf
 {1} - Marcador de posición para archivo oem inf</comment>
   </data>
@@ -343,7 +343,7 @@ Licencia:
     <value>Lenguaje</value>
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
-    <value>Nombre del dispositivo</value>
+    <value>Nombre de dispositivo</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(Al día)</value>
@@ -399,7 +399,7 @@ Licencia:
     <value>Exportación de todos los paquetes de controladores fallida.</value>
   </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
-    <value>Exportación de paquetes de controladores lograda.</value>
+    <value>Exportación de todos los paquetes de controladores lograda.</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Exportando todos los paquetes de controladores...</value>
