@@ -7,6 +7,7 @@ using System.Linq;
 using System.Runtime.InteropServices;
 
 using Microsoft.Dism;
+using Microsoft.Win32.SafeHandles;
 
 namespace Rapr.Utils
 {
@@ -255,8 +256,14 @@ namespace Rapr.Utils
                 try
                 {
                     using (DismSession session = this.GetSession())
+                    using (SafeWaitHandle safeWaitHandle = new SafeWaitHandle(IntPtr.Zero, false))
                     {
-                        int hresult = NativeMethods._DismExportDriver(session, destinationPath);
+                        int hresult = NativeMethods._DismExportDriver(session, destinationPath, safeWaitHandle, null, IntPtr.Zero);
+
+                        if (hresult == unchecked((int)0x80070006))
+                        {
+                            hresult = NativeMethods._DismExportDriver(session, destinationPath);
+                        }
 
                         if (hresult != 0 && hresult != 1)
                         {
@@ -292,13 +299,26 @@ namespace Rapr.Utils
 
         internal static class NativeMethods
         {
+            public delegate void ProgressCallback(uint Current, uint Total, IntPtr UserData);
+            
             [DllImport("DismApi", CharSet = CharSet.Unicode)]
             [return: MarshalAs(UnmanagedType.Error)]
             public static extern int DismInitialize(DismLogLevel logLevel, string logFilePath, string scratchDirectory);
 
+            // Pre Win 11 version.
             [DllImport("DismApi", CharSet = CharSet.Unicode)]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public static extern int _DismExportDriver(DismSession Session, string Destination);
+
+            // Win 11 version.
+            [DllImport("DismApi", CharSet = CharSet.Unicode)]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public static extern int _DismExportDriver(
+                DismSession Session,
+                [MarshalAs(UnmanagedType.LPWStr)] string Destination,
+                SafeWaitHandle CancelHandle,
+                ProgressCallback Progress,
+                IntPtr UserData);
         }
     }
 }
