@@ -399,7 +399,7 @@ Licencia:
     <value>Exportación de todos los paquetes de controladores fallida.</value>
   </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
-    <value>Exportación de todos los paquetes de controladores lograda.</value>
+    <value>Exportación de todos los paquetes de controladores exitosa.</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Exportando todos los paquetes de controladores...</value>
