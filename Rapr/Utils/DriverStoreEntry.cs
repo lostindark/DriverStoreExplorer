@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 
 namespace Rapr.Utils
 {
@@ -30,6 +31,11 @@ namespace Rapr.Utils
         public string DriverClass { get; set; }
 
         /// <summary>
+        /// Driver ExtensionId.
+        /// </summary>
+        public Guid DriverExtensionId { get; set; }
+
+        /// <summary>
         /// Sys file date
         /// </summary>
         public DateTime DriverDate { get; set; }
@@ -54,10 +60,24 @@ namespace Rapr.Utils
         /// </summary>
         public string DriverFolderLocation { get; set; }
 
+        /// <summary>
+        /// The folder name (not include full path) that contains the driver.
+        /// </summary>
+        public string DriverFolderName => Path.GetFileName(DriverFolderLocation);
+
+        /// <summary>
+        /// Whether the driver is marked as boot critical or not.
+        /// </summary>
         public bool? BootCritical { get; set; }
 
+        /// <summary>
+        /// Associated device name.
+        /// </summary>
         public string DeviceName { get; set; }
 
+        /// <summary>
+        /// Whether the associated device present in the system or not.
+        /// </summary>
         public bool? DevicePresent { get; set; }
 
         public override string ToString()

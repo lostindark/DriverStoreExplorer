@@ -136,6 +136,7 @@ namespace Rapr
 
         private void SetupListViewColumns()
         {
+            this.driverExtensionIdColumn.AspectToStringConverter = id => (Guid)id == Guid.Empty ? String.Empty : id.ToString();
             this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
 
             this.driverOemInfColumn.GroupKeyGetter = rowObject => ((DriverStoreEntry)rowObject).OemId / 10;
@@ -273,28 +274,35 @@ namespace Rapr
 
         private async Task DeleteDriverStoreEntries(List<DriverStoreEntry> driverStoreEntries)
         {
-            string msgWarning;
+            StringBuilder msgWarning = new StringBuilder();
 
             if (driverStoreEntries?.Count > 0)
             {
                 if (driverStoreEntries.Count == 1)
                 {
-                    msgWarning = string.Format(
+                    msgWarning.AppendFormat(
                         this.cbForceDeletion.Checked ? Language.Message_ForceDelete_Single_Package : Language.Message_Delete_Single_Package,
-                        driverStoreEntries[0].DriverInfName,
-                        driverStoreEntries[0].DriverPublishedName);
+                        driverStoreEntries[0].DriverPublishedName,
+                        driverStoreEntries[0].DriverFolderName);
                 }
                 else
                 {
-                    msgWarning = string.Format(
+                    msgWarning.AppendFormat(
                         this.cbForceDeletion.Checked ? Language.Message_ForceDelete_Multiple_Packages : Language.Message_Delete_Multiple_Packages,
                         driverStoreEntries.Count);
+
+                    msgWarning.AppendLine();
+
+                    foreach (DriverStoreEntry item in driverStoreEntries)
+                    {
+                        msgWarning.AppendLine($"{item.DriverPublishedName} - {item.DriverFolderName} - {DriverStoreEntry.GetBytesReadable(item.DriverSize)}");
+                    }
                 }
 
-                msgWarning += Environment.NewLine + Environment.NewLine + Language.Message_Sure;
+                msgWarning.AppendLine().Append(Language.Message_Sure);
 
                 if (DialogResult.OK == this.ShowMessageBox(
-                    msgWarning,
+                    msgWarning.ToString(),
                     Language.Message_Title_Warning,
                     MessageBoxButtons.OKCancel,
                     MessageBoxIcon.Warning))
@@ -311,7 +319,7 @@ namespace Rapr
 
             foreach (DriverStoreEntry item in driverStoreEntries)
             {
-                details.AppendLine($"{item.DriverPublishedName} - {item.DriverInfName}");
+                details.AppendLine($"{item.DriverPublishedName} - {item.DriverFolderName} - {DriverStoreEntry.GetBytesReadable(item.DriverSize)}");
             }
 
             bool force = this.cbForceDeletion.Checked;
@@ -341,8 +349,8 @@ namespace Rapr
                             bool succeeded = this.driverStore.DeleteDriver(entry, force);
                             string resultTxt = string.Format(
                                 succeeded ? Language.Message_Delete_Success : Language.Message_Delete_Fail,
-                                entry.DriverInfName,
-                                entry.DriverPublishedName);
+                                entry.DriverPublishedName,
+                                entry.DriverFolderName);
 
                             Trace.TraceInformation(resultTxt);
 
@@ -607,7 +615,7 @@ namespace Rapr
                     .Objects
                     .OfType<DriverStoreEntry>()
                     .Where(entry => entry.BootCritical != true)
-                    .GroupBy(entry => new { entry.DriverClass, entry.DriverPkgProvider, entry.DriverInfName })
+                    .GroupBy(entry => new { entry.DriverClass, entry.DriverExtensionId, entry.DriverPkgProvider, entry.DriverInfName })
                     .SelectMany(g => g.OrderByDescending(row => row.DriverVersion).ThenByDescending(row => row.DriverDate).Skip(1))
                     .Where(entry => string.IsNullOrEmpty(entry.DeviceName))
                     .ToArray();
@@ -781,15 +789,19 @@ namespace Rapr
             if (checkedObjects?.Count > 0)
             {
                 long totalSize = 0;
+                List<string> driverList = new List<string>();
 
                 foreach (DriverStoreEntry item in checkedObjects)
                 {
                     totalSize += item.DriverSize;
+                    driverList.Add($"{item.DriverPublishedName} - {item.DriverFolderName} - {DriverStoreEntry.GetBytesReadable(item.DriverSize)}");
                 }
 
+                string message = string.Format(Language.Status_Selected_Drivers, checkedObjects.Count, DriverStoreEntry.GetBytesReadable(totalSize));
                 this.ShowStatus(
                     Status.Normal,
-                    string.Format(Language.Status_Selected_Drivers, checkedObjects.Count, DriverStoreEntry.GetBytesReadable(totalSize)));
+                    message,
+                    message + Environment.NewLine + string.Join(Environment.NewLine, driverList));
             }
             else
             {

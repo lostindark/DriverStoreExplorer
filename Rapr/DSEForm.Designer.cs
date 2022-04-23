@@ -58,6 +58,7 @@ namespace Rapr
             this.lstDriverStoreEntries = new Rapr.MyObjectListView();
             this.driverInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverClassColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.driverExtensionIdColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverProviderColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverVersionColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -420,6 +421,7 @@ namespace Rapr
             this.lstDriverStoreEntries.AllColumns.Add(this.driverInfColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverOemInfColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverClassColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.driverExtensionIdColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverProviderColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverVersionColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverDateColumn);
@@ -473,6 +475,13 @@ namespace Rapr
             this.driverClassColumn.AspectName = "DriverClass";
             this.driverClassColumn.Text = global::Rapr.Lang.Language.Column_Driver_Class;
             this.driverClassColumn.Width = 170;
+            // 
+            // driverExtensionIdColumn
+            // 
+            this.driverExtensionIdColumn.AspectName = "DriverExtensionId";
+            this.driverExtensionIdColumn.DisplayIndex = 2;
+            this.driverExtensionIdColumn.IsVisible = false;
+            this.driverExtensionIdColumn.Text = global::Rapr.Lang.Language.Column_Extension_Id;
             // 
             // driverProviderColumn
             // 
@@ -604,6 +613,7 @@ namespace Rapr
         private System.Windows.Forms.Button buttonExportDrivers;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuExportDriver;
         private BrightIdeasSoftware.OLVColumn bootCriticalColumn;
+        private BrightIdeasSoftware.OLVColumn driverExtensionIdColumn;
     }
 }
 

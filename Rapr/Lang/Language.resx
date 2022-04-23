@@ -416,4 +416,7 @@ License:
   <data name="Column_Text_False" xml:space="preserve">
     <value>False</value>
   </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>Extension Id</value>
+  </data>
 </root>

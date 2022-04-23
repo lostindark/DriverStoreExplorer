@@ -191,6 +191,7 @@ namespace Rapr.Utils
             DriverStoreEntry driverStoreEntry = new DriverStoreEntry
             {
                 DriverClass = ConfigManager.GetClassProperty<string>(driverClassGuid, DeviceHelper.DEVPKEY_DeviceClass_Name),
+                DriverExtensionId = GetObjectPropertyInfo<Guid>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ExtensionId),
                 DriverInfName = Path.GetFileName(driverStoreFilename),
                 DriverPublishedName = pDriverPackageInfo.PublishedInfName,
                 DriverPkgProvider = GetObjectPropertyInfo<string>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ProviderName),
