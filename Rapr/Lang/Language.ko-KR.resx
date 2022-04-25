@@ -416,4 +416,7 @@
   <data name="Column_Text_False" xml:space="preserve">
     <value>거짓</value>
   </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>확장 ID</value>
+  </data>	
 </root>
