@@ -391,6 +391,6 @@
     <value>Нет</value>
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
-    <value>Идентификатор расширения GUID</value>
+    <value>ID расширения</value>
   </data>
 </root>
