@@ -390,4 +390,7 @@
   <data name="Column_Text_False" xml:space="preserve">
     <value>Нет</value>
       </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>ID расширения</value>
+      </data>
 </root>
