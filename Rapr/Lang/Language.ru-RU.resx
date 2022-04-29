@@ -377,20 +377,20 @@
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Экспорт всех пакетов драйверов...</value>
-      </data>
+  </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Отмена</value>
-      </data>
+  </data>
   <data name="Column_BootCritical" xml:space="preserve">
     <value>Критично для загрузки ОС</value>
-      </data>
+  </data>
   <data name="Column_Text_True" xml:space="preserve">
     <value>Да</value>
-      </data>
+  </data>
   <data name="Column_Text_False" xml:space="preserve">
     <value>Нет</value>
-      </data>
+  </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>ID расширения</value>
-      </data>
+  </data>
 </root>
