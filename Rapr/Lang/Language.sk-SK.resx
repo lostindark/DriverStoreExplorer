@@ -202,7 +202,7 @@
     <value>Operácie</value>
   </data>
   <data name="Product_Name" xml:space="preserve">
-    <value>Driver Store Explorer</value>
+    <value>Prehliadač úložiska ovládačov</value>
   </data>
   <data name="Status_Label" xml:space="preserve">
     <value>Pripravený</value>
@@ -241,7 +241,7 @@
     <value>INF súbory | *.inf</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
-    <value>O {0}</value>
+    <value>{0}</value>
     <comment>{0} - Placeholder for Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
