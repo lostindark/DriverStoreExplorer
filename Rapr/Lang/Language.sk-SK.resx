@@ -121,7 +121,7 @@
     <value>&amp;Pridať ovládač</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>&amp;Zmazať ovládač(e)</value>
+    <value>&amp;Odstrániť ovládač(e)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>O&amp;K</value>
@@ -133,7 +133,7 @@
     <value>Označiť &amp;staré ovládače</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
-    <value>&amp;Vynútené zmazanie</value>
+    <value>&amp;Vynútené odstránenie</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
     <value>&amp;Inštalovať ovládač</value>
@@ -163,7 +163,7 @@
     <value>Verzia ovládača</value>
   </data>
   <data name="Context_Delete" xml:space="preserve">
-    <value>Zmazať</value>
+    <value>Odstrániť</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
     <value>Zrušiť &amp;označenie</value>
@@ -208,7 +208,7 @@
     <value>Pripravený</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[TIP: Tento ovládač môže byť práve používaný. Skúste vynútiť zmazanie balíka]</value>
+    <value>[TIP: Tento ovládač môže byť práve používaný. Skúste vynútiť odstránenie balíka]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>&amp;Pomoc</value>
