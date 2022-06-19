@@ -322,10 +322,10 @@ Licencia:
 {1} - Marcador de posición para espacio en disco</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>No se han seleccionado controladores.</value>
+    <value>No hay controladores seleccionados.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>Abrir &amp;ubicación de carpeta</value>
+    <value>Abrir ubicación de &amp;carpeta</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Máquina local</value>
@@ -383,7 +383,7 @@ Licencia:
     <comment>{0} - Marcador de posición para la ruta al inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Error Agregando el paquete {0} &amp; instalado al almacén de controladores.</value>
+    <value>Error agregando el paquete {0} &amp; instalado al almacén de controladores.</value>
     <comment>{0} - Marcador de posición para la ruta al inf</comment>														
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
@@ -415,5 +415,8 @@ Licencia:
   </data>
   <data name="Column_Text_False" xml:space="preserve">
     <value>Falso</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>Id de extensión</value>
   </data>
 </root>
