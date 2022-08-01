@@ -32,12 +32,12 @@
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Dism" Version="2.5.2" />
-    <PackageReference Include="Microsoft.WindowsAPICodePack.Core" Version="1.1.0" />
-    <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-    <PackageReference Include="ObjectListView.Official" Version="2.9.1" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <PackageReference Include="Microsoft.Dism" Version="2.5.2" GeneratePathProperty="true"/>
+    <PackageReference Include="Microsoft.WindowsAPICodePack.Core" Version="1.1.0" GeneratePathProperty="true"/>
+    <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" GeneratePathProperty="true"/>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" GeneratePathProperty="true"/>
+    <PackageReference Include="ObjectListView.Official" Version="2.9.1" GeneratePathProperty="true"/>
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" GeneratePathProperty="true"/>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.configuration" />
