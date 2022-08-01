@@ -1,37 +1,21 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DF716806-3ABA-4B92-8D53-91CA9A30E8B6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rapr</RootNamespace>
-    <AssemblyName>Rapr</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
+    <TargetFramework>net48</TargetFramework>
+    <AssemblyTitle>Driver Store Explorer</AssemblyTitle>
+    <Product>Rapr</Product>
+    <NeutralLanguage>en</NeutralLanguage>
+    <Description>Driver Store Explorer (PNPUtil Wrapper)</Description>
+    <Copyright>Copyright © 2019</Copyright>
+    <OutputPath>bin\$(Configuration)\</OutputPath>
+						<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
@@ -45,114 +29,68 @@
     <AssemblyOriginatorKeyFile>Rapr.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
-      <Version>6.0.0</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Dism" Version="2.4.0" GeneratePathProperty="true" />
-    <PackageReference Include="Microsoft.WindowsAPICodePack.Core" Version="1.1.0" GeneratePathProperty="true" />
-    <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" GeneratePathProperty="true" />
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" GeneratePathProperty="true" />
-    <PackageReference Include="ObjectListView.Official" Version="2.9.1" GeneratePathProperty="true" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.Dism" Version="2.5.2" />
+    <PackageReference Include="Microsoft.WindowsAPICodePack.Core" Version="1.1.0" />
+    <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="ObjectListView.Official" Version="2.9.1" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System" />
     <Reference Include="System.configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
     <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
+    <Compile Update="AboutBox.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AboutBox.Designer.cs">
+    <Compile Update="AboutBox.Designer.cs">
       <DependentUpon>AboutBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChooseDriverStore.cs">
+    <Compile Update="ChooseDriverStore.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChooseDriverStore.Designer.cs">
+    <Compile Update="ChooseDriverStore.Designer.cs">
       <DependentUpon>ChooseDriverStore.cs</DependentUpon>
     </Compile>
-    <Compile Include="CSVExporter.cs" />
-    <Compile Include="DriverStoreType.cs" />
-    <Compile Include="DSEForm.cs">
+    <Compile Update="DSEForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="DSEForm.Designer.cs">
+    <Compile Update="DSEForm.Designer.cs">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DSEFormHelper.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="HttpClientExtensions.cs" />
-    <Compile Include="IExport.cs" />
-    <Compile Include="IUpdateManager.cs" />
-    <Compile Include="Lang\Language.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Language.resx</DependentUpon>
-    </Compile>
-    <Compile Include="StreamExtensions.cs" />
-    <Compile Include="UpdateManager.cs" />
-    <Compile Include="Utils\DeviceDriverInfo.cs" />
-    <Compile Include="Utils\DeviceHelper.cs" />
-    <Compile Include="Utils\NativeDriverStore.cs" />
-    <Compile Include="Utils\DriverStoreEntry.cs" />
-    <Compile Include="Utils\DriverStoreFactory.cs" />
-    <Compile Include="Utils\DriverStoreRepository.cs" />
-    <Compile Include="Utils\IDriverStore.cs" />
-    <Compile Include="Utils\DismUtil.cs" />
-    <Compile Include="Utils\PnpUtil.cs" />
-    <Compile Include="MyObjectListView.cs">
+    <Compile Update="MyObjectListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="SafeNativeMethods.cs" />
-    <Compile Include="TextFileTraceListener.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\ConfigManager.cs" />
-    <Compile Include="Utils\SetupAPI.cs" />
-    <Compile Include="VersionInfo.cs" />
-    <EmbeddedResource Include="AboutBox.resx">
+    <EmbeddedResource Update="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChooseDriverStore.resx">
+    <EmbeddedResource Update="ChooseDriverStore.resx">
       <DependentUpon>ChooseDriverStore.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DSEForm.resx">
+    <EmbeddedResource Update="DSEForm.resx">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lang\Language.*.resx" />
-    <EmbeddedResource Include="Lang\Language.resx">
+    <EmbeddedResource Update="Lang\Language.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Language.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
+    <EmbeddedResource Update="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <None Include="app.config">
-      <SubType>Designer</SubType>
-    </None>
     <None Include="app.manifest">
       <SubType>Designer</SubType>
     </None>
@@ -160,7 +98,7 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Compile Include="Properties\Settings.Designer.cs">
+    <Compile Update="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
@@ -178,5 +116,4 @@
   <ItemGroup>
     <Content Include="icon.ico" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
