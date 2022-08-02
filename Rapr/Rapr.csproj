@@ -1,15 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>net452</TargetFramework>
+    <TargetFramework>net481</TargetFramework>
     <AssemblyTitle>Driver Store Explorer</AssemblyTitle>
     <Product>Rapr</Product>
     <NeutralLanguage>en</NeutralLanguage>
     <Description>Driver Store Explorer (PNPUtil Wrapper)</Description>
     <Copyright>Copyright © 2019</Copyright>
     <OutputPath>bin\$(Configuration)\</OutputPath>
-						<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
-  </PropertyGroup>
+		</PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugType>full</DebugType>
     <LangVersion>latest</LangVersion>
@@ -32,12 +31,12 @@
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="6.0.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Dism" Version="2.5.2" GeneratePathProperty="true"/>
-    <PackageReference Include="Microsoft.WindowsAPICodePack.Core" Version="1.1.0" GeneratePathProperty="true"/>
-    <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" GeneratePathProperty="true"/>
-    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" GeneratePathProperty="true"/>
-    <PackageReference Include="ObjectListView.Official" Version="2.9.1" GeneratePathProperty="true"/>
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" GeneratePathProperty="true"/>
+    <PackageReference Include="Microsoft.Dism" Version="2.5.2" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.WindowsAPICodePack.Core" Version="1.1.0" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" GeneratePathProperty="true" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" GeneratePathProperty="true" />
+    <PackageReference Include="ObjectListView.Official" Version="2.9.1" GeneratePathProperty="true" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.configuration" />
@@ -67,8 +66,18 @@
     <Compile Update="DSEForm.Designer.cs">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </Compile>
+    <Compile Update="Lang\Language.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Language.resx</DependentUpon>
+    </Compile>
     <Compile Update="MyObjectListView.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Properties\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Update="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
@@ -81,6 +90,36 @@
       <DependentUpon>DSEForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Lang\Language.*.resx" />
+    <EmbeddedResource Remove="Lang\Language.ar-SA.resx" />
+    <EmbeddedResource Remove="Lang\Language.ar-SA.resx" />
+    <EmbeddedResource Remove="Lang\Language.de-DE.resx" />
+    <EmbeddedResource Remove="Lang\Language.de-DE.resx" />
+    <EmbeddedResource Remove="Lang\Language.es-ES.resx" />
+    <EmbeddedResource Remove="Lang\Language.es-ES.resx" />
+    <EmbeddedResource Remove="Lang\Language.fr-FR.resx" />
+    <EmbeddedResource Remove="Lang\Language.fr-FR.resx" />
+    <EmbeddedResource Remove="Lang\Language.he-IL.resx" />
+    <EmbeddedResource Remove="Lang\Language.he-IL.resx" />
+    <EmbeddedResource Remove="Lang\Language.it-IT.resx" />
+    <EmbeddedResource Remove="Lang\Language.it-IT.resx" />
+    <EmbeddedResource Remove="Lang\Language.ja-JP.resx" />
+    <EmbeddedResource Remove="Lang\Language.ja-JP.resx" />
+    <EmbeddedResource Remove="Lang\Language.ko-KR.resx" />
+    <EmbeddedResource Remove="Lang\Language.ko-KR.resx" />
+    <EmbeddedResource Remove="Lang\Language.pl-PL.resx" />
+    <EmbeddedResource Remove="Lang\Language.pl-PL.resx" />
+    <EmbeddedResource Remove="Lang\Language.pt-BR.resx" />
+    <EmbeddedResource Remove="Lang\Language.pt-BR.resx" />
+    <EmbeddedResource Remove="Lang\Language.ru-RU.resx" />
+    <EmbeddedResource Remove="Lang\Language.ru-RU.resx" />
+    <EmbeddedResource Remove="Lang\Language.sk-SK.resx" />
+    <EmbeddedResource Remove="Lang\Language.sk-SK.resx" />
+    <EmbeddedResource Remove="Lang\Language.uk-UA.resx" />
+    <EmbeddedResource Remove="Lang\Language.uk-UA.resx" />
+    <EmbeddedResource Remove="Lang\Language.zh-CN.resx" />
+    <EmbeddedResource Remove="Lang\Language.zh-CN.resx" />
+    <EmbeddedResource Remove="Lang\Language.zh-TW.resx" />
+    <EmbeddedResource Remove="Lang\Language.zh-TW.resx" />
     <EmbeddedResource Update="Lang\Language.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Language.Designer.cs</LastGenOutput>
@@ -104,14 +143,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <None Include="Rapr.snk" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="$(PkgMicrosoft_Dism)\lib\net40\Microsoft.Dism.dll" Visible="false" />
-    <EmbeddedResource Include="$(PkgNewtonsoft_Json)\lib\net45\Newtonsoft.Json.dll" Visible="false" />
-    <EmbeddedResource Include="$(PkgObjectListView_Official)\lib\net20\ObjectListView.dll" Visible="false" />
-    <EmbeddedResource Include="$(PkgSystem_ValueTuple)\lib\netstandard1.0\System.ValueTuple.dll" Visible="false" />
-    <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Core)\lib\Microsoft.WindowsAPICodePack.dll" Visible="false" />
-    <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Shell)\lib\Microsoft.WindowsAPICodePack.Shell.dll" Visible="false" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
