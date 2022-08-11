@@ -18,7 +18,7 @@ namespace Rapr
             this.updateManager = updateManager ?? throw new ArgumentNullException(nameof(updateManager));
 
             this.InitializeComponent();
-            this.Text = string.Format(Language.Product_About_Title, AssemblyTitle);
+            this.Text = string.Format(Language.Product_About_Title, Language.Product_Name);
             this.labelVersionInfo.Text = $"v{AssemblyVersion}";
 
             _ = this.UpdateLatestVersionInfo();
