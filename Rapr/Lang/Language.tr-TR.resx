@@ -1,0 +1,418 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_Add_Package" xml:space="preserve">
+    <value>&amp;Yeni Sürücü Ekle</value>
+  </data>
+  <data name="Button_Delete_Package" xml:space="preserve">
+    <value>&amp;Sürücüleri Sil</value>
+  </data>
+  <data name="Button_OK" xml:space="preserve">
+    <value>&amp;Tamam</value>
+  </data>
+  <data name="Button_Refresh" xml:space="preserve">
+    <value>&amp;Yenile</value>
+  </data>
+  <data name="Button_Select_Old" xml:space="preserve">
+    <value>Eski Sürücüleri Seç</value>
+  </data>
+  <data name="Check_Force_Delete" xml:space="preserve">
+    <value>Silmeye Zorla</value>
+  </data>
+  <data name="Check_Install_Driver" xml:space="preserve">
+    <value>&amp;Sürücü Yükle</value>
+  </data>
+  <data name="Column_Date" xml:space="preserve">
+    <value>Sürücü Tarihi</value>
+  </data>
+  <data name="Column_Driver_Class" xml:space="preserve">
+    <value>Sürücü Katagorisi</value>
+  </data>
+  <data name="Column_Inf" xml:space="preserve">
+    <value>INF İsmi</value>
+  </data>
+  <data name="Column_Oem_Inf" xml:space="preserve">
+    <value>OEM INF</value>
+  </data>
+  <data name="Column_Provider" xml:space="preserve">
+    <value>Sağlayıcı</value>
+  </data>
+  <data name="Column_Signed_By" xml:space="preserve">
+    <value>Tarafından İmzalı</value>
+  </data>
+  <data name="Column_Size" xml:space="preserve">
+    <value>Boyut</value>
+  </data>
+  <data name="Column_Version" xml:space="preserve">
+    <value>Sürücü Versiyon</value>
+  </data>
+  <data name="Context_Delete" xml:space="preserve">
+    <value>Sil</value>
+  </data>
+  <data name="Context_Deselect" xml:space="preserve">
+    <value>&amp;Seçim Kaldır</value>
+  </data>
+  <data name="Context_Deselect_All" xml:space="preserve">
+    <value>Hiçbirini &amp;Seçme</value>
+  </data>
+  <data name="Context_Select" xml:space="preserve">
+    <value>&amp;Seç</value>
+  </data>
+  <data name="Context_Select_All" xml:space="preserve">
+    <value>&amp;Hepsini Seç</value>
+  </data>
+  <data name="Context_Select_Old" xml:space="preserve">
+    <value>&amp;Eski Sürücüleri Seç</value>
+  </data>
+  <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
+    <value>{0} paket sürücü deposundan silinmek üzere.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Single_Package" xml:space="preserve">
+    <value>{0} ({1}) sürücü deposundan silinmek üzere.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Requires_Later_OS" xml:space="preserve">
+    <value>Bu yardımcı program Vista öncesi işletim sisteminde çalıştırılamaz.</value>
+  </data>
+  <data name="Message_Sure" xml:space="preserve">
+    <value>Emin misin?</value>
+  </data>
+  <data name="Message_Title_Warning" xml:space="preserve">
+    <value>Uyarı</value>
+  </data>
+  <data name="Operations_Text" xml:space="preserve">
+    <value>İşlemler</value>
+  </data>
+  <data name="Product_Name" xml:space="preserve">
+    <value>Driver Store Explorer</value>
+  </data>
+  <data name="Status_Label" xml:space="preserve">
+    <value>Hazır</value>
+  </data>
+  <data name="Tip_Driver_In_Use" xml:space="preserve">
+    <value>[İPUCU: Sürücü hala kullanılıyor olabilir. ZORLA paketi silmeyi deneyin]</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>&amp;Yardım</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>&amp;Hakkında</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>&amp;Dosya</value>
+  </data>
+  <data name="Menu_File_Export" xml:space="preserve">
+    <value>&amp;Sürücü Listesini Dışa Aktar</value>
+  </data>
+  <data name="Menu_File_Exit" xml:space="preserve">
+    <value>Çıkış</value>
+  </data>
+  <data name="Menu_File_View_Logs" xml:space="preserve">
+    <value>&amp;Günlükleri Görüntüle</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="Message_No_Entries" xml:space="preserve">
+    <value>Giriş yüklenmedi.</value>
+  </data>
+  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
+    <value>INF'yi seçin</value>
+  </data>
+  <data name="Dialog_Open_Filters" xml:space="preserve">
+    <value>INF dosyaları | *.inf</value>
+  </data>
+  <data name="Product_About_Title" xml:space="preserve">
+    <value>{0} Hakkında</value>
+    <comment>{0} - Placeholder for Product_Name</comment>
+  </data>
+  <data name="Export_Error" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="About_Project_Description" xml:space="preserve">
+    <value>Yeni Sürüm ve Güncelleme Listesi:
+    https://github.com/lostindark/DriverStoreExplorer/releases
+
+Hatalar/Özellik İsteği:
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+Katkıda Bulunanlar:
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
+
+Destek Olanlar:
+    ObjectListView http://objectlistview.sourceforge.net/
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+
+Lisans:
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
+  </data>
+  <data name="UnitTest_Language" xml:space="preserve">
+    <value>Türkçe</value>
+  </data>
+  <data name="Dialog_Export_Filters" xml:space="preserve">
+    <value>CSV Dosyası | *.csv</value>
+  </data>
+  <data name="Status_Adding_Package" xml:space="preserve">
+    <value>Sürücü paketi ekleniyor...</value>
+  </data>
+  <data name="Status_Deleting_Packages" xml:space="preserve">
+    <value>Sürücü paket(ler)i siliniyor...</value>
+  </data>
+  <data name="Message_Delete_Package" xml:space="preserve">
+    <value>{0} ({1}) sürücü deposundan kaldırıldı.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Packages" xml:space="preserve">
+    <value>Sürücü deposundan {0} paket kaldırıldı.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Package_Error" xml:space="preserve">
+    <value>{0} ({1}) sürücü deposundan kaldırılırken hata oluştu.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+    <value>Sürücü deposundan bazı paketler kaldırılırken hata oluştu.</value>
+  </data>
+  <data name="Message_Driver_Added" xml:space="preserve">
+    <value>{0} paketi sürücü deposuna eklendi.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
+    <value>{0} paketi sürücü deposuna eklenirken hata oluştu.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>Günlük dosyası bulunamadı.</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>Hata</value>
+  </data>
+  <data name="Export_Complete" xml:space="preserve">
+    <value>İçerik {0} konumuna kaydedildi. Dışa Aktarma Tamamlandı.</value>
+    <comment>{0} - Placeholder for export path</comment>
+  </data>
+  <data name="Export_Failed" xml:space="preserve">
+    <value>Dışa aktarma başarısız oldu: {0}</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data>
+  <data name="Status_Selected_Drivers" xml:space="preserve">
+    <value>{0} Sürücü(ler) seçildi. Toplam boyut: {1}.</value>
+    <comment>{0} - Placeholder for number of selected Drivers
+{1} - Placeholder for disk space</comment>
+  </data>
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+    <value>Hiçbir sürücü seçilmedi.</value>
+  </data>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>&amp;Klasör Konumunu Aç</value>
+  </data>
+  <data name="DriverStore_LocalMachine" xml:space="preserve">
+    <value>Yerel Bilgisayar</value>
+  </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>&amp;Sürücü Deposu Tercih</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>Çevrimdışı Sürücü Mağazası</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>&amp;Sürücü Yeri Seç</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>&amp;Dil</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>Sürücü Tam İsmi</value>
+  </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(Güncel)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(Yeni Versiyon Bulundu v{0} - {1})</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for About_Download</comment>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>Sürücüler taranıyor...</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>{0} ({1}) sürücü deposundan zorla silinmek üzere.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>{0} paketini sürücü deposundan silmeye zorlamak üzere.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>{0} ({1}) silinmesi başarılı oldu.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>{0} ({1}) silinemedi.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>{0} paketi eklendi ve sürücü deposuna yüklendi.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>{0} &amp; yüklenen paketi sürücü deposuna eklerken hata oluştu.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>&amp;Sürücü Ekle</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>&amp;Sürücüyü Dışa Aktar</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>Tüm Sürücüleri Dışa Aktar</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Tüm sürücü paketlerini dışa aktarma başarısız oldu.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Tüm sürücü paketlerini dışa aktarma başarılı oldu.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Tüm sürücü paketleri dışa aktarılıyor...</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>&amp;İptal</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>ÖnYükleme Kritik</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>Doğru</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>Yanlış</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>Eklenti ID</value>
+  </data>
+</root>
