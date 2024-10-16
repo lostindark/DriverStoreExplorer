@@ -129,7 +129,7 @@
     <value>새로 고침(&amp;R)</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>이전 드라이버 선택(&amp;O)</value>
+    <value>구형 드라이버 선택(&amp;O)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>강제 삭제(&amp;N)</value>
@@ -165,10 +165,10 @@
     <value>삭제</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
-    <value>선택 해제(&amp;D)</value>
+    <value>선택 취소(&amp;D)</value>
   </data>
   <data name="Context_Deselect_All" xml:space="preserve">
-    <value>모두 선택 해제(&amp;A)</value>
+    <value>모두 선택 취소(&amp;A)</value>
   </data>
   <data name="Context_Select" xml:space="preserve">
     <value>선택(&amp;S)</value>
@@ -201,7 +201,7 @@
     <value>작업</value>
   </data>
   <data name="Product_Name" xml:space="preserve">
-    <value>Driver Store Explorer</value>
+    <value>드라이버 저장소 탐색기</value>
   </data>
   <data name="Status_Label" xml:space="preserve">
     <value>준비</value>
@@ -345,7 +345,7 @@
     <value>장치 이름</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
-    <value>(최신 버전)</value>
+    <value>(최신 버전 - 번역: 비너스걸)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(새 버전 v{0} - {1}를 찾았습니다)</value>
