@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_Add_Package" xml:space="preserve">
+    <value>Драйверны өстәү (&amp;A)</value>
+  </data>
+  <data name="Button_Delete_Package" xml:space="preserve">
+    <value>Драйвер(лар)ны бетерү (&amp;D)</value>
+  </data>
+  <data name="Button_OK" xml:space="preserve">
+    <value>Ярый (&amp;O)</value>
+  </data>
+  <data name="Button_Refresh" xml:space="preserve">
+    <value>Яңарту (&amp;R)</value>
+  </data>
+  <data name="Button_Select_Old" xml:space="preserve">
+    <value>Иске драйвер(лар)ны сайлау (&amp;O)</value>
+  </data>
+  <data name="Check_Force_Delete" xml:space="preserve">
+    <value>Көчләүле бетерү (&amp;N)</value>
+  </data>
+  <data name="Check_Install_Driver" xml:space="preserve">
+    <value>Драйверны утырту (&amp;I)</value>
+  </data>
+  <data name="Column_Date" xml:space="preserve">
+    <value>Драйвер вакыты</value>
+  </data>
+  <data name="Column_Driver_Class" xml:space="preserve">
+    <value>Драйвер сыйныфы</value>
+  </data>
+  <data name="Column_Inf" xml:space="preserve">
+    <value>INF</value>
+  </data>
+  <data name="Column_Oem_Inf" xml:space="preserve">
+    <value>OEM INF</value>
+  </data>
+  <data name="Column_Provider" xml:space="preserve">
+    <value>Provider</value>
+  </data>
+  <data name="Column_Signed_By" xml:space="preserve">
+    <value>Имзаланган</value>
+  </data>
+  <data name="Column_Size" xml:space="preserve">
+    <value>Зурлык</value>
+  </data>
+  <data name="Column_Version" xml:space="preserve">
+    <value>Драйвер версиясе</value>
+  </data>
+  <data name="Context_Delete" xml:space="preserve">
+    <value>Бетерү</value>
+  </data>
+  <data name="Context_Deselect" xml:space="preserve">
+    <value>Сайлауны баш тарту (&amp;D)</value>
+  </data>
+  <data name="Context_Deselect_All" xml:space="preserve">
+    <value>Барлык сайлауны баш тарту (&amp;A)</value>
+  </data>
+  <data name="Context_Select" xml:space="preserve">
+    <value>Сайлау (&amp;S)</value>
+  </data>
+  <data name="Context_Select_All" xml:space="preserve">
+    <value>Барлыкны сайлау (&amp;A)</value>
+  </data>
+  <data name="Context_Select_Old" xml:space="preserve">
+    <value>Иске драйверларны сайлау (&amp;O)</value>
+  </data>
+  <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
+    <value>{0} пакет драйверны саклау урыныннан бетерелүгә.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Single_Package" xml:space="preserve">
+    <value>{0} ({1}) драйверны саклау урыныннан бетерелүгә әзер.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Requires_Later_OS" xml:space="preserve">
+    <value>Программаны Vista ОС'ына кадәр кабызып булмый.</value>
+  </data>
+  <data name="Message_Sure" xml:space="preserve">
+    <value>Сез ышанасызмы?</value>
+  </data>
+  <data name="Message_Title_Warning" xml:space="preserve">
+    <value>Кисәтү</value>
+  </data>
+  <data name="Operations_Text" xml:space="preserve">
+    <value>Операцияләр</value>
+  </data>
+  <data name="Product_Name" xml:space="preserve">
+    <value>Driver Store Explorer</value>
+  </data>
+  <data name="Status_Label" xml:space="preserve">
+    <value>Әзер</value>
+  </data>
+  <data name="Tip_Driver_In_Use" xml:space="preserve">
+    <value>[КИҢӘШ: Драйвер әлегә кулланыла ала. Пакетны КӨЧЛӘҮЛЕ бетереп карагыз]</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Ярдәм (&amp;H)</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>Программа турында (&amp;A)</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>Файл (&amp;F)</value>
+  </data>
+  <data name="Menu_File_Export" xml:space="preserve">
+    <value>Драйвер исемлеген экспортлау (&amp;E)</value>
+  </data>
+  <data name="Menu_File_Exit" xml:space="preserve">
+    <value>Чыгу (&amp;X)</value>
+  </data>
+  <data name="Menu_File_View_Logs" xml:space="preserve">
+    <value>Журналын карау (&amp;V)</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="Message_No_Entries" xml:space="preserve">
+    <value>Язмалар йөкләмәде</value>
+  </data>
+  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
+    <value>INF файлын сайлагыз</value>
+  </data>
+  <data name="Dialog_Open_Filters" xml:space="preserve">
+    <value>INF файллары | *.inf</value>
+  </data>
+  <data name="Product_About_Title" xml:space="preserve">
+    <value>{0} турында</value>
+    <comment>{0} - Placeholder for Product_Name</comment>
+  </data>
+  <data name="Export_Error" xml:space="preserve">
+    <value>Хата</value>
+  </data>
+  <data name="About_Project_Description" xml:space="preserve">
+    <value>Сез иң соңгы версияне һәм чыгарылыш язмаларын монда таба аласыз:
+    https://github.com/lostindark/DriverStoreExplorer/releases
+
+Хата турында язма яки функцияне сорау:
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+Өлеш кертүчеләр:
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
+
+Кредитлар:
+    ObjectListView http://objectlistview.sourceforge.net/
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+
+Лицензия:
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
+</value>
+  </data>
+  <data name="UnitTest_Language" xml:space="preserve">
+    <value>Татарча (Tatar)</value>
+  </data>
+  <data name="Dialog_Export_Filters" xml:space="preserve">
+    <value>CSV файллары | *.csv</value>
+  </data>
+  <data name="Status_Adding_Package" xml:space="preserve">
+    <value>Драйвер пакетын өстәү...</value>
+  </data>
+  <data name="Status_Deleting_Packages" xml:space="preserve">
+    <value>Драйвер пакет(лар)ын бетерү...</value>
+  </data>
+  <data name="Message_Delete_Package" xml:space="preserve">
+    <value>{0} ({1}) драйверны саклау урыныннан бетерелде.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Packages" xml:space="preserve">
+    <value>{0} пакет драйверны саклау урыныннан бетерелде.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Package_Error" xml:space="preserve">
+    <value>{0} ({1}) драйверны саклау урыныннан бетерелгәндә хата.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+    <value>Кайбер пакетлар драйверны саклау урыныннан бетерелгәндә хата.</value>
+  </data>
+  <data name="Message_Driver_Added" xml:space="preserve">
+    <value>{0} пакеты драйверны саклау урынына өстәлде.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
+    <value>{0} пакеты драйверны саклау урынына өстәлгәндә хата.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>Журнал файлы табып булмый.</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>Хата</value>
+  </data>
+  <data name="Export_Complete" xml:space="preserve">
+    <value>Эчендәгесе {0} урынына сакланды. Экспортланды.</value>
+    <comment>{0} - Placeholder for export path</comment>
+  </data>
+  <data name="Export_Failed" xml:space="preserve">
+    <value>Экспортлап булмады: {0}</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data>
+  <data name="Status_Selected_Drivers" xml:space="preserve">
+    <value>{0} драйвер сайланды. Барлыгы зурлык: {1}.</value>
+    <comment>{0} - Placeholder for number of selected Drivers
+{1} - Placeholder for disk space</comment>
+  </data>
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+    <value>Драйверлар сайланмады.</value>
+  </data>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>Папка урынын ачу (&amp;F)</value>
+  </data>
+  <data name="DriverStore_LocalMachine" xml:space="preserve">
+    <value>Локаль машина</value>
+  </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>Драйверны саклау урыны сайлау (&amp;C)</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>Офлайн драйвер саклау урыны</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>Драйвер урынын сайлау (&amp;C)</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Тел (&amp;L)</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>Җайланма исеме</value>
+  </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(соңгы)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(Яңа v{0} версиясе табылды — {1})</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for About_Download</comment>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>Йөкләнү</value>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>Драйвер саклау урынын сканлау...</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>{0} ({1}) драйверны саклау урыныннан көчләүле бетерелүгә әзер.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>{0} пакет драйверны саклау урыныннан көчләүле бетерелүгә әзер.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>{0} ({1}) бетерелде.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>{0} ({1}) бетереп булмады.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>{0} пакет өстәлде һәм драйверны саклау урынына утыртылды.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>{0} пакет өстәлгәндә һәм драйверны саклау урынына утыртылганда хата булды.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>Драйвер(лар)ны экспортлау (&amp;E)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>Драйверны экспортлау (&amp;E)</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>Барлык драйверларны экспортлау (&amp;P)</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Барлык драйвер пакетлары экспортланмады.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Барлык драйвер пакетлары экспортланды.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Барлык драйвер пакетларны экспортлау...</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>Баш тарту (&amp;C)</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>Кабызу өчен мөһим</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>Дөрес</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>Ялган</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>Өстәмәнең ID'ы</value>
+  </data>
+</root>
