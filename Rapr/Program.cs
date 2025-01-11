@@ -25,7 +25,7 @@ namespace Rapr
                 }
 
                 byte[] assemblyData = new byte[stream.Length];
-                stream.Read(assemblyData, 0, assemblyData.Length);
+                _ = stream.Read(assemblyData, 0, assemblyData.Length);
                 return Assembly.Load(assemblyData);
             }
         }
