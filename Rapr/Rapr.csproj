@@ -46,11 +46,11 @@
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers">
-      <Version>7.0.3</Version>
+      <Version>9.0.0</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
-    <PackageReference Include="Microsoft.Dism" Version="2.5.2" GeneratePathProperty="true" />
+    <PackageReference Include="Microsoft.Dism" Version="3.3.0" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.WindowsAPICodePack.Core" Version="1.1.0" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" GeneratePathProperty="true" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" GeneratePathProperty="true" />
@@ -107,6 +107,7 @@
     <Compile Include="UpdateManager.cs" />
     <Compile Include="Utils\DeviceDriverInfo.cs" />
     <Compile Include="Utils\DeviceHelper.cs" />
+    <Compile Include="Utils\FlexibleMessageBox.cs" />
     <Compile Include="Utils\NativeDriverStore.cs" />
     <Compile Include="Utils\DriverStoreEntry.cs" />
     <Compile Include="Utils\DriverStoreFactory.cs" />

@@ -674,7 +674,6 @@ namespace Rapr
         {
             if ((sender as ToolStripMenuItem)?.Tag is CultureInfo ci)
             {
-                Size windowSize = this.Size;
                 byte[] driverStoreViewState = this.lstDriverStoreEntries.SaveState();
 
                 Thread.CurrentThread.CurrentCulture = ci;
@@ -685,7 +684,6 @@ namespace Rapr
                 this.Controls.Clear();
                 this.InitializeComponent();
                 this.BuildLanguageMenu();
-                this.Size = windowSize;
                 this.RightToLeft = ci.TextInfo.IsRightToLeft ? RightToLeft.Yes : RightToLeft.No;
                 this.RightToLeftLayout = ci.TextInfo.IsRightToLeft;
                 this.SetupListViewColumns();
