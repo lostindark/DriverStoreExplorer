@@ -246,34 +246,6 @@ namespace JR.Utils.GUI.Forms
         #region Internal form class
 
         /// <summary>
-        /// Panel that supports RightToLeft;
-        /// </summary>
-        class MyPanel : Panel
-        {
-            private bool rightToLeftLayout = false;
-            public bool RightToLeftLayout
-            {
-                get { return this.rightToLeftLayout; }
-                set
-                {
-                    if (value != this.rightToLeftLayout)
-                    {
-                        //foreach (Control item in base.Controls)
-                        //{
-                        //    try
-                        //    {
-                        //        item.RightToLeft = value == true ? RightToLeft.No : RightToLeft.Yes;
-                        //        item.Location = new System.Drawing.Point(base.Size.Width - item.Size.Width - item.Location.X, item.Location.Y);
-                        //    }
-                        //    catch { }
-                        //}
-                        this.rightToLeftLayout = value;
-                    }
-                }
-            }
-        }
-
-        /// <summary>
         /// The form to show the customized message box.
         /// It is defined as an internal class to keep the public interface of the FlexibleMessageBox clean.
         /// </summary>
@@ -346,7 +318,7 @@ namespace JR.Utils.GUI.Forms
                 this.richTextBoxMessage.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.FlexibleMessageBoxFormBindingSource, "MessageText", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
                 this.richTextBoxMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                 this.richTextBoxMessage.Location = new System.Drawing.Point(50, 26);
-                this.richTextBoxMessage.Margin = new System.Windows.Forms.Padding(0);
+                this.richTextBoxMessage.Margin = new System.Windows.Forms.Padding(4);
                 this.richTextBoxMessage.Name = "richTextBoxMessage";
                 this.richTextBoxMessage.ReadOnly = true;
                 this.richTextBoxMessage.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.Vertical;
@@ -361,13 +333,14 @@ namespace JR.Utils.GUI.Forms
                 this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                 | System.Windows.Forms.AnchorStyles.Left)
                 | System.Windows.Forms.AnchorStyles.Right)));
+                this.tableLayoutPanel1.BackColor = System.Drawing.Color.White;
                 this.tableLayoutPanel1.AutoSize = true;
                 this.tableLayoutPanel1.ColumnCount = 2;
                 this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
                 this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
                 this.tableLayoutPanel1.Controls.Add(this.pictureBoxForIcon, 0, 0);
                 this.tableLayoutPanel1.Controls.Add(this.richTextBoxMessage, 1, 0);
-                this.tableLayoutPanel1.Padding = new Padding(8);
+                this.tableLayoutPanel1.Padding = new Padding(4);
                 this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
                 this.tableLayoutPanel1.Name = "tableLayoutPanel1";
                 this.tableLayoutPanel1.RowCount = 1;

@@ -271,7 +271,15 @@ namespace Rapr
                 return;
             }
 
-            await this.DeleteDriverStoreEntries(this.lstDriverStoreEntries.CheckedObjects.OfType<DriverStoreEntry>().ToList()).ConfigureAwait(true);
+            await this.DeleteDriverStoreEntries(GetSelectedEntries().ToList()).ConfigureAwait(true);
+        }
+
+        private IEnumerable<DriverStoreEntry> GetSelectedEntries()
+        {
+            IEnumerable<DriverStoreEntry> driverStoreEntries = this.lstDriverStoreEntries.CheckedObjects.OfType<DriverStoreEntry>();
+            return driverStoreEntries
+                .OrderByColumnName(this.lstDriverStoreEntries.PrimarySortColumn.AspectName, this.lstDriverStoreEntries.PrimarySortOrder == SortOrder.Ascending)
+                .ThenByColumnName(this.lstDriverStoreEntries.SecondarySortColumn.AspectName, this.lstDriverStoreEntries.SecondarySortOrder == SortOrder.Ascending);
         }
 
         private async Task DeleteDriverStoreEntries(List<DriverStoreEntry> driverStoreEntries)
@@ -598,14 +606,7 @@ namespace Rapr
         {
             if (this.lstDriverStoreEntries.SelectedObjects != null)
             {
-                List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
-
-                foreach (DriverStoreEntry item in this.lstDriverStoreEntries.SelectedObjects)
-                {
-                    driverStoreEntries.Add(item);
-                }
-
-                await this.DeleteDriverStoreEntries(driverStoreEntries).ConfigureAwait(true);
+                await this.DeleteDriverStoreEntries(GetSelectedEntries().ToList()).ConfigureAwait(true);
             }
         }
 
