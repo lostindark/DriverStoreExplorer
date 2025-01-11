@@ -107,7 +107,6 @@
     <Compile Include="UpdateManager.cs" />
     <Compile Include="Utils\DeviceDriverInfo.cs" />
     <Compile Include="Utils\DeviceHelper.cs" />
-    <Compile Include="Utils\FlexibleMessageBox.cs" />
     <Compile Include="Utils\NativeDriverStore.cs" />
     <Compile Include="Utils\DriverStoreEntry.cs" />
     <Compile Include="Utils\DriverStoreFactory.cs" />
