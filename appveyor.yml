@@ -24,7 +24,7 @@ deploy:
   tag: v$(appveyor_build_version)
   release: DriverStore Explorer v$(appveyor_build_version)
   auth_token:
-    secure: DxLf0qbioyNvVmBu8V6t+a5/ARMBmKNUsfDrxe1ARH6p6b493mhUhoIG4SSdrHwiscEoiqU2+WGb3LKgVhxXNglPNprhWVEpuD/48cEEwnv+t8goa7yYnt8l3528MtYO
+    secure: kjDyjFc99PloCToD7DfI3ETVarqB4gjDe8HNYHe8FojFVSDqjmX6XCxP77nzAzFR
   draft: true
   prerelease: false
   force_update: true
