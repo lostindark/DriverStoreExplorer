@@ -13,6 +13,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using JR.Utils.GUI.Forms;
+
 using Microsoft.WindowsAPICodePack.Dialogs;
 
 using Rapr.Lang;
@@ -295,7 +297,7 @@ namespace Rapr
 
                     foreach (DriverStoreEntry item in driverStoreEntries)
                     {
-                        msgWarning.AppendLine($"{item.DriverPublishedName} - {item.DriverFolderName} - {DriverStoreEntry.GetBytesReadable(item.DriverSize)}");
+                        msgWarning.AppendLine($"{item.DriverInfName} - {item.DriverVersion} - {DriverStoreEntry.GetBytesReadable(item.DriverSize)}");
                     }
                 }
 
@@ -1019,14 +1021,13 @@ namespace Rapr
 
         private DialogResult ShowMessageBox(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon)
         {
-            return MessageBox.Show(
+            return FlexibleMessageBox.Show(
                 this,
                 text,
                 caption,
                 buttons,
                 icon,
-                MessageBoxDefaultButton.Button1,
-                this.RightToLeftLayout ? MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign : 0);
+                MessageBoxDefaultButton.Button1);
         }
     }
 }

@@ -259,6 +259,7 @@
 감사:
     ObjectListView http://objectlistview.sourceforge.net/
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+    FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
 
 사용 허가:
     https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE

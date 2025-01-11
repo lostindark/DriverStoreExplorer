@@ -91,9 +91,7 @@ namespace Rapr.Lang {
         ///Credits:
         ///    ObjectListView http://objectlistview.sourceforge.net/
         ///    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
-        ///
-        ///License:
-        ///    https://github.com/lostindark/DriverStoreExplorer/blob/m [rest of string was truncated]&quot;;.
+        ///    FlexibleMessageBox https://www.codeproject.com/Articles/601900/Flexi [rest of string was truncated]&quot;;.
         /// </summary>
         public static string About_Project_Description {
             get {
