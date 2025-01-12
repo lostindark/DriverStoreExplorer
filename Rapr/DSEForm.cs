@@ -278,8 +278,8 @@ namespace Rapr
         {
             IEnumerable<DriverStoreEntry> driverStoreEntries = this.lstDriverStoreEntries.CheckedObjects.OfType<DriverStoreEntry>();
             return driverStoreEntries
-                .OrderByColumnName(this.lstDriverStoreEntries.PrimarySortColumn.AspectName, this.lstDriverStoreEntries.PrimarySortOrder == SortOrder.Ascending)
-                .ThenByColumnName(this.lstDriverStoreEntries.SecondarySortColumn.AspectName, this.lstDriverStoreEntries.SecondarySortOrder == SortOrder.Ascending);
+                .OrderByColumnName(this.lstDriverStoreEntries.PrimarySortColumn?.AspectName, this.lstDriverStoreEntries.PrimarySortOrder == SortOrder.Ascending)
+                .ThenByColumnName(this.lstDriverStoreEntries.SecondarySortColumn?.AspectName, this.lstDriverStoreEntries.SecondarySortOrder == SortOrder.Ascending);
         }
 
         private async Task DeleteDriverStoreEntries(List<DriverStoreEntry> driverStoreEntries)

@@ -11,7 +11,7 @@ namespace Rapr.Utils
         {
             if (string.IsNullOrEmpty(columnName))
             {
-                throw new ArgumentException("Column name cannot be null or empty.", nameof(columnName));
+                return source.OrderBy(a => 1);
             }
 
             var parameter = Expression.Parameter(typeof(T), "x");
@@ -33,7 +33,7 @@ namespace Rapr.Utils
         {
             if (string.IsNullOrEmpty(columnName))
             {
-                throw new ArgumentException("Column name cannot be null or empty.", nameof(columnName));
+                return source;
             }
 
             var parameter = Expression.Parameter(typeof(T), "x");
