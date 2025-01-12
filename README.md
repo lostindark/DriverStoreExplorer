@@ -32,4 +32,6 @@ Download the latest version here: https://github.com/lostindark/DriverStoreExplo
 The project was originally hosted on https://driverstoreexplorer.codeplex.com/.
 
 ### Credits:
-This tool uses the excellent [ObjectListView](http://objectlistview.sourceforge.net/cs/index.html).
+* [ObjectListView](http://objectlistview.sourceforge.net/)
+* [Managed DismApi Wrapper](https://github.com/jeffkl/ManagedDism)
+* [FlexibleMessageBox](https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the)
