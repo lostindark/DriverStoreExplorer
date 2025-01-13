@@ -177,14 +177,14 @@
     <value>모두 선택(&amp;A)</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>이전 드라이버 선택(&amp;O)</value>
+    <value>구형 드라이버 선택(&amp;O)</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>드라이버 저장소에서 {0}개의 패키지를 삭제하려고 합니다.</value>
     <comment>{0} - 패키지 수에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>드라이버 저장소에서 {0} ({1})을 삭제하려고 합니다.</value>
+    <value>드라이버 저장소에서 {0} ({1})를 삭제하려고 합니다.</value>
     <comment>{0} - inf 패키지 파일의 자리 표시자
 {1} - oem inf 파일의 자리 표시자</comment>
   </data>
@@ -256,14 +256,14 @@
 공헌자:
     https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
 
-감사:
+크레딧:
     ObjectListView http://objectlistview.sourceforge.net/
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
     FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
 
 사용 허가:
     https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
-    </value>
+</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>한국어</value>
@@ -408,7 +408,7 @@
     <value>취소(&amp;C)</value>
   </data>
   <data name="Column_BootCritical" xml:space="preserve">
-    <value>중요 부팅</value>
+    <value>부팅 임계</value>
   </data>
   <data name="Column_Text_True" xml:space="preserve">
     <value>참</value>
