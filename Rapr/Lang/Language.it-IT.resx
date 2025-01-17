@@ -268,6 +268,9 @@ Ringraziamenti:
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
 
     FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
+
+Licenza:
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
 </value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
@@ -336,10 +339,10 @@ Ringraziamenti:
     <value>Computer locale</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>Seleziona locazione Driver Store</value>
+    <value>Seleziona percorso Driver Store</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
-    <value>Driver Store Offline</value>
+    <value>Driver Store offline</value>
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
     <value>Seleziona sorgente Driver Store</value>
@@ -420,5 +423,8 @@ Ringraziamenti:
   </data>
   <data name="Column_Text_False" xml:space="preserve">
     <value>Falso</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>ID estensione</value>
   </data>
 </root>
