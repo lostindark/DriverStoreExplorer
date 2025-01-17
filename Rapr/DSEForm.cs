@@ -271,20 +271,16 @@ namespace Rapr
                 return;
             }
 
-            await this.DeleteDriverStoreEntries(GetSelectedEntries().ToList()).ConfigureAwait(true);
+            await this.DeleteDriverStoreEntries(this.lstDriverStoreEntries.CheckedObjects).ConfigureAwait(true);
         }
 
-        private IEnumerable<DriverStoreEntry> GetSelectedEntries()
-        {
-            IEnumerable<DriverStoreEntry> driverStoreEntries = this.lstDriverStoreEntries.CheckedObjects.OfType<DriverStoreEntry>();
-            return driverStoreEntries
-                .OrderByColumnName(this.lstDriverStoreEntries.PrimarySortColumn?.AspectName, this.lstDriverStoreEntries.PrimarySortOrder == SortOrder.Ascending)
-                .ThenByColumnName(this.lstDriverStoreEntries.SecondarySortColumn?.AspectName, this.lstDriverStoreEntries.SecondarySortOrder == SortOrder.Ascending);
-        }
-
-        private async Task DeleteDriverStoreEntries(List<DriverStoreEntry> driverStoreEntries)
+        private async Task DeleteDriverStoreEntries(IEnumerable entries)
         {
             StringBuilder msgWarning = new StringBuilder();
+            var driverStoreEntries = entries.OfType<DriverStoreEntry>()
+                .OrderByColumnName(this.lstDriverStoreEntries.PrimarySortColumn?.AspectName, this.lstDriverStoreEntries.PrimarySortOrder == SortOrder.Ascending)
+                .ThenByColumnName(this.lstDriverStoreEntries.SecondarySortColumn?.AspectName, this.lstDriverStoreEntries.SecondarySortOrder == SortOrder.Ascending)
+                .ToList();
 
             if (driverStoreEntries?.Count > 0)
             {
@@ -292,8 +288,8 @@ namespace Rapr
                 {
                     msgWarning.AppendFormat(
                         this.cbForceDeletion.Checked ? Language.Message_ForceDelete_Single_Package : Language.Message_Delete_Single_Package,
-                        driverStoreEntries[0].DriverPublishedName,
-                        driverStoreEntries[0].DriverFolderName);
+                        driverStoreEntries[0].DriverInfName,
+                        $"{driverStoreEntries[0].DriverVersion}, {DriverStoreEntry.GetBytesReadable(driverStoreEntries[0].DriverSize)}");
                 }
                 else
                 {
@@ -606,7 +602,7 @@ namespace Rapr
         {
             if (this.lstDriverStoreEntries.SelectedObjects != null)
             {
-                await this.DeleteDriverStoreEntries(GetSelectedEntries().ToList()).ConfigureAwait(true);
+                await this.DeleteDriverStoreEntries(this.lstDriverStoreEntries.SelectedObjects).ConfigureAwait(true);
             }
         }
 
