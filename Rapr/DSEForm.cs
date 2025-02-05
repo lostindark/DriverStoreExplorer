@@ -82,7 +82,7 @@ namespace Rapr
             Trace.TraceInformation("---------------------------------------------------------------");
             Trace.TraceInformation($"{Application.ProductName} started");
 
-            this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore());
+            this.UpdateDriverStoreAPI(Settings.Default.UseNativeDriverStore);
 
             this.UpdateCheckedItemSizeTimer = new Timer(x => this.BeginInvoke((Action)(() => this.UpdateCheckedItemSize())));
         }
@@ -107,6 +107,13 @@ namespace Rapr
             }
 
             base.Dispose(disposing);
+        }
+
+        private void UpdateDriverStoreAPI(bool useNativeDriverStore)
+        {
+            this.useNativeDriveStoreStripMenuItem.Checked = useNativeDriverStore;
+            this.useDismStripMenuItem.Checked = !useNativeDriverStore;
+            this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore(useNativeDriverStore));
         }
 
         private void UpdateDriverStore(IDriverStore driverStore)
@@ -847,7 +854,7 @@ namespace Rapr
                     switch (chooseDriverStore.StoreType)
                     {
                         case DriverStoreType.Online:
-                            this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore());
+                            this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore(Settings.Default.UseNativeDriverStore));
                             break;
 
                         case DriverStoreType.Offline:
@@ -895,6 +902,7 @@ namespace Rapr
             this.exportToolStripMenuItem.Enabled = false;
             this.exportAllDriversToolStripMenuItem.Enabled = false;
             this.languageToolStripMenuItem.Enabled = false;
+            this.optionsStripMenuItem.Enabled = false;
         }
 
         private void EndOperation()
@@ -912,6 +920,7 @@ namespace Rapr
             this.exportToolStripMenuItem.Enabled = true;
             this.exportAllDriversToolStripMenuItem.Enabled = true;
             this.languageToolStripMenuItem.Enabled = true;
+            this.optionsStripMenuItem.Enabled = true;
         }
 
         public enum Status
@@ -1025,6 +1034,36 @@ namespace Rapr
                 buttons,
                 icon,
                 MessageBoxDefaultButton.Button1);
+        }
+
+        private async void UseNativeDriveStoreStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            if (!Settings.Default.UseNativeDriverStore)
+            {
+                Settings.Default.UseNativeDriverStore = true;
+                this.UpdateDriverStoreAPI(true);
+                await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
+            }
+        }
+
+        private async void UseDismStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            if (Settings.Default.UseNativeDriverStore)
+            {
+                Settings.Default.UseNativeDriverStore = false;
+                this.UpdateDriverStoreAPI(false);
+                await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
+            }
+        }
+
+        private void CtxMenuExportDriver_Click(object sender, System.EventArgs e)
+        {
+            ShowMessageBox("Not implemented.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        private void ButtonExportDrivers_Click(object sender, System.EventArgs e)
+        {
+            ShowMessageBox("Not implemented.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
     }
 }

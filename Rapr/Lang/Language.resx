@@ -130,7 +130,7 @@
     <value>&amp;Refresh</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>Select &amp;Old Driver(s)</value>
+    <value>&amp;Select Old Driver(s)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Force Deletio&amp;n</value>
@@ -419,5 +419,14 @@ License:
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Extension Id</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>&amp;Options</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Use Native Driver Store</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>Use DISM</value>
   </data>
 </root>

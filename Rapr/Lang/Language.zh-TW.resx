@@ -117,44 +117,11 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="About_Download" xml:space="preserve">
-    <value>下載</value>
-  </data>
-  <data name="About_FoundNewVersion" xml:space="preserve">
-    <value>(找到新版本 v{0} - {1})</value>
-    <comment>{0} - Placeholder for version number
-{1} - Placeholder for About_Download</comment>
-  </data>
-  <data name="About_Project_Description" xml:space="preserve">
-    <value>您可以在此處尋找新版本及版本資訊:
-    https://github.com/lostindark/DriverStoreExplorer/releases
-
-填寫漏洞或功能要求:
-    https://github.com/lostindark/DriverStoreExplorer/issues
-
-貢獻者名單:
-    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
-
-特別感謝:
-    ObjectListView http://objectlistview.sourceforge.net/
-    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
-    FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
-
-授權條款:
-    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
-</value>
-  </data>
-  <data name="About_VersionUpToDate" xml:space="preserve">
-    <value>(最新版本)</value>
-  </data>
   <data name="Button_Add_Package" xml:space="preserve">
     <value>加入驅動程式(&amp;A)</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
     <value>刪除驅動程式(&amp;D)</value>
-  </data>
-  <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>匯出驅動程式(&amp;E)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>確定(&amp;O)</value>
@@ -163,7 +130,7 @@
     <value>重新整理(&amp;R)</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>選擇舊版驅動程式(&amp;O)</value>
+    <value>選擇舊版驅動程式(&amp;S)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>強制刪除(&amp;N)</value>
@@ -171,14 +138,8 @@
   <data name="Check_Install_Driver" xml:space="preserve">
     <value>安裝驅動程式(&amp;I)</value>
   </data>
-  <data name="ChooseDriverStore_Title" xml:space="preserve">
-    <value>選擇驅動程式存放區</value>
-  </data>
   <data name="Column_Date" xml:space="preserve">
     <value>驅動程式日期</value>
-  </data>
-  <data name="Column_DeviceName" xml:space="preserve">
-    <value>裝置名稱</value>
   </data>
   <data name="Column_Driver_Class" xml:space="preserve">
     <value>驅動程式類別</value>
@@ -210,12 +171,6 @@
   <data name="Context_Deselect_All" xml:space="preserve">
     <value>全部取消選取(&amp;A)</value>
   </data>
-  <data name="Context_Export_Driver" xml:space="preserve">
-    <value>匯出驅動程式(&amp;E)</value>
-  </data>
-  <data name="Context_Open_Folder" xml:space="preserve">
-    <value>開啟資料夾位置(&amp;F)</value>
-  </data>
   <data name="Context_Select" xml:space="preserve">
     <value>選擇(&amp;S)</value>
   </data>
@@ -225,143 +180,17 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>選擇舊版驅動程式(&amp;O)</value>
   </data>
-  <data name="Date_Format" xml:space="preserve">
-    <value>{0:d}</value>
-  </data>
-  <data name="Dialog_Export_Filters" xml:space="preserve">
-    <value>CSV 檔案 | *.csv</value>
-  </data>
-  <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>INF 檔案 | *.inf</value>
-  </data>
-  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>選擇 INF</value>
-  </data>
-  <data name="DriverStore_LocalMachine" xml:space="preserve">
-    <value>本機</value>
-  </data>
-  <data name="DriverStore_Offline" xml:space="preserve">
-    <value>離線驅動程式存放區</value>
-  </data>
-  <data name="Export_Complete" xml:space="preserve">
-    <value>內容已儲存至 {0}。匯出完成。</value>
-    <comment>{0} - Placeholder for export path</comment>
-  </data>
-  <data name="Export_Error" xml:space="preserve">
-    <value>錯誤</value>
-  </data>
-  <data name="Export_Failed" xml:space="preserve">
-    <value>匯出失敗: {0}</value>
-    <comment>{0} - Placeholder for error message</comment>
-  </data>
-  <data name="Menu_File" xml:space="preserve">
-    <value>檔案(&amp;F)</value>
-  </data>
-  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>選擇驅動程式存放區(&amp;C)</value>
-  </data>
-  <data name="Menu_File_Exit" xml:space="preserve">
-    <value>結束(&amp;X)</value>
-  </data>
-  <data name="Menu_File_Export" xml:space="preserve">
-    <value>匯出驅動程式清單(&amp;E)</value>
-  </data>
-  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
-    <value>匯出所有驅動程式(&amp;P)</value>
-  </data>
-  <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>檢視記錄(&amp;V)</value>
-  </data>
-  <data name="Menu_Help" xml:space="preserve">
-    <value>說明(&amp;H)</value>
-  </data>
-  <data name="Menu_Help_About" xml:space="preserve">
-    <value>關於(&amp;A)</value>
-  </data>
-  <data name="Menu_Language" xml:space="preserve">
-    <value>語言(&amp;L)</value>
-  </data>
-  <data name="Message_Delete_Fail" xml:space="preserve">
-    <value>刪除 {0} ({1}) 失敗。</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
-  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>要從驅動程式存放區刪除 {0} 個封裝。</value>
     <comment>{0} - Placeholder for number of packages</comment>
-  </data>
-  <data name="Message_Delete_Package" xml:space="preserve">
-    <value>已從驅動程式存放區移除 {0} ({1})。</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
-  </data>
-  <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>已從驅動程式存放區移除 {0} 個封裝。</value>
-    <comment>{0} - Placeholder for number of packages</comment>
-  </data>
-  <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>從驅動程式存放區移除一些封裝時發生錯誤。</value>
-  </data>
-  <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>從驅動程式存放區移除 {0} ({1}) 時發生錯誤。</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>要從驅動程式存放區刪除 {0} ({1})。</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
-  <data name="Message_Delete_Success" xml:space="preserve">
-    <value>成功刪除 {0} ({1})。</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
-  </data>
-  <data name="Message_Driver_Added" xml:space="preserve">
-    <value>已加入 {0} 封裝至驅動程式存放區。</value>
-    <comment>{0} - Placeholder for path to inf</comment>
-  </data>
-  <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>加入 {0} 封裝至驅動程式存放區時發生錯誤。</value>
-    <comment>{0} - Placeholder for path to inf</comment>
-  </data>
-  <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>已加入並安裝 {0} 封裝至驅動程式存放區。</value>
-    <comment>{0} - Placeholder for path to inf</comment>
-  </data>
-  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>加入並安裝 {0} 封裝至驅動程式存放區時發生錯誤。</value>
-    <comment>{0} - Placeholder for path to inf</comment>
-  </data>
-  <data name="Message_Error" xml:space="preserve">
-    <value>錯誤</value>
-  </data>
-  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
-    <value>匯出所有驅動程式封裝失敗。</value>
-  </data>
-  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
-    <value>匯出所有驅動程式封裝成功。</value>
-  </data>
-  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>要從驅動程式存放區強制刪除 {0} 個封裝。</value>
-    <comment>{0} - Placeholder for number of packages</comment>
-  </data>
-  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>要從驅動程式存放區強制刪除 {0} ({1})。</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
-  </data>
-  <data name="Message_Log_File_NotFound" xml:space="preserve">
-    <value>找不到記錄檔。</value>
-  </data>
-  <data name="Message_No_Entries" xml:space="preserve">
-    <value>未載入項目。</value>
-  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>此公用程式不能在 Vista 以前的作業系統中執行。</value>
-  </data>
-  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
-    <value>正在掃描驅動程式存放區…</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>您確定嗎?</value>
@@ -372,12 +201,76 @@
   <data name="Operations_Text" xml:space="preserve">
     <value>作業</value>
   </data>
+  <data name="Product_Name" xml:space="preserve">
+    <value>Driver Store Explorer</value>
+  </data>
+  <data name="Status_Label" xml:space="preserve">
+    <value>就緒</value>
+  </data>
+  <data name="Tip_Driver_In_Use" xml:space="preserve">
+    <value>[小提示: 驅動程式可能正被使用。請嘗試「強制」刪除封裝]</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>說明(&amp;H)</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>關於(&amp;A)</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>檔案(&amp;F)</value>
+  </data>
+  <data name="Menu_File_Export" xml:space="preserve">
+    <value>匯出驅動程式清單(&amp;E)</value>
+  </data>
+  <data name="Menu_File_Exit" xml:space="preserve">
+    <value>結束(&amp;X)</value>
+  </data>
+  <data name="Menu_File_View_Logs" xml:space="preserve">
+    <value>檢視記錄(&amp;V)</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="Message_No_Entries" xml:space="preserve">
+    <value>未載入項目。</value>
+  </data>
+  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
+    <value>選擇 INF</value>
+  </data>
+  <data name="Dialog_Open_Filters" xml:space="preserve">
+    <value>INF 檔案 | *.inf</value>
+  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>關於 {0}</value>
     <comment>{0} - Placeholder for Product_Name</comment>
   </data>
-  <data name="Product_Name" xml:space="preserve">
-    <value>Driver Store Explorer</value>
+  <data name="Export_Error" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="About_Project_Description" xml:space="preserve">
+    <value>您可以在此處尋找新版本及版本資訊:
+    https://github.com/lostindark/DriverStoreExplorer/releases
+
+填寫漏洞或功能要求:
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+貢獻者名單:
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
+
+特別感謝:
+    ObjectListView http://objectlistview.sourceforge.net/
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+    FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
+
+授權條款:
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
+</value>
+  </data>
+  <data name="UnitTest_Language" xml:space="preserve">
+    <value>中文 (台灣)</value>
+  </data>
+  <data name="Dialog_Export_Filters" xml:space="preserve">
+    <value>CSV 檔案 | *.csv</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>正在加入驅動程式封裝…</value>
@@ -385,36 +278,155 @@
   <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>正在刪除驅動程式封裝…</value>
   </data>
-  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
-    <value>正在匯出所有驅動程式封裝…</value>
+  <data name="Message_Delete_Package" xml:space="preserve">
+    <value>已從驅動程式存放區移除 {0} ({1})。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
-  <data name="Status_Label" xml:space="preserve">
-    <value>就緒</value>
+  <data name="Message_Delete_Packages" xml:space="preserve">
+    <value>已從驅動程式存放區移除 {0} 個封裝。</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
-  <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>未選取驅動程式。</value>
+  <data name="Message_Delete_Package_Error" xml:space="preserve">
+    <value>從驅動程式存放區移除 {0} ({1}) 時發生錯誤。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+    <value>從驅動程式存放區移除一些封裝時發生錯誤。</value>
+  </data>
+  <data name="Message_Driver_Added" xml:space="preserve">
+    <value>已加入 {0} 封裝至驅動程式存放區。</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
+    <value>加入 {0} 封裝至驅動程式存放區時發生錯誤。</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>找不到記錄檔。</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>錯誤</value>
+  </data>
+  <data name="Export_Complete" xml:space="preserve">
+    <value>內容已儲存至 {0}。匯出完成。</value>
+    <comment>{0} - Placeholder for export path</comment>
+  </data>
+  <data name="Export_Failed" xml:space="preserve">
+    <value>匯出失敗: {0}</value>
+    <comment>{0} - Placeholder for error message</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>已選取 {0} 個驅動程式。總大小: {1}。</value>
     <comment>{0} - Placeholder for number of selected Drivers
 {1} - Placeholder for disk space</comment>
   </data>
-  <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[小提示: 驅動程式可能正被使用。請嘗試「強制」刪除封裝]</value>
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+    <value>未選取驅動程式。</value>
   </data>
-  <data name="UnitTest_Language" xml:space="preserve">
-    <value>中文 (台灣)</value>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>開啟資料夾位置(&amp;F)</value>
+  </data>
+  <data name="DriverStore_LocalMachine" xml:space="preserve">
+    <value>本機</value>
+  </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>選擇驅動程式存放區(&amp;C)</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>離線驅動程式存放區</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>選擇驅動程式存放區</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>語言(&amp;L)</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>裝置名稱</value>
+  </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(最新版本)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(找到新版本 v{0} - {1})</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for About_Download</comment>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>下載</value>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>正在掃描驅動程式存放區…</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>要從驅動程式存放區強制刪除 {0} ({1})。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>要從驅動程式存放區強制刪除 {0} 個封裝。</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>成功刪除 {0} ({1})。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>刪除 {0} ({1}) 失敗。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>已加入並安裝 {0} 封裝至驅動程式存放區。</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>加入並安裝 {0} 封裝至驅動程式存放區時發生錯誤。</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>匯出驅動程式(&amp;E)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>匯出驅動程式(&amp;E)</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>匯出所有驅動程式(&amp;P)</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>匯出所有驅動程式封裝失敗。</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>匯出所有驅動程式封裝成功。</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>正在匯出所有驅動程式封裝…</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>取消(&amp;C)</value>
   </data>
-  <data name="Column_Text_False" xml:space="preserve">
-    <value>是</value>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>啟動關鍵</value>
   </data>
   <data name="Column_Text_True" xml:space="preserve">
     <value>否</value>
   </data>
-  <data name="Column_BootCritical" xml:space="preserve">
-    <value>啟動關鍵</value>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>是</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>擴展ID</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>選項(&amp;O)</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>使用原生Driver Store</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>使用DISM</value>
   </data>
 </root>

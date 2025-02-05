@@ -163,7 +163,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select &amp;Old Driver(s).
+        ///   Looks up a localized string similar to &amp;Select Old Driver(s).
         /// </summary>
         public static string Button_Select_Old {
             get {
@@ -546,6 +546,33 @@ namespace Rapr.Lang {
         public static string Menu_Language {
             get {
                 return ResourceManager.GetString("Menu_Language", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &amp;Options.
+        /// </summary>
+        public static string Menu_Options {
+            get {
+                return ResourceManager.GetString("Menu_Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use DISM.
+        /// </summary>
+        public static string Menu_Options_UseDISM {
+            get {
+                return ResourceManager.GetString("Menu_Options_UseDISM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use Native Driver Store.
+        /// </summary>
+        public static string Menu_Options_UseNativeDriverStore {
+            get {
+                return ResourceManager.GetString("Menu_Options_UseNativeDriverStore", resourceCulture);
             }
         }
         

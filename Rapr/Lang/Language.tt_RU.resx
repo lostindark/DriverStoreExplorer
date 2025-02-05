@@ -130,7 +130,7 @@
     <value>Яңарту (&amp;R)</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>Иске драйвер(лар)ны сайлау (&amp;O)</value>
+    <value>Иске драйвер(лар)ны сайлау (&amp;S)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Көчләүле бетерү (&amp;N)</value>

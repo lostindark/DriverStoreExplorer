@@ -136,7 +136,33 @@
     <EmbeddedResource Include="DSEForm.resx">
       <DependentUpon>DSEForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Lang\Language.*.resx" />
+    <EmbeddedResource Include="Lang\Language.ar-SA.resx" />
+    <EmbeddedResource Include="Lang\Language.de-DE.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang\Language.es-ES.resx" />
+    <EmbeddedResource Include="Lang\Language.fr-FR.resx" />
+    <EmbeddedResource Include="Lang\Language.he-IL.resx" />
+    <EmbeddedResource Include="Lang\Language.it-IT.resx" />
+    <EmbeddedResource Include="Lang\Language.ja-JP.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang\Language.ko-KR.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang\Language.pl-PL.resx" />
+    <EmbeddedResource Include="Lang\Language.pt-BR.resx" />
+    <EmbeddedResource Include="Lang\Language.ru-RU.resx" />
+    <EmbeddedResource Include="Lang\Language.sk-SK.resx" />
+    <EmbeddedResource Include="Lang\Language.tr-TR.resx" />
+    <EmbeddedResource Include="Lang\Language.tt_RU.resx" />
+    <EmbeddedResource Include="Lang\Language.uk-UA.resx" />
+    <EmbeddedResource Include="Lang\Language.zh-CN.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Lang\Language.zh-TW.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Lang\Language.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Language.Designer.cs</LastGenOutput>

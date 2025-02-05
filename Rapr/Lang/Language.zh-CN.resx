@@ -130,7 +130,7 @@
     <value>刷新(&amp;R)</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>选取旧的驱动(&amp;O)</value>
+    <value>选取旧的驱动(&amp;S)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>强制删除(&amp;N)</value>
@@ -207,6 +207,27 @@
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[提示：驱动可能正在使用中，可尝试强制删除驱动包]</value>
   </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>帮助(&amp;H)</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>关于(&amp;A)</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>文件(&amp;F)</value>
+  </data>
+  <data name="Menu_File_Export" xml:space="preserve">
+    <value>导出驱动列表(&amp;E)</value>
+  </data>
+  <data name="Menu_File_Exit" xml:space="preserve">
+    <value>退出(&amp;X)</value>
+  </data>
+  <data name="Menu_File_View_Logs" xml:space="preserve">
+    <value>查看日志(&amp;V)</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
   <data name="Message_No_Entries" xml:space="preserve">
     <value>无项目被加载。</value>
   </data>
@@ -216,38 +237,11 @@
   <data name="Dialog_Open_Filters" xml:space="preserve">
     <value>INF文件 | *.inf</value>
   </data>
-  <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>查看日志(&amp;V)</value>
-  </data>
-  <data name="Date_Format" xml:space="preserve">
-    <value>{0:d}</value>
-  </data>
-  <data name="Menu_File_Exit" xml:space="preserve">
-    <value>退出(&amp;X)</value>
-  </data>
-  <data name="Menu_File_Export" xml:space="preserve">
-    <value>导出驱动列表(&amp;E)</value>
-  </data>
-  <data name="Menu_File" xml:space="preserve">
-    <value>文件(&amp;F)</value>
-  </data>
-  <data name="Menu_Help_About" xml:space="preserve">
-    <value>关于(&amp;A)</value>
-  </data>
-  <data name="Menu_Help" xml:space="preserve">
-    <value>帮助(&amp;H)</value>
-  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>关于 {0}</value>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>错误</value>
-  </data>
-  <data name="UnitTest_Language" xml:space="preserve">
-    <value>简体中文</value>
-  </data>
-  <data name="Dialog_Export_Filters" xml:space="preserve">
-    <value>CSV文件 | *.csv</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
     <value>你可以从下方链接获取该程序的最新版本和更新说明：
@@ -268,32 +262,20 @@
     https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
 </value>
   </data>
+  <data name="UnitTest_Language" xml:space="preserve">
+    <value>简体中文</value>
+  </data>
+  <data name="Dialog_Export_Filters" xml:space="preserve">
+    <value>CSV文件 | *.csv</value>
+  </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>添加驱动包...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>删除驱动包...</value>
   </data>
-  <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>未选择驱动。</value>
-  </data>
-  <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>已选中{0}个驱动。总磁盘空间占用：{1}。</value>
-  </data>
-  <data name="Message_Log_File_NotFound" xml:space="preserve">
-    <value>找不到日志文件。</value>
-  </data>
-  <data name="Message_Error" xml:space="preserve">
-    <value>错误</value>
-  </data>
-  <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>添加 {0} 驱动包到驱动存储出错。</value>
-  </data>
-  <data name="Message_Driver_Added" xml:space="preserve">
-    <value>已添加驱动包 {0} 到驱动存储。</value>
-  </data>
-  <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>从驱动存储中删除部分驱动包出错。</value>
+  <data name="Message_Delete_Package" xml:space="preserve">
+    <value>已从驱动存储中删除{0} ({1})。</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
     <value>已从驱动存储中删除了 {0} 个驱动包。</value>
@@ -301,14 +283,32 @@
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>从驱动存储中移除{0} ({1}) 失败。</value>
   </data>
-  <data name="Message_Delete_Package" xml:space="preserve">
-    <value>已从驱动存储中删除{0} ({1})。</value>
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+    <value>从驱动存储中删除部分驱动包出错。</value>
+  </data>
+  <data name="Message_Driver_Added" xml:space="preserve">
+    <value>已添加驱动包 {0} 到驱动存储。</value>
+  </data>
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
+    <value>添加 {0} 驱动包到驱动存储出错。</value>
+  </data>
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>找不到日志文件。</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>错误</value>
+  </data>
+  <data name="Export_Complete" xml:space="preserve">
+    <value>内容已保存到 {0}。导出完成。</value>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>导出错误：{0}</value>
   </data>
-  <data name="Export_Complete" xml:space="preserve">
-    <value>内容已保存到 {0}。导出完成。</value>
+  <data name="Status_Selected_Drivers" xml:space="preserve">
+    <value>已选中{0}个驱动。总磁盘空间占用：{1}。</value>
+  </data>
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+    <value>未选择驱动。</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>打开文件夹(&amp;F)</value>
@@ -361,6 +361,15 @@
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>添加并安装驱动包 {0} 到驱动存储出错。</value>
   </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>导出驱动包(&amp;E)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>导出驱动包(&amp;E)</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>导出所有驱动包(&amp;P)</value>
+  </data>
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>导出所有驱动包失败。</value>
   </data>
@@ -370,25 +379,28 @@
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>导出所有驱动包...</value>
   </data>
-  <data name="Context_Export_Driver" xml:space="preserve">
-    <value>导出驱动包(&amp;E)</value>
-  </data>
-  <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>导出驱动包(&amp;E)</value>
-  </data>
-  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
-    <value>导出所有驱动包(&amp;P)</value>
-  </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>取消(&amp;C)</value>
   </data>
   <data name="Column_BootCritical" xml:space="preserve">
     <value>启动关键</value>
   </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>否</value>
+  </data>
   <data name="Column_Text_False" xml:space="preserve">
     <value>是</value>
   </data>
-  <data name="Column_Text_True" xml:space="preserve">
-    <value>否</value>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>扩展ID</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>选项(&amp;O)</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>使用原生Driver Store</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>使用DISM</value>
   </data>
 </root>

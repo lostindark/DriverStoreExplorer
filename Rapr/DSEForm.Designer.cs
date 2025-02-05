@@ -51,6 +51,9 @@ namespace Rapr
             this.viewLogsTtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.useNativeDriveStoreStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.useDismStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -160,6 +163,7 @@ namespace Rapr
             this.ctxMenuExportDriver.Name = "ctxMenuExportDriver";
             this.ctxMenuExportDriver.Size = new System.Drawing.Size(188, 22);
             this.ctxMenuExportDriver.Text = global::Rapr.Lang.Language.Context_Export_Driver;
+            this.ctxMenuExportDriver.Click += new System.EventHandler(CtxMenuExportDriver_Click);
             // 
             // ctxMenuDelete
             // 
@@ -307,11 +311,13 @@ namespace Rapr
             this.buttonExportDrivers.TabIndex = 6;
             this.buttonExportDrivers.Text = global::Rapr.Lang.Language.Button_Export_Drivers;
             this.buttonExportDrivers.UseVisualStyleBackColor = true;
+            this.buttonExportDrivers.Click += new System.EventHandler(ButtonExportDrivers_Click);
             // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.fileToolStripMenuItem,
+            this.optionsStripMenuItem,
             this.languageToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(2, 2);
@@ -378,6 +384,32 @@ namespace Rapr
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.exitToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Exit;
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
+            //
+            // optionsToolStripMenuItem
+            //
+            this.optionsStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+                this.useNativeDriveStoreStripMenuItem,
+                this.useDismStripMenuItem
+            });
+            this.optionsStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsStripMenuItem.Size = new System.Drawing.Size(71, 20);
+            this.optionsStripMenuItem.Text = global::Rapr.Lang.Language.Menu_Options;
+            // 
+            // useDriveStoreAPIStripMenuItem
+            // 
+            this.useNativeDriveStoreStripMenuItem.Name = "useNativeDriveStoreStripMenuItem";
+            this.useNativeDriveStoreStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.useNativeDriveStoreStripMenuItem.Text = global::Rapr.Lang.Language.Menu_Options_UseNativeDriverStore;
+            this.useNativeDriveStoreStripMenuItem.Checked = true;
+            this.useNativeDriveStoreStripMenuItem.Click += new System.EventHandler(this.UseNativeDriveStoreStripMenuItem_Click);
+            // 
+            // useDismStripMenuItem
+            // 
+            this.useDismStripMenuItem.Name = "useDismStripMenuItem";
+            this.useDismStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.useDismStripMenuItem.Text = global::Rapr.Lang.Language.Menu_Options_UseDISM;
+            this.useDismStripMenuItem.Checked = false;
+            this.useDismStripMenuItem.Click += new System.EventHandler(this.UseDismStripMenuItem_Click);
             // 
             // languageToolStripMenuItem
             // 
@@ -594,6 +626,9 @@ namespace Rapr
         private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectOldDrivers;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionsStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem useNativeDriveStoreStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem useDismStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;

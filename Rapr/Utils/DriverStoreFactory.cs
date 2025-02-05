@@ -2,9 +2,13 @@
 {
     public static class DriverStoreFactory
     {
-        public static IDriverStore CreateOnlineDriverStore()
+        public static IDriverStore CreateOnlineDriverStore(bool useDriverStoreAPI)
         {
-            if (DSEFormHelper.IsWin8OrNewer && DismUtil.IsDismAvailable)
+            if (useDriverStoreAPI)
+            {
+                return new NativeDriverStore();
+            }
+            else if (DSEFormHelper.IsWin8OrNewer && DismUtil.IsDismAvailable)
             {
                 return new DismUtil();
             }
