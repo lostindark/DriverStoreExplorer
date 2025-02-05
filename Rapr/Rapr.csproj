@@ -1,42 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{DF716806-3ABA-4B92-8D53-91CA9A30E8B6}</ProjectGuid>
+    <TargetFramework>net462</TargetFramework>
     <OutputType>WinExe</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Rapr</RootNamespace>
-    <AssemblyName>Rapr</AssemblyName>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
-    <LangVersion>latest</LangVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <Prefer32Bit>false</Prefer32Bit>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>icon.ico</ApplicationIcon>
     <ApplicationManifest>app.manifest</ApplicationManifest>
-    <CopyNuGetImplementations>false</CopyNuGetImplementations>
+    <CopyLocalLockFileAssemblies>false</CopyLocalLockFileAssemblies>
   </PropertyGroup>
   <PropertyGroup>
     <SignAssembly>true</SignAssembly>
@@ -58,142 +31,17 @@
     <PackageReference Include="System.ValueTuple" Version="4.5.0" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="System" />
     <Reference Include="System.configuration" />
-    <Reference Include="System.Core" />
     <Reference Include="System.Design" />
     <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutBox.Designer.cs">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ChooseDriverStore.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChooseDriverStore.Designer.cs">
-      <DependentUpon>ChooseDriverStore.cs</DependentUpon>
-    </Compile>
-    <Compile Include="CSVExporter.cs" />
-    <Compile Include="DriverStoreType.cs" />
-    <Compile Include="DSEForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DSEForm.Designer.cs">
-      <DependentUpon>DSEForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DSEFormHelper.cs" />
-    <Compile Include="GlobalSuppressions.cs" />
-    <Compile Include="HttpClientExtensions.cs" />
-    <Compile Include="IExport.cs" />
-    <Compile Include="IUpdateManager.cs" />
-    <Compile Include="Lang\Language.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Language.resx</DependentUpon>
-    </Compile>
-    <Compile Include="StreamExtensions.cs" />
-    <Compile Include="UpdateManager.cs" />
-    <Compile Include="Utils\DeviceDriverInfo.cs" />
-    <Compile Include="Utils\DeviceHelper.cs" />
-    <Compile Include="Utils\FlexibleMessageBox.cs" />
-    <Compile Include="Utils\LinqExtensions.cs" />
-    <Compile Include="Utils\NativeDriverStore.cs" />
-    <Compile Include="Utils\DriverStoreEntry.cs" />
-    <Compile Include="Utils\DriverStoreFactory.cs" />
-    <Compile Include="Utils\DriverStoreRepository.cs" />
-    <Compile Include="Utils\IDriverStore.cs" />
-    <Compile Include="Utils\DismUtil.cs" />
-    <Compile Include="Utils\PnpUtil.cs" />
-    <Compile Include="MyObjectListView.cs">
+    <Compile Update="MyObjectListView.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Program.cs" />
-    <Compile Include="SafeNativeMethods.cs" />
-    <Compile Include="TextFileTraceListener.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Utils\ConfigManager.cs" />
-    <Compile Include="Utils\SetupAPI.cs" />
-    <Compile Include="VersionInfo.cs" />
-    <EmbeddedResource Include="AboutBox.resx">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ChooseDriverStore.resx">
-      <DependentUpon>ChooseDriverStore.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DSEForm.resx">
-      <DependentUpon>DSEForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lang\Language.ar-SA.resx" />
-    <EmbeddedResource Include="Lang\Language.de-DE.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lang\Language.es-ES.resx" />
-    <EmbeddedResource Include="Lang\Language.fr-FR.resx" />
-    <EmbeddedResource Include="Lang\Language.he-IL.resx" />
-    <EmbeddedResource Include="Lang\Language.it-IT.resx" />
-    <EmbeddedResource Include="Lang\Language.ja-JP.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lang\Language.ko-KR.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lang\Language.pl-PL.resx" />
-    <EmbeddedResource Include="Lang\Language.pt-BR.resx" />
-    <EmbeddedResource Include="Lang\Language.ru-RU.resx" />
-    <EmbeddedResource Include="Lang\Language.sk-SK.resx" />
-    <EmbeddedResource Include="Lang\Language.tr-TR.resx" />
-    <EmbeddedResource Include="Lang\Language.tt_RU.resx" />
-    <EmbeddedResource Include="Lang\Language.uk-UA.resx" />
-    <EmbeddedResource Include="Lang\Language.zh-CN.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lang\Language.zh-TW.resx">
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Lang\Language.resx">
-      <Generator>PublicResXFileCodeGenerator</Generator>
-      <LastGenOutput>Language.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <None Include="app.config">
+    <None Update="app.manifest">
       <SubType>Designer</SubType>
     </None>
-    <None Include="app.manifest">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
-      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
-    </None>
-    <Compile Include="Properties\Settings.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Settings.settings</DependentUpon>
-      <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <None Include="Rapr.snk" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="$(PkgMicrosoft_Dism)\lib\net40\Microsoft.Dism.dll" Visible="false" />
@@ -206,5 +54,4 @@
   <ItemGroup>
     <Content Include="icon.ico" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
