@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -426,5 +426,14 @@ Licenza:
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>ID estensione</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>&amp;Opzioni</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Use store nativo driver</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>Usa DISM</value>
   </data>
 </root>
