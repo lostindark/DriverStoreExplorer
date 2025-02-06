@@ -24,7 +24,7 @@ namespace Rapr.Utils
 
         bool AddDriver(string infFullPath, bool install);
 
-        bool ExportDriver(string infName, string destinationPath);
+        bool ExportDriver(DriverStoreEntry driverStoreEntry, string destinationPath);
 
         bool ExportAllDrivers(string destinationPath);
     }

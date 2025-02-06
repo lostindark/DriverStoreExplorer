@@ -239,9 +239,105 @@ namespace Rapr.Utils
             return default;
         }
 
-        public bool ExportDriver(string infName, string destinationPath) => throw new NotImplementedException();
+        internal static ProcessorArchitecture GetProcessorArchitecture(IntPtr driverStoreHandle)
+        {
+            DevPropType propertyType;
+            DevPropKey propertyKey = DeviceHelper.DEVPKEY_DriverDatabase_ProcessorArchitecture;
 
-        public bool ExportAllDrivers(string destinationPath) => throw new NotImplementedException();
+            const int bufferSize = sizeof(Int16);
+            uint propertySize = 0;
+            IntPtr propertyBufferPtr = Marshal.AllocHGlobal(bufferSize);
+
+            try
+            {
+                NativeMethods.DriverStoreGetObjectProperty(
+                    driverStoreHandle,
+                    DriverStoreObjectType.DriverDatabase,
+                    "SYSTEM",
+                    ref propertyKey,
+                    out propertyType,
+                    propertyBufferPtr,
+                    bufferSize,
+                    out propertySize,
+                    DriverStoreSetObjectPropertyFlags.None);
+
+                return ((ProcessorArchitecture)Marshal.ReadInt16(propertyBufferPtr));
+            }
+            finally
+            {
+                Marshal.FreeHGlobal(propertyBufferPtr);
+            }
+        }
+
+        public bool ExportDriver(DriverStoreEntry driverStoreEntry, string destinationPath)
+        {
+            if (driverStoreEntry == null)
+            {
+                throw new ArgumentNullException(nameof(driverStoreEntry));
+            }
+
+            var targetPath = Path.Combine(destinationPath, driverStoreEntry.DriverFolderName);
+            if (!Directory.Exists(targetPath))
+            {
+                Directory.CreateDirectory(targetPath);
+            }
+
+            switch (this.Type)
+            {
+                case DriverStoreType.Online:
+                    var ptr = NativeMethods.DriverStoreOpen(null, null, 0, IntPtr.Zero);
+                    if (ptr == IntPtr.Zero)
+                    {
+                        throw new Win32Exception();
+                    }
+
+                    try
+                    {
+                        var processorArchitecture = GetProcessorArchitecture(ptr);
+
+                        uint status = NativeMethods.DriverStoreCopy(
+                            ptr,
+                            Path.Combine(driverStoreEntry.DriverFolderLocation, driverStoreEntry.DriverInfName),
+                            processorArchitecture,
+                            IntPtr.Zero,
+                            DriverStoreCopyFlags.None,
+                            targetPath);
+
+                        if (status != 0)
+                        {
+                            throw new Win32Exception((int)status);
+                        }
+                    }
+                    finally
+                    {
+                        NativeMethods.DriverStoreClose(ptr);
+                    }
+
+                    return true;
+
+                case DriverStoreType.Offline:
+                    throw new NotImplementedException();
+
+                default:
+                    throw new NotSupportedException();
+            }
+
+            throw new NotImplementedException();
+        }
+
+        public bool ExportAllDrivers(string destinationPath)
+        {
+            var driverStoreEntries = this.EnumeratePackages();
+            foreach (var driverStoreEntry in driverStoreEntries)
+            {
+                if (!this.ExportDriver(driverStoreEntry, destinationPath))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
 
         // Define other methods and classes here
         private const int MAX_PATH = 260;

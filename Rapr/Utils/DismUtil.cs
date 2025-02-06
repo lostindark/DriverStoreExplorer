@@ -245,7 +245,7 @@ namespace Rapr.Utils
             }
         }
 
-        public bool ExportDriver(string infName, string destinationPath) => throw new NotSupportedException();
+        public bool ExportDriver(DriverStoreEntry driverStoreEntry, string destinationPath) => throw new NotSupportedException();
 
         public bool ExportAllDrivers(string destinationPath)
         {

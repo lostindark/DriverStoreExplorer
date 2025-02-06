@@ -374,8 +374,18 @@ License:
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Export driver {0} ({1}) succeeded.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Deletion of {0} ({1}) failed.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Export driver {0} ({1}) failed.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
@@ -399,11 +409,20 @@ License:
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>Export all driver packages failed.</value>
   </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Error exporting some driver packages.</value>
+  </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>Export all driver packages succeeded.</value>
   </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Export driver packages succeeded.</value>
+  </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Exporting all driver packages...</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Exporting driver package(s)...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Cancel</value>

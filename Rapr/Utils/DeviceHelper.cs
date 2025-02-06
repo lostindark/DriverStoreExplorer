@@ -230,6 +230,11 @@ namespace Rapr.Utils
         internal static readonly DevPropKey DEVPKEY_DeviceClass_IconPath = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 12);     // DEVPROP_TYPE_STRING_LIST
 
         //
+        // Driver database properties
+        //
+        internal static readonly DevPropKey DEVPKEY_DriverDatabase_ProcessorArchitecture = new DevPropKey(0x8163eb00, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 3);    // DEVPROP_TYPE_UINT16
+
+        //
         // Driver database - driver package properties
         //
         internal static readonly DevPropKey DEVPKEY_DriverPackage_DriverInfName =           new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 2);    // DEVPROP_TYPE_STRING

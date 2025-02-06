@@ -712,6 +712,42 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Error exporting some driver packages..
+        /// </summary>
+        public static string Message_Export_Drivers_Error {
+            get {
+                return ResourceManager.GetString("Message_Export_Drivers_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export driver packages succeeded..
+        /// </summary>
+        public static string Message_Export_Drivers_Success {
+            get {
+                return ResourceManager.GetString("Message_Export_Drivers_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export driver {0} ({1}) failed..
+        /// </summary>
+        public static string Message_Export_Fail {
+            get {
+                return ResourceManager.GetString("Message_Export_Fail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export driver {0} ({1}) succeeded..
+        /// </summary>
+        public static string Message_Export_Success {
+            get {
+                return ResourceManager.GetString("Message_Export_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to About to force delete {0} packages from driver store..
         /// </summary>
         public static string Message_ForceDelete_Multiple_Packages {
@@ -834,6 +870,15 @@ namespace Rapr.Lang {
         public static string Status_Exporting_All_Drivers {
             get {
                 return ResourceManager.GetString("Status_Exporting_All_Drivers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporting driver package(s)....
+        /// </summary>
+        public static string Status_Exporting_Drivers {
+            get {
+                return ResourceManager.GetString("Status_Exporting_Drivers", resourceCulture);
             }
         }
         

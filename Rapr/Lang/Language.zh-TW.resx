@@ -374,8 +374,18 @@
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>成功匯出驅動程式封裝 {0} ({1})。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>刪除 {0} ({1}) 失敗。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>匯出驅動程式封裝 {0} ({1}) 失敗。</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
@@ -399,11 +409,20 @@
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>匯出所有驅動程式封裝失敗。</value>
   </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>匯出一些驅動程式封裝失敗。</value>
+  </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>匯出所有驅動程式封裝成功。</value>
   </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>匯出驅動程式封裝成功。</value>
+  </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>正在匯出所有驅動程式封裝…</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>正在匯出驅動程式封裝…</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>取消(&amp;C)</value>
