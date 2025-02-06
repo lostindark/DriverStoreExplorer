@@ -17,7 +17,7 @@ build:
   parallel: true
   verbosity: normal
 artifacts:
-- path: Rapr\bin\$(configuration)\$(targetframework)
+- path: Rapr\bin\$(configuration)\net462
   name: DriverStoreExplorer.v$(appveyor_build_version)
 deploy:
 - provider: GitHub
