@@ -374,8 +374,18 @@ Lizenz:
     <comment>{0} - Platzhalter für die INF-Paketdatei
              {1} - Platzhalter für die OEM-INF-Datei</comment>
   </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Der Treiber-Export von {0} ({1}) war erfolgreich.</value>
+    <comment>{0} - Platzhalter für die INF-Paketdatei
+             {1} - Platzhalter für die OEM-INF-Datei</comment>  
+  </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Das Löschen von {0} ({1}) ist fehlgeschlagen.</value>
+    <comment>{0} - Platzhalter für die INF-Paketdatei
+             {1} - Platzhalter für die OEM-INF-Datei</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Der Treiber-Export von {0} ({1}) ist fehlgeschlagen.</value>
     <comment>{0} - Platzhalter für die INF-Paketdatei
              {1} - Platzhalter für die OEM-INF-Datei</comment>
   </data>
@@ -399,11 +409,20 @@ Lizenz:
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>Das Exportieren aller Treiberpakete ist fehlgeschlagen.</value>
   </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Es ist ein Fehler beim Exportieren einiger Treiberpakete aufgetreten.</value>
+  </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>Das Exportieren aller Treiberpakete war erfolgreich.</value>
   </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Das Exportieren der Treiberpakete war erfolgreich.</value>
+  </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Alle Treiberpakete werden exportiert...</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Treiberpaket(e) werden exportiert...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>Abbre&amp;chen</value>
@@ -419,5 +438,14 @@ Lizenz:
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Erweiterungs-ID</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>&amp;Optionen</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Nativen Driver Store verwenden</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>DISM verwenden</value>
   </data>
 </root>
