@@ -181,7 +181,7 @@
     <value>Zaznacz przestarzałe sterowniki</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Zamierzasz usunąć {0} pakiet(y/ów) sterowników.</value>
+    <value>Zamierzasz usunąć pakiety sterowników {0}.</value>
     <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
@@ -190,7 +190,7 @@
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Ta aplikacja nie działa z systemami starszymi jak Windows Vista.</value>
+    <value>Ta aplikacja nie działa z systemami starszymi niż Windows Vista.</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Jesteś pewien?</value>
@@ -276,7 +276,7 @@ Licencja użytkowania:
     <value>Dodawanie pakietu sterownika...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Usuwanie pakietu sterownika(ów)...</value>
+    <value>Usuwanie pakietów sterowników...</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>Usunięto {0} ({1}) z magazynu sterowników.</value>
@@ -293,9 +293,7 @@ Licencja użytkowania:
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Błąd podczas usuwania pewnych pakietów z magazynu sterowników.</value>
-    
-    
+    <value>Błąd podczas usuwania niektórych pakietów z magazynu sterowników.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>Dodano pakiet {0} do magazynu sterowników.</value>
@@ -376,17 +374,27 @@ Licencja użytkowania:
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Eksport sterownika {0} ({1}) powiódł się.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Usuwanie {0} ({1}) nie powiodło się.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Eksport sterownika {0} ({1}) nie powiódł się.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Dodano pakiet {0} &amp; zainstalowany w magazynie sterowników.</value>
+    <value>Dodano pakiet {0} i zainstalowano w magazynie sterowników.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Błąd podczas dodawania pakietu {0} &amp; zainstalowany w magazynie sterowników.</value>
+    <value>Błąd podczas dodawania pakietu {0} i instalowania w magazynie sterowników.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
@@ -401,10 +409,43 @@ Licencja użytkowania:
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>Eksportowanie wszystkich pakietów sterowników nie powiodło się.</value>
   </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Wystąpił błąd podczas eksportowania niektórych pakietów sterowników.</value>
+  </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>Pomyślnie wyeksportowano wszystkie pakiety sterowników.</value>
   </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Eksport pakietów sterowników powiódł się.</value>
+  </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Eksportowanie wszystkich pakietów sterowników...</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Eksportowanie pakietu(ów) sterowników...</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>Krytyczny przy rozruchu</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>Prawda</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>Fałsz</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>Identyfikator rozszerzenia</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>Opcje</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Używaj natywnego magazynu sterowników</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>Używaj DISM</value>
   </data>
 </root>
