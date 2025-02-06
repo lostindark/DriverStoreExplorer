@@ -262,7 +262,7 @@
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
     FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
 
-사용 허가:
+라이선스:
     https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
 </value>
   </data>
@@ -374,10 +374,20 @@
     <comment>{0} - inf 패키지 파일의 자리 표시자
 {1} - oem inf 파일의 자리 표시자</comment>
   </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>드라이버 {0}({1})을(를) 내보냈습니다.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>{0} ({1}) 삭제를 실패했습니다.</value>
     <comment>{0} - inf 패키지 파일의 자리 표시자
 {1} - oem inf 파일의 자리 표시자</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>드라이버 {0}({1})을(를) 내보내지 못했습니다.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
     <value>{0} 패키지를 추가하고 드라이버 저장소에 설치했습니다.</value>
@@ -399,11 +409,20 @@
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>모든 드라이버 패키지를 내보내지 못했습니다.</value>
   </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>일부 드라이버 패키지를 내보내는 중 오류가 발생했습니다.</value>
+  </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>모든 드라이버 패키지를 성공적으로 내보냈습니다.</value>
   </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>드라이버 패키지 내보내기가 성공했습니다.</value>
+  </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>모든 드라이버 패키지를 내보내는 중...</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>드라이버 패키지를 내보내는 중...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>취소(&amp;C)</value>
@@ -419,5 +438,14 @@
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>확장 ID</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>옵션(&amp;O)</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>기본 드라이버 스토어 사용</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>DISM 사용</value>
   </data>
 </root>
