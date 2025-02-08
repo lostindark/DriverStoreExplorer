@@ -193,7 +193,7 @@
     <value>Questo programma può essere eseguito solo in Windows Vista o versioni successive.</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
-    <value>Sei sicuro di voler procedere?</value>
+    <value>Vuoi procedere?</value>
   </data>
   <data name="Message_Title_Warning" xml:space="preserve">
     <value>Attenzione</value>
@@ -242,31 +242,25 @@ Prova a forzare l'eliminazione del pacchetto driver.</value>
     <value>File INF | *.inf</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
-    <value>Informazioni su {0}</value>
+    <value>Info su {0}</value>
     <comment>{0} - Placeholder for Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>Errore</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
-    <value>Puoi trovare la versione aggiornata e le note di rilascio nel sito:
-
+    <value>Versione aggiornata e note di rilascio disponibili nel sito:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
 Segnala un errore/richiedi una nuova funzionalità:
-
     https://github.com/lostindark/DriverStoreExplorer/issues
 
 Collaboratori:
-
     https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
 
 Ringraziamenti:
-
     ObjectListView http://objectlistview.sourceforge.net/
-	
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
-
     FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
 
 Licenza:
@@ -377,28 +371,38 @@ Licenza:
     <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
-    <value>Eliminazione da  '{0}' di '('{1}') 'Operazione completata'.</value>
+    <value>Eliminazione di {0} ({1}) completata.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Esportazione driver {0} ({1}) completata.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
-    <value>Eliminazione da  '{0}' di '('{1}') 'Operazione fallita'.</value>
+    <value>Eliminazione di {0} ({1}) fallita.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Esportazione driver {0} ({1}) fallita.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Aggiunto {0} il driver &amp; installato all'archivio driver.</value>
+    <value>Aggiunto il driver {0} e installato nell'archivio driver.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Errore nell'aggiunta del driver {0} &amp; installato all'archivio driver.</value>
+    <value>Errore nell'aggiunta del driver {0} e installato all'archivio driver.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
     <value>&amp;Esporta driver</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
-    <value>Esporta driver</value>
+    <value>&amp;Esporta driver</value>
   </data>
   <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
     <value>Esporta tutti i driver</value>
@@ -406,11 +410,20 @@ Licenza:
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>Esportazione di tutti i pacchetti driver fallita.</value>
   </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Error exporting some driver packages.</value>
+  </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>Esportazione di tutti i pacchetti driver completata.</value>
   </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Esportazione driver completata.</value>
+  </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
-    <value>Esportazione di tutti i pacchetti driver...</value>
+    <value>Esportazione di tutti i driver...</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Esportazione driver...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>Annulla</value>
