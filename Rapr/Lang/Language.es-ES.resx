@@ -139,7 +139,7 @@
     <value>&amp;Instalar controlador</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
-    <value>Fecha de controlador</value>
+    <value>Fecha del controlador</value>
   </data>
   <data name="Column_Driver_Class" xml:space="preserve">
     <value>Clase de controlador</value>
@@ -160,7 +160,7 @@
     <value>Tamaño</value>
   </data>
   <data name="Column_Version" xml:space="preserve">
-    <value>Versión de controlador</value>
+    <value>Versión del controlador</value>
   </data>
   <data name="Context_Delete" xml:space="preserve">
     <value>Borrar</value>
@@ -341,10 +341,10 @@ Licencia:
     <value>&amp;Elegir almacén de controladores</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
-    <value>Lenguaje</value>
+    <value>&amp;Lenguaje</value>
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
-    <value>Nombre de dispositivo</value>
+    <value>Nombre del dispositivo</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(Al día)</value>
@@ -400,7 +400,7 @@ Licencia:
     <value>Exportación de todos los paquetes de controladores fallida.</value>
   </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
-    <value>Exportación de todos los paquetes de controladores exitosa.</value>
+    <value>Exportación de todos los paquetes de controladores exitosamente.</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Exportando todos los paquetes de controladores...</value>
@@ -419,5 +419,29 @@ Licencia:
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Id de extensión</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>&amp;Opciones</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>Usar DISM</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Usar almacén de controladores nativo</value>
+  </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Error exportando algunos paquetes de controladores.</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Exportando parquete de controlador(es)...</value>
+  </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Exportacion de controlador {0} ({1}) exitosamente.</value>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Exportacion de controlador {0} ({1}) fallida.</value>
+  </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Exportacion de paquetes de controladores exitosamente.</value>
   </data>
 </root>
