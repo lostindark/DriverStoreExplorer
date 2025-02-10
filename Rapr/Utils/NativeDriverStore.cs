@@ -54,22 +54,25 @@ namespace Rapr.Utils
 
             try
             {
-                {
-                    GCHandle handle = GCHandle.Alloc(devicesInfo);
-                    try
-                    {
-                        NativeMethods.DriverStoreEnumObjects(
-                            ptr,
-                            DriverStoreObjectType.DeviceNode,
-                            DRIVERSTORE_LOCK_LEVEL.NONE,
-                            EnumDeviceObjects,
-                            GCHandle.ToIntPtr(handle));
-                    }
-                    finally
-                    {
-                        handle.Free();
-                    }
-                }
+                // Switch to ConfigManager API since the native driver store API didn't return all the devices.
+                // Need to investigate the reason.
+                devicesInfo = ConfigManager.GetDeviceDriverInfo();
+                //{
+                //    GCHandle handle = GCHandle.Alloc(devicesInfo);
+                //    try
+                //    {
+                //        NativeMethods.DriverStoreEnumObjects(
+                //            ptr,
+                //            DriverStoreObjectType.DeviceNode,
+                //            DRIVERSTORE_LOCK_LEVEL.NONE,
+                //            EnumDeviceObjects,
+                //            GCHandle.ToIntPtr(handle));
+                //    }
+                //    finally
+                //    {
+                //        handle.Free();
+                //    }
+                //}
 
                 {
                     GCHandle handle = GCHandle.Alloc(driverStoreEntries);
@@ -167,6 +170,7 @@ namespace Rapr.Utils
                 string ObjectName,
                 IntPtr lParam)
         {
+            Debug.WriteLine(ObjectName);
             var devicesInfo = (List<DeviceDriverInfo>)GCHandle.FromIntPtr(lParam).Target;
 
             devicesInfo.Add(new DeviceDriverInfo(
