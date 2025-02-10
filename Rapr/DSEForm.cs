@@ -520,6 +520,7 @@ namespace Rapr
                 if (this.lstDriverStoreEntries.SelectedObjects?.Count > 0)
                 {
                     this.ctxMenuDelete.Enabled = true;
+                    this.ctxMenuExportDriver.Enabled = true;
 
                     if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0
                         && this.lstDriverStoreEntries
@@ -543,6 +544,7 @@ namespace Rapr
                     this.ctxMenuOpenFolder.Enabled = false;
                     this.ctxMenuDelete.Enabled = false;
                     this.ctxMenuSelect.Enabled = false;
+                    this.ctxMenuExportDriver.Enabled = false;
                 }
             }
             else
@@ -552,6 +554,7 @@ namespace Rapr
                 this.ctxMenuSelectOldDrivers.Enabled = false;
                 this.ctxMenuOpenFolder.Enabled = false;
                 this.ctxMenuDelete.Enabled = false;
+                this.ctxMenuExportDriver.Enabled = false;
             }
         }
 
@@ -814,6 +817,7 @@ namespace Rapr
 
             this.buttonDeleteDriver.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
             this.cbForceDeletion.Enabled = this.buttonDeleteDriver.Enabled;
+            this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
         }
 
         private void UpdateColumnSize()
@@ -915,7 +919,7 @@ namespace Rapr
             this.buttonDeleteDriver.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
             this.cbForceDeletion.Enabled = this.buttonDeleteDriver.Enabled && this.driverStore.SupportForceDeletion;
             this.buttonSelectOldDrivers.Enabled = true;
-            this.buttonExportDrivers.Enabled = true;
+            this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
             this.exportToolStripMenuItem.Enabled = true;
             this.exportAllDriversToolStripMenuItem.Enabled = true;
