@@ -178,7 +178,7 @@
     <value>Выделить все</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>Выделить устаревшие драйвера</value>
+    <value>Выделить устаревшие драйверы</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Удалить {0} пакета(ов) из хранилища драйверов.</value>
@@ -187,7 +187,7 @@
     <value>Удалить {0} ({1}) из хранилища драйверов.</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Эта программа не может быть запущена на ОС старше Vista.</value>
+    <value>Эта программа не может быть запущена на ОС младше Vista.</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Вы уверены?</value>
@@ -205,7 +205,7 @@
     <value>Готов</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[Совет: Драйвер все еще может использоваться. Используйте форсированное удаление пакета]</value>
+    <value>[Совет: драйвер все еще может использоваться. Используйте форсированное удаление пакета.]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>Справка</value>
@@ -223,7 +223,7 @@
     <value>Выход</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>Просмотр логов</value>
+    <value>Просмотр журнала</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
@@ -257,7 +257,7 @@
     ObjectListView http://objectlistview.sourceforge.net/
     Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
     FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
-      
+
 Лицензионное соглашение:
     https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
 </value>
@@ -269,10 +269,10 @@
     <value>CSV-файлы | *.csv</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Добавление пакета драйвера...</value>
+    <value>Добавление пакета драйверов...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Удаление пакета дравера(ов)...</value>
+    <value>Удаление пакета(ов) драйверов...</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>Удален {0} ({1}) из хранилища драйверов.</value>
@@ -293,7 +293,7 @@
     <value>Ошибка добавления {0} пакета в хранилище драйверов.</value>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
-    <value>Файл лога не найден.</value>
+    <value>Файл журнала не найден.</value>
   </data>
   <data name="Message_Error" xml:space="preserve">
     <value>Ошибка</value>
@@ -305,7 +305,7 @@
     <value>Ошибка экспорта: {0}</value>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>Выбрано {0} драйвер(ов). Общий размер: {1}.</value>
+    <value>Выбрано драйверов: {0}. Общий размер: {1}.</value>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Не выбраны драйверы.</value>
@@ -317,13 +317,13 @@
     <value>Локальный компьютер</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>Выбрать Driver Store</value>
+    <value>Выбрать хранилище драйверов</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
-    <value>Offline Driver Store</value>
+    <value>Автономное хранилище драйверов</value>
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
-    <value>Выбор Driver Store</value>
+    <value>Выбор хранилища драйверов</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
     <value>Язык</value>
@@ -344,22 +344,27 @@
     <value>Сканирование хранилища драйверов...</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>Удалить с форсированием {0} ({1}) из хранилища драйверов.</value>
+    <value>Форсировано удалить {0} ({1}) из хранилища драйверов.</value>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>Удалить с форсированием {0} пакета(ов) из хранилища драйверов.</value>
+    <value>Форсировано удалить {0} пакета(ов) из хранилища драйверов.</value>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
-    <value>Удаление {0} ({1}) успешно.</value>
+    <value>Удаление {0} ({1}) выполнено.</value>
+  </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Экспорт драйвера {0} ({1}) выполнен.</value>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
-    <value>Удаление {0} ({1}) не удалось.</value>
+    <value>Удаление {0} ({1}) не выполнено.</value>
   </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Экспорт драйвера {0} ({1}) не выполнен.</value>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Добавленный пакет {0} &amp; установлен в хранилище драйверов.</value>
+    <value>Добавленный пакет {0} установлен в хранилище драйверов.</value>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Ошибка добавления пакета {0} &amp; при установке в хранилище драйверов.</value>
+    <value>Ошибка добавления пакета {0} при установке в хранилище драйверов.</value>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
     <value>Экспорт драйвера(ов)</value>
@@ -373,11 +378,20 @@
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>Не удалось экспортировать все пакеты драйверов.</value>
   </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Не удалось экспортировать некоторые пакеты драйверов.</value>
+  </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>Экспорт всех пакетов драйверов выполнен успешно.</value>
   </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Экспорт пакетов драйверов выполнен успешно.</value>
+  </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Экспорт всех пакетов драйверов...</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Экспорт пакета(ов) драйверов...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Отмена</value>
@@ -393,5 +407,14 @@
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>ID расширения</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>Настройки</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Использовать непосредственно хранилище драйверов</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>Использовать DISM</value>
   </data>
 </root>
