@@ -383,12 +383,24 @@
     <value>キャンセル(&amp;C)</value>
   </data>
   <data name="Column_BootCritical" xml:space="preserve">
-    <value>ブートに不可欠</value>
+    <value>起動に必要</value>
   </data>
   <data name="Column_Text_True" xml:space="preserve">
     <value>はい</value>
   </data>
   <data name="Column_Text_False" xml:space="preserve">
     <value>いいえ</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>拡張 ID</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>オプション(&amp;O)</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>ネイティブ ドライバー ストアを使用</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>DISM を使用</value>
   </data>
 </root>
