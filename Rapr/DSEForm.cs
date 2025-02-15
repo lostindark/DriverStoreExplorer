@@ -507,6 +507,7 @@ namespace Rapr
             {
                 this.ctxMenuSelectAll.Enabled = true;
                 this.ctxMenuSelectOldDrivers.Enabled = true;
+                this.ctxMenuInvertSelection.Enabled = true;
 
                 if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0)
                 {
@@ -551,6 +552,7 @@ namespace Rapr
             {
                 this.ctxMenuSelect.Enabled = false;
                 this.ctxMenuSelectAll.Enabled = false;
+                this.ctxMenuInvertSelection.Enabled = false;
                 this.ctxMenuSelectOldDrivers.Enabled = false;
                 this.ctxMenuOpenFolder.Enabled = false;
                 this.ctxMenuDelete.Enabled = false;
@@ -605,6 +607,19 @@ namespace Rapr
                 }
 
                 this.lstDriverStoreEntries.CheckedObjects = list;
+            }
+        }
+
+        private void CtxMenuInvertSelection_Click(object sender, System.EventArgs e)
+        {
+            if (this.lstDriverStoreEntries.Objects != null)
+            {
+
+                this.lstDriverStoreEntries.CheckedObjects = this.lstDriverStoreEntries
+                    .Objects
+                    .Cast<object>()
+                    .Except(this.lstDriverStoreEntries.CheckedObjects.Cast<object>())
+                    .ToList();
             }
         }
 

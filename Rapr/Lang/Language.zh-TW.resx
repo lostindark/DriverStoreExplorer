@@ -175,7 +175,10 @@
     <value>選擇(&amp;S)</value>
   </data>
   <data name="Context_Select_All" xml:space="preserve">
-    <value>全部選擇(&amp;A)</value>
+    <value>全選(&amp;A)</value>
+  </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>反選(&amp;I)</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>選擇舊版驅動程式(&amp;O)</value>

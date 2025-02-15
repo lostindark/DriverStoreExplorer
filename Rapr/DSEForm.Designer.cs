@@ -23,6 +23,7 @@ namespace Rapr
             this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxMenuSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxMenuInvertSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenuSelectOldDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxMenuOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,6 +111,7 @@ namespace Rapr
             this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.ctxMenuSelect,
             this.ctxMenuSelectAll,
+            this.ctxMenuInvertSelection,
             this.ctxMenuSelectOldDrivers,
             this.toolStripSeparator1,
             this.ctxMenuOpenFolder,
@@ -133,6 +135,13 @@ namespace Rapr
             this.ctxMenuSelectAll.Size = new System.Drawing.Size(188, 22);
             this.ctxMenuSelectAll.Text = global::Rapr.Lang.Language.Context_Select_All;
             this.ctxMenuSelectAll.Click += new System.EventHandler(this.CtxMenuSelectAll_Click);
+            // 
+            // ctxMenuInvertSelection
+            // 
+            this.ctxMenuInvertSelection.Name = "ctxMenuInvertSelection";
+            this.ctxMenuInvertSelection.Size = new System.Drawing.Size(188, 22);
+            this.ctxMenuInvertSelection.Text = global::Rapr.Lang.Language.Context_Invert_Selection;
+            this.ctxMenuInvertSelection.Click += new System.EventHandler(CtxMenuInvertSelection_Click);
             // 
             // ctxMenuSelectOldDrivers
             // 
@@ -592,7 +601,6 @@ namespace Rapr
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion
@@ -614,6 +622,7 @@ namespace Rapr
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectAll;
+        private System.Windows.Forms.ToolStripMenuItem ctxMenuInvertSelection;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.GroupBox gbOptions;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuDelete;

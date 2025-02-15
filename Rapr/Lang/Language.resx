@@ -177,6 +177,9 @@
   <data name="Context_Select_All" xml:space="preserve">
     <value>Select &amp;All</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>&amp;Invert Selection</value>
+  </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Select &amp;Old Drivers</value>
   </data>

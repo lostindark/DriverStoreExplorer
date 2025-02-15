@@ -352,6 +352,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &amp;Invert Selection.
+        /// </summary>
+        public static string Context_Invert_Selection {
+            get {
+                return ResourceManager.GetString("Context_Invert_Selection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Open &amp;Folder Location.
         /// </summary>
         public static string Context_Open_Folder {

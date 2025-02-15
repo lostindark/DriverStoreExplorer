@@ -175,7 +175,10 @@
     <value>选择(&amp;S)</value>
   </data>
   <data name="Context_Select_All" xml:space="preserve">
-    <value>选择所有(&amp;A)</value>
+    <value>全选(&amp;A)</value>
+  </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>反选(&amp;I)</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>选择旧的驱动(&amp;O)</value>
