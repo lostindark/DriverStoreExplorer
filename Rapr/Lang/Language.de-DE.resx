@@ -177,6 +177,9 @@
   <data name="Context_Select_All" xml:space="preserve">
     <value>Alle auswählen</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>Auswahl &amp;umkehren</value>
+  </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Alte Treiber auswählen</value>
   </data>
