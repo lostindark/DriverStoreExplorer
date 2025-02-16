@@ -177,6 +177,9 @@
   <data name="Context_Select_All" xml:space="preserve">
     <value>Zaznacz wszystkie</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>Odwróć zaznaczenie</value>
+  </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Zaznacz przestarzałe sterowniki</value>
   </data>
