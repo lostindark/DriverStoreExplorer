@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -176,6 +176,9 @@
   </data>
   <data name="Context_Select_All" xml:space="preserve">
     <value>Označiť &amp;všetko</value>
+  </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>&amp;Prevrátiť výber</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Označiť &amp;staré ovládače</value>
@@ -374,8 +377,18 @@ Licencia:
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Export driver {0} ({1}) succeeded.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Odstránenie {0} ({1}) zlyhalo.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Export driver {0} ({1}) failed.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
@@ -399,11 +412,20 @@ Licencia:
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>Export všetkých balíkov ovládačov zlyhal.</value>
   </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Chyba pri exportovaní niektorých balíkov ovládačov.</value>
+  </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>Export všetkých balíkov ovládačov uspel.</value>
   </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Export balíkov ovládačov uspel.</value>
+  </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Exportovanie všetkých balíkov ovládačov...</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Exportovanie balíka(ov) ovládačov...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Zrušiť</value>
@@ -419,5 +441,14 @@ Licencia:
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Id rozšírenia</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>&amp;Možnosti</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Použiť Natívne Úložisko Ovládačov</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>Použiť DISM</value>
   </data>
 </root>
