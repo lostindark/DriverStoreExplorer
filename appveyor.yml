@@ -20,6 +20,10 @@ artifacts:
 - path: Rapr\bin\$(configuration)\net462
   name: DriverStoreExplorer.v$(appveyor_build_version)
 deploy:
+- provider: Webhook
+  url: https://app.signpath.io/API/v1/c9bd44ce-a067-4f9a-9135-468d00ed0b13/Integrations/AppVeyor?ProjectSlug=DriverStoreExplorer&SigningPolicySlug=test-signing&ArtifactConfigurationSlug=initial
+  authorization:
+    secure: Sp+dyZT8TcUyATigSyBCYBhCLcE2ssOe+paw6B9hgMQE7ODHADr7njYCzdU4rpDsUed/BH8s+c04kszIobeAow==
 - provider: GitHub
   tag: v$(appveyor_build_version)
   release: DriverStore Explorer v$(appveyor_build_version)
@@ -30,7 +34,3 @@ deploy:
   force_update: true
   on:
     branch: master
-- provider: Webhook
-  url: https://app.signpath.io/API/v1/c9bd44ce-a067-4f9a-9135-468d00ed0b13/Integrations/AppVeyor?ProjectSlug=DriverStoreExplorer&SigningPolicySlug=test-signing&ArtifactConfigurationSlug=initial
-  authorization:
-    secure: Sp+dyZT8TcUyATigSyBCYBhCLcE2ssOe+paw6B9hgMQE7ODHADr7njYCzdU4rpDsUed/BH8s+c04kszIobeAow==
