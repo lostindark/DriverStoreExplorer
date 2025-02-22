@@ -370,7 +370,7 @@ License:
     <value>&amp;Exportar driver(s)</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
-    <value>&amp;Exportar Driver</value>
+    <value>&amp;Exportar driver</value>
   </data>
   <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
     <value>Ex&amp;portar todos os drivers</value>
@@ -416,5 +416,8 @@ License:
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>Usar DISM</value>
+  </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>&amp;Inverter seleção</value>
   </data>
 </root>
