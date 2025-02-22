@@ -28,7 +28,9 @@
     <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" GeneratePathProperty="true" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" GeneratePathProperty="true" />
     <PackageReference Include="ObjectListView.Official" Version="2.9.1" GeneratePathProperty="true" />
+    <PackageReference Include="PortableSettingsProvider" Version="0.2.5" GeneratePathProperty="true" />
     <PackageReference Include="Resource.Embedder" Version="2.2.0" />
+    <PackageReference Include="StrongNamer" Version="0.2.5" />
     <PackageReference Include="System.ValueTuple" Version="4.5.0" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>
@@ -56,6 +58,9 @@
     <EmbeddedResource Include="$(PkgSystem_ValueTuple)\lib\netstandard1.0\System.ValueTuple.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Core)\lib\Microsoft.WindowsAPICodePack.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Shell)\lib\Microsoft.WindowsAPICodePack.Shell.dll" Visible="false" />
+    <EmbeddedResource Include="$(IntermediateOutputPath)SignedAssemblies\PortableSettingsProvider.dll" Visible="false">
+      <LogicalName>$(AssemblyName).PortableSettingsProvider.dll</LogicalName>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />

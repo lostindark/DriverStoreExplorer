@@ -6,12 +6,19 @@ using System.Reflection;
 using System.Security;
 using System.Windows.Forms;
 
+using Bluegrams.Application;
+
 using Rapr.Lang;
 
 namespace Rapr
 {
     public static class Program
     {
+        static Program()
+        {
+            AppDomain.CurrentDomain.AssemblyResolve += ResolveEventHandler;
+        }
+
         private static Assembly ResolveEventHandler(object sender, ResolveEventArgs args)
         {
             Assembly assembly = Assembly.GetEntryAssembly();
@@ -74,10 +81,32 @@ namespace Rapr
             Trace.Listeners.Add(new TextFileTraceListener());
 
             AddEnvironmentPaths(@"C:\Windows\System32\CompatTel");
-            AppDomain.CurrentDomain.AssemblyResolve += ResolveEventHandler;
 
             try
             {
+                string settingFile = $"{Application.ProductName}.user.config";
+                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, settingFile);
+
+                try
+                {
+                    // Test if we can open filePath as Read/Write
+                    using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                    {
+                    }
+
+                    PortableSettingsProvider.SettingsFileName = settingFile;
+                    PortableSettingsProvider.ApplyProvider(Properties.Settings.Default);
+                }
+                catch (SecurityException)
+                {
+                }
+                catch (UnauthorizedAccessException)
+                {
+                }
+                catch (IOException)
+                {
+                }
+
                 if (Properties.Settings.Default.UpgradeRequired)
                 {
                     Properties.Settings.Default.Upgrade();
