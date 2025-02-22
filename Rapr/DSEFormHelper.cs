@@ -171,21 +171,41 @@ namespace Rapr
             return null;
         }
 
-        public static List<CultureInfo> GetSupportedLanguage()
+        public static ICollection<CultureInfo> GetSupportedLanguage()
         {
-            List<CultureInfo> supportedLanguage = new List<CultureInfo>
+            HashSet<CultureInfo> supportedLanguage = new HashSet<CultureInfo>
             {
                 new CultureInfo("en")
             };
 
             Assembly assembly = Assembly.GetExecutingAssembly();
+            var resoures = assembly.GetManifestResourceNames();
+
+            string resourcePrefix = $"{assembly.EntryPoint.DeclaringType.Namespace}.";
+            const string ResourceSuffix = ".resources.dll";
+
+            foreach (var resource in resoures)
+            {
+                if (resource.StartsWith(resourcePrefix) && resource.EndsWith(ResourceSuffix))
+                {
+                    string cultureName = resource.Substring(resourcePrefix.Length, resource.Length - resourcePrefix.Length - ResourceSuffix.Length);
+                    try
+                    {
+                        supportedLanguage.Add(new CultureInfo(cultureName));
+                    }
+                    catch (CultureNotFoundException)
+                    {
+                    }
+                }
+            }
+
             string currentFolder = Path.GetDirectoryName(assembly.Location);
 
             try
             {
                 DirectoryInfo dir = new DirectoryInfo(currentFolder);
 
-                foreach (var file in dir.EnumerateFiles($"{assembly.EntryPoint.DeclaringType.Namespace}.resources.dll", SearchOption.AllDirectories))
+                foreach (var file in dir.EnumerateFiles($"{resourcePrefix}{ResourceSuffix}", SearchOption.AllDirectories))
                 {
                     string folderName = file.Directory.Name;
                     try

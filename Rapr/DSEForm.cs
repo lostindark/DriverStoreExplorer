@@ -33,7 +33,7 @@ namespace Rapr
 
         private static readonly IUpdateManager UpdateManager = new UpdateManager();
 
-        private static readonly List<CultureInfo> SupportedLanguage = DSEFormHelper.GetSupportedLanguage();
+        private static readonly ICollection<CultureInfo> SupportedLanguage = DSEFormHelper.GetSupportedLanguage();
 
         private readonly Timer UpdateCheckedItemSizeTimer;
         private const long RefreshTime = Timeout.Infinite;
