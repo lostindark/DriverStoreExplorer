@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -8,6 +9,25 @@ namespace Rapr.Utils
 {
     public static class ConfigManager
     {
+        public static List<DriverStoreEntry> FillDeviceInfo(List<DriverStoreEntry> driverStoreEntries)
+        {
+            var devicesInfo = ConfigManager.GetDeviceDriverInfo();
+
+            foreach (var driverStoreEntry in driverStoreEntries)
+            {
+                var deviceInfo = devicesInfo.OrderByDescending(d => d.IsPresent)?.FirstOrDefault(e =>
+                    string.Equals(e.DriverInf, driverStoreEntry.DriverPublishedName, StringComparison.OrdinalIgnoreCase)
+                    && e.DriverVersion == driverStoreEntry.DriverVersion
+                    && e.DriverDate == driverStoreEntry.DriverDate);
+
+                driverStoreEntry.DeviceId = deviceInfo?.DeviceId;
+                driverStoreEntry.DeviceName = deviceInfo?.DeviceName;
+                driverStoreEntry.DevicePresent = deviceInfo?.IsPresent;
+            }
+
+            return driverStoreEntries;
+        }
+
         public static List<DeviceDriverInfo> GetDeviceDriverInfo()
         {
             List<DeviceDriverInfo> deviceDriverInfos = new List<DeviceDriverInfo>();
@@ -38,6 +58,7 @@ namespace Rapr.Utils
                             try
                             {
                                 deviceDriverInfos.Add(new DeviceDriverInfo(
+                                    GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_InstanceId),
                                     GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_FriendlyName)
                                         ?? GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DeviceDesc),
                                     GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DriverInfPath),

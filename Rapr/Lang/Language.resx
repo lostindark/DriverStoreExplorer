@@ -331,6 +331,9 @@ License:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Open &amp;Folder Location</value>
   </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Open Device &amp;Properties</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Local Machine</value>
   </data>
@@ -348,6 +351,9 @@ License:
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Device Name</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>Device Id</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(Up to date)</value>

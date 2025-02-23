@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Text.RegularExpressions;
 
 /*** 
@@ -66,8 +65,6 @@ namespace Rapr.Utils
 
                 DriverStoreRepository repository = new DriverStoreRepository();
 
-                List<DeviceDriverInfo> driverInfo = ConfigManager.GetDeviceDriverInfo();
-
                 for (int i = 0; i < driverStoreEntries.Count; i++)
                 {
                     DriverStoreEntry driverStoreEntry = driverStoreEntries[i];
@@ -84,20 +81,12 @@ namespace Rapr.Utils
                         driverStoreEntry.DriverFolderLocation = driverFolderLocation;
                         driverStoreEntry.DriverSize = driverSize;
 
-                        var deviceInfo = driverInfo.OrderByDescending(d => d.IsPresent).FirstOrDefault(e => string.Equals(
-                            Path.GetFileName(e.DriverInf),
-                            driverStoreEntry.DriverPublishedName,
-                            StringComparison.OrdinalIgnoreCase));
-
-                        driverStoreEntry.DeviceName = deviceInfo?.DeviceName;
-                        driverStoreEntry.DevicePresent = deviceInfo?.IsPresent;
-
                         driverStoreEntries[i] = driverStoreEntry;
                     }
                 }
             }
 
-            return driverStoreEntries;
+            return ConfigManager.FillDeviceInfo(driverStoreEntries);
         }
 
         public static List<DriverStoreEntry> ParsePnpUtilEnumerateResult(string pnpUtilOutput)

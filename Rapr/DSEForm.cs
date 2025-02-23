@@ -538,6 +538,7 @@ namespace Rapr
 
                     this.ctxMenuSelect.Enabled = true;
 
+                    this.ctxMenuOpenDeviceProperties.Enabled = !string.IsNullOrEmpty((this.lstDriverStoreEntries.SelectedObject as DriverStoreEntry)?.DeviceId);
                     this.ctxMenuOpenFolder.Enabled = this.lstDriverStoreEntries.SelectedObjects.Count == 1;
                 }
                 else
@@ -554,6 +555,7 @@ namespace Rapr
                 this.ctxMenuSelectAll.Enabled = false;
                 this.ctxMenuInvertSelection.Enabled = false;
                 this.ctxMenuSelectOldDrivers.Enabled = false;
+                this.ctxMenuOpenDeviceProperties.Enabled = false;
                 this.ctxMenuOpenFolder.Enabled = false;
                 this.ctxMenuDelete.Enabled = false;
                 this.ctxMenuExportDriver.Enabled = false;
@@ -841,6 +843,15 @@ namespace Rapr
             for (var i = 0; i < this.lstDriverStoreEntries.Columns.Count - 1; i++)
             {
                 this.lstDriverStoreEntries.Columns[i].Width = -2;
+            }
+        }
+
+        private void CtxMenuOpenDeviceProperties_Click(object sender, EventArgs e)
+        {
+            if (this.lstDriverStoreEntries.SelectedObject != null)
+            {
+                DriverStoreEntry item = (DriverStoreEntry)this.lstDriverStoreEntries.SelectedObject;
+                Process.Start("rundll32.exe", $"devmgr.dll,DeviceProperties_RunDLL /MachineName \"\" /DeviceID \"{item.DeviceId}\"");
             }
         }
 

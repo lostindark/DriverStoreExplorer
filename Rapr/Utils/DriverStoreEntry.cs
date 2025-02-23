@@ -71,6 +71,11 @@ namespace Rapr.Utils
         public bool? BootCritical { get; set; }
 
         /// <summary>
+        /// Associated device Id (device instance path).
+        /// </summary>
+        public string DeviceId { get; set; }
+
+        /// <summary>
         /// Associated device name.
         /// </summary>
         public string DeviceName { get; set; }
@@ -148,6 +153,7 @@ namespace Rapr.Utils
                 "Driver Signer",
                 "Driver Size",
                 "Driver Folder",
+                "Device Id",
                 "Device Name",
                 "Device Present",
             };
@@ -166,6 +172,7 @@ namespace Rapr.Utils
                 this.DriverSignerName ?? string.Empty,
                 this.DriverSize.ToString(),
                 this.DriverFolderLocation ?? string.Empty,
+                this.DeviceId ?? string.Empty,
                 this.DeviceName ?? string.Empty,
                 this.DevicePresent?.ToString() ?? string.Empty,
             };

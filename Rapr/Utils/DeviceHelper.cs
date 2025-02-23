@@ -167,6 +167,7 @@ namespace Rapr.Utils
         internal static readonly DevPropKey DEVPKEY_Device_BiosDeviceName =           new DevPropKey(0x540b947e, 0x8b40, 0x45bc, 0xa8, 0xa2, 0x6a, 0x0b, 0x89, 0x4c, 0xbd, 0xa2, 10);    // DEVPROP_TYPE_STRING
         internal static readonly DevPropKey DEVPKEY_Device_DriverProblemDesc =        new DevPropKey(0x540b947e, 0x8b40, 0x45bc, 0xa8, 0xa2, 0x6a, 0x0b, 0x89, 0x4c, 0xbd, 0xa2, 11);    // DEVPROP_TYPE_STRING
 
+        internal static readonly DevPropKey DEVPKEY_Device_InstanceId =               new DevPropKey(0x78c34fc8, 0x104a, 0x4aca, 0x9e, 0xa4, 0x52, 0x4d, 0x52, 0x99, 0x6e, 0x57, 256);   // DEVPROP_TYPE_STRING
 
         //
         // Device Session Id

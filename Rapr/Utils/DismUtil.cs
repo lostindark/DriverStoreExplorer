@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 
 using Microsoft.Dism;
@@ -83,10 +82,6 @@ namespace Rapr.Utils
             {
                 using (DismSession session = this.GetSession())
                 {
-                    List<DeviceDriverInfo> driverInfo = this.Type == DriverStoreType.Online
-                        ? ConfigManager.GetDeviceDriverInfo()
-                        : null;
-
                     foreach (var driverPackage in DismApi.GetDrivers(session, false))
                     {
                         DriverStoreEntry driverStoreEntry = new DriverStoreEntry
@@ -103,14 +98,6 @@ namespace Rapr.Utils
                             BootCritical = driverPackage.BootCritical,
                         };
 
-                        var deviceInfo = driverInfo?.OrderByDescending(d => d.IsPresent)?.FirstOrDefault(e =>
-                            string.Equals(Path.GetFileName(e.DriverInf), driverStoreEntry.DriverPublishedName, StringComparison.OrdinalIgnoreCase)
-                            && e.DriverVersion == driverStoreEntry.DriverVersion
-                            && e.DriverDate == driverStoreEntry.DriverDate);
-
-                        driverStoreEntry.DeviceName = deviceInfo?.DeviceName;
-                        driverStoreEntry.DevicePresent = deviceInfo?.IsPresent;
-
                         driverStoreEntries.Add(driverStoreEntry);
                     }
                 }
@@ -120,7 +107,9 @@ namespace Rapr.Utils
                 DismApi.Shutdown();
             }
 
-            return driverStoreEntries;
+            return this.Type == DriverStoreType.Online
+                ? ConfigManager.FillDeviceInfo(driverStoreEntries)
+                : driverStoreEntries;
         }
 
         private DismSession GetSession()

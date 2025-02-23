@@ -27,6 +27,7 @@ namespace Rapr
             this.ctxMenuSelectOldDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxMenuOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxMenuOpenDeviceProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxMenuExportDriver = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenuDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -69,6 +70,7 @@ namespace Rapr
             this.driverSizeColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.deviceNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.bootCriticalColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.deviceIdColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.dummyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.contextMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -114,6 +116,7 @@ namespace Rapr
             this.ctxMenuInvertSelection,
             this.ctxMenuSelectOldDrivers,
             this.toolStripSeparator1,
+            this.ctxMenuOpenDeviceProperties,
             this.ctxMenuOpenFolder,
             this.toolStripSeparator3,
             this.ctxMenuExportDriver,
@@ -154,6 +157,15 @@ namespace Rapr
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
+
+            //
+            // ctxMenuOpenDeviceProperties
+            //
+            this.ctxMenuOpenDeviceProperties.Name = "ctxMenuOpenDeviceProperties";
+            this.ctxMenuOpenDeviceProperties.Size = new System.Drawing.Size(188, 22);
+            this.ctxMenuOpenDeviceProperties.Text = global::Rapr.Lang.Language.Context_Open_Device_Properties;
+            this.ctxMenuOpenDeviceProperties.Click += new System.EventHandler(this.CtxMenuOpenDeviceProperties_Click);
+
             // 
             // ctxMenuOpenFolder
             // 
@@ -470,6 +482,7 @@ namespace Rapr
             this.lstDriverStoreEntries.AllColumns.Add(this.driverSignerColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.deviceNameColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.bootCriticalColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.deviceIdColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.dummyColumn);
             this.lstDriverStoreEntries.AllowColumnReorder = true;
             this.lstDriverStoreEntries.AlternateRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -563,6 +576,14 @@ namespace Rapr
             this.bootCriticalColumn.AspectName = "BootCritical";
             this.bootCriticalColumn.IsVisible = false;
             this.bootCriticalColumn.Text = global::Rapr.Lang.Language.Column_BootCritical;
+
+            //
+            // deviceIdColumn
+            //
+            this.deviceIdColumn.AspectName = "DeviceId";
+            this.deviceIdColumn.IsVisible = false;
+            this.deviceIdColumn.Text = global::Rapr.Lang.Language.Column_DeviceId;
+
             // 
             // dummyColumn
             // 
@@ -649,6 +670,7 @@ namespace Rapr
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private BrightIdeasSoftware.OLVColumn dummyColumn;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuOpenFolder;
+        private System.Windows.Forms.ToolStripMenuItem ctxMenuOpenDeviceProperties;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem chooseDriverStoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
@@ -658,6 +680,7 @@ namespace Rapr
         private System.Windows.Forms.ToolStripMenuItem ctxMenuExportDriver;
         private BrightIdeasSoftware.OLVColumn bootCriticalColumn;
         private BrightIdeasSoftware.OLVColumn driverExtensionIdColumn;
+        private BrightIdeasSoftware.OLVColumn deviceIdColumn;
     }
 }
 

@@ -331,6 +331,9 @@
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>開啟資料夾位置(&amp;F)</value>
   </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>開啟裝置內容(&amp;P)</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>本機</value>
   </data>
@@ -348,6 +351,9 @@
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>裝置名稱</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>裝置Id</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(最新版本)</value>

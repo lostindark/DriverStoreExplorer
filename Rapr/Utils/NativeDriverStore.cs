@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
 
@@ -50,13 +49,11 @@ namespace Rapr.Utils
             }
 
             List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
-            var devicesInfo = new List<DeviceDriverInfo>();
 
             try
             {
                 // Switch to ConfigManager API since the native driver store API didn't return all the devices.
                 // Need to investigate the reason.
-                devicesInfo = ConfigManager.GetDeviceDriverInfo();
                 //{
                 //    GCHandle handle = GCHandle.Alloc(devicesInfo);
                 //    try
@@ -95,18 +92,7 @@ namespace Rapr.Utils
                 NativeMethods.DriverStoreClose(ptr);
             }
 
-            foreach (var driverStoreEntry in driverStoreEntries)
-            {
-                var deviceInfo = devicesInfo.OrderByDescending(d => d.IsPresent)?.FirstOrDefault(e =>
-                    string.Equals(e.DriverInf, driverStoreEntry.DriverPublishedName, StringComparison.OrdinalIgnoreCase)
-                    && e.DriverVersion == driverStoreEntry.DriverVersion
-                    && e.DriverDate == driverStoreEntry.DriverDate);
-
-                driverStoreEntry.DeviceName = deviceInfo?.DeviceName;
-                driverStoreEntry.DevicePresent = deviceInfo?.IsPresent;
-            }
-
-            return driverStoreEntries;
+            return ConfigManager.FillDeviceInfo(driverStoreEntries);
         }
 
         public bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
@@ -174,6 +160,7 @@ namespace Rapr.Utils
             var devicesInfo = (List<DeviceDriverInfo>)GCHandle.FromIntPtr(lParam).Target;
 
             devicesInfo.Add(new DeviceDriverInfo(
+                GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_InstanceId, ObjectType),
                 GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverDesc, ObjectType),
                 GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverInfPath, ObjectType),
                 GetObjectPropertyInfo<DateTime>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverDate, ObjectType),

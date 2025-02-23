@@ -217,6 +217,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Device Id.
+        /// </summary>
+        public static string Column_DeviceId {
+            get {
+                return ResourceManager.GetString("Column_DeviceId", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Device Name.
         /// </summary>
         public static string Column_DeviceName {
@@ -357,6 +366,15 @@ namespace Rapr.Lang {
         public static string Context_Invert_Selection {
             get {
                 return ResourceManager.GetString("Context_Invert_Selection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Open Device &amp;Properties.
+        /// </summary>
+        public static string Context_Open_Device_Properties {
+            get {
+                return ResourceManager.GetString("Context_Open_Device_Properties", resourceCulture);
             }
         }
         

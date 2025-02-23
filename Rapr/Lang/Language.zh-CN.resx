@@ -316,6 +316,9 @@
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>打开文件夹(&amp;F)</value>
   </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>打开设备属性(&amp;P)</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>本机</value>
   </data>
@@ -333,6 +336,9 @@
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>设备名称</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>设备Id</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(已是最新版)</value>
