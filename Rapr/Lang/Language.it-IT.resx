@@ -329,6 +329,9 @@ Licenza:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Apri percorso cartella</value>
   </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Apri &amp;proprietà dispositivo</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Computer locale</value>
   </data>
@@ -346,6 +349,9 @@ Licenza:
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Nome dispositivo</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>ID dispositivo</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(aggiornato)</value>
