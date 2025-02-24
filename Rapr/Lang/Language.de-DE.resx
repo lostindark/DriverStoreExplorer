@@ -329,6 +329,9 @@ Lizenz:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Speicher&amp;ort öffnen</value>
   </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Geräte-&amp;Eigenschaften öffnen</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Lokale Maschine</value>
   </data>
@@ -349,6 +352,9 @@ Lizenz:
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(Auf dem neuesten Stand)</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>Geräte-ID</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(Neue Version v{0} gefunden - {1})</value>
