@@ -6,8 +6,8 @@
     <AssemblyName>Rapr.Tests</AssemblyName>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="MSTest.TestAdapter" Version="3.7.3" />
-    <PackageReference Include="MSTest.TestFramework" Version="3.7.3" />
+    <PackageReference Include="MSTest.TestAdapter" Version="3.8.2" />
+    <PackageReference Include="MSTest.TestFramework" Version="3.8.2" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rapr\Rapr.csproj" />
