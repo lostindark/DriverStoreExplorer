@@ -7,7 +7,7 @@ Driver Store Explorer [RAPR]
 --------
 Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store](https://msdn.microsoft.com/en-us/library/ff544868(VS.85).aspx). Supported operations include list/add/install/delete third-party driver packages.
 
-## Features:
+## Features
 * Support online (local machine) and offline driver store.
 * Enumerate / list all third-party driver packages in the driver store. Showing device associated with drivers. Export the driver package list as CSV.
 * Add a driver package to the driver store.
@@ -18,20 +18,20 @@ Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store]
 ## Screenshots:
 ![Screenshot of DriverStoreExplorer](https://github.com/lostindark/DriverStoreExplorer/raw/master/Screenshots/Screenshot.png "Screenshot of Driver Store Explorer")
 
-## Requirements: 
+## Requirements
 This tool requires:
 * .NET Framework 4.6.2 or newer
 * Windows 7 or newer
 
 To build the code yourself, open Rapr.sln in Visual Studio 2019. Visual Studio 2017 may also work but it is not guaranteed.
 
-## Releases:
+## Releases
 Download the latest version here: https://github.com/lostindark/DriverStoreExplorer/releases/latest.
 
-## History:
+## History
 The project was originally hosted on https://driverstoreexplorer.codeplex.com/.
 
-## Credits:
+## Credits
 * [ObjectListView](http://objectlistview.sourceforge.net/)
 * [Managed DismApi Wrapper](https://github.com/jeffkl/ManagedDism)
 * [FlexibleMessageBox](https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the)
