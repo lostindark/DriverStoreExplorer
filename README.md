@@ -23,7 +23,7 @@ This tool requires:
 * .NET Framework 4.6.2 or newer
 * Windows 7 or newer
 
-To build the code yourself, open Rapr.sln in Visual Studio 2019. Visual Studio 2017 may also work but it is not guaranteed.
+To build the code yourself, open Rapr.sln in Visual Studio 2022. Older Visual Studio versions may also work but it is not guaranteed.
 
 ## Releases
 Download the latest version here: https://github.com/lostindark/DriverStoreExplorer/releases/latest.
