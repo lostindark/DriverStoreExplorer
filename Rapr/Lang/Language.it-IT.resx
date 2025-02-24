@@ -259,7 +259,9 @@ Collaboratori:
     https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
 
 Ringraziamenti:
-    https://github.com/lostindark/DriverStoreExplorer?tab=readme-ov-file#credits
+    ObjectListView http://objectlistview.sourceforge.net/
+    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
+    FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
 
 Licenza:
     https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
