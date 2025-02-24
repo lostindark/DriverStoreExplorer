@@ -4,8 +4,7 @@ Driver Store Explorer [RAPR]
 [![Build Status](https://ci.appveyor.com/api/projects/status/kqtvhfq23am2gq26/branch/master?svg=true)](https://ci.appveyor.com/project/lostindark/driverstoreexplorer/branch/master)
 
 ## Overview
---------
-Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store](https://msdn.microsoft.com/en-us/library/ff544868(VS.85).aspx). Supported operations include list/add/install/delete third-party driver packages.
+Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store](https://msdn.microsoft.com/en-us/library/ff544868(VS.85).aspx). Supported operations include list/add/install/delete/export third-party driver packages.
 
 ## Features
 * Support online (local machine) and offline driver store.
@@ -13,6 +12,7 @@ Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store]
 * Add a driver package to the driver store.
 * Delete one or multiple driver packages from the store.
 * Detect old and not used driver packages (best effort).
+* Export all / selected driver packages.
 * Full-fledged GUI Supports grouping / sorting on any column. Supports re-arranging of / selecting specific columns.
 
 ## Screenshots
