@@ -207,6 +207,27 @@
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[CONSEIL: le pilote est peut-être encore utilisé. Essayez de supprimer le paquet en sélectionnant l'option FORCE]</value>
   </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>Aide</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>A propos</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>Fichier</value>
+  </data>
+  <data name="Menu_File_Export" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="Menu_File_Exit" xml:space="preserve">
+    <value>Quitter</value>
+  </data>
+  <data name="Menu_File_View_Logs" xml:space="preserve">
+    <value>Afficher les fichiers de log</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Aucune entrée chargée.</value>
   </data>
@@ -216,32 +237,19 @@
   <data name="Dialog_Open_Filters" xml:space="preserve">
     <value>Fichiers INF | *.inf</value>
   </data>
-  <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>Afficher les fichiers de log</value>
-  </data>
-  <data name="Date_Format" xml:space="preserve">
-    <value>{0:d}</value>
-  </data>
-  <data name="Menu_File_Exit" xml:space="preserve">
-    <value>Quitter</value>
-  </data>
-  <data name="Menu_File_Export" xml:space="preserve">
-    <value>Exporter</value>
-  </data>
-  <data name="Menu_File" xml:space="preserve">
-    <value>Fichier</value>
-  </data>
-  <data name="Menu_Help_About" xml:space="preserve">
-    <value>A propos</value>
-  </data>
-  <data name="Menu_Help" xml:space="preserve">
-    <value>Aide</value>
-  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>A propos {0}</value>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>Erreur</value>
+  </data>
+  <data name="About_Project_Description" xml:space="preserve">
+    <value>Vous pouvez trouver la dernière version et les notes de version à cette adresse:
+    https://github.com/lostindark/DriverStoreExplorer/releases
+
+Crédits:
+    https://github.com/lostindark/DriverStoreExplorer?tab=readme-ov-file#credits
+</value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
     <value>Français</value>
@@ -249,42 +257,14 @@
   <data name="Dialog_Export_Filters" xml:space="preserve">
     <value>Fichiers CSV | *.csv</value>
   </data>
-  <data name="About_Project_Description" xml:space="preserve">
-    <value>Vous pouvez trouver la dernière version et les notes de version à cette adresse:
-    https://github.com/lostindark/DriverStoreExplorer/releases
-
-Crédits:
-    ObjectListView http://objectlistview.sourceforge.net/
-    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
-    FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
-</value>
-  </data>
   <data name="Status_Adding_Package" xml:space="preserve">
     <value>Ajout du package de pilote...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>Suppression du package (s) de pilote ...</value>
   </data>
-  <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>Aucun pilote sélectionné.</value>
-  </data>
-  <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>{0} pilote (s) sélectionné (s). Taille totale: {1}.</value>
-  </data>
-  <data name="Message_Log_File_NotFound" xml:space="preserve">
-    <value>Le fichier journal est introuvable.</value>
-  </data>
-  <data name="Message_Error" xml:space="preserve">
-    <value>Erreur</value>
-  </data>
-  <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Erreur lors de l'ajout de {0} le package au magasin de pilotes.</value>
-  </data>
-  <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Ajouté {0} le package au magasin de pilotes.</value>
-  </data>
-  <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Erreur lors de la suppression de certains packages du magasin de pilotes.</value>
+  <data name="Message_Delete_Package" xml:space="preserve">
+    <value>Suppression de {0} ({1}) du magasin de pilotes.</value>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
     <value>{0} packages supprimés du magasin de pilotes.</value>
@@ -292,14 +272,32 @@ Crédits:
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Erreur lors de la suppression de {0} ({1}) du magasin de pilotes.</value>
   </data>
-  <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Suppression de {0} ({1}) du magasin de pilotes.</value>
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+    <value>Erreur lors de la suppression de certains packages du magasin de pilotes.</value>
+  </data>
+  <data name="Message_Driver_Added" xml:space="preserve">
+    <value>Ajouté {0} le package au magasin de pilotes.</value>
+  </data>
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
+    <value>Erreur lors de l'ajout de {0} le package au magasin de pilotes.</value>
+  </data>
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>Le fichier journal est introuvable.</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>Erreur</value>
+  </data>
+  <data name="Export_Complete" xml:space="preserve">
+    <value>Contenu enregistré dans {0}. Export terminé.</value>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>L'export a échoué: {0}</value>
   </data>
-  <data name="Export_Complete" xml:space="preserve">
-    <value>Contenu enregistré dans {0}. Export terminé.</value>
+  <data name="Status_Selected_Drivers" xml:space="preserve">
+    <value>{0} pilote (s) sélectionné (s). Taille totale: {1}.</value>
+  </data>
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+    <value>Aucun pilote sélectionné.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Ouvrir l'emplacement du dossier</value>

@@ -254,9 +254,7 @@
     https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
 
 Подяки:
-    ObjectListView http://objectlistview.sourceforge.net/
-    Managed DismApi Wrapper https://github.com/jeffkl/ManagedDism
-    FlexibleMessageBox https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the
+    https://github.com/lostindark/DriverStoreExplorer?tab=readme-ov-file#credits
       
 Ліцензія:
     https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
@@ -378,17 +376,17 @@
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Експортування усіх пакетів драйверів...</value>
-      </data>
+  </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Скасувати</value>
-      </data>
+  </data>
   <data name="Column_BootCritical" xml:space="preserve">
     <value>Критично для завантаження</value>
-      </data>
+  </data>
   <data name="Column_Text_True" xml:space="preserve">
     <value>Так</value>
-      </data>
+  </data>
   <data name="Column_Text_False" xml:space="preserve">
     <value>Ні</value>
-      </data>
+  </data>
 </root>
