@@ -15,7 +15,7 @@ Driver Store Explorer [RAPR] makes it easier to deal with Windows [driver store]
 * Detect old and not used driver packages (best effort).
 * Full-fledged GUI Supports grouping / sorting on any column. Supports re-arranging of / selecting specific columns.
 
-## Screenshots:
+## Screenshots
 ![Screenshot of DriverStoreExplorer](https://github.com/lostindark/DriverStoreExplorer/raw/master/Screenshots/Screenshot.png "Screenshot of Driver Store Explorer")
 
 ## Requirements
