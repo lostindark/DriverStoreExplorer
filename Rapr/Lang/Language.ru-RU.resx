@@ -177,6 +177,9 @@
   <data name="Context_Select_All" xml:space="preserve">
     <value>Выделить все</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>Инвертировать выделенное</value>
+  </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Выделить устаревшие драйверы</value>
   </data>
@@ -311,6 +314,9 @@
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Открыть расположение папки</value>
   </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Открыть свойства устройства</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Локальный компьютер</value>
   </data>
@@ -328,6 +334,9 @@
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Имя устройства</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>ID устройства</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(не требует обновления)</value>
