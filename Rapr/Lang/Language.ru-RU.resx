@@ -189,7 +189,7 @@
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>Удалить {0} ({1}) из хранилища драйверов.</value>
-    <comment>{0} - Placeholder для inf -файла пакета драйверов
+    <comment>{0} - Placeholder для inf-файла пакета драйверов
 {1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
@@ -281,7 +281,7 @@
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>Удален {0} ({1}) из хранилища драйверов.</value>
-    <comment>{0} - Placeholder для inf -файла пакета драйверов
+    <comment>{0} - Placeholder для inf-файла пакета драйверов
 {1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
@@ -290,7 +290,7 @@
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Ошибка удаления {0} ({1}) из хранилища драйверов.</value>
-    <comment>{0} - Placeholder для inf -файла пакета драйверов
+    <comment>{0} - Placeholder для inf-файла пакета драйверов
 {1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
@@ -369,7 +369,7 @@
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>Форсировано удалить {0} ({1}) из хранилища драйверов.</value>
-    <comment>{0} - Placeholder для inf -файла пакета драйверов
+    <comment>{0} - Placeholder для inf-файла пакета драйверов
 {1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
@@ -378,7 +378,7 @@
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>Удаление {0} ({1}) выполнено.</value>
-    <comment>{0} - Placeholder для inf -файла пакета драйверов
+    <comment>{0} - Placeholder для inf-файла пакета драйверов
 {1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
@@ -388,12 +388,12 @@
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Удаление {0} ({1}) не выполнено.</value>
-    <comment>{0} - Placeholder для inf -файла пакета драйверов
+    <comment>{0} - Placeholder для inf-файла пакета драйверов
 {1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_Export_Fail" xml:space="preserve">
     <value>Экспорт драйвера {0} ({1}) не выполнен.</value>
-    <comment>{0} - Placeholder для inf -файла пакета драйверов
+    <comment>{0} - Placeholder для inf-файла пакета драйверов
 {1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
