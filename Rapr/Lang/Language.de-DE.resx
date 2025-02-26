@@ -185,12 +185,12 @@
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Sie sind im Begriff {0} Pakete aus dem Driver Store zu entfernen.</value>
-    <comment>{0} - Platzhalter für die Paketanzahl</comment>
+    <comment>{0} – Platzhalter für die Paketanzahl</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>Sie sind im Begriff {0} ({1}) aus dem Driver Store zu entfernen.</value>
-    <comment>{0} - Platzhalter für die INF-Paketdatei
-             {1} - Platzhalter für die OEM-INF-Datei</comment>
+    <comment>{0} – Platzhalter für die INF-Paketdatei
+             {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Es ist mindestens Winodws Vista erforderlich.</value>
@@ -245,7 +245,7 @@
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Über {0}</value>
-    <comment>{0} - Platzhalter für Product_Name</comment>
+    <comment>{0} – Platzhalter für Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>Fehler</value>
@@ -281,28 +281,28 @@ Lizenz:
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>{0} ({1}) wurde aus dem Driver Store gelöscht.</value>
-    <comment>{0} - Platzhalter für die INF-Paketdatei
-             {1} - Platzhalter für die OEM-INF-Datei</comment>
+    <comment>{0} – Platzhalter für die INF-Paketdatei
+             {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
     <value>{0} Pakete wurden aus dem Driver Store gelöscht.</value>
-    <comment>{0} - Platzhalter für die Paketanzahl</comment>
+    <comment>{0} – Platzhalter für die Paketanzahl</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Fehler beim Löschen von {0} ({1}) aus dem Driver Store.</value>
-    <comment>{0} - Platzhalter für die INF-Paketdatei
-             {1} - Platzhalter für die OEM-INF-Datei</comment>
+    <comment>{0} – Platzhalter für die INF-Paketdatei
+             {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>Fehler beim Löschen einiger Treiberpakete.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>Der Treiber {0} wurde zum Driver Store hinzugefügt.</value>
-    <comment>{0} - Platzhalter für den Pfad zur INF-Datei</comment>
+    <comment>{0} – Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
     <value>Fehler beim Hinzufügen des Pakets unter {0} zum Driver Store.</value>
-    <comment>{0} - Platzhalter für den Pfad zur INF-Datei</comment>
+    <comment>{0} – Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>Das Fehlerprotokoll wurde nicht gefunden.</value>
@@ -312,16 +312,16 @@ Lizenz:
   </data>
   <data name="Export_Complete" xml:space="preserve">
     <value>Inhalt unter {0} gespeichert. Die Exportierung war erfolgreich.</value>
-    <comment>{0} - Platzhalter für den Exportpfad</comment>
+    <comment>{0} – Platzhalter für den Exportpfad</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>Die Exportierung ist fehlgeschlagen: {0}</value>
-    <comment>{0} - Platzhalter für die Fehlermeldung</comment>
+    <comment>{0} – Platzhalter für die Fehlermeldung</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>{0} Treiber ausgewählt. Gesamtgröße: {1}.</value>
-    <comment>{0} - Platzhalter für die Anzahl der ausgewählten Treiber
-             {1} - Platzhalter für den Festplattenspeicherplatz</comment>
+    <comment>{0} – Platzhalter für die Anzahl der ausgewählten Treiber
+             {1} – Platzhalter für den Festplattenspeicherplatz</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Es wurden keine Treiber ausgewählt.</value>
@@ -350,16 +350,16 @@ Lizenz:
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Gerätename</value>
   </data>
-  <data name="About_VersionUpToDate" xml:space="preserve">
-    <value>(Auf dem neuesten Stand)</value>
-  </data>
   <data name="Column_DeviceId" xml:space="preserve">
     <value>Geräte-ID</value>
   </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(Auf dem neuesten Stand)</value>
+  </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
-    <value>(Neue Version v{0} gefunden - {1})</value>
-    <comment>{0} - Platzhalter für die Versionsnummer
-             {1} - Platzhalter für About_Download</comment>
+    <value>(Neue Version v{0} gefunden – {1})</value>
+    <comment>{0} – Platzhalter für die Versionsnummer
+             {1} – Platzhalter für About_Download</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Herunterladen</value>
@@ -369,40 +369,40 @@ Lizenz:
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>Sie sind im Begriff {0} ({1}) aus dem Driver Store forciert zu löschen.</value>
-    <comment>{0} - Platzhalter für die INF-Paketdatei
-             {1} - Platzhalter für die OEM-INF-Datei</comment>
+    <comment>{0} – Platzhalter für die INF-Paketdatei
+             {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
     <value>Sie sind im Begriff {0} Pakete aus dem Driver Store forciert zu löschen.</value>
-    <comment>{0} - Platzhalter für die Paketanzahl</comment>
+    <comment>{0} – Platzhalter für die Paketanzahl</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>Das Löschen von {0} ({1}) war erfolgreich.</value>
-    <comment>{0} - Platzhalter für die INF-Paketdatei
-             {1} - Platzhalter für die OEM-INF-Datei</comment>
+    <comment>{0} – Platzhalter für die INF-Paketdatei
+             {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
     <value>Der Treiber-Export von {0} ({1}) war erfolgreich.</value>
-    <comment>{0} - Platzhalter für die INF-Paketdatei
-             {1} - Platzhalter für die OEM-INF-Datei</comment>
+    <comment>{0} – Platzhalter für die INF-Paketdatei
+             {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Das Löschen von {0} ({1}) ist fehlgeschlagen.</value>
-    <comment>{0} - Platzhalter für die INF-Paketdatei
-             {1} - Platzhalter für die OEM-INF-Datei</comment>
+    <comment>{0} – Platzhalter für die INF-Paketdatei
+             {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_Export_Fail" xml:space="preserve">
     <value>Der Treiber-Export von {0} ({1}) ist fehlgeschlagen.</value>
-    <comment>{0} - Platzhalter für die INF-Paketdatei
-             {1} - Platzhalter für die OEM-INF-Datei</comment>
+    <comment>{0} – Platzhalter für die INF-Paketdatei
+             {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
     <value>Der Treiber {0} wurde installiert &amp; zum Driver Store hinzugefügt.</value>
-    <comment>{0} - Platzhalter für den Pfad zur INF-Datei</comment>
+    <comment>{0} – Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>Fehler beim Hinzufügen des Pakets {0} &amp; installiert zum Driver Store.</value>
-    <comment>{0} - Platzhalter für den Pfad zur INF-Datei</comment>
+    <comment>{0} – Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
     <value>Treiber &amp;exportieren</value>
