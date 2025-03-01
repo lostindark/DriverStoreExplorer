@@ -51,7 +51,7 @@ namespace Rapr
             const int FILE_FLAG_BACKUP_SEMANTICS = 0x02000000;
             const int OPEN_EXISTING = 3;
 
-            using (SafeFileHandle handle = NativeMethods.CreateFile(path, 0, 0, IntPtr.Zero, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, IntPtr.Zero))
+            using (SafeFileHandle handle = SafeNativeMethods.CreateFile(path, 0, 0, IntPtr.Zero, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, IntPtr.Zero))
             {
                 if (handle.IsInvalid)
                 {
@@ -59,7 +59,7 @@ namespace Rapr
                 }
 
                 StringBuilder finalPath = new StringBuilder(512);
-                int result = NativeMethods.GetFinalPathNameByHandle(handle, finalPath, finalPath.Capacity, 0);
+                int result = SafeNativeMethods.GetFinalPathNameByHandle(handle, finalPath, finalPath.Capacity, 0);
                 if (result < 0)
                 {
                     throw new Win32Exception(Marshal.GetLastWin32Error());
@@ -277,27 +277,6 @@ namespace Rapr
             }
 
             return supportedLanguage;
-        }
-
-        internal static class NativeMethods
-        {
-
-            [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-            public static extern SafeFileHandle CreateFile(
-                string lpFileName,
-                int dwDesiredAccess,
-                int dwShareMode,
-                IntPtr lpSecurityAttributes,
-                int dwCreationDisposition,
-                int dwFlagsAndAttributes,
-                IntPtr hTemplateFile);
-
-            [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
-            public static extern int GetFinalPathNameByHandle(
-                SafeFileHandle hFile,
-                StringBuilder lpszFilePath,
-                int cchFilePath,
-                int dwFlags);
         }
     }
 }
