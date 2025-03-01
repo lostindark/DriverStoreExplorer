@@ -14,6 +14,7 @@ using System.Text;
 using System.Windows.Forms;
 
 using Microsoft.Win32;
+using Microsoft.Win32.SafeHandles;
 
 namespace Rapr
 {
@@ -22,6 +23,60 @@ namespace Rapr
         private const string AppCompatRegistry = @"Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers";
         private const string RunAsAdminRegistryValue = "RUNASADMIN";
         private static readonly Version Win8Version = new Version(6, 2);
+
+        public static string GetApplicationFolder()
+        {
+            string assemblyLocation = Assembly.GetExecutingAssembly().Location;
+
+            if (!string.IsNullOrEmpty(assemblyLocation))
+            {
+                // Check if the file is a symbolic link
+                FileInfo fileInfo = new FileInfo(assemblyLocation);
+
+                if (fileInfo.Attributes.HasFlag(FileAttributes.ReparsePoint))
+                {
+                    // Resolve the real path
+                    assemblyLocation = GetFinalPathName(assemblyLocation);
+                }
+                return Path.GetDirectoryName(assemblyLocation);
+            }
+            else
+            {
+                return AppDomain.CurrentDomain.BaseDirectory;
+            }
+        }
+
+        private static string GetFinalPathName(string path)
+        {
+            const int FILE_FLAG_BACKUP_SEMANTICS = 0x02000000;
+            const int OPEN_EXISTING = 3;
+
+            using (SafeFileHandle handle = NativeMethods.CreateFile(path, 0, 0, IntPtr.Zero, OPEN_EXISTING, FILE_FLAG_BACKUP_SEMANTICS, IntPtr.Zero))
+            {
+                if (handle.IsInvalid)
+                {
+                    throw new Win32Exception(Marshal.GetLastWin32Error());
+                }
+
+                StringBuilder finalPath = new StringBuilder(512);
+                int result = NativeMethods.GetFinalPathNameByHandle(handle, finalPath, finalPath.Capacity, 0);
+                if (result < 0)
+                {
+                    throw new Win32Exception(Marshal.GetLastWin32Error());
+                }
+
+                // Remove the "\\?\" prefix
+                const string PathPrefix = @"\\?\";
+                string finalPathString = finalPath.ToString();
+
+                if (finalPath.Length > PathPrefix.Length && finalPathString.StartsWith(PathPrefix))
+                {
+                    finalPathString = finalPathString.Substring(PathPrefix.Length);
+                }
+
+                return finalPathString;
+            }
+        }
 
         public static bool IsRunAsAdmin { get; } = IsRunAsAdministrator();
 
@@ -222,6 +277,27 @@ namespace Rapr
             }
 
             return supportedLanguage;
+        }
+
+        internal static class NativeMethods
+        {
+
+            [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+            public static extern SafeFileHandle CreateFile(
+                string lpFileName,
+                int dwDesiredAccess,
+                int dwShareMode,
+                IntPtr lpSecurityAttributes,
+                int dwCreationDisposition,
+                int dwFlagsAndAttributes,
+                IntPtr hTemplateFile);
+
+            [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
+            public static extern int GetFinalPathNameByHandle(
+                SafeFileHandle hFile,
+                StringBuilder lpszFilePath,
+                int cchFilePath,
+                int dwFlags);
         }
     }
 }

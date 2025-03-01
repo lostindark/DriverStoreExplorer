@@ -32,7 +32,7 @@ namespace Rapr
 
         private static Stream CreateLogStream()
         {
-            LastTraceFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, DefaultLogFile);
+            LastTraceFile = Path.Combine(DSEFormHelper.GetApplicationFolder(), DefaultLogFile);
 
             try
             {

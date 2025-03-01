@@ -85,16 +85,17 @@ namespace Rapr
             try
             {
                 string settingFile = $"{Application.ProductName}.user.config";
-                string filePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, settingFile);
+                string applicationFolderPath = DSEFormHelper.GetApplicationFolder();
 
                 try
                 {
                     // Test if we can open filePath as Read/Write
-                    using (FileStream fs = new FileStream(filePath, FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                    using (FileStream fs = new FileStream(Path.Combine(applicationFolderPath, settingFile), FileMode.OpenOrCreate, FileAccess.ReadWrite))
                     {
                     }
 
                     PortableSettingsProvider.SettingsFileName = settingFile;
+                    PortableSettingsProvider.SettingsDirectory = applicationFolderPath;
                     PortableSettingsProvider.ApplyProvider(Properties.Settings.Default);
                 }
                 catch (SecurityException)
