@@ -4,6 +4,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>Rapr.Tests</RootNamespace>
     <AssemblyName>Rapr.Tests</AssemblyName>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="MSTest.TestAdapter" Version="3.8.2" />

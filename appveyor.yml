@@ -17,7 +17,7 @@ build:
   parallel: true
   verbosity: normal
 artifacts:
-- path: Rapr\bin\$(configuration)\net462
+- path: Rapr\bin\$(configuration)
   name: DriverStoreExplorer.v$(appveyor_build_version)
 deploy:
 - provider: Webhook
