@@ -279,7 +279,7 @@ namespace Rapr.Utils
         internal static readonly DevPropKey DEVPKEY_DriverPackage_Primitive =               new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 40);   // DEVPROP_TYPE_BOOLEAN
         internal static readonly DevPropKey DEVPKEY_DriverPackage_Invalidated =             new DevPropKey(0x8163eb01, 0x142c, 0x4f7a, 0x94, 0xe1, 0xa2, 0x74, 0xcc, 0x47, 0xdb, 0xba, 41);   // DEVPROP_TYPE_BOOLEAN
 
-       internal static T ConvertPropToType<T>(IntPtr propertyBufferPtr, DevPropType propertyType)
+        internal static T ConvertPropToType<T>(IntPtr propertyBufferPtr, DevPropType propertyType)
         {
             if ((propertyType == DevPropType.String || propertyType == DevPropType.StringIndirect) && typeof(T) == typeof(string))
             {
@@ -308,7 +308,9 @@ namespace Rapr.Utils
             }
             else if (propertyType == DevPropType.String && typeof(T) == typeof(Version))
             {
-                return (T)(object)Version.Parse(Marshal.PtrToStringUni(propertyBufferPtr));
+                return Version.TryParse(Marshal.PtrToStringUni(propertyBufferPtr), out Version version)
+                    ? (T)(object)version
+                    : (T)(object)(new Version());
             }
             else if (propertyType == DevPropType.Uint32 && typeof(T) == typeof(uint))
             {

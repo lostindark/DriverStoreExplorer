@@ -164,7 +164,7 @@ namespace Rapr.Utils
                 GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverDesc, ObjectType),
                 GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverInfPath, ObjectType),
                 GetObjectPropertyInfo<DateTime>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverDate, ObjectType),
-                Version.Parse(GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverVersion, ObjectType)),
+                GetObjectPropertyInfo<Version>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverVersion, ObjectType),
                 GetObjectPropertyInfo<bool?>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_IsPresent, ObjectType)));
 
             return true;
