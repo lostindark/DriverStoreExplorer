@@ -312,7 +312,7 @@
   </data>
   <data name="Export_Complete" xml:space="preserve">
     <value>Содержимое сохранено в {0}. Экспорт выполнен.</value>
-    <comment>{0} - Placeholder для пути к зкспорта</comment>
+    <comment>{0} - Placeholder для пути к экспорту</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>Ошибка экспорта: {0}</value>
