@@ -643,7 +643,7 @@ namespace Rapr
                     .Where(entry => entry.BootCritical != true)
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverExtensionId, entry.DriverPkgProvider, entry.DriverInfName })
                     .SelectMany(g => g.OrderByDescending(row => row.DriverVersion).ThenByDescending(row => row.DriverDate).Skip(1))
-                    .Where(entry => string.IsNullOrEmpty(entry.DeviceName))
+                    .Where(entry => string.IsNullOrEmpty(entry.DeviceName) && entry.DriverInfName != "ntprint.inf") // Ignore ntprint.inf
                     .ToArray();
             }
         }
