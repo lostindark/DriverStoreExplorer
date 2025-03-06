@@ -129,16 +129,15 @@ namespace Rapr.Utils
 
             if (forceDelete
                 && MethodExists("newdev.dll", "DiUninstallDriverW")
-                && NativeMethods.DiUninstallDriver(
+                && !NativeMethods.DiUninstallDriver(
                         IntPtr.Zero,
                         Path.Combine(driverStoreEntry.DriverFolderLocation, driverStoreEntry.DriverInfName),
                         DIURFLAG.NO_REMOVE_INF,
                         out _))
             {
-                return;
+                throw new Win32Exception();
             }
 
-            // Fallback to SetupUninstallOEMInf if DiUninstallDriver fails.
             if (!NativeMethods.SetupUninstallOEMInf(
                 driverStoreEntry.DriverPublishedName,
                 forceDelete ? SetupUOInfFlags.SUOI_FORCEDELETE : SetupUOInfFlags.NONE,
