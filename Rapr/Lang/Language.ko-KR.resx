@@ -177,6 +177,9 @@
   <data name="Context_Select_All" xml:space="preserve">
     <value>모두 선택(&amp;A)</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>선택 반전(&amp;I)</value>
+  </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>구형 드라이버 선택(&amp;O)</value>
   </data>
@@ -326,6 +329,9 @@
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>폴더 위치 열기(&amp;F)</value>
   </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>장치 속성 열기(&amp;P)</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>로컬 컴퓨터</value>
   </data>
@@ -343,6 +349,9 @@
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>장치 이름</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>장치 Id</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(최신 버전 - 번역: 비너스걸)</value>
