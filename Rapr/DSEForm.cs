@@ -13,6 +13,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using BrightIdeasSoftware;
+
 using JR.Utils.GUI.Forms;
 
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -36,8 +38,10 @@ namespace Rapr
         private static readonly ICollection<CultureInfo> SupportedLanguage = DSEFormHelper.GetSupportedLanguage();
 
         private readonly Timer UpdateCheckedItemSizeTimer;
+        private Timer searchDebounceTimer;
         private const long RefreshTime = Timeout.Infinite;
         private const long Delay = 100;
+        private const long SearchDebounceDelay = 300; // 0.3 seconds
 
         public DSEForm()
         {
@@ -85,6 +89,7 @@ namespace Rapr
             this.UpdateDriverStoreAPI(Settings.Default.UseNativeDriverStore);
 
             this.UpdateCheckedItemSizeTimer = new Timer(x => this.BeginInvoke((Action)(() => this.UpdateCheckedItemSize())));
+            this.searchDebounceTimer = new Timer(x => this.BeginInvoke((Action)(() => this.UpdateSearchFilter())));
         }
 
         /// <summary>
@@ -103,6 +108,13 @@ namespace Rapr
                 if (this.UpdateCheckedItemSizeTimer != null)
                 {
                     this.UpdateCheckedItemSizeTimer.Dispose();
+                }
+
+                if (this.searchDebounceTimer != null)
+                {
+                    var timer = this.searchDebounceTimer;
+                    this.searchDebounceTimer = null;
+                    timer.Dispose();
                 }
             }
 
@@ -933,6 +945,7 @@ namespace Rapr
             this.exportAllDriversToolStripMenuItem.Enabled = false;
             this.languageToolStripMenuItem.Enabled = false;
             this.optionsStripMenuItem.Enabled = false;
+            this.textBoxSearch.Enabled = false;
         }
 
         private void EndOperation()
@@ -951,6 +964,7 @@ namespace Rapr
             this.exportAllDriversToolStripMenuItem.Enabled = true;
             this.languageToolStripMenuItem.Enabled = true;
             this.optionsStripMenuItem.Enabled = true;
+            this.textBoxSearch.Enabled = true;
         }
 
         public enum Status
@@ -1173,6 +1187,44 @@ namespace Rapr
             finally
             {
                 this.EndOperation();
+            }
+        }
+
+        private void TextBoxSearch_TextChanged(object sender, EventArgs e)
+        {
+            // Reset the debounce timer
+            this.searchDebounceTimer?.Change(SearchDebounceDelay, Timeout.Infinite);
+        }
+        private void UpdateSearchFilter()
+        {
+            if (textBoxSearch.Text == Language.Message_Type_Here_To_Search || string.IsNullOrWhiteSpace(textBoxSearch.Text))
+            {
+                this.lstDriverStoreEntries.ModelFilter = null;
+                this.lstDriverStoreEntries.DefaultRenderer = null;
+                this.lstDriverStoreEntries.EmptyListMsg = Language.Message_No_Entries;
+            }
+            else
+            {
+                this.lstDriverStoreEntries.EmptyListMsg = this.lstDriverStoreEntries.Objects != null ? Language.Message_No_Match_Result : Language.Message_No_Entries;
+                TextMatchFilter filter = TextMatchFilter.Contains(this.lstDriverStoreEntries, textBoxSearch.Text);
+                this.lstDriverStoreEntries.ModelFilter = filter;
+                this.lstDriverStoreEntries.DefaultRenderer = new HighlightTextRenderer(filter);
+            }
+        }
+
+        private void TextBoxSearch_Leave(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(textBoxSearch.Text))
+            {
+                textBoxSearch.Text = Language.Message_Type_Here_To_Search;
+            }
+        }
+
+        private void TextBoxSearch_Enter(object sender, EventArgs e)
+        {
+            if (textBoxSearch.Text == Language.Message_Type_Here_To_Search)
+            {
+                textBoxSearch.Text = "";
             }
         }
     }

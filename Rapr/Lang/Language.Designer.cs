@@ -813,6 +813,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No match result..
+        /// </summary>
+        public static string Message_No_Match_Result {
+            get {
+                return ResourceManager.GetString("Message_No_Match_Result", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This utility cannot be run in pre-Vista OS..
         /// </summary>
         public static string Message_Requires_Later_OS {
@@ -845,6 +854,15 @@ namespace Rapr.Lang {
         public static string Message_Title_Warning {
             get {
                 return ResourceManager.GetString("Message_Title_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Type here to search.
+        /// </summary>
+        public static string Message_Type_Here_To_Search {
+            get {
+                return ResourceManager.GetString("Message_Type_Here_To_Search", resourceCulture);
             }
         }
         

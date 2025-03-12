@@ -1,6 +1,8 @@
 ﻿
 namespace Rapr
 {
+    using System;
+
     partial class DSEForm
     {
         /// <summary>
@@ -60,6 +62,9 @@ namespace Rapr
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.searchTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBoxSearchIcon = new System.Windows.Forms.PictureBox();
+            this.textBoxSearch = new System.Windows.Forms.TextBox();
             this.lstDriverStoreEntries = new Rapr.MyObjectListView();
             this.driverInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverClassColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -78,6 +83,8 @@ namespace Rapr
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.searchTableLayoutPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearchIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
             this.SuspendLayout();
             // 
@@ -158,9 +165,9 @@ namespace Rapr
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(185, 6);
 
-            //
+            // 
             // ctxMenuOpenDeviceProperties
-            //
+            // 
             this.ctxMenuOpenDeviceProperties.Name = "ctxMenuOpenDeviceProperties";
             this.ctxMenuOpenDeviceProperties.Size = new System.Drawing.Size(188, 22);
             this.ctxMenuOpenDeviceProperties.Text = global::Rapr.Lang.Language.Context_Open_Device_Properties;
@@ -308,7 +315,7 @@ namespace Rapr
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Padding = new System.Windows.Forms.Padding(6);
             this.flowLayoutPanel1.Size = new System.Drawing.Size(142, 654);
-            this.flowLayoutPanel1.TabIndex = 0;
+            this.flowLayoutPanel1.TabStop = false;
             // 
             // buttonSelectOldDrivers
             // 
@@ -405,11 +412,11 @@ namespace Rapr
             this.exitToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.exitToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Exit;
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.ExitToolStripMenuItem_Click);
-            //
+            // 
             // optionsToolStripMenuItem
-            //
+            // 
             this.optionsStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-                this.useNativeDriveStoreStripMenuItem,
+            this.useNativeDriveStoreStripMenuItem,
                 this.useDismStripMenuItem
             });
             this.optionsStripMenuItem.Name = "optionsToolStripMenuItem";
@@ -459,15 +466,58 @@ namespace Rapr
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanel1.Controls.Add(this.searchTableLayoutPanel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.lstDriverStoreEntries, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.gbOptions, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.lstDriverStoreEntries, 0, 0);
+            this.tableLayoutPanel1.SetRowSpan(this.gbOptions, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(2, 26);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowCount = 2;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 679);
-            this.tableLayoutPanel1.TabIndex = 0;
+            this.tableLayoutPanel1.TabStop = false;
+            // 
+            // searchTableLayoutPanel
+            // 
+            this.searchTableLayoutPanel.ColumnCount = 2;
+            this.searchTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.AutoSize));
+            this.searchTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.searchTableLayoutPanel.Controls.Add(this.pictureBoxSearchIcon, 0, 0);
+            this.searchTableLayoutPanel.Controls.Add(this.textBoxSearch, 1, 0);
+            this.searchTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.searchTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
+            this.searchTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
+            this.searchTableLayoutPanel.Name = "searchTableLayoutPanel";
+            this.searchTableLayoutPanel.RowCount = 1;
+            this.searchTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.searchTableLayoutPanel.Size = new System.Drawing.Size(1247, 24);
+            this.searchTableLayoutPanel.TabStop = false;
+            // 
+            // pictureBoxSearchIcon
+            // 
+            this.pictureBoxSearchIcon.Image = Rapr.Properties.Resources.Search.ToBitmap();
+            this.pictureBoxSearchIcon.Name = "pictureBoxSearchIcon";
+            this.pictureBoxSearchIcon.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxSearchIcon.Margin = new System.Windows.Forms.Padding(4);
+            this.pictureBoxSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxSearchIcon.TabStop = false;
+            // 
+            // textBoxSearch
+            // 
+            this.textBoxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBoxSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxSearch.Name = "textBoxSearch";
+            this.textBoxSearch.Size = new System.Drawing.Size(300, 30);
+            this.textBoxSearch.TabIndex = 1;
+            this.textBoxSearch.Text = global::Rapr.Lang.Language.Message_Type_Here_To_Search;
+            this.textBoxSearch.Enter += new System.EventHandler(this.TextBoxSearch_Enter);
+            this.textBoxSearch.Leave += new System.EventHandler(this.TextBoxSearch_Leave);
+            this.textBoxSearch.GotFocus += new System.EventHandler(this.TextBoxSearch_Enter);
+            this.textBoxSearch.LostFocus += new System.EventHandler(this.TextBoxSearch_Leave);
+            this.textBoxSearch.TextChanged += new System.EventHandler(this.TextBoxSearch_TextChanged);
             // 
             // lstDriverStoreEntries
             // 
@@ -513,6 +563,7 @@ namespace Rapr
             this.lstDriverStoreEntries.UseCellFormatEvents = true;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
             this.lstDriverStoreEntries.View = System.Windows.Forms.View.Details;
+            this.lstDriverStoreEntries.UseFiltering = true;
             this.lstDriverStoreEntries.FormatCell += new System.EventHandler<BrightIdeasSoftware.FormatCellEventArgs>(this.LstDriverStoreEntries_FormatCell);
             this.lstDriverStoreEntries.FormatRow += new System.EventHandler<BrightIdeasSoftware.FormatRowEventArgs>(this.LstDriverStoreEntries_FormatRow);
             this.lstDriverStoreEntries.ItemChecked += new System.Windows.Forms.ItemCheckedEventHandler(this.LstDriverStoreEntries_ItemChecked);
@@ -577,9 +628,9 @@ namespace Rapr
             this.bootCriticalColumn.IsVisible = false;
             this.bootCriticalColumn.Text = global::Rapr.Lang.Language.Column_BootCritical;
 
-            //
+            // 
             // deviceIdColumn
-            //
+            // 
             this.deviceIdColumn.AspectName = "DeviceId";
             this.deviceIdColumn.IsVisible = false;
             this.deviceIdColumn.Text = global::Rapr.Lang.Language.Column_DeviceId;
@@ -619,6 +670,9 @@ namespace Rapr
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            this.searchTableLayoutPanel.ResumeLayout(false);
+            this.searchTableLayoutPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearchIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -681,6 +735,9 @@ namespace Rapr
         private BrightIdeasSoftware.OLVColumn bootCriticalColumn;
         private BrightIdeasSoftware.OLVColumn driverExtensionIdColumn;
         private BrightIdeasSoftware.OLVColumn deviceIdColumn;
+        private System.Windows.Forms.TableLayoutPanel searchTableLayoutPanel;
+        private System.Windows.Forms.PictureBox pictureBoxSearchIcon;
+        private System.Windows.Forms.TextBox textBoxSearch;
     }
 }
 
