@@ -177,6 +177,9 @@
   <data name="Context_Select_All" xml:space="preserve">
     <value>Seleziona tutto</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>&amp;Inverti selezione</value>
+  </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Seleziona driver obsoleti</value>
   </data>
@@ -234,6 +237,9 @@ Prova a forzare l'eliminazione del pacchetto driver.</value>
   </data>
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Aggiornamento elenco driver....</value>
+  </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>Nessun risultato corrispondente.</value>
   </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>Seleziona file INF</value>
@@ -452,5 +458,8 @@ Licenza:
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>Usa DISM</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>Inserisci stringa da cercare</value>
   </data>
 </root>
