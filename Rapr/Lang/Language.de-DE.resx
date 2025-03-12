@@ -237,6 +237,9 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Es wurden keine Einträge geladen.</value>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+     <value>Es gibt keine passenden Ergebnisse.</value>
+  </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>INF auswählen</value>
   </data>
@@ -454,5 +457,8 @@ Lizenz:
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>DISM verwenden</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+     <value>Suchen …</value>
   </data>
 </root>
