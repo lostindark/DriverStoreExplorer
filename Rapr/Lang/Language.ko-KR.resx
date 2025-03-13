@@ -237,6 +237,9 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>로드된 항목이 없습니다.</value>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>일치하는 결과가 없습니다.</value>
+  </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>INF 선택</value>
   </data>
@@ -450,9 +453,12 @@
     <value>옵션(&amp;O)</value>
   </data>
   <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
-    <value>기본 드라이버 스토어 사용</value>
+    <value>기본 드라이버 저장소 사용</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>DISM 사용</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>검색하려면 여기에 입력</value>
   </data>
 </root>
