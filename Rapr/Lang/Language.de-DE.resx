@@ -459,6 +459,6 @@ Lizenz:
     <value>DISM verwenden</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
-     <value>Suchen …</value>
+     <value>Hier tippen, um zu suchen</value>
   </data>
 </root>
