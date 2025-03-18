@@ -237,6 +237,9 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Нет загруженных записей.</value>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>Cовпадений не обнаружено.</value>
+  </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>Выберите INF-файл</value>
   </data>
@@ -383,8 +386,8 @@
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
     <value>Экспорт драйвера {0} ({1}) выполнен.</value>
-
-
+    <comment>{0} - Placeholder для inf-файла пакета драйверов
+{1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Удаление {0} ({1}) не выполнено.</value>
@@ -454,5 +457,8 @@
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>Использовать DISM</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>Введите поисковый запрос</value
   </data>
 </root>
