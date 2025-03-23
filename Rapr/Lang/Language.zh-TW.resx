@@ -237,6 +237,9 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>未載入項目。</value>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>沒有符合的結果。</value>
+  </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>選擇 INF</value>
   </data>
@@ -454,5 +457,8 @@
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>使用DISM</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>在此處輸入以搜尋</value>
   </data>
 </root>
