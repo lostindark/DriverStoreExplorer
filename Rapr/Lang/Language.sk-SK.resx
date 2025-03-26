@@ -237,6 +237,9 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Žiadne záznamy nenájdené.</value>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>Žiadna výsledná zhoda.</value>
+  </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>Vyberte INF súbor</value>
   </data>
@@ -329,6 +332,9 @@ Licencia:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Otvoriť &amp;priečinok</value>
   </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Otvoriť vlastnosti &amp;zariadenia</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Tento počítač</value>
   </data>
@@ -346,6 +352,9 @@ Licencia:
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Názov zariadenia</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>Id zariadenia</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(aktuálny)</value>
@@ -448,5 +457,8 @@ Licencia:
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>Použiť DISM</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>Píšte sem pre vyhľadávanie</value>
   </data>
 </root>
