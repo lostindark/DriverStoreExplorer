@@ -177,6 +177,9 @@
 	<data name="Context_Select_All" xml:space="preserve">
     <value>Min&amp;det kijelöli</value>
   </data>
+  	<data name="Context_Invert_Selection" xml:space="preserve">
+    <value>Kijelölés meg&amp;fordítása</value>
+  </data>
 	<data name="Context_Select_Old" xml:space="preserve">
     <value>Régi illesztőpr&amp;ogramok kijelölése</value>
   </data>
@@ -233,6 +236,9 @@
   </data>
 	<data name="Message_No_Entries" xml:space="preserve">
     <value>Nincs betöltött bejegyzés.</value>
+  </data>
+	<data name="Message_No_Match_Result" xml:space="preserve">
+    <value>Nincs találat.</value>
   </data>
 	<data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>INF fájl kiválasztása</value>
@@ -326,6 +332,9 @@ Licensz:
 	<data name="Context_Open_Folder" xml:space="preserve">
     <value>&amp;Mappa helyének megnyitása</value>
   </data>
+	<data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Eszköz &amp;tulajdonságainak megnyitása</value>
+  </data>
 	<data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Helyi gép</value>
   </data>
@@ -343,6 +352,9 @@ Licensz:
   </data>
 	<data name="Column_DeviceName" xml:space="preserve">
     <value>Eszköz neve</value>
+  </data>
+	<data name="Column_DeviceId" xml:space="preserve">
+    <value>Eszközazonosító</value>
   </data>
 	<data name="About_VersionUpToDate" xml:space="preserve">
     <value>(Naprakész)</value>
@@ -445,5 +457,8 @@ Licensz:
   </data>
 	<data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>DISM használata</value>
+  </data>
+	<data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>Kezdjen ide írni a kereséshez</value>
   </data>
 </root>
