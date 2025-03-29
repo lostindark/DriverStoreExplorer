@@ -423,7 +423,7 @@ Licence :
     <value>Échec de l’exportation de certains paquets de pilotes.</value>
   </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
-    <value>Exporation de tous les paquest de pilotes réussie.</value>
+    <value>Exporation de tous les paquets de pilotes réussie.</value>
   </data>
   <data name="Message_Export_Drivers_Success" xml:space="preserve">
     <value>Exportation des paquets de pilotes réussie.</value>
