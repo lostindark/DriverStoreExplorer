@@ -401,7 +401,7 @@ Licence :
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
     <value>Paquet {0} ajouté &amp; installé dans le magasin de pilotes.</value>
-    <comment>{0} - Correspond au fichier INF du paquet
+    <comment>{0} - Correspond au fichier INF du paquet</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>Erreur lors de l’ajout du paquet {0} &amp; installé dans le magasin de pilotes.</value>
