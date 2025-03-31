@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -177,14 +177,20 @@
   <data name="Context_Select_All" xml:space="preserve">
     <value>Вибрати &amp;всі</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>&amp;Інвертувати вибір</value>
+  </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Вибрати &amp;застарілі драйвери</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Видалити {0} пакетів зі сховища драйверів.</value>
+    <comment>{0} - Заповнювач для кількості пакетів</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>Видалити {0} ({1}) зі сховища драйверів.</value>
+    <comment>{0} - Заповнювач для файлу INF пакету драйверів
+{1} - Заповнювач для файлу OEM INF</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Цю програму неможливо запустити в ОС старше Vista.</value>
@@ -231,6 +237,9 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Записи не завантажено.</value>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>Збігів не знайдено.</value>
+  </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
     <value>Вибрати файл INF</value>
   </data>
@@ -239,6 +248,7 @@
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Про {0}</value>
+    <comment>{0} - Заповнювач для Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>Помилка</value>
@@ -274,21 +284,28 @@
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>{0} ({1}) видалено зі сховища драйверів.</value>
+    <comment>{0} - Заповнювач для файлу INF пакета драйверів
+{1} - Заповнювач для файлу OEM INF</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
     <value>{0} пакетів видалено зі сховища драйверів.</value>
+    <comment>{0} - Заповнювач для кількості пакетів</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Помилка видалення {0} ({1}) зі сховища драйверів.</value>
+    <comment>{0} - Заповнювач для файлу INF пакета драйверів
+{1} - Заповнювач для файлу OEM INF</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>Помилка видалення деяких пакетів зі сховища драйверів.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>Додано пакет {0} до сховища драйверів.</value>
+    <comment>{0} - Заповнювач для шляху до файлу INF</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
     <value>Помилка додавання пакета {0} до сховища драйверів.</value>
+    <comment>{0} - Заповнювач для шляху до файлу INF</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>Файл журналу неможливо знайти.</value>
@@ -298,18 +315,25 @@
   </data>
   <data name="Export_Complete" xml:space="preserve">
     <value>Вміст збережено в {0}. Експорт завершено.</value>
+    <comment>{0} - Заповнювач для шляху експорту</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>Помилка експорту: {0}</value>
+    <comment>{0} - Заповнювач для повідомлення про помилку</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>Вибрано {0} драйверів. Загальний розмір: {1}.</value>
+    <comment>{0} - Заповнювач для кількості вибраних драйверів
+{1} - Заповнювач для розміру на диску</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Не вибрано жодного драйвера.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Відкрити розта&amp;шування папки</value>
+  </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Відкрити &amp;властивості пристрою</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Локальний комп’ютер</value>
@@ -329,11 +353,16 @@
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Ім’я пристрою</value>
   </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>Ідентифікатор пристрою</value>
+  </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(вже оновлено)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(Знайдено нову версію v{0} - {1})</value>
+    <comment>{0} - Заповнювач для номера версS]
+{1} - Заповнювач для About_Download</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Завантажити</value>
@@ -343,21 +372,40 @@
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>Примусово видалити {0} ({1}) зі сховища драйверів.</value>
+    <comment>{0} - Заповнювач для файлу INF пакета драйверів
+{1} - Заповнювач для файлу OEM INF</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
     <value>Примусово видалити {0} пакетів зі сховища драйверів.</value>
+    <comment>{0} - Заповнювач для кількості пакетів</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>{0} ({1}) успішно видалено.</value>
+    <comment>{0} - Заповнювач для файлу INF пакета драйверів
+{1} - Заповнювач для файлу OEM INF</comment>
+  </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Драйвер {0} ({1}) успішно екскпоровано.</value>
+    <comment>{0} - Заповнювач для файлу INF пакета драйверів
+{1} - Заповнювач для файлу OEM INF</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Не вдалося видалити {0} ({1}).</value>
+    <comment>{0} - Заповнювач для файлу INF пакета драйверів
+{1} - Заповнювач для файлу OEM INF</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Не вдалося експортувати драйвер {0} ({1}).</value>
+    <comment>{0} - Заповнювач для файлу INF пакета драйверів
+{1} - Заповнювач для файлу OEM INF</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
     <value>Доданий пакет {0} &amp; встановлено в сховище драйверів.</value>
+    <comment>{0} - Заповнювач для шляху до файлу INF</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>Помилка додаванння пакета {0} &amp; при встановленні в сховище драйверів.</value>
+    <comment>{0} - Заповнювач для шляху до файлу INF</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
     <value>&amp;Експортувати драйвери</value>
@@ -371,11 +419,20 @@
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>Не вдалося експортувати усі пакети драйверів.</value>
   </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Не вдалося експортувати деякі пакети драйверів.</value>
+  </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>Успішно експортовано усі пакети драйверів.</value>
   </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Успішно експортовано пакети драйверів.</value>
+  </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Експортування усіх пакетів драйверів...</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Експортування пакетів драйверів...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Скасувати</value>
@@ -388,5 +445,20 @@
   </data>
   <data name="Column_Text_False" xml:space="preserve">
     <value>Ні</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>Ідентифікатор розширення</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>&amp;Параметри</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Використовувати сховище драйверів ОС</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>Використовувати DISM</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>Введіть запит для пошуку</value>
   </data>
 </root>
