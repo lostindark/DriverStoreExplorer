@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>Ajouter un package</value>
+    <value>Ajouter un pilote</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>Supprimer le(s) package(s)</value>
+    <value>Supprimer le(s) pilote(s)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
@@ -130,7 +130,7 @@
     <value>Rafraîchir</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>Sélectionnez les pilotes obsolètes</value>
+    <value>Sélectionner les pilotes obsolètes</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Forcer la suppression</value>
@@ -142,16 +142,16 @@
     <value>Date du pilote</value>
   </data>
   <data name="Column_Driver_Class" xml:space="preserve">
-    <value>Type de pilote</value>
+    <value>Classe du pilote</value>
   </data>
   <data name="Column_Inf" xml:space="preserve">
     <value>INF</value>
   </data>
   <data name="Column_Oem_Inf" xml:space="preserve">
-    <value>OEM INF</value>
+    <value>INF du FEO</value>
   </data>
   <data name="Column_Provider" xml:space="preserve">
-    <value>Fournisseur</value>
+    <value>Fabricant</value>
   </data>
   <data name="Column_Signed_By" xml:space="preserve">
     <value>Signé par</value>
@@ -166,10 +166,10 @@
     <value>Supprimer</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
-    <value>Deselect</value>
+    <value>Désélectionner</value>
   </data>
   <data name="Context_Deselect_All" xml:space="preserve">
-    <value>Deselect All</value>
+    <value>Tout désélectionner</value>
   </data>
   <data name="Context_Select" xml:space="preserve">
     <value>Sélectionner</value>
@@ -177,17 +177,23 @@
   <data name="Context_Select_All" xml:space="preserve">
     <value>Tout sélectionner</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>&amp;Inverser la sélection</value>
+  </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>Sélectionnez les pilotes obsolètes</value>
+    <value>Sélectionner les pilotes obsolètes</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Sur le point de delete {0} packages à partir du magasin de pilotes.</value>
+    <value>Sur le point de supprimer {0} paquets du magasin de pilotes.</value>
+    <comment>{0} - Correspond au nombre de paquets</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Sur le point de Forcer la suppression {0} ({1}) from driver store.</value>
+    <value>Sur le point de forcer la suppression {0} ({1}) du magasin de pilotes.</value>
+    <comment>{0} - Correspond au fichier INF du paquet
+{1} - Correspond au fichier INF du FEO</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Cet utilitaire ne peut pas être exécuté avec un système d'exploitation "pre-Vista".</value>
+    <value>Cet utilitaire ne peut pas être exécuté sur un système d’exploitation antérieur à Vista.</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Êtes-vous sûr?</value>
@@ -199,13 +205,13 @@
     <value>Opérations</value>
   </data>
   <data name="Product_Name" xml:space="preserve">
-    <value>Driver Store Explorer</value>
+    <value>DriverStore Explorer</value>
   </data>
   <data name="Status_Label" xml:space="preserve">
     <value>Prêt</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[CONSEIL: le pilote est peut-être encore utilisé. Essayez de supprimer le paquet en sélectionnant l'option FORCE]</value>
+    <value>[CONSEIL : le pilote est peut-être encore utilisé. Essayez de FORCER la suppression du paquet]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>Aide</value>
@@ -217,13 +223,13 @@
     <value>Fichier</value>
   </data>
   <data name="Menu_File_Export" xml:space="preserve">
-    <value>Exporter</value>
+    <value>Exporter la liste des pilotes</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Quitter</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>Afficher les fichiers de log</value>
+    <value>Afficher les fichiers journaux</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
@@ -231,24 +237,37 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Aucune entrée chargée.</value>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>Aucun résultat correspondant.</value>
+  </data>
   <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>Sélectionner l'INF</value>
+    <value>Sélectionner le fichier INF</value>
   </data>
   <data name="Dialog_Open_Filters" xml:space="preserve">
     <value>Fichiers INF | *.inf</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
-    <value>A propos {0}</value>
+    <value>À propos {0}</value>
+    <comment>{0} - Espace réservé pour Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>Erreur</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
-    <value>Vous pouvez trouver la dernière version et les notes de version à cette adresse:
+    <value>Vous pouvez trouver la dernière version et les notes de publication à cette adresse :
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-Crédits:
+Soumettre un bogue / une fonctionnalité :
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+Contributeurs :
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
+
+Crédits :
     https://github.com/lostindark/DriverStoreExplorer?tab=readme-ov-file#credits
+
+Licence :
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
 </value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
@@ -258,28 +277,35 @@ Crédits:
     <value>Fichiers CSV | *.csv</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Ajout du package de pilote...</value>
+    <value>Ajout du paquet de pilote en cours…</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Suppression du package (s) de pilote ...</value>
+    <value>Suppression en cours…</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>Suppression de {0} ({1}) du magasin de pilotes.</value>
+    <comment>{0} - Correspond au fichier INF du paquet
+{1} - Correspond au fichier INF du FEO</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>{0} packages supprimés du magasin de pilotes.</value>
+    <value>{0} paquets supprimés du magasin de pilotes.</value>
+    <comment>{0} - Correspond au nombre de paquets</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Erreur lors de la suppression de {0} ({1}) du magasin de pilotes.</value>
+    <comment>{0} - Correspond au fichier INF du paquet
+{1} - Correspond au fichier INF du FEO</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Erreur lors de la suppression de certains packages du magasin de pilotes.</value>
+    <value>Erreur lors de la suppression de certains paquets du magasin de pilotes.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Ajouté {0} le package au magasin de pilotes.</value>
+    <value>Ajouté {0} le paquet au magasin de pilotes.</value>
+    <comment>{0} - Correspond au chemin du fichier INF</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Erreur lors de l'ajout de {0} le package au magasin de pilotes.</value>
+    <value>Erreur lors de l’ajout du paquet {0} au magasin de pilotes.</value>
+    <comment>{0} - Correspond au chemin du fichier INF</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>Le fichier journal est introuvable.</value>
@@ -288,39 +314,151 @@ Crédits:
     <value>Erreur</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>Contenu enregistré dans {0}. Export terminé.</value>
+    <value>Contenu enregistré vers {0}. Exportation complétée.</value>
+    <comment>{0} - Correspond au chemin d’exporation</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
-    <value>L'export a échoué: {0}</value>
+    <value>Échec de l’exportation : {0}</value>
+    <comment>{0} - Correspond au message d’erreur</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>{0} pilote (s) sélectionné (s). Taille totale: {1}.</value>
+    <value>{0} pilote(s) sélectionné(s). Taille totale : {1}.</value>
+    <comment>{0} - Correspond au nombre de pilotes sélectionnés
+{1} - Espace réservé pour l’espace disque</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Aucun pilote sélectionné.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>Ouvrir l'emplacement du dossier</value>
+    <value>Ouvrir l’emplacement du dossier</value>
+  </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Ouvrir les propriétés du périphérique</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Ordinateur local</value>
   </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>Choisir le magasin de pilotes</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>Magasin de pilotes hors ligne</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>Choisir le magasin de pilotes</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>Langue</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>Nom du périphérique</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>ID du périphérique</value>
+  </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(À jour)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(Nouvelle version v{0} trouvée - {1})</value>
+    <comment>{0} - Correspond au numéro de version
+{1} - Espace réservé pour About_Download</comment>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>Télécharger</value>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>Analyse du magasin de pilotes en cours…</value>
+  </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>Sur le point de Forcer la suppression {0} ({1}) from driver store.</value>
+    <value>Sur le point de forcer la suppression de {0} ({1}) du magasin de pilotes.</value>
+    <comment>{0} - Correspond au fichier INF du paquet
+{1} - Correspond au fichier INF du FEO</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>Sur le point de Forcer la suppression {0} packages à partir du magasin de pilotes.</value>
+    <value>Sur le point de forcer la suppression de {0} paquets du magasin de pilotes.</value>
+    <comment>{0} - Correspond au nombre de paquets</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
-    <value>Suppression de {0} ({1}) réussi.</value>
+    <value>Suppression de {0} ({1}) réussie.</value>
+    <comment>{0} - Correspond au fichier INF du paquet
+{1} - Correspond au fichier INF du FEO</comment>
+  </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Exportation du pilote {0} ({1}) réussie.</value>
+    <comment>{0} - Correspond au fichier INF du paquet
+{1} - Correspond au fichier INF du FEO</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
-    <value>Suppression de {0} ({1}) échoué.</value>
+    <value>Échec de la suppression de {0} ({1}).</value>
+    <comment>{0} - Correspond au fichier INF du paquet
+{1} - Correspond au fichier INF du FEO</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Échec de l’exporation de {0} ({1}).</value>
+    <comment>{0} - Correspond au fichier INF du paquet
+{1} - Correspond au fichier INF du FEO</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Ajouté {0} le package &amp; installé au magasin de pilotes.</value>
+    <value>Paquet {0} ajouté &amp; installé dans le magasin de pilotes.</value>
+    <comment>{0} - Correspond au fichier INF du paquet</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Erreur lors de l'ajout de {0} le package &amp; installé au magasin de pilotes.</value>
+    <value>Erreur lors de l’ajout du paquet {0} &amp; installé dans le magasin de pilotes.</value>
+    <comment>{0} - Correspond au chemin vers le fichier INF</comment>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>Exporter le(s) pilote(s)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>Exporter le pilote</value>
+  </data>
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+    <value>Exporter tous les pilotes</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Échec de l’exportation de tous les paquets de pilotes.</value>
+  </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Échec de l’exportation de certains paquets de pilotes.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Exporation de tous les paquets de pilotes réussie.</value>
+  </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Exportation des paquets de pilotes réussie.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Exportation de tous les paquets de pilotes en cours…</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Exportation du (des) paquet(s) de pilotes en cours…</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>Démarrage critique</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>Vrai</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>Faux</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>ID de l’extension</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Utiliser le magasin de pilotes natif</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>Utiliser DISM</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>Tapez ici pour rechercher</value>
   </data>
 </root>
