@@ -240,6 +240,9 @@
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Brak pasującego wyniku.</value>
   </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Wybierz folder Inf</value>
+  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>O programie {0}</value>
     <comment>{0} - Placeholder for Product_Name</comment>
@@ -454,5 +457,26 @@ Licencja użytkowania:
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Wpisz tutaj, aby wyszukać</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>Nie znaleziono plików inf w folderze {0}.</value>
+    <comment>{0} - Placeholder for the folder name</comment>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>Dodane pakiety do magazynu sterowników: {0}.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>Dodane i zainstalowane pakiety w magazynie sterowników: {0}.</value>
+    <comment>{0} - Placeholder for number of packages.</comment>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>Błąd podczas dodawania niektórych pakietów do magazynu sterowników.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>Wystąpił błąd podczas dodawania niektórych pakietów i instalowania ich w magazynie sterowników.</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>Eksportuj wybraną listę sterowników</value>
   </data>
 </root>
