@@ -25,7 +25,7 @@
     <PackageReference Include="PortableSettingsProvider" Version="0.2.5" GeneratePathProperty="true" />
     <PackageReference Include="Resource.Embedder" Version="2.2.0" />
     <PackageReference Include="StrongNamer" Version="0.2.5" />
-    <PackageReference Include="System.ValueTuple" Version="4.5.0" GeneratePathProperty="true" />
+    <PackageReference Include="System.ValueTuple" Version="4.6.1" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.configuration" />
