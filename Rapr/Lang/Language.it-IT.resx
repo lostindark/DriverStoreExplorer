@@ -241,6 +241,9 @@ Prova a forzare l'eliminazione del pacchetto driver.</value>
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Nessun risultato corrispondente.</value>
   </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Seleziona la cartella Inf</value>
+  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Info su {0}</value>
     <comment>{0} - Placeholder for Product_Name</comment>
@@ -334,13 +337,13 @@ Licenza:
     <value>Computer locale</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>Seleziona percorso Driver Store</value>
+    <value>Seleziona percorso archivio driver</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
     <value>Driver Store offline</value>
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
-    <value>Seleziona sorgente Driver Store</value>
+    <value>Seleziona sorgente archivio driver</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
     <value>Lingua</value>
@@ -363,15 +366,15 @@ Licenza:
     <value>Download</value>
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
-    <value>Scansione store driver...</value>
+    <value>Scansione archivio driver...</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>Forza eliminazione di '{0}'' ('{1}') dall'archivio dei driver.</value>
+    <value>Forza eliminazione di '{0}'' ('{1}') dall'archivio driver.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>Forza eliminazione di {0} driver dall'archivio dei driver.</value>
+    <value>Forza eliminazione di {0} driver dall'archivio driver.</value>
     <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
@@ -395,7 +398,7 @@ Licenza:
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Aggiunto il driver {0} e installato nell'archivio driver.</value>
+    <value>Aggiunto edi installato il driver {0} nell'archivio driver.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
@@ -415,7 +418,7 @@ Licenza:
     <value>Esportazione di tutti i pacchetti driver fallita.</value>
   </data>
   <data name="Message_Export_Drivers_Error" xml:space="preserve">
-    <value>Error exporting some driver packages.</value>
+    <value>Errore nell'esportazione di alcuni pacchetti driver.</value>
   </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>Esportazione di tutti i pacchetti driver completata.</value>
@@ -448,12 +451,33 @@ Licenza:
     <value>&amp;Opzioni</value>
   </data>
   <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
-    <value>Use store nativo driver</value>
+    <value>Usa archivbio driver nativo</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>Usa DISM</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Inserisci stringa da cercare</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>Nessun file inf trovato nella cartella {0}.</value>
+    <comment>{0} - Placeholder for the folder name</comment>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>Aggiunti {0} pacchetti all'archivio driver.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>Aggiunti ed installati {0} pacchetti nell'archivio driver.</value>
+    <comment>{0} - Placeholder for number of packages.</comment>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>Errore durante l'aggiunta di alcuni pacchetti all'archivio driver.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>Errore durante l'aggiunta ed installazione di alcuni pacchetti all'archivio driver.</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>Esporta elenco driver &amp;selezionati</value>
   </data>
 </root>
