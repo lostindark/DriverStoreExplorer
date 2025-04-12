@@ -72,7 +72,7 @@
     <EmbeddedResource Include="$(PkgMicrosoft_Dism)\lib\net40\Microsoft.Dism.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgNewtonsoft_Json)\lib\net45\Newtonsoft.Json.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgObjectListView_Official)\lib\net20\ObjectListView.dll" Visible="false" />
-    <EmbeddedResource Include="$(PkgSystem_ValueTuple)\lib\netstandard1.0\System.ValueTuple.dll" Visible="false" />
+    <EmbeddedResource Include="$(PkgSystem_ValueTuple)\lib\net462\System.ValueTuple.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Core)\lib\Microsoft.WindowsAPICodePack.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Shell)\lib\Microsoft.WindowsAPICodePack.Shell.dll" Visible="false" />
     <EmbeddedResource Include="$(IntermediateOutputPath)SignedAssemblies\PortableSettingsProvider.dll" Visible="false">
