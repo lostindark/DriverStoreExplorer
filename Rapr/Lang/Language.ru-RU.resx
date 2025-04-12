@@ -477,6 +477,6 @@
     <value>Ошибка установки и добавления некоторых пакетов в хранилище драйверов.</value>
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
-    <value>Экспортировать список выбранных драйверов</value>
+    <value>Экспортировать &amp;список выбранных драйверов</value>
   </data>
 </root>
