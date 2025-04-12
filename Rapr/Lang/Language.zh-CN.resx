@@ -380,7 +380,7 @@
   <data name="Context_Export_Driver" xml:space="preserve">
     <value>导出驱动包(&amp;E)</value>
   </data>
-  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+  <data name="Button_Export_All_Drivers" xml:space="preserve">
     <value>导出所有驱动包(&amp;P)</value>
   </data>
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">

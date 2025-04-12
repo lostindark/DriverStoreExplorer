@@ -138,6 +138,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Ex&amp;port All Drivers.
+        /// </summary>
+        public static string Button_Export_All_Drivers {
+            get {
+                return ResourceManager.GetString("Button_Export_All_Drivers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Export Driver(s).
         /// </summary>
         public static string Button_Export_Drivers {
@@ -521,15 +530,6 @@ namespace Rapr.Lang {
         public static string Menu_File_Export {
             get {
                 return ResourceManager.GetString("Menu_File_Export", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Ex&amp;port All Drivers.
-        /// </summary>
-        public static string Menu_File_Export_All_Drivers {
-            get {
-                return ResourceManager.GetString("Menu_File_Export_All_Drivers", resourceCulture);
             }
         }
         

@@ -45,12 +45,12 @@ namespace Rapr
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
             this.buttonExportDrivers = new System.Windows.Forms.Button();
+            this.buttonExportAllDrivers = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chooseDriverStoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exportAllDriversToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewLogsTtoolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -302,6 +302,7 @@ namespace Rapr
             this.flowLayoutPanel1.Controls.Add(this.cbForceDeletion);
             this.flowLayoutPanel1.Controls.Add(this.buttonSelectOldDrivers);
             this.flowLayoutPanel1.Controls.Add(this.buttonExportDrivers);
+            this.flowLayoutPanel1.Controls.Add(this.buttonExportAllDrivers);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
@@ -334,6 +335,18 @@ namespace Rapr
             this.buttonExportDrivers.UseVisualStyleBackColor = true;
             this.buttonExportDrivers.Click += new System.EventHandler(ButtonExportDrivers_Click);
             // 
+            // buttonExportAllDrivers
+            // 
+            this.buttonExportAllDrivers.AutoSize = true;
+            this.buttonExportAllDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonExportAllDrivers.Location = new System.Drawing.Point(9, 171);
+            this.buttonExportAllDrivers.Name = "buttonExportAllDrivers";
+            this.buttonExportAllDrivers.Size = new System.Drawing.Size(124, 23);
+            this.buttonExportAllDrivers.TabIndex = 7;
+            this.buttonExportAllDrivers.Text = global::Rapr.Lang.Language.Button_Export_All_Drivers;
+            this.buttonExportAllDrivers.UseVisualStyleBackColor = true;
+            this.buttonExportAllDrivers.Click += new System.EventHandler(ExportAllDriversToolStripMenuItem_Click);
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -353,7 +366,6 @@ namespace Rapr
             this.chooseDriverStoreToolStripMenuItem,
             this.toolStripSeparator5,
             this.exportToolStripMenuItem,
-            this.exportAllDriversToolStripMenuItem,
             this.viewLogsTtoolStripMenuItem,
             this.toolStripSeparator4,
             this.exitToolStripMenuItem});
@@ -379,13 +391,6 @@ namespace Rapr
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
             this.exportToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Export;
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.ExportToolStripMenuItem_Click);
-            // 
-            // exportAllDriversToolStripMenuItem
-            // 
-            this.exportAllDriversToolStripMenuItem.Name = "exportAllDriversToolStripMenuItem";
-            this.exportAllDriversToolStripMenuItem.Size = new System.Drawing.Size(178, 22);
-            this.exportAllDriversToolStripMenuItem.Text = global::Rapr.Lang.Language.Menu_File_Export_All_Drivers;
-            this.exportAllDriversToolStripMenuItem.Click += new System.EventHandler(this.ExportAllDriversToolStripMenuItem_Click);
             // 
             // viewLogsTtoolStripMenuItem
             // 
@@ -721,8 +726,8 @@ namespace Rapr
         private System.Windows.Forms.ToolStripMenuItem chooseDriverStoreToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private BrightIdeasSoftware.OLVColumn deviceNameColumn;
-        private System.Windows.Forms.ToolStripMenuItem exportAllDriversToolStripMenuItem;
         private System.Windows.Forms.Button buttonExportDrivers;
+        private System.Windows.Forms.Button buttonExportAllDrivers;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuExportDriver;
         private BrightIdeasSoftware.OLVColumn bootCriticalColumn;
         private BrightIdeasSoftware.OLVColumn driverExtensionIdColumn;

@@ -131,11 +131,10 @@ namespace Rapr
         private void UpdateDriverStore(IDriverStore driverStore)
         {
             this.driverStore = driverStore;
-            this.exportAllDriversToolStripMenuItem.Enabled = driverStore.SupportExportAllDrivers;
-            this.exportAllDriversToolStripMenuItem.Visible = driverStore.SupportExportAllDrivers;
             this.cbAddInstall.Enabled = driverStore.SupportAddInstall;
             this.cbForceDeletion.Enabled = driverStore.SupportForceDeletion;
             this.buttonExportDrivers.Visible = driverStore.SupportExportDriver;
+            this.buttonExportAllDrivers.Visible = driverStore.SupportExportAllDrivers;
             this.deviceNameColumn.IsVisible = driverStore.SupportForceDeletion;
             this.ctxMenuExportDriver.Visible = driverStore.SupportExportDriver;
 
@@ -1012,9 +1011,9 @@ namespace Rapr
             this.cbForceDeletion.Enabled = false;
             this.buttonSelectOldDrivers.Enabled = false;
             this.buttonExportDrivers.Enabled = false;
+            this.buttonExportAllDrivers.Enabled = false;
             this.chooseDriverStoreToolStripMenuItem.Enabled = false;
             this.exportToolStripMenuItem.Enabled = false;
-            this.exportAllDriversToolStripMenuItem.Enabled = false;
             this.languageToolStripMenuItem.Enabled = false;
             this.optionsStripMenuItem.Enabled = false;
             this.textBoxSearch.Enabled = false;
@@ -1031,9 +1030,9 @@ namespace Rapr
             this.cbForceDeletion.Enabled = this.buttonDeleteDriver.Enabled && this.driverStore.SupportForceDeletion;
             this.buttonSelectOldDrivers.Enabled = true;
             this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
+            this.buttonExportAllDrivers.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
             this.exportToolStripMenuItem.Enabled = true;
-            this.exportAllDriversToolStripMenuItem.Enabled = true;
             this.languageToolStripMenuItem.Enabled = true;
             this.optionsStripMenuItem.Enabled = true;
             this.textBoxSearch.Enabled = true;

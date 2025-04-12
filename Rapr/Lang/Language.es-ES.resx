@@ -391,7 +391,7 @@ Licencia:
   <data name="Context_Export_Driver" xml:space="preserve">
     <value>&amp;Exportar controlador</value>
   </data>
-  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+  <data name="Button_Export_All_Drivers" xml:space="preserve">
     <value>Ex&amp;portar todos los controladores</value>
   </data>
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
