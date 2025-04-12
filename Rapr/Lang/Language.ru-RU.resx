@@ -238,7 +238,10 @@
     <value>Нет загруженных записей.</value>
   </data>
   <data name="Message_No_Match_Result" xml:space="preserve">
-    <value>Cовпадений не обнаружено.</value>
+    <value>Совпадений не обнаружено.</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Выберите папку c inf-файлами</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>О {0}</value>
@@ -454,5 +457,26 @@
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Введите поисковый запрос</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>Inf-файл не найден в папке {0}.</value>
+    <comment>{0} - Placeholder для имени папки</comment>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>Добавлено {0} пакета(ов) в хранилище драйверов.</value>
+    <comment>{0} - Placeholder для количества пакетов</comment>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>Установлено и добавлено в хранилище драйверов {0} пакета(ов).</value>
+    <comment>{0} - Placeholder для количества пакетов</comment>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>Ошибка добавления некоторых пакетов в хранилище драйверов.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>Ошибка установки и добавления некоторых пакетов в хранилище драйверов.</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>Экспортировать &amp;список выбранных драйверов</value>
   </data>
 </root>
