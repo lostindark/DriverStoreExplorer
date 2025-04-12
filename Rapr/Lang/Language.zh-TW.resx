@@ -222,8 +222,8 @@
   <data name="Menu_File" xml:space="preserve">
     <value>檔案(&amp;F)</value>
   </data>
-  <data name="Menu_File_Export" xml:space="preserve">
-    <value>匯出驅動程式清單(&amp;E)</value>
+  <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
+    <value>匯出所有驅動程式清單(&amp;E)</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>結束(&amp;X)</value>
@@ -472,5 +472,8 @@
   </data>
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
     <value>新增某些驅動程式套件並安裝至驅動程式存放區時發生錯誤。</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>匯出所選驅動程式清單(&amp;S)</value>
   </data>
 </root>

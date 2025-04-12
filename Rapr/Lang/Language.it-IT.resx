@@ -223,7 +223,7 @@ Prova a forzare l'eliminazione del pacchetto driver.</value>
   <data name="Menu_File" xml:space="preserve">
     <value>File</value>
   </data>
-  <data name="Menu_File_Export" xml:space="preserve">
+  <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
     <value>Esporta</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">

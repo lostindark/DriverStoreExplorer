@@ -216,7 +216,7 @@
   <data name="Menu_File" xml:space="preserve">
     <value>ملف</value>
   </data>
-  <data name="Menu_File_Export" xml:space="preserve">
+  <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
     <value>تصدير قائمة التعريفات</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">

@@ -219,8 +219,8 @@
   <data name="Menu_File" xml:space="preserve">
     <value>文件(&amp;F)</value>
   </data>
-  <data name="Menu_File_Export" xml:space="preserve">
-    <value>导出驱动列表(&amp;E)</value>
+  <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
+    <value>导出所有驱动列表(&amp;E)</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>退出(&amp;X)</value>
@@ -442,5 +442,8 @@
   </data>
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
     <value>添加某些驱动程序包并安装至驱动程序存储时出错。</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>导出所选驱动程序列表(&amp;S)</value>
   </data>
 </root>

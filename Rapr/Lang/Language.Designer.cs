@@ -525,11 +525,20 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Export Driver List.
+        ///   Looks up a localized string similar to &amp;Export All Driver List.
         /// </summary>
-        public static string Menu_File_Export {
+        public static string Menu_File_Export_All_Driver_List {
             get {
-                return ResourceManager.GetString("Menu_File_Export", resourceCulture);
+                return ResourceManager.GetString("Menu_File_Export_All_Driver_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Export &amp;Selected Driver List.
+        /// </summary>
+        public static string Menu_File_Export_Selected_Driver_List {
+            get {
+                return ResourceManager.GetString("Menu_File_Export_Selected_Driver_List", resourceCulture);
             }
         }
         

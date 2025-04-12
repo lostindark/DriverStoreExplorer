@@ -736,41 +736,39 @@ namespace Rapr
             this.CtxMenuSelectOldDrivers_Click(sender, e);
         }
 
-        private void ExportList()
+        private void ExportDriverList(IEnumerable objects)
         {
-            // Check if there are any entries.
-            if (this.lstDriverStoreEntries.Objects != null)
+            if (objects == null)
             {
-                List<DriverStoreEntry> driverStoreEntries = this.lstDriverStoreEntries
-                    .Objects
-                    .OfType<DriverStoreEntry>()
-                    .ToList();
+                return;
+            }
 
-                if (driverStoreEntries.Count == 0)
+            List<DriverStoreEntry> driverStoreEntries = objects.OfType<DriverStoreEntry>().ToList();
+
+            if (driverStoreEntries.Count == 0)
+            {
+                this.ShowMessageBox(
+                    Language.Message_No_Entries,
+                    Language.Export_Error,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                return;
+            }
+
+            try
+            {
+                string fileName = new CsvExporter().Export(driverStoreEntries);
+
+                if (!string.IsNullOrEmpty(fileName))
                 {
-                    this.ShowMessageBox(
-                        Language.Message_No_Entries,
-                        Language.Export_Error,
-                        MessageBoxButtons.OK,
-                        MessageBoxIcon.Warning);
-
-                    return;
+                    string message = string.Format(Language.Export_Complete, fileName);
+                    this.ShowStatus(Status.Normal, message, usePopup: true);
                 }
-
-                try
-                {
-                    string fileName = new CsvExporter().Export(driverStoreEntries);
-
-                    if (!string.IsNullOrEmpty(fileName))
-                    {
-                        string message = string.Format(Language.Export_Complete, fileName);
-                        this.ShowStatus(Status.Normal, message, usePopup: true);
-                    }
-                }
-                catch (Exception ex) when (ex is IOException || ex is SecurityException)
-                {
-                    this.ShowStatus(Status.Error, string.Format(Language.Export_Failed, ex), usePopup: true);
-                }
+            }
+            catch (Exception ex) when (ex is IOException || ex is SecurityException)
+            {
+                this.ShowStatus(Status.Error, string.Format(Language.Export_Failed, ex), usePopup: true);
             }
         }
 
@@ -821,9 +819,14 @@ namespace Rapr
             }
         }
 
-        private void ExportToolStripMenuItem_Click(object sender, EventArgs e)
+        private void ExportSelectedDriverListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.ExportList();
+            ExportDriverList(this.lstDriverStoreEntries.CheckedObjects);
+        }
+
+        private void ExportAllDriverListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ExportDriverList(this.lstDriverStoreEntries.Objects);
         }
 
         private void RunAsAdminToolStripMenuItem_Click(object sender, EventArgs e)
@@ -916,6 +919,7 @@ namespace Rapr
             }
 
             this.buttonDeleteDriver.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
+            this.exportSelectedDriverListToolStripMenuItem.Enabled = this.buttonDeleteDriver.Enabled;
             this.cbForceDeletion.Enabled = this.buttonDeleteDriver.Enabled;
             this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
         }
@@ -1013,7 +1017,8 @@ namespace Rapr
             this.buttonExportDrivers.Enabled = false;
             this.buttonExportAllDrivers.Enabled = false;
             this.chooseDriverStoreToolStripMenuItem.Enabled = false;
-            this.exportToolStripMenuItem.Enabled = false;
+            this.exportSelectedDriverListToolStripMenuItem.Enabled = false;
+            this.exportAllDriverListToolStripMenuItem.Enabled = false;
             this.languageToolStripMenuItem.Enabled = false;
             this.optionsStripMenuItem.Enabled = false;
             this.textBoxSearch.Enabled = false;
@@ -1032,7 +1037,8 @@ namespace Rapr
             this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
             this.buttonExportAllDrivers.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
-            this.exportToolStripMenuItem.Enabled = true;
+            this.exportSelectedDriverListToolStripMenuItem.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
+            this.exportAllDriverListToolStripMenuItem.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.languageToolStripMenuItem.Enabled = true;
             this.optionsStripMenuItem.Enabled = true;
             this.textBoxSearch.Enabled = true;
@@ -1104,7 +1110,7 @@ namespace Rapr
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
-        private async void ExportAllDriversToolStripMenuItem_Click(object sender, EventArgs e)
+        private async void ButtonExportAllDrivers_Click(object sender, EventArgs e)
         {
             using (var dialog = new CommonOpenFileDialog { IsFolderPicker = true })
             {

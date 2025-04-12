@@ -222,7 +222,7 @@
   <data name="Menu_File" xml:space="preserve">
     <value>파일(&amp;F)</value>
   </data>
-  <data name="Menu_File_Export" xml:space="preserve">
+  <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
     <value>드라이버 목록 내보내기(&amp;E)</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">

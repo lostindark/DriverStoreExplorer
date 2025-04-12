@@ -222,8 +222,8 @@
   <data name="Menu_File" xml:space="preserve">
     <value>&amp;File</value>
   </data>
-  <data name="Menu_File_Export" xml:space="preserve">
-    <value>&amp;Export Driver List</value>
+  <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
+    <value>&amp;Export All Driver List</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -475,5 +475,8 @@ License:
   </data>
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
     <value>Error adding some packages and install to driver store.</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>Export &amp;Selected Driver List</value>
   </data>
 </root>
