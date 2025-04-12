@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <root>
-	<!-- 
+  <!-- 
     Microsoft ResX Schema 
     
     Version 2.0
@@ -59,201 +59,195 @@
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
-	<xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
-		<xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
-		<xsd:element name="root" msdata:IsDataSet="true">
-			<xsd:complexType>
-				<xsd:choice maxOccurs="unbounded">
-					<xsd:element name="metadata">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" />
-							</xsd:sequence>
-							<xsd:attribute name="name" use="required" type="xsd:string" />
-							<xsd:attribute name="type" type="xsd:string" />
-							<xsd:attribute name="mimetype" type="xsd:string" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="assembly">
-						<xsd:complexType>
-							<xsd:attribute name="alias" type="xsd:string" />
-							<xsd:attribute name="name" type="xsd:string" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="data">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-								<xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
-							<xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
-							<xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
-							<xsd:attribute ref="xml:space" />
-						</xsd:complexType>
-					</xsd:element>
-					<xsd:element name="resheader">
-						<xsd:complexType>
-							<xsd:sequence>
-								<xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
-							</xsd:sequence>
-							<xsd:attribute name="name" type="xsd:string" use="required" />
-						</xsd:complexType>
-					</xsd:element>
-				</xsd:choice>
-			</xsd:complexType>
-		</xsd:element>
-	</xsd:schema>
-	<resheader name="resmimetype">
-		<value>text/microsoft-resx</value>
-	</resheader>
-	<resheader name="version">
-		<value>2.0</value>
-	</resheader>
-	<resheader name="reader">
-		<value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<resheader name="writer">
-		<value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-	</resheader>
-	<data name="Button_Add_Package" xml:space="preserve">
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_Add_Package" xml:space="preserve">
     <value>Illesztőprogram &amp;hozzáadása</value>
   </data>
-	<data name="Button_Delete_Package" xml:space="preserve">
+  <data name="Button_Delete_Package" xml:space="preserve">
     <value>Illesztőprogram(ok) &amp;törlése</value>
   </data>
-	<data name="Button_OK" xml:space="preserve">
+  <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
   </data>
-	<data name="Button_Refresh" xml:space="preserve">
+  <data name="Button_Refresh" xml:space="preserve">
     <value>&amp;Frissítés</value>
   </data>
-	<data name="Button_Select_Old" xml:space="preserve">
+  <data name="Button_Select_Old" xml:space="preserve">
     <value>Régi illesztőprogram(ok) &amp;kiválasztása</value>
   </data>
-	<data name="Check_Force_Delete" xml:space="preserve">
+  <data name="Check_Force_Delete" xml:space="preserve">
     <value>Ké&amp;nyszerített törlés</value>
   </data>
-	<data name="Check_Install_Driver" xml:space="preserve">
+  <data name="Check_Install_Driver" xml:space="preserve">
     <value>&amp;Illesztőprogram telepítése</value>
   </data>
-	<data name="Column_Date" xml:space="preserve">
+  <data name="Column_Date" xml:space="preserve">
     <value>Illesztőprogram dátuma</value>
   </data>
-	<data name="Column_Driver_Class" xml:space="preserve">
+  <data name="Column_Driver_Class" xml:space="preserve">
     <value>Illesztőprogram osztály</value>
   </data>
-	<data name="Column_Inf" xml:space="preserve">
+  <data name="Column_Inf" xml:space="preserve">
     <value>INFÓ</value>
   </data>
-	<data name="Column_Oem_Inf" xml:space="preserve">
+  <data name="Column_Oem_Inf" xml:space="preserve">
     <value>OEM INFÓ</value>
   </data>
-	<data name="Column_Provider" xml:space="preserve">
+  <data name="Column_Provider" xml:space="preserve">
     <value>Szolgáltató</value>
   </data>
-	<data name="Column_Signed_By" xml:space="preserve">
+  <data name="Column_Signed_By" xml:space="preserve">
     <value>Aláírta</value>
   </data>
-	<data name="Column_Size" xml:space="preserve">
+  <data name="Column_Size" xml:space="preserve">
     <value>Méret</value>
   </data>
-	<data name="Column_Version" xml:space="preserve">
+  <data name="Column_Version" xml:space="preserve">
     <value>Illesztőprogram verzió</value>
   </data>
-	<data name="Context_Delete" xml:space="preserve">
+  <data name="Context_Delete" xml:space="preserve">
     <value>Törlés</value>
   </data>
-	<data name="Context_Deselect" xml:space="preserve">
+  <data name="Context_Deselect" xml:space="preserve">
     <value>&amp;Kijelölés megszüntetése</value>
   </data>
-	<data name="Context_Deselect_All" xml:space="preserve">
+  <data name="Context_Deselect_All" xml:space="preserve">
     <value>&amp;Minden kijelölés megszüntetése</value>
   </data>
-	<data name="Context_Select" xml:space="preserve">
+  <data name="Context_Select" xml:space="preserve">
     <value>Ki&amp;jelöl</value>
   </data>
-	<data name="Context_Select_All" xml:space="preserve">
+  <data name="Context_Select_All" xml:space="preserve">
     <value>Min&amp;det kijelöli</value>
   </data>
-  	<data name="Context_Invert_Selection" xml:space="preserve">
+  <data name="Context_Invert_Selection" xml:space="preserve">
     <value>Kijelölés meg&amp;fordítása</value>
   </data>
-	<data name="Context_Select_Old" xml:space="preserve">
+  <data name="Context_Select_Old" xml:space="preserve">
     <value>Régi illesztőpr&amp;ogramok kijelölése</value>
   </data>
-	<data name="Message_Delete_Multiple_Packages" xml:space="preserve">
+  <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>A(z) {0} csomagok törlése az illesztőprogramtárból.</value>
     <comment>{0} - Placeholder for number of packages</comment>
   </data>
-	<data name="Message_Delete_Single_Package" xml:space="preserve">
+  <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>A (z){0} ({1}) törlése az illesztőprogramtárból.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
-	<data name="Message_Requires_Later_OS" xml:space="preserve">
+  <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Ez a segédprogram nem futtatható Vista előtti operációs rendszerben.</value>
   </data>
-	<data name="Message_Sure" xml:space="preserve">
+  <data name="Message_Sure" xml:space="preserve">
     <value>Biztos benne?</value>
   </data>
-	<data name="Message_Title_Warning" xml:space="preserve">
+  <data name="Message_Title_Warning" xml:space="preserve">
     <value>Figyelem</value>
   </data>
-	<data name="Operations_Text" xml:space="preserve">
+  <data name="Operations_Text" xml:space="preserve">
     <value>Műveletek</value>
   </data>
-	<data name="Product_Name" xml:space="preserve">
+  <data name="Product_Name" xml:space="preserve">
     <value>Illesztőprogram-tár intéző</value>
   </data>
-	<data name="Status_Label" xml:space="preserve">
+  <data name="Status_Label" xml:space="preserve">
     <value>Kész</value>
   </data>
-	<data name="Tip_Driver_In_Use" xml:space="preserve">
+  <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[Tipp: az illesztőprogram továbbra is használatban lehet. Próbálja meg kényszeríteni a csomag törlését]</value>
   </data>
-	<data name="Menu_Help" xml:space="preserve">
+  <data name="Menu_Help" xml:space="preserve">
     <value>&amp;Súgó</value>
   </data>
-	<data name="Menu_Help_About" xml:space="preserve">
+  <data name="Menu_Help_About" xml:space="preserve">
     <value>&amp;Névjegy</value>
   </data>
-	<data name="Menu_File" xml:space="preserve">
+  <data name="Menu_File" xml:space="preserve">
     <value>&amp;Fájl</value>
   </data>
-	<data name="Menu_File_Export" xml:space="preserve">
+  <data name="Menu_File_Export" xml:space="preserve">
     <value>Illesztőprogram-Lista &amp;exportálása</value>
   </data>
-	<data name="Menu_File_Exit" xml:space="preserve">
+  <data name="Menu_File_Exit" xml:space="preserve">
     <value>&amp;Kilépés</value>
   </data>
-	<data name="Menu_File_View_Logs" xml:space="preserve">
+  <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>&amp;Naplók megtekintése</value>
   </data>
-	<data name="Date_Format" xml:space="preserve">
+  <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
   </data>
-	<data name="Message_No_Entries" xml:space="preserve">
+  <data name="Message_No_Entries" xml:space="preserve">
     <value>Nincs betöltött bejegyzés.</value>
   </data>
-	<data name="Message_No_Match_Result" xml:space="preserve">
+  <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Nincs találat.</value>
   </data>
-	<data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>INF fájl kiválasztása</value>
-  </data>
-	<data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>INF fájlok | *.inf</value>
-  </data>
-	<data name="Product_About_Title" xml:space="preserve">
+  <data name="Product_About_Title" xml:space="preserve">
     <value>{0} névjegye</value>
     <comment>{0} - Placeholder for Product_Name</comment>
   </data>
-	<data name="Export_Error" xml:space="preserve">
+  <data name="Export_Error" xml:space="preserve">
     <value>Hiba</value>
   </data>
-	<data name="About_Project_Description" xml:space="preserve">
+  <data name="About_Project_Description" xml:space="preserve">
     <value>A legújabb verziót és a kiadási megjegyzéseket itt találja:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
@@ -270,195 +264,195 @@ Licensz:
     https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
 </value>
   </data>
-	<data name="UnitTest_Language" xml:space="preserve">
+  <data name="UnitTest_Language" xml:space="preserve">
     <value>Magyar</value>
   </data>
-	<data name="Dialog_Export_Filters" xml:space="preserve">
+  <data name="Dialog_Export_Filters" xml:space="preserve">
     <value>CSV fájlok | *.csv</value>
   </data>
-	<data name="Status_Adding_Package" xml:space="preserve">
+  <data name="Status_Adding_Package" xml:space="preserve">
     <value>Illesztőprogram-csomag hozzáadása ...</value>
   </data>
-	<data name="Status_Deleting_Packages" xml:space="preserve">
+  <data name="Status_Deleting_Packages" xml:space="preserve">
     <value>Illesztőprogram-csomag(ok) törlése...</value>
   </data>
-	<data name="Message_Delete_Package" xml:space="preserve">
+  <data name="Message_Delete_Package" xml:space="preserve">
     <value>Eltávolítottuk {0} ({1}) az illesztőprogramtárból.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
-	<data name="Message_Delete_Packages" xml:space="preserve">
+  <data name="Message_Delete_Packages" xml:space="preserve">
     <value>Eltávolítottuk {0} csomagokat az illesztőprogramtárból.</value>
     <comment>{0} - Placeholder for number of packages</comment>
   </data>
-	<data name="Message_Delete_Package_Error" xml:space="preserve">
+  <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Hiba történt a(z) {0} ({1}) illesztőprogramtárból való eltávolításakor.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
-	<data name="Message_Delete_Packages_Error" xml:space="preserve">
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>Hiba történt egyes csomagok illesztőprogramtárból való eltávolításakor.</value>
   </data>
-	<data name="Message_Driver_Added" xml:space="preserve">
+  <data name="Message_Driver_Added" xml:space="preserve">
     <value>Hozzáadta a csomagot {0} az illesztőprogramtárhoz.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
-	<data name="Message_Driver_Added_Error" xml:space="preserve">
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
     <value>Hiba történt a csomag {0} illesztőprogramtárhoz való hozzáadásakor.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
-	<data name="Message_Log_File_NotFound" xml:space="preserve">
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>A naplófájl nem található.</value>
   </data>
-	<data name="Message_Error" xml:space="preserve">
+  <data name="Message_Error" xml:space="preserve">
     <value>Hiba</value>
   </data>
-	<data name="Export_Complete" xml:space="preserve">
+  <data name="Export_Complete" xml:space="preserve">
     <value>A tartalom elmentve {0}. Az exportálás befejeződött.</value>
     <comment>{0} - Placeholder for export path</comment>
   </data>
-	<data name="Export_Failed" xml:space="preserve">
+  <data name="Export_Failed" xml:space="preserve">
     <value>Az exportálás sikertelen: {0}</value>
     <comment>{0} - Placeholder for error message</comment>
   </data>
-	<data name="Status_Selected_Drivers" xml:space="preserve">
+  <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>Kiválasztott {0} illesztőprogram. Teljes méret: {1}.</value>
     <comment>{0} - Placeholder for number of selected Drivers
 {1} - Placeholder for disk space</comment>
   </data>
-	<data name="Status_No_Drivers_Selected" xml:space="preserve">
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Nincs kiválasztva illesztőprogram.</value>
   </data>
-	<data name="Context_Open_Folder" xml:space="preserve">
+  <data name="Context_Open_Folder" xml:space="preserve">
     <value>&amp;Mappa helyének megnyitása</value>
   </data>
-	<data name="Context_Open_Device_Properties" xml:space="preserve">
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Eszköz &amp;tulajdonságainak megnyitása</value>
   </data>
-	<data name="DriverStore_LocalMachine" xml:space="preserve">
+  <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Helyi gép</value>
   </data>
-	<data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
     <value>Illesztőprogram-tár kiválasztása</value>
   </data>
-	<data name="DriverStore_Offline" xml:space="preserve">
+  <data name="DriverStore_Offline" xml:space="preserve">
     <value>Offline Illesztőprogram-tár</value>
   </data>
-	<data name="ChooseDriverStore_Title" xml:space="preserve">
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
     <value>Illesztőprogram-tár kiválasztása</value>
   </data>
-	<data name="Menu_Language" xml:space="preserve">
+  <data name="Menu_Language" xml:space="preserve">
     <value>&amp;Nyelv</value>
   </data>
-	<data name="Column_DeviceName" xml:space="preserve">
+  <data name="Column_DeviceName" xml:space="preserve">
     <value>Eszköz neve</value>
   </data>
-	<data name="Column_DeviceId" xml:space="preserve">
+  <data name="Column_DeviceId" xml:space="preserve">
     <value>Eszközazonosító</value>
   </data>
-	<data name="About_VersionUpToDate" xml:space="preserve">
+  <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(Naprakész)</value>
   </data>
-	<data name="About_FoundNewVersion" xml:space="preserve">
+  <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(Új verzió {0} - {1})</value>
     <comment>{0} - Placeholder for version number
 {1} - Placeholder for About_Download</comment>
   </data>
-	<data name="About_Download" xml:space="preserve">
+  <data name="About_Download" xml:space="preserve">
     <value>Letöltés</value>
   </data>
-	<data name="Message_Scanning_Driver_Store" xml:space="preserve">
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>Illesztőprogram-tárbeolvasása...</value>
   </data>
-	<data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>A(z) {0} ({1}) törlésének kényszerítése az illesztőprogramtárból.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
-	<data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
     <value>A(z) {0} csomagok törlésének kényszerítése az illesztőprogramtárból.</value>
     <comment>{0} - Placeholder for number of packages</comment>
   </data>
-	<data name="Message_Delete_Success" xml:space="preserve">
+  <data name="Message_Delete_Success" xml:space="preserve">
     <value>A(z) {0} ({1}) törlése sikerült.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
-	<data name="Message_Export_Success" xml:space="preserve">
+  <data name="Message_Export_Success" xml:space="preserve">
     <value>Az illesztőprogram exportálása {0} ({1}) sikerült.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
-	<data name="Message_Delete_Fail" xml:space="preserve">
+  <data name="Message_Delete_Fail" xml:space="preserve">
     <value>A(z) {0} ({1}) törlése nem sikerült.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
-	<data name="Message_Export_Fail" xml:space="preserve">
+  <data name="Message_Export_Fail" xml:space="preserve">
     <value>Az illesztőprogram exportálása {0} ({1}) nem sikerült.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
-	<data name="Message_Driver_Added_Installed" xml:space="preserve">
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
     <value>Az illesztőprogram {0} telepítve lett és hozzá lett adva az illesztőprogramtárhoz.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
-	<data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>Hiba történt a(z) {0} csomag hozzáadásakor és az Illesztőprogram-tárba történő telepítéskor.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
-	<data name="Button_Export_Drivers" xml:space="preserve">
+  <data name="Button_Export_Drivers" xml:space="preserve">
     <value>&amp;Export Driver(s)</value>
   </data>
-	<data name="Context_Export_Driver" xml:space="preserve">
+  <data name="Context_Export_Driver" xml:space="preserve">
     <value>Illesztőprogram &amp;exportálása</value>
   </data>
-	<data name="Menu_File_Export_All_Drivers" xml:space="preserve">
+  <data name="Menu_File_Export_All_Drivers" xml:space="preserve">
     <value>Az összes illesztőprogram exp&amp;ortálása</value>
   </data>
-	<data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>Az összes illesztőprogram-csomag exportálása sikertelen.</value>
   </data>
-	<data name="Message_Export_Drivers_Error" xml:space="preserve">
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
     <value>Hiba történt néhány illesztőprogram-csomag exportálásakor.</value>
   </data>
-	<data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>Az összes illesztőprogram-csomag exportálása sikerült.</value>
   </data>
-	<data name="Message_Export_Drivers_Success" xml:space="preserve">
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
     <value>Az Illesztőprogram-csomagok exportálása sikerült.</value>
   </data>
-	<data name="Status_Exporting_All_Drivers" xml:space="preserve">
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Az összes illesztőprogram-csomag exportálása...</value>
   </data>
-	<data name="Status_Exporting_Drivers" xml:space="preserve">
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
     <value>Illesztőprogram-csomag(ok) exportálása...</value>
   </data>
-	<data name="Button_Cancel" xml:space="preserve">
+  <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Mégse</value>
   </data>
-	<data name="Column_BootCritical" xml:space="preserve">
+  <data name="Column_BootCritical" xml:space="preserve">
     <value>Rendszerindítás kritikus</value>
   </data>
-	<data name="Column_Text_True" xml:space="preserve">
+  <data name="Column_Text_True" xml:space="preserve">
     <value>Igaz</value>
   </data>
-	<data name="Column_Text_False" xml:space="preserve">
+  <data name="Column_Text_False" xml:space="preserve">
     <value>Hamis</value>
   </data>
-	<data name="Column_Extension_Id" xml:space="preserve">
+  <data name="Column_Extension_Id" xml:space="preserve">
     <value>Kiterjesztés ID</value>
   </data>
-	<data name="Menu_Options" xml:space="preserve">
+  <data name="Menu_Options" xml:space="preserve">
     <value>&amp;Beállítások</value>
   </data>
-	<data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
     <value>A natív illesztőprogramtár használata</value>
   </data>
-	<data name="Menu_Options_UseDISM" xml:space="preserve">
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>DISM használata</value>
   </data>
-	<data name="Message_Type_Here_To_Search" xml:space="preserve">
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Kezdjen ide írni a kereséshez</value>
   </data>
 </root>

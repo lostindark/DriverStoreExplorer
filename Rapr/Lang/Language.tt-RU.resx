@@ -234,12 +234,6 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Язмалар йөкләмәде</value>
   </data>
-  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>INF файлын сайлагыз</value>
-  </data>
-  <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>INF файллары | *.inf</value>
-  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>{0} турында</value>
     <comment>{0} - Placeholder for Product_Name</comment>

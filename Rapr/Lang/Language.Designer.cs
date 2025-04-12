@@ -111,7 +111,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to &amp;Add Driver.
+        ///   Looks up a localized string similar to &amp;Add Driver(s).
         /// </summary>
         public static string Button_Add_Package {
             get {
@@ -435,20 +435,11 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Select the INF.
+        ///   Looks up a localized string similar to Select the Inf folder.
         /// </summary>
-        public static string Dialog_Open_Filter_Text {
+        public static string Dialog_Select_Inf_Folder {
             get {
-                return ResourceManager.GetString("Dialog_Open_Filter_Text", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to INF files | *.inf.
-        /// </summary>
-        public static string Dialog_Open_Filters {
-            get {
-                return ResourceManager.GetString("Dialog_Open_Filters", resourceCulture);
+                return ResourceManager.GetString("Dialog_Select_Inf_Folder", resourceCulture);
             }
         }
         
@@ -687,7 +678,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Error adding {0} the package to driver store..
+        ///   Looks up a localized string similar to Error adding the package {0} to driver store..
         /// </summary>
         public static string Message_Driver_Added_Error {
             get {
@@ -710,6 +701,42 @@ namespace Rapr.Lang {
         public static string Message_Driver_Added_Installed_Error {
             get {
                 return ResourceManager.GetString("Message_Driver_Added_Installed_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added {0} packages to driver store..
+        /// </summary>
+        public static string Message_Drivers_Added {
+            get {
+                return ResourceManager.GetString("Message_Drivers_Added", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error adding some packages to driver store..
+        /// </summary>
+        public static string Message_Drivers_Added_Error {
+            get {
+                return ResourceManager.GetString("Message_Drivers_Added_Error", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added {0} packages and installed to driver store..
+        /// </summary>
+        public static string Message_Drivers_Added_Installed {
+            get {
+                return ResourceManager.GetString("Message_Drivers_Added_Installed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Error adding some packages and install to driver store..
+        /// </summary>
+        public static string Message_Drivers_Added_Installed_Error {
+            get {
+                return ResourceManager.GetString("Message_Drivers_Added_Installed_Error", resourceCulture);
             }
         }
         
@@ -809,6 +836,15 @@ namespace Rapr.Lang {
         public static string Message_No_Entries {
             get {
                 return ResourceManager.GetString("Message_No_Entries", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No inf files found in folder {0}..
+        /// </summary>
+        public static string Message_No_Inf_Found {
+            get {
+                return ResourceManager.GetString("Message_No_Inf_Found", resourceCulture);
             }
         }
         

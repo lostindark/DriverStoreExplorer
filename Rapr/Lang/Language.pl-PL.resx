@@ -240,12 +240,6 @@
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Brak pasującego wyniku.</value>
   </data>
-  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>Wybierz plik INF</value>
-  </data>
-  <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>Pliki INF | *.inf</value>
-  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>O programie {0}</value>
     <comment>{0} - Placeholder for Product_Name</comment>

@@ -240,11 +240,8 @@
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>沒有符合的結果。</value>
   </data>
-  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>選擇 INF</value>
-  </data>
-  <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>INF 檔案 | *.inf</value>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>選擇INF資料夾</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>關於 {0}</value>
@@ -460,5 +457,20 @@
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>在此處輸入以搜尋</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>在資料夾 {0} 中找不到 Inf 檔案。</value>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>已將 {0} 個驅動程式套件新增至驅動程式存放區。</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>已將 {0} 個驅動程式套件新增並安裝至驅動程式存放區。</value>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>將某些驅動程式套件新增至驅動程式存放區時發生錯誤。</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>新增某些驅動程式套件並安裝至驅動程式存放區時發生錯誤。</value>
   </data>
 </root>

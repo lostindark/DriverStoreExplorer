@@ -240,12 +240,6 @@
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Aucun résultat correspondant.</value>
   </data>
-  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>Sélectionner le fichier INF</value>
-  </data>
-  <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>Fichiers INF | *.inf</value>
-  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>À propos {0}</value>
     <comment>{0} - Espace réservé pour Product_Name</comment>

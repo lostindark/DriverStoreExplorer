@@ -231,12 +231,6 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>لا يوجد تعريفات بعد</value>
   </data>
-  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>إختيار ملف INF</value>
-  </data>
-  <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>INF ملفات | *.inf</value>
-  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>حول {0}</value>
   </data>

@@ -41,7 +41,6 @@ namespace Rapr
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.lblStatus = new System.Windows.Forms.ToolStripStatusLabel();
-            this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.gbOptions = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
@@ -280,12 +279,6 @@ namespace Rapr
             this.lblStatus.Spring = true;
             this.lblStatus.Text = global::Rapr.Lang.Language.Status_Label;
             this.lblStatus.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // openFileDialog
-            // 
-            this.openFileDialog.Filter = global::Rapr.Lang.Language.Dialog_Open_Filters;
-            this.openFileDialog.SupportMultiDottedExtensions = true;
-            this.openFileDialog.Title = global::Rapr.Lang.Language.Dialog_Open_Filter_Text;
             // 
             // gbOptions
             // 
@@ -694,7 +687,6 @@ namespace Rapr
         private System.Windows.Forms.CheckBox cbAddInstall;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel lblStatus;
-        private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectAll;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuInvertSelection;

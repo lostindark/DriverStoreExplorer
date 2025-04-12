@@ -177,11 +177,11 @@
   <data name="Context_Select_All" xml:space="preserve">
     <value>Selecionar &amp;todos</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>&amp;Inverter seleção</value>
+  </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Selecionar drivers &amp;antigos</value>
-  </data>
-  <data name="Column_BootCritical" xml:space="preserve">
-    <value>Crítico na inicialização</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Prestes a excluir {0} pacotes do armazenamento de drivers.</value>
@@ -225,9 +225,6 @@
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>&amp;Sair</value>
   </data>
-  <data name="Menu_Options" xml:space="preserve">
-    <value>&amp;Opções</value>
-  </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>&amp;Visualizar registros</value>
   </data>
@@ -237,11 +234,8 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>Nenhuma entrada carregada.</value>
   </data>
-  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>Selecione o arquivo INF</value>
-  </data>
-  <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>Arquivos INF | *.inf</value>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>Nenhum resultado.</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Sobre o {0}</value>
@@ -317,6 +311,9 @@ Licença:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Abrir &amp;local da pasta</value>
   </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Abrir &amp;propriedades do dispositivo</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>Máquina local</value>
   </data>
@@ -335,6 +332,9 @@ Licença:
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Nome do dispositivo</value>
   </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>ID do dispositivo</value>
+  </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(Atualizado)</value>
   </data>
@@ -343,6 +343,9 @@ Licença:
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Baixar</value>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>Verificando armazenamento de drivers...</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>Prestes a forçar excluir {0} ({1}) do armazenamento de drivers.</value>
@@ -353,17 +356,20 @@ Licença:
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>Exclusão de {0} ({1}) bem sucedido.</value>
   </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Exportar driver {0} ({1}) bem sucedido.</value>
+  </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Falha ao excluir {0} ({1}).</value>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Falha ao exportar driver {0} ({1}).</value>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
     <value>Adicionado pacote {0} e instalado no armazenamento de drivers.</value>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>Erro ao adicionar pacote {0} e instalado ao armazenamento de drivers.</value>
-  </data>
-  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
-    <value>Verificando armazenamento de drivers...</value>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
     <value>&amp;Exportar driver(s)</value>
@@ -377,29 +383,26 @@ Licença:
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>Falha ao exportar todos os pacotes de drivers.</value>
   </data>
-  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
-    <value>Todos os pacotes de drivers exportados com sucesso.</value>
-  </data>
-  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
-    <value>Exportando todos os pacotes de drivers...</value>
-  </data>
-  <data name="Message_Export_Success" xml:space="preserve">
-    <value>Exportar driver {0} ({1}) bem sucedido.</value>
-  </data>
-  <data name="Message_Export_Fail" xml:space="preserve">
-    <value>Falha ao exportar driver {0} ({1}).</value>
-  </data>
   <data name="Message_Export_Drivers_Error" xml:space="preserve">
     <value>Erro ao exportar alguns pacotes de drivers.</value>
   </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Todos os pacotes de drivers exportados com sucesso.</value>
+  </data>
   <data name="Message_Export_Drivers_Success" xml:space="preserve">
     <value>Pacotes de drivers exportados com sucesso.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Exportando todos os pacotes de drivers...</value>
   </data>
   <data name="Status_Exporting_Drivers" xml:space="preserve">
     <value>Exportando pacote(s) de driver(s)...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Cancelar</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>Crítico na inicialização</value>
   </data>
   <data name="Column_Text_True" xml:space="preserve">
     <value>True</value>
@@ -410,25 +413,16 @@ Licença:
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>ID da extensão</value>
   </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>&amp;Opções</value>
+  </data>
   <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
     <value>Usar armazenamento de drivers nativo</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>Usar DISM</value>
   </data>
-  <data name="Context_Invert_Selection" xml:space="preserve">
-    <value>&amp;Inverter seleção</value>
-  </data>
-  <data name="Context_Open_Device_Properties" xml:space="preserve">
-    <value>Abrir &amp;propriedades do dispositivo</value>
-  </data>
-  <data name="Column_DeviceId" xml:space="preserve">
-    <value>ID do dispositivo</value>
-  </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Digite aqui para pesquisar</value>
-  </data>
-  <data name="Message_No_Match_Result" xml:space="preserve">
-    <value>Nenhum resultado.</value>
   </data>
 </root>

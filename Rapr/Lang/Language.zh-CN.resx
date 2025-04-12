@@ -237,11 +237,8 @@
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>没有匹配结果。</value>
   </data>
-  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>选择INF文件</value>
-  </data>
-  <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>INF文件 | *.inf</value>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>选择INF文件夹</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>关于 {0}</value>
@@ -430,5 +427,20 @@
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>在此处输入以搜索</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>在文件夹 {0} 中找不到 Inf 文件。</value>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>已将 {0} 个驱动程序包添加至驱动程序存储。</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>已将 {0} 个驱动程序包添加并安装至驱动程序存储。</value>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>将某些驱动程序包添加至驱动程序存储时出错。</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>添加某些驱动程序包并安装至驱动程序存储时出错。</value>
   </data>
 </root>

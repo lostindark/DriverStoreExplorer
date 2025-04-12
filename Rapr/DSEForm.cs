@@ -466,48 +466,120 @@ namespace Rapr
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
         private async void ButtonAddDriver_Click(object sender, EventArgs e)
         {
-            DialogResult dr = this.openFileDialog.ShowDialog();
-            if (dr == DialogResult.OK)
+            using (var dialog = new CommonOpenFileDialog { IsFolderPicker = true, EnsurePathExists = true, Title = Language.Dialog_Select_Inf_Folder })
             {
-                string infPath = this.openFileDialog.FileName;
-                bool installDriver = this.cbAddInstall.Checked;
+                CommonFileDialogResult dialogResult = dialog.ShowDialog();
 
-                try
+                if (dialogResult == CommonFileDialogResult.Ok)
                 {
-                    this.StartOperation();
-                    this.ShowStatus(Status.Normal, Language.Status_Adding_Package);
+                    string infPath = dialog.FileName;
+                    bool installDriver = this.cbAddInstall.Checked;
 
-                    bool result = await Task.Run(() => this.driverStore.AddDriver(infPath, installDriver)).ConfigureAwait(true);
+                    var infFiles = FindInfFile(infPath).ToList();
 
-                    var allDriverStoreEntries = await Task.Run(() => this.driverStore.EnumeratePackages()).ConfigureAwait(true);
-                    this.lstDriverStoreEntries.SetObjects(allDriverStoreEntries);
-
-                    if (result)
+                    if (infFiles.Count == 0)
                     {
-                        var message = string.Format(
-                            installDriver ? Language.Message_Driver_Added_Installed : Language.Message_Driver_Added,
-                            infPath);
-
-                        this.ShowStatus(Status.Success, message);
-                    }
-                    else
-                    {
-                        var message = string.Format(
-                            installDriver ? Language.Message_Driver_Added_Installed_Error : Language.Message_Driver_Added_Error,
-                            infPath);
-
-                        this.ShowStatus(Status.Error, message, usePopup: true);
+                        this.ShowStatus(Status.Error, string.Format(Language.Message_No_Inf_Found, infPath), usePopup: true);
+                        return;
                     }
 
-                    this.cbAddInstall.Checked = false;
-                }
-                catch (Exception ex)
-                {
-                    this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
-                }
-                finally
-                {
-                    this.EndOperation();
+                    try
+                    {
+                        this.StartOperation();
+                        this.ShowStatus(Status.Normal, Language.Status_Adding_Package);
+
+                        (bool allSucceeded, string detailResult) = await Task.Run(() =>
+                        {
+                            bool totalResult = true;
+                            StringBuilder sb = new StringBuilder();
+
+                            if (infFiles.Count == 1)
+                            {
+                                totalResult = this.driverStore.AddDriver(infFiles[0], installDriver);
+                                sb.AppendFormat(
+                                    installDriver ? Language.Message_Driver_Added_Installed : Language.Message_Driver_Added,
+                                    infPath);
+                            }
+                            else
+                            {
+                                foreach (string infFile in infFiles)
+                                {
+                                    bool succeeded = this.driverStore.AddDriver(infFile, installDriver);
+
+                                    string resultTxt;
+                                    if (succeeded)
+                                    {
+                                        resultTxt = string.Format(
+                                            installDriver ? Language.Message_Driver_Added_Installed : Language.Message_Driver_Added,
+                                            infFile.Substring(infPath.Length).TrimStart('\\'));
+                                        Trace.TraceInformation(resultTxt);
+                                    }
+                                    else
+                                    {
+                                        resultTxt = string.Format(
+                                            installDriver ? Language.Message_Driver_Added_Installed_Error : Language.Message_Driver_Added_Error,
+                                            infFile.Substring(infPath.Length).TrimStart('\\'));
+                                        Trace.TraceError(resultTxt);
+                                    }
+
+                                    sb.AppendLine(resultTxt);
+                                    totalResult &= succeeded;
+                                }
+                            }
+
+                            return (totalResult, sb.ToString());
+                        }).ConfigureAwait(true);
+
+
+                        var allDriverStoreEntries = await Task.Run(() => this.driverStore.EnumeratePackages()).ConfigureAwait(true);
+                        this.lstDriverStoreEntries.SetObjects(allDriverStoreEntries);
+
+
+                        if (infFiles.Count == 1)
+                        {
+                            if (allSucceeded)
+                            {
+                                this.ShowStatus(
+                                    Status.Success,
+                                    string.Format(
+                                        installDriver ? Language.Message_Driver_Added_Installed : Language.Message_Driver_Added,
+                                        infPath));
+                            }
+                            else
+                            {
+                                this.ShowStatus(
+                                    Status.Error,
+                                    string.Format(
+                                        installDriver ? Language.Message_Driver_Added_Installed_Error : Language.Message_Driver_Added_Error,
+                                       infPath),
+                                    usePopup: true);
+                            }
+                        }
+                        else
+                        {
+                            if (allSucceeded)
+                            {
+                                this.ShowStatus(
+                                    Status.Success,
+                                    string.Format(
+                                        installDriver ? Language.Message_Drivers_Added_Installed : Language.Message_Drivers_Added,
+                                        infFiles.Count));
+                            }
+                            else
+                            {
+                                var message = installDriver ? Language.Message_Drivers_Added_Installed_Error : Language.Message_Drivers_Added_Error;
+                                this.ShowStatus(Status.Error, $"{message}{Environment.NewLine}{detailResult}", usePopup: true);
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
+                    }
+                    finally
+                    {
+                        this.EndOperation();
+                    }
                 }
             }
         }
@@ -1225,6 +1297,28 @@ namespace Rapr
             if (textBoxSearch.Text == Language.Message_Type_Here_To_Search)
             {
                 textBoxSearch.Text = "";
+            }
+        }
+
+        private IEnumerable<string> FindInfFile(string infPath)
+        {
+            // Search for *.inf files in the current directory  
+            var infFiles = Directory.GetFiles(infPath, "*.inf", SearchOption.TopDirectoryOnly);
+            if (infFiles.Length > 0)
+            {
+                yield return infFiles[0];
+                yield break;
+            }
+
+            // If no .inf files are found, search one level down in subdirectories  
+            var subDirectories = Directory.GetDirectories(infPath);
+            foreach (var subDir in subDirectories)
+            {
+                infFiles = Directory.GetFiles(subDir, "*.inf", SearchOption.TopDirectoryOnly);
+                if (infFiles.Length > 0)
+                {
+                    yield return infFiles[0];
+                }
             }
         }
     }

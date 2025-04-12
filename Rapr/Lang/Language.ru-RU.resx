@@ -240,12 +240,6 @@
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Cовпадений не обнаружено.</value>
   </data>
-  <data name="Dialog_Open_Filter_Text" xml:space="preserve">
-    <value>Выберите INF-файл</value>
-  </data>
-  <data name="Dialog_Open_Filters" xml:space="preserve">
-    <value>INF-файлы | *.inf</value>
-  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>О {0}</value>
     <comment>{0} - Placeholder для Product_Name</comment>
