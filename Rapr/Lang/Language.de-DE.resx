@@ -223,7 +223,7 @@
     <value>&amp;Datei</value>
   </data>
   <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
-    <value>Treiberliste exportieren</value>
+    <value>Gesamte Treiberliste exportieren</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>&amp;Beenden</value>
@@ -239,6 +239,9 @@
   </data>
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Es gibt keine passenden Ergebnisse.</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+     <value>INF-Ordner auswählen</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Über {0}</value>
@@ -455,4 +458,25 @@ Lizenz:
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Hier tippen, um zu suchen</value>
   </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+     <value>Es wurden keine INF-Dateien in dem Ordner {0} gefunden.</value>
+     <comment>{0} – Platzhalter für den Ordnernamen</comment>
+   </data>
+   <data name="Message_Drivers_Added" xml:space="preserve">
+     <value>Es wurden {0} Pakete zum Driver Store hinzugefügt.</value>
+     <comment>{0} – Platzhalter für die Anzahl der Pakete</comment>
+   </data>
+   <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+     <value>Es wurden {0} Pakete zum Driver Store hinzugefügt und installiert.</value>
+     <comment>{0} – Platzhalter für die Anzahl der Pakete.</comment>
+   </data>
+   <data name="Message_Drivers_Added_Error" xml:space="preserve">
+     <value>Fehler beim Hinzufügen einiger Pakete zum Driver Store.</value>
+   </data>
+   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+     <value>Fehler beim Hinzufügen und Installieren einiger Pakete zum Driver Store.</value>
+   </data>
+   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+     <value>Au&amp;sgewählte Treiberliste exportieren</value>
+   </data>
 </root>
