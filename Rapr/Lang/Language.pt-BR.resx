@@ -425,4 +425,25 @@ Licença:
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Digite aqui para pesquisar</value>
   </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Selecione a pasta INF</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>Nenhum arquivo INF encontrado na pasta {0}.</value>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>{0} pacotes adicionados ao armazenamento de drivers.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>{0} pacotes adicionados e instalados no armazenamento de drivers.</value>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>Erro ao adicionar alguns pacotes ao armazenamento de drivers.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>Erro ao adicionar alguns pacotes e instalar no armazenamento de drivers.</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>Exportar lista de drivers &amp;selecionados</value>
+  </data>
 </root>
