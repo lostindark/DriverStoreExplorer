@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -118,31 +118,31 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>&amp;Add Driver(s)</value>
+    <value>드라이버 추가(&amp;A)</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>&amp;Delete Driver(s)</value>
+    <value>드라이버 삭제(&amp;D)</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
-    <value>&amp;OK</value>
+    <value>확인(&amp;O)</value>
   </data>
   <data name="Button_Refresh" xml:space="preserve">
-    <value>&amp;Refresh</value>
+    <value>새로 고침(&amp;R)</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>&amp;Select Old Driver(s)</value>
+    <value>구형 드라이버 선택(&amp;S)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
-    <value>Force Deletio&amp;n</value>
+    <value>강제 삭제(&amp;N)</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
-    <value>&amp;Install Driver</value>
+    <value>드라이버 설치(&amp;I)</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
-    <value>Driver Date</value>
+    <value>드라이버 날짜</value>
   </data>
   <data name="Column_Driver_Class" xml:space="preserve">
-    <value>Driver Class</value>
+    <value>드라이버 클래스</value>
   </data>
   <data name="Column_Inf" xml:space="preserve">
     <value>INF</value>
@@ -151,332 +151,332 @@
     <value>OEM INF</value>
   </data>
   <data name="Column_Provider" xml:space="preserve">
-    <value>Provider</value>
+    <value>공급자</value>
   </data>
   <data name="Column_Signed_By" xml:space="preserve">
-    <value>Signed By</value>
+    <value>서명</value>
   </data>
   <data name="Column_Size" xml:space="preserve">
-    <value>Size</value>
+    <value>크기</value>
   </data>
   <data name="Column_Version" xml:space="preserve">
-    <value>Driver Version</value>
+    <value>드라이버 버전</value>
   </data>
   <data name="Context_Delete" xml:space="preserve">
-    <value>Delete</value>
+    <value>삭제</value>
   </data>
   <data name="Context_Deselect" xml:space="preserve">
-    <value>&amp;Deselect</value>
+    <value>선택 취소(&amp;D)</value>
   </data>
   <data name="Context_Deselect_All" xml:space="preserve">
-    <value>Deselect &amp;All</value>
+    <value>모두 선택 취소(&amp;A)</value>
   </data>
   <data name="Context_Select" xml:space="preserve">
-    <value>&amp;Select</value>
+    <value>선택(&amp;S)</value>
   </data>
   <data name="Context_Select_All" xml:space="preserve">
-    <value>Select &amp;All</value>
+    <value>모두 선택(&amp;A)</value>
   </data>
   <data name="Context_Invert_Selection" xml:space="preserve">
-    <value>&amp;Invert Selection</value>
+    <value>선택 반전(&amp;I)</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>Select &amp;Old Drivers</value>
+    <value>구형 드라이버 선택(&amp;O)</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>About to delete {0} packages from driver store.</value>
-    <comment>{0} - Placeholder for number of packages</comment>
+    <value>드라이버 저장소에서 {0}개의 패키지를 삭제하려고 합니다.</value>
+    <comment>{0} - 패키지 수에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>About to delete {0} ({1}) from driver store.</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
+    <value>드라이버 저장소에서 {0} ({1})를 삭제하려고 합니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>This utility cannot be run in pre-Vista OS.</value>
+    <value>이 유틸리티는 Vista 이전 OS에서 실행할 수 없습니다.</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
-    <value>Are you sure?</value>
+    <value>확실합니까?</value>
   </data>
   <data name="Message_Title_Warning" xml:space="preserve">
-    <value>Warning</value>
+    <value>경고</value>
   </data>
   <data name="Operations_Text" xml:space="preserve">
-    <value>Operations</value>
+    <value>작업</value>
   </data>
   <data name="Product_Name" xml:space="preserve">
-    <value>Driver Store Explorer</value>
+    <value>드라이버 저장소 탐색기</value>
   </data>
   <data name="Status_Label" xml:space="preserve">
-    <value>Ready</value>
+    <value>준비</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[TIP: The driver may still being used. Try FORCE deleting the package]</value>
+    <value>[팁: 드라이버가 아직 사용 중일 수 있습니다. 패키지를 강제로 삭제하세요]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
-    <value>&amp;Help</value>
+    <value>도움말(&amp;H)</value>
   </data>
   <data name="Menu_Help_About" xml:space="preserve">
-    <value>&amp;About</value>
+    <value>정보(&amp;A)</value>
   </data>
   <data name="Menu_File" xml:space="preserve">
-    <value>&amp;File</value>
+    <value>파일(&amp;F)</value>
   </data>
   <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
-    <value>&amp;Export All Driver List</value>
+    <value>드라이버 목록 내보내기(&amp;E)</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
-    <value>E&amp;xit</value>
+    <value>종료(&amp;X)</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>&amp;View Logs</value>
+    <value>로그 보기(&amp;V)</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
   </data>
   <data name="Message_No_Entries" xml:space="preserve">
-    <value>No entries loaded.</value>
+    <value>로드된 항목이 없습니다.</value>
   </data>
   <data name="Message_No_Match_Result" xml:space="preserve">
-    <value>No match result.</value>
+    <value>일치하는 결과가 없습니다.</value>
   </data>
   <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
     <value>Select the Inf folder</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
-    <value>About {0}</value>
-    <comment>{0} - Placeholder for Product_Name</comment>
+    <value>{0} 정보</value>
+    <comment>{0} - Product_Name의 자리 표시자</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>오류</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
-    <value>You can find latest version and release notes here:
+    <value>최신 버전과 릴리스 정보는 다음에서 찾을 수 있습니다:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-Filing bug/feature request:
+버그/기능 요청:
     https://github.com/lostindark/DriverStoreExplorer/issues
 
-Contributors:
+공헌자:
     https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
 
-Credits:
+크레딧:
     https://github.com/lostindark/DriverStoreExplorer?tab=readme-ov-file#credits
 
-License:
+라이선스:
     https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
 </value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
-    <value>English</value>
+    <value>한국어</value>
   </data>
   <data name="Dialog_Export_Filters" xml:space="preserve">
-    <value>CSV Files | *.csv</value>
+    <value>CSV 파일 | *.csv</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Adding driver package...</value>
+    <value>드라이버 패키지 추가 중...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Deleting driver package(s)...</value>
+    <value>드라이버 패키지 삭제 중...</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Removed {0} ({1}) from driver store.</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
+    <value>드라이버 저장소에서 {0} ({1})를 제거했습니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>Removed {0} packages from driver store.</value>
-    <comment>{0} - Placeholder for number of packages</comment>
+    <value>드라이버 저장소에서 {0}개의 패키지를 제거했습니다.</value>
+    <comment>{0} - 패키지 수에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Error removing {0} ({1}) from driver store.</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
+    <value>드라이버 저장소에서 {0} ({1})를 제거하는 중에 오류가 발생했습니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Error removing some packages from driver store.</value>
+    <value>드라이버 저장소에서 일부 패키지를 제거하는 중에 오류가 발생했습니다.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Added the package {0} to driver store.</value>
-    <comment>{0} - Placeholder for path to inf</comment>
+    <value>드라이버 저장소에 {0} 패키지를 추가했습니다.</value>
+    <comment>{0} - inf 경로의 자리 표시자</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Error adding the package {0} to driver store.</value>
-    <comment>{0} - Placeholder for path to inf</comment>
+    <value>{0} 패키지를 드라이버 저장소에 추가하는 중에 오류가 발생했습니다.</value>
+    <comment>{0} - inf 경로의 자리 표시자</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
-    <value>The log file cannot be found.</value>
+    <value>로그 파일을 찾을 수 없습니다.</value>
   </data>
   <data name="Message_Error" xml:space="preserve">
-    <value>Error</value>
+    <value>오류</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>Contents saved to {0}. Export Completed.</value>
-    <comment>{0} - Placeholder for export path</comment>
+    <value>내용이 {0}에 저장되었습니다. 내보내기가 완료되었습니다.</value>
+    <comment>{0} - 내보내기 경로의 자리 표시자</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
-    <value>Export failed: {0}</value>
-    <comment>{0} - Placeholder for error message</comment>
+    <value>내보내기 실패: {0}</value>
+    <comment>{0} - 내보내기 경로의 자리 표시자</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>Selected {0} Driver(s). Total size: {1}.</value>
-    <comment>{0} - Placeholder for number of selected Drivers
-{1} - Placeholder for disk space</comment>
+    <value>{0}개의 드라이버를 선택했습니다. 총 크기: {1}.</value>
+    <comment>{0} - 선택한 드라이버 수에 대한 자리 표시자
+{1} - 디스크 공간의 자리 표시자</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>No drivers selected.</value>
+    <value>선택한 드라이버가 없습니다.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>Open &amp;Folder Location</value>
+    <value>폴더 위치 열기(&amp;F)</value>
   </data>
   <data name="Context_Open_Device_Properties" xml:space="preserve">
-    <value>Open Device &amp;Properties</value>
+    <value>장치 속성 열기(&amp;P)</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
-    <value>Local Machine</value>
+    <value>로컬 컴퓨터</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>&amp;Choose Driver Store</value>
+    <value>드라이버 저장소 선택(&amp;C)</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
-    <value>Offline Driver Store</value>
+    <value>오프라인 드라이버 저장소</value>
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
-    <value>&amp;Choose Driver Store</value>
+    <value>드라이버 저장소 선택(&amp;C)</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
-    <value>&amp;Language</value>
+    <value>언어(&amp;L)</value>
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
-    <value>Device Name</value>
+    <value>장치 이름</value>
   </data>
   <data name="Column_DeviceId" xml:space="preserve">
-    <value>Device Id</value>
+    <value>장치 Id</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
-    <value>(Up to date)</value>
+    <value>(최신 버전 - 번역: 비너스걸)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
-    <value>(Found New Version v{0} - {1})</value>
-    <comment>{0} - Placeholder for version number
-{1} - Placeholder for About_Download</comment>
+    <value>(새 버전 v{0} - {1}를 찾았습니다)</value>
+    <comment>{0} - 버전 번호의 자리 표시자
+{1} - 정보_다운로드에 대한 자리 표시자</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
-    <value>Download</value>
+    <value>다운로드</value>
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
-    <value>Scanning driver store...</value>
+    <value>드라이버 저장소를 검색하는 중...</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>About to force delete {0} ({1}) from driver store.</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
+    <value>드라이버 저장소에서 {0}({1})을 강제로 삭제하려고 합니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>About to force delete {0} packages from driver store.</value>
-    <comment>{0} - Placeholder for number of packages</comment>
+    <value>드라이버 저장소에서 {0}개의 패키지를 강제로 삭제하려고 합니다.</value>
+    <comment>{0} - 패키지 수에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
-    <value>Deletion of {0} ({1}) succeeded.</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
+    <value>{0} ({1}) 삭제에 성공했습니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
-    <value>Export driver {0} ({1}) succeeded.</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
+    <value>드라이버 {0}({1})을(를) 내보냈습니다.</value>
+    <comment>{0} - 폴더 이름의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
-    <value>Deletion of {0} ({1}) failed.</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
+    <value>{0} ({1}) 삭제를 실패했습니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Export_Fail" xml:space="preserve">
-    <value>Export driver {0} ({1}) failed.</value>
-    <comment>{0} - Placeholder for inf package file
-{1} - Placeholder for oem inf file</comment>
+    <value>드라이버 {0}({1})을(를) 내보내지 못했습니다.</value>
+    <comment>{0} - inf 패키지 파일의 자리 표시자
+{1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Added the package {0} &amp; installed to driver store.</value>
-    <comment>{0} - Placeholder for path to inf</comment>
+    <value>{0} 패키지를 추가하고 드라이버 저장소에 설치했습니다.</value>
+    <comment>{0} - inf 경로의 자리 표시자</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Error adding the package {0} &amp; installed to driver store.</value>
-    <comment>{0} - Placeholder for path to inf</comment>
+    <value>{0} 패키지를 드라이버 저장소에 추가하는 동안 오류가 발생했습니다.</value>
+    <comment>{0} - inf 경로의 자리 표시자</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>&amp;Export Driver(s)</value>
+    <value>드라이버 내보내기(&amp;E)</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
-    <value>&amp;Export Driver</value>
+    <value>드라이버 내보내기(&amp;E)</value>
   </data>
   <data name="Button_Export_All_Drivers" xml:space="preserve">
-    <value>Ex&amp;port All Drivers</value>
+    <value>모든 드라이버 내보내기(&amp;P)</value>
   </data>
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
-    <value>Export all driver packages failed.</value>
+    <value>모든 드라이버 패키지를 내보내지 못했습니다.</value>
   </data>
   <data name="Message_Export_Drivers_Error" xml:space="preserve">
-    <value>Error exporting some driver packages.</value>
+    <value>일부 드라이버 패키지를 내보내는 중 오류가 발생했습니다.</value>
   </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
-    <value>Export all driver packages succeeded.</value>
+    <value>모든 드라이버 패키지를 성공적으로 내보냈습니다.</value>
   </data>
   <data name="Message_Export_Drivers_Success" xml:space="preserve">
-    <value>Export driver packages succeeded.</value>
+    <value>드라이버 패키지 내보내기가 성공했습니다.</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
-    <value>Exporting all driver packages...</value>
+    <value>모든 드라이버 패키지를 내보내는 중...</value>
   </data>
   <data name="Status_Exporting_Drivers" xml:space="preserve">
-    <value>Exporting driver package(s)...</value>
+    <value>드라이버 패키지를 내보내는 중...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
-    <value>&amp;Cancel</value>
+    <value>취소(&amp;C)</value>
   </data>
   <data name="Column_BootCritical" xml:space="preserve">
-    <value>Boot Critical</value>
+    <value>부팅 임계</value>
   </data>
   <data name="Column_Text_True" xml:space="preserve">
-    <value>True</value>
+    <value>참</value>
   </data>
   <data name="Column_Text_False" xml:space="preserve">
-    <value>False</value>
+    <value>거짓</value>
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
-    <value>Extension Id</value>
+    <value>확장 ID</value>
   </data>
   <data name="Menu_Options" xml:space="preserve">
-    <value>&amp;Options</value>
+    <value>옵션(&amp;O)</value>
   </data>
   <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
-    <value>Use Native Driver Store</value>
+    <value>기본 드라이버 저장소 사용</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>Use DISM</value>
+    <value>DISM 사용</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
-    <value>Type here to search</value>
+    <value>검색하려면 여기에 입력</value>
   </data>
   <data name="Message_No_Inf_Found" xml:space="preserve">
-    <value>No inf files found in folder {0}.</value>
-    <comment>{0} - Placeholder for the folder name</comment>
+    <value>{0} 폴더에 inf 파일이 없습니다.</value>
+    <comment>{0} - 폴더 이름의 자리 표시자</comment>
   </data>
   <data name="Message_Drivers_Added" xml:space="preserve">
-    <value>Added {0} packages to driver store.</value>
-    <comment>{0} - Placeholder for number of packages</comment>
+    <value>드라이버 저장소에 {0}개의 패키지를 추가했습니다.</value>
+    <comment>{0} - 패키지 수에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Drivers_Added_Installed" xml:space="preserve">
-    <value>Added {0} packages and installed to driver store.</value>
-    <comment>{0} - Placeholder for number of packages.</comment>
+    <value>{0}개의 패키지를 추가하고 드라이버 저장소에 설치했습니다.</value>
+    <comment>{0} - 패키지 수에 대한 자리 표시자입니다.</comment>
   </data>
   <data name="Message_Drivers_Added_Error" xml:space="preserve">
-    <value>Error adding some packages to driver store.</value>
+    <value>드라이버 저장소에 일부 패키지를 추가하는 중 오류가 발생했습니다.</value>
   </data>
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
-    <value>Error adding some packages and install to driver store.</value>
+    <value>일부 패키지를 추가하고 드라이버 저장소에 설치하는 동안 오류가 발생했습니다.</value>
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
-    <value>Export &amp;Selected Driver List</value>
+    <value>선택한 드라이버 목록 내보내기(&amp;S)</value>
   </data>
 </root>
