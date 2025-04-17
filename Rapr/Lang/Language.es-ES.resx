@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>&amp;Agregar controlador</value>
+    <value>&amp;Agregar controlador(es)</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
     <value>&amp;Borrar controlador(es)</value>
@@ -268,7 +268,7 @@ Licencia:
     <value>Agregando paquete de controlador...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Borrando paquete de controlador(es)...</value>
+    <value>Borrando paquete(es) de controlador(es)...</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>Removido {0} ({1}) del almacén de controladores.</value>
@@ -292,7 +292,7 @@ Licencia:
     <comment>{0} - Marcador de posición para la ruta al inf</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Error agregando {0} el paquete al almacén de controladores.</value>
+    <value>Error agregando el paquete {0} al almacén de controladores.</value>
     <comment>{0} - Marcador de posición para la ruta al inf</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
@@ -353,7 +353,7 @@ Licencia:
     <value>Escaneando almacén de controladores...</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>A punto de forzar borrado {0} ({1}) del almacén de controladores.</value>
+    <value>A punto de forzar borrar {0} ({1}) del almacén de controladores.</value>
     <comment>{0} - Marcador de posición para archivo de paquete inf
 {1} - Marcador de posición para archivo oem inf</comment>
   </data>
@@ -367,7 +367,7 @@ Licencia:
 {1} - Marcador de posición para archivo oem inf</comment>
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
-    <value>Exportacion de controlador {0} ({1}) exitosamente.</value>
+    <value>Exportacion de controlador {0} ({1}) lograda.</value>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Borrado de {0} ({1}) fallido.</value>
@@ -378,11 +378,11 @@ Licencia:
     <value>Exportacion de controlador {0} ({1}) fallida.</value>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Agregado el paquete {0} &amp; instalado al almacén de controladores.</value>
+    <value>Agregado el paquete {0} e instalado al almacén de controladores.</value>
     <comment>{0} - Marcador de posición para la ruta al inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Error agregando el paquete {0} &amp; instalado al almacén de controladores.</value>
+    <value>Error agregando el paquete {0} e instalado al almacén de controladores.</value>
     <comment>{0} - Marcador de posición para la ruta al inf</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
@@ -401,16 +401,16 @@ Licencia:
     <value>Error exportando algunos paquetes de controladores.</value>
   </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
-    <value>Exportación de todos los paquetes de controladores exitosamente.</value>
+    <value>Exportación de todos los paquetes de controladores lograda.</value>
   </data>
   <data name="Message_Export_Drivers_Success" xml:space="preserve">
-    <value>Exportacion de paquetes de controladores exitosamente.</value>
+    <value>Exportacion de paquetes de controladores lograda.</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Exportando todos los paquetes de controladores...</value>
   </data>
   <data name="Status_Exporting_Drivers" xml:space="preserve">
-    <value>Exportando parquete de controlador(es)...</value>
+    <value>Exportando parquete(es) de controlador(es)...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Cancelar</value>
@@ -435,5 +435,41 @@ Licencia:
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>Usar DISM</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>ID de dispositivo</value>
+  </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>&amp;Invertir selección</value>
+  </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Abrir dispositivo y &amp;propiedades</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Seleccionar la carpeta INF</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>Exportar &amp;lista de controladores seleccionados</value>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>{0} paquetes agregados al almacén de controladores.</value>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>Error agregando algunos paquetes al almacén de controladores</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>Se agregaron {0} paquetes e instalados al almacén de controladores.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>Error agregando algunos paquetes e instalados en el almacén de controladores.</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>No se encuentraron archivos INF en la carpeta {0}.</value>
+  </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>No hay resultados de coincidencia.</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>Escribe aquí para buscar</value>
   </data>
 </root>
