@@ -240,6 +240,9 @@
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Nincs találat.</value>
   </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Válassza ki az Inf mappát</value>
+  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>{0} névjegye</value>
     <comment>{0} - Placeholder for Product_Name</comment>
@@ -454,5 +457,26 @@ Licensz:
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Kezdjen ide írni a kereséshez</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>Nem található inf fájl a(z) {0} mappában.</value>
+    <comment>{0} - Placeholder for the folder name</comment>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>{0} csomag hozzáadva az illesztőprogram-tárolóhoz.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>{0} csomagok hozzáadva és telepítette az illesztőprogram-tárolóba.</value>
+    <comment>{0} - Placeholder for number of packages.</comment>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>Hiba néhány csomag hozzáadásakor az illesztőprogram-tárolóhoz.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>Hiba néhány csomag hozzáadásakor és telepítésekor az illesztőprogram-tárolóhoz.</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>Kijelölt ille&amp;sztőprogramok listájának exportálása</value>
   </data>
 </root>
