@@ -148,7 +148,7 @@
     <value>INF</value>
   </data>
   <data name="Column_Oem_Inf" xml:space="preserve">
-    <value>INF du FEO</value>
+    <value>INF OEM</value>
   </data>
   <data name="Column_Provider" xml:space="preserve">
     <value>Fabricant</value>
@@ -188,15 +188,15 @@
     <comment>{0} - Correspond au nombre de paquets</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Sur le point de forcer la suppression {0} ({1}) du magasin de pilotes.</value>
+    <value>Sur le point de supprimer {0} ({1}) du magasin de pilotes.</value>
     <comment>{0} - Correspond au fichier INF du paquet
-{1} - Correspond au fichier INF du FEO</comment>
+{1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Cet utilitaire ne peut pas être exécuté sur un système d’exploitation antérieur à Vista.</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
-    <value>Êtes-vous sûr?</value>
+    <value>Êtes-vous sûr ?</value>
   </data>
   <data name="Message_Title_Warning" xml:space="preserve">
     <value>Attention</value>
@@ -217,7 +217,7 @@
     <value>&amp;Aide</value>
   </data>
   <data name="Menu_Help_About" xml:space="preserve">
-    <value>A &amp;propos</value>
+    <value>À &amp;propos</value>
   </data>
   <data name="Menu_File" xml:space="preserve">
     <value>&amp;Fichier</value>
@@ -229,7 +229,7 @@
     <value>&amp;Quitter</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>Afficher les fichiers &amp;journaux</value>
+    <value>Afficher le fichier &amp;journal</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
@@ -244,8 +244,8 @@
     <value>Sélectionner le dossier des INF</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
-    <value>À propos {0}</value>
-    <comment>{0} - Espace réservé pour Product_Name</comment>
+    <value>À propos de {0}</value>
+    <comment>{0} - Correspond à la valeur de la donnée nommée Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>Erreur</value>
@@ -254,7 +254,7 @@
     <value>Vous pouvez trouver la dernière version et les notes de publication à cette adresse :
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-Soumettre un bogue / une fonctionnalité :
+Soumettre un problème / une demande de fonctionnalité :
     https://github.com/lostindark/DriverStoreExplorer/issues
 
 Contributeurs :
@@ -282,7 +282,7 @@ Licence :
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>Suppression de {0} ({1}) du magasin de pilotes.</value>
     <comment>{0} - Correspond au fichier INF du paquet
-{1} - Correspond au fichier INF du FEO</comment>
+{1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
     <value>{0} paquets supprimés du magasin de pilotes.</value>
@@ -291,13 +291,13 @@ Licence :
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Erreur lors de la suppression de {0} ({1}) du magasin de pilotes.</value>
     <comment>{0} - Correspond au fichier INF du paquet
-{1} - Correspond au fichier INF du FEO</comment>
+{1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>Erreur lors de la suppression de certains paquets du magasin de pilotes.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Ajouté {0} le paquet au magasin de pilotes.</value>
+    <value>Le paquet {0} a été ajouté au magasin de pilotes.</value>
     <comment>{0} - Correspond au chemin du fichier INF</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
@@ -312,7 +312,7 @@ Licence :
   </data>
   <data name="Export_Complete" xml:space="preserve">
     <value>Contenu enregistré vers {0}. Exportation complétée.</value>
-    <comment>{0} - Correspond au chemin d’exporation</comment>
+    <comment>{0} - Correspond au chemin d’exportation</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>Échec de l’exportation : {0}</value>
@@ -321,7 +321,7 @@ Licence :
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>{0} pilote(s) sélectionné(s). Taille totale : {1}.</value>
     <comment>{0} - Correspond au nombre de pilotes sélectionnés
-{1} - Espace réservé pour l’espace disque</comment>
+{1} - Correspond à la taille totale des pilotes sélectionnés</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>Aucun pilote sélectionné.</value>
@@ -359,7 +359,7 @@ Licence :
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(Nouvelle version v{0} trouvée - {1})</value>
     <comment>{0} - Correspond au numéro de version
-{1} - Espace réservé pour About_Download</comment>
+{1} - Correspond à la valeur de la donnée nommée About_Download</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Télécharger</value>
@@ -370,7 +370,7 @@ Licence :
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>Sur le point de forcer la suppression de {0} ({1}) du magasin de pilotes.</value>
     <comment>{0} - Correspond au fichier INF du paquet
-{1} - Correspond au fichier INF du FEO</comment>
+{1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
     <value>Sur le point de forcer la suppression de {0} paquets du magasin de pilotes.</value>
@@ -379,25 +379,25 @@ Licence :
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>Suppression de {0} ({1}) réussie.</value>
     <comment>{0} - Correspond au fichier INF du paquet
-{1} - Correspond au fichier INF du FEO</comment>
+{1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
     <value>Exportation du pilote {0} ({1}) réussie.</value>
     <comment>{0} - Correspond au fichier INF du paquet
-{1} - Correspond au fichier INF du FEO</comment>
+{1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Échec de la suppression de {0} ({1}).</value>
     <comment>{0} - Correspond au fichier INF du paquet
-{1} - Correspond au fichier INF du FEO</comment>
+{1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Export_Fail" xml:space="preserve">
-    <value>Échec de l’exporation de {0} ({1}).</value>
+    <value>Échec de l’exportation de {0} ({1}).</value>
     <comment>{0} - Correspond au fichier INF du paquet
-{1} - Correspond au fichier INF du FEO</comment>
+{1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Paquet {0} ajouté et installé dans le magasin de pilotes.</value>
+    <value>Le paquet {0} a été ajouté et installé dans le magasin de pilotes.</value>
     <comment>{0} - Correspond au fichier INF du paquet</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
@@ -411,16 +411,16 @@ Licence :
     <value>&amp;Exporter le pilote</value>
   </data>
   <data name="Button_Export_All_Drivers" xml:space="preserve">
-    <value>Exporter tous les pilotes</value>
+    <value>Ex&amp;porter tous les pilotes</value>
   </data>
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
-    <value>Échec de l’ex&amp;portation de tous les paquets de pilotes.</value>
+    <value>Échec de l’exportation de tous les paquets de pilotes.</value>
   </data>
   <data name="Message_Export_Drivers_Error" xml:space="preserve">
     <value>Échec de l’exportation de certains paquets de pilotes.</value>
   </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
-    <value>Exporation de tous les paquets de pilotes réussie.</value>
+    <value>Exportation de tous les paquets de pilotes réussie.</value>
   </data>
   <data name="Message_Export_Drivers_Success" xml:space="preserve">
     <value>Exportation des paquets de pilotes réussie.</value>
@@ -429,7 +429,7 @@ Licence :
     <value>Exportation de tous les paquets de pilotes en cours…</value>
   </data>
   <data name="Status_Exporting_Drivers" xml:space="preserve">
-    <value>Exportation du (des) paquet(s) de pilotes en cours…</value>
+    <value>Exportation du(des) paquet(s) de pilotes en cours…</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Annuler</value>
@@ -463,7 +463,7 @@ Licence :
     <comment>{0} - Correspond au nom du dossier</comment>
   </data>
   <data name="Message_Drivers_Added" xml:space="preserve">
-    <value>Ajout de {0} paquets au magasin de pilotes.</value>
+    <value>{0} paquets ajoutés au magasin de pilotes.</value>
     <comment>{0} - Correspond au nombre de paquets</comment>
   </data>
   <data name="Message_Drivers_Added_Installed" xml:space="preserve">
@@ -477,6 +477,6 @@ Licence :
     <value>Erreur lors de l’ajout de certains paquets et de l’installation dans le magasin de pilotes.</value>
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
-    <value>Exporter la liste des pilotes &amp;sélectionnée</value>
+    <value>Exporter la liste des pilotes &amp;sélectionnés</value>
   </data>
 </root>
