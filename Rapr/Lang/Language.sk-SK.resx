@@ -223,7 +223,7 @@
     <value>&amp;Súbor</value>
   </data>
   <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
-    <value>&amp;Exportovať zoznam ovládačov</value>
+    <value>&amp;Exportovať zoznam všetkých ovládačov</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>E&amp;xit</value>
@@ -239,6 +239,9 @@
   </data>
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Žiadna výsledná zhoda.</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Vyberte Inf priečinok</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>O {0}</value>
@@ -454,5 +457,26 @@ Licencia:
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Píšte sem pre vyhľadávanie</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>Nenájdené žiadne inf súbory v priečinku {0}.</value>
+    <comment>{0} - Placeholder for the folder name</comment>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>Pridaných {0} balíkov do úložiska ovládačov.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>Pridaných {0} balíkov a nainštalovaných do úložiska ovládačov.</value>
+    <comment>{0} - Placeholder for number of packages.</comment>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>Chyba pri pridávaní niektorých balíkov do úložiska ovládačov.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>Chyba pri pridávaní niektorých balíkov a inštalovaní do úložiska ovládačov.</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>Exportovať zoznam &amp;označených ovládačov</value>
   </data>
 </root>
