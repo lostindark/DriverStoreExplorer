@@ -177,14 +177,20 @@
   <data name="Context_Select_All" xml:space="preserve">
     <value>すべて選択(&amp;A)</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>選択を反転(&amp;I)</value>
+  </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>古いドライバーのみ選択(&amp;O)</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>ドライバー ストアから {0} 個のパッケージを削除します。</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>ドライバー ストアから {0} ({1}) を削除します。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>このユーティリティは Windows Vista 以前の OS では実行できません。</value>
@@ -231,8 +237,15 @@
   <data name="Message_No_Entries" xml:space="preserve">
     <value>エントリが読み込まれていません。</value>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>一致するものがありません。</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Inf フォルダーの選択択</value>
+  </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>{0} のバージョン情報</value>
+    <comment>{0} - Placeholder for Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>エラー</value>
@@ -268,21 +281,28 @@
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>ドライバー ストアから {0} ({1}) を削除しました。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
     <value>ドライバー ストアから {0} 個のパッケージを削除しました。</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>ドライバー ストアから {0} ({1}) の削除中にエラーが発生しました 。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>ドライバー ストアからいくつかのパッケージを削除する際にエラーが発生しました。</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>ドライバー ストアにパッケージ {0} を追加しました。</value>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
     <value>ドライバー ストアにパッケージ {0} を追加する際にエラーが発生しました。</value>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>ログ ファイルが見つかりません。</value>
@@ -292,18 +312,25 @@
   </data>
   <data name="Export_Complete" xml:space="preserve">
     <value>{0} に内容は保存され、エクスポートが完了しました。</value>
+    <comment>{0} - Placeholder for export path</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>エクスポート失敗: {0}</value>
+    <comment>{0} - Placeholder for error message</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>{0} 個のドライバーを選択 合計サイズ: {1}</value>
+    <comment>{0} - Placeholder for number of selected Drivers
+{1} - Placeholder for disk space</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>ドライバーが選択されていません。</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>ファイルの場所を開く(&amp;F)</value>
+  </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>デバイスのプロパティを開く(&amp;P)</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>ローカル コンピューター</value>
@@ -323,11 +350,16 @@
   <data name="Column_DeviceName" xml:space="preserve">
     <value>デバイス名</value>
   </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>デバイス ID</value>
+  </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
     <value>(最新)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(新しいバージョンがあります v{0} - {1})</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for About_Download</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>ダウンロード</value>
@@ -337,39 +369,67 @@
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>ドライバー ストアから {0} ({1}) を強制削除します。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
     <value>ドライバー ストアから {0} 個のパッケージを強制削除します。</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>{0} ({1}) の削除に成功しました。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>ドライバー {0} ({1}) のエクスポートに成功しました。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>{0} ({1}) の削除に失敗しました。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>ドライバー {0} ({1}) のエクスポートに失敗しました。</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
     <value>ドライバー ストアにパッケージ {0} を追加してインストールしました。</value>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>ドライバー ストアにパッケージ {0} を追加してインストールする際にエラーが発生しました。</value>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>ドライバーのエクスポート(&amp;E)</value>
+    <value>ドライバーをエクスポート(&amp;E)</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
-    <value>ドライバーのエクスポート(&amp;E)</value>
+    <value>ドライバーをエクスポート(&amp;E)</value>
   </data>
   <data name="Button_Export_All_Drivers" xml:space="preserve">
-    <value>すべてのドライバーのエクスポート(&amp;P)...</value>
+    <value>すべてのドライバーをエクスポート(&amp;P)...</value>
   </data>
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
     <value>すべてのドライバー パッケージのエクスポートに失敗しました。</value>
   </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>一部のドライバー パッケージのエクスポート中にエラーが発生しました。</value>
+  </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
     <value>すべてのドライバー パッケージをエクスポートしました。</value>
   </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>ドライバー パッケージのエクスポートに成功しました。</value>
+  </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>すべてのドライバー パッケージをエクスポートしています...</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>ドライバー パッケージをエクスポートしています...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>キャンセル(&amp;C)</value>
@@ -395,4 +455,31 @@
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>DISM を使用</value>
   </data>
+<<<<<<< HEAD
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>入力して検索</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>フォルダー {0} に inf ファイルが見つかりません。</value>
+    <comment>{0} - Placeholder for the folder name</comment>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>ドライバー ストアに {0} パッケージを追加しました。</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>{0} 個のパッケージが追加され、ドライバー ストアにインストールされました。</value>
+    <comment>{0} - Placeholder for number of packages.</comment>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>一部のパッケージをドライバー ストアに追加する際にエラーが発生しました。</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>いくつかのパッケージを追加してドライバー ストアにインストールする際にエラーが発生しました。</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>選択したドライバーリストをエクスポート(&amp;S)</value>
+  </data>
+=======
+>>>>>>> 7966ae382ff6dd078d9c34a107f1619d35d1698f
 </root>
