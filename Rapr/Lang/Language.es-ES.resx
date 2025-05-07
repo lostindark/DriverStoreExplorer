@@ -271,21 +271,21 @@ Licencia:
     <value>Borrando paquete(es) de controlador(es)...</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Removido {0} ({1}) del almacén de controladores.</value>
+    <value>Borrados {0} ({1}) del almacén de controladores.</value>
     <comment>{0} - Marcador de posición para archivo de paquete inf
 {1} - Marcador de posición para archivo oem inf</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>Removidos {0} paquetes del almacén de controladores.</value>
+    <value>Borrados {0} paquetes del almacén de controladores.</value>
     <comment>{0} - Marcador de posición para el número de paquetes</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
-    <value>Error removiendo {0} ({1}) del almacén de controladores.</value>
+    <value>Error borrando {0} ({1}) del almacén de controladores.</value>
     <comment>{0} - Marcador de posición para archivo de paquete inf
 {1} - Marcador de posición para archivo oem inf</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Error removiendo algunos paquetes del almacén de controladores.</value>
+    <value>Error borrando algunos paquetes del almacén de controladores.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>Agregado el paquete {0} al almacén de controladores.</value>
