@@ -1,0 +1,482 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="https://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="https://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Button_Add_Package" xml:space="preserve">
+    <value>&amp;Legg til driver(e)</value>
+  </data>
+  <data name="Button_Delete_Package" xml:space="preserve">
+    <value>&amp;Slett driver(e)</value>
+  </data>
+  <data name="Button_OK" xml:space="preserve">
+    <value>&amp;OK</value>
+  </data>
+  <data name="Button_Refresh" xml:space="preserve">
+    <value>&amp;Oppfrisk</value>
+  </data>
+  <data name="Button_Select_Old" xml:space="preserve">
+    <value>&amp;Velg gamle driver(e)</value>
+  </data>
+  <data name="Check_Force_Delete" xml:space="preserve">
+    <value>Tvangssletti&amp;ng</value>
+  </data>
+  <data name="Check_Install_Driver" xml:space="preserve">
+    <value>&amp;Installér driver</value>
+  </data>
+  <data name="Column_Date" xml:space="preserve">
+    <value>Driverdato</value>
+  </data>
+  <data name="Column_Driver_Class" xml:space="preserve">
+    <value>Driverklasse</value>
+  </data>
+  <data name="Column_Inf" xml:space="preserve">
+    <value>INF</value>
+  </data>
+  <data name="Column_Oem_Inf" xml:space="preserve">
+    <value>OEM INF</value>
+  </data>
+  <data name="Column_Provider" xml:space="preserve">
+    <value>Leverandør</value>
+  </data>
+  <data name="Column_Signed_By" xml:space="preserve">
+    <value>Signert av</value>
+  </data>
+  <data name="Column_Size" xml:space="preserve">
+    <value>Størrelse</value>
+  </data>
+  <data name="Column_Version" xml:space="preserve">
+    <value>Driverversjon</value>
+  </data>
+  <data name="Context_Delete" xml:space="preserve">
+    <value>Slett</value>
+  </data>
+  <data name="Context_Deselect" xml:space="preserve">
+    <value>&amp;Avvelg</value>
+  </data>
+  <data name="Context_Deselect_All" xml:space="preserve">
+    <value>Avvelg &amp;alle</value>
+  </data>
+  <data name="Context_Select" xml:space="preserve">
+    <value>&amp;Velg</value>
+  </data>
+  <data name="Context_Select_All" xml:space="preserve">
+    <value>Velg &amp;alle</value>
+  </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>&amp;Invertér utvalget</value>
+  </data>
+  <data name="Context_Select_Old" xml:space="preserve">
+    <value>Velg &amp;gamle drivere</value>
+  </data>
+  <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
+    <value>Skal til å slette {0} pakker fra driverlageret.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Single_Package" xml:space="preserve">
+    <value>Skal til å slette {0} ({1}) fra driverlageret.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Requires_Later_OS" xml:space="preserve">
+    <value>Dette programmet kan ikke kjøres i OS-er fra før Vista.</value>
+  </data>
+  <data name="Message_Sure" xml:space="preserve">
+    <value>Er du sikker?</value>
+  </data>
+  <data name="Message_Title_Warning" xml:space="preserve">
+    <value>Advarsel</value>
+  </data>
+  <data name="Operations_Text" xml:space="preserve">
+    <value>Handlinger</value>
+  </data>
+  <data name="Product_Name" xml:space="preserve">
+    <value>Driver Store Explorer</value>
+  </data>
+  <data name="Status_Label" xml:space="preserve">
+    <value>Klar</value>
+  </data>
+  <data name="Tip_Driver_In_Use" xml:space="preserve">
+    <value>[TIPS: Driveren er kanskje fortsatt i bruk. Prøv å TVANGSslette pakken]</value>
+  </data>
+  <data name="Menu_Help" xml:space="preserve">
+    <value>&amp;Hjelp</value>
+  </data>
+  <data name="Menu_Help_About" xml:space="preserve">
+    <value>&amp;Om</value>
+  </data>
+  <data name="Menu_File" xml:space="preserve">
+    <value>&amp;Fil</value>
+  </data>
+  <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
+    <value>&amp;Eksporter listen over alle drivere</value>
+  </data>
+  <data name="Menu_File_Exit" xml:space="preserve">
+    <value>A&amp;vslutt</value>
+  </data>
+  <data name="Menu_File_View_Logs" xml:space="preserve">
+    <value>&amp;Vis loggføringer</value>
+  </data>
+  <data name="Date_Format" xml:space="preserve">
+    <value>{0:d}</value>
+  </data>
+  <data name="Message_No_Entries" xml:space="preserve">
+    <value>Ingen oppføringer er lastet inn.</value>
+  </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>Ingen samsvarende resultater.</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Velg Inf-mappen</value>
+  </data>
+  <data name="Product_About_Title" xml:space="preserve">
+    <value>Om {0}</value>
+    <comment>{0} - Placeholder for Product_Name</comment>
+  </data>
+  <data name="Export_Error" xml:space="preserve">
+    <value>Feil</value>
+  </data>
+  <data name="About_Project_Description" xml:space="preserve">
+    <value>Du kan finne den nyeste versjonen og versjonnotater her:
+    https://github.com/lostindark/DriverStoreExplorer/releases
+
+Innsending av feilmeldinger/funksjonsforespørsler:
+    https://github.com/lostindark/DriverStoreExplorer/issues
+
+Bidragsytere:
+    https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
+
+Krediteringer:
+    https://github.com/lostindark/DriverStoreExplorer?tab=readme-ov-file#credits
+
+Lisens:
+    https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
+</value>
+  </data>
+  <data name="UnitTest_Language" xml:space="preserve">
+    <value>Norsk</value>
+  </data>
+  <data name="Dialog_Export_Filters" xml:space="preserve">
+    <value>CSV-filer | *.csv</value>
+  </data>
+  <data name="Status_Adding_Package" xml:space="preserve">
+    <value>Legger til driverpakke ...</value>
+  </data>
+  <data name="Status_Deleting_Packages" xml:space="preserve">
+    <value>Sletter driverpakke(r) ...</value>
+  </data>
+  <data name="Message_Delete_Package" xml:space="preserve">
+    <value>Fjernet {0} ({1}) fra driverlageret.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Packages" xml:space="preserve">
+    <value>Fjernet {0} pakker fra driverlageret.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Package_Error" xml:space="preserve">
+    <value>Feil under fjerning av {0} ({1}) fra driverlageret.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Packages_Error" xml:space="preserve">
+    <value>Feil under fjerning av enkelte pakker fra driverlageret.</value>
+  </data>
+  <data name="Message_Driver_Added" xml:space="preserve">
+    <value>La til «{0}»-pakken i driverlageret.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Error" xml:space="preserve">
+    <value>Feil under forsøk på å legge til «{0}»-pakken i driverlageret.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Log_File_NotFound" xml:space="preserve">
+    <value>Loggfilen ble ikke funnet.</value>
+  </data>
+  <data name="Message_Error" xml:space="preserve">
+    <value>Feil</value>
+  </data>
+  <data name="Export_Complete" xml:space="preserve">
+    <value>Innholdet ble lagret til {0}. Eksporteringen er fullført.</value>
+    <comment>{0} - Placeholder for export path</comment>
+  </data>
+  <data name="Export_Failed" xml:space="preserve">
+    <value>Eksportering mislyktes: {0}</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data>
+  <data name="Status_Selected_Drivers" xml:space="preserve">
+    <value>Valgte {0} driver(e). Total størrelse: {1}.</value>
+    <comment>{0} - Placeholder for number of selected Drivers
+{1} - Placeholder for disk space</comment>
+  </data>
+  <data name="Status_No_Drivers_Selected" xml:space="preserve">
+    <value>Ingen drivere er valgt.</value>
+  </data>
+  <data name="Context_Open_Folder" xml:space="preserve">
+    <value>Åpne &amp;mappeplassering</value>
+  </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Åpne enhets&amp;egenskaper</value>
+  </data>
+  <data name="DriverStore_LocalMachine" xml:space="preserve">
+    <value>Lokal maskin</value>
+  </data>
+  <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
+    <value>&amp;Velg driverlager</value>
+  </data>
+  <data name="DriverStore_Offline" xml:space="preserve">
+    <value>Offline-driverlager</value>
+  </data>
+  <data name="ChooseDriverStore_Title" xml:space="preserve">
+    <value>&amp;Velg driverlager</value>
+  </data>
+  <data name="Menu_Language" xml:space="preserve">
+    <value>&amp;Språk</value>
+  </data>
+  <data name="Column_DeviceName" xml:space="preserve">
+    <value>Enhetsnavn</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>Enhets-ID</value>
+  </data>
+  <data name="About_VersionUpToDate" xml:space="preserve">
+    <value>(Opp til dags dato)</value>
+  </data>
+  <data name="About_FoundNewVersion" xml:space="preserve">
+    <value>(Fant en ny versjon: v{0} - {1})</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for About_Download</comment>
+  </data>
+  <data name="About_Download" xml:space="preserve">
+    <value>Last ned</value>
+  </data>
+  <data name="Message_Scanning_Driver_Store" xml:space="preserve">
+    <value>Skanner driverlager ...</value>
+  </data>
+  <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
+    <value>Skal til å tvangsslette {0} ({1}) fra driverlageret.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
+    <value>Skal til å tvangsslette {0} pakker fra driverlageret.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Delete_Success" xml:space="preserve">
+    <value>Slettingen av {0} ({1}) var vellykket.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>Eksportering av {0} ({1}) var vellykket.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Delete_Fail" xml:space="preserve">
+    <value>Sletting av {0} ({1}) mislyktes..</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>Eksportering av «{0}»-driveren ({1}) mislyktes.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed" xml:space="preserve">
+    <value>La til «{0}»-driveren og installerte den i driverlageret.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
+    <value>Feil under forsøk på å legge til «{0}»-pakken og installerte den i driverlageret.</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Button_Export_Drivers" xml:space="preserve">
+    <value>&amp;Eksporter driver(e)</value>
+  </data>
+  <data name="Context_Export_Driver" xml:space="preserve">
+    <value>&amp;Eksporter driver</value>
+  </data>
+  <data name="Button_Export_All_Drivers" xml:space="preserve">
+    <value>Eks&amp;porter alle drivere</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
+    <value>Eksportering av alle driverpakker mislyktes.</value>
+  </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Feil under eksportering av enkelte driverpakker.</value>
+  </data>
+  <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
+    <value>Eksporteringen av alle driverpakker var vellykket.</value>
+  </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Eksporteringen av driverpakker var vellykket.</value>
+  </data>
+  <data name="Status_Exporting_All_Drivers" xml:space="preserve">
+    <value>Eksporterer alle driverpakker ...</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Eksporterer driverpakke(r) ...</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>&amp;Avbryt</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>Kritisk viktig for oppstart</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>Ja</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>Nei</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>Utvidelses-ID</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>&amp;Innstillinger</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Bruk det innebygde driverlageret</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>Bruk DISM</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>Skriv her for å søke</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>Ingen inf-filer ble funnet i «{0}»-mappen.</value>
+    <comment>{0} - Placeholder for the folder name</comment>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>La til {0} pakker i driverlageret.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>La til {0} pakker og installerte dem i driverlageret.</value>
+    <comment>{0} - Placeholder for number of packages.</comment>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>Feil under forsøk på å legge til enkelte pakker i driverlageret.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>Feil under forsøk på å legge til enkelte pakker og å installere dem i driverlageret.</value>
+  </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>Eksporter listen over de valgte driverne</value>
+  </data>
+</root>
