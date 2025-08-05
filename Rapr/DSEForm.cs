@@ -723,10 +723,15 @@ namespace Rapr
                 this.lstDriverStoreEntries.CheckedObjects = this.lstDriverStoreEntries
                     .Objects
                     .OfType<DriverStoreEntry>()
-                    .Where(entry => entry.BootCritical != true)
+                    .Where(entry => entry.BootCritical != true && entry.DriverInfName != "ntprint.inf")
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverExtensionId, entry.DriverPkgProvider, entry.DriverInfName })
-                    .SelectMany(g => g.OrderByDescending(row => row.DriverVersion).ThenByDescending(row => row.DriverDate).Skip(1))
-                    .Where(entry => string.IsNullOrEmpty(entry.DeviceName) && entry.DriverInfName != "ntprint.inf") // Ignore ntprint.inf
+                    .SelectMany(drivers => drivers
+                        .GroupBy(entry => new { entry.DriverVersion, entry.DriverDate })
+                        .OrderByDescending(g => g.Key.DriverVersion)
+                        .ThenByDescending(g => g.Key.DriverDate)
+                        .Skip(1)
+                        .Where(g => g.All(entry => string.IsNullOrEmpty(entry.DeviceName)))
+                        .SelectMany(g => g))
                     .ToArray();
             }
         }
