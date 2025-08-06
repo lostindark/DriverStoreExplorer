@@ -219,6 +219,9 @@
   <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
     <value>تصدير قائمة التعريفات</value>
   </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>تصدير قائمة برامج تشغيل محددة</value>
+  </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>خروج</value>
   </data>
@@ -366,5 +369,8 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>تصدير جميع التعريفات...</value>
+  </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>تضمين برامج التشغيل المهمة للإقلاع في برامج التشغيل القديمة</value>
   </data>
 </root>

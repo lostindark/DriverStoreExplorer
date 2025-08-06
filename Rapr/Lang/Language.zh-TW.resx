@@ -455,6 +455,9 @@
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>使用DISM</value>
   </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>在舊驅動程式中包含開機關鍵驅動程式</value>
+  </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>在此處輸入以搜尋</value>
   </data>

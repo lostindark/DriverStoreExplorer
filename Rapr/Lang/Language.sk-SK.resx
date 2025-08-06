@@ -479,4 +479,7 @@ Licencia:
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>Exportovať zoznam &amp;označených ovládačov</value>
   </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>Zahrnúť kritické ovládače pri spustení do starých ovládačov</value>
+  </data>
 </root>

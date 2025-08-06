@@ -479,4 +479,7 @@ Lisans:
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>&amp;Seçilen Sürücü Listesini Dışa Aktar</value>
   </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>Eski sürücülerde önyükleme kritik sürücülerini dahil et</value>
+  </data>
 </root>

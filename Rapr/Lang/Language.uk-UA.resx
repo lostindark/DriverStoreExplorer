@@ -479,4 +479,7 @@
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>Експортувати список вибраних драйверів</value>
   </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>Включити критичні для завантаження драйвери до старих драйверів</value>
+  </data>
 </root>

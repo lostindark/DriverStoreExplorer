@@ -479,4 +479,7 @@ Lizenz:
    <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
      <value>Au&amp;sgewählte Treiberliste exportieren</value>
    </data>
+   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+     <value>Boot-kritische Treiber in alte Treiber einbeziehen</value>
+   </data>
 </root>

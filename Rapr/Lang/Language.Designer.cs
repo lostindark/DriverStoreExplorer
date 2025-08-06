@@ -606,6 +606,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Include Boot Critical in Old Drivers.
+        /// </summary>
+        public static string Menu_Options_IncludeBootCritical {
+            get {
+                return ResourceManager.GetString("Menu_Options_IncludeBootCritical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deletion of {0} ({1}) failed..
         /// </summary>
         public static string Message_Delete_Fail {

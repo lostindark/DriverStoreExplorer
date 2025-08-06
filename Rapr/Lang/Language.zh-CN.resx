@@ -446,4 +446,7 @@
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>导出所选驱动程序列表(&amp;S)</value>
   </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>在旧驱动程序中包含启动关键驱动程序</value>
+  </data>
 </root>

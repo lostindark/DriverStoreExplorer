@@ -75,6 +75,9 @@ namespace Rapr
             this.Icon = DSEFormHelper.ExtractAssociatedIcon(Application.ExecutablePath);
             this.BuildLanguageMenu();
 
+            // Initialize the BootCritical option menu item
+            this.includeBootCriticalDriversStripMenuItem.Checked = Settings.Default.IncludeBootCriticalInOldDriverSelection;
+
             this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
             this.lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
             this.lstDriverStoreEntries.SecondarySortColumn = this.driverDateColumn;
@@ -720,10 +723,18 @@ namespace Rapr
         {
             if (this.lstDriverStoreEntries.Objects != null)
             {
-                this.lstDriverStoreEntries.CheckedObjects = this.lstDriverStoreEntries
+                var queryEntries = this.lstDriverStoreEntries
                     .Objects
-                    .OfType<DriverStoreEntry>()
-                    .Where(entry => entry.BootCritical != true && entry.DriverInfName != "ntprint.inf")
+                    .OfType<DriverStoreEntry>();
+
+                // Apply BootCritical filter based on the setting
+                if (!Settings.Default.IncludeBootCriticalInOldDriverSelection)
+                {
+                    queryEntries = queryEntries.Where(entry => entry.BootCritical != true);
+                }
+
+                this.lstDriverStoreEntries.CheckedObjects = queryEntries
+                    .Where(entry => entry.DriverInfName != "ntprint.inf")
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverExtensionId, entry.DriverPkgProvider, entry.DriverInfName })
                     .SelectMany(drivers => drivers
                         .GroupBy(entry => new { entry.DriverVersion, entry.DriverDate })
@@ -1182,6 +1193,12 @@ namespace Rapr
             }
         }
 
+        private void IncludeBootCriticalDriversStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            Settings.Default.IncludeBootCriticalInOldDriverSelection = this.includeBootCriticalDriversStripMenuItem.Checked;
+            Settings.Default.Save();
+        }
+
         private async void CtxMenuExportDriver_Click(object sender, System.EventArgs e)
         {
             using (var dialog = new CommonOpenFileDialog { IsFolderPicker = true })
@@ -1277,6 +1294,7 @@ namespace Rapr
             // Reset the debounce timer
             this.searchDebounceTimer?.Change(SearchDebounceDelay, Timeout.Infinite);
         }
+
         private void UpdateSearchFilter()
         {
             if (textBoxSearch.Text == Language.Message_Type_Here_To_Search || string.IsNullOrWhiteSpace(textBoxSearch.Text))

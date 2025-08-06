@@ -1,5 +1,4 @@
-﻿
-namespace Rapr
+﻿namespace Rapr
 {
     using System;
 
@@ -58,6 +57,8 @@ namespace Rapr
             this.optionsStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.useNativeDriveStoreStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.useDismStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
+            this.includeBootCriticalDriversStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -424,7 +425,9 @@ namespace Rapr
             // 
             this.optionsStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.useNativeDriveStoreStripMenuItem,
-                this.useDismStripMenuItem
+            this.useDismStripMenuItem,
+            this.toolStripSeparator6,
+            this.includeBootCriticalDriversStripMenuItem
             });
             this.optionsStripMenuItem.Name = "optionsToolStripMenuItem";
             this.optionsStripMenuItem.Size = new System.Drawing.Size(71, 20);
@@ -445,6 +448,19 @@ namespace Rapr
             this.useDismStripMenuItem.Text = global::Rapr.Lang.Language.Menu_Options_UseDISM;
             this.useDismStripMenuItem.Checked = false;
             this.useDismStripMenuItem.Click += new System.EventHandler(this.UseDismStripMenuItem_Click);
+            // 
+            // toolStripSeparator6
+            // 
+            this.toolStripSeparator6.Name = "toolStripSeparator6";
+            this.toolStripSeparator6.Size = new System.Drawing.Size(175, 6);
+            // 
+            // includeBootCriticalDriversStripMenuItem
+            // 
+            this.includeBootCriticalDriversStripMenuItem.CheckOnClick = true;
+            this.includeBootCriticalDriversStripMenuItem.Name = "includeBootCriticalDriversStripMenuItem";
+            this.includeBootCriticalDriversStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.includeBootCriticalDriversStripMenuItem.Text = global::Rapr.Lang.Language.Menu_Options_IncludeBootCritical;
+            this.includeBootCriticalDriversStripMenuItem.Click += new System.EventHandler(this.IncludeBootCriticalDriversStripMenuItem_Click);
             // 
             // languageToolStripMenuItem
             // 
@@ -719,6 +735,8 @@ namespace Rapr
         private System.Windows.Forms.ToolStripMenuItem optionsStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem useNativeDriveStoreStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem useDismStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
+        private System.Windows.Forms.ToolStripMenuItem includeBootCriticalDriversStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem1;

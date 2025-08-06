@@ -479,4 +479,7 @@ License:
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>Export &amp;Selected Driver List</value>
   </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>Include Boot Critical in Old Drivers</value>
+  </data>
 </root>

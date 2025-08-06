@@ -479,4 +479,7 @@ Lisens:
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>Eksporter listen over de valgte driverne</value>
   </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>Inkluder oppstarts-kritiske drivere i gamle drivere</value>
+  </data>
 </root>

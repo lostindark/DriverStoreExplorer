@@ -455,6 +455,9 @@ Licensz:
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>DISM használata</value>
   </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>Rendszerindításhoz kritikus illesztőprogramok belefoglalása a régi illesztőprogramokba</value>
+  </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Kezdjen ide írni a kereséshez</value>
   </data>

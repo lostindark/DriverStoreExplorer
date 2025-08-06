@@ -472,4 +472,7 @@ Licencia:
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Escribe aquí para buscar</value>
   </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>Incluir críticos de arranque en controladores antiguos</value>
+  </data>
 </root>

@@ -479,4 +479,7 @@ Licence :
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>Exporter la liste des pilotes &amp;sélectionnés</value>
   </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>Inclure les pilotes critiques de démarrage dans les anciens pilotes</value>
+  </data>
 </root>

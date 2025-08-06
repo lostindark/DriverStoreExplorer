@@ -219,6 +219,9 @@
   <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
     <value>ייצוא רשימה של מנהלי התקנים</value>
   </data>
+  <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
+    <value>בחירת רשימת התקנים נבחרים</value>
+  </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>יציאה</value>
   </data>
@@ -382,5 +385,8 @@
   </data>
   <data name="Column_Text_False" xml:space="preserve">
     <value>לא</value>
+  </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>כלול התקנים קריטיים לאתחול בהתקנים ישנים</value>
   </data>
 </root>
