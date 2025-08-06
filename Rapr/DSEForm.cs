@@ -802,6 +802,8 @@ namespace Rapr
                 Thread.CurrentThread.CurrentCulture = ci;
                 Thread.CurrentThread.CurrentUICulture = ci;
 
+                Language.Culture = ci;
+
                 // Clear and redraw the window
                 this.SuspendLayout();
                 this.Controls.Clear();
