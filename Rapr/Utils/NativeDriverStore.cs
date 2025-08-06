@@ -267,7 +267,7 @@ namespace Rapr.Utils
                 throw new ArgumentNullException(nameof(driverStoreEntry));
             }
 
-            var targetPath = Path.Combine(destinationPath, driverStoreEntry.DriverFolderName);
+            var targetPath = Path.Combine(destinationPath, driverStoreEntry.GetDriversBackupFolderName());
             if (!Directory.Exists(targetPath))
             {
                 Directory.CreateDirectory(targetPath);
