@@ -480,7 +480,7 @@
     <value>선택한 드라이버 목록 내보내기(&amp;S)</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>부팅에 중요한 드라이버를 이전 드라이버에 포함</value>
+    <value>구형 드라이버에 부팅 필수 항목 포함</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>Windows 폴더가 포함된 디렉터리를 선택하세요 (Windows 폴더 자체가 아님)</value>
