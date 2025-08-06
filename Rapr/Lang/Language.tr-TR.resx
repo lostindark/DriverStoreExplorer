@@ -342,7 +342,7 @@ Lisans:
     <value>Çevrimdışı Sürücü Deposu</value>
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
-    <value>Sürücü Deposu Seçin</value>
+    <value>Sürücü Deposu Seç</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
     <value>&amp;Dil</value>
@@ -480,17 +480,17 @@ Lisans:
     <value>&amp;Seçilen Sürücü Listesini Dışa Aktar</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Eski sürücülerde önyükleme kritik sürücüleri dahil et</value>
+    <value>Eski Sürücülerde Önyükleme Kritik Olanları Dahil Et</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>Windows klasörünü içeren dizini seçin (Windows klasörünün kendisini değil)</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
-    <value>Geçersiz dizin seçimi</value>
+    <value>Geçersiz Dizin Seçimi</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
-    <value>Seçilen dizin bir 'Windows' klasörü içermelidir.
+    <value>Seçilen dizin bir 'Windows' klasörü içermek zorundadır.
 
-Lütfen bir Windows kurulumunun veya görüntüsünün kök dizinini seçin (Windows klasörünü içeren dizin), Windows klasörünün kendisini değil.</value>
+Lütfen bir Windows kurulumunun veya kalıbının kök dizinini seçin (Windows klasörünü içeren dizin), Windows klasörünün kendisini değil.</value>
   </data>
 </root>
