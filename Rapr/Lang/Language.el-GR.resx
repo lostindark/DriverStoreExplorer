@@ -262,7 +262,7 @@ Credits:
 </value>
   </data>
   <data name="UnitTest_Language" xml:space="preserve">
-    <value>Αγγλικά</value>
+    <value>Ελληνικά</value>
   </data>
   <data name="Dialog_Export_Filters" xml:space="preserve">
     <value>Αρχεία CSV | *.csv</value>
@@ -423,7 +423,7 @@ Credits:
     <value>Εξάγονται Driver(s) ...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
-    <value>;Άκυρο</value>
+    <value>Άκυρο</value>
   </data>
   <data name="Column_BootCritical" xml:space="preserve">
     <value>Κρίσιμο για το Boot</value>
@@ -453,6 +453,12 @@ Credits:
     <value>Δεν βρέθηκαν αρχεία .inf στον φάκελο {0}.</value>
     <comment>{0} - Placeholder for the folder name</comment>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>Κανένα αποτέλεσμα αντιστοιχίας.</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>Αναγνωριστικό Συσκευής</value>
+  </data>
   <data name="Message_Drivers_Added" xml:space="preserve">
     <value>Προστέθηκαν {0} πακέτα στο driver store.</value>
     <comment>{0} - Placeholder for number of packages</comment>
@@ -472,5 +478,8 @@ Credits:
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>Συμπερίληψη κρίσιμων οδηγών εκκίνησης σε παλιούς οδηγούς</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Επιλέξτε τον φάκελο Inf</value>
   </data>
 </root>

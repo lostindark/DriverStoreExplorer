@@ -389,4 +389,71 @@
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>כלול התקנים קריטיים לאתחול בהתקנים ישנים</value>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>אין תוצאות מתאימות.</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>מזהה התקן</value>
+  </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>היפוך בחירה</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>בחירת תיקיית Inf</value>
+  </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>פתיחת מאפייני התקן</value>
+  </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>ייצוא מנהל התקן {0} ‏({1}) הצליח.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>ייצוא מנהל התקן {0} ‏({1}) נכשל.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>אירעה שגיאה בייצוא מספר חבילות מנהלי התקנים.</value>
+  </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>ייצוא חבילות מנהלי ההתקנים הצליח.</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>בתהליך ייצוא חבילות מנהל התקן...</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>מזהה הרחבה</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>אפשרויות</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>שימוש במאגר מנהלי התקנים מקורי</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>שימוש ב־DISM</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>הקלד כאן לחיפוש</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>לא נמצאו קבצי inf בתיקייה {0}.</value>
+    <comment>{0} - Placeholder for the folder name</comment>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>נוספו {0} חבילות למאגר מנהלי ההתקנים.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>נוספו {0} חבילות והותקנו למאגר מנהלי ההתקנים.</value>
+    <comment>{0} - Placeholder for number of packages.</comment>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>אירעה שגיאה בהוספת מספר חבילות למאגר מנהלי ההתקנים.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>אירעה שגיאה בהוספה והתקנת מספר חבילות למאגר מנהלי ההתקנים.</value>
+  </data>
 </root>

@@ -405,10 +405,10 @@ Licença:
     <value>Crítico na inicialização</value>
   </data>
   <data name="Column_Text_True" xml:space="preserve">
-    <value>True</value>
+    <value>Verdadeiro</value>
   </data>
   <data name="Column_Text_False" xml:space="preserve">
-    <value>False</value>
+    <value>Falso</value>
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>ID da extensão</value>

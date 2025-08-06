@@ -373,4 +373,76 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>تضمين برامج التشغيل المهمة للإقلاع في برامج التشغيل القديمة</value>
   </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>لا توجد نتائج مطابقة.</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>اختر مجلد INF</value>
+  </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>عكس التحديد</value>
+  </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>فتح خصائص الجهاز</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>معرف الجهاز</value>
+  </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>تم تصدير التعريف {0} ({1}) بنجاح.</value>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>فشل تصدير التعريف {0} ({1}).</value>
+  </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>خطأ في تصدير بعض حزم التعريفات.</value>
+  </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>تم تصدير حزم التعريفات بنجاح.</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>تصدير حزم التعريفات...</value>
+  </data>
+  <data name="Button_Cancel" xml:space="preserve">
+    <value>إلغاء</value>
+  </data>
+  <data name="Column_BootCritical" xml:space="preserve">
+    <value>مهم للإقلاع</value>
+  </data>
+  <data name="Column_Text_True" xml:space="preserve">
+    <value>صحيح</value>
+  </data>
+  <data name="Column_Text_False" xml:space="preserve">
+    <value>خطأ</value>
+  </data>
+  <data name="Column_Extension_Id" xml:space="preserve">
+    <value>معرف الامتداد</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>خيارات</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>استخدام مستودع التعريفات الأصلي</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>استخدام DISM</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>اكتب هنا للبحث</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>لم يتم العثور على ملفات INF في المجلد {0}.</value>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>تم إضافة {0} حزم إلى مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>تم إضافة وتثبيت {0} حزم في مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>خطأ في إضافة بعض الحزم إلى مستودع التعريفات.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>خطأ في إضافة وتثبيت بعض الحزم في مستودع التعريفات.</value>
+  </data>
 </root>

@@ -180,6 +180,9 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Иске драйверларны сайлау (&amp;O)</value>
   </data>
+  <data name="Context_Invert_Selection" xml:space="preserve">
+    <value>Сайлауны алыштыру (&amp;I)</value>
+  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>{0} пакет драйверны саклау урыныннан бетерелүгә.</value>
     <comment>{0} - Placeholder for number of packages</comment>
@@ -321,7 +324,7 @@
 {1} - Placeholder for disk space</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
-    <value>Драйверлар сайланмады.</value>
+    <value>Драиверлар сайланмады.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Папка урынын ачу (&amp;F)</value>
@@ -417,5 +420,66 @@
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Өстәмәнең ID'ы</value>
+  </data>
+  <data name="Message_No_Match_Result" xml:space="preserve">
+    <value>Туры килгән нәтижә юк.</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Inf папкасын сайлау</value>
+  </data>
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
+    <value>Җайланма үзлекләрен ачу (&amp;P)</value>
+  </data>
+  <data name="Column_DeviceId" xml:space="preserve">
+    <value>Җайланма ID'ы</value>
+  </data>
+  <data name="Message_Export_Success" xml:space="preserve">
+    <value>{0} ({1}) драйверын экспортлау уңышлы.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Fail" xml:space="preserve">
+    <value>{0} ({1}) драйверын экспортлау уңышсыз.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
+  </data>
+  <data name="Message_Export_Drivers_Error" xml:space="preserve">
+    <value>Кайбер драйвер пакетларын экспортлауда хата.</value>
+  </data>
+  <data name="Message_Export_Drivers_Success" xml:space="preserve">
+    <value>Драйвер пакетларын экспортлау уңышлы.</value>
+  </data>
+  <data name="Status_Exporting_Drivers" xml:space="preserve">
+    <value>Драйвер пакет(лар)ын экспортлау...</value>
+  </data>
+  <data name="Menu_Options" xml:space="preserve">
+    <value>Көйләүләр (&amp;O)</value>
+  </data>
+  <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
+    <value>Җирле драйвер саклау урынын кулланырга</value>
+  </data>
+  <data name="Menu_Options_UseDISM" xml:space="preserve">
+    <value>DISM кулланырга</value>
+  </data>
+  <data name="Message_Type_Here_To_Search" xml:space="preserve">
+    <value>Эзләү өчен монда язарга</value>
+  </data>
+  <data name="Message_No_Inf_Found" xml:space="preserve">
+    <value>{0} папкасында inf файллары табылмады.</value>
+    <comment>{0} - Placeholder for the folder name</comment>
+  </data>
+  <data name="Message_Drivers_Added" xml:space="preserve">
+    <value>{0} пакет драйвер саклау урынына өстәлде.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
+  </data>
+  <data name="Message_Drivers_Added_Installed" xml:space="preserve">
+    <value>{0} пакет өстәлде һәм драйвер саклау урынына утыртылды.</value>
+    <comment>{0} - Placeholder for number of packages.</comment>
+  </data>
+  <data name="Message_Drivers_Added_Error" xml:space="preserve">
+    <value>Кайбер пакетларны драйвер саклау урынына өстәгәндә хата.</value>
+  </data>
+  <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
+    <value>Кайбер пакетларны өстәп драйвер саклау урынына утыртканда хата.</value>
   </data>
 </root>

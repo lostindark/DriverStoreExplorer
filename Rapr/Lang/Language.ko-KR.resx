@@ -241,7 +241,7 @@
     <value>일치하는 결과가 없습니다.</value>
   </data>
   <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
-    <value>Select the Inf folder</value>
+    <value>INF 폴더 선택</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>{0} 정보</value>

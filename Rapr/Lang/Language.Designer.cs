@@ -588,6 +588,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Include Boot Critical in Old Drivers.
+        /// </summary>
+        public static string Menu_Options_IncludeBootCritical {
+            get {
+                return ResourceManager.GetString("Menu_Options_IncludeBootCritical", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Use DISM.
         /// </summary>
         public static string Menu_Options_UseDISM {
@@ -602,15 +611,6 @@ namespace Rapr.Lang {
         public static string Menu_Options_UseNativeDriverStore {
             get {
                 return ResourceManager.GetString("Menu_Options_UseNativeDriverStore", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to Include Boot Critical in Old Drivers.
-        /// </summary>
-        public static string Menu_Options_IncludeBootCritical {
-            get {
-                return ResourceManager.GetString("Menu_Options_IncludeBootCritical", resourceCulture);
             }
         }
         

@@ -405,7 +405,7 @@ Licensz:
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>&amp;Export Driver(s)</value>
+    <value>&amp;Illesztőprogramok exportálása</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
     <value>Illesztőprogram &amp;exportálása</value>

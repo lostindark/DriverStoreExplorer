@@ -226,7 +226,7 @@
     <value>&amp;Exportovať zoznam všetkých ovládačov</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
-    <value>E&amp;xit</value>
+    <value>U&amp;končiť</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
     <value>Zobraziť &amp;log súbory</value>
@@ -382,7 +382,7 @@ Licencia:
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
-    <value>Export driver {0} ({1}) succeeded.</value>
+    <value>Export ovládača {0} ({1}) uspel.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
@@ -392,7 +392,7 @@ Licencia:
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Export_Fail" xml:space="preserve">
-    <value>Export driver {0} ({1}) failed.</value>
+    <value>Export ovládača {0} ({1}) zlyhal.</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
