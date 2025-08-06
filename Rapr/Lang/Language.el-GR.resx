@@ -477,9 +477,20 @@ Credits:
     <value>Εξαγωγή &amp;της λίστας των Επιλεγμένων Drivers</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Συμπερίληψη κρίσιμων οδηγών εκκίνησης σε παλιούς οδηγούς</value>
+    <value>Συμπερίληψη οδηγών κρίσιμων για την εκκίνηση στους παλιούς οδηγούς</value>
   </data>
   <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
     <value>Επιλέξτε τον φάκελο Inf</value>
+  </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Επιλέξτε τον κατάλογο που περιέχει το φάκελο Windows (όχι τον ίδιο το φάκελο Windows)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Μη έγκυρη επιλογή καταλόγου</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>Ο επιλεγμένος κατάλογος πρέπει να περιέχει ένα φάκελο 'Windows'.
+
+Παρακαλώ επιλέξτε τον κατάλογο ρίζας μιας εγκατάστασης ή εικόνας Windows (τον κατάλογο που περιέχει το φάκελο Windows), όχι τον ίδιο το φάκελο Windows.</value>
   </data>
 </root>

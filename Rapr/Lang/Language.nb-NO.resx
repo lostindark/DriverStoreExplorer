@@ -480,6 +480,17 @@ Lisens:
     <value>Eksporter listen over de valgte driverne</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Inkluder oppstarts-kritiske drivere i gamle drivere</value>
+    <value>Inkluder oppstartkritiske drivere i gamle drivere</value>
+  </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Velg katalogen som inneholder Windows-mappen (ikke Windows-mappen selv)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Ugyldig katalogvalg</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>Den valgte katalogen må inneholde en 'Windows'-mappe.
+
+Vennligst velg rotkatalogen til en Windows-installasjon eller -bilde (katalogen som inneholder Windows-mappen), ikke Windows-mappen selv.</value>
   </data>
 </root>

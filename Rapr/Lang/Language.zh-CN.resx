@@ -449,4 +449,14 @@
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>在旧驱动程序中包含启动关键驱动程序</value>
   </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>选择包含Windows文件夹的目录（不是Windows文件夹本身）</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>无效的目录选择</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>所选目录必须包含一个"Windows"文件夹。
+请选择Windows安装或映像的根目录（包含Windows文件夹的目录），而不是Windows文件夹本身。</value>
+  </data>
 </root>

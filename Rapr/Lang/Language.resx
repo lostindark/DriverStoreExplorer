@@ -482,4 +482,15 @@ License:
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>Include Boot Critical in Old Drivers</value>
   </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Select the directory containing the Windows folder (not the Windows folder itself)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Invalid Directory Selection</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>The selected directory must contain a 'Windows' folder.
+
+Please select the root directory of a Windows installation or image (the directory that contains the Windows folder), not the Windows folder itself.</value>
+  </data>
 </root>

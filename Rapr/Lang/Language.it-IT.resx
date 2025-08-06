@@ -483,4 +483,15 @@ Licenza:
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>Includi driver critici per il boot nei driver vecchi</value>
   </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Seleziona la directory che contiene la cartella Windows (non la cartella Windows stessa)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Selezione directory non valida</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>La directory selezionata deve contenere una cartella 'Windows'.
+
+Seleziona la directory principale di un'installazione o immagine Windows (la directory che contiene la cartella Windows), non la cartella Windows stessa.</value>
+  </data>
 </root>

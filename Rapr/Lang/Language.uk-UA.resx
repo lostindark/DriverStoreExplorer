@@ -480,6 +480,17 @@
     <value>Експортувати список вибраних драйверів</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Включити критичні для завантаження драйвери до старих драйверів</value>
+    <value>Включити критичні для завантаження драйвери в старі драйвери</value>
+  </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Виберіть каталог, що містить папку Windows (не саму папку Windows)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Недійсний вибір каталогу</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>Вибраний каталог повинен містити папку 'Windows'.
+
+Будь ласка, виберіть кореневий каталог установки або образу Windows (каталог, що містить папку Windows), а не саму папку Windows.</value>
   </data>
 </root>

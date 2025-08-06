@@ -475,4 +475,15 @@ Licencia:
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>Incluir críticos de arranque en controladores antiguos</value>
   </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Seleccione el directorio que contiene la carpeta Windows (no la carpeta Windows en sí)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Selección de directorio inválida</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>El directorio seleccionado debe contener una carpeta 'Windows'.
+
+Por favor, seleccione el directorio raíz de una instalación o imagen de Windows (el directorio que contiene la carpeta Windows), no la carpeta Windows en sí.</value>
+  </data>
 </root>

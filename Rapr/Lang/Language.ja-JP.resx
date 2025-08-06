@@ -482,4 +482,15 @@
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>起動に必要なドライバーを古いドライバーに含める</value>
   </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Windowsフォルダーを含むディレクトリを選択してください（Windowsフォルダー自体ではありません）</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>無効なディレクトリ選択</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>選択したディレクトリには'Windows'フォルダーが含まれている必要があります。
+
+Windowsインストールまたはイメージのルートディレクトリ（Windowsフォルダーを含むディレクトリ）を選択してください。Windowsフォルダー自体ではありません。</value>
+  </data>
 </root>

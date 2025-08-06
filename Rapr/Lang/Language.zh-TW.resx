@@ -456,7 +456,7 @@
     <value>使用DISM</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>在舊驅動程式中包含開機關鍵驅動程式</value>
+    <value>在舊版驅動程式中包含開機關鍵驅動程式</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>在此處輸入以搜尋</value>
@@ -478,5 +478,15 @@
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>匯出所選驅動程式清單(&amp;S)</value>
+  </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>選擇包含Windows資料夾的目錄（不是Windows資料夾本身）</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>無效的目錄選擇</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>選定的目錄必須包含一個'Windows'資料夾。
+請選擇Windows安裝或映像的根目錄（包含Windows資料夾的目錄），而不是Windows資料夾本身。</value>
   </data>
 </root>

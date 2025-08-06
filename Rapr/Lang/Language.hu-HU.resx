@@ -482,4 +482,15 @@ Licensz:
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>Kijelölt ille&amp;sztőprogramok listájának exportálása</value>
   </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Válassza ki a Windows mappát tartalmazó könyvtárat (nem magát a Windows mappát)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Érvénytelen könyvtár kiválasztás</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>A kiválasztott könyvtárnak tartalmaznia kell egy 'Windows' mappát.
+
+Kérjük válassza ki egy Windows telepítés vagy kép gyökérkönyvtárát (a Windows mappát tartalmazó könyvtárat), nem magát a Windows mappát.</value>
+  </data>
 </root>

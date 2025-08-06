@@ -445,4 +445,15 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
     <value>خطأ في إضافة وتثبيت بعض الحزم في مستودع التعريفات.</value>
   </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>حدد الدليل الذي يحتوي على مجلد Windows (وليس مجلد Windows نفسه)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>اختيار دليل غير صحيح</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>يجب أن يحتوي الدليل المحدد على مجلد 'Windows'.
+
+يرجى تحديد الدليل الجذر لتثبيت أو صورة Windows (الدليل الذي يحتوي على مجلد Windows)، وليس مجلد Windows نفسه.</value>
+  </data>
 </root>

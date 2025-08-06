@@ -482,4 +482,15 @@ Lizenz:
    <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
      <value>Boot-kritische Treiber in alte Treiber einbeziehen</value>
    </data>
+   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+     <value>Wählen Sie das Verzeichnis aus, das den Windows-Ordner enthält (nicht den Windows-Ordner selbst)</value>
+   </data>
+   <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+     <value>Ungültige Verzeichnisauswahl</value>
+   </data>
+   <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+     <value>Das ausgewählte Verzeichnis muss einen 'Windows'-Ordner enthalten.
+
+Bitte wählen Sie das Stammverzeichnis einer Windows-Installation oder eines Windows-Images aus (das Verzeichnis, das den Windows-Ordner enthält), nicht den Windows-Ordner selbst.</value>
+   </data>
 </root>

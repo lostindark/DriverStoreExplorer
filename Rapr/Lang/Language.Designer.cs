@@ -453,6 +453,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select the directory containing the Windows folder (not the Windows folder itself).
+        /// </summary>
+        public static string Dialog_Select_Offline_Store_Title {
+            get {
+                return ResourceManager.GetString("Dialog_Select_Offline_Store_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Local Machine.
         /// </summary>
         public static string DriverStore_LocalMachine {
@@ -836,6 +845,26 @@ namespace Rapr.Lang {
         public static string Message_ForceDelete_Single_Package {
             get {
                 return ResourceManager.GetString("Message_ForceDelete_Single_Package", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The selected directory must contain a 'Windows' folder.
+        ///
+        ///Please select the root directory of a Windows installation or image (the directory that contains the Windows folder), not the Windows folder itself.
+        /// </summary>
+        public static string Message_Invalid_Offline_Store_Location {
+            get {
+                return ResourceManager.GetString("Message_Invalid_Offline_Store_Location", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Invalid Directory Selection.
+        /// </summary>
+        public static string Message_Invalid_Offline_Store_Title {
+            get {
+                return ResourceManager.GetString("Message_Invalid_Offline_Store_Title", resourceCulture);
             }
         }
         

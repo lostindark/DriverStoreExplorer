@@ -254,7 +254,7 @@
     <value>Najnovšiu verziu a zoznam zmien môžete nájsť tu:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-Nahlásiť bug/požiadať o novú funkcionalitu:
+Nahlásiť bug/požiadať o novú funzionalitu:
     https://github.com/lostindark/DriverStoreExplorer/issues
 
 Prispievatelia:
@@ -480,6 +480,17 @@ Licencia:
     <value>Exportovať zoznam &amp;označených ovládačov</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Zahrnúť kritické ovládače pri spustení do starých ovládačov</value>
+    <value>Zahrnúť ovládače kritické pre štart do starých ovládačov</value>
+  </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Vyberte adresár obsahujúci priečinok Windows (nie samotný priečinok Windows)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Neplatný výber adresára</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>Vybraný adresár musí obsahovať priečinok 'Windows'.
+
+Prosím vyberte koreňový adresár inštalácie alebo obrazu Windows (adresár obsahujúci priečinok Windows), nie samotný priečinok Windows.</value>
   </data>
 </root>

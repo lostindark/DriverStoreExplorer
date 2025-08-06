@@ -235,7 +235,7 @@
     <value>Сайланган &amp;драйвер исемлеген экспорт итү</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Иске драйверларга йөкләү критик драйверларын кертү</value>
+    <value>Иске драйверларга ачылыш өчен критик драйверларны кертү</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
@@ -481,5 +481,16 @@
   </data>
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
     <value>Кайбер пакетларны өстәп драйвер саклау урынына утыртканда хата.</value>
+  </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Windows папкасы булган каталогны сайлагыз (Windows папкасының үзен түгел)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Дөрес түгел каталог сайлау</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>Сайланган каталогта 'Windows' папкасы булырга тиеш.
+
+Зинһар, Windows урнаштыру яки сүрәтенең тамыр каталогын сайлагыз (Windows папкасы булган каталог), Windows папкасының үзен түгел.</value>
   </data>
 </root>

@@ -456,4 +456,15 @@
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
     <value>אירעה שגיאה בהוספה והתקנת מספר חבילות למאגר מנהלי ההתקנים.</value>
   </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>בחר את הספרייה המכילה את תיקיית Windows (לא את תיקיית Windows עצמה)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>בחירת ספרייה לא חוקית</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>הספרייה שנבחרה חייבת להכיל תיקיית 'Windows'.
+
+אנא בחר את ספריית השורש של התקנה או דמות Windows (הספרייה המכילה את תיקיית Windows), לא את תיקיית Windows עצמה.</value>
+  </data>
 </root>

@@ -447,6 +447,17 @@ Licença:
     <value>Exportar lista de drivers &amp;selecionados</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Incluir drivers críticos de inicialização em drivers antigos</value>
+    <value>Incluir drivers críticos para inicialização em drivers antigos</value>
+  </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Selecione o diretório que contém a pasta Windows (não a própria pasta Windows)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Seleção de diretório inválida</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>O diretório selecionado deve conter uma pasta 'Windows'.
+
+Por favor, selecione o diretório raiz de uma instalação ou imagem do Windows (o diretório que contém a pasta Windows), não a própria pasta Windows.</value>
   </data>
 </root>

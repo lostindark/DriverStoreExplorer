@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.IO;
 using System.Windows.Forms;
 
 using Microsoft.WindowsAPICodePack.Dialogs;
@@ -47,7 +48,7 @@ namespace Rapr
             get
             {
                 return this.StoreType == DriverStoreType.Online
-                    || !string.IsNullOrEmpty(this.OfflineStoreLocation);
+                    || (!string.IsNullOrEmpty(this.OfflineStoreLocation) && IsValidOfflineStoreLocation(this.OfflineStoreLocation));
             }
         }
 
@@ -99,16 +100,48 @@ namespace Rapr
         {
             using (var dialog = new CommonOpenFileDialog
             {
-                IsFolderPicker = true
+                IsFolderPicker = true,
+                Title = Lang.Language.Dialog_Select_Offline_Store_Title,
             })
             {
                 CommonFileDialogResult result = dialog.ShowDialog();
 
                 if (result == CommonFileDialogResult.Ok)
                 {
-                    this.OfflineStoreLocation = dialog.FileName;
+                    string selectedPath = dialog.FileName;
+                    
+                    // Validate that the selected directory contains a Windows folder
+                    if (!IsValidOfflineStoreLocation(selectedPath))
+                    {
+                        MessageBox.Show(
+                            this,
+                            Lang.Language.Message_Invalid_Offline_Store_Location, 
+                            Lang.Language.Message_Invalid_Offline_Store_Title, 
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Warning);
+                        return;
+                    }
+                    
+                    this.OfflineStoreLocation = selectedPath;
                 }
             }
+        }
+
+        /// <summary>
+        /// Validates that the selected directory contains a Windows folder, indicating it's a valid offline store location.
+        /// </summary>
+        /// <param name="path">The path to validate</param>
+        /// <returns>True if the path contains a Windows folder, false otherwise</returns>
+        private static bool IsValidOfflineStoreLocation(string path)
+        {
+            if (string.IsNullOrEmpty(path) || !Directory.Exists(path))
+            {
+                return false;
+            }
+
+            // Check if the selected directory contains a "Windows" folder
+            string windowsPath = Path.Combine(path, "Windows");
+            return Directory.Exists(windowsPath);
         }
     }
 }

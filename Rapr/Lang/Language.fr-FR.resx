@@ -482,4 +482,15 @@ Licence :
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>Inclure les pilotes critiques de démarrage dans les anciens pilotes</value>
   </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Sélectionnez le répertoire contenant le dossier Windows (pas le dossier Windows lui-même)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Sélection de répertoire invalide</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>Le répertoire sélectionné doit contenir un dossier 'Windows'.
+
+Veuillez sélectionner le répertoire racine d'une installation ou d'une image Windows (le répertoire qui contient le dossier Windows), pas le dossier Windows lui-même.</value>
+  </data>
 </root>

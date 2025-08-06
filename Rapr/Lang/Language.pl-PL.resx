@@ -482,4 +482,15 @@ Licencja użytkowania:
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>Uwzględnij sterowniki krytyczne rozruchu w starych sterownikach</value>
   </data>
+  <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
+    <value>Wybierz katalog zawierający folder Windows (nie sam folder Windows)</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
+    <value>Nieprawidłowy wybór katalogu</value>
+  </data>
+  <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
+    <value>Wybrany katalog musi zawierać folder 'Windows'.
+
+Proszę wybrać katalog główny instalacji lub obrazu Windows (katalog zawierający folder Windows), a nie sam folder Windows.</value>
+  </data>
 </root>
