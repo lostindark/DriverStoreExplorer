@@ -423,7 +423,7 @@
     <value>使用原生Driver Store</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>使用DISM</value>
+    <value>使用DISM / PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>在此处输入以搜索</value>

@@ -453,7 +453,7 @@ Licensz:
     <value>A natív illesztőprogramtár használata</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>DISM használata</value>
+    <value>DISM / PnpUtil használata</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>Rendszerindításhoz kritikus illesztőprogramok belefoglalása a régi illesztőprogramokba</value>

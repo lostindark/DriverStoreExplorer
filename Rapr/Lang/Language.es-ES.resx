@@ -434,7 +434,7 @@ Licencia:
     <value>Usar almacén de controladores nativo</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>Usar DISM</value>
+    <value>Usar DISM / PnpUtil</value>
   </data>
   <data name="Column_DeviceId" xml:space="preserve">
     <value>ID de dispositivo</value>

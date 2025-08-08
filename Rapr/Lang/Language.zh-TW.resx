@@ -453,7 +453,7 @@
     <value>使用原生Driver Store</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>使用DISM</value>
+    <value>使用 DISM / PnpUtil</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>在舊版驅動程式中包含開機關鍵驅動程式</value>

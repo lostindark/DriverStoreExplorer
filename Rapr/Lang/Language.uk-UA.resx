@@ -453,7 +453,7 @@
     <value>Використовувати сховище драйверів ОС</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>Використовувати DISM</value>
+    <value>Використовувати DISM / PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Введіть запит для пошуку</value>

@@ -453,7 +453,7 @@
     <value>ネイティブ ドライバー ストアを使用</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>DISM を使用</value>
+    <value>DISM / PnpUtilを使用</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>入力して検索</value>

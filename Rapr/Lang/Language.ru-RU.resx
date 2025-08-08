@@ -453,7 +453,7 @@
     <value>Использовать Driver Store API ОС</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>Использовать DISM</value>
+    <value>Использовать DISM / PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Введите поисковый запрос</value>

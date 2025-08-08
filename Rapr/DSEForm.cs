@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -126,6 +126,23 @@ namespace Rapr
 
         private void UpdateDriverStoreAPI(bool useNativeDriverStore)
         {
+            if (DSEFormHelper.IsNativeDriverStoreSupported)
+            {
+                this.useNativeDriveStoreStripMenuItem.Enabled = true;
+            }
+            else
+            {
+                // Disable Native Driver Store option on Windows 7 and earlier, or 32-bit OS
+                this.useNativeDriveStoreStripMenuItem.Enabled = false;
+
+                // Ensure DISM/PnpUtil is selected on Win7 or 32-bit OS
+                if (useNativeDriverStore)
+                {
+                    useNativeDriverStore = false;
+                    Settings.Default.UseNativeDriverStore = false;
+                }
+            }
+
             this.useNativeDriveStoreStripMenuItem.Checked = useNativeDriverStore;
             this.useDismStripMenuItem.Checked = !useNativeDriverStore;
             this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore(useNativeDriverStore));

@@ -425,7 +425,7 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
     <value>استخدام مستودع التعريفات الأصلي</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>استخدام DISM</value>
+    <value>استخدام DISM / PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>اكتب هنا للبحث</value>

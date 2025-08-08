@@ -454,7 +454,7 @@ Licenza:
     <value>Usa archivbio driver nativo</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>Usa DISM</value>
+    <value>Usa DISM / PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Inserisci stringa da cercare</value>

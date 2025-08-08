@@ -453,7 +453,7 @@ Lisens:
     <value>Bruk det innebygde driverlageret</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>Bruk DISM</value>
+    <value>Bruk DISM / PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Skriv her for å søke</value>
