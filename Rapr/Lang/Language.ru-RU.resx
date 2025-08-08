@@ -130,7 +130,7 @@
     <value>Обновить</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>Выделить устаревшие драйвера</value>
+    <value>Выделить устаревшие драйверы</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Форсированное удаление</value>
@@ -480,17 +480,17 @@
     <value>Экспортировать &amp;список выбранных драйверов</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Включить критично важные для загрузки в старые драйверы</value>
+    <value>Включать критично важные для загрузки в старые драйверы</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
-    <value>Выберите каталог, содержащий папку Windows (не саму папку Windows)</value>
+    <value>Выберите папку, содержащий папку «Windows» (не саму папку «Windows»)</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
-    <value>Неверный выбор каталога</value>
+    <value>Папка выбрана неправильно</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
-    <value>Выбранный каталог должен содержать папку 'Windows'.
+    <value>Выбранная папка должна содержать папку «Windows».
 
-Пожалуйста, выберите корневой каталог установки или образа Windows (каталог, содержащий папку Windows), а не саму папку Windows.</value>
+Пожалуйста, выберите корневую папку установки или образа Windows (папку, содержащий папку «Windows»), а не саму папку «Windows».</value>
   </data>
 </root>
