@@ -358,7 +358,7 @@
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(Знайдено нову версію v{0} - {1})</value>
-    <comment>{0} - Заповнювач для номера версS]
+    <comment>{0} - Заповнювач для номера версії]
 {1} - Заповнювач для About_Download</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
