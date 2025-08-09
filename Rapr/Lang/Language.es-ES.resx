@@ -182,12 +182,12 @@
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>A punto de borrar {0} paquetes del almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para el número de paquetes</comment>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>A punto de borrar {0} ({1}) del almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para archivo de paquete inf
-{1} - Marcador de posición para archivo oem inf</comment>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Esta utilidad no se puede ejecutar en SO previo a Vista.</value>
@@ -220,7 +220,7 @@
     <value>&amp;Archivo</value>
   </data>
   <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
-    <value>&amp;Exportar lista de controladores</value>
+    <value>&amp;Exportar toda la lista de controladores</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Sa&amp;lir</value>
@@ -236,7 +236,7 @@
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Acerca de {0}</value>
-    <comment>{0} - Marcador de posición para Product_Name</comment>
+    <comment>{0} - Placeholder for Product_Name</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>Error</value>
@@ -272,28 +272,28 @@ Licencia:
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>Borrados {0} ({1}) del almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para archivo de paquete inf
-{1} - Marcador de posición para archivo oem inf</comment>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
     <value>Borrados {0} paquetes del almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para el número de paquetes</comment>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Error borrando {0} ({1}) del almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para archivo de paquete inf
-{1} - Marcador de posición para archivo oem inf</comment>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>Error borrando algunos paquetes del almacén de controladores.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>Agregado el paquete {0} al almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para la ruta al inf</comment>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
     <value>Error agregando el paquete {0} al almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para la ruta al inf</comment>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>El archivo de registro no se puede encontrar.</value>
@@ -303,16 +303,16 @@ Licencia:
   </data>
   <data name="Export_Complete" xml:space="preserve">
     <value>Contenidos guardados en {0}. Exportación completada.</value>
-    <comment>{0} - Marcador de posición para la ruta de exportación</comment>
+    <comment>{0} - Placeholder for export path</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>Exportación fallida: {0}</value>
-    <comment>{0} - Marcador de posición para mensaje de error</comment>
+    <comment>{0} - Placeholder for error message</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>Seleccionado(s) {0} controlador(es). Tamaño total: {1}.</value>
-    <comment>{0} - Marcador de posición para el numero de controladores seleccionados
-{1} - Marcador de posición para espacio en disco</comment>
+    <comment>{0} - Placeholder for number of selected Drivers
+{1} - Placeholder for disk space</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>No hay controladores seleccionados.</value>
@@ -343,8 +343,8 @@ Licencia:
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(Encontrada nueva versión v{0} - {1})</value>
-    <comment>{0} - Marcador de posición para número de versión
-{1} - Marcador de posición par About_Download</comment>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for About_Download</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Descargar</value>
@@ -354,36 +354,40 @@ Licencia:
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>A punto de forzar borrar {0} ({1}) del almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para archivo de paquete inf
-{1} - Marcador de posición para archivo oem inf</comment>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
     <value>A punto de borrar {0} paquetes del almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para el número de paquetes</comment>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>Borrado de {0} ({1}) logrado.</value>
-    <comment>{0} - Marcador de posición para archivo de paquete inf
-{1} - Marcador de posición para archivo oem inf</comment>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
     <value>Exportacion de controlador {0} ({1}) lograda.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Borrado de {0} ({1}) fallido.</value>
-    <comment>{0} - Marcador de posición para archivo de paquete inf
-{1} - Marcador de posición para archivo oem inf</comment>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Export_Fail" xml:space="preserve">
     <value>Exportacion de controlador {0} ({1}) fallida.</value>
+    <comment>{0} - Placeholder for inf package file
+{1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
     <value>Agregado el paquete {0} e instalado al almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para la ruta al inf</comment>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
     <value>Error agregando el paquete {0} e instalado al almacén de controladores.</value>
-    <comment>{0} - Marcador de posición para la ruta al inf</comment>
+    <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
     <value>&amp;Exportar controlador(es)</value>
@@ -404,7 +408,7 @@ Licencia:
     <value>Exportación de todos los paquetes de controladores lograda.</value>
   </data>
   <data name="Message_Export_Drivers_Success" xml:space="preserve">
-    <value>Exportacion de paquetes de controladores lograda.</value>
+    <value>Exportación de paquetes de controladores lograda.</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Exportando todos los paquetes de controladores...</value>
@@ -416,7 +420,7 @@ Licencia:
     <value>&amp;Cancelar</value>
   </data>
   <data name="Column_BootCritical" xml:space="preserve">
-    <value>Arranque crítico</value>
+    <value>Crítico de arranque</value>
   </data>
   <data name="Column_Text_True" xml:space="preserve">
     <value>Verdadero</value>
@@ -437,34 +441,37 @@ Licencia:
     <value>Usar DISM / PnpUtil</value>
   </data>
   <data name="Column_DeviceId" xml:space="preserve">
-    <value>ID de dispositivo</value>
+    <value>ID del dispositivo</value>
   </data>
   <data name="Context_Invert_Selection" xml:space="preserve">
     <value>&amp;Invertir selección</value>
   </data>
   <data name="Context_Open_Device_Properties" xml:space="preserve">
-    <value>Abrir dispositivo y &amp;propiedades</value>
+    <value>Abrir &amp;propiedades del dispositivo </value>
   </data>
   <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
-    <value>Seleccionar la carpeta INF</value>
+    <value>Seleccionar la carpeta inf</value>
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>Exportar &amp;lista de controladores seleccionados</value>
   </data>
   <data name="Message_Drivers_Added" xml:space="preserve">
-    <value>{0} paquetes agregados al almacén de controladores.</value>
+    <value>Agregados {0} paquetes al almacén de controladores.</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Drivers_Added_Error" xml:space="preserve">
     <value>Error agregando algunos paquetes al almacén de controladores</value>
   </data>
   <data name="Message_Drivers_Added_Installed" xml:space="preserve">
-    <value>Se agregaron {0} paquetes e instalados al almacén de controladores.</value>
+    <value>Agregados {0} paquetes e instalados al almacén de controladores.</value>
+    <comment>{0} - Placeholder for number of packages.</comment>
   </data>
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
     <value>Error agregando algunos paquetes e instalados en el almacén de controladores.</value>
   </data>
   <data name="Message_No_Inf_Found" xml:space="preserve">
-    <value>No se encuentraron archivos INF en la carpeta {0}.</value>
+    <value>No se encuentraron archivos inf en la carpeta {0}.</value>
+    <comment>{0} - Placeholder for the folder name</comment>
   </data>
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>No hay resultados de coincidencia.</value>
@@ -476,7 +483,7 @@ Licencia:
     <value>Incluir críticos de arranque en controladores antiguos</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
-    <value>Seleccione el directorio que contiene la carpeta Windows (no la carpeta Windows en sí)</value>
+    <value>Selecciona el directorio que contiene la carpeta Windows (no la carpeta Windows en sí)</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
     <value>Selección de directorio inválida</value>
@@ -484,6 +491,6 @@ Licencia:
   <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
     <value>El directorio seleccionado debe contener una carpeta 'Windows'.
 
-Por favor, seleccione el directorio raíz de una instalación o imagen de Windows (el directorio que contiene la carpeta Windows), no la carpeta Windows en sí.</value>
+Por favor selecciona el directorio raíz de una instalación o imagen de Windows (el directorio que contiene la carpeta Windows), no la carpeta Windows en sí.</value>
   </data>
 </root>
