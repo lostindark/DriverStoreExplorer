@@ -57,6 +57,7 @@
             this.optionsStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.useNativeDriveStoreStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.useDismStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.usePnpUtilStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator6 = new System.Windows.Forms.ToolStripSeparator();
             this.includeBootCriticalDriversStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.languageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -426,6 +427,7 @@
             this.optionsStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.useNativeDriveStoreStripMenuItem,
             this.useDismStripMenuItem,
+            this.usePnpUtilStripMenuItem,
             this.toolStripSeparator6,
             this.includeBootCriticalDriversStripMenuItem
             });
@@ -448,6 +450,14 @@
             this.useDismStripMenuItem.Text = global::Rapr.Lang.Language.Menu_Options_UseDISM;
             this.useDismStripMenuItem.Checked = false;
             this.useDismStripMenuItem.Click += new System.EventHandler(this.UseDismStripMenuItem_Click);
+            // 
+            // usePnpUtilStripMenuItem
+            // 
+            this.usePnpUtilStripMenuItem.Name = "usePnpUtilStripMenuItem";
+            this.usePnpUtilStripMenuItem.Size = new System.Drawing.Size(178, 22);
+            this.usePnpUtilStripMenuItem.Text = global::Rapr.Lang.Language.Menu_Options_UsePnpUtil;
+            this.usePnpUtilStripMenuItem.Checked = false;
+            this.usePnpUtilStripMenuItem.Click += new System.EventHandler(this.UsePnpUtilStripMenuItem_Click);
             // 
             // toolStripSeparator6
             // 
@@ -735,6 +745,7 @@
         private System.Windows.Forms.ToolStripMenuItem optionsStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem useNativeDriveStoreStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem useDismStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem usePnpUtilStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator6;
         private System.Windows.Forms.ToolStripMenuItem includeBootCriticalDriversStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem languageToolStripMenuItem;

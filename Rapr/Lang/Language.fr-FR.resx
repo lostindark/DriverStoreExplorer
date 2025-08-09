@@ -453,7 +453,10 @@ Licence :
     <value>Utiliser le magasin de pilotes natif</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>Utiliser DISM / PnpUtil</value>
+    <value>Utiliser DISM</value>
+  </data>
+  <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
+    <value>Utiliser PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Tapez ici pour rechercher</value>

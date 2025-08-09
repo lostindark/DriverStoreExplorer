@@ -453,7 +453,10 @@ Lisans:
     <value>Yerel Sürücü Deposunu Kullan</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>DISM / PnpUtil kullan</value>
+    <value>DISM Kullan</value>
+  </data>
+  <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
+    <value>PnpUtil Kullan</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Aramak için buraya yazın</value>

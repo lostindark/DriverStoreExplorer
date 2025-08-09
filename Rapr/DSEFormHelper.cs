@@ -23,6 +23,8 @@ namespace Rapr
         private const string AppCompatRegistry = @"Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers";
         private const string RunAsAdminRegistryValue = "RUNASADMIN";
         private static readonly Version Win8Version = new Version(6, 2);
+        private static readonly Version Win10Version = new Version(10, 0);
+        private static readonly Version Win11Version = new Version(10, 0, 22000);
 
         public static string GetApplicationFolder()
         {
@@ -103,6 +105,13 @@ namespace Rapr
             && Environment.OSVersion.Version >= Win8Version;
 
         /// <summary>
+        /// Gets a value indicating whether the current operating system is Windows 11 or newer.
+        /// </summary>
+        public static bool IsWin11OrNewer =>
+            Environment.OSVersion.Platform == PlatformID.Win32NT
+            && Environment.OSVersion.Version >= Win11Version;
+
+        /// <summary>
         /// Gets a value indicating whether the current operating system is 64-bit.
         /// </summary>
         public static bool Is64BitOperatingSystem => Environment.Is64BitOperatingSystem;
@@ -112,6 +121,11 @@ namespace Rapr
         /// The native driver store requires Windows 8 or newer AND a 64-bit operating system.
         /// </summary>
         public static bool IsNativeDriverStoreSupported => IsWin8OrNewer && Is64BitOperatingSystem;
+
+        /// <summary>
+        /// Gets a value indicating whether the PnPUtil utility is supported.
+        /// </summary>
+        public static bool IsPnpUtilSupported => !IsWin11OrNewer;
 
         public static void RunAsAdministrator()
         {

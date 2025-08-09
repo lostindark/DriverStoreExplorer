@@ -420,7 +420,10 @@ Licença:
     <value>Usar armazenamento de drivers nativo</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>Usar DISM / PnpUtil</value>
+    <value>Usar DISM</value>
+  </data>
+  <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
+    <value>Usar PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Digite aqui para pesquisar</value>

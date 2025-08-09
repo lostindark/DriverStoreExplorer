@@ -433,7 +433,10 @@
     <value>שימוש במאגר מנהלי התקנים מקורי</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>השתמש ב-DISM / PnpUtil</value>
+    <value>השתמש ב-DISM</value>
+  </data>
+  <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
+    <value>השתמש ב-PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>הקלד כאן לחיפוש</value>

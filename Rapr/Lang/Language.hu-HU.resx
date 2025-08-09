@@ -453,7 +453,7 @@ Licensz:
     <value>A natív illesztőprogramtár használata</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>DISM / PnpUtil használata</value>
+    <value>DISM használata</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>Rendszerindításhoz kritikus illesztőprogramok belefoglalása a régi illesztőprogramokba</value>
@@ -492,5 +492,8 @@ Licensz:
     <value>A kiválasztott könyvtárnak tartalmaznia kell egy 'Windows' mappát.
 
 Kérjük válassza ki egy Windows telepítés vagy kép gyökérkönyvtárát (a Windows mappát tartalmazó könyvtárat), nem magát a Windows mappát.</value>
+  </data>
+  <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
+    <value>PnpUtil használata</value>
   </data>
 </root>

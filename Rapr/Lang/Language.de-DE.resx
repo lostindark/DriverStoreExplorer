@@ -453,7 +453,10 @@ Lizenz:
     <value>Nativen Driver Store verwenden</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>DISM / PnpUtil verwenden</value>
+    <value>DISM verwenden</value>
+  </data>
+  <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
+    <value>PnpUtil verwenden</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Hier tippen, um zu suchen</value>

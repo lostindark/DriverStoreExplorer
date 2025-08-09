@@ -1,20 +1,28 @@
-﻿namespace Rapr.Utils
+﻿using System;
+
+namespace Rapr.Utils
 {
+    public enum DriverStoreOption
+    {
+        Native,
+        DISM,
+        PnpUtil
+    }
+
     public static class DriverStoreFactory
     {
-        public static IDriverStore CreateOnlineDriverStore(bool useDriverStoreAPI)
+        public static IDriverStore CreateOnlineDriverStore(DriverStoreOption option)
         {
-            if (useDriverStoreAPI)
+            switch (option)
             {
-                return new NativeDriverStore();
-            }
-            else if (DSEFormHelper.IsWin8OrNewer && DismUtil.IsDismAvailable)
-            {
-                return new DismUtil();
-            }
-            else
-            {
-                return new PnpUtil();
+                case DriverStoreOption.Native:
+                    return new NativeDriverStore();
+                case DriverStoreOption.DISM:
+                    return new DismUtil();
+                case DriverStoreOption.PnpUtil:
+                    return new PnpUtil();
+                default:
+                    throw new ArgumentException($"Unsupported driver store option: {option}");
             }
         }
 

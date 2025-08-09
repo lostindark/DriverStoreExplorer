@@ -453,7 +453,10 @@
     <value>기본 드라이버 저장소 사용</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>DISM / PnpUtil 사용</value>
+    <value>DISM 사용</value>
+  </data>
+  <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
+    <value>PnpUtil 사용</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>검색하려면 여기에 입력</value>

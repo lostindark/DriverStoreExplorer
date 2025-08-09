@@ -89,7 +89,7 @@ namespace Rapr
             Trace.TraceInformation("---------------------------------------------------------------");
             Trace.TraceInformation($"{Application.ProductName} started");
 
-            this.UpdateDriverStoreAPI(Settings.Default.UseNativeDriverStore);
+            this.UpdateDriverStoreAPI();
 
             this.UpdateCheckedItemSizeTimer = new Timer(x => this.BeginInvoke((Action)(() => this.UpdateCheckedItemSize())));
             this.searchDebounceTimer = new Timer(x => this.BeginInvoke((Action)(() => this.UpdateSearchFilter())));
@@ -124,28 +124,63 @@ namespace Rapr
             base.Dispose(disposing);
         }
 
-        private void UpdateDriverStoreAPI(bool useNativeDriverStore)
+        private void UpdateDriverStoreAPI()
         {
-            if (DSEFormHelper.IsNativeDriverStoreSupported)
-            {
-                this.useNativeDriveStoreStripMenuItem.Enabled = true;
-            }
-            else
-            {
-                // Disable Native Driver Store option on Windows 7 and earlier, or 32-bit OS
-                this.useNativeDriveStoreStripMenuItem.Enabled = false;
+            // Get the current driver store option from settings
+            var driverStoreOption = (DriverStoreOption)Settings.Default.DriverStoreOption;
 
-                // Ensure DISM/PnpUtil is selected on Win7 or 32-bit OS
-                if (useNativeDriverStore)
+            // Validate and adjust the option based on system capabilities
+            if (driverStoreOption == DriverStoreOption.Native && !DSEFormHelper.IsNativeDriverStoreSupported)
+            {
+                // Fall back to DISM if available, otherwise PnpUtil
+                if (DSEFormHelper.IsWin8OrNewer && DismUtil.IsDismAvailable)
                 {
-                    useNativeDriverStore = false;
-                    Settings.Default.UseNativeDriverStore = false;
+                    driverStoreOption = DriverStoreOption.DISM;
                 }
+                else
+                {
+                    driverStoreOption = DriverStoreOption.PnpUtil;
+                }
+
+                Settings.Default.DriverStoreOption = (int)driverStoreOption;
+            }
+            else if (driverStoreOption == DriverStoreOption.DISM && !DismUtil.IsDismAvailable)
+            {
+                // Fall back to PnpUtil if DISM is not available
+                driverStoreOption = DriverStoreOption.PnpUtil;
+                Settings.Default.DriverStoreOption = (int)driverStoreOption;
+            }
+            else if (driverStoreOption == DriverStoreOption.PnpUtil && !DSEFormHelper.IsPnpUtilSupported)
+            {
+                if (DSEFormHelper.IsNativeDriverStoreSupported)
+                {
+                    driverStoreOption = DriverStoreOption.Native;
+                }
+                else if (DismUtil.IsDismAvailable)
+                {
+                    driverStoreOption = DriverStoreOption.DISM;
+                }
+                else
+                {
+                    // This shouldn't happen, but just in case
+                    driverStoreOption = DriverStoreOption.DISM;
+                }
+
+                Settings.Default.DriverStoreOption = (int)driverStoreOption;
             }
 
-            this.useNativeDriveStoreStripMenuItem.Checked = useNativeDriverStore;
-            this.useDismStripMenuItem.Checked = !useNativeDriverStore;
-            this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore(useNativeDriverStore));
+            // Update menu item checked states
+            this.useNativeDriveStoreStripMenuItem.Checked = driverStoreOption == DriverStoreOption.Native;
+            this.useDismStripMenuItem.Checked = driverStoreOption == DriverStoreOption.DISM;
+            this.usePnpUtilStripMenuItem.Checked = driverStoreOption == DriverStoreOption.PnpUtil;
+
+            // Update menu item enabled states
+            this.useNativeDriveStoreStripMenuItem.Enabled = DSEFormHelper.IsNativeDriverStoreSupported;
+            this.useDismStripMenuItem.Enabled = DismUtil.IsDismAvailable;
+            this.usePnpUtilStripMenuItem.Enabled = DSEFormHelper.IsPnpUtilSupported;
+
+            // Update the driver store
+            this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore(driverStoreOption));
         }
 
         private void UpdateDriverStore(IDriverStore driverStore)
@@ -1006,7 +1041,7 @@ namespace Rapr
                     switch (chooseDriverStore.StoreType)
                     {
                         case DriverStoreType.Online:
-                            this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore(Settings.Default.UseNativeDriverStore));
+                            this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore((DriverStoreOption)Settings.Default.DriverStoreOption));
                             break;
 
                         case DriverStoreType.Offline:
@@ -1194,20 +1229,30 @@ namespace Rapr
 
         private async void UseNativeDriveStoreStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            if (!Settings.Default.UseNativeDriverStore)
+            if (Settings.Default.DriverStoreOption != (int)DriverStoreOption.Native)
             {
-                Settings.Default.UseNativeDriverStore = true;
-                this.UpdateDriverStoreAPI(true);
+                Settings.Default.DriverStoreOption = (int)DriverStoreOption.Native;
+                this.UpdateDriverStoreAPI();
                 await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
             }
         }
 
         private async void UseDismStripMenuItem_Click(object sender, System.EventArgs e)
         {
-            if (Settings.Default.UseNativeDriverStore)
+            if (Settings.Default.DriverStoreOption != (int)DriverStoreOption.DISM)
             {
-                Settings.Default.UseNativeDriverStore = false;
-                this.UpdateDriverStoreAPI(false);
+                Settings.Default.DriverStoreOption = (int)DriverStoreOption.DISM;
+                this.UpdateDriverStoreAPI();
+                await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
+            }
+        }
+
+        private async void UsePnpUtilStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            if (Settings.Default.DriverStoreOption != (int)DriverStoreOption.PnpUtil)
+            {
+                Settings.Default.DriverStoreOption = (int)DriverStoreOption.PnpUtil;
+                this.UpdateDriverStoreAPI();
                 await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
             }
         }

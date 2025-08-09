@@ -123,5 +123,18 @@ namespace Rapr.Properties {
                 this["IncludeBootCriticalInOldDriverSelection"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public int DriverStoreOption {
+            get {
+                return ((int)(this["DriverStoreOption"]));
+            }
+            set {
+                this["DriverStoreOption"] = value;
+            }
+        }
     }
 }

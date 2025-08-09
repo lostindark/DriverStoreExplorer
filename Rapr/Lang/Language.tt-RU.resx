@@ -459,7 +459,10 @@
     <value>Җирле драйвер саклау урынын кулланырга</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>DISM / PnpUtil кулланырга</value>
+    <value>DISM кулланыргы</value>
+  </data>
+  <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
+    <value>PnpUtil кулланыргы</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Эзләү өчен монда язарга</value>

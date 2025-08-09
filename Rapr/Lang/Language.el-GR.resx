@@ -444,7 +444,10 @@ Credits:
     <value>Χρήση του Εγγενούς Driver Store</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>Χρήση DISM / PnpUtil</value>
+    <value>Χρησιμοποιήστε DISM</value>
+  </data>
+  <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
+    <value>Χρησιμοποιήστε PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Γράψτε Εδώ για αναζήτηση</value>

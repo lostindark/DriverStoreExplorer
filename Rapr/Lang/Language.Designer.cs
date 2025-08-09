@@ -624,6 +624,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Use PnpUtil.
+        /// </summary>
+        public static string Menu_Options_UsePnpUtil {
+            get {
+                return ResourceManager.GetString("Menu_Options_UsePnpUtil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Deletion of {0} ({1}) failed..
         /// </summary>
         public static string Message_Delete_Fail {

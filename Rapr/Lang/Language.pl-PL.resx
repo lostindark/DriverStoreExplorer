@@ -453,7 +453,10 @@ Licencja użytkowania:
     <value>Używaj natywnego magazynu sterowników</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
-    <value>Użyj DISM / PnpUtil</value>
+    <value>Używaj DISM</value>
+  </data>
+  <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
+    <value>Używaj PnpUtil</value>
   </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Wpisz tutaj, aby wyszukać</value>
