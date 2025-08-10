@@ -101,7 +101,6 @@ namespace Rapr.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
         public bool UseNativeDriverStore {
             get {
                 return ((bool)(this["UseNativeDriverStore"]));
@@ -126,11 +125,10 @@ namespace Rapr.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
-        public int DriverStoreOption {
+        [global::System.Configuration.DefaultSettingValueAttribute("Native")]
+        public string DriverStoreOption {
             get {
-                return ((int)(this["DriverStoreOption"]));
+                return ((string)(this["DriverStoreOption"]));
             }
             set {
                 this["DriverStoreOption"] = value;

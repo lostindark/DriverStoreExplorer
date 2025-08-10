@@ -69,36 +69,6 @@ namespace Rapr
         }
 
         /// <summary>
-        /// Migrates the legacy UseNativeDriverStore boolean setting to the new DriverStoreOption enum.
-        /// </summary>
-        private static void MigrateDriverStoreSettings()
-        {
-            // Check if we need to migrate from the old UseNativeDriverStore setting
-            // We only migrate if DriverStoreOption is still at its default value (0 = Native)
-            // and the old setting exists with a non-default value
-            bool useNativeDriverStore = Properties.Settings.Default.UseNativeDriverStore;
-            DriverStoreOption currentDriverStoreOption = (DriverStoreOption)Properties.Settings.Default.DriverStoreOption;
-
-            // If DriverStoreOption is still at default, attempt migration
-            if (currentDriverStoreOption == DriverStoreOption.Native)
-            {
-                DriverStoreOption newOption = (useNativeDriverStore && DSEFormHelper.IsNativeDriverStoreSupported)
-                    ? DriverStoreOption.Native
-                    : (DSEFormHelper.IsWin8OrNewer && DismUtil.IsDismAvailable)
-                        ? DriverStoreOption.DISM
-                        : DriverStoreOption.PnpUtil;
-
-                Properties.Settings.Default.DriverStoreOption = (int)newOption;
-
-                Trace.TraceInformation($"Migrated UseNativeDriverStore setting: {useNativeDriverStore} -> DriverStoreOption: {newOption}");
-            }
-            else
-            {
-                Trace.TraceInformation($"DriverStoreOption already configured: {currentDriverStoreOption}, skipping migration");
-            }
-        }
-
-        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]
@@ -145,9 +115,7 @@ namespace Rapr
                     {
                         // Upgrade settings from previous version
                         Properties.Settings.Default.Upgrade();
-
-                        // Migrate the old UseNativeDriverStore boolean setting to the new DriverStoreOption enum
-                        MigrateDriverStoreSettings();
+                        DriverStoreFactory.MigrateDriverStoreSettings();
 
                         // Mark upgrade as completed
                         Properties.Settings.Default.UpgradeRequired = false;
@@ -176,6 +144,8 @@ namespace Rapr
                         Trace.TraceError(e.ToString());
                     }
                 }
+
+                DriverStoreFactory.ValidateDriverStoreOption();
 
                 using (DSEForm mainForm = new DSEForm())
                 {

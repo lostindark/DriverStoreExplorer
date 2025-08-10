@@ -20,14 +20,14 @@
     <Setting Name="UpgradeRequired" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
-    <Setting Name="UseNativeDriverStore" Roaming="true" Type="System.Boolean" Scope="User">
+    <Setting Name="UseNativeDriverStore" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="IncludeBootCriticalInOldDriverSelection" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="DriverStoreOption" Roaming="true" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+    <Setting Name="DriverStoreOption" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Native</Value>
     </Setting>
   </Settings>
 </SettingsFile>
