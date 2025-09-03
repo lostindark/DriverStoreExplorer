@@ -496,4 +496,7 @@ Licence :
 
 Veuillez sélectionner le répertoire racine d'une installation ou d'une image Windows (le répertoire qui contient le dossier Windows), pas le dossier Windows lui-même.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Aucun ancien pilote trouvé à sélectionner.</value>
+  </data>
 </root>

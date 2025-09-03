@@ -496,4 +496,7 @@ Licencja użytkowania:
 
 Proszę wybrać katalog główny instalacji lub obrazu Windows (katalog zawierający folder Windows), a nie sam folder Windows.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Nie znaleziono starych sterowników do wyboru.</value>
+  </data>
 </root>

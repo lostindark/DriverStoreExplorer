@@ -914,6 +914,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to No old drivers found to select..
+        /// </summary>
+        public static string Message_No_Old_Drivers_Found {
+            get {
+                return ResourceManager.GetString("Message_No_Old_Drivers_Found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to This utility cannot be run in pre-Vista OS..
         /// </summary>
         public static string Message_Requires_Later_OS {

@@ -463,4 +463,7 @@ Licença:
 
 Por favor, selecione a pasta raiz de uma instalação ou imagem do Windows (a pasta que contém a pasta Windows), não a própria pasta Windows.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Nenhum driver antigo encontrado para selecionar.</value>
+  </data>
 </root>

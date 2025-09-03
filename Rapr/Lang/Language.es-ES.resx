@@ -496,4 +496,7 @@ Licencia:
 
 Por favor selecciona el directorio raíz de una instalación o imagen de Windows (el directorio que contiene la carpeta Windows), no la carpeta Windows en sí.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>No se encontraron controladores antiguos para seleccionar.</value>
+  </data>
 </root>

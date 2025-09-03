@@ -497,4 +497,7 @@ Licenza:
 
 Seleziona la directory principale di un'installazione o immagine Windows (la directory che contiene la cartella Windows), non la cartella Windows stessa.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Nessun driver obsoleto trovato da selezionare.</value>
+  </data>
 </root>

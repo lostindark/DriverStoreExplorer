@@ -496,4 +496,7 @@ Lisens:
 
 Vennligst velg rotkatalogen til en Windows-installasjon eller -bilde (katalogen som inneholder Windows-mappen), ikke Windows-mappen selv.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Ingen gamle drivere funnet å velge.</value>
+  </data>
 </root>

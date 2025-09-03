@@ -459,4 +459,7 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
 
 يرجى تحديد الدليل الجذر لتثبيت أو صورة Windows (الدليل الذي يحتوي على مجلد Windows)، وليس مجلد Windows نفسه.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>لم يتم العثور على تعريفات قديمة للتحديد.</value>
+  </data>
 </root>

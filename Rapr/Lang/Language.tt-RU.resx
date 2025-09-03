@@ -496,4 +496,7 @@
 
 Зинһар, Windows урнаштыру яки сүрәтенең тамыр каталогын сайлагыз (Windows папкасы булган каталог), Windows папкасының үзен түгел.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Сайлау өчен иске драйверлар табылмады.</value>
+  </data>
 </root>

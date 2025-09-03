@@ -492,4 +492,7 @@
     <value>選定的目錄必須包含一個'Windows'資料夾。
 請選擇Windows安裝或映像的根目錄（包含Windows資料夾的目錄），而不是Windows資料夾本身。</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>未找到要選擇的舊驅動程式。</value>
+  </data>
 </root>

@@ -496,4 +496,7 @@ Kérjük válassza ki egy Windows telepítés vagy kép gyökérkönyvtárát (a
   <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
     <value>PnpUtil használata</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Nem találhatók régi illesztőprogramok kiválasztásra.</value>
+  </data>
 </root>

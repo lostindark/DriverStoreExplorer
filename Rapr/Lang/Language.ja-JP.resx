@@ -496,4 +496,7 @@
 
 Windowsインストールまたはイメージのルートディレクトリ（Windowsフォルダーを含むディレクトリ）を選択してください。Windowsフォルダー自体ではありません。</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>選択する古いドライバーが見つかりません。</value>
+  </data>
 </root>

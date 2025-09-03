@@ -470,4 +470,7 @@
 
 אנא בחר את ספריית השורש של התקנה או דמות Windows (הספרייה המכילה את תיקיית Windows), לא את תיקיית Windows עצמה.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>לא נמצאו מנהלי התקן ישנים לבחירה.</value>
+  </data>
 </root>

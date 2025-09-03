@@ -496,4 +496,7 @@ Lisans:
 
 Lütfen bir Windows kurulumunun veya kalıbının kök dizinini seçin (Windows klasörünü içeren dizin), Windows klasörünün kendisini değil.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Seçim için eski sürücü bulunamadı.</value>
+  </data>
 </root>

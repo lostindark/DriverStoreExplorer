@@ -496,4 +496,7 @@ Lizenz:
 
 Bitte wählen Sie das Stammverzeichnis einer Windows-Installation oder eines Windows-Images aus (das Verzeichnis, das den Windows-Ordner enthält), nicht den Windows-Ordner selbst.</value>
    </data>
+   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+     <value>Keine alten Treiber zum Auswählen gefunden.</value>
+   </data>
 </root>

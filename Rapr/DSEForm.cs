@@ -758,7 +758,7 @@ namespace Rapr
                     queryEntries = queryEntries.Where(entry => entry.BootCritical != true);
                 }
 
-                this.lstDriverStoreEntries.CheckedObjects = queryEntries
+                var oldDriversToSelect = queryEntries
                     .Where(entry => entry.DriverInfName != "ntprint.inf")
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverExtensionId, entry.DriverPkgProvider, entry.DriverInfName })
                     .SelectMany(drivers => drivers
@@ -769,6 +769,15 @@ namespace Rapr
                         .Where(g => g.All(entry => string.IsNullOrEmpty(entry.DeviceName)))
                         .SelectMany(g => g))
                     .ToArray();
+
+                if (oldDriversToSelect.Length == 0)
+                {
+                    this.ShowStatus(Status.Warning, Language.Message_No_Old_Drivers_Found);
+                }
+                else
+                {
+                    this.lstDriverStoreEntries.CheckedObjects = oldDriversToSelect;
+                }
             }
         }
 

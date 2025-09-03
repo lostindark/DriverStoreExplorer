@@ -496,4 +496,7 @@
 
 Пожалуйста, выберите корневую папку установки или образа Windows (папку, содержащий папку «Windows»), а не саму папку «Windows».</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Старых драйверов для выбора не найдено.</value>
+  </data>
 </root>

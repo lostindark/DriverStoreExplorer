@@ -496,4 +496,7 @@ Credits:
 
 Παρακαλώ επιλέξτε τον κατάλογο ρίζας μιας εγκατάστασης ή εικόνας Windows (τον κατάλογο που περιέχει το φάκελο Windows), όχι τον ίδιο το φάκελο Windows.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Δεν βρέθηκαν παλιοί οδηγοί για επιλογή.</value>
+  </data>
 </root>

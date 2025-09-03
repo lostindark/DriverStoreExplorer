@@ -496,4 +496,7 @@ Licencia:
 
 Prosím vyberte koreňový adresár inštalácie alebo obrazu Windows (adresár obsahujúci priečinok Windows), nie samotný priečinok Windows.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>Neboli nájdené žiadne staré ovládače na výber.</value>
+  </data>
 </root>

@@ -496,4 +496,7 @@ License:
 
 Please select the root directory of a Windows installation or image (the directory that contains the Windows folder), not the Windows folder itself.</value>
   </data>
+  <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
+    <value>No old drivers found to select.</value>
+  </data>
 </root>
