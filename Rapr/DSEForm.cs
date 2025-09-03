@@ -1323,11 +1323,18 @@ namespace Rapr
             {
                 this.lstDriverStoreEntries.ModelFilter = null;
                 this.lstDriverStoreEntries.DefaultRenderer = null;
-                this.lstDriverStoreEntries.EmptyListMsg = Language.Message_No_Entries;
+                if (this.lstDriverStoreEntries.EmptyListMsg == Language.Message_No_Entries)
+                {
+                    this.lstDriverStoreEntries.EmptyListMsg = Language.Message_No_Entries;
+                }
             }
             else
             {
-                this.lstDriverStoreEntries.EmptyListMsg = this.lstDriverStoreEntries.Objects != null ? Language.Message_No_Match_Result : Language.Message_No_Entries;
+                if (this.lstDriverStoreEntries.EmptyListMsg == Language.Message_No_Entries)
+                {
+                    this.lstDriverStoreEntries.EmptyListMsg = this.lstDriverStoreEntries.Objects != null ? Language.Message_No_Match_Result : Language.Message_No_Entries;
+                }
+
                 TextMatchFilter filter = TextMatchFilter.Contains(this.lstDriverStoreEntries, textBoxSearch.Text);
                 this.lstDriverStoreEntries.ModelFilter = filter;
                 this.lstDriverStoreEntries.DefaultRenderer = new HighlightTextRenderer(filter);
