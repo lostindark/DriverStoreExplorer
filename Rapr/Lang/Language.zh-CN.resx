@@ -416,6 +416,9 @@
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>扩展ID</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>安装日期</value>
+  </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>选项(&amp;O)</value>
   </data>

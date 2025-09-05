@@ -264,6 +264,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Install Date.
+        /// </summary>
+        public static string Column_InstallDate {
+            get {
+                return ResourceManager.GetString("Column_InstallDate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to INF.
         /// </summary>
         public static string Column_Inf {

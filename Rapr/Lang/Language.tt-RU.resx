@@ -421,6 +421,9 @@
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Өстәмәнең ID'ы</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>Урнаштыру датасы</value>
+  </data>
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Туры килгән нәтижә юк.</value>
   </data>

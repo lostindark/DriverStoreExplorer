@@ -446,6 +446,9 @@ Licensz:
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Kiterjesztés ID</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>Telepítési dátum</value>
+  </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>&amp;Beállítások</value>
   </data>

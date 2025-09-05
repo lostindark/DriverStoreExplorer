@@ -171,6 +171,11 @@ namespace Rapr.Utils
         /// </summary>
         public bool? DevicePresent { get; set; }
 
+        /// <summary>
+        /// Driver install date - when the driver package was imported/added to the driver store
+        /// </summary>
+        public DateTime? InstallDate { get; set; }
+
         public override string ToString()
         {
             return $"PublishedName: {this.DriverPublishedName}, InfName: {this.DriverInfName}, Class: {this.DriverClass}, Version: {this.DriverVersion}, DeviceName: {this.DeviceName}";
@@ -242,6 +247,7 @@ namespace Rapr.Utils
                 "Device Id",
                 "Device Name",
                 "Device Present",
+                "Install Date",
             };
         }
 
@@ -261,6 +267,7 @@ namespace Rapr.Utils
                 this.DeviceId ?? string.Empty,
                 this.DeviceName ?? string.Empty,
                 this.DevicePresent?.ToString() ?? string.Empty,
+                this.InstallDate?.ToString("d") ?? string.Empty,
             };
         }
 

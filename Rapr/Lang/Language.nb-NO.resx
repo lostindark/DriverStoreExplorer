@@ -446,6 +446,9 @@ Lisens:
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Utvidelses-ID</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>Installasjonsdato</value>
+  </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>&amp;Innstillinger</value>
   </data>

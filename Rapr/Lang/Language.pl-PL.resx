@@ -162,6 +162,9 @@
   <data name="Column_Version" xml:space="preserve">
     <value>Wersja sterownika</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>Data Instalacji</value>
+  </data>
   <data name="Context_Delete" xml:space="preserve">
     <value>Usuń</value>
   </data>

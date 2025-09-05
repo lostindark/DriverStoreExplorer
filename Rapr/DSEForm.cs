@@ -150,6 +150,7 @@ namespace Rapr
                 this.useNativeDriveStoreStripMenuItem.Enabled = DSEFormHelper.IsNativeDriverStoreSupported;
                 this.useDismStripMenuItem.Enabled = DismUtil.IsDismAvailable;
                 this.usePnpUtilStripMenuItem.Enabled = DSEFormHelper.IsPnpUtilSupported;
+                this.installDateColumn.IsVisible = driverStoreOption == DriverStoreOption.Native;
             }
             else
             {
@@ -157,6 +158,7 @@ namespace Rapr
                 this.useNativeDriveStoreStripMenuItem.Enabled = false;
                 this.useDismStripMenuItem.Enabled = false;
                 this.usePnpUtilStripMenuItem.Enabled = false;
+                this.installDateColumn.IsVisible = false;
             }
 
             this.cbAddInstall.Enabled = driverStore.SupportAddInstall;
@@ -221,6 +223,19 @@ namespace Rapr
                 groupKey => DriverStoreEntry.GetSizeRangeName((long)groupKey);
 
             this.bootCriticalColumn.AspectToStringConverter = condition => (bool)(condition ?? false) ? Language.Column_Text_True : Language.Column_Text_False;
+            
+            // Setup InstallDate column formatting - shows when the driver package was imported to the store
+            this.installDateColumn.GroupKeyGetter = rowObject =>
+            {
+                DriverStoreEntry driver = (DriverStoreEntry)rowObject;
+                return driver.InstallDate?.Date ?? DateTime.MinValue.Date;
+            };
+
+            this.installDateColumn.GroupKeyToTitleConverter = groupKey => 
+            {
+                var date = (DateTime)groupKey;
+                return date == DateTime.MinValue.Date ? "" : date.ToString("yyyy-MM");
+            };
         }
 
         private void BuildLanguageMenu()

@@ -446,6 +446,9 @@
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>확장 ID</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>설치 날짜</value>
+  </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>옵션(&amp;O)</value>
   </data>

@@ -78,6 +78,7 @@
             this.deviceNameColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.bootCriticalColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.deviceIdColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.installDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.dummyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.contextMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -561,6 +562,7 @@
             this.lstDriverStoreEntries.AllColumns.Add(this.driverProviderColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverVersionColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverDateColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.installDateColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverSizeColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.driverSignerColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.deviceNameColumn);
@@ -669,6 +671,16 @@
             this.deviceIdColumn.Text = global::Rapr.Lang.Language.Column_DeviceId;
 
             // 
+            // installDateColumn
+            // 
+            this.installDateColumn.AspectName = "InstallDate";
+            this.installDateColumn.AspectToStringFormat = global::Rapr.Lang.Language.Date_Format;
+            this.installDateColumn.IsVisible = false;
+            this.installDateColumn.Text = global::Rapr.Lang.Language.Column_InstallDate;
+            this.installDateColumn.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.installDateColumn.Width = 80;
+
+            // 
             // dummyColumn
             // 
             this.dummyColumn.FillsFreeSpace = true;
@@ -771,6 +783,7 @@
         private BrightIdeasSoftware.OLVColumn bootCriticalColumn;
         private BrightIdeasSoftware.OLVColumn driverExtensionIdColumn;
         private BrightIdeasSoftware.OLVColumn deviceIdColumn;
+        private BrightIdeasSoftware.OLVColumn installDateColumn;
         private System.Windows.Forms.TableLayoutPanel searchTableLayoutPanel;
         private System.Windows.Forms.PictureBox pictureBoxSearchIcon;
         private System.Windows.Forms.TextBox textBoxSearch;

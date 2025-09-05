@@ -162,6 +162,9 @@
   <data name="Column_Version" xml:space="preserve">
     <value>Version du pilote</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>Date Installation</value>
+  </data>
   <data name="Context_Delete" xml:space="preserve">
     <value>Supprimer</value>
   </data>

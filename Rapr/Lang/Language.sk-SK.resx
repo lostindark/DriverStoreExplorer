@@ -446,6 +446,9 @@ Licencia:
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Id rozšírenia</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>Dátum inštalácie</value>
+  </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>&amp;Možnosti</value>
   </data>

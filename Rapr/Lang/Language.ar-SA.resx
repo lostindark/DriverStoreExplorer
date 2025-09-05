@@ -418,6 +418,9 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>معرف الامتداد</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>تاريخ التثبيت</value>
+  </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>خيارات</value>
   </data>

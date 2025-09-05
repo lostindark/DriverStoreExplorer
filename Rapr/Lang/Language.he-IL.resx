@@ -426,6 +426,9 @@
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>מזהה הרחבה</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>תאריך התקנה</value>
+  </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>אפשרויות</value>
   </data>

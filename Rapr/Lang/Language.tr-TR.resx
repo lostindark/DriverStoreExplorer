@@ -446,6 +446,9 @@ Lisans:
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Uzantı Kimliği</value>
   </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>Kurulum tarihi</value>
+  </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>&amp;Seçenekler</value>
   </data>

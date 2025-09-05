@@ -285,7 +285,7 @@ namespace Rapr.Utils
             {
                 return (T)(object)Marshal.PtrToStringUni(propertyBufferPtr);
             }
-            else if (propertyType == DevPropType.FileTime && typeof(T) == typeof(DateTime))
+            else if (propertyType == DevPropType.FileTime && (typeof(T) == typeof(DateTime) || typeof(T) == typeof(DateTime?)))
             {
                 var time = (System.Runtime.InteropServices.ComTypes.FILETIME)Marshal.PtrToStructure(propertyBufferPtr, typeof(System.Runtime.InteropServices.ComTypes.FILETIME));
                 ulong high = (ulong)time.dwHighDateTime;
