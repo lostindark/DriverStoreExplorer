@@ -414,7 +414,7 @@ Licença:
     <value>ID da extensão</value>
   </data>
   <data name="Column_InstallDate" xml:space="preserve">
-    <value>Data instalação</value>
+    <value>Data de instalação</value>
   </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>&amp;Opções</value>
