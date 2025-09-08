@@ -432,7 +432,7 @@ Licencia:
     <value>Id de extensión</value>
   </data>
   <data name="Column_InstallDate" xml:space="preserve">
-    <value>Fecha Instalación</value>
+    <value>Fecha de instalación</value>
   </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>&amp;Opciones</value>
