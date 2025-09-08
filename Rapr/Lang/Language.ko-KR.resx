@@ -354,7 +354,7 @@
     <value>장치 Id</value>
   </data>
   <data name="About_VersionUpToDate" xml:space="preserve">
-    <value>(최신 버전 - 번역: 비너스걸💗)</value>
+    <value>(최신 버전 - 번역: 비너스걸)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
     <value>(새 버전 v{0} 발견 - {1})</value>
