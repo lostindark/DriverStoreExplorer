@@ -130,7 +130,7 @@
     <value>새로 고침(&amp;R)</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>구형 드라이버 선택(&amp;S)</value>
+    <value>오래된 드라이버 선택(&amp;S)</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>강제 삭제(&amp;N)</value>
@@ -181,7 +181,7 @@
     <value>선택 반전(&amp;I)</value>
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
-    <value>구형 드라이버 선택(&amp;O)</value>
+    <value>오래된 드라이버 선택(&amp;O)</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>드라이버 저장소에서 {0}개의 패키지를 삭제하려고 합니다.</value>
@@ -189,8 +189,8 @@
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>드라이버 저장소에서 {0} ({1})를 삭제하려고 합니다.</value>
-    <comment>{0} - inf 패키지 파일의 자리 표시자
-{1} - oem inf 파일의 자리 표시자</comment>
+    <comment>{0} - inf 패키지 파일에 대한 자리 표시자
+{1} - oem inf 파일에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>이 유틸리티는 Vista 이전 OS에서 실행할 수 없습니다.</value>
@@ -208,7 +208,7 @@
     <value>드라이버 저장소 탐색기</value>
   </data>
   <data name="Status_Label" xml:space="preserve">
-    <value>준비</value>
+    <value>준비 완료</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[팁: 드라이버가 아직 사용 중일 수 있습니다. 패키지를 강제로 삭제하세요]</value>
@@ -245,7 +245,7 @@
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>{0} 정보</value>
-    <comment>{0} - Product_Name의 자리 표시자</comment>
+    <comment>{0} - Product_Name에 대한 자리 표시자</comment>
   </data>
   <data name="Export_Error" xml:space="preserve">
     <value>오류</value>
@@ -281,8 +281,8 @@
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>드라이버 저장소에서 {0} ({1})를 제거했습니다.</value>
-    <comment>{0} - inf 패키지 파일의 자리 표시자
-{1} - oem inf 파일의 자리 표시자</comment>
+    <comment>{0} - inf 패키지 파일에 대한 자리 표시자
+{1} - oem inf 파일에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
     <value>드라이버 저장소에서 {0}개의 패키지를 제거했습니다.</value>
@@ -290,19 +290,19 @@
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>드라이버 저장소에서 {0} ({1})를 제거하는 중에 오류가 발생했습니다.</value>
-    <comment>{0} - inf 패키지 파일의 자리 표시자
-{1} - oem inf 파일의 자리 표시자</comment>
+    <comment>{0} - inf 패키지 파일에 대한 자리 표시자
+{1} - oem inf 파일에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
     <value>드라이버 저장소에서 일부 패키지를 제거하는 중에 오류가 발생했습니다.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
     <value>드라이버 저장소에 {0} 패키지를 추가했습니다.</value>
-    <comment>{0} - inf 경로의 자리 표시자</comment>
+    <comment>{0} - inf 경로에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>{0} 패키지를 드라이버 저장소에 추가하는 중에 오류가 발생했습니다.</value>
-    <comment>{0} - inf 경로의 자리 표시자</comment>
+    <value>드라이버 저장소에  {0} 패키지를 추가하는 중에 오류가 발생했습니다.</value>
+    <comment>{0} - inf 경로에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
     <value>로그 파일을 찾을 수 없습니다.</value>
@@ -311,17 +311,17 @@
     <value>오류</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>내용이 {0}에 저장되었습니다. 내보내기가 완료되었습니다.</value>
-    <comment>{0} - 내보내기 경로의 자리 표시자</comment>
+    <value>{0}에 내용이 저장되었습니다. 내보내기가 완료되었습니다.</value>
+    <comment>{0} - 내보내기 경로에 대한 자리 표시자</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>내보내기 실패: {0}</value>
-    <comment>{0} - 내보내기 경로의 자리 표시자</comment>
+    <comment>{0} - 내보내기 경로에 대한 자리 표시자</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>{0}개의 드라이버를 선택했습니다. 총 크기: {1}.</value>
+    <value>{0}개의 드라이버 선택: 총 크기: {1}.</value>
     <comment>{0} - 선택한 드라이버 수에 대한 자리 표시자
-{1} - 디스크 공간의 자리 표시자</comment>
+{1} - 디스크 공간에 대한 자리 표시자</comment>
   </data>
   <data name="Status_No_Drivers_Selected" xml:space="preserve">
     <value>선택한 드라이버가 없습니다.</value>
@@ -357,9 +357,9 @@
     <value>(최신 버전 - 번역: 비너스걸)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
-    <value>(새 버전 v{0} - {1}를 찾았습니다)</value>
-    <comment>{0} - 버전 번호의 자리 표시자
-{1} - 정보_다운로드에 대한 자리 표시자</comment>
+    <value>(새 버전 v{0} 발견 - {1})</value>
+    <comment>{0} - 버전 번호에 대한 자리 표시자
+{1} - About_Download에 대한 자리 표시자</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>다운로드</value>
@@ -369,8 +369,8 @@
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>드라이버 저장소에서 {0}({1})을 강제로 삭제하려고 합니다.</value>
-    <comment>{0} - inf 패키지 파일의 자리 표시자
-{1} - oem inf 파일의 자리 표시자</comment>
+    <comment>{0} - inf 패키지 파일에 대한 자리 표시자
+{1} - oem inf 파일에 대한 자리 표시자</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
     <value>드라이버 저장소에서 {0}개의 패키지를 강제로 삭제하려고 합니다.</value>
@@ -378,31 +378,31 @@
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>{0} ({1}) 삭제에 성공했습니다.</value>
-    <comment>{0} - inf 패키지 파일의 자리 표시자
-{1} - oem inf 파일의 자리 표시자</comment>
+    <comment>{0} - inf 패키지 파일에 대한 자리 표시자
+{1} - oem inf 파일에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
     <value>드라이버 {0}({1})을(를) 내보냈습니다.</value>
-    <comment>{0} - 폴더 이름의 자리 표시자
-{1} - oem inf 파일의 자리 표시자</comment>
+    <comment>{0} - 폴더 이름에 대한 자리 표시자
+{1} - oem inf 파일에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>{0} ({1}) 삭제를 실패했습니다.</value>
-    <comment>{0} - inf 패키지 파일의 자리 표시자
+    <comment>{0} - inf 패키지 파일에 대한 자리 표시자
 {1} - oem inf 파일의 자리 표시자</comment>
   </data>
   <data name="Message_Export_Fail" xml:space="preserve">
-    <value>드라이버 {0}({1})을(를) 내보내지 못했습니다.</value>
-    <comment>{0} - inf 패키지 파일의 자리 표시자
-{1} - oem inf 파일의 자리 표시자</comment>
+    <value>드라이버 {0} ({1})을(를) 내보내지 못했습니다.</value>
+    <comment>{0} - inf 패키지 파일에 대한 자리 표시자
+{1} - oem inf 파일에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>{0} 패키지를 추가하고 드라이버 저장소에 설치했습니다.</value>
-    <comment>{0} - inf 경로의 자리 표시자</comment>
+    <value>드라이버 저장소에 패키지 {0} &amp; 를 추가하고 설치했습니다.</value>
+    <comment>{0} - inf 경로에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>{0} 패키지를 드라이버 저장소에 추가하는 동안 오류가 발생했습니다.</value>
-    <comment>{0} - inf 경로의 자리 표시자</comment>
+    <value>드라이버 저장소에 패키지 {0} &amp; 를 추가하고 설치하는 중 오류가 발생했습니다.</value>
+    <comment>{0} - inf 경로에 대한 자리 표시자</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
     <value>드라이버 내보내기(&amp;E)</value>
@@ -466,30 +466,30 @@
   </data>
   <data name="Message_No_Inf_Found" xml:space="preserve">
     <value>{0} 폴더에 inf 파일이 없습니다.</value>
-    <comment>{0} - 폴더 이름의 자리 표시자</comment>
+    <comment>{0} - 폴더 이름에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Drivers_Added" xml:space="preserve">
     <value>드라이버 저장소에 {0}개의 패키지를 추가했습니다.</value>
     <comment>{0} - 패키지 수에 대한 자리 표시자</comment>
   </data>
   <data name="Message_Drivers_Added_Installed" xml:space="preserve">
-    <value>{0}개의 패키지를 추가하고 드라이버 저장소에 설치했습니다.</value>
+    <value>드라이버 저장소에 {0}개의 패키지를 추가하고 설치했습니다.</value>
     <comment>{0} - 패키지 수에 대한 자리 표시자입니다.</comment>
   </data>
   <data name="Message_Drivers_Added_Error" xml:space="preserve">
     <value>드라이버 저장소에 일부 패키지를 추가하는 중 오류가 발생했습니다.</value>
   </data>
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
-    <value>일부 패키지를 추가하고 드라이버 저장소에 설치하는 동안 오류가 발생했습니다.</value>
+    <value>드라이버 저장소에 일부 패키지를 추가하고 설치하는 중 오류가 발생했습니다.</value>
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>선택한 드라이버 목록 내보내기(&amp;S)</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>구형 드라이버에 부팅 필수 항목 포함</value>
+    <value>오래된 드라이버에 부팅 필수 항목 포함</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
-    <value>Windows 폴더가 포함된 디렉터리를 선택하세요 (Windows 폴더 자체가 아님)</value>
+    <value>Windows 폴더가 포함된 디렉터리 선택 (Windows 폴더 자체가 아님)</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
     <value>잘못된 디렉터리 선택</value>
@@ -497,7 +497,7 @@
   <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
     <value>선택한 디렉터리에는 'Windows' 폴더가 포함되어야 합니다.
 
-Windows 설치 또는 이미지의 루트 디렉터리(Windows 폴더가 포함된 디렉터리)를 선택하세요. Windows 폴더 자체가 아닙니다.</value>
+Windows 폴더 자체가 아닌 Windows 설치 또는 이미지의 루트 디렉터리 (Windows 폴더가 포함된 디렉터리)를 선택하세요.</value>
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>선택할 오래된 드라이버를 찾을 수 없습니다.</value>
