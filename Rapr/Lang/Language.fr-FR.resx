@@ -162,9 +162,6 @@
   <data name="Column_Version" xml:space="preserve">
     <value>Version du pilote</value>
   </data>
-  <data name="Column_InstallDate" xml:space="preserve">
-    <value>Date Installation</value>
-  </data>
   <data name="Context_Delete" xml:space="preserve">
     <value>Supprimer</value>
   </data>
@@ -448,6 +445,9 @@ Licence :
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>ID de l’extension</value>
+  </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>Date d'installation</value>
   </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>&amp;Options</value>
