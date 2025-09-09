@@ -130,7 +130,7 @@
     <value>&amp;Yenile</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>Eski Sürücü(leri)yü &amp;Seç</value>
+    <value>&amp;Eski Sürücü(leri)yü Seç</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Silmeye &amp;Zorla</value>
@@ -214,7 +214,7 @@
     <value>[İPUCU: Sürücü hala kullanılıyor olabilir. ZORLA paketi silmeyi deneyin]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
-    <value>&amp;Yardım</value>
+    <value>Yardı&amp;m</value>
   </data>
   <data name="Menu_Help_About" xml:space="preserve">
     <value>&amp;Hakkında</value>
@@ -223,7 +223,7 @@
     <value>&amp;Dosya</value>
   </data>
   <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
-    <value>Tüm Sürücü Listesini &amp;Dışa Aktar</value>
+    <value>Tüm Sürücü Listesini Dışa &amp;Aktar</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>Çı&amp;kış</value>
@@ -251,7 +251,7 @@
     <value>Hata</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
-    <value>En son sürüm ve yayım notlarını bulabilirsiniz:
+    <value>En son sürüm ve yayım notlarını burada bulabilirsiniz:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
 Hata bildirimi/özellik isteği:
@@ -319,7 +319,7 @@ Lisans:
     <comment>{0} - Placeholder for error message</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>{0} Sürücü seçildi. Toplam boyut: {1}.</value>
+    <value>{0} Sürücü Seçildi. Toplam boyut: {1}.</value>
     <comment>{0} - Placeholder for number of selected Drivers
 {1} - Placeholder for disk space</comment>
   </data>
@@ -336,16 +336,16 @@ Lisans:
     <value>Yerel Makine</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>Sürücü Deposu &amp;Seçin</value>
+    <value>Sürücü Deposu &amp;Seç</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
     <value>Çevrimdışı Sürücü Deposu</value>
   </data>
   <data name="ChooseDriverStore_Title" xml:space="preserve">
-    <value>Sürücü Deposu Seç</value>
+    <value>Sürücü Deposu Seçin</value>
   </data>
   <data name="Menu_Language" xml:space="preserve">
-    <value>&amp;Dil</value>
+    <value>Di&amp;l</value>
   </data>
   <data name="Column_DeviceName" xml:space="preserve">
     <value>Aygıt Adı</value>
@@ -405,7 +405,7 @@ Lisans:
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>Sürücü(leri)yü &amp;Dışa Aktar</value>
+    <value>Sürücü(leri)yü Dışa Ak&amp;tar</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
     <value>Sürücüyü &amp;Dışa Aktar</value>
@@ -447,10 +447,10 @@ Lisans:
     <value>Uzantı Kimliği</value>
   </data>
   <data name="Column_InstallDate" xml:space="preserve">
-    <value>Kurulum tarihi</value>
+    <value>Yükleme Tarihi</value>
   </data>
   <data name="Menu_Options" xml:space="preserve">
-    <value>&amp;Seçenekler</value>
+    <value>Seçe&amp;nekler</value>
   </data>
   <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
     <value>Yerel Sürücü Deposunu Kullan</value>
@@ -483,7 +483,7 @@ Lisans:
     <value>Bazı paketler eklenirken hata oldu ve sürücü deposuna yüklendi.</value>
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
-    <value>&amp;Seçilen Sürücü Listesini Dışa Aktar</value>
+    <value>Seçilen Sürücü Listesini Dışa Ak&amp;tar</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>Eski Sürücülerde Önyükleme Kritik Olanları Dahil Et</value>
@@ -500,6 +500,6 @@ Lisans:
 Lütfen bir Windows kurulumunun veya kalıbının kök dizinini seçin (Windows klasörünü içeren dizin), Windows klasörünün kendisini değil.</value>
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
-    <value>Seçim için eski sürücü bulunamadı.</value>
+    <value>Seçilecek eski sürücüler bulunamadı.</value>
   </data>
 </root>
