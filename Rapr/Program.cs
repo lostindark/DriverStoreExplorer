@@ -50,21 +50,27 @@ namespace Rapr
             FileInfo fileInfo = new FileInfo(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
             DirectoryInfo strongAssemblyConfigDirectory = fileInfo.Directory.Parent;
 
-            // Remove old version of config.
-            foreach (var dir in strongAssemblyConfigDirectory.EnumerateDirectories("*", SearchOption.TopDirectoryOnly))
+            if (strongAssemblyConfigDirectory.Exists)
             {
-                if (Version.TryParse(dir.Name, out Version version) && version < Assembly.GetExecutingAssembly().GetName().Version)
+                // Remove old version of config.
+                foreach (var dir in strongAssemblyConfigDirectory.EnumerateDirectories("*", SearchOption.TopDirectoryOnly))
                 {
-                    dir.Delete(recursive: true);
+                    if (Version.TryParse(dir.Name, out Version version) && version < Assembly.GetExecutingAssembly().GetName().Version)
+                    {
+                        dir.Delete(recursive: true);
+                    }
                 }
             }
 
             DirectoryInfo configDirectory = strongAssemblyConfigDirectory.Parent;
 
-            // Remove configurations created by not strong signed app.
-            foreach (var dir in configDirectory.EnumerateDirectories(Assembly.GetEntryAssembly().ManifestModule.Name + "_Url_*", SearchOption.TopDirectoryOnly))
+            if (configDirectory.Exists)
             {
-                dir.Delete(recursive: true);
+                // Remove configurations created by not strong signed app.
+                foreach (var dir in configDirectory.EnumerateDirectories(Assembly.GetEntryAssembly().ManifestModule.Name + "_Url_*", SearchOption.TopDirectoryOnly))
+                {
+                    dir.Delete(recursive: true);
+                }
             }
         }
 
