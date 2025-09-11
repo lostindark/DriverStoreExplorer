@@ -134,5 +134,18 @@ namespace Rapr.Properties {
                 this["DriverStoreOption"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("180.00:00:00")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public global::System.TimeSpan LogRetentionPeriod {
+            get {
+                return ((global::System.TimeSpan)(this["LogRetentionPeriod"]));
+            }
+            set {
+                this["LogRetentionPeriod"] = value;
+            }
+        }
     }
 }

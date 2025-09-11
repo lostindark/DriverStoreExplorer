@@ -29,5 +29,8 @@
     <Setting Name="DriverStoreOption" Type="System.String" Scope="User">
       <Value Profile="(Default)">Native</Value>
     </Setting>
+    <Setting Name="LogRetentionPeriod" Roaming="true" Type="System.TimeSpan" Scope="User">
+      <Value Profile="(Default)">180.00:00:00</Value>
+    </Setting>
   </Settings>
 </SettingsFile>
