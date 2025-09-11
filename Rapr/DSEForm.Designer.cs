@@ -579,6 +579,7 @@
             this.driverProviderColumn,
             this.driverVersionColumn,
             this.driverDateColumn,
+            this.installDateColumn,
             this.driverSizeColumn,
             this.deviceNameColumn,
             this.dummyColumn});
