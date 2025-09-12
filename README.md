@@ -1,5 +1,14 @@
+<div align="center">
+
+<img src="./Rapr/icon.ico" alt="logo" width="128">
 
 # Driver Store Explorer (RAPR)
+
+</div>
+
+🌏: [**English**](/) [한국어](/README_KO.md)
+
+---
 
 [![Build Status](https://ci.appveyor.com/api/projects/status/kqtvhfq23am2gq26/branch/master?svg=true)](https://ci.appveyor.com/project/lostindark/driverstoreexplorer/branch/master)
 
