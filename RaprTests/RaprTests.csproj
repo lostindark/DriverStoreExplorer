@@ -9,6 +9,7 @@
   <ItemGroup>
     <PackageReference Include="MSTest.TestAdapter" Version="3.10.0" />
     <PackageReference Include="MSTest.TestFramework" Version="3.10.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.4" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Rapr\Rapr.csproj" />
