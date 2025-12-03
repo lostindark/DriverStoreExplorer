@@ -281,10 +281,31 @@ namespace Rapr
             }
         }
 
+        private void EnsureOnScreen()
+        {
+            var workArea = Screen.GetWorkingArea(this);
+            var currentBounds = this.Bounds;
+            var newLocation = currentBounds.Location;
+
+            if (currentBounds.Right <= workArea.Left)
+                newLocation.X = workArea.Left;
+            else if (currentBounds.Left >= workArea.Right)
+                newLocation.X = workArea.Right - currentBounds.Width;
+
+            if (currentBounds.Bottom <= workArea.Top)
+                newLocation.Y = workArea.Top;
+            else if (currentBounds.Top >= workArea.Bottom)
+                newLocation.Y  = workArea.Bottom - currentBounds.Height;
+
+            this.Location = newLocation;
+        }
+
         private async void DSEForm_Shown(object sender, EventArgs e)
         {
             this.savedBackColor = this.lblStatus.BackColor;
             this.savedForeColor = this.lblStatus.ForeColor;
+
+            this.EnsureOnScreen();
 
             await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
         }
