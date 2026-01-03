@@ -79,6 +79,7 @@
             this.bootCriticalColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.deviceIdColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.installDateColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
+            this.binaryFilesColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.dummyColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.contextMenuStrip.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -568,6 +569,7 @@
             this.lstDriverStoreEntries.AllColumns.Add(this.deviceNameColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.bootCriticalColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.deviceIdColumn);
+            this.lstDriverStoreEntries.AllColumns.Add(this.binaryFilesColumn);
             this.lstDriverStoreEntries.AllColumns.Add(this.dummyColumn);
             this.lstDriverStoreEntries.AllowColumnReorder = true;
             this.lstDriverStoreEntries.AlternateRowBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -682,6 +684,14 @@
             this.installDateColumn.Width = 80;
 
             // 
+            // binaryFilesColumn
+            // 
+            this.binaryFilesColumn.AspectName = "DriverFiles";
+            this.binaryFilesColumn.IsVisible = false;
+            this.binaryFilesColumn.Text = "Driver Files";
+            this.binaryFilesColumn.Width = 200;
+
+            // 
             // dummyColumn
             // 
             this.dummyColumn.FillsFreeSpace = true;
@@ -785,6 +795,7 @@
         private BrightIdeasSoftware.OLVColumn driverExtensionIdColumn;
         private BrightIdeasSoftware.OLVColumn deviceIdColumn;
         private BrightIdeasSoftware.OLVColumn installDateColumn;
+        private BrightIdeasSoftware.OLVColumn binaryFilesColumn;
         private System.Windows.Forms.TableLayoutPanel searchTableLayoutPanel;
         private System.Windows.Forms.PictureBox pictureBoxSearchIcon;
         private System.Windows.Forms.TextBox textBoxSearch;

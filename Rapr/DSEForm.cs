@@ -236,6 +236,13 @@ namespace Rapr
                 var date = (DateTime)groupKey;
                 return date == DateTime.MinValue.Date ? "" : date.ToString("yyyy-MM");
             };
+
+            // Setup DriverFiles column formatting - converts list to comma-separated string
+            this.binaryFilesColumn.AspectToStringConverter = files => 
+            {
+                var fileList = files as List<string>;
+                return fileList != null && fileList.Count > 0 ? string.Join(", ", fileList) : string.Empty;
+            };
         }
 
         private void BuildLanguageMenu()
@@ -1380,9 +1387,36 @@ namespace Rapr
                     this.lstDriverStoreEntries.EmptyListMsg = this.lstDriverStoreEntries.Objects != null ? Language.Message_No_Match_Result : Language.Message_No_Entries;
                 }
 
-                TextMatchFilter filter = TextMatchFilter.Contains(this.lstDriverStoreEntries, textBoxSearch.Text);
-                this.lstDriverStoreEntries.ModelFilter = filter;
-                this.lstDriverStoreEntries.DefaultRenderer = new HighlightTextRenderer(filter);
+                string searchText = textBoxSearch.Text;
+
+                // Create custom filter that searches all string properties including hidden columns
+                this.lstDriverStoreEntries.ModelFilter = new ModelFilter(delegate (object obj)
+                {
+                    if (!(obj is DriverStoreEntry entry))
+                    {
+                        return false;
+                    }
+
+                    // Helper function to check if a string contains the search text
+                    bool Contains(string value) => value?.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0;
+
+                    return Contains(entry.DriverPublishedName) ||
+                           Contains(entry.DriverInfName) ||
+                           Contains(entry.DriverClass) ||
+                           Contains(entry.DriverPkgProvider) ||
+                           Contains(entry.DriverSignerName) ||
+                           Contains(entry.DriverVersion?.ToString()) ||
+                           Contains(entry.DriverDate.ToString("d")) ||
+                           Contains(entry.DeviceName) ||
+                           Contains(entry.DeviceId) ||
+                           Contains(entry.InstallDate?.ToString("d")) ||
+                           Contains(entry.DriverExtensionId.ToString()) ||
+                           (entry.DriverFiles?.Any(f => Contains(f)) ?? false);
+                }); 
+
+                // Use TextMatchFilter for highlighting visible columns
+                TextMatchFilter textFilter = TextMatchFilter.Contains(this.lstDriverStoreEntries, searchText);
+                this.lstDriverStoreEntries.DefaultRenderer = new HighlightTextRenderer(textFilter);
             }
         }
 

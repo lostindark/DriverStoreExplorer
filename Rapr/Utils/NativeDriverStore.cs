@@ -194,6 +194,7 @@ namespace Rapr.Utils
                 DriverSize = DriverStoreRepository.GetFolderSize(new DirectoryInfo(Path.GetDirectoryName(driverStoreFilename))),
                 BootCritical = GetObjectPropertyInfo<bool?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_BootCritical),
                 InstallDate = GetObjectPropertyInfo<DateTime?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ImportDate),
+                DriverFiles = EnumerateDriverPackageBinaryFiles(driverStoreHandle, driverStoreFilename),
             };
 
             driverStoreEntries.Add(driverStoreEntry);
@@ -260,6 +261,65 @@ namespace Rapr.Utils
             {
                 Marshal.FreeHGlobal(propertyBufferPtr);
             }
+        }
+
+        /// <summary>
+        /// Enumerate binary files in a driver package
+        /// </summary>
+        internal static List<string> EnumerateDriverPackageBinaryFiles(IntPtr driverStoreHandle, string driverPackageInfPath)
+        {
+            List<string> binaryFiles = new List<string>();
+
+            IntPtr driverPackageHandle = NativeMethods.DriverPackageOpen(
+                driverPackageInfPath,
+                GetProcessorArchitecture(driverStoreHandle),
+                null,
+                DriverPackageOpenFlags.FilesOnly,
+                IntPtr.Zero);
+
+            if (driverPackageHandle == IntPtr.Zero)
+            {
+                return binaryFiles;
+            }
+
+            try
+            {
+                GCHandle handle = GCHandle.Alloc(binaryFiles);
+                try
+                {
+                    NativeMethods.DriverPackageEnumFilesW(
+                        driverPackageHandle,
+                        IntPtr.Zero,
+                        DriverPackageEnumFilesFlags.Binaries | DriverPackageEnumFilesFlags.Copy,
+                        EnumBinaryFiles,
+                        GCHandle.ToIntPtr(handle));
+                }
+                finally
+                {
+                    handle.Free();
+                }
+            }
+            finally
+            {
+                NativeMethods.DriverPackageClose(driverPackageHandle);
+            }
+
+            return binaryFiles;
+        }
+
+        private static bool EnumBinaryFiles(IntPtr driverPackageHandle, IntPtr pDriverFile, IntPtr lParam)
+        {
+            List<string> binaryFiles = (List<string>)GCHandle.FromIntPtr(lParam).Target;
+
+            DriverFile driverFile = Marshal.PtrToStructure<DriverFile>(pDriverFile);
+
+            // Only collect binary files (drivers, DLLs, etc.)
+            if (driverFile.Type == DriverFileType.Binary && !string.IsNullOrEmpty(driverFile.DestinationFile))
+            {
+                binaryFiles.Add(driverFile.DestinationFile);
+            }
+
+            return true; // Continue enumeration
         }
 
         public bool ExportDriver(DriverStoreEntry driverStoreEntry, string destinationPath)

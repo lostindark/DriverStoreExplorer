@@ -176,6 +176,11 @@ namespace Rapr.Utils
         /// </summary>
         public DateTime? InstallDate { get; set; }
 
+        /// <summary>
+        /// List of driver files (sys, DLLs) in the driver package
+        /// </summary>
+        public List<string> DriverFiles { get; set; }
+
         public override string ToString()
         {
             return $"PublishedName: {this.DriverPublishedName}, InfName: {this.DriverInfName}, Class: {this.DriverClass}, Version: {this.DriverVersion}, DeviceName: {this.DeviceName}";
