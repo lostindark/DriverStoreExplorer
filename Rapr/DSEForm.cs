@@ -799,8 +799,8 @@ namespace Rapr
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverExtensionId, entry.DriverPkgProvider, entry.DriverInfName })
                     .SelectMany(drivers => drivers
                         .GroupBy(entry => new { entry.DriverVersion, entry.DriverDate })
-                        .OrderByDescending(g => g.Key.DriverVersion)
-                        .ThenByDescending(g => g.Key.DriverDate)
+                        .OrderByDescending(g => g.Key.DriverDate)
+                        .ThenByDescending(g => g.Key.DriverVersion)
                         .Skip(1)
                         .Where(g => g.All(entry => string.IsNullOrEmpty(entry.DeviceName)))
                         .SelectMany(g => g))
