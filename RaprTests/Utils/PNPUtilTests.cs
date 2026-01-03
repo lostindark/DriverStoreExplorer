@@ -953,7 +953,7 @@ oem47.inf
             List<DriverStoreEntry> entries = PnpUtil.ParsePnpUtilEnumerateResult(EnglishPnpUtilEnumerateOutput);
 
             Assert.IsNotNull(entries);
-            Assert.AreEqual(1, entries.Count);
+            Assert.HasCount(1, entries);
 
             Assert.AreEqual("oem4.inf", entries[0].DriverPublishedName);
             Assert.AreEqual("Microsoft", entries[0].DriverPkgProvider);
@@ -969,14 +969,14 @@ oem47.inf
             List<DriverStoreEntry> entries = PnpUtil.ParsePnpUtilEnumerateResult(EnglishPnpUtilEnumerateOutputWithoutSignerName);
 
             Assert.IsNotNull(entries);
-            Assert.AreEqual(1, entries.Count);
+            Assert.HasCount(1, entries);
 
             Assert.AreEqual("oem4.inf", entries[0].DriverPublishedName);
             Assert.AreEqual("Microsoft", entries[0].DriverPkgProvider);
             Assert.AreEqual("Human Interface Devices", entries[0].DriverClass);
             Assert.AreEqual(new DateTime(2015, 11, 06, 0, 0, 0, DateTimeKind.Unspecified), entries[0].DriverDate);
             Assert.AreEqual(new Version(9, 9, 114, 0), entries[0].DriverVersion);
-            Assert.AreEqual(null, entries[0].DriverSignerName);
+            Assert.IsNull(entries[0].DriverSignerName);
         }
 
         [TestMethod()]
@@ -985,7 +985,7 @@ oem47.inf
             List<DriverStoreEntry> entries = PnpUtil.ParsePnpUtilEnumerateResult(EnglishPnpUtilEnumerateOutputWithDummyLine);
 
             Assert.IsNotNull(entries);
-            Assert.AreEqual(1, entries.Count);
+            Assert.HasCount(1, entries);
 
             Assert.AreEqual("oem4.inf", entries[0].DriverPublishedName);
             Assert.AreEqual("Microsoft", entries[0].DriverPkgProvider);
@@ -1001,14 +1001,14 @@ oem47.inf
             List<DriverStoreEntry> entries = PnpUtil.ParsePnpUtilEnumerateResult(EnglishPnpUtilEnumerateOutputWithMissingLine);
 
             Assert.IsNotNull(entries);
-            Assert.AreEqual(2, entries.Count);
+            Assert.HasCount(2, entries);
 
             Assert.AreEqual("oem4.inf", entries[0].DriverPublishedName);
             Assert.AreEqual("Microsoft", entries[0].DriverPkgProvider);
             Assert.AreEqual("Human Interface Devices", entries[0].DriverClass);
             Assert.AreEqual(new DateTime(2015, 11, 06, 0, 0, 0, DateTimeKind.Unspecified), entries[0].DriverDate);
             Assert.AreEqual(new Version(9, 9, 114, 0), entries[0].DriverVersion);
-            Assert.AreEqual(null, entries[0].DriverSignerName);
+            Assert.IsNull(entries[0].DriverSignerName);
 
             Assert.AreEqual("oem18.inf", entries[1].DriverPublishedName);
             Assert.AreEqual("Intel", entries[1].DriverPkgProvider);
@@ -1024,7 +1024,7 @@ oem47.inf
             List<DriverStoreEntry> entries = PnpUtil.ParsePnpUtilEnumerateResult(ChinesePnpUtilEnumerateOutput);
 
             Assert.IsNotNull(entries);
-            Assert.AreEqual(1, entries.Count);
+            Assert.HasCount(1, entries);
 
             Assert.AreEqual("oem0.inf", entries[0].DriverPublishedName);
             Assert.AreEqual("Microsoft", entries[0].DriverPkgProvider);
@@ -1040,7 +1040,7 @@ oem47.inf
             List<DriverStoreEntry> entries = PnpUtil.ParsePnpUtilEnumerateResult(LongChinesePnpUtilEnumerateOutput);
 
             Assert.IsNotNull(entries);
-            Assert.AreEqual(95, entries.Count);
+            Assert.HasCount(95, entries);
             Assert.IsTrue(entries.All(e => !string.IsNullOrEmpty(e.DriverPublishedName)));
             Assert.IsTrue(entries.All(e => !string.IsNullOrEmpty(e.DriverPkgProvider)));
             Assert.IsTrue(entries.All(e => !string.IsNullOrEmpty(e.DriverClass)));
@@ -1057,7 +1057,7 @@ oem47.inf
             List<DriverStoreEntry> entries = PnpUtil.ParsePnpUtilEnumerateResult(RussianPnpUtilEnumerateOutput);
 
             Assert.IsNotNull(entries);
-            Assert.AreEqual(1, entries.Count);
+            Assert.HasCount(1, entries);
 
             Assert.AreEqual("oem0.inf", entries[0].DriverPublishedName);
             Assert.AreEqual("Cisco Systems", entries[0].DriverPkgProvider);
@@ -1073,7 +1073,7 @@ oem47.inf
             List<DriverStoreEntry> entries = PnpUtil.ParsePnpUtilEnumerateResult(LongRussianPnpUtilEnumerateOutput);
 
             Assert.IsNotNull(entries);
-            Assert.AreEqual(38, entries.Count);
+            Assert.HasCount(38, entries);
             Assert.IsTrue(entries.All(e => !string.IsNullOrEmpty(e.DriverPublishedName)));
             Assert.IsTrue(entries.All(e => !string.IsNullOrEmpty(e.DriverPkgProvider)));
             Assert.IsTrue(entries.All(e => !string.IsNullOrEmpty(e.DriverClass)));

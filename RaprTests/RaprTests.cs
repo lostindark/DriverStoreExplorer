@@ -17,7 +17,7 @@ namespace Rapr.Tests
             Thread.CurrentThread.CurrentCulture = ci;
             Thread.CurrentThread.CurrentUICulture = ci;
 
-            Assert.IsTrue(Language.UnitTest_Language == "English");
+            Assert.AreEqual("English", Language.UnitTest_Language);
         }
 
         [TestMethod]
@@ -27,7 +27,7 @@ namespace Rapr.Tests
             Thread.CurrentThread.CurrentCulture = ci;
             Thread.CurrentThread.CurrentUICulture = ci;
 
-            Assert.IsTrue(Language.UnitTest_Language == "Français");
+            Assert.AreEqual("Français", Language.UnitTest_Language);
         }
     }
 }
