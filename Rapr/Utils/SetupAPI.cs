@@ -45,7 +45,8 @@ namespace Rapr.Utils
                             GetDriverInf(deviceInfoSet, deviceInfo),
                             TryGetDevicePropertyInfo<DateTime>(deviceInfoSet, deviceInfo, DeviceHelper.DEVPKEY_Device_DriverDate),
                             TryGetDevicePropertyInfo<Version>(deviceInfoSet, deviceInfo, DeviceHelper.DEVPKEY_Device_DriverVersion),
-                            TryGetDevicePropertyInfo<bool?>(deviceInfoSet, deviceInfo, DeviceHelper.DEVPKEY_Device_IsPresent)
+                            TryGetDevicePropertyInfo<bool?>(deviceInfoSet, deviceInfo, DeviceHelper.DEVPKEY_Device_IsPresent),
+                            TryGetDevicePropertyInfo<string[]>(deviceInfoSet, deviceInfo, DeviceHelper.DEVPKEY_Device_DriverExtendedInfs)
                         ));
                     }
                     catch (Win32Exception)

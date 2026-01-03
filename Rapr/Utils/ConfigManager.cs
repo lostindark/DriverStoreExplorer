@@ -18,7 +18,8 @@ namespace Rapr.Utils
                 var deviceInfo = devicesInfo.OrderByDescending(d => d.IsPresent)?.FirstOrDefault(e =>
                     string.Equals(e.DriverInf, driverStoreEntry.DriverPublishedName, StringComparison.OrdinalIgnoreCase)
                     && e.DriverVersion == driverStoreEntry.DriverVersion
-                    && e.DriverDate == driverStoreEntry.DriverDate);
+                    && e.DriverDate == driverStoreEntry.DriverDate
+                    || driverStoreEntry.DriverExtensionId != default && e.ExtendedInfs?.Any(extInf => string.Equals(extInf, driverStoreEntry.DriverPublishedName, StringComparison.OrdinalIgnoreCase)) == true);
 
                 driverStoreEntry.DeviceId = deviceInfo?.DeviceId;
                 driverStoreEntry.DeviceName = deviceInfo?.DeviceName;
@@ -64,7 +65,8 @@ namespace Rapr.Utils
                                     GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DriverInfPath),
                                     GetDevNodeProperty<DateTime>(devInst, DeviceHelper.DEVPKEY_Device_DriverDate),
                                     GetDevNodeProperty<Version>(devInst, DeviceHelper.DEVPKEY_Device_DriverVersion),
-                                    IsDevicePresent(devInst)));
+                                    IsDevicePresent(devInst),
+                                    GetDevNodeProperty<string[]>(devInst, DeviceHelper.DEVPKEY_Device_DriverExtendedInfs)));
                             }
                             catch (Win32Exception)
                             {

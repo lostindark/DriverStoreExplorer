@@ -208,6 +208,7 @@ namespace Rapr.Utils
         internal static readonly DevPropKey DEVPKEY_Device_NoConnectSound =           new DevPropKey(0xa8b865dd, 0x2e3d, 0x4094, 0xad, 0x97, 0xe5, 0x93, 0xa7, 0xc, 0x75, 0xd6, 17);     // DEVPROP_TYPE_BOOLEAN
         internal static readonly DevPropKey DEVPKEY_Device_GenericDriverInstalled =   new DevPropKey(0xa8b865dd, 0x2e3d, 0x4094, 0xad, 0x97, 0xe5, 0x93, 0xa7, 0xc, 0x75, 0xd6, 18);     // DEVPROP_TYPE_BOOLEAN
         internal static readonly DevPropKey DEVPKEY_Device_AdditionalSoftwareRequested =   new DevPropKey(0xa8b865dd, 0x2e3d, 0x4094, 0xad, 0x97, 0xe5, 0x93, 0xa7, 0xc, 0x75, 0xd6, 19); //DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_Device_DriverExtendedInfs =       new DevPropKey(0xa8b865dd, 0x2e3d, 0x4094, 0xad, 0x97, 0xe5, 0x93, 0xa7, 0xc, 0x75, 0xd6, 20);     // DEVPROP_TYPE_STRING_LIST
 
         //
         // Device safe-removal properties
@@ -324,7 +325,7 @@ namespace Rapr.Utils
             {
                 return (T)(object)(Marshal.ReadByte(propertyBufferPtr) != 0);
             }
-            else if (propertyType == DevPropType.StringList && typeof(T) == typeof(IList<string>))
+            else if (propertyType == DevPropType.StringList && (typeof(T) == typeof(IList<string>) || typeof(T) == typeof(string[])))
             {
                 IntPtr curStringPos = propertyBufferPtr;
                 List<string> strings = new List<string>();
@@ -339,6 +340,11 @@ namespace Rapr.Utils
 
                     strings.Add(curStr);
                     curStringPos = new IntPtr(curStringPos.ToInt64() + ((curStr.Length + 1) * sizeof(char)));
+                }
+
+                if (typeof(T) == typeof(string[]))
+                {
+                    return (T)(object)strings.ToArray();
                 }
 
                 return (T)(object)strings;
