@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 using Rapr.Properties;
@@ -48,7 +48,7 @@ namespace Rapr.Utils
 
             DriverStoreOption newOption = (useNativeDriverStore && DSEFormHelper.IsNativeDriverStoreSupported)
                 ? DriverStoreOption.Native
-                : (DSEFormHelper.IsWin8OrNewer && DismUtil.IsDismAvailable)
+                : (DismUtil.IsDismAvailable)
                     ? DriverStoreOption.DISM
                     : DriverStoreOption.PnpUtil;
 
@@ -70,7 +70,7 @@ namespace Rapr.Utils
             if (driverStoreOption == DriverStoreOption.Native && !DSEFormHelper.IsNativeDriverStoreSupported)
             {
                 // Fall back to DISM if available, otherwise PnpUtil
-                if (DSEFormHelper.IsWin8OrNewer && DismUtil.IsDismAvailable)
+                if (DismUtil.IsDismAvailable)
                 {
                     driverStoreOption = DriverStoreOption.DISM;
                 }
