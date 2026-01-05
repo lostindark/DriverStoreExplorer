@@ -1,6 +1,6 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net462</TargetFramework>
+    <TargetFramework>net481</TargetFramework>
     <OutputType>WinExe</OutputType>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <UseWindowsForms>true</UseWindowsForms>
@@ -25,7 +25,6 @@
     <PackageReference Include="PortableSettingsProvider" Version="0.2.5" GeneratePathProperty="true" />
     <PackageReference Include="Resource.Embedder" Version="2.2.0" />
     <PackageReference Include="StrongNamer" Version="0.2.5" />
-    <PackageReference Include="System.ValueTuple" Version="4.6.1" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.configuration" />
@@ -72,7 +71,6 @@
     <EmbeddedResource Include="$(PkgMicrosoft_Dism)\lib\net40\Microsoft.Dism.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgNewtonsoft_Json)\lib\net45\Newtonsoft.Json.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgObjectListView_Official)\lib\net20\ObjectListView.dll" Visible="false" />
-    <EmbeddedResource Include="$(PkgSystem_ValueTuple)\lib\net462\System.ValueTuple.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Core)\lib\Microsoft.WindowsAPICodePack.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Shell)\lib\Microsoft.WindowsAPICodePack.Shell.dll" Visible="false" />
     <EmbeddedResource Include="$(IntermediateOutputPath)SignedAssemblies\PortableSettingsProvider.dll" Visible="false">
