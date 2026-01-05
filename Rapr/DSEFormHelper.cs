@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -22,7 +22,6 @@ namespace Rapr
     {
         private const string AppCompatRegistry = @"Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers";
         private const string RunAsAdminRegistryValue = "RUNASADMIN";
-        private static readonly Version Win8Version = new Version(6, 2);
         private static readonly Version Win10Version = new Version(10, 0);
         private static readonly Version Win11Version = new Version(10, 0, 22000);
 
@@ -96,13 +95,7 @@ namespace Rapr
             }
         }
 
-        public static bool IsOSSupported =>
-            Environment.OSVersion.Platform == PlatformID.Win32NT
-            && (Environment.OSVersion.Version.Major >= 6);
-
-        public static bool IsWin8OrNewer =>
-            Environment.OSVersion.Platform == PlatformID.Win32NT
-            && Environment.OSVersion.Version >= Win8Version;
+        public static bool IsOSSupported => true;
 
         /// <summary>
         /// Gets a value indicating whether the current operating system is Windows 11 or newer.
@@ -115,12 +108,7 @@ namespace Rapr
         /// Gets a value indicating whether the current operating system is 64-bit.
         /// </summary>
         public static bool Is64BitOperatingSystem => Environment.Is64BitOperatingSystem;
-
-        /// <summary>
-        /// Gets a value indicating whether the native driver store API is supported.
-        /// The native driver store requires Windows 8 or newer AND a 64-bit operating system.
-        /// </summary>
-        public static bool IsNativeDriverStoreSupported => IsWin8OrNewer && Is64BitOperatingSystem;
+        public static bool IsNativeDriverStoreSupported => Is64BitOperatingSystem;
 
         /// <summary>
         /// Gets a value indicating whether the PnPUtil utility is supported.
