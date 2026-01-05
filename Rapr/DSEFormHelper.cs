@@ -95,7 +95,9 @@ namespace Rapr
             }
         }
 
-        public static bool IsOSSupported => true;
+        public static bool IsOSSupported =>
+            Environment.OSVersion.Platform == PlatformID.Win32NT &&
+            Environment.OSVersion.Version >= Win10Version;
 
         /// <summary>
         /// Gets a value indicating whether the current operating system is Windows 11 or newer.
