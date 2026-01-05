@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -15,7 +15,6 @@ namespace Rapr
 
         public async Task<VersionInfo> GetLatestVersionInfo()
         {
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             this.httpClient.DefaultRequestHeaders
                 .Accept
