@@ -184,22 +184,22 @@
     <value>Sélectionner les pilotes &amp;obsolètes</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Sur le point de supprimer {0} paquets du magasin de pilotes.</value>
-    <comment>{0} - Correspond au nombre de paquets</comment>
+    <value>Sur le point de supprimer {0} packages du magasin de pilotes.</value>
+    <comment>{0} - Correspond au nombre de packages</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>Sur le point de supprimer {0} ({1}) du magasin de pilotes.</value>
-    <comment>{0} - Correspond au fichier INF du paquet
+    <comment>{0} - Correspond au fichier INF du package
 {1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Cet utilitaire ne peut pas être exécuté sur un système d’exploitation antérieur à Vista.</value>
+    <value>Cet utilitaire ne peut pas être exécuté sur un système d'exploitation antérieur à Vista.</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Êtes-vous sûr ?</value>
   </data>
   <data name="Message_Title_Warning" xml:space="preserve">
-    <value>Attention</value>
+    <value>Avertissement</value>
   </data>
   <data name="Operations_Text" xml:space="preserve">
     <value>Opérations</value>
@@ -211,7 +211,7 @@
     <value>Prêt</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[CONSEIL : le pilote est peut-être encore utilisé. Essayez de FORCER la suppression du paquet]</value>
+    <value>[CONSEIL : le pilote est peut-être encore utilisé. Essayez de FORCER la suppression du package]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>&amp;Aide</value>
@@ -223,13 +223,13 @@
     <value>&amp;Fichier</value>
   </data>
   <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
-    <value>&amp;Exporter la liste des pilotes</value>
+    <value>&amp;Exporter la liste de tous les pilotes</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>&amp;Quitter</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>Afficher le fichier &amp;journal</value>
+    <value>Afficher les &amp;journaux</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
@@ -274,34 +274,34 @@ Licence :
     <value>Fichiers CSV | *.csv</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Ajout du paquet de pilote en cours…</value>
+    <value>Ajout du package de pilote en cours...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Suppression en cours…</value>
+    <value>Suppression du(des) package(s) de pilotes en cours...</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
-    <value>Suppression de {0} ({1}) du magasin de pilotes.</value>
-    <comment>{0} - Correspond au fichier INF du paquet
+    <value>{0} ({1}) supprimé du magasin de pilotes.</value>
+    <comment>{0} - Correspond au fichier INF du package
 {1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>{0} paquets supprimés du magasin de pilotes.</value>
-    <comment>{0} - Correspond au nombre de paquets</comment>
+    <value>{0} packages supprimés du magasin de pilotes.</value>
+    <comment>{0} - Correspond au nombre de packages</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
     <value>Erreur lors de la suppression de {0} ({1}) du magasin de pilotes.</value>
-    <comment>{0} - Correspond au fichier INF du paquet
+    <comment>{0} - Correspond au fichier INF du package
 {1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Delete_Packages_Error" xml:space="preserve">
-    <value>Erreur lors de la suppression de certains paquets du magasin de pilotes.</value>
+    <value>Erreur lors de la suppression de certains packages du magasin de pilotes.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Le paquet {0} a été ajouté au magasin de pilotes.</value>
+    <value>Le package {0} a été ajouté au magasin de pilotes.</value>
     <comment>{0} - Correspond au chemin du fichier INF</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Erreur lors de l’ajout du paquet {0} au magasin de pilotes.</value>
+    <value>Erreur lors de l'ajout du package {0} au magasin de pilotes.</value>
     <comment>{0} - Correspond au chemin du fichier INF</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
@@ -312,11 +312,11 @@ Licence :
   </data>
   <data name="Export_Complete" xml:space="preserve">
     <value>Contenu enregistré vers {0}. Exportation complétée.</value>
-    <comment>{0} - Correspond au chemin d’exportation</comment>
+    <comment>{0} - Correspond au chemin d'exportation</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
-    <value>Échec de l’exportation : {0}</value>
-    <comment>{0} - Correspond au message d’erreur</comment>
+    <value>Échec de l'exportation : {0}</value>
+    <comment>{0} - Correspond au message d'erreur</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>{0} pilote(s) sélectionné(s). Taille totale : {1}.</value>
@@ -327,7 +327,7 @@ Licence :
     <value>Aucun pilote sélectionné.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>Ouvrir l’emplacement du &amp;fichier</value>
+    <value>Ouvrir l'emplacement du &amp;fichier</value>
   </data>
   <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Ouvrir les &amp;propriétés du périphérique</value>
@@ -365,43 +365,43 @@ Licence :
     <value>Télécharger</value>
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
-    <value>Analyse du magasin de pilotes en cours…</value>
+    <value>Analyse du magasin de pilotes en cours...</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>Sur le point de forcer la suppression de {0} ({1}) du magasin de pilotes.</value>
-    <comment>{0} - Correspond au fichier INF du paquet
+    <comment>{0} - Correspond au fichier INF du package
 {1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>Sur le point de forcer la suppression de {0} paquets du magasin de pilotes.</value>
-    <comment>{0} - Correspond au nombre de paquets</comment>
+    <value>Sur le point de forcer la suppression de {0} packages du magasin de pilotes.</value>
+    <comment>{0} - Correspond au nombre de packages</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
     <value>Suppression de {0} ({1}) réussie.</value>
-    <comment>{0} - Correspond au fichier INF du paquet
+    <comment>{0} - Correspond au fichier INF du package
 {1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
     <value>Exportation du pilote {0} ({1}) réussie.</value>
-    <comment>{0} - Correspond au fichier INF du paquet
+    <comment>{0} - Correspond au fichier INF du package
 {1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Delete_Fail" xml:space="preserve">
     <value>Échec de la suppression de {0} ({1}).</value>
-    <comment>{0} - Correspond au fichier INF du paquet
+    <comment>{0} - Correspond au fichier INF du package
 {1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Export_Fail" xml:space="preserve">
-    <value>Échec de l’exportation de {0} ({1}).</value>
-    <comment>{0} - Correspond au fichier INF du paquet
+    <value>Échec de l'exportation de {0} ({1}).</value>
+    <comment>{0} - Correspond au fichier INF du package
 {1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Le paquet {0} a été ajouté et installé dans le magasin de pilotes.</value>
-    <comment>{0} - Correspond au fichier INF du paquet</comment>
+    <value>Le package {0} a été ajouté et installé dans le magasin de pilotes.</value>
+    <comment>{0} - Correspond au fichier INF du package</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Erreur lors de l’ajout du paquet {0} et de l’installation dans le magasin de pilotes.</value>
+    <value>Erreur lors de l'ajout du package {0} et de l'installation dans le magasin de pilotes.</value>
     <comment>{0} - Correspond au chemin vers le fichier INF</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
@@ -414,22 +414,22 @@ Licence :
     <value>Ex&amp;porter tous les pilotes</value>
   </data>
   <data name="Message_Export_All_Drivers_Fail" xml:space="preserve">
-    <value>Échec de l’exportation de tous les paquets de pilotes.</value>
+    <value>Échec de l'exportation de tous les packages de pilotes.</value>
   </data>
   <data name="Message_Export_Drivers_Error" xml:space="preserve">
-    <value>Échec de l’exportation de certains paquets de pilotes.</value>
+    <value>Échec de l'exportation de certains packages de pilotes.</value>
   </data>
   <data name="Message_Export_All_Drivers_Success" xml:space="preserve">
-    <value>Exportation de tous les paquets de pilotes réussie.</value>
+    <value>Exportation de tous les packages de pilotes réussie.</value>
   </data>
   <data name="Message_Export_Drivers_Success" xml:space="preserve">
-    <value>Exportation des paquets de pilotes réussie.</value>
+    <value>Exportation des packages de pilotes réussie.</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
-    <value>Exportation de tous les paquets de pilotes en cours…</value>
+    <value>Exportation de tous les packages de pilotes en cours...</value>
   </data>
   <data name="Status_Exporting_Drivers" xml:space="preserve">
-    <value>Exportation du(des) paquet(s) de pilotes en cours…</value>
+    <value>Exportation du(des) package(s) de pilotes en cours...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Annuler</value>
@@ -444,7 +444,7 @@ Licence :
     <value>Faux</value>
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
-    <value>ID de l’extension</value>
+    <value>ID de l'extension</value>
   </data>
   <data name="Column_InstallDate" xml:space="preserve">
     <value>Date d'installation</value>
@@ -469,18 +469,18 @@ Licence :
     <comment>{0} - Correspond au nom du dossier</comment>
   </data>
   <data name="Message_Drivers_Added" xml:space="preserve">
-    <value>{0} paquets ajoutés au magasin de pilotes.</value>
-    <comment>{0} - Correspond au nombre de paquets</comment>
+    <value>{0} packages ajoutés au magasin de pilotes.</value>
+    <comment>{0} - Correspond au nombre de packages</comment>
   </data>
   <data name="Message_Drivers_Added_Installed" xml:space="preserve">
-    <value>{0} paquets ajoutés et installés dans le magasin de pilotes.</value>
-    <comment>{0} - Correspond au nombre de paquets</comment>
+    <value>{0} packages ajoutés et installés dans le magasin de pilotes.</value>
+    <comment>{0} - Correspond au nombre de packages</comment>
   </data>
   <data name="Message_Drivers_Added_Error" xml:space="preserve">
-    <value>Erreur lors de l’ajout de certains paquets au magasin de pilotes.</value>
+    <value>Erreur lors de l'ajout de certains packages au magasin de pilotes.</value>
   </data>
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
-    <value>Erreur lors de l’ajout de certains paquets et de l’installation dans le magasin de pilotes.</value>
+    <value>Erreur lors de l'ajout de certains packages et de l'installation dans le magasin de pilotes.</value>
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>Exporter la liste des pilotes &amp;sélectionnés</value>
@@ -500,6 +500,6 @@ Licence :
 Veuillez sélectionner le répertoire racine d'une installation ou d'une image Windows (le répertoire qui contient le dossier Windows), pas le dossier Windows lui-même.</value>
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
-    <value>Aucun pilote obsolète trouvé à sélectionner.</value>
+    <value>Aucun pilote obsolète n'a été trouvé pour être sélectionné.</value>
   </data>
 </root>
