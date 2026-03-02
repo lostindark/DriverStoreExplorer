@@ -29,7 +29,7 @@ namespace Rapr
                 CleanupOldLogEntries();
                 return CreateLogFileStream();
             }
-            catch (IOException)
+            catch (Exception ex) when (ex is IOException or UnauthorizedAccessException)
             {
                 string fallbackLogDirectory = Path.GetDirectoryName(ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath);
                 Directory.CreateDirectory(fallbackLogDirectory);
