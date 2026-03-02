@@ -1371,7 +1371,7 @@ namespace Rapr
 
         private void UpdateSearchFilter()
         {
-            if (textBoxSearch.Text == Language.Message_Type_Here_To_Search || string.IsNullOrWhiteSpace(textBoxSearch.Text))
+            if (string.IsNullOrWhiteSpace(textBoxSearch.Text))
             {
                 this.lstDriverStoreEntries.ModelFilter = null;
                 this.lstDriverStoreEntries.DefaultRenderer = null;
@@ -1420,21 +1420,7 @@ namespace Rapr
             }
         }
 
-        private void TextBoxSearch_Leave(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textBoxSearch.Text))
-            {
-                textBoxSearch.Text = Language.Message_Type_Here_To_Search;
-            }
-        }
-
-        private void TextBoxSearch_Enter(object sender, EventArgs e)
-        {
-            if (textBoxSearch.Text == Language.Message_Type_Here_To_Search)
-            {
-                textBoxSearch.Text = "";
-            }
-        }
+        
 
         private IEnumerable<string> FindInfFile(string infPath)
         {

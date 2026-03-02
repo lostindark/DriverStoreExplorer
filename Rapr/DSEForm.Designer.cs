@@ -64,9 +64,7 @@
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.searchTableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
-            this.pictureBoxSearchIcon = new System.Windows.Forms.PictureBox();
-            this.textBoxSearch = new System.Windows.Forms.TextBox();
+            this.textBoxSearch = new Rapr.Controls.EnhancedSearchTextBox();
             this.lstDriverStoreEntries = new Rapr.MyObjectListView();
             this.driverInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverClassColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -87,8 +85,7 @@
             this.flowLayoutPanel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
-            this.searchTableLayoutPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearchIcon)).BeginInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).BeginInit();
             this.SuspendLayout();
             // 
@@ -501,7 +498,7 @@
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tableLayoutPanel1.Controls.Add(this.searchTableLayoutPanel, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBoxSearch, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.lstDriverStoreEntries, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.gbOptions, 1, 0);
             this.tableLayoutPanel1.SetRowSpan(this.gbOptions, 2);
@@ -514,44 +511,14 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1004, 679);
             this.tableLayoutPanel1.TabStop = false;
             // 
-            // searchTableLayoutPanel
-            // 
-            this.searchTableLayoutPanel.ColumnCount = 2;
-            this.searchTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.AutoSize));
-            this.searchTableLayoutPanel.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.searchTableLayoutPanel.Controls.Add(this.pictureBoxSearchIcon, 0, 0);
-            this.searchTableLayoutPanel.Controls.Add(this.textBoxSearch, 1, 0);
-            this.searchTableLayoutPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.searchTableLayoutPanel.Location = new System.Drawing.Point(0, 0);
-            this.searchTableLayoutPanel.Margin = new System.Windows.Forms.Padding(0);
-            this.searchTableLayoutPanel.Name = "searchTableLayoutPanel";
-            this.searchTableLayoutPanel.RowCount = 1;
-            this.searchTableLayoutPanel.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.searchTableLayoutPanel.Size = new System.Drawing.Size(1247, 24);
-            this.searchTableLayoutPanel.TabStop = false;
-            // 
-            // pictureBoxSearchIcon
-            // 
-            this.pictureBoxSearchIcon.Image = Rapr.Properties.Resources.Search.ToBitmap();
-            this.pictureBoxSearchIcon.Name = "pictureBoxSearchIcon";
-            this.pictureBoxSearchIcon.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxSearchIcon.Margin = new System.Windows.Forms.Padding(4);
-            this.pictureBoxSearchIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxSearchIcon.TabStop = false;
-            // 
             // textBoxSearch
             // 
-            this.textBoxSearch.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.textBoxSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBoxSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBoxSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.textBoxSearch.Margin = new System.Windows.Forms.Padding(3, 0, 3, 0);
             this.textBoxSearch.Name = "textBoxSearch";
-            this.textBoxSearch.Size = new System.Drawing.Size(300, 30);
+            this.textBoxSearch.PlaceholderText = global::Rapr.Lang.Language.Message_Type_Here_To_Search;
+            this.textBoxSearch.Size = new System.Drawing.Size(300, 24);
             this.textBoxSearch.TabIndex = 1;
-            this.textBoxSearch.Text = global::Rapr.Lang.Language.Message_Type_Here_To_Search;
-            this.textBoxSearch.Enter += new System.EventHandler(this.TextBoxSearch_Enter);
-            this.textBoxSearch.Leave += new System.EventHandler(this.TextBoxSearch_Leave);
-            this.textBoxSearch.GotFocus += new System.EventHandler(this.TextBoxSearch_Enter);
-            this.textBoxSearch.LostFocus += new System.EventHandler(this.TextBoxSearch_Leave);
             this.textBoxSearch.TextChanged += new System.EventHandler(this.TextBoxSearch_TextChanged);
             // 
             // lstDriverStoreEntries
@@ -726,9 +693,7 @@
             this.menuStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.searchTableLayoutPanel.ResumeLayout(false);
-            this.searchTableLayoutPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxSearchIcon)).EndInit();
+            
             ((System.ComponentModel.ISupportInitialize)(this.lstDriverStoreEntries)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -796,9 +761,7 @@
         private BrightIdeasSoftware.OLVColumn deviceIdColumn;
         private BrightIdeasSoftware.OLVColumn installDateColumn;
         private BrightIdeasSoftware.OLVColumn binaryFilesColumn;
-        private System.Windows.Forms.TableLayoutPanel searchTableLayoutPanel;
-        private System.Windows.Forms.PictureBox pictureBoxSearchIcon;
-        private System.Windows.Forms.TextBox textBoxSearch;
+        private Rapr.Controls.EnhancedSearchTextBox textBoxSearch;
     }
 }
 
