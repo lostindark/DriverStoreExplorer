@@ -13,7 +13,7 @@
     <AssemblyOriginatorKeyFile>Rapr.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.101">
+    <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="10.0.103">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
@@ -25,7 +25,7 @@
     <PackageReference Include="PortableSettingsProvider" Version="0.2.5" GeneratePathProperty="true" />
     <PackageReference Include="Resource.Embedder" Version="2.2.0" />
     <PackageReference Include="StrongNamer" Version="0.2.5" />
-    <PackageReference Include="System.ValueTuple" Version="4.6.1" GeneratePathProperty="true" />
+    <PackageReference Include="System.ValueTuple" Version="4.6.2" GeneratePathProperty="true" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.configuration" />
