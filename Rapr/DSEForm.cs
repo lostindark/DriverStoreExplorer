@@ -33,6 +33,8 @@ namespace Rapr
         private Color savedBackColor;
         private Color savedForeColor;
 
+        private HashSet<DriverStoreEntry> driversWithNewerDate = new HashSet<DriverStoreEntry>();
+
         private static readonly IUpdateManager UpdateManager = new UpdateManager();
 
         private static readonly ICollection<CultureInfo> SupportedLanguage = DSEFormHelper.GetSupportedLanguage();
@@ -336,6 +338,7 @@ namespace Rapr
                 this.ShowStatus(Status.Normal, Language.Message_Scanning_Driver_Store);
                 this.lstDriverStoreEntries.EmptyListMsg = Language.Message_Scanning_Driver_Store;
                 this.lstDriverStoreEntries.ClearObjects();
+                this.driversWithNewerDate.Clear();
 
                 var driverStoreEntries = await Task.Run(() => this.driverStore.EnumeratePackages()).ConfigureAwait(true);
                 this.lstDriverStoreEntries.SetObjects(driverStoreEntries);
@@ -804,17 +807,38 @@ namespace Rapr
                     queryEntries = queryEntries.Where(entry => entry.BootCritical != true);
                 }
 
-                var oldDriversToSelect = queryEntries
+                var driverGroups = queryEntries
                     .Where(entry => entry.DriverInfName != "ntprint.inf")
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverExtensionId, entry.DriverPkgProvider, entry.DriverInfName })
-                    .SelectMany(drivers => drivers
+                    .Select(drivers => drivers
                         .GroupBy(entry => new { entry.DriverVersion, entry.DriverDate })
                         .OrderByDescending(g => g.Key.DriverVersion)
                         .ThenByDescending(g => g.Key.DriverDate)
+                        .ToList())
+                    .Where(groups => groups.Count > 1)
+                    .ToList();
+
+                var oldDriversToSelect = driverGroups
+                    .SelectMany(groups => groups
                         .Skip(1)
                         .Where(g => g.All(entry => string.IsNullOrEmpty(entry.DeviceName)))
                         .SelectMany(g => g))
                     .ToArray();
+
+                // Find old drivers whose date is newer than the newest version's date.
+                this.driversWithNewerDate.Clear();
+
+                foreach (var groups in driverGroups)
+                {
+                    var newestDate = groups[0].Key.DriverDate;
+
+                    foreach (var entry in groups.Skip(1)
+                        .Where(g => g.Key.DriverDate > newestDate && g.All(e => string.IsNullOrEmpty(e.DeviceName)))
+                        .SelectMany(g => g))
+                    {
+                        this.driversWithNewerDate.Add(entry);
+                    }
+                }
 
                 if (oldDriversToSelect.Length == 0)
                 {
@@ -1093,12 +1117,20 @@ namespace Rapr
 
         private void LstDriverStoreEntries_FormatCell(object sender, BrightIdeasSoftware.FormatCellEventArgs e)
         {
+            DriverStoreEntry entry = (DriverStoreEntry)e.Model;
+
             if (e.ColumnIndex == this.deviceNameColumn.Index)
             {
-                DriverStoreEntry entry = (DriverStoreEntry)e.Model;
                 if (entry.DevicePresent == false)
                 {
                     e.SubItem.ForeColor = Color.Gray;
+                }
+            }
+            else if (e.ColumnIndex == this.driverDateColumn.Index)
+            {
+                if (this.driversWithNewerDate.Contains(entry))
+                {
+                    e.SubItem.ForeColor = Color.OrangeRed;
                 }
             }
         }
