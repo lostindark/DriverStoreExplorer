@@ -28,6 +28,7 @@
             this.ctxMenuSelectOldDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxMenuOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxMenuCopyFolderPath = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenuOpenDeviceProperties = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxMenuExportDriver = new System.Windows.Forms.ToolStripMenuItem();
@@ -126,6 +127,7 @@
             this.toolStripSeparator1,
             this.ctxMenuOpenDeviceProperties,
             this.ctxMenuOpenFolder,
+            this.ctxMenuCopyFolderPath,
             this.toolStripSeparator3,
             this.ctxMenuExportDriver,
             this.ctxMenuDelete});
@@ -181,6 +183,13 @@
             this.ctxMenuOpenFolder.Size = new System.Drawing.Size(188, 22);
             this.ctxMenuOpenFolder.Text = global::Rapr.Lang.Language.Context_Open_Folder;
             this.ctxMenuOpenFolder.Click += new System.EventHandler(this.CtxMenuOpenFolder_Click);
+            // 
+            // ctxMenuCopyFolderPath
+            // 
+            this.ctxMenuCopyFolderPath.Name = "ctxMenuCopyFolderPath";
+            this.ctxMenuCopyFolderPath.Size = new System.Drawing.Size(188, 22);
+            this.ctxMenuCopyFolderPath.Text = global::Rapr.Lang.Language.Context_Copy_Folder_Path;
+            this.ctxMenuCopyFolderPath.Click += new System.EventHandler(this.CtxMenuCopyFolderPath_Click);
             // 
             // toolStripSeparator3
             // 
@@ -748,6 +757,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private BrightIdeasSoftware.OLVColumn dummyColumn;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuOpenFolder;
+        private System.Windows.Forms.ToolStripMenuItem ctxMenuCopyFolderPath;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuOpenDeviceProperties;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripMenuItem chooseDriverStoreToolStripMenuItem;

@@ -329,6 +329,9 @@ Licence :
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Ouvrir l'emplacement du &amp;fichier</value>
   </data>
+  <data name="Context_Copy_Folder_Path" xml:space="preserve">
+    <value>Copier le c&amp;hemin du dossier</value>
+  </data>
   <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Ouvrir les &amp;propriétés du périphérique</value>
   </data>

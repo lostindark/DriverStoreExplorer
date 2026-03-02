@@ -329,6 +329,9 @@ Lizenz:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Speicher&amp;ort öffnen</value>
   </data>
+  <data name="Context_Copy_Folder_Path" xml:space="preserve">
+    <value>Ordnerpfad &amp;kopieren</value>
+  </data>
   <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Geräte-&amp;Eigenschaften öffnen</value>
   </data>

@@ -334,6 +334,9 @@ Giấy phép:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Mở &amp;vị trí thư mục</value>
   </data>
+  <data name="Context_Copy_Folder_Path" xml:space="preserve">
+    <value>Sao chép đường dẫn t&amp;hư mục</value>
+  </data>
   <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Mở thông tin thiết bị</value>
   </data>

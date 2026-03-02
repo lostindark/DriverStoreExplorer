@@ -323,6 +323,9 @@ Credits:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Άνοιγμα Τοποθεσίας Φακέλου</value>
   </data>
+  <data name="Context_Copy_Folder_Path" xml:space="preserve">
+    <value>Αντιγραφή Διαδρομής Φακέλου</value>
+  </data>
    <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Ανοίξτε της Συσκευής &amp;τις Ιδιότητες</value>
   </data>

@@ -330,6 +330,9 @@ Licenza:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Apri percorso cartella</value>
   </data>
+  <data name="Context_Copy_Folder_Path" xml:space="preserve">
+    <value>Copia percorso cartella</value>
+  </data>
   <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Apri &amp;proprietà dispositivo</value>
   </data>

@@ -408,6 +408,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Copy Folder Pat&amp;h.
+        /// </summary>
+        public static string Context_Copy_Folder_Path {
+            get {
+                return ResourceManager.GetString("Context_Copy_Folder_Path", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Select.
         /// </summary>
         public static string Context_Select {

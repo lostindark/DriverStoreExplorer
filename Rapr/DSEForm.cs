@@ -694,10 +694,12 @@ namespace Rapr
 
                     this.ctxMenuOpenDeviceProperties.Enabled = !string.IsNullOrEmpty((this.lstDriverStoreEntries.SelectedObject as DriverStoreEntry)?.DeviceId);
                     this.ctxMenuOpenFolder.Enabled = this.lstDriverStoreEntries.SelectedObjects.Count == 1;
+                    this.ctxMenuCopyFolderPath.Enabled = this.lstDriverStoreEntries.SelectedObjects.Count == 1;
                 }
                 else
                 {
                     this.ctxMenuOpenFolder.Enabled = false;
+                    this.ctxMenuCopyFolderPath.Enabled = false;
                     this.ctxMenuDelete.Enabled = false;
                     this.ctxMenuSelect.Enabled = false;
                     this.ctxMenuExportDriver.Enabled = false;
@@ -711,6 +713,7 @@ namespace Rapr
                 this.ctxMenuSelectOldDrivers.Enabled = false;
                 this.ctxMenuOpenDeviceProperties.Enabled = false;
                 this.ctxMenuOpenFolder.Enabled = false;
+                this.ctxMenuCopyFolderPath.Enabled = false;
                 this.ctxMenuDelete.Enabled = false;
                 this.ctxMenuExportDriver.Enabled = false;
             }
@@ -1043,6 +1046,15 @@ namespace Rapr
             {
                 DriverStoreEntry item = (DriverStoreEntry)this.lstDriverStoreEntries.SelectedObject;
                 Process.Start("explorer.exe", "/select, " + Path.Combine(item.DriverFolderLocation, item.DriverInfName));
+            }
+        }
+
+        private void CtxMenuCopyFolderPath_Click(object sender, EventArgs e)
+        {
+            if (this.lstDriverStoreEntries.SelectedObject != null)
+            {
+                DriverStoreEntry item = (DriverStoreEntry)this.lstDriverStoreEntries.SelectedObject;
+                Clipboard.SetText(item.DriverFolderLocation);
             }
         }
 

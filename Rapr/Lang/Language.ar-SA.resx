@@ -304,6 +304,9 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>فتح مسار المجلّد</value>
   </data>
+  <data name="Context_Copy_Folder_Path" xml:space="preserve">
+    <value>نسخ مسار المجلّد</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>الجهاز المحلي</value>
   </data>

@@ -332,6 +332,9 @@ Licencja użytkowania:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Otwórz folder zawierający</value>
   </data>
+  <data name="Context_Copy_Folder_Path" xml:space="preserve">
+    <value>Kopiuj ścieżkę folderu</value>
+  </data>
   <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Otwórz właściwości urządzenia</value>
   </data>

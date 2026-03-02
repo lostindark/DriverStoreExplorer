@@ -329,6 +329,9 @@
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>開啟資料夾位置(&amp;F)</value>
   </data>
+  <data name="Context_Copy_Folder_Path" xml:space="preserve">
+    <value>複製資料夾路徑(&amp;H)</value>
+  </data>
   <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>開啟裝置內容(&amp;P)</value>
   </data>

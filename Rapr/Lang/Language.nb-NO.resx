@@ -329,6 +329,9 @@ Lisens:
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>Åpne &amp;mappeplassering</value>
   </data>
+  <data name="Context_Copy_Folder_Path" xml:space="preserve">
+    <value>Kopier mappesti</value>
+  </data>
   <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Åpne enhets&amp;egenskaper</value>
   </data>

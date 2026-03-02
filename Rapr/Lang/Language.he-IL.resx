@@ -308,6 +308,9 @@
   <data name="Context_Open_Folder" xml:space="preserve">
     <value>פתיחת מיקום התיקייה</value>
   </data>
+  <data name="Context_Copy_Folder_Path" xml:space="preserve">
+    <value>העתקת נתיב התיקייה</value>
+  </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
     <value>מערכת מקומית</value>
   </data>
