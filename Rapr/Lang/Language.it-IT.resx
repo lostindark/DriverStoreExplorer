@@ -401,7 +401,7 @@ Licenza:
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Aggiunto edi installato il driver {0} nell'archivio driver.</value>
+    <value>Aggiunto ed installato il driver {0} nell'archivio driver.</value>
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
@@ -457,7 +457,7 @@ Licenza:
     <value>&amp;Opzioni</value>
   </data>
   <data name="Menu_Options_UseNativeDriverStore" xml:space="preserve">
-    <value>Usa archivbio driver nativo</value>
+    <value>Usa archivio driver nativo</value>
   </data>
   <data name="Menu_Options_UseDISM" xml:space="preserve">
     <value>Usa DISM</value>
@@ -493,15 +493,15 @@ Licenza:
     <value>Includi driver critici per il boot nei driver vecchi</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
-    <value>Seleziona la directory che contiene la cartella Windows (non la cartella Windows stessa)</value>
+    <value>Seleziona la cartella che contiene la cartella Windows (non la cartella Windows stessa)</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
-    <value>Selezione directory non valida</value>
+    <value>Selezione cartella non valida</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
-    <value>La directory selezionata deve contenere una cartella 'Windows'.
+    <value>La cartella selezionata deve contenere una cartella 'Windows'.
 
-Seleziona la directory principale di un'installazione o immagine Windows (la directory che contiene la cartella Windows), non la cartella Windows stessa.</value>
+Seleziona la cartella principale di un'installazione o immagine Windows (la cartella che contiene la cartella Windows), non la cartella Windows stessa.</value>
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Nessun driver obsoleto trovato da selezionare.</value>
