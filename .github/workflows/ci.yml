@@ -18,14 +18,25 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Compute version
+      - name: Compute version and tag
         id: version
         shell: pwsh
         run: |
-          $latest = git describe --tags --match "v*" --abbrev=0
-          if ($latest -match '^v(\d+\.\d+)\.(\d+)$') {
-            $version = "$($Matches[1]).$([int]$Matches[2] + 1)"
-          } else { throw "No valid version tag found" }
+          # Check if HEAD already has a version tag
+          $existingTag = git tag --points-at HEAD | Where-Object { $_ -match '^v\d+\.\d+\.\d+$' } | Select-Object -First 1
+          if ($existingTag) {
+            $version = $existingTag -replace '^v', ''
+          } else {
+            $latest = git describe --tags --match "v*" --abbrev=0
+            if ($latest -match '^v(\d+\.\d+)\.(\d+)$') {
+              $version = "$($Matches[1]).$([int]$Matches[2] + 1)"
+            } else { throw "No valid version tag found" }
+            if ("${{ github.event_name }}" -eq "push" -and "${{ github.ref }}" -eq "refs/heads/master") {
+              Write-Host "Tag commit: v$version"
+              git tag "v$version"
+              git push origin "v$version"
+            }
+          }
           if ("${{ github.event_name }}" -eq "pull_request") {
             $sha = "${{ github.event.pull_request.head.sha }}".Substring(0, 8)
             $version = "$version-$sha"
@@ -60,9 +71,3 @@ jobs:
         with:
           name: DriverStoreExplorer-v${{ steps.version.outputs.version }}
           path: Rapr/bin/Release/
-
-      - name: Tag build
-        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
-        run: |
-          git tag "v${{ steps.version.outputs.version }}"
-          git push origin "v${{ steps.version.outputs.version }}"
