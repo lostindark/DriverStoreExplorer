@@ -10,7 +10,7 @@
 
 ---
 
-[![Build Status](https://ci.appveyor.com/api/projects/status/kqtvhfq23am2gq26/branch/master?svg=true)](https://ci.appveyor.com/project/lostindark/driverstoreexplorer/branch/master)
+[![Build Status](https://github.com/lostindark/DriverStoreExplorer/actions/workflows/ci.yml/badge.svg)](https://github.com/lostindark/DriverStoreExplorer/actions/workflows/ci.yml)
 
 ## ⚠️ Warning
 **Driver Store Explorer modifies the Windows driver store. Improper use can cause system malfunction, prevent Windows from booting, or result in loss of device functionality. Know the risks before proceeding. Always back up your drivers before deleting anything.**

@@ -10,7 +10,7 @@
 
 ---
 
-[![Build Status](https://ci.appveyor.com/api/projects/status/kqtvhfq23am2gq26/branch/master?svg=true)](https://ci.appveyor.com/project/lostindark/driverstoreexplorer/branch/master)
+[![Build Status](https://github.com/lostindark/DriverStoreExplorer/actions/workflows/ci.yml/badge.svg)](https://github.com/lostindark/DriverStoreExplorer/actions/workflows/ci.yml)
 
 ## ⚠️ 警告
 **Driver Store Explorer 會修改 Windows 驅動程式存放區。不當使用可能導致系統故障、Windows 無法啟動或裝置功能喪失。請在操作前充分瞭解風險。在刪除任何驅動程式之前，請務必進行備份。**

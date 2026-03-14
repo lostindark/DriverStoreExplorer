@@ -10,7 +10,7 @@
 
 ---
 
-[![Build Status](https://ci.appveyor.com/api/projects/status/kqtvhfq23am2gq26/branch/master?svg=true)](https://ci.appveyor.com/project/lostindark/driverstoreexplorer/branch/master)
+[![Build Status](https://github.com/lostindark/DriverStoreExplorer/actions/workflows/ci.yml/badge.svg)](https://github.com/lostindark/DriverStoreExplorer/actions/workflows/ci.yml)
 
 ## ⚠️ 경고
 **Driver Store Explorer는 Windows 드라이버 저장소를 수정합니다. 부적절하게 사용하면 시스템 오작동, Windows 부팅 불가 또는 장치 기능 손실이 발생할 수 있습니다. 진행하기 전에 위험을 숙지하세요. 드라이버를 삭제하기 전에 항상 백업하세요.**
