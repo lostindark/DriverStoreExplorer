@@ -210,6 +210,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>準備完了</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>{0} 個のドライバー パッケージが見つかりました</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[ヒント: ドライバーが使用中の可能性があります。強制削除モードを試してください。]</value>
   </data>

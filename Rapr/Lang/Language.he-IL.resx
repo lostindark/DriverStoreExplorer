@@ -204,6 +204,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>מוכן</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>נמצאו {0} חבילות מנהל התקן</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[טיפ: ייתכן שמנהל ההתקן עדיין בשימוש. ניתן לנסות לבחור באפשרות למחיקה בכוח של החבילה]</value>
   </data>

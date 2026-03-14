@@ -210,6 +210,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>就緒</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>找到 {0} 個驅動程式套件</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[小提示: 驅動程式可能正被使用。請嘗試「強制」刪除封裝]</value>
   </data>

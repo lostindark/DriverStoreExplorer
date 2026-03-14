@@ -207,6 +207,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>准备就绪</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>找到 {0} 个驱动包</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[提示：驱动可能正在使用中，可尝试强制删除驱动包]</value>
   </data>

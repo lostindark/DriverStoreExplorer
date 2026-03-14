@@ -210,6 +210,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>Klar</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>Fant {0} driverpakke(r)</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[TIPS: Driveren er kanskje fortsatt i bruk. Prøv å TVANGSslette pakken]</value>
   </data>

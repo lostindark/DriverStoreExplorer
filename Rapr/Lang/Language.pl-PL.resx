@@ -213,6 +213,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>Gotowy</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>Znaleziono {0} pakiet(ów) sterowników</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[INFO: Sterownik może być wciąż w użyciu. Użyj funkcji wymuszonego usunięcia]</value>
   </data>

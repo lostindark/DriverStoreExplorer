@@ -210,6 +210,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>준비 완료</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>{0}개의 드라이버 패키지를 찾았습니다</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[팁: 드라이버가 아직 사용 중일 수 있습니다. 패키지를 강제로 삭제하세요]</value>
   </data>

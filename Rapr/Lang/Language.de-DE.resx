@@ -210,6 +210,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>Bereit</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>{0} Treiberpaket(e) gefunden</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[TIPP: Der Treiber scheint noch in Benutzung zu sein. Versuchen Sie das Löschen des Treiberpakets zu erzwingen.]</value>
   </data>

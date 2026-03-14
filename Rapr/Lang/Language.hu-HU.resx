@@ -210,6 +210,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>Kész</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>{0} illesztőprogram-csomag található</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[Tipp: az illesztőprogram továbbra is használatban lehet. Próbálja meg kényszeríteni a csomag törlését]</value>
   </data>

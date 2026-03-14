@@ -210,6 +210,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>Έτοιμο</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>Βρέθηκαν {0} πακέτο(α) οδηγού</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[TIP: Ο Driver μπορεί να είναι σε χρήση τώρα. Δοκιμάστε Υποχρεωτική διαγραφή του πακέτου]</value>
   </data>

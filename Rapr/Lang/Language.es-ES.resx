@@ -207,6 +207,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>Listo</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>Se encontraron {0} paquete(s) de controlador</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[CONSEJO: El controlador todavía puede estar siendo usado. Intenta FORZAR el borrado del paquete]</value>
   </data>

@@ -210,6 +210,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>Prêt</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>{0} paquet(s) de pilote trouvé(s)</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[CONSEIL : le pilote est peut-être encore utilisé. Essayez de FORCER la suppression du package]</value>
   </data>
