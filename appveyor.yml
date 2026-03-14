@@ -16,10 +16,15 @@ before_build:
 build:
   parallel: true
   verbosity: normal
+environment:
+  github_access_token:
+    secure: kjDyjFc99PloCToD7DfI3ETVarqB4gjDe8HNYHe8FojFVSDqjmX6XCxP77nzAzFR
 artifacts:
 - path: Rapr\bin\$(configuration)
   name: DriverStoreExplorer.v$(appveyor_build_version)
 on_success:
+- ps: Set-Content "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token)@github.com" -NoNewline
 - cmd: >-
-    git tag v%appveyor_build_version%
+    git config credential.helper store
+    && git tag v%appveyor_build_version%
     && git push origin v%appveyor_build_version%
