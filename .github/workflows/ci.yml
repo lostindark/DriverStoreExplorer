@@ -1,0 +1,68 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Compute version
+        id: version
+        shell: pwsh
+        run: |
+          $latest = git describe --tags --match "v*" --abbrev=0
+          if ($latest -match '^v(\d+\.\d+)\.(\d+)$') {
+            $version = "$($Matches[1]).$([int]$Matches[2] + 1)"
+          } else { throw "No valid version tag found" }
+          if ("${{ github.event_name }}" -eq "pull_request") {
+            $sha = "${{ github.event.pull_request.head.sha }}".Substring(0, 8)
+            $version = "$version-$sha"
+          }
+          echo "version=$version" >> $env:GITHUB_OUTPUT
+          Write-Host "Build version: $version"
+
+      - name: Patch assembly version
+        shell: pwsh
+        run: |
+          $version = "${{ steps.version.outputs.version }}"
+          $file = "Rapr/Properties/AssemblyInfo.cs"
+          $content = Get-Content $file -Raw
+          $content = $content -replace 'AssemblyVersion\(".*?"\)', "AssemblyVersion(`"$version`")"
+          $content = $content -replace 'AssemblyFileVersion\(".*?"\)', "AssemblyFileVersion(`"$version`")"
+          Set-Content $file $content
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore Rapr.sln
+
+      - name: Build
+        run: msbuild Rapr.sln /p:Configuration=Release /p:Platform="Any CPU" /v:minimal
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DriverStoreExplorer-v${{ steps.version.outputs.version }}
+          path: Rapr/bin/Release/
+
+      - name: Tag build
+        if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+        run: |
+          git tag "v${{ steps.version.outputs.version }}"
+          git push origin "v${{ steps.version.outputs.version }}"

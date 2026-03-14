@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'AppVeyor build version to release (e.g. 0.12.150)'
+        description: 'Version to release (e.g. 0.12.162)'
         required: true
         type: string
 

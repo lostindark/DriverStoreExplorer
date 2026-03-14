@@ -12,21 +12,16 @@ assembly_info:
   assembly_file_version: '{version}'
   assembly_informational_version: '{version}'
 before_build:
+- ps: >-
+    $latest = git describe --tags --match "v*" --abbrev=0;
+    if ($latest -match '^v(\d+\.\d+)\.(\d+)$') {
+      $version = "$($Matches[1]).$([int]$Matches[2] + 1)"
+    } else { throw "No valid version tag found" };
+    Update-AppveyorBuild -Version $version
 - cmd: nuget restore
 build:
   parallel: true
   verbosity: normal
-environment:
-  github_access_token:
-    secure: kjDyjFc99PloCToD7DfI3ETVarqB4gjDe8HNYHe8FojFVSDqjmX6XCxP77nzAzFR
 artifacts:
 - path: Rapr\bin\$(configuration)
   name: DriverStoreExplorer.v$(appveyor_build_version)
-on_success:
-- ps: >-
-    if (-not $env:APPVEYOR_PULL_REQUEST_NUMBER -and $env:APPVEYOR_REPO_BRANCH -eq 'master') {
-      git remote set-url origin "https://x-access-token:$($env:github_access_token)@github.com/$env:APPVEYOR_REPO_NAME.git";
-      git tag "v$env:APPVEYOR_BUILD_VERSION" 2>&1;
-      git push origin "v$env:APPVEYOR_BUILD_VERSION" 2>&1;
-      if ($LASTEXITCODE -ne 0) { throw "git push failed with exit code $LASTEXITCODE" }
-    }
