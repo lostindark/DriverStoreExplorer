@@ -193,7 +193,7 @@
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Requires_Admin" xml:space="preserve">
-    <value>Questa utilità richiede i privilegi di amministratore per essere eseguita.</value>
+    <value>Questo programma per essere eseguito richiede i privilegi di amministratore.</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Questo programma può essere eseguito solo in Windows Vista o versioni successive.</value>
@@ -214,7 +214,7 @@
     <value>Pronto</value>
   </data>
   <data name="Status_Packages_Found" xml:space="preserve">
-    <value>Trovati {0} pacchetto/i di driver</value>
+    <value>Trovati {0} pacchetto/i driver</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>Suggerimento: il driver sembra essere ancora in uso. 
