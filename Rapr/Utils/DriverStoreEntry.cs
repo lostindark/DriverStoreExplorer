@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
@@ -126,9 +126,9 @@ namespace Rapr.Utils
             string sanitized = InvalidCharsRegex.Replace(name, " ");
 
             // Remove registered trademark symbol and other problematic Unicode characters
-            sanitized = sanitized.Replace("®", "")
-                .Replace("™", "")
-                .Replace("©", "");
+            sanitized = sanitized.Replace("Â®", "")
+                .Replace("â„¢", "")
+                .Replace("Â©", "");
 
             // Collapse multiple spaces and trim
             sanitized = MultipleSpacesRegex.Replace(sanitized.Trim(), " ");
