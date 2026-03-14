@@ -315,7 +315,10 @@ namespace Rapr.Utils
                     DriverVersion = GetObjectPropertyInfo<Version>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_DriverVersion),
                     DriverFolderLocation = driverFolderLocation,
                     DriverSize = driverSize,
-                    BootCritical = GetObjectPropertyInfo<bool?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_BootCritical),
+                    // Query boot-critical status: try the per-package property first,
+                    // then fall back to the device setup class property which should align with DISM behavior.
+                    BootCritical = GetObjectPropertyInfo<bool?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_BootCritical)
+                        ?? GetObjectPropertyInfo<bool?>(driverStoreHandle, driverClassGuid.ToString("B"), DeviceHelper.DEVPKEY_DeviceClass_BootCritical, DriverStoreObjectType.DeviceSetupClass),
                     InstallDate = GetObjectPropertyInfo<DateTime?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ImportDate),
                     DriverFiles = EnumerateDriverPackageBinaryFiles(driverStoreHandle, driverStoreFilename),
                 };
