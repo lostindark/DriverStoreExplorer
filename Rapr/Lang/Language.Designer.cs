@@ -943,6 +943,12 @@ namespace Rapr.Lang {
         /// <summary>
         ///   Looks up a localized string similar to This utility cannot be run in pre-Vista OS..
         /// </summary>
+        public static string Message_Requires_Admin {
+            get {
+                return ResourceManager.GetString("Message_Requires_Admin", resourceCulture);
+            }
+        }
+        
         public static string Message_Requires_Later_OS {
             get {
                 return ResourceManager.GetString("Message_Requires_Later_OS", resourceCulture);

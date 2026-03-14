@@ -192,6 +192,9 @@
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>This utility requires administrator privileges to run.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>This utility cannot be run in pre-Vista OS.</value>
   </data>

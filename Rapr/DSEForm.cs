@@ -60,7 +60,28 @@ namespace Rapr
 
             if (!DSEFormHelper.IsRunAsAdmin)
             {
-                DSEFormHelper.RunAsAdministrator();
+                if (!DSEFormHelper.IsElevationAttempted)
+                {
+                    try
+                    {
+                        if (DSEFormHelper.RunAsAdministrator())
+                        {
+                            return;
+                        }
+                    }
+                    catch (Win32Exception)
+                    {
+                    }
+                }
+
+                this.ShowMessageBox(
+                    Language.Message_Requires_Admin,
+                    Language.Product_Name,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                Application.Exit();
+                return;
             }
 
             var lang = Settings.Default.Language;

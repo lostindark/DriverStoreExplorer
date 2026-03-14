@@ -127,8 +127,15 @@ namespace Rapr
         /// </summary>
         public static bool IsPnpUtilSupported => !IsWin11OrNewer;
 
-        public static void RunAsAdministrator()
+        private const string ElevationAttemptedEnvVar = "DSE_ELEVATION_ATTEMPTED";
+
+        public static bool IsElevationAttempted =>
+            Environment.GetEnvironmentVariable(ElevationAttemptedEnvVar) == "1";
+
+        public static bool RunAsAdministrator()
         {
+            Environment.SetEnvironmentVariable(ElevationAttemptedEnvVar, "1");
+
             ProcessStartInfo processInfo = new ProcessStartInfo
             {
                 Verb = "runas",
@@ -144,13 +151,14 @@ namespace Rapr
                 // Ignore error 1223: The operation was canceled by the user.
                 if (ex.NativeErrorCode == 1223)
                 {
-                    return;
+                    return false;
                 }
 
                 throw;
             }
 
             Application.Exit();
+            return true;
         }
 
         public static bool RunAsAdmin
