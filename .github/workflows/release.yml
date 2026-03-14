@@ -21,7 +21,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout tag
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: v${{ inputs.version }}
 
@@ -50,7 +50,7 @@ jobs:
 
       - name: Upload unsigned artifact
         id: upload-unsigned
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: DriverStoreExplorer-v${{ inputs.version }}-unsigned
           path: Rapr/bin/Release/
