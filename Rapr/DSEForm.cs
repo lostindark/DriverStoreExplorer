@@ -128,10 +128,19 @@ namespace Rapr
 
         private async Task UpdateDriverStoreAPI(DriverStoreOption driverStoreOption)
         {
-            if (this.driverStore.Type == DriverStoreType.Online && Settings.Default.DriverStoreOption != driverStoreOption.ToString())
+            if (Settings.Default.DriverStoreOption != driverStoreOption.ToString())
             {
                 Settings.Default.DriverStoreOption = driverStoreOption.ToString();
-                this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore());
+
+                if (this.driverStore.Type == DriverStoreType.Online)
+                {
+                    this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore());
+                }
+                else
+                {
+                    this.UpdateDriverStore(DriverStoreFactory.CreateOfflineDriverStore(this.driverStore.OfflineStoreLocation));
+                }
+
                 await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
             }
         }
@@ -156,11 +165,11 @@ namespace Rapr
             }
             else
             {
-                // Update menu item enabled states
-                this.useNativeDriveStoreStripMenuItem.Enabled = false;
-                this.useDismStripMenuItem.Enabled = false;
+                // Update menu item enabled states for offline mode
+                this.useNativeDriveStoreStripMenuItem.Enabled = DSEFormHelper.IsNativeDriverStoreSupported;
+                this.useDismStripMenuItem.Enabled = DismUtil.IsDismAvailable;
                 this.usePnpUtilStripMenuItem.Enabled = false;
-                this.installDateColumn.IsVisible = false;
+                this.installDateColumn.IsVisible = driverStoreOption == DriverStoreOption.Native;
             }
 
             this.cbAddInstall.Enabled = driverStore.SupportAddInstall;
@@ -343,7 +352,9 @@ namespace Rapr
                 var driverStoreEntries = await Task.Run(() => this.driverStore.EnumeratePackages()).ConfigureAwait(true);
                 this.lstDriverStoreEntries.SetObjects(driverStoreEntries);
                 this.UpdateColumnSize();
-                this.ShowStatus(Status.Normal, Language.Status_Label);
+
+                string statusMessage = string.Format(Language.Status_Packages_Found, driverStoreEntries.Count);
+                this.ShowStatus(Status.Normal, statusMessage);
             }
             catch (Exception ex)
             {

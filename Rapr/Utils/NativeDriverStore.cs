@@ -40,37 +40,45 @@ namespace Rapr.Utils
 
         public bool SupportExportAllDrivers => true;
 
-        public List<DriverStoreEntry> EnumeratePackages()
+        /// <summary>
+        /// Opens the driver store for the current type (online or offline).
+        /// </summary>
+        /// <returns>Handle to the driver store. Must be closed with DriverStoreClose.</returns>
+        private IntPtr OpenDriverStore()
         {
-            var ptr = NativeMethods.DriverStoreOpen(null, null, 0, IntPtr.Zero);
+            IntPtr ptr;
+
+            switch (this.Type)
+            {
+                case DriverStoreType.Online:
+                    ptr = NativeMethods.DriverStoreOpen(null, null, 0, IntPtr.Zero);
+                    break;
+
+                case DriverStoreType.Offline:
+                    string targetSystemPath = Path.Combine(this.OfflineStoreLocation, "Windows");
+                    ptr = NativeMethods.DriverStoreOpen(targetSystemPath, this.OfflineStoreLocation, 0, IntPtr.Zero);
+                    break;
+
+                default:
+                    throw new NotSupportedException();
+            }
+
             if (ptr == IntPtr.Zero)
             {
                 throw new Win32Exception();
             }
 
+            return ptr;
+        }
+
+        public List<DriverStoreEntry> EnumeratePackages()
+        {
+            var ptr = this.OpenDriverStore();
+
             List<DriverStoreEntry> driverStoreEntries = new List<DriverStoreEntry>();
 
             try
             {
-                // Switch to ConfigManager API since the native driver store API didn't return all the devices.
-                // Need to investigate the reason.
-                //{
-                //    GCHandle handle = GCHandle.Alloc(devicesInfo);
-                //    try
-                //    {
-                //        NativeMethods.DriverStoreEnumObjects(
-                //            ptr,
-                //            DriverStoreObjectType.DeviceNode,
-                //            DRIVERSTORE_LOCK_LEVEL.NONE,
-                //            EnumDeviceObjects,
-                //            GCHandle.ToIntPtr(handle));
-                //    }
-                //    finally
-                //    {
-                //        handle.Free();
-                //    }
-                //}
-
                 {
                     GCHandle handle = GCHandle.Alloc(driverStoreEntries);
                     try
@@ -86,13 +94,40 @@ namespace Rapr.Utils
                         handle.Free();
                     }
                 }
+
+                if (this.Type == DriverStoreType.Online)
+                {
+                    return ConfigManager.FillDeviceInfo(driverStoreEntries);
+                }
+
+                // For offline stores, use the driver store's own device node database
+                // since ConfigManager (cfgmgr32) only works with the live PnP manager.
+                var devicesInfo = new List<DeviceDriverInfo>();
+                {
+                    GCHandle handle = GCHandle.Alloc(devicesInfo);
+                    try
+                    {
+                        NativeMethods.DriverStoreEnumObjects(
+                            ptr,
+                            DriverStoreObjectType.DeviceNode,
+                            DRIVERSTORE_LOCK_LEVEL.NONE,
+                            EnumDeviceObjects,
+                            GCHandle.ToIntPtr(handle));
+                    }
+                    finally
+                    {
+                        handle.Free();
+                    }
+                }
+
+                ConfigManager.FillDeviceInfo(driverStoreEntries, devicesInfo);
             }
             finally
             {
                 NativeMethods.DriverStoreClose(ptr);
             }
 
-            return ConfigManager.FillDeviceInfo(driverStoreEntries);
+            return driverStoreEntries;
         }
 
         public bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
@@ -118,7 +153,37 @@ namespace Rapr.Utils
                     return true;
 
                 case DriverStoreType.Offline:
-                    throw new NotImplementedException();
+                    try
+                    {
+                        var offlinePtr = this.OpenDriverStore();
+                        try
+                        {
+                            string driverStoreFilename = Path.Combine(
+                                driverStoreEntry.DriverFolderLocation,
+                                driverStoreEntry.DriverInfName);
+
+                            uint status = NativeMethods.DriverStoreDelete(
+                                offlinePtr,
+                                driverStoreFilename,
+                                DriverStoreDeleteFlags.UNCONFIGURE);
+
+                            if (status != 0)
+                            {
+                                throw new Win32Exception((int)status);
+                            }
+                        }
+                        finally
+                        {
+                            NativeMethods.DriverStoreClose(offlinePtr);
+                        }
+                    }
+                    catch (Win32Exception ex)
+                    {
+                        Trace.TraceError(ex.ToString());
+                        return false;
+                    }
+
+                    return true;
 
                 default:
                     throw new NotSupportedException();
@@ -143,7 +208,46 @@ namespace Rapr.Utils
                     return true;
 
                 case DriverStoreType.Offline:
-                    throw new NotImplementedException();
+                    try
+                    {
+                        string targetSystemRoot = Path.Combine(this.OfflineStoreLocation, "Windows");
+                        int cchDestInfPath = MAX_PATH;
+                        StringBuilder destInfPath = new StringBuilder(cchDestInfPath);
+
+                        var ptr = this.OpenDriverStore();
+                        ushort processorArchitecture;
+                        try
+                        {
+                            processorArchitecture = (ushort)GetProcessorArchitecture(ptr);
+                        }
+                        finally
+                        {
+                            NativeMethods.DriverStoreClose(ptr);
+                        }
+
+                        uint status = NativeMethods.DriverStoreOfflineAddDriverPackage(
+                            infFullPath,
+                            DriverStoreOfflineAddDriverPackageFlags.None,
+                            IntPtr.Zero,
+                            processorArchitecture,
+                            null,
+                            destInfPath,
+                            ref cchDestInfPath,
+                            targetSystemRoot,
+                            this.OfflineStoreLocation);
+
+                        if (status != 0)
+                        {
+                            throw new Win32Exception((int)status);
+                        }
+                    }
+                    catch (Win32Exception ex)
+                    {
+                        Trace.TraceError(ex.ToString());
+                        return false;
+                    }
+
+                    return true;
 
                 default:
                     throw new NotSupportedException();
@@ -338,12 +442,8 @@ namespace Rapr.Utils
             switch (this.Type)
             {
                 case DriverStoreType.Online:
-                    var ptr = NativeMethods.DriverStoreOpen(null, null, 0, IntPtr.Zero);
-                    if (ptr == IntPtr.Zero)
-                    {
-                        throw new Win32Exception();
-                    }
-
+                case DriverStoreType.Offline:
+                    var ptr = this.OpenDriverStore();
                     try
                     {
                         var processorArchitecture = GetProcessorArchitecture(ptr);
@@ -368,14 +468,9 @@ namespace Rapr.Utils
 
                     return true;
 
-                case DriverStoreType.Offline:
-                    throw new NotImplementedException();
-
                 default:
                     throw new NotSupportedException();
             }
-
-            throw new NotImplementedException();
         }
 
         public bool ExportAllDrivers(string destinationPath)

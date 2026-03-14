@@ -33,7 +33,17 @@ namespace Rapr.Utils
 
         public static IDriverStore CreateOfflineDriverStore(string imagePath)
         {
-            return new DismUtil(imagePath);
+            _ = Enum.TryParse(Settings.Default.DriverStoreOption, out DriverStoreOption driverStoreOption);
+
+            switch (driverStoreOption)
+            {
+                case DriverStoreOption.Native:
+                    return new NativeDriverStore(imagePath);
+                case DriverStoreOption.DISM:
+                case DriverStoreOption.PnpUtil:
+                default:
+                    return new DismUtil(imagePath);
+            }
         }
 
         /// <summary>

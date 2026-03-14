@@ -1058,6 +1058,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Found {0} driver package(s).
+        /// </summary>
+        public static string Status_Packages_Found {
+            get {
+                return ResourceManager.GetString("Status_Packages_Found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to No drivers selected..
         /// </summary>
         public static string Status_No_Drivers_Selected {

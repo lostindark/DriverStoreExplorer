@@ -12,7 +12,11 @@ namespace Rapr.Utils
         public static List<DriverStoreEntry> FillDeviceInfo(List<DriverStoreEntry> driverStoreEntries)
         {
             var devicesInfo = ConfigManager.GetDeviceDriverInfo();
+            return FillDeviceInfo(driverStoreEntries, devicesInfo);
+        }
 
+        public static List<DriverStoreEntry> FillDeviceInfo(List<DriverStoreEntry> driverStoreEntries, List<DeviceDriverInfo> devicesInfo)
+        {
             foreach (var driverStoreEntry in driverStoreEntries)
             {
                 var deviceInfo = devicesInfo.OrderByDescending(d => d.IsPresent)?.FirstOrDefault(e =>

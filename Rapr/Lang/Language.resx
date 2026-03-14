@@ -210,6 +210,9 @@
   <data name="Status_Label" xml:space="preserve">
     <value>Ready</value>
   </data>
+  <data name="Status_Packages_Found" xml:space="preserve">
+    <value>Found {0} driver package(s)</value>
+  </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
     <value>[TIP: The driver may still being used. Try FORCE deleting the package]</value>
   </data>
