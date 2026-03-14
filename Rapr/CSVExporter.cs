@@ -61,6 +61,12 @@ namespace Rapr
         {
             for (int i = 0; i < values.Length; i++)
             {
+                if (values[i] == null)
+                {
+                    values[i] = string.Empty;
+                    continue;
+                }
+
                 if (values[i].Contains(csvDelimiter)
                     || values[i].Contains(CsvQuote))
                 {

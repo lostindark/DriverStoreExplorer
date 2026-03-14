@@ -244,7 +244,12 @@ namespace Rapr
 
                 if (handle != IntPtr.Zero)
                 {
-                    return Icon.FromHandle(handle);
+                    using (Icon tmpIcon = Icon.FromHandle(handle))
+                    {
+                        Icon clonedIcon = (Icon)tmpIcon.Clone();
+                        SafeNativeMethods.DestroyIcon(handle);
+                        return clonedIcon;
+                    }
                 }
             }
 

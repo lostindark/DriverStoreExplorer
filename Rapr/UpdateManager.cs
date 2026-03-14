@@ -24,22 +24,32 @@ namespace Rapr
             this.httpClient.DefaultRequestHeaders
                 .Add("User-Agent", "System.Net.Http Agent");
 
-            var response = await this.httpClient.GetAsync(new Uri(versionInfoUrl)).ConfigureAwait(false);
-
-            if (response.IsSuccessStatusCode)
+            using (var response = await this.httpClient.GetAsync(new Uri(versionInfoUrl)).ConfigureAwait(false))
             {
-                var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                var releaseInfo = JObject.Parse(responseBody);
-
-                return new VersionInfo
+                if (response.IsSuccessStatusCode)
                 {
-                    Version = Version.Parse(releaseInfo["tag_name"].ToString().TrimStart('v', 'V')),
-                    PageUrl = new Uri(releaseInfo["html_url"].ToString()),
-                    DownloadUrl = new Uri(releaseInfo.SelectToken("assets[0].browser_download_url").ToObject<string>())
-                };
-            }
+                    var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                    var releaseInfo = JObject.Parse(responseBody);
 
-            return null;
+                    var tagName = releaseInfo["tag_name"]?.ToString();
+                    var htmlUrl = releaseInfo["html_url"]?.ToString();
+                    var downloadUrl = releaseInfo.SelectToken("assets[0].browser_download_url")?.ToObject<string>();
+
+                    if (tagName == null || htmlUrl == null || downloadUrl == null)
+                    {
+                        return null;
+                    }
+
+                    return new VersionInfo
+                    {
+                        Version = Version.Parse(tagName.TrimStart('v', 'V')),
+                        PageUrl = new Uri(htmlUrl),
+                        DownloadUrl = new Uri(downloadUrl)
+                    };
+                }
+
+                return null;
+            }
         }
 
         protected virtual void Dispose(bool disposing)

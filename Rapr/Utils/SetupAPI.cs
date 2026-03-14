@@ -78,9 +78,12 @@ namespace Rapr.Utils
                 cbSize = Marshal.SizeOf(typeof(SP_INF_SIGNER_INFO))
             };
 
-            if ((NativeMethods.SetupVerifyInfFile(driverStoreFilename, IntPtr.Zero, ref signerInfo)
-                || Marshal.GetLastWin32Error() == ERROR_AUTHENTICODE_TRUSTED_PUBLISHER
-                || Marshal.GetLastWin32Error() == ERROR_AUTHENTICODE_TRUST_NOT_ESTABLISHED)
+            bool verifyResult = NativeMethods.SetupVerifyInfFile(driverStoreFilename, IntPtr.Zero, ref signerInfo);
+            int lastError = Marshal.GetLastWin32Error();
+
+            if ((verifyResult
+                || lastError == ERROR_AUTHENTICODE_TRUSTED_PUBLISHER
+                || lastError == ERROR_AUTHENTICODE_TRUST_NOT_ESTABLISHED)
                 && !string.IsNullOrEmpty(signerInfo.DigitalSigner))
             {
                 return signerInfo.DigitalSigner;

@@ -979,7 +979,13 @@ namespace Rapr
 
         private void DSEForm_Load(object sender, EventArgs e)
         {
-            this.lstDriverStoreEntries.RestoreState(Convert.FromBase64String(Settings.Default.DriverStoreViewState));
+            try
+            {
+                this.lstDriverStoreEntries.RestoreState(Convert.FromBase64String(Settings.Default.DriverStoreViewState));
+            }
+            catch (FormatException)
+            {
+            }
             this.RightToLeft = Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft ? RightToLeft.Yes : RightToLeft.No;
             this.RightToLeftLayout = Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft;
             this.lstDriverStoreEntries.RightToLeft = this.RightToLeft;

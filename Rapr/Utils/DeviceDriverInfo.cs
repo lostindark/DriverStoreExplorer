@@ -31,7 +31,7 @@ namespace Rapr.Utils
 
         public override string ToString()
         {
-            return $"Id: {this.DeviceId}, Name: {this.DeviceName}, Inf: {this.DriverInf}, DriverDate: {this.DriverDate}, DriverVersion: {this.DriverVersion}, Present: {this.IsPresent}, ExtendedInfs: {string.Join(", ", this.ExtendedInfs)}";
+            return $"Id: {this.DeviceId}, Name: {this.DeviceName}, Inf: {this.DriverInf}, DriverDate: {this.DriverDate}, DriverVersion: {this.DriverVersion}, Present: {this.IsPresent}, ExtendedInfs: {(this.ExtendedInfs != null ? string.Join(", ", this.ExtendedInfs) : string.Empty)}";
         }
     }
 }

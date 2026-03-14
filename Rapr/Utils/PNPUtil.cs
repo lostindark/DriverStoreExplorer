@@ -336,6 +336,11 @@ namespace Rapr.Utils
             {
                 using (Process process = Process.Start(start))
                 {
+                    if (process == null)
+                    {
+                        throw new InvalidOperationException($"Failed to start process: {start.FileName}");
+                    }
+
                     //
                     // Read in all the text from the process with the StreamReader.
                     //
