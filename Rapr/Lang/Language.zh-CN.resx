@@ -189,6 +189,9 @@
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>正准备从驱动存储中删除 {0} ({1})。</value>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>此工具需要管理员权限才能运行。</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>此工具无法在比Windows Vista老的操作系统中运行。</value>
   </data>

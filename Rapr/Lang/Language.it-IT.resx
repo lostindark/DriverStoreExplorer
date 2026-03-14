@@ -192,6 +192,9 @@
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>Questa utilità richiede i privilegi di amministratore per essere eseguita.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Questo programma può essere eseguito solo in Windows Vista o versioni successive.</value>
   </data>

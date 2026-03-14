@@ -192,6 +192,9 @@
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>此工具需要系統管理員權限才能執行。</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>此公用程式不能在 Vista 以前的作業系統中執行。</value>
   </data>

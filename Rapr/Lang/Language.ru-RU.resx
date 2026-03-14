@@ -192,6 +192,9 @@
     <comment>{0} - Placeholder для inf-файла пакета драйверов
 {1} - Placeholder для файла OEM INF</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>Для запуска этой утилиты требуются права администратора.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Эта программа не может быть запущена на ОС младше Vista.</value>
   </data>

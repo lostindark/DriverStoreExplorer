@@ -192,6 +192,9 @@
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>Tento nástroj vyžaduje na spustenie oprávnenia správcu.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Táto utilita nemôže byť spustená v operačnom systéme pred Vistou.</value>
   </data>

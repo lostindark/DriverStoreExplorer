@@ -192,6 +192,9 @@
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>Ez a segédprogram rendszergazdai jogosultságokat igényel a futtatáshoz.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Ez a segédprogram nem futtatható Vista előtti operációs rendszerben.</value>
   </data>

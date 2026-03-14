@@ -189,6 +189,9 @@
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>Prestes a excluir {0} ({1}) do armazenamento de drivers.</value>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>Este utilitário requer privilégios de administrador para ser executado.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Este utilitário não pode ser executado em sistemas anteriores ao Windows Vista.</value>
   </data>

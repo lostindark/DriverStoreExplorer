@@ -192,6 +192,9 @@
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>このユーティリティの実行には管理者権限が必要です。</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>このユーティリティは Windows Vista 以前の OS では実行できません。</value>
   </data>

@@ -189,6 +189,9 @@
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>Esta utilidad requiere privilegios de administrador para ejecutarse.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Esta utilidad no se puede ejecutar en SO previo a Vista.</value>
   </data>

@@ -197,6 +197,9 @@
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>Tiện ích này yêu cầu quyền quản trị viên để chạy.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Công cụ này không thể chạy được trên hệ điều hành trước Windows Vista.</value>
   </data>

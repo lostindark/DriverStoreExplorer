@@ -195,6 +195,9 @@
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>To narzędzie wymaga uprawnień administratora do uruchomienia.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Ta aplikacja nie działa z systemami starszymi niż Windows Vista.</value>
   </data>

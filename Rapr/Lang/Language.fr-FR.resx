@@ -192,6 +192,9 @@
     <comment>{0} - Correspond au fichier INF du package
 {1} - Correspond au fichier INF OEM</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>Cet utilitaire nécessite des privilèges d'administrateur pour s'exécuter.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Cet utilitaire ne peut pas être exécuté sur un système d'exploitation antérieur à Vista.</value>
   </data>

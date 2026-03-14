@@ -192,6 +192,9 @@
     <comment>{0} – Platzhalter für die INF-Paketdatei
              {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>Dieses Programm erfordert Administratorrechte.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Es ist mindestens Winodws Vista erforderlich.</value>
   </data>

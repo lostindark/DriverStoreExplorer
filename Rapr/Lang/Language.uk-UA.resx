@@ -192,6 +192,9 @@
     <comment>{0} - Заповнювач для файлу INF пакету драйверів
 {1} - Заповнювач для файлу OEM INF</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>Для запуску цієї утиліти потрібні права адміністратора.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Цю програму неможливо запустити в ОС старше Vista.</value>
   </data>

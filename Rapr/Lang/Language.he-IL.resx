@@ -186,6 +186,9 @@
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>בחרת למחוק את {0} ‏({1}) ממאגר מנהלי ההתקנים.</value>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>כלי זה דורש הרשאות מנהל מערכת להפעלה.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>כלי זה לא יכול לפעול במערכת הפעלה הישנה מ־Vista.</value>
   </data>

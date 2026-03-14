@@ -186,6 +186,9 @@
   <data name="Message_Delete_Single_Package" xml:space="preserve">
     <value>أنت على وشك حذف {0} ({1}) من مستودع التعريفات.</value>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>تتطلب هذه الأداة صلاحيات المسؤول للتشغيل.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>لا يمكن تشغيل البرنامج على نظام أقدم من Vista</value>
   </data>

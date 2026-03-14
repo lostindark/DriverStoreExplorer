@@ -192,6 +192,9 @@
     <comment>{0} - inf 패키지 파일에 대한 자리 표시자
 {1} - oem inf 파일에 대한 자리 표시자</comment>
   </data>
+  <data name="Message_Requires_Admin" xml:space="preserve">
+    <value>이 유틸리티를 실행하려면 관리자 권한이 필요합니다.</value>
+  </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>이 유틸리티는 Vista 이전 OS에서 실행할 수 없습니다.</value>
   </data>
