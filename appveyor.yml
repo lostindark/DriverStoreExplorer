@@ -23,8 +23,7 @@ artifacts:
 - path: Rapr\bin\$(configuration)
   name: DriverStoreExplorer.v$(appveyor_build_version)
 on_success:
-- ps: Set-Content "$env:USERPROFILE\.git-credentials" "https://$($env:github_access_token)@github.com" -NoNewline
-- cmd: >-
-    git config credential.helper store
-    && git tag v%appveyor_build_version%
-    && git push origin v%appveyor_build_version%
+- ps: >-
+    git remote set-url origin "https://x-access-token:$($env:github_access_token)@github.com/$env:APPVEYOR_REPO_NAME.git";
+    git tag "v$env:APPVEYOR_BUILD_VERSION";
+    git push origin "v$env:APPVEYOR_BUILD_VERSION"
