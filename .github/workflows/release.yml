@@ -1,0 +1,83 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'AppVeyor build version to release (e.g. 0.12.150)'
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+env:
+  SIGNPATH_ORG_ID: 'c9bd44ce-a067-4f9a-9135-468d00ed0b13'
+  SIGNPATH_PROJECT_SLUG: 'DriverStoreExplorer'
+  SIGNPATH_SIGNING_POLICY_SLUG: 'release-signing'
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout tag
+        uses: actions/checkout@v4
+        with:
+          ref: v${{ inputs.version }}
+
+      - name: Patch assembly version
+        shell: pwsh
+        run: |
+          $version = "${{ inputs.version }}"
+          $file = "Rapr/Properties/AssemblyInfo.cs"
+          $content = Get-Content $file -Raw
+          $content = $content -replace 'AssemblyVersion\(".*?"\)', "AssemblyVersion(`"$version`")"
+          $content = $content -replace 'AssemblyFileVersion\(".*?"\)', "AssemblyFileVersion(`"$version`")"
+          Set-Content $file $content
+          Write-Host "Patched AssemblyInfo.cs to version $version"
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v2
+
+      - name: Setup NuGet
+        uses: nuget/setup-nuget@v2
+
+      - name: Restore NuGet packages
+        run: nuget restore Rapr.sln
+
+      - name: Build
+        run: msbuild Rapr.sln /p:Configuration=Release /p:Platform="Any CPU" /v:minimal
+
+      - name: Upload unsigned artifact
+        id: upload-unsigned
+        uses: actions/upload-artifact@v4
+        with:
+          name: DriverStoreExplorer-v${{ inputs.version }}-unsigned
+          path: Rapr/bin/Release/
+
+      - name: Submit signing request to SignPath
+        id: signpath
+        uses: signpath/github-action-submit-signing-request@v1
+        with:
+          api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
+          organization-id: ${{ env.SIGNPATH_ORG_ID }}
+          project-slug: ${{ env.SIGNPATH_PROJECT_SLUG }}
+          signing-policy-slug: ${{ env.SIGNPATH_SIGNING_POLICY_SLUG }}
+          github-artifact-id: ${{ steps.upload-unsigned.outputs.artifact-id }}
+          wait-for-completion: true
+          wait-for-completion-timeout-in-seconds: 3600
+          output-artifact-directory: signed-artifact
+
+      - name: Create release archive
+        shell: pwsh
+        run: |
+          Compress-Archive -Path signed-artifact/* -DestinationPath "DriverStoreExplorer-v${{ inputs.version }}.zip"
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create "v${{ inputs.version }}" `
+            "DriverStoreExplorer-v${{ inputs.version }}.zip" `
+            --title "DriverStore Explorer v${{ inputs.version }}" `
+            --generate-notes
