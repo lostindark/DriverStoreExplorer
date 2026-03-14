@@ -260,17 +260,23 @@ namespace Rapr.Utils
                 string ObjectName,
                 IntPtr lParam)
         {
-            Debug.WriteLine(ObjectName);
-            var devicesInfo = (List<DeviceDriverInfo>)GCHandle.FromIntPtr(lParam).Target;
+            try
+            {
+                var devicesInfo = (List<DeviceDriverInfo>)GCHandle.FromIntPtr(lParam).Target;
 
-            devicesInfo.Add(new DeviceDriverInfo(
-                GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_InstanceId, ObjectType),
-                GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverDesc, ObjectType),
-                GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverInfPath, ObjectType),
-                GetObjectPropertyInfo<DateTime>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverDate, ObjectType),
-                GetObjectPropertyInfo<Version>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverVersion, ObjectType),
-                GetObjectPropertyInfo<bool?>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_IsPresent, ObjectType),
-                GetObjectPropertyInfo<string[]>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverExtendedInfs, ObjectType)));
+                devicesInfo.Add(new DeviceDriverInfo(
+                    GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_InstanceId, ObjectType),
+                    GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverDesc, ObjectType),
+                    GetObjectPropertyInfo<string>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverInfPath, ObjectType),
+                    GetObjectPropertyInfo<DateTime>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverDate, ObjectType),
+                    GetObjectPropertyInfo<Version>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverVersion, ObjectType),
+                    GetObjectPropertyInfo<bool?>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_IsPresent, ObjectType),
+                    GetObjectPropertyInfo<string[]>(hDriverStore, ObjectName, DeviceHelper.DEVPKEY_Device_DriverExtendedInfs, ObjectType)));
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning($"Failed to enumerate device object '{ObjectName}': {ex}");
+            }
 
             return true;
         }
@@ -281,27 +287,45 @@ namespace Rapr.Utils
             DriverPackageInfo pDriverPackageInfo,
             IntPtr lParam)
         {
-            List<DriverStoreEntry> driverStoreEntries = (List<DriverStoreEntry>)GCHandle.FromIntPtr(lParam).Target;
-            var driverClassGuid = GetObjectPropertyInfo<Guid>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ClassGuid);
-
-            DriverStoreEntry driverStoreEntry = new DriverStoreEntry
+            try
             {
-                DriverClass = ConfigManager.GetClassProperty<string>(driverClassGuid, DeviceHelper.DEVPKEY_DeviceClass_Name),
-                DriverExtensionId = GetObjectPropertyInfo<Guid>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ExtensionId),
-                DriverInfName = Path.GetFileName(driverStoreFilename),
-                DriverPublishedName = pDriverPackageInfo.PublishedInfName,
-                DriverPkgProvider = GetObjectPropertyInfo<string>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ProviderName),
-                DriverSignerName = GetObjectPropertyInfo<string>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_SignerName),
-                DriverDate = GetObjectPropertyInfo<DateTime>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_DriverDate),
-                DriverVersion = GetObjectPropertyInfo<Version>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_DriverVersion),
-                DriverFolderLocation = Path.GetDirectoryName(driverStoreFilename),
-                DriverSize = DriverStoreRepository.GetFolderSize(new DirectoryInfo(Path.GetDirectoryName(driverStoreFilename))),
-                BootCritical = GetObjectPropertyInfo<bool?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_BootCritical),
-                InstallDate = GetObjectPropertyInfo<DateTime?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ImportDate),
-                DriverFiles = EnumerateDriverPackageBinaryFiles(driverStoreHandle, driverStoreFilename),
-            };
+                List<DriverStoreEntry> driverStoreEntries = (List<DriverStoreEntry>)GCHandle.FromIntPtr(lParam).Target;
+                var driverClassGuid = GetObjectPropertyInfo<Guid>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ClassGuid);
 
-            driverStoreEntries.Add(driverStoreEntry);
+                string driverFolderLocation = Path.GetDirectoryName(driverStoreFilename);
+                long driverSize = 0;
+                try
+                {
+                    driverSize = DriverStoreRepository.GetFolderSize(new DirectoryInfo(driverFolderLocation));
+                }
+                catch (Exception ex)
+                {
+                    Trace.TraceWarning($"Failed to get folder size for '{driverFolderLocation}': {ex}");
+                }
+
+                DriverStoreEntry driverStoreEntry = new DriverStoreEntry
+                {
+                    DriverClass = ConfigManager.GetClassProperty<string>(driverClassGuid, DeviceHelper.DEVPKEY_DeviceClass_Name),
+                    DriverExtensionId = GetObjectPropertyInfo<Guid>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ExtensionId),
+                    DriverInfName = Path.GetFileName(driverStoreFilename),
+                    DriverPublishedName = pDriverPackageInfo.PublishedInfName,
+                    DriverPkgProvider = GetObjectPropertyInfo<string>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ProviderName),
+                    DriverSignerName = GetObjectPropertyInfo<string>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_SignerName),
+                    DriverDate = GetObjectPropertyInfo<DateTime>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_DriverDate),
+                    DriverVersion = GetObjectPropertyInfo<Version>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_DriverVersion),
+                    DriverFolderLocation = driverFolderLocation,
+                    DriverSize = driverSize,
+                    BootCritical = GetObjectPropertyInfo<bool?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_BootCritical),
+                    InstallDate = GetObjectPropertyInfo<DateTime?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ImportDate),
+                    DriverFiles = EnumerateDriverPackageBinaryFiles(driverStoreHandle, driverStoreFilename),
+                };
+
+                driverStoreEntries.Add(driverStoreEntry);
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning($"Failed to enumerate driver package '{driverStoreFilename}': {ex}");
+            }
 
             return true;
         }
@@ -315,24 +339,29 @@ namespace Rapr.Utils
             const int bufferSize = 2048;
             IntPtr propertyBufferPtr = Marshal.AllocHGlobal(bufferSize);
 
-            if (NativeMethods.DriverStoreGetObjectProperty(
-                driverStoreHandle,
-                objectType,
-                objectName,
-                ref propertyKey,
-                out DevPropType propertyType,
-                propertyBufferPtr,
-                bufferSize,
-                out uint propertySize,
-                DriverStoreSetObjectPropertyFlags.None))
+            try
             {
-                if (propertySize > 0)
+                if (NativeMethods.DriverStoreGetObjectProperty(
+                    driverStoreHandle,
+                    objectType,
+                    objectName,
+                    ref propertyKey,
+                    out DevPropType propertyType,
+                    propertyBufferPtr,
+                    bufferSize,
+                    out uint propertySize,
+                    DriverStoreSetObjectPropertyFlags.None))
                 {
-                    return DeviceHelper.ConvertPropToType<T>(propertyBufferPtr, propertyType);
+                    if (propertySize > 0)
+                    {
+                        return DeviceHelper.ConvertPropToType<T>(propertyBufferPtr, propertyType);
+                    }
                 }
             }
-
-            Marshal.FreeHGlobal(propertyBufferPtr);
+            finally
+            {
+                Marshal.FreeHGlobal(propertyBufferPtr);
+            }
 
             return default;
         }
@@ -413,14 +442,21 @@ namespace Rapr.Utils
 
         private static bool EnumBinaryFiles(IntPtr driverPackageHandle, IntPtr pDriverFile, IntPtr lParam)
         {
-            List<string> binaryFiles = (List<string>)GCHandle.FromIntPtr(lParam).Target;
-
-            DriverFile driverFile = Marshal.PtrToStructure<DriverFile>(pDriverFile);
-
-            // Only collect binary files (drivers, DLLs, etc.)
-            if (driverFile.Type == DriverFileType.Binary && !string.IsNullOrEmpty(driverFile.DestinationFile))
+            try
             {
-                binaryFiles.Add(driverFile.DestinationFile);
+                List<string> binaryFiles = (List<string>)GCHandle.FromIntPtr(lParam).Target;
+
+                DriverFile driverFile = Marshal.PtrToStructure<DriverFile>(pDriverFile);
+
+                // Only collect binary files (drivers, DLLs, etc.)
+                if (driverFile.Type == DriverFileType.Binary && !string.IsNullOrEmpty(driverFile.DestinationFile))
+                {
+                    binaryFiles.Add(driverFile.DestinationFile);
+                }
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceWarning($"Failed to enumerate binary file: {ex}");
             }
 
             return true; // Continue enumeration
@@ -476,15 +512,26 @@ namespace Rapr.Utils
         public bool ExportAllDrivers(string destinationPath)
         {
             var driverStoreEntries = this.EnumeratePackages();
+            bool allSucceeded = true;
+
             foreach (var driverStoreEntry in driverStoreEntries)
             {
-                if (!this.ExportDriver(driverStoreEntry, destinationPath))
+                try
                 {
-                    return false;
+                    if (!this.ExportDriver(driverStoreEntry, destinationPath))
+                    {
+                        Trace.TraceError($"Failed to export driver package '{driverStoreEntry.DriverInfName}'.");
+                        allSucceeded = false;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    Trace.TraceError($"Failed to export driver package '{driverStoreEntry.DriverInfName}': {ex}");
+                    allSucceeded = false;
                 }
             }
 
-            return true;
+            return allSucceeded;
         }
 
         // Define other methods and classes here
