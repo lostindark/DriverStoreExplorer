@@ -284,7 +284,7 @@ namespace Rapr.Utils
         internal static bool EnumDriverPackages(
             IntPtr driverStoreHandle,
             string driverStoreFilename,
-            DriverPackageInfo pDriverPackageInfo,
+            ref DriverPackageInfo pDriverPackageInfo,
             IntPtr lParam)
         {
             try
@@ -907,7 +907,7 @@ namespace Rapr.Utils
                 IntPtr driverStoreHandle,
                 [MarshalAs(UnmanagedType.LPWStr, SizeConst = 256)]
                 string driverStoreFilename,
-                DriverPackageInfo driverPackageInfo,
+                ref DriverPackageInfo driverPackageInfo,
                 IntPtr lParam);
 
             [DllImport("drvstore.dll", EntryPoint = "DriverStoreEnumW", SetLastError = true, CharSet = CharSet.Unicode)]

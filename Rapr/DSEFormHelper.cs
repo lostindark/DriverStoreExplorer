@@ -112,15 +112,10 @@ namespace Rapr
             && Environment.OSVersion.Version >= Win11Version;
 
         /// <summary>
-        /// Gets a value indicating whether the current operating system is 64-bit.
-        /// </summary>
-        public static bool Is64BitOperatingSystem => Environment.Is64BitOperatingSystem;
-
-        /// <summary>
         /// Gets a value indicating whether the native driver store API is supported.
-        /// The native driver store requires Windows 8 or newer AND a 64-bit operating system.
+        /// The native driver store requires Windows 8 or newer.
         /// </summary>
-        public static bool IsNativeDriverStoreSupported => IsWin8OrNewer && Is64BitOperatingSystem;
+        public static bool IsNativeDriverStoreSupported => IsWin8OrNewer;
 
         /// <summary>
         /// Gets a value indicating whether the PnPUtil utility is supported.
