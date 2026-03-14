@@ -23,9 +23,5 @@ artifacts:
 - path: Rapr\bin\$(configuration)
   name: DriverStoreExplorer.v$(appveyor_build_version)
 on_success:
-- ps: >-
-    $ErrorActionPreference = 'SilentlyContinue';
-    git remote set-url origin "https://x-access-token:$($env:github_access_token)@github.com/$env:APPVEYOR_REPO_NAME.git";
-    git tag "v$env:APPVEYOR_BUILD_VERSION";
-    git push origin "v$env:APPVEYOR_BUILD_VERSION" 2>&1;
-    if ($LASTEXITCODE -ne 0) { throw "git push failed with exit code $LASTEXITCODE" }
+- ps: git remote set-url origin "https://x-access-token:$($env:github_access_token)@github.com/$env:APPVEYOR_REPO_NAME.git"
+- cmd: git tag v%APPVEYOR_BUILD_VERSION% && git push origin v%APPVEYOR_BUILD_VERSION%
