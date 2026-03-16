@@ -303,6 +303,14 @@ namespace Rapr.Utils
                     Trace.TraceWarning($"Failed to get folder size for '{driverFolderLocation}': {ex}");
                 }
 
+                // Determine boot-critical status:
+                // 1. Check DriverPackageVersionInfo force flags (highest priority).
+                // 2. Query DEVPKEY_DeviceClass_BootCritical on the device setup class.
+                // 3. Default to false if absent.
+                bool bootCritical = GetBootCriticalFromVersionInfo(driverStoreHandle, driverStoreFilename)
+                    ?? GetObjectPropertyInfo<bool?>(driverStoreHandle, driverClassGuid.ToString("B"), DeviceHelper.DEVPKEY_DeviceClass_BootCritical, DriverStoreObjectType.DeviceSetupClass)
+                    ?? false;
+
                 DriverStoreEntry driverStoreEntry = new DriverStoreEntry
                 {
                     DriverClass = ConfigManager.GetClassProperty<string>(driverClassGuid, DeviceHelper.DEVPKEY_DeviceClass_Name),
@@ -315,10 +323,7 @@ namespace Rapr.Utils
                     DriverVersion = GetObjectPropertyInfo<Version>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_DriverVersion),
                     DriverFolderLocation = driverFolderLocation,
                     DriverSize = driverSize,
-                    // Query boot-critical status: try the per-package property first,
-                    // then fall back to the device setup class property which should align with DISM behavior.
-                    BootCritical = GetObjectPropertyInfo<bool?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_BootCritical)
-                        ?? GetObjectPropertyInfo<bool?>(driverStoreHandle, driverClassGuid.ToString("B"), DeviceHelper.DEVPKEY_DeviceClass_BootCritical, DriverStoreObjectType.DeviceSetupClass),
+                    BootCritical = bootCritical,
                     InstallDate = GetObjectPropertyInfo<DateTime?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ImportDate),
                     DriverFiles = EnumerateDriverPackageBinaryFiles(driverStoreHandle, driverStoreFilename),
                 };
@@ -397,6 +402,62 @@ namespace Rapr.Utils
             {
                 Marshal.FreeHGlobal(propertyBufferPtr);
             }
+        }
+
+        /// <summary>
+        /// Get boot-critical status from driver package version info flags.
+        /// Returns true/false if force flags are set, null otherwise.
+        /// </summary>
+        internal static bool? GetBootCriticalFromVersionInfo(IntPtr driverStoreHandle, string driverPackageInfPath)
+        {
+            IntPtr driverPackageHandle = NativeMethods.DriverPackageOpen(
+                driverPackageInfPath,
+                GetProcessorArchitecture(driverStoreHandle),
+                null,
+                DriverPackageOpenFlags.VersionOnly,
+                IntPtr.Zero);
+
+            if (driverPackageHandle == IntPtr.Zero)
+            {
+                return null;
+            }
+
+            try
+            {
+                int structSize = Marshal.SizeOf<DriverPackageVersionInfo>();
+                IntPtr pVersionInfo = Marshal.AllocHGlobal(structSize);
+
+                try
+                {
+                    // Size field must be set before calling
+                    Marshal.WriteInt32(pVersionInfo, structSize);
+
+                    if (NativeMethods.DriverPackageGetVersionInfo(driverPackageHandle, pVersionInfo))
+                    {
+                        var versionInfo = Marshal.PtrToStructure<DriverPackageVersionInfo>(pVersionInfo);
+
+                        if (versionInfo.Flags.HasFlag(DriverPackageVersionInfoFlags.FORCE_BOOT_CRITICAL))
+                        {
+                            return true;
+                        }
+
+                        if (versionInfo.Flags.HasFlag(DriverPackageVersionInfoFlags.FORCE_NOT_BOOT_CRITICAL))
+                        {
+                            return false;
+                        }
+                    }
+                }
+                finally
+                {
+                    Marshal.FreeHGlobal(pVersionInfo);
+                }
+            }
+            finally
+            {
+                NativeMethods.DriverPackageClose(driverPackageHandle);
+            }
+
+            return null;
         }
 
         /// <summary>

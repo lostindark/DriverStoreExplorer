@@ -230,7 +230,7 @@ namespace Rapr.Utils
         internal static readonly DevPropKey DEVPKEY_DeviceClass_NoUseClass = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 10);     // DEVPROP_TYPE_BOOLEAN
         internal static readonly DevPropKey DEVPKEY_DeviceClass_DefaultService = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 11);     // DEVPROP_TYPE_STRING
         internal static readonly DevPropKey DEVPKEY_DeviceClass_IconPath = new DevPropKey(0x259abffc, 0x50a7, 0x47ce, 0xaf, 0x8, 0x68, 0xc9, 0xa7, 0xd7, 0x33, 0x66, 12);     // DEVPROP_TYPE_STRING_LIST
-        internal static readonly DevPropKey DEVPKEY_DeviceClass_BootCritical = new DevPropKey(0x713d1703, 0xa2e2, 0x49f5, 0x92, 0x14, 0x56, 0x6a, 0x8a, 0x05, 0x21, 0x83, 14);     // DEVPROP_TYPE_BOOLEAN
+        internal static readonly DevPropKey DEVPKEY_DeviceClass_BootCritical = new DevPropKey(0x6a3433f4, 0x5626, 0x40e8, 0xa9, 0xb9, 0xdb, 0xd9, 0xec, 0xd2, 0x88, 0x4b, 3);      // DEVPROP_TYPE_BOOLEAN
 
         //
         // Driver database properties
