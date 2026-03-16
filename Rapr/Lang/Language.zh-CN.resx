@@ -417,10 +417,10 @@
     <value>启动关键</value>
   </data>
   <data name="Column_Text_True" xml:space="preserve">
-    <value>否</value>
+    <value>是</value>
   </data>
   <data name="Column_Text_False" xml:space="preserve">
-    <value>是</value>
+    <value>否</value>
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>扩展ID</value>
