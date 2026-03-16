@@ -1,12 +1,10 @@
-<div align="center">
-
-<img src="./Rapr/icon.ico" alt="logo" width="128">
-
-# Driver Store Explorer (RAPR)
-
-</div>
-
-🌏: [**English**](/README.md) [한국어](/README_KO.md) [简体中文](/README_ZH-CN.md) [繁體中文](/README_ZH-TW.md)
+<table><tr>
+<td><img src="./Rapr/icon.ico" alt="logo" width="96"></td>
+<td>
+<h1>Driver Store Explorer (RAPR)</h1>
+🌏: <a href="/README.md"><b>English</b></a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md">繁體中文</a>
+</td>
+</tr></table>
 
 ---
 
