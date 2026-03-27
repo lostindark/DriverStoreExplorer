@@ -1,0 +1,23 @@
+name: Publish to WinGet
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  publish:
+    runs-on: windows-latest
+    steps:
+      - name: Publish lostindark.DriverStoreExplorer to WinGet
+        env:
+          GH_TOKEN: ${{ github.token }}
+          WINGET_CREATE_GITHUB_TOKEN: ${{ secrets.WINGET_CREATE_GITHUB_TOKEN }}
+        shell: pwsh
+        run: |
+          $version = '${{ github.event.release.tag_name }}'.TrimStart('v')
+          $release = gh api "repos/${{ github.repository }}/releases/${{ github.event.release.id }}" | ConvertFrom-Json
+          $asset = $release.assets | Where-Object { $_.name -like 'DriverStoreExplorer-v*.zip' } | Select-Object -First 1
+          if (-not $asset) { throw "No DriverStoreExplorer zip asset found in release" }
+
+          curl.exe -JLO https://aka.ms/wingetcreate/latest
+          .\wingetcreate.exe update lostindark.DriverStoreExplorer -s -v $version -u "$($asset.browser_download_url)|neutral"
