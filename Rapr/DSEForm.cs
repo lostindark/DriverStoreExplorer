@@ -965,7 +965,21 @@ namespace Rapr
         {
             if (!string.IsNullOrEmpty(TextFileTraceListener.LastTraceFile))
             {
-                Process.Start(TextFileTraceListener.LastTraceFile);
+                try
+                {
+                    Process.Start(TextFileTraceListener.LastTraceFile);
+                }
+                catch (Win32Exception)
+                {
+                    try
+                    {
+                        Process.Start("notepad.exe", TextFileTraceListener.LastTraceFile);
+                    }
+                    catch (Win32Exception ex)
+                    {
+                        this.ShowMessageBox(ex.Message, Language.Message_Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
             }
             else
             {
