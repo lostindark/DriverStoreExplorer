@@ -35,7 +35,19 @@ namespace Rapr
 
         private HashSet<DriverStoreEntry> driversWithNewerDate = new HashSet<DriverStoreEntry>();
 
-        private static readonly IUpdateManager UpdateManager = new UpdateManager();
+        private static readonly IUpdateManager UpdateManager = CreateUpdateManager();
+
+        private static IUpdateManager CreateUpdateManager()
+        {
+            string appDir = DSEFormHelper.GetApplicationFolder();
+
+            if (appDir.IndexOf("_Microsoft.Winget.Source_", StringComparison.OrdinalIgnoreCase) >= 0)
+            {
+                return new WinGetUpdateManager();
+            }
+
+            return new UpdateManager();
+        }
 
         private static readonly ICollection<CultureInfo> SupportedLanguage = DSEFormHelper.GetSupportedLanguage();
 

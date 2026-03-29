@@ -196,15 +196,16 @@ namespace Rapr
 
                 await this.updateManager.ApplyUpdateAsync(this.latestVersionInfo, progress);
 
-                var newProcess = Process.Start(exePath);
-                if (newProcess != null)
+                if (!this.updateManager.HandlesRestart)
                 {
-                    Application.Exit();
+                    var newProcess = Process.Start(exePath);
+                    if (newProcess == null)
+                    {
+                        throw new InvalidOperationException("Failed to restart the application. Please restart manually.");
+                    }
                 }
-                else
-                {
-                    throw new InvalidOperationException("Failed to restart the application. Please restart manually.");
-                }
+
+                Application.Exit();
             }
             catch (Exception ex)
             {
