@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -516,4 +516,15 @@ Vui lòng chọn thư mục gốc của bản cài Windows hoặc image (thư m�
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Không tìm thấy driver cũ nào để chọn.</value>
   </data>
-</root>
+  <data name="About_Update" xml:space="preserve">
+    <value>Cập nhật</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(Đang tải v{0}... {1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(Cập nhật thất bại: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data></root>

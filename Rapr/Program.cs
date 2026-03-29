@@ -89,6 +89,8 @@ namespace Rapr
 
             AddEnvironmentPaths(@"C:\Windows\System32\CompatTel");
 
+            UpdateManager.CleanUpOldFiles();
+
             try
             {
                 string settingFile = $"{Application.ProductName}.user.config";

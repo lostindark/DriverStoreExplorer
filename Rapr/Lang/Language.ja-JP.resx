@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -511,4 +511,15 @@ Windowsインストールまたはイメージのルートディレクトリ（W
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>選択する古いドライバーが見つかりません。</value>
   </data>
-</root>
+  <data name="About_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(ダウンロード中 v{0}... {1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(更新に失敗しました: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data></root>

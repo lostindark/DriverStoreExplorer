@@ -478,4 +478,15 @@ Por favor, selecione a pasta raiz de uma instalação ou imagem do Windows (a pa
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Nenhum driver antigo encontrado para selecionar.</value>
   </data>
-</root>
+  <data name="About_Update" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(Baixando v{0}... {1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(Atualização falhou: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data></root>

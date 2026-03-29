@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <root>
   <!-- 
     Microsoft ResX Schema 
@@ -511,4 +511,15 @@ Proszę wybrać katalog główny instalacji lub obrazu Windows (katalog zawieraj
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Nie znaleziono starych sterowników do wyboru.</value>
   </data>
-</root>
+  <data name="About_Update" xml:space="preserve">
+    <value>Aktualizuj</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(Pobieranie v{0}... {1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(Aktualizacja nie powiodła się: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data></root>

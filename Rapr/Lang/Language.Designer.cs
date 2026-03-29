@@ -111,6 +111,33 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Update.
+        /// </summary>
+        public static string About_Update {
+            get {
+                return ResourceManager.GetString("About_Update", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Downloading v{0}... {1}%).
+        /// </summary>
+        public static string Update_Downloading {
+            get {
+                return ResourceManager.GetString("Update_Downloading", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to (Update failed: {0}).
+        /// </summary>
+        public static string Update_Failed {
+            get {
+                return ResourceManager.GetString("Update_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Add Driver(s).
         /// </summary>
         public static string Button_Add_Package {

@@ -31,6 +31,8 @@
   <ItemGroup>
     <Reference Include="System.configuration" />
     <Reference Include="System.Design" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>

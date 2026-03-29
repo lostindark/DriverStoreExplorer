@@ -373,6 +373,18 @@ License:
   <data name="About_Download" xml:space="preserve">
     <value>Download</value>
   </data>
+  <data name="About_Update" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(Downloading v{0}... {1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(Update failed: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>Scanning driver store...</value>
   </data>

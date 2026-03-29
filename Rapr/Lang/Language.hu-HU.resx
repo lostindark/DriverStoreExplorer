@@ -511,4 +511,15 @@ Kérjük válassza ki egy Windows telepítés vagy kép gyökérkönyvtárát (a
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Nem találhatók régi illesztőprogramok kiválasztásra.</value>
   </data>
-</root>
+  <data name="About_Update" xml:space="preserve">
+    <value>Frissítés</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(Letöltés v{0}... {1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(Frissítés sikertelen: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data></root>

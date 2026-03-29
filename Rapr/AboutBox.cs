@@ -11,7 +11,9 @@ namespace Rapr
 {
     public partial class AboutBox : Form
     {
+        private const string UpdateLinkData = "update";
         private readonly IUpdateManager updateManager;
+        private VersionInfo latestVersionInfo;
 
         public AboutBox(IUpdateManager updateManager)
         {
@@ -41,8 +43,10 @@ namespace Rapr
                         }
                         else
                         {
+                            this.latestVersionInfo = result;
+
                             var versionStr = result.Version.ToString();
-                            this.labelLink.Text = string.Format(Language.About_FoundNewVersion, versionStr, Language.About_Download);
+                            this.labelLink.Text = string.Format(Language.About_FoundNewVersion, versionStr, Language.About_Update);
 
                             var versionStart = this.labelLink.Text.IndexOf(versionStr, 0, StringComparison.Ordinal);
 
@@ -51,11 +55,11 @@ namespace Rapr
                                 this.labelLink.Links.Add(new LinkLabel.Link(versionStart, versionStr.Length, result.PageUrl));
                             }
 
-                            var linkStart = this.labelLink.Text.IndexOf(Language.About_Download, 0, StringComparison.Ordinal);
+                            var linkStart = this.labelLink.Text.IndexOf(Language.About_Update, 0, StringComparison.Ordinal);
 
                             if (linkStart >= 0)
                             {
-                                this.labelLink.Links.Add(new LinkLabel.Link(linkStart, Language.About_Download.Length, result.DownloadUrl));
+                                this.labelLink.Links.Add(new LinkLabel.Link(linkStart, Language.About_Update.Length, UpdateLinkData));
                             }
                         }
                     }));
@@ -151,8 +155,14 @@ namespace Rapr
         }
         #endregion
 
-        private void LabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private async void LabelLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
+            if (e.Link.LinkData?.ToString() == UpdateLinkData && this.latestVersionInfo != null)
+            {
+                await this.PerformUpdateAsync();
+                return;
+            }
+
             string url;
             LinkLabel linkLabel = (LinkLabel)sender;
 
@@ -167,6 +177,47 @@ namespace Rapr
 
             Process.Start(url);
             linkLabel.LinkVisited = true;
+        }
+
+        private async Task PerformUpdateAsync()
+        {
+            try
+            {
+                this.labelLink.Links.Clear();
+                string versionStr = this.latestVersionInfo.Version.ToString();
+                this.labelLink.Text = string.Format(Language.Update_Downloading, versionStr, 0);
+
+                var progress = new Progress<float>(p =>
+                {
+                    this.labelLink.Text = string.Format(Language.Update_Downloading, versionStr, (int)(p * 100));
+                });
+
+                string exePath = Application.ExecutablePath;
+
+                await this.updateManager.ApplyUpdateAsync(this.latestVersionInfo, progress);
+
+                var newProcess = Process.Start(exePath);
+                if (newProcess != null)
+                {
+                    Application.Exit();
+                }
+                else
+                {
+                    throw new InvalidOperationException("Failed to restart the application. Please restart manually.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(
+                    string.Format(Language.Update_Failed, ex.Message),
+                    Language.Product_Name,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+
+                // Reset the link
+                this.latestVersionInfo = null;
+                _ = this.UpdateLatestVersionInfo();
+            }
         }
 
         private void TextBoxDescription_LinkClicked(object sender, LinkClickedEventArgs e)

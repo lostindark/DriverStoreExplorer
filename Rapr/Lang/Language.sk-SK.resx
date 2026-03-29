@@ -511,4 +511,15 @@ Prosím vyberte koreňový adresár inštalácie alebo obrazu Windows (adresár 
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Neboli nájdené žiadne staré ovládače na výber.</value>
   </data>
-</root>
+  <data name="About_Update" xml:space="preserve">
+    <value>Aktualizovať</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(Sťahovanie v{0}... {1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(Aktualizácia zlyhala: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data></root>
