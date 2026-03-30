@@ -487,6 +487,6 @@ Por favor, selecione a pasta raiz de uma instalação ou imagem do Windows (a pa
 {1} - Placeholder for download percentage</comment>
   </data>
   <data name="Update_Failed" xml:space="preserve">
-    <value>(Atualização falhou: {0})</value>
+    <value>(Falha na atualização: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
   </data></root>
