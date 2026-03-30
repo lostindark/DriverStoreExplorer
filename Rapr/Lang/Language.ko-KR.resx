@@ -373,6 +373,18 @@
   <data name="About_Download" xml:space="preserve">
     <value>다운로드</value>
   </data>
+  <data name="About_Update" xml:space="preserve">
+    <value>업데이트</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(v{0} 다운로드 중... {1}%)</value>
+    <comment>{0} - 버전 번호 자리 표시자
+{1} - 다운로드 비율을 위한 자리 표시자</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(업데이트 실패: {0})</value>
+    <comment>{0} - 오류 메시지의 자리 표시자</comment>
+  </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>드라이버 저장소를 검색하는 중...</value>
   </data>
@@ -511,15 +523,4 @@ Windows 폴더 자체가 아닌 Windows 설치 또는 이미지의 루트 디렉
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>선택할 오래된 드라이버를 찾을 수 없습니다.</value>
   </data>
-  <data name="About_Update" xml:space="preserve">
-    <value>업데이트</value>
-  </data>
-  <data name="Update_Downloading" xml:space="preserve">
-    <value>(v{0} 다운로드 중... {1}%)</value>
-    <comment>{0} - Placeholder for version number
-{1} - Placeholder for download percentage</comment>
-  </data>
-  <data name="Update_Failed" xml:space="preserve">
-    <value>(업데이트 실패: {0})</value>
-    <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+</root>
