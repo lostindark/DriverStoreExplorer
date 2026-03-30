@@ -21,12 +21,15 @@ jobs:
   release:
     runs-on: windows-latest
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
       - name: Download CI artifact
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          $name = "DriverStoreExplorer-v${{ inputs.version }}"
+          $name = "DriverStoreExplorer-v${{ inputs.version }}-unsigned"
           $resp = gh api "repos/${{ github.repository }}/actions/artifacts?name=$name&per_page=1" | ConvertFrom-Json
           if ($resp.total_count -eq 0) { throw "Artifact '$name' not found from CI" }
           $id = $resp.artifacts[0].id
@@ -39,7 +42,7 @@ jobs:
         id: upload-unsigned
         uses: actions/upload-artifact@v7
         with:
-          name: DriverStoreExplorer-v${{ inputs.version }}
+          name: DriverStoreExplorer-v${{ inputs.version }}-unsigned
           path: ci-build/
 
       - name: Submit signing request to SignPath

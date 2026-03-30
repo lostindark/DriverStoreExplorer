@@ -74,5 +74,5 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v7
         with:
-          name: DriverStoreExplorer-v${{ steps.version.outputs.fullVersion }}
+          name: DriverStoreExplorer-v${{ steps.version.outputs.fullVersion }}-unsigned
           path: Rapr/bin/Release/
