@@ -515,7 +515,7 @@ Bitte wählen Sie das Stammverzeichnis einer Windows-Installation oder eines Win
     <value>Aktualisieren</value>
   </data>
   <data name="Update_Downloading" xml:space="preserve">
-    <value>(Herunterladen v{0}... {1}%)</value>
+    <value>(v{0} wird heruntergeladen … {1} %)</value>
     <comment>{0} - Placeholder for version number
 {1} - Placeholder for download percentage</comment>
   </data>
