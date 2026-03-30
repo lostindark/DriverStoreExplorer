@@ -13,10 +13,15 @@ assembly_info:
   assembly_informational_version: '{version}'
 before_build:
 - ps: >-
-    $latest = git describe --tags --match "v*" --abbrev=0;
-    if ($latest -match '^v(\d+\.\d+)\.(\d+)$') {
-      $version = "$($Matches[1]).$([int]$Matches[2] + 1)"
-    } else { throw "No valid version tag found" };
+    $existingTag = git tag --points-at HEAD | Where-Object { $_ -match '^v\d+\.\d+\.\d+$' } | Select-Object -First 1;
+    if ($existingTag) {
+      $version = $existingTag -replace '^v', ''
+    } else {
+      $latest = git describe --tags --match "v*" --abbrev=0;
+      if ($latest -match '^v(\d+\.\d+)\.(\d+)$') {
+        $version = "$($Matches[1]).$([int]$Matches[2] + 1)"
+      } else { throw "No valid version tag found" }
+    };
     Update-AppveyorBuild -Version $version
 - cmd: nuget restore
 build:
