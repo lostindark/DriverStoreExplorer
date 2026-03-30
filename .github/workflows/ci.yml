@@ -39,19 +39,24 @@ jobs:
           }
           if ("${{ github.event_name }}" -eq "pull_request") {
             $sha = "${{ github.event.pull_request.head.sha }}".Substring(0, 8)
-            $version = "$version-$sha"
+            $fullVersion = "$version+$sha"
+          } else {
+            $fullVersion = $version
           }
           echo "version=$version" >> $env:GITHUB_OUTPUT
-          Write-Host "Build version: $version"
+          echo "fullVersion=$fullVersion" >> $env:GITHUB_OUTPUT
+          Write-Host "Build version: $version, full: $fullVersion"
 
       - name: Patch assembly version
         shell: pwsh
         run: |
           $version = "${{ steps.version.outputs.version }}"
+          $fullVersion = "${{ steps.version.outputs.fullVersion }}"
           $file = "Rapr/Properties/AssemblyInfo.cs"
           $content = Get-Content $file -Raw
           $content = $content -replace 'AssemblyVersion\(".*?"\)', "AssemblyVersion(`"$version`")"
           $content = $content -replace 'AssemblyFileVersion\(".*?"\)', "AssemblyFileVersion(`"$version`")"
+          $content = $content -replace 'AssemblyInformationalVersion\(".*?"\)', "AssemblyInformationalVersion(`"$fullVersion`")"
           Set-Content $file $content
 
       - name: Setup MSBuild
@@ -69,5 +74,5 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v7
         with:
-          name: DriverStoreExplorer-v${{ steps.version.outputs.version }}
+          name: DriverStoreExplorer-v${{ steps.version.outputs.fullVersion }}
           path: Rapr/bin/Release/
