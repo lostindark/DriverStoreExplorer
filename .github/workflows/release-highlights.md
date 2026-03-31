@@ -90,23 +90,22 @@ Dependency updates and internal improvements to keep things running smoothly.
 
 ### 5. Save Highlights
 
-**CRITICAL**: Write the highlights to a file using shell. This is how you save your output:
+**CRITICAL**: Write the highlights to `/tmp/gh-aw/agent/release-highlights.md` using shell. This path is automatically collected as a workflow artifact.
 
 ```bash
-cat > /tmp/gh-aw/release-highlights.md << 'HIGHLIGHTS_EOF'
+cat > /tmp/gh-aw/agent/release-highlights.md << 'HIGHLIGHTS_EOF'
 ## 🌟 Release Highlights
 
 [Your complete markdown highlights here]
 HIGHLIGHTS_EOF
 ```
 
-Write the file to `/tmp/gh-aw/release-highlights.md`. This path is automatically collected as a workflow artifact. After writing the file, call `noop` and stop.
-
+After writing the file, call `noop` and stop:
 ```
-safeoutputs/noop(message="Release highlights written to /tmp/gh-aw/release-highlights.md")
+safeoutputs/noop(message="Release highlights saved to /tmp/gh-aw/agent/release-highlights.md")
 ```
 
 **❌ DO NOT:**
+- Call any tool after noop
 - Investigate how safe outputs work internally
 - Explore the workflow's lock.yml or CJS files
-- Call any tool after writing the file and calling noop
