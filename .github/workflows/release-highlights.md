@@ -28,10 +28,10 @@ safe-outputs:
           run: |
             # Try multiple possible paths in agent output
             HIGHLIGHTS=$(jq -r '
+              [.items[] | select(.type == "save_highlights" and .highlights)] | last | .highlights //
               .items[0].highlights //
               .items[0].body //
               .items[0].content //
-              (.items[] | select(.type == "save_highlights") | .highlights) //
               empty
             ' "$GH_AW_AGENT_OUTPUT" 2>/dev/null || true)
             if [ -z "$HIGHLIGHTS" ]; then
@@ -120,9 +120,9 @@ Dependency updates and internal improvements to keep things running smoothly.
 
 ### 5. Save Highlights
 
-**CRITICAL**: You MUST call the `save_highlights` tool to save the generated highlights. After calling it successfully, **STOP immediately**. Do not investigate the workflow internals or try to verify how the tool works.
+**CRITICAL**: Call `save_highlights` **exactly once** with the complete highlights. Do NOT call it multiple times — the system only allows one call. After calling it, **STOP immediately**.
 
-**✅ CORRECT - Call the tool directly:**
+**✅ CORRECT - Call the tool exactly once:**
 ```
 safeoutputs/save_highlights(
   highlights="## 🌟 Release Highlights\n\n[Your complete markdown highlights here]"
