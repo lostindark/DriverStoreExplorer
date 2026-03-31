@@ -19,100 +19,34 @@ network:
 safe-outputs:
   update-release:
 steps:
-  - name: Setup release data
+  - name: Check workflow conclusion
     env:
-      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
     run: |
-      set -e
-
       # Only proceed if the triggering workflow succeeded (skip check for manual dispatch)
       if [ -n "$WORKFLOW_CONCLUSION" ] && [ "$WORKFLOW_CONCLUSION" != "success" ]; then
         echo "Release workflow did not succeed. Skipping."
         exit 1
       fi
-
-      mkdir -p /tmp/release-data
-
-      # Find the latest draft release
-      gh api "repos/${{ github.repository }}/releases" \
-        --jq '[.[] | select(.draft)] | .[0]' > /tmp/release-data/current_release.json
-
-      RELEASE_TAG=$(jq -r '.tag_name' /tmp/release-data/current_release.json)
-      RELEASE_ID=$(jq -r '.id' /tmp/release-data/current_release.json)
-
-      if [ "$RELEASE_TAG" = "null" ] || [ -z "$RELEASE_TAG" ]; then
-        echo "No draft release found."
-        exit 1
-      fi
-
-      echo "Draft release: $RELEASE_TAG (ID: $RELEASE_ID)"
-      echo "RELEASE_TAG=$RELEASE_TAG" >> "$GITHUB_ENV"
-      echo "RELEASE_ID=$RELEASE_ID" >> "$GITHUB_ENV"
-
-      # Find previous non-draft release
-      PREV_RELEASE_TAG=$(gh api "repos/${{ github.repository }}/releases" \
-        --jq '[.[] | select(.draft | not)] | .[0].tag_name // empty')
-      echo "PREV_RELEASE_TAG=$PREV_RELEASE_TAG" >> "$GITHUB_ENV"
-
-      if [ -n "$PREV_RELEASE_TAG" ]; then
-        echo "Previous release: $PREV_RELEASE_TAG"
-
-        # Get commits between tags via API
-        gh api "repos/${{ github.repository }}/compare/${PREV_RELEASE_TAG}...${RELEASE_TAG}" \
-          --jq '.commits | [.[] | {sha: .sha[:8], message: (.commit.message | split("\n") | .[0]), author: .author.login}]' \
-          > /tmp/release-data/commits.json
-
-        COMMIT_COUNT=$(jq length /tmp/release-data/commits.json)
-        echo "✓ Found $COMMIT_COUNT commits"
-
-        # Get merged PRs between releases
-        PREV_DATE=$(gh api "repos/${{ github.repository }}/releases/tags/${PREV_RELEASE_TAG}" --jq '.published_at')
-        CURR_DATE=$(jq -r '.created_at' /tmp/release-data/current_release.json)
-
-        gh pr list \
-          --state merged \
-          --limit 100 \
-          --json number,title,author,labels,mergedAt,url \
-          --jq "[.[] | select(.mergedAt >= \"$PREV_DATE\" and .mergedAt <= \"$CURR_DATE\")]" \
-          > /tmp/release-data/pull_requests.json
-
-        PR_COUNT=$(jq length /tmp/release-data/pull_requests.json)
-        echo "✓ Found $PR_COUNT pull requests"
-      else
-        echo "No previous release found. This is the first release."
-        echo "[]" > /tmp/release-data/commits.json
-        echo "[]" > /tmp/release-data/pull_requests.json
-      fi
-
-      echo "✓ Setup complete"
 ---
 
 # Release Highlights Generator
 
-Generate an engaging release highlights summary for **${{ github.repository }}** release `${RELEASE_TAG}`.
-
-## Data Available
-
-All data is pre-fetched in `/tmp/release-data/`:
-- `current_release.json` - Draft release metadata (tag, name, existing body with auto-generated notes)
-- `commits.json` - Commits since `${PREV_RELEASE_TAG}` (sha, message, author)
-- `pull_requests.json` - Merged PRs between releases (may be empty if changes were direct commits)
+Generate an engaging release highlights summary for **${{ github.repository }}**.
 
 ## Workflow
 
-### 1. Load Data
+### 1. Gather Release Data
 
-```bash
-# View release metadata
-cat /tmp/release-data/current_release.json | jq '{tag_name, name, created_at}'
+Use the GitHub MCP tools to fetch release information:
 
-# List commits
-cat /tmp/release-data/commits.json | jq -r '.[] | "- \(.message) (\(.sha)) by @\(.author)"'
+1. **Find the latest draft release** — List releases for `${{ github.repository }}` and find the first draft release. If no draft release exists, call `safeoutputs/noop(message="No draft release found")` and stop.
 
-# List PRs (may be empty)
-cat /tmp/release-data/pull_requests.json | jq -r '.[] | "- #\(.number): \(.title) by @\(.author.login)"'
-```
+2. **Find the previous published release** — From the same releases list, find the most recent non-draft release. Note its tag name.
+
+3. **Get commits between releases** — Use the GitHub MCP tools to compare the previous release tag with the draft release tag to get the list of commits.
+
+4. **Get merged PRs** — Search for merged pull requests in the repository between the two releases.
 
 ### 2. Categorize & Prioritize
 
@@ -153,7 +87,7 @@ Structure:
 
 ### 4. Handle Special Cases
 
-**First Release** (no `${PREV_RELEASE_TAG}`):
+**First Release** (no previous release):
 ```markdown
 ## 🎉 First Release
 Welcome to the inaugural release! This version includes the following capabilities:
@@ -173,7 +107,7 @@ Dependency updates and internal improvements to keep things running smoothly.
 **✅ CORRECT - Call the MCP tool directly:**
 ```
 safeoutputs/update_release(
-  tag="${RELEASE_TAG}",
+  tag="<draft release tag>",
   operation="prepend",
   body="## 🌟 Release Highlights\n\n[Your complete markdown highlights here]"
 )
