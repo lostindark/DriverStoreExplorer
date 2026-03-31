@@ -30,7 +30,7 @@ Use the GitHub MCP tools to fetch release information for `${{ github.repository
 
 1. **Find the previous published release** — List releases for the repository. Find the most recent release that is **not a draft** and is **published** (i.e., has a `published_at` date). This is the baseline to compare against. Note its tag name.
 
-2. **Get all commits between releases** — Use `list_commits` or `git log <prev_tag>..${{ inputs.version }} --oneline` via shell. This is the primary source of changes. Many important changes are direct commits without PRs — **do not skip them**.
+2. **Get all commits between releases** — Use `git log <prev_tag>..${{ inputs.version }} --oneline` via shell (preferred, since `list_commits` MCP tool is often filtered by integrity policy). This is the primary source of changes. Many important changes are direct commits without PRs — **do not skip them**.
 
 3. **Understand what changed** — For commits that look significant (new features, bug fixes), use `git show <sha> --stat` or read the changed files to understand the scope. Look at commit messages carefully — they describe the actual changes.
 
