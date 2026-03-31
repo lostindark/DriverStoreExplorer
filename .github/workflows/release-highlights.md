@@ -74,12 +74,14 @@ Structure:
 ```
 
 **Writing Guidelines:**
-- Keep descriptions short and concise — one sentence per item
-- Be specific about what changed, but don't over-explain
+- **MAXIMUM 10-15 words per item description** — e.g. "In-place self-update with SHA256 verification and automatic rollback."
+- Do NOT write multiple sentences per item. One short phrase only.
+- Do NOT explain how features work or provide implementation details
+- **Stay faithful to commit messages** — do not embellish, infer, or add details not in the commit message. If the commit says "fix X", describe it as fixing X, not what you think it might do.
 - For each item, include the PR number and the **actual PR author** (check the PR data, not the commit author — they may differ)
 - If a change has multiple PRs, list all PR numbers: `(#42 #43 by @author)`
 - End with a Full Changelog link comparing the previous published release tag to `${{ inputs.version }}`
-- This is a Windows desktop application — write from the end-user perspective
+- Skip the summary paragraph if there are fewer than 5 user-facing changes
 
 ### 4. Handle Special Cases
 
