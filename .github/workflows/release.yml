@@ -85,8 +85,17 @@ jobs:
           if (-not $run) { throw "Could not find release highlights run" }
 
           Write-Host "Waiting for release highlights run $($run.databaseId)..."
-          gh run watch $run.databaseId --exit-status
-          Write-Host "Release highlights completed"
+          do {
+            Start-Sleep -Seconds 30
+            $status = (gh run view $run.databaseId --json status,conclusion | ConvertFrom-Json)
+            Write-Host "  Status: $($status.status)"
+          } while ($status.status -ne "completed")
+
+          if ($status.conclusion -ne "success") {
+            Write-Host "Release highlights finished with conclusion: $($status.conclusion)"
+          } else {
+            Write-Host "Release highlights completed successfully"
+          }
 
           # Download the artifact
           gh run download $run.databaseId -n release-highlights -D highlights-output

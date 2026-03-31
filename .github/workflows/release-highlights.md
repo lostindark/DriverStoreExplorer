@@ -50,13 +50,13 @@ Generate an engaging release highlights summary for **${{ github.repository }}**
 
 Use the GitHub MCP tools to fetch release information for `${{ github.repository }}`:
 
-1. **Get the list of releases** — List releases and find the tag `${{ inputs.version }}`.
+1. **Find the previous published release** — List releases for the repository. Find the most recent release that is **not a draft** and is **published** (i.e., has a `published_at` date). This is the baseline to compare against. Note its tag name.
 
-2. **Find the previous published release** — From the releases list, find the most recent non-draft, published release before `${{ inputs.version }}`. Note its tag name.
+2. **Get all commits between releases** — Use `list_commits` or `git log <prev_tag>..${{ inputs.version }} --oneline` via shell to get all commits between the previous published release tag and `${{ inputs.version }}`.
 
-3. **Get commits between releases** — Compare the previous release tag with `${{ inputs.version }}` to get the list of commits.
+3. **Optionally get merged PRs** — Search for merged pull requests if needed for additional context, but rely primarily on commits since not all changes go through PRs. Use the default branch (`master`), not `main`.
 
-4. **Get merged PRs** — Search for merged pull requests in the repository between the two releases.
+**IMPORTANT**: Compare against the last **published** release (e.g., v0.12.152), NOT the immediately previous tag. Many tags may be CI/infrastructure-only.
 
 ### 2. Categorize & Prioritize
 
@@ -112,7 +112,7 @@ Dependency updates and internal improvements to keep things running smoothly.
 
 ### 5. Save Highlights
 
-**CRITICAL**: You MUST call the `save_highlights` tool to save the generated highlights.
+**CRITICAL**: You MUST call the `save_highlights` tool to save the generated highlights. After calling it successfully, **STOP immediately**. Do not investigate the workflow internals or try to verify how the tool works.
 
 **✅ CORRECT - Call the tool directly:**
 ```
@@ -121,10 +121,13 @@ safeoutputs/save_highlights(
 )
 ```
 
+After calling `save_highlights`, your job is done. Stop.
+
 **❌ INCORRECT - DO NOT:**
+- Investigate how safe outputs work internally
 - Write JSON files manually
 - Use bash to simulate tool calls
-- Create scripts that write to outputs
+- Explore the workflow's lock.yml or CJS files
 
 **Important**: If no action is needed after completing your analysis, you **MUST** call the `noop` safe-output tool:
 ```
