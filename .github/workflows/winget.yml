@@ -3,6 +3,12 @@ name: Publish to WinGet
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Release tag (e.g. v1.0.0)'
+        required: true
+        type: string
 
 jobs:
   publish:
@@ -14,8 +20,11 @@ jobs:
           WINGET_CREATE_GITHUB_TOKEN: ${{ secrets.WINGET_CREATE_GITHUB_TOKEN }}
         shell: pwsh
         run: |
-          $version = '${{ github.event.release.tag_name }}'.TrimStart('v')
-          $release = gh api "repos/${{ github.repository }}/releases/${{ github.event.release.id }}" | ConvertFrom-Json
+          $tag = '${{ inputs.tag || github.event.release.tag_name }}'
+          $version = $tag.TrimStart('v')
+          $releases = gh api "repos/${{ github.repository }}/releases" | ConvertFrom-Json
+          $release = $releases | Where-Object { $_.tag_name -eq $tag -and -not $_.draft } | Select-Object -First 1
+          if (-not $release) { throw "Published release for tag '$tag' not found" }
           $asset = $release.assets | Where-Object { $_.name -like 'DriverStoreExplorer-v*.zip' } | Select-Object -First 1
           if (-not $asset) { throw "No DriverStoreExplorer zip asset found in release" }
 
