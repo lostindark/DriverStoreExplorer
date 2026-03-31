@@ -30,11 +30,13 @@ Use the GitHub MCP tools to fetch release information for `${{ github.repository
 
 1. **Find the previous published release** — List releases for the repository. Find the most recent release that is **not a draft** and is **published** (i.e., has a `published_at` date). This is the baseline to compare against. Note its tag name.
 
-2. **Get all commits between releases** — Use `list_commits` or `git log <prev_tag>..${{ inputs.version }} --oneline` via shell to get all commits between the previous published release tag and `${{ inputs.version }}`.
+2. **Get all commits between releases** — Use `list_commits` or `git log <prev_tag>..${{ inputs.version }} --oneline` via shell. This is the primary source of changes. Many important changes are direct commits without PRs — **do not skip them**.
 
-3. **Get merged PRs** — Search for merged pull requests in the repository on the `master` branch between the two releases. Use the PR author and PR number for attribution in the highlights. Not all commits have PRs, but always check.
+3. **Understand what changed** — For commits that look significant (new features, bug fixes), use `git show <sha> --stat` or read the changed files to understand the scope. Look at commit messages carefully — they describe the actual changes.
 
-**IMPORTANT**: Compare against the last **published** release (e.g., v0.12.152), NOT the immediately previous tag. Many tags may be CI/infrastructure-only.
+4. **Get merged PRs** — Search for merged pull requests on the `master` branch between the two releases. Use the PR author and PR number for attribution. For commits without PRs, use the commit author and commit SHA.
+
+**IMPORTANT**: Compare against the last **published** release (e.g., v0.12.152), NOT the immediately previous tag. Many tags may be CI/infrastructure-only. The commit list is the authoritative source — PRs supplement it but many changes are direct commits.
 
 ### 2. Categorize & Prioritize
 
