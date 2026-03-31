@@ -5,8 +5,10 @@ on:
   workflow_run:
     workflows: ["Release"]
     types: [completed]
+    branches:
+      - master
 permissions:
-  contents: write
+  contents: read
   pull-requests: read
 engine: copilot
 timeout-minutes: 10
@@ -19,11 +21,12 @@ steps:
   - name: Setup release data
     env:
       GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
     run: |
       set -e
 
       # Only proceed if the triggering workflow succeeded
-      if [ "${{ github.event.workflow_run.conclusion }}" != "success" ]; then
+      if [ "$WORKFLOW_CONCLUSION" != "success" ]; then
         echo "Release workflow did not succeed. Skipping."
         exit 1
       fi
