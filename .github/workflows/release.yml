@@ -69,16 +69,17 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh workflow run release-highlights.lock.yml -f version="v${{ inputs.version }}"
-          Start-Sleep -Seconds 5
+          Start-Sleep -Seconds 10
 
-          # Find the triggered run
+          # Find the triggered run (most recent in_progress or queued)
           $run = $null
-          for ($i = 0; $i -lt 12; $i++) {
-            $runs = gh run list --workflow=release-highlights.lock.yml --limit=1 --json databaseId,status,conclusion | ConvertFrom-Json
-            if ($runs.Count -gt 0) {
-              $run = $runs[0]
-              break
-            }
+          for ($i = 0; $i -lt 24; $i++) {
+            $runs = gh run list --workflow=release-highlights.lock.yml --limit=5 --json databaseId,status,createdAt | ConvertFrom-Json
+            $run = $runs | Where-Object { $_.status -in @("in_progress", "queued", "waiting", "pending") } | Select-Object -First 1
+            if ($run) { break }
+            # Also check if it already completed (fast run)
+            $run = $runs | Where-Object { $_.createdAt -gt (Get-Date).AddMinutes(-2).ToString("yyyy-MM-ddTHH:mm:ssZ") } | Select-Object -First 1
+            if ($run) { break }
             Start-Sleep -Seconds 5
           }
           if (-not $run) { throw "Could not find release highlights run" }

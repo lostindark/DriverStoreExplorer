@@ -26,7 +26,11 @@ safe-outputs:
       steps:
         - name: Save highlights
           run: |
-            HIGHLIGHTS=$(echo '${{ toJSON(agent.output.highlights) }}' | jq -r '.')
+            HIGHLIGHTS=$(jq -r '.items[0].highlights // empty' "$GH_AW_AGENT_OUTPUT")
+            if [ -z "$HIGHLIGHTS" ]; then
+              echo "No highlights found in agent output"
+              exit 1
+            fi
             echo "$HIGHLIGHTS" >> "$GITHUB_STEP_SUMMARY"
             echo "$HIGHLIGHTS" > release-highlights.md
         - name: Upload artifact
