@@ -10,7 +10,7 @@ on:
 
 permissions:
   contents: write
-  actions: read
+  actions: write
 
 env:
   SIGNPATH_ORG_ID: 'c9bd44ce-a067-4f9a-9135-468d00ed0b13'
