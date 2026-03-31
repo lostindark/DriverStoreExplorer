@@ -111,7 +111,7 @@ jobs:
           $downloadOutput = gh run download $runId -n agent -D highlights-output 2>&1
           if ($LASTEXITCODE -ne 0) {
             Write-Host "::warning::Failed to download agent artifact: $downloadOutput"
-          } elseif (Test-Path highlights-output/release-highlights.md) {
+          } elseif (Test-Path highlights-output/agent/release-highlights.md) {
             Write-Host "Release highlights downloaded"
           } else {
             Write-Host "::warning::Agent artifact downloaded but highlights file not found"
@@ -128,9 +128,9 @@ jobs:
             "--title", "DriverStore Explorer v${{ inputs.version }}"
             "--draft"
           )
-          if (Test-Path highlights-output/release-highlights.md) {
+          if (Test-Path highlights-output/agent/release-highlights.md) {
             $args += "--notes-file"
-            $args += "highlights-output/release-highlights.md"
+            $args += "highlights-output/agent/release-highlights.md"
           } else {
             $args += "--generate-notes"
           }
