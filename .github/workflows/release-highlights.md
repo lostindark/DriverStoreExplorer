@@ -26,9 +26,17 @@ safe-outputs:
       steps:
         - name: Save highlights
           run: |
-            HIGHLIGHTS=$(jq -r '.items[0].highlights // empty' "$GH_AW_AGENT_OUTPUT")
+            # Try multiple possible paths in agent output
+            HIGHLIGHTS=$(jq -r '
+              .items[0].highlights //
+              .items[0].body //
+              .items[0].content //
+              (.items[] | select(.type == "save_highlights") | .highlights) //
+              empty
+            ' "$GH_AW_AGENT_OUTPUT" 2>/dev/null || true)
             if [ -z "$HIGHLIGHTS" ]; then
-              echo "No highlights found in agent output"
+              echo "::warning::No highlights found in agent output, dumping structure:"
+              jq '.' "$GH_AW_AGENT_OUTPUT" 2>/dev/null || cat "$GH_AW_AGENT_OUTPUT"
               exit 1
             fi
             echo "$HIGHLIGHTS" >> "$GITHUB_STEP_SUMMARY"

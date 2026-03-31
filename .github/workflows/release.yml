@@ -68,41 +68,53 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh workflow run release-highlights.lock.yml -f version="v${{ inputs.version }}"
+          $version = "v${{ inputs.version }}"
+          $dispatchTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
+          gh workflow run release-highlights.lock.yml -f version="$version"
           Start-Sleep -Seconds 10
 
-          # Find the triggered run (most recent in_progress or queued)
-          $run = $null
-          for ($i = 0; $i -lt 24; $i++) {
-            $runs = gh run list --workflow=release-highlights.lock.yml --limit=5 --json databaseId,status,createdAt | ConvertFrom-Json
-            $run = $runs | Where-Object { $_.status -in @("in_progress", "queued", "waiting", "pending") } | Select-Object -First 1
-            if ($run) { break }
-            # Also check if it already completed (fast run)
-            $run = $runs | Where-Object { $_.createdAt -gt (Get-Date).AddMinutes(-2).ToString("yyyy-MM-ddTHH:mm:ssZ") } | Select-Object -First 1
-            if ($run) { break }
+          # Find the triggered run created after dispatch time
+          $runId = $null
+          for ($i = 0; $i -lt 60; $i++) {
+            $runs = gh api "repos/${{ github.repository }}/actions/workflows/release-highlights.lock.yml/runs?event=workflow_dispatch&created=%3E%3D$dispatchTime&per_page=5" | ConvertFrom-Json
+            if ($runs.workflow_runs.Count -gt 0) {
+              $runId = $runs.workflow_runs[0].id
+              Write-Host "Found matching run: $runId (status: $($runs.workflow_runs[0].status))"
+              break
+            }
             Start-Sleep -Seconds 5
           }
-          if (-not $run) { throw "Could not find release highlights run" }
+          if (-not $runId) {
+            Write-Host "::warning::Could not find release highlights run after 5 minutes, skipping"
+            exit 0
+          }
 
-          Write-Host "Waiting for release highlights run $($run.databaseId)..."
-          do {
+          Write-Host "Waiting for release highlights run $runId..."
+          for ($i = 0; $i -lt 20; $i++) {
             Start-Sleep -Seconds 30
-            $status = (gh run view $run.databaseId --json status,conclusion | ConvertFrom-Json)
+            $status = (gh run view $runId --json status,conclusion | ConvertFrom-Json)
             Write-Host "  Status: $($status.status)"
-          } while ($status.status -ne "completed")
+            if ($status.status -eq "completed") { break }
+          }
+
+          if ($status.status -ne "completed") {
+            Write-Host "::warning::Release highlights timed out after 10 minutes, skipping"
+            exit 0
+          }
 
           if ($status.conclusion -ne "success") {
-            Write-Host "Release highlights finished with conclusion: $($status.conclusion)"
-          } else {
-            Write-Host "Release highlights completed successfully"
+            Write-Host "::warning::Release highlights finished with conclusion: $($status.conclusion)"
+            exit 0
           }
 
           # Download the artifact
-          gh run download $run.databaseId -n release-highlights -D highlights-output
-          if (Test-Path highlights-output/release-highlights.md) {
+          $downloadOutput = gh run download $runId -n release-highlights -D highlights-output 2>&1
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "::warning::Failed to download highlights artifact: $downloadOutput"
+          } elseif (Test-Path highlights-output/release-highlights.md) {
             Write-Host "Release highlights downloaded"
           } else {
-            Write-Host "No highlights artifact found, will use --generate-notes"
+            Write-Host "::warning::Highlights artifact downloaded but file not found"
           }
 
       - name: Create GitHub release
