@@ -72,3 +72,9 @@ jobs:
             --title "DriverStore Explorer v${{ inputs.version }}" `
             --generate-notes `
             --draft
+
+      - name: Trigger release highlights
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh workflow run release-highlights.lock.yml -f version="v${{ inputs.version }}"

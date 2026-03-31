@@ -3,11 +3,11 @@ name: Release Highlights
 description: Generate AI-powered release highlights and prepend to draft release
 on:
   workflow_dispatch:
-  workflow_run:
-    workflows: ["Release"]
-    types: [completed]
-    branches:
-      - master
+    inputs:
+      version:
+        description: 'Release version tag (e.g. v1.0.0)'
+        required: true
+        type: string
 permissions:
   contents: read
   pull-requests: read
@@ -18,33 +18,23 @@ network:
     - defaults
 safe-outputs:
   update-release:
-steps:
-  - name: Check workflow conclusion
-    env:
-      WORKFLOW_CONCLUSION: ${{ github.event.workflow_run.conclusion }}
-    run: |
-      # Only proceed if the triggering workflow succeeded (skip check for manual dispatch)
-      if [ -n "$WORKFLOW_CONCLUSION" ] && [ "$WORKFLOW_CONCLUSION" != "success" ]; then
-        echo "Release workflow did not succeed. Skipping."
-        exit 1
-      fi
 ---
 
 # Release Highlights Generator
 
-Generate an engaging release highlights summary for **${{ github.repository }}**.
+Generate an engaging release highlights summary for **${{ github.repository }}** release `${{ inputs.version }}`.
 
 ## Workflow
 
 ### 1. Gather Release Data
 
-Use the GitHub MCP tools to fetch release information:
+Use the GitHub MCP tools to fetch release information for `${{ github.repository }}`:
 
-1. **Find the latest draft release** — List releases for `${{ github.repository }}` and find the first draft release. If no draft release exists, call `safeoutputs/noop(message="No draft release found")` and stop.
+1. **Get the draft release** — Get the release for tag `${{ inputs.version }}`. This is the draft release to update.
 
-2. **Find the previous published release** — From the same releases list, find the most recent non-draft release. Note its tag name.
+2. **Find the previous published release** — List releases and find the most recent non-draft, published release before `${{ inputs.version }}`. Note its tag name.
 
-3. **Get commits between releases** — Use the GitHub MCP tools to compare the previous release tag with the draft release tag to get the list of commits.
+3. **Get commits between releases** — Compare the previous release tag with `${{ inputs.version }}` to get the list of commits.
 
 4. **Get merged PRs** — Search for merged pull requests in the repository between the two releases.
 
@@ -107,7 +97,7 @@ Dependency updates and internal improvements to keep things running smoothly.
 **✅ CORRECT - Call the MCP tool directly:**
 ```
 safeoutputs/update_release(
-  tag="<draft release tag>",
+  tag="${{ inputs.version }}",
   operation="prepend",
   body="## 🌟 Release Highlights\n\n[Your complete markdown highlights here]"
 )
