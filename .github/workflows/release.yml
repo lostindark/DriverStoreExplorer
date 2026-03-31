@@ -63,18 +63,53 @@ jobs:
         run: |
           Compress-Archive -Path signed-artifact/* -DestinationPath "DriverStoreExplorer-v${{ inputs.version }}.zip"
 
-      - name: Create GitHub release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh release create "v${{ inputs.version }}" `
-            "DriverStoreExplorer-v${{ inputs.version }}.zip" `
-            --title "DriverStore Explorer v${{ inputs.version }}" `
-            --generate-notes `
-            --draft
-
-      - name: Trigger release highlights
+      - name: Generate release highlights
+        shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gh workflow run release-highlights.lock.yml -f version="v${{ inputs.version }}"
+          Start-Sleep -Seconds 5
+
+          # Find the triggered run
+          $run = $null
+          for ($i = 0; $i -lt 12; $i++) {
+            $runs = gh run list --workflow=release-highlights.lock.yml --limit=1 --json databaseId,status,conclusion | ConvertFrom-Json
+            if ($runs.Count -gt 0) {
+              $run = $runs[0]
+              break
+            }
+            Start-Sleep -Seconds 5
+          }
+          if (-not $run) { throw "Could not find release highlights run" }
+
+          Write-Host "Waiting for release highlights run $($run.databaseId)..."
+          gh run watch $run.databaseId --exit-status
+          Write-Host "Release highlights completed"
+
+          # Download the artifact
+          gh run download $run.databaseId -n release-highlights -D highlights-output
+          if (Test-Path highlights-output/release-highlights.md) {
+            Write-Host "Release highlights downloaded"
+          } else {
+            Write-Host "No highlights artifact found, will use --generate-notes"
+          }
+
+      - name: Create GitHub release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $args = @(
+            "v${{ inputs.version }}"
+            "DriverStoreExplorer-v${{ inputs.version }}.zip"
+            "--title", "DriverStore Explorer v${{ inputs.version }}"
+            "--draft"
+          )
+          if (Test-Path highlights-output/release-highlights.md) {
+            $args += "--notes-file"
+            $args += "highlights-output/release-highlights.md"
+          } else {
+            $args += "--generate-notes"
+          }
+          gh release create @args

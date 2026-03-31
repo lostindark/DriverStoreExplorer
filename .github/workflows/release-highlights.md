@@ -1,6 +1,6 @@
 ---
 name: Release Highlights
-description: Generate AI-powered release highlights and prepend to draft release
+description: Generate AI-powered release highlights for a release
 on:
   workflow_dispatch:
     inputs:
@@ -17,7 +17,23 @@ network:
   allowed:
     - defaults
 safe-outputs:
-  update-release:
+  jobs:
+    save-highlights:
+      description: 'Save release highlights to step summary and artifact'
+      runs-on: ubuntu-latest
+      permissions:
+        contents: read
+      steps:
+        - name: Save highlights
+          run: |
+            HIGHLIGHTS=$(echo '${{ toJSON(agent.output.highlights) }}' | jq -r '.')
+            echo "$HIGHLIGHTS" >> "$GITHUB_STEP_SUMMARY"
+            echo "$HIGHLIGHTS" > release-highlights.md
+        - name: Upload artifact
+          uses: actions/upload-artifact@v4
+          with:
+            name: release-highlights
+            path: release-highlights.md
 ---
 
 # Release Highlights Generator
@@ -30,9 +46,9 @@ Generate an engaging release highlights summary for **${{ github.repository }}**
 
 Use the GitHub MCP tools to fetch release information for `${{ github.repository }}`:
 
-1. **Get the draft release** — Get the release for tag `${{ inputs.version }}`. This is the draft release to update.
+1. **Get the list of releases** — List releases and find the tag `${{ inputs.version }}`.
 
-2. **Find the previous published release** — List releases and find the most recent non-draft, published release before `${{ inputs.version }}`. Note its tag name.
+2. **Find the previous published release** — From the releases list, find the most recent non-draft, published release before `${{ inputs.version }}`. Note its tag name.
 
 3. **Get commits between releases** — Compare the previous release tag with `${{ inputs.version }}` to get the list of commits.
 
@@ -90,16 +106,14 @@ Welcome to the inaugural release! This version includes the following capabiliti
 Dependency updates and internal improvements to keep things running smoothly.
 ```
 
-### 5. Update Release
+### 5. Save Highlights
 
-**CRITICAL**: You MUST call the `update_release` MCP tool to prepend highlights to the draft release.
+**CRITICAL**: You MUST call the `save_highlights` tool to save the generated highlights.
 
-**✅ CORRECT - Call the MCP tool directly:**
+**✅ CORRECT - Call the tool directly:**
 ```
-safeoutputs/update_release(
-  tag="${{ inputs.version }}",
-  operation="prepend",
-  body="## 🌟 Release Highlights\n\n[Your complete markdown highlights here]"
+safeoutputs/save_highlights(
+  highlights="## 🌟 Release Highlights\n\n[Your complete markdown highlights here]"
 )
 ```
 
