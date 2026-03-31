@@ -16,36 +16,6 @@ timeout-minutes: 10
 network:
   allowed:
     - defaults
-safe-outputs:
-  jobs:
-    save-highlights:
-      description: 'Save release highlights to step summary and artifact'
-      runs-on: ubuntu-latest
-      permissions:
-        contents: read
-      steps:
-        - name: Save highlights
-          run: |
-            # Try multiple possible paths in agent output
-            HIGHLIGHTS=$(jq -r '
-              [.items[] | select(.type == "save_highlights" and .highlights)] | last | .highlights //
-              .items[0].highlights //
-              .items[0].body //
-              .items[0].content //
-              empty
-            ' "$GH_AW_AGENT_OUTPUT" 2>/dev/null || true)
-            if [ -z "$HIGHLIGHTS" ]; then
-              echo "::warning::No highlights found in agent output, dumping structure:"
-              jq '.' "$GH_AW_AGENT_OUTPUT" 2>/dev/null || cat "$GH_AW_AGENT_OUTPUT"
-              exit 1
-            fi
-            echo "$HIGHLIGHTS" >> "$GITHUB_STEP_SUMMARY"
-            echo "$HIGHLIGHTS" > release-highlights.md
-        - name: Upload artifact
-          uses: actions/upload-artifact@v4
-          with:
-            name: release-highlights
-            path: release-highlights.md
 ---
 
 # Release Highlights Generator
@@ -120,24 +90,23 @@ Dependency updates and internal improvements to keep things running smoothly.
 
 ### 5. Save Highlights
 
-**CRITICAL**: Call `save_highlights` **exactly once** with the complete highlights. Do NOT call it multiple times — the system only allows one call. After calling it, **STOP immediately**.
+**CRITICAL**: Write the highlights to a file using shell. This is how you save your output:
 
-**✅ CORRECT - Call the tool exactly once:**
+```bash
+cat > /tmp/gh-aw/release-highlights.md << 'HIGHLIGHTS_EOF'
+## 🌟 Release Highlights
+
+[Your complete markdown highlights here]
+HIGHLIGHTS_EOF
 ```
-safeoutputs/save_highlights(
-  highlights="## 🌟 Release Highlights\n\n[Your complete markdown highlights here]"
-)
+
+Write the file to `/tmp/gh-aw/release-highlights.md`. This path is automatically collected as a workflow artifact. After writing the file, call `noop` and stop.
+
+```
+safeoutputs/noop(message="Release highlights written to /tmp/gh-aw/release-highlights.md")
 ```
 
-After calling `save_highlights`, your job is done. Stop.
-
-**❌ INCORRECT - DO NOT:**
+**❌ DO NOT:**
 - Investigate how safe outputs work internally
-- Write JSON files manually
-- Use bash to simulate tool calls
 - Explore the workflow's lock.yml or CJS files
-
-**Important**: If no action is needed after completing your analysis, you **MUST** call the `noop` safe-output tool:
-```
-safeoutputs/noop(message="No action needed: [brief explanation]")
-```
+- Call any tool after writing the file and calling noop

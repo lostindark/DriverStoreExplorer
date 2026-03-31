@@ -107,14 +107,14 @@ jobs:
             exit 0
           }
 
-          # Download the artifact
-          $downloadOutput = gh run download $runId -n release-highlights -D highlights-output 2>&1
+          # Download the agent artifact which contains release-highlights.md
+          $downloadOutput = gh run download $runId -n agent -D highlights-output 2>&1
           if ($LASTEXITCODE -ne 0) {
-            Write-Host "::warning::Failed to download highlights artifact: $downloadOutput"
+            Write-Host "::warning::Failed to download agent artifact: $downloadOutput"
           } elseif (Test-Path highlights-output/release-highlights.md) {
             Write-Host "Release highlights downloaded"
           } else {
-            Write-Host "::warning::Highlights artifact downloaded but file not found"
+            Write-Host "::warning::Agent artifact downloaded but highlights file not found"
           }
 
       - name: Create GitHub release
