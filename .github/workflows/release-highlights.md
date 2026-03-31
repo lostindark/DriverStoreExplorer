@@ -60,10 +60,10 @@ Structure:
 [If any - list FIRST with migration guidance]
 
 ### ✨ What's New
-[Key features with user benefit]
+[Key features with user benefit — include author and PR link]
 
 ### 🐛 Bug Fixes & Improvements
-[Notable fixes - focus on user impact]
+[Notable fixes — include author and PR link]
 ```
 
 **Writing Guidelines:**
@@ -72,6 +72,8 @@ Structure:
 - Keep it concise and scannable (users grasp key changes in 30 seconds)
 - Use professional, enthusiastic tone
 - This is a Windows desktop application — write from the end-user perspective
+- For each item, include the author and PR reference at the end, e.g.:
+  `- **In-place self-update** — description. (#42 by @username)`
 
 ### 4. Handle Special Cases
 
