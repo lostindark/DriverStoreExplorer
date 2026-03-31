@@ -2,6 +2,7 @@
 name: Release Highlights
 description: Generate AI-powered release highlights and prepend to draft release
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Release"]
     types: [completed]
