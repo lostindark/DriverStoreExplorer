@@ -26,8 +26,8 @@ steps:
     run: |
       set -e
 
-      # Only proceed if the triggering workflow succeeded
-      if [ "$WORKFLOW_CONCLUSION" != "success" ]; then
+      # Only proceed if the triggering workflow succeeded (skip check for manual dispatch)
+      if [ -n "$WORKFLOW_CONCLUSION" ] && [ "$WORKFLOW_CONCLUSION" != "success" ]; then
         echo "Release workflow did not succeed. Skipping."
         exit 1
       fi
