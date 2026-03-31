@@ -32,7 +32,7 @@ Use the GitHub MCP tools to fetch release information for `${{ github.repository
 
 2. **Get all commits between releases** — Use `list_commits` or `git log <prev_tag>..${{ inputs.version }} --oneline` via shell to get all commits between the previous published release tag and `${{ inputs.version }}`.
 
-3. **Optionally get merged PRs** — Search for merged pull requests if needed for additional context, but rely primarily on commits since not all changes go through PRs. Use the default branch (`master`), not `main`.
+3. **Get merged PRs** — Search for merged pull requests in the repository on the `master` branch between the two releases. Use the PR author and PR number for attribution in the highlights. Not all commits have PRs, but always check.
 
 **IMPORTANT**: Compare against the last **published** release (e.g., v0.12.152), NOT the immediately previous tag. Many tags may be CI/infrastructure-only.
 
@@ -42,7 +42,7 @@ Group changes by category (omit categories with no items):
 - **⚠️ Breaking Changes** - Requires user action (ALWAYS list first if present)
 - **✨ New Features** - User-facing capabilities
 - **🐛 Bug Fixes** - Issue resolutions
-- **⚡ Performance** - Speed/efficiency improvements
+- **🌐 Localization** - New or updated translations
 - **🔧 Internal** - Refactoring, dependencies (usually omit from highlights)
 
 Use both commit messages and PR titles to determine categories.
@@ -60,20 +60,24 @@ Structure:
 [If any - list FIRST with migration guidance]
 
 ### ✨ What's New
-[Key features with user benefit — include author and PR link]
+- **Feature name** — short description. (#PR by @author)
 
 ### 🐛 Bug Fixes & Improvements
-[Notable fixes — include author and PR link]
+- **Fix name** — short description. (#PR by @author)
+
+### 🌐 Localization
+- Updated translations for [languages]. (#PR by @author)
+
+**Full Changelog**: https://github.com/${{ github.repository }}/compare/<prev_tag>...${{ inputs.version }}
 ```
 
 **Writing Guidelines:**
-- Lead with benefits: "Driver deletion is now 2x faster" not "Optimized delete loop"
-- Be specific about what changed and why it matters to users
-- Keep it concise and scannable (users grasp key changes in 30 seconds)
-- Use professional, enthusiastic tone
+- Keep descriptions short and concise — one sentence per item
+- Be specific about what changed, but don't over-explain
+- For each item, include the PR number and the **actual PR author** (check the PR data, not the commit author — they may differ)
+- If a change has multiple PRs, list all PR numbers: `(#42 #43 by @author)`
+- End with a Full Changelog link comparing the previous published release tag to `${{ inputs.version }}`
 - This is a Windows desktop application — write from the end-user perspective
-- For each item, include the author and PR reference at the end, e.g.:
-  `- **In-place self-update** — description. (#42 by @username)`
 
 ### 4. Handle Special Cases
 
