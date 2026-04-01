@@ -504,9 +504,9 @@
     <value>Папка выбрана неправильно</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
-    <value>Выбранная папка должна содержать папку «Windows».
+    <value>Выбранная папка должна содержать папку Windows.
 
-Пожалуйста, выберите корневую папку установки или образа Windows (папку, содержащий папку «Windows»), а не саму папку «Windows».</value>
+Пожалуйста, выберите корневую папку установки или образа Windows (папку, содержащую папку Windows), а не саму папку Windows.</value>
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Старых драйверов для выбора не найдено.</value>
