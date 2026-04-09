@@ -193,7 +193,7 @@
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Requires_Admin" xml:space="preserve">
-    <value>Bu araç çalıştırılmak için yönetici ayrıcalıkları gerektirir.</value>
+    <value>Bu yardımcı program, çalışması için yönetici yetkileri gerektirir.</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Bu yardımcı program Vista öncesi işletim sisteminde çalıştırılamaz.</value>
@@ -336,7 +336,7 @@ Lisans:
     <value>&amp;Klasör Konumunu Aç</value>
   </data>
   <data name="Context_Copy_Folder_Path" xml:space="preserve">
-    <value>Klasör Yolunu Kopyala</value>
+    <value>Klasör Yolunu K&amp;opyala</value>
   </data>
     <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Aygıt Ö&amp;zelliklerini Aç</value>
@@ -512,14 +512,14 @@ Lütfen bir Windows kurulumunun veya kalıbının kök dizinini seçin (Windows 
     <value>Seçilecek eski sürücüler bulunamadı.</value>
   </data>
   <data name="About_Update" xml:space="preserve">
-    <value>Güncelle</value>
+    <value>Güncelleme</value>
   </data>
   <data name="Update_Downloading" xml:space="preserve">
-    <value>(v{0} indiriliyor... {1}%)</value>
+    <value>(v{0} indiriliyor... %{1})</value>
     <comment>{0} - Placeholder for version number
 {1} - Placeholder for download percentage</comment>
   </data>
   <data name="Update_Failed" xml:space="preserve">
-    <value>(Güncelleme başarısız: {0})</value>
+    <value>(Güncelleme başarısız oldu: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
   </data></root>
