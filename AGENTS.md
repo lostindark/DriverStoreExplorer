@@ -2,7 +2,7 @@
 
 ## Build & Test
 
-This is a .NET Framework 4.6.2 Windows Forms application. Use **MSBuild** (not `dotnet build`).
+This is a .NET Framework 4.7.2 Windows Forms application. Use **MSBuild** (not `dotnet build`).
 
 ```powershell
 # Restore + Build
