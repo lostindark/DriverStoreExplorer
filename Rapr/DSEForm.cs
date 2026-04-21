@@ -1540,15 +1540,10 @@ namespace Rapr
                 yield break;
             }
 
-            // If no .inf files are found, search one level down in subdirectories  
-            var subDirectories = Directory.GetDirectories(infPath);
-            foreach (var subDir in subDirectories)
+            // If no .inf files are found, search recursively in all subdirectories  
+            foreach (var infFile in Directory.EnumerateFiles(infPath, "*.inf", SearchOption.AllDirectories))
             {
-                infFiles = Directory.GetFiles(subDir, "*.inf", SearchOption.TopDirectoryOnly);
-                if (infFiles.Length > 0)
-                {
-                    yield return infFiles[0];
-                }
+                yield return infFile;
             }
         }
     }
