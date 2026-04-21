@@ -63,7 +63,7 @@ Driver Store Explorer (RAPR)는 Windows [드라이버 저장소](https://msdn.mi
 
 ### 요구 사항
 - Windows 7 이상
-- .NET Framework 4.6.2 이상
+- .NET Framework 4.7.2 이상
 - 관리자 권한
 
 ### 옵션 1: 사전 빌드된 바이너리 다운로드 (권장)

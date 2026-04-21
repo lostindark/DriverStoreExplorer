@@ -63,7 +63,7 @@ Driver Store Explorer (RAPR) is a powerful tool for viewing, managing, and clean
 
 ### Requirements
 - Windows 7 or newer
-- .NET Framework 4.6.2 or newer
+- .NET Framework 4.7.2 or newer
 - Administrator privileges
 
 ### Option 1: Download Pre-built Binary (Recommended)
