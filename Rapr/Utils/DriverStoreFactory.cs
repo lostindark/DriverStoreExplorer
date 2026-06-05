@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Diagnostics;
 
 using Rapr.Properties;
@@ -44,6 +44,11 @@ namespace Rapr.Utils
                 default:
                     return new DismUtil(imagePath);
             }
+        }
+
+        public static IDriverStore CreateCustomFolderDriverStore(string folderPath)
+        {
+            return new CustomFolderDriverStore(folderPath);
         }
 
         /// <summary>
