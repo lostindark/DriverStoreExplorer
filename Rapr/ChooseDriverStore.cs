@@ -25,6 +25,8 @@ namespace Rapr
             {
                 this.storeType = value;
                 this.NotifyPropertyChanged(nameof(this.StoreType));
+                // Crucial: Let the OK button know that changing the store type changes validation state
+                this.NotifyPropertyChanged(nameof(this.OKButtonEnable));
             }
         }
 
@@ -40,6 +42,7 @@ namespace Rapr
             {
                 this.offlineStoreLocation = value;
                 this.NotifyPropertyChanged(nameof(this.OfflineStoreLocation));
+                this.NotifyPropertyChanged(nameof(this.OKButtonEnable));
             }
         }
 
@@ -55,38 +58,49 @@ namespace Rapr
         public ChooseDriverStore()
         {
             this.InitializeComponent();
+            
+            // 1. Bind our radio buttons to the backing StoreType property
             AddRadioCheckedBinding(this.radioButtonDriverStoreOnline, this, nameof(this.StoreType), DriverStoreType.Online);
             AddRadioCheckedBinding(this.radioButtonDriverStoreOffline, this, nameof(this.StoreType), DriverStoreType.Offline);
             AddRadioCheckedBinding(this.radioButtonDriverStoreCustomFolder, this, nameof(this.StoreType), DriverStoreType.CustomFolder);
 
-            this.textBoxOfflineStoreLocation.DataBindings.Add(
+            // 2. Bind TextBox Enabled property to the backing StoreType enum using a Format converter
+            Binding textBoxEnabledBinding = new Binding(
                 nameof(this.textBoxOfflineStoreLocation.Enabled),
-                this.radioButtonDriverStoreOffline,
-                nameof(this.radioButtonDriverStoreOffline.Checked));
-
-            this.textBoxOfflineStoreLocation.DataBindings.Add(
-                "Enabled",
-                this.radioButtonDriverStoreCustomFolder,
-                nameof(this.radioButtonDriverStoreCustomFolder.Checked),
+                this,
+                nameof(this.StoreType),
                 true,
                 DataSourceUpdateMode.OnPropertyChanged);
 
+            textBoxEnabledBinding.Format += (s, le) => {
+                if (le.Value is DriverStoreType type)
+                {
+                    le.Value = (type == DriverStoreType.Offline || type == DriverStoreType.CustomFolder);
+                }
+            };
+            this.textBoxOfflineStoreLocation.DataBindings.Add(textBoxEnabledBinding);
+
+            // 3. Bind Browse Button Enabled property using the same Format converter logic
+            Binding buttonEnabledBinding = new Binding(
+                nameof(this.buttonBrowseLocation.Enabled),
+                this,
+                nameof(this.StoreType),
+                true,
+                DataSourceUpdateMode.OnPropertyChanged);
+
+            buttonEnabledBinding.Format += (s, le) => {
+                if (le.Value is DriverStoreType type)
+                {
+                    le.Value = (type == DriverStoreType.Offline || type == DriverStoreType.CustomFolder);
+                }
+            };
+            this.buttonBrowseLocation.DataBindings.Add(buttonEnabledBinding);
+
+            // 4. Bind Text and OK button state directly
             this.textBoxOfflineStoreLocation.DataBindings.Add(
                 nameof(this.textBoxOfflineStoreLocation.Text),
                 this,
                 nameof(this.OfflineStoreLocation));
-
-            this.buttonBrowseLocation.DataBindings.Add(
-                nameof(this.buttonBrowseLocation.Enabled),
-                this.radioButtonDriverStoreOffline,
-                nameof(this.radioButtonDriverStoreOffline.Checked));
-
-            this.buttonBrowseLocation.DataBindings.Add(
-                "Enabled",
-                this.radioButtonDriverStoreCustomFolder,
-                nameof(this.radioButtonDriverStoreCustomFolder.Checked),
-                true,
-                DataSourceUpdateMode.OnPropertyChanged);
 
             this.buttonOK.DataBindings.Add(
                 nameof(this.buttonOK.Enabled),
