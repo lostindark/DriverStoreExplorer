@@ -1,4 +1,4 @@
-﻿namespace Rapr
+namespace Rapr
 {
     partial class ChooseDriverStore
     {
@@ -30,6 +30,7 @@
         {
             this.radioButtonDriverStoreOnline = new System.Windows.Forms.RadioButton();
             this.radioButtonDriverStoreOffline = new System.Windows.Forms.RadioButton();
+            this.radioButtonDriverStoreCustomFolder = new System.Windows.Forms.RadioButton();
             this.textBoxOfflineStoreLocation = new System.Windows.Forms.TextBox();
             this.buttonBrowseLocation = new System.Windows.Forms.Button();
             this.buttonOK = new System.Windows.Forms.Button();
@@ -58,16 +59,27 @@
             this.radioButtonDriverStoreOffline.Text = global::Rapr.Lang.Language.DriverStore_Offline;
             this.radioButtonDriverStoreOffline.UseVisualStyleBackColor = true;
             // 
+            // radioButtonDriverStoreCustomFolder
+            // 
+            this.radioButtonDriverStoreCustomFolder.AutoSize = true;
+            this.radioButtonDriverStoreCustomFolder.Location = new System.Drawing.Point(12, 58);
+            this.radioButtonDriverStoreCustomFolder.Name = "radioButtonDriverStoreCustomFolder";
+            this.radioButtonDriverStoreCustomFolder.Size = new System.Drawing.Size(140, 17);
+            this.radioButtonDriverStoreCustomFolder.TabIndex = 1;
+            this.radioButtonDriverStoreCustomFolder.TabStop = true;
+            this.radioButtonDriverStoreCustomFolder.Text = "Custom Driver Folder";
+            this.radioButtonDriverStoreCustomFolder.UseVisualStyleBackColor = true;
+            // 
             // textBoxOfflineStoreLocation
             // 
-            this.textBoxOfflineStoreLocation.Location = new System.Drawing.Point(13, 59);
+            this.textBoxOfflineStoreLocation.Location = new System.Drawing.Point(13, 82);
             this.textBoxOfflineStoreLocation.Name = "textBoxOfflineStoreLocation";
             this.textBoxOfflineStoreLocation.Size = new System.Drawing.Size(339, 20);
             this.textBoxOfflineStoreLocation.TabIndex = 2;
             // 
             // buttonBrowseLocation
             // 
-            this.buttonBrowseLocation.Location = new System.Drawing.Point(358, 56);
+            this.buttonBrowseLocation.Location = new System.Drawing.Point(358, 79);
             this.buttonBrowseLocation.Name = "buttonBrowseLocation";
             this.buttonBrowseLocation.Size = new System.Drawing.Size(48, 23);
             this.buttonBrowseLocation.TabIndex = 3;
@@ -78,7 +90,7 @@
             // buttonOK
             // 
             this.buttonOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOK.Location = new System.Drawing.Point(116, 94);
+            this.buttonOK.Location = new System.Drawing.Point(116, 117);
             this.buttonOK.Name = "buttonOK";
             this.buttonOK.Size = new System.Drawing.Size(75, 23);
             this.buttonOK.TabIndex = 4;
@@ -88,7 +100,7 @@
             // buttonCancel
             // 
             this.buttonCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.buttonCancel.Location = new System.Drawing.Point(235, 94);
+            this.buttonCancel.Location = new System.Drawing.Point(235, 117);
             this.buttonCancel.Name = "buttonCancel";
             this.buttonCancel.Size = new System.Drawing.Size(75, 23);
             this.buttonCancel.TabIndex = 5;
@@ -99,11 +111,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(418, 129);
+            this.ClientSize = new System.Drawing.Size(418, 152);
             this.Controls.Add(this.buttonCancel);
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.buttonBrowseLocation);
             this.Controls.Add(this.textBoxOfflineStoreLocation);
+            this.Controls.Add(this.radioButtonDriverStoreCustomFolder);
             this.Controls.Add(this.radioButtonDriverStoreOffline);
             this.Controls.Add(this.radioButtonDriverStoreOnline);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -123,6 +136,7 @@
 
         private System.Windows.Forms.RadioButton radioButtonDriverStoreOnline;
         private System.Windows.Forms.RadioButton radioButtonDriverStoreOffline;
+        private System.Windows.Forms.RadioButton radioButtonDriverStoreCustomFolder;
         private System.Windows.Forms.TextBox textBoxOfflineStoreLocation;
         private System.Windows.Forms.Button buttonBrowseLocation;
         private System.Windows.Forms.Button buttonOK;
