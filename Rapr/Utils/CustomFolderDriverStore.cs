@@ -244,7 +244,6 @@ namespace Rapr.Utils
             {
                 var folderPath = Path.GetDirectoryName(infFilePath);
                 var infFileName = Path.GetFileName(infFilePath);
-                var folderName = Path.GetFileName(folderPath);
 
                 // Read INF file to extract basic info
                 var infContent = File.ReadAllText(infFilePath);
@@ -260,7 +259,6 @@ namespace Rapr.Utils
                 {
                     DriverInfName = infFileName,
                     DriverPublishedName = infFileName,
-                    DriverFolderName = folderName,
                     DriverFolderLocation = folderPath,
                     DriverVersion = driverVersion ?? new Version("0.0.0.0"),
                     DriverDate = File.GetLastWriteTime(infFilePath),
