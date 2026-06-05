@@ -1,8 +1,9 @@
-﻿namespace Rapr
+namespace Rapr
 {
     public enum DriverStoreType
     {
         Online,
         Offline,
+        CustomFolder,
     }
 }
