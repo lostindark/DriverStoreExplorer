@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
@@ -48,7 +48,7 @@ namespace Rapr
             get
             {
                 return this.StoreType == DriverStoreType.Online
-                    || (!string.IsNullOrEmpty(this.OfflineStoreLocation) && IsValidOfflineStoreLocation(this.OfflineStoreLocation));
+                    || (!string.IsNullOrEmpty(this.OfflineStoreLocation) && IsValidStoreLocation(this.OfflineStoreLocation, this.StoreType));
             }
         }
 
@@ -57,11 +57,19 @@ namespace Rapr
             this.InitializeComponent();
             AddRadioCheckedBinding(this.radioButtonDriverStoreOnline, this, nameof(this.StoreType), DriverStoreType.Online);
             AddRadioCheckedBinding(this.radioButtonDriverStoreOffline, this, nameof(this.StoreType), DriverStoreType.Offline);
+            AddRadioCheckedBinding(this.radioButtonDriverStoreCustomFolder, this, nameof(this.StoreType), DriverStoreType.CustomFolder);
 
             this.textBoxOfflineStoreLocation.DataBindings.Add(
                 nameof(this.textBoxOfflineStoreLocation.Enabled),
                 this.radioButtonDriverStoreOffline,
                 nameof(this.radioButtonDriverStoreOffline.Checked));
+
+            this.textBoxOfflineStoreLocation.DataBindings.Add(
+                "Enabled",
+                this.radioButtonDriverStoreCustomFolder,
+                nameof(this.radioButtonDriverStoreCustomFolder.Checked),
+                true,
+                DataSourceUpdateMode.OnPropertyChanged);
 
             this.textBoxOfflineStoreLocation.DataBindings.Add(
                 nameof(this.textBoxOfflineStoreLocation.Text),
@@ -72,6 +80,13 @@ namespace Rapr
                 nameof(this.buttonBrowseLocation.Enabled),
                 this.radioButtonDriverStoreOffline,
                 nameof(this.radioButtonDriverStoreOffline.Checked));
+
+            this.buttonBrowseLocation.DataBindings.Add(
+                "Enabled",
+                this.radioButtonDriverStoreCustomFolder,
+                nameof(this.radioButtonDriverStoreCustomFolder.Checked),
+                true,
+                DataSourceUpdateMode.OnPropertyChanged);
 
             this.buttonOK.DataBindings.Add(
                 nameof(this.buttonOK.Enabled),
@@ -101,7 +116,9 @@ namespace Rapr
             using (var dialog = new CommonOpenFileDialog
             {
                 IsFolderPicker = true,
-                Title = Lang.Language.Dialog_Select_Offline_Store_Title,
+                Title = this.StoreType == DriverStoreType.CustomFolder 
+                    ? "Select Custom Driver Folder" 
+                    : Lang.Language.Dialog_Select_Offline_Store_Title,
             })
             {
                 CommonFileDialogResult result = dialog.ShowDialog();
@@ -110,13 +127,17 @@ namespace Rapr
                 {
                     string selectedPath = dialog.FileName;
                     
-                    // Validate that the selected directory contains a Windows folder
-                    if (!IsValidOfflineStoreLocation(selectedPath))
+                    // Validate the selected directory based on store type
+                    if (!IsValidStoreLocation(selectedPath, this.StoreType))
                     {
+                        string message = this.StoreType == DriverStoreType.CustomFolder
+                            ? "Please select a valid folder for storing drivers."
+                            : Lang.Language.Message_Invalid_Offline_Store_Location;
+
                         MessageBox.Show(
                             this,
-                            Lang.Language.Message_Invalid_Offline_Store_Location, 
-                            Lang.Language.Message_Invalid_Offline_Store_Title, 
+                            message,
+                            Lang.Language.Message_Invalid_Offline_Store_Title,
                             MessageBoxButtons.OK,
                             MessageBoxIcon.Warning);
                         return;
@@ -128,18 +149,27 @@ namespace Rapr
         }
 
         /// <summary>
-        /// Validates that the selected directory contains a Windows folder, indicating it's a valid offline store location.
+        /// Validates that the selected directory is valid for the specified store type.
+        /// For Offline stores, checks for Windows folder.
+        /// For Custom Folder stores, just checks if the directory exists.
         /// </summary>
         /// <param name="path">The path to validate</param>
-        /// <returns>True if the path contains a Windows folder, false otherwise</returns>
-        private static bool IsValidOfflineStoreLocation(string path)
+        /// <param name="storeType">The type of store being used</param>
+        /// <returns>True if the path is valid for the store type, false otherwise</returns>
+        private static bool IsValidStoreLocation(string path, DriverStoreType storeType)
         {
             if (string.IsNullOrEmpty(path) || !Directory.Exists(path))
             {
                 return false;
             }
 
-            // Check if the selected directory contains a "Windows" folder
+            // For custom folder stores, just verify the directory exists
+            if (storeType == DriverStoreType.CustomFolder)
+            {
+                return true;
+            }
+
+            // For offline stores, check if the selected directory contains a "Windows" folder
             string windowsPath = Path.Combine(path, "Windows");
             return Directory.Exists(windowsPath);
         }
