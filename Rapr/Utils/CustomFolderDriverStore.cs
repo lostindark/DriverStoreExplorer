@@ -245,14 +245,82 @@ namespace Rapr.Utils
                 var folderPath = Path.GetDirectoryName(infFilePath);
                 var infFileName = Path.GetFileName(infFilePath);
 
-                // Read INF file to extract basic info
+                // Read all text from INF file
                 var infContent = File.ReadAllText(infFilePath);
-                var versionMatch = System.Text.RegularExpressions.Regex.Match(infContent, @"DriverVer\s*=\s*([\d.]+)", System.Text.RegularExpressions.RegexOptions.IgnoreCase);
-                
-                Version driverVersion = null;
-                if (versionMatch.Success && Version.TryParse(versionMatch.Groups[1].Value, out var parsedVersion))
+
+                // 1. Parse DriverVer (Handles: DriverVer = MM/DD/YYYY,VERSION)
+                Version driverVersion = new Version("0.0.0.0");
+                DateTime driverDate = File.GetLastWriteTime(infFilePath);
+
+                var driverVerMatch = System.Text.RegularExpressions.Regex.Match(
+                    infContent, 
+                    @"DriverVer\s*=\s*([^,\r\n]+)\s*,\s*([\d.]+)", 
+                    System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+
+                if (driverVerMatch.Success)
                 {
-                    driverVersion = parsedVersion;
+                    if (DateTime.TryParse(driverVerMatch.Groups[1].Value.Trim(), out var parsedDate))
+                    {
+                        driverDate = parsedDate;
+                    }
+                    if (Version.TryParse(driverVerMatch.Groups[2].Value.Trim(), out var parsedVersion))
+                    {
+                        driverVersion = parsedVersion;
+                    }
+                }
+
+                // 2. Parse Class (Handles: Class = Extension)
+                string driverClass = "Unknown";
+                var classMatch = System.Text.RegularExpressions.Regex.Match(
+                    infContent, 
+                    @"^Class\s*=\s*([^\r\n;]+)", 
+                    System.Text.RegularExpressions.RegexOptions.IgnoreCase | System.Text.RegularExpressions.RegexOptions.Multiline);
+                
+                if (classMatch.Success)
+                {
+                    driverClass = classMatch.Groups[1].Value.Trim().Trim('"');
+                }
+
+                // 3. Parse Provider (Handles: Provider = %Provider%)
+                string providerRaw = "Custom Folder";
+                var providerMatch = System.Text.RegularExpressions.Regex.Match(
+                    infContent, 
+                    @"^Provider\s*=\s*([^\r\n;]+)", 
+                    System.Text.RegularExpressions.RegexOptions.IgnoreCase | System.Text.RegularExpressions.RegexOptions.Multiline);
+                
+                if (providerMatch.Success)
+                {
+                    providerRaw = providerMatch.Groups[1].Value.Trim().Trim('"');
+                }
+
+                // 4. Robust Recursive Resolution Layer targeting the [Strings] block specifically
+                int safetyCounter = 0;
+                while (providerRaw.StartsWith("%") && providerRaw.EndsWith("%") && safetyCounter < 5)
+                {
+                    safetyCounter++;
+                    string tokenName = providerRaw.Replace("%", "").Trim();
+                    
+                    // Look for the start of the [Strings] block to isolate lookup context
+                    int stringsIdx = infContent.IndexOf("[Strings]", StringComparison.OrdinalIgnoreCase);
+                    string contextSearchArea = stringsIdx != -1 ? infContent.Substring(stringsIdx) : infContent;
+
+                    // Match tokenName = "Value" strictly within the designated strings area
+                    var stringTokenMatch = System.Text.RegularExpressions.Regex.Match(
+                        contextSearchArea, 
+                        $@"^{System.Text.RegularExpressions.Regex.Escape(tokenName)}\s*=\s*([^\r\n;]+)", 
+                        System.Text.RegularExpressions.RegexOptions.IgnoreCase | System.Text.RegularExpressions.RegexOptions.Multiline);
+                    
+                    if (stringTokenMatch.Success)
+                    {
+                        providerRaw = stringTokenMatch.Groups[1].Value.Trim().Trim('"');
+                    }
+                    else
+                    {
+                        // Fallback: If token cannot be resolved from the strings context, 
+                        // strip the % marks and use the raw token name (e.g. "Provider") as the provider identifier
+                        providerRaw = tokenName;
+                        break;
+                    }
                 }
 
                 var entry = new DriverStoreEntry
@@ -260,12 +328,12 @@ namespace Rapr.Utils
                     DriverInfName = infFileName,
                     DriverPublishedName = infFileName,
                     DriverFolderLocation = folderPath,
-                    DriverVersion = driverVersion ?? new Version("0.0.0.0"),
-                    DriverDate = File.GetLastWriteTime(infFilePath),
+                    DriverVersion = driverVersion,
+                    DriverDate = driverDate,
                     DriverSize = CalculateFolderSize(folderPath),
-                    DriverClass = "Unknown",
-                    DriverPkgProvider = "Custom Folder",
-                    DriverSignerName = "Custom",
+                    DriverClass = driverClass,
+                    DriverPkgProvider = providerRaw,
+                    DriverSignerName = "Custom Folder Repo",
                     BootCritical = false,
                     DevicePresent = false,
                     DeviceName = string.Empty,
@@ -277,7 +345,7 @@ namespace Rapr.Utils
             }
             catch (Exception ex)
             {
-                Trace.TraceError($"Error parsing driver package {infFilePath}: {ex.Message}");
+                System.Diagnostics.Trace.TraceError($"Error parsing driver package {infFilePath}: {ex.Message}");
                 return null;
             }
         }
