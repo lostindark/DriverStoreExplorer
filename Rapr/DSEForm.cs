@@ -165,13 +165,19 @@ namespace Rapr
             {
                 Settings.Default.DriverStoreOption = driverStoreOption.ToString();
 
-                if (this.driverStore.Type == DriverStoreType.Online)
+                switch (this.driverStore.Type)
                 {
-                    this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore());
-                }
-                else
-                {
-                    this.UpdateDriverStore(DriverStoreFactory.CreateOfflineDriverStore(this.driverStore.OfflineStoreLocation));
+                    case DriverStoreType.Online:
+                        this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore());
+                        break;
+                    case DriverStoreType.Offline:
+                        this.UpdateDriverStore(DriverStoreFactory.CreateOfflineDriverStore(this.driverStore.OfflineStoreLocation));
+                        break;
+                    case DriverStoreType.CustomFolder:
+                        this.UpdateDriverStore(DriverStoreFactory.CreateCustomFolderDriverStore(this.driverStore.OfflineStoreLocation));
+                        break;
+                    default:
+                        throw new InvalidOperationException($"Invalid driver store type: {this.driverStore.Type}");
                 }
 
                 await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
@@ -188,21 +194,32 @@ namespace Rapr
             this.useDismStripMenuItem.Checked = driverStoreOption == DriverStoreOption.DISM;
             this.usePnpUtilStripMenuItem.Checked = driverStoreOption == DriverStoreOption.PnpUtil;
 
-            if (driverStore.Type == DriverStoreType.Online)
+            switch (driverStore.Type)
             {
-                // Update menu item enabled states
-                this.useNativeDriveStoreStripMenuItem.Enabled = DSEFormHelper.IsNativeDriverStoreSupported;
-                this.useDismStripMenuItem.Enabled = DismUtil.IsDismAvailable;
-                this.usePnpUtilStripMenuItem.Enabled = DSEFormHelper.IsPnpUtilSupported;
-                this.installDateColumn.IsVisible = driverStoreOption == DriverStoreOption.Native;
-            }
-            else
-            {
-                // Update menu item enabled states for offline mode
-                this.useNativeDriveStoreStripMenuItem.Enabled = DSEFormHelper.IsNativeDriverStoreSupported;
-                this.useDismStripMenuItem.Enabled = DismUtil.IsDismAvailable;
-                this.usePnpUtilStripMenuItem.Enabled = false;
-                this.installDateColumn.IsVisible = driverStoreOption == DriverStoreOption.Native;
+                case DriverStoreType.Online:
+                    {
+                        this.useNativeDriveStoreStripMenuItem.Enabled = DSEFormHelper.IsNativeDriverStoreSupported;
+                        this.useDismStripMenuItem.Enabled = DismUtil.IsDismAvailable;
+                        this.usePnpUtilStripMenuItem.Enabled = DSEFormHelper.IsPnpUtilSupported;
+                        this.installDateColumn.IsVisible = driverStoreOption == DriverStoreOption.Native;
+                        break;
+                    }
+                case DriverStoreType.Offline:
+                    {
+                        this.useNativeDriveStoreStripMenuItem.Enabled = DSEFormHelper.IsNativeDriverStoreSupported;
+                        this.useDismStripMenuItem.Enabled = DismUtil.IsDismAvailable;
+                        this.usePnpUtilStripMenuItem.Enabled = false;
+                        this.installDateColumn.IsVisible = driverStoreOption == DriverStoreOption.Native;
+                        break;
+                    }
+                case DriverStoreType.CustomFolder:
+                    {
+                        this.useNativeDriveStoreStripMenuItem.Enabled = false;
+                        this.useDismStripMenuItem.Enabled = false;
+                        this.usePnpUtilStripMenuItem.Enabled = false;
+                        this.installDateColumn.IsVisible = false;
+                        break;
+                    }
             }
 
             this.cbAddInstall.Enabled = driverStore.SupportAddInstall;
@@ -221,10 +238,13 @@ namespace Rapr
                     }
 
                 case DriverStoreType.Offline:
+                case DriverStoreType.CustomFolder:
                     {
                         this.Text = Language.Product_Name + " - " + driverStore.OfflineStoreLocation;
                         break;
                     }
+                default:
+                    throw new InvalidOperationException($"Invalid driver store type: {this.driverStore.Type}");
             }
         }
 
@@ -1151,9 +1171,12 @@ namespace Rapr
             using (ChooseDriverStore chooseDriverStore = new ChooseDriverStore())
             {
                 chooseDriverStore.StoreType = this.driverStore.Type;
-                if (this.driverStore.Type == DriverStoreType.Offline)
+                switch (this.driverStore.Type)
                 {
-                    chooseDriverStore.OfflineStoreLocation = this.driverStore.OfflineStoreLocation;
+                    case DriverStoreType.Offline:
+                    case DriverStoreType.CustomFolder:
+                        chooseDriverStore.OfflineStoreLocation = this.driverStore.OfflineStoreLocation;
+                        break;
                 }
 
                 chooseDriverStore.RightToLeft = this.RightToLeft;
@@ -1172,6 +1195,13 @@ namespace Rapr
                         case DriverStoreType.Offline:
                             this.UpdateDriverStore(DriverStoreFactory.CreateOfflineDriverStore(chooseDriverStore.OfflineStoreLocation));
                             break;
+
+                        case DriverStoreType.CustomFolder:
+                            this.UpdateDriverStore(DriverStoreFactory.CreateCustomFolderDriverStore(chooseDriverStore.OfflineStoreLocation));
+                            break;
+
+                        default:
+                            throw new InvalidOperationException($"Invalid driver store type: {chooseDriverStore.StoreType}");
                     }
 
                     await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);

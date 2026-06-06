@@ -19,11 +19,11 @@ namespace Rapr.Utils
 
         public string OfflineStoreLocation => this.folderPath;
 
-        public bool SupportAddInstall => false; // Can't install from a custom folder
+        public bool SupportAddInstall => true;
 
-        public bool SupportForceDeletion => true; // Can delete files from folder
+        public bool SupportForceDeletion => true;
 
-        public bool SupportDeviceNameColumn => false; // No device info in custom folder
+        public bool SupportDeviceNameColumn => true;
 
         public bool SupportExportDriver => true;
 
