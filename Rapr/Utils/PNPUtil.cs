@@ -271,13 +271,15 @@ namespace Rapr.Utils
                 ref dummy);
         }
 
-        public bool AddDriver(string infFullPath, bool install)
+        public AddDriverResult AddDriver(string infFullPath, bool install)
         {
             string dummy = "";
             return PnpUtilHelper(
                 install ? PnpUtilOption.AddInstall : PnpUtilOption.Add,
                 infFullPath,
-                ref dummy);
+                ref dummy)
+                ? AddDriverResult.Added
+                : AddDriverResult.Failed;
         }
         #endregion
 

@@ -2,6 +2,13 @@ using System.Collections.Generic;
 
 namespace Rapr.Utils
 {
+    public enum AddDriverResult
+    {
+        Added,
+        Skipped,
+        Failed
+    }
+
     public interface IDriverStore
     {
         DriverStoreType Type { get; }
@@ -22,7 +29,7 @@ namespace Rapr.Utils
 
         bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete);
 
-        bool AddDriver(string infFullPath, bool install);
+        AddDriverResult AddDriver(string infFullPath, bool install);
 
         bool ExportDriver(DriverStoreEntry driverStoreEntry, string destinationPath);
 

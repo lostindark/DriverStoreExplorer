@@ -190,7 +190,7 @@ namespace Rapr.Utils
             }
         }
 
-        public bool AddDriver(string infFullPath, bool install)
+        public AddDriverResult AddDriver(string infFullPath, bool install)
         {
             switch (this.Type)
             {
@@ -202,10 +202,10 @@ namespace Rapr.Utils
                     catch (Win32Exception ex)
                     {
                         Trace.TraceError(ex.ToString());
-                        return false;
+                        return AddDriverResult.Failed;
                     }
 
-                    return true;
+                    return AddDriverResult.Added;
 
                 case DriverStoreType.Offline:
                     try
@@ -244,10 +244,10 @@ namespace Rapr.Utils
                     catch (Win32Exception ex)
                     {
                         Trace.TraceError(ex.ToString());
-                        return false;
+                        return AddDriverResult.Failed;
                     }
 
-                    return true;
+                    return AddDriverResult.Added;
 
                 default:
                     throw new NotSupportedException();

@@ -449,6 +449,10 @@ License:
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
     <value>Exporting all driver packages...</value>
   </data>
+  <data name="Status_Exporting_Driver" xml:space="preserve">
+    <value>Exporting {0} of {1}: {2}...</value>
+    <comment>{0} - Current package number, {1} - Total packages, {2} - Driver package name</comment>
+  </data>
   <data name="Status_Exporting_Drivers" xml:space="preserve">
     <value>Exporting driver package(s)...</value>
   </data>
@@ -502,6 +506,26 @@ License:
   </data>
   <data name="Message_Drivers_Added_Installed_Error" xml:space="preserve">
     <value>Error adding some packages and install to driver store.</value>
+  </data>
+  <data name="Message_Driver_Skipped" xml:space="preserve">
+    <value>Package {0} was not added (already in driver store).</value>
+    <comment>{0} - Placeholder for path to inf</comment>
+  </data>
+  <data name="Message_Drivers_Added_With_Skipped" xml:space="preserve">
+    <value>Added {0} package(s) to driver store. Skipped {1} duplicate(s).</value>
+    <comment>{0} - Number added, {1} - Number skipped</comment>
+  </data>
+  <data name="Message_Drivers_Added_Installed_With_Skipped" xml:space="preserve">
+    <value>Added {0} package(s) and installed to driver store. Skipped {1} duplicate(s).</value>
+    <comment>{0} - Number added, {1} - Number skipped</comment>
+  </data>
+  <data name="Message_Drivers_All_Skipped" xml:space="preserve">
+    <value>No packages added. Skipped {0} duplicate(s).</value>
+    <comment>{0} - Number skipped</comment>
+  </data>
+  <data name="Message_Driver_Skipped_Detail" xml:space="preserve">
+    <value>Skipped {0} (already in driver store).</value>
+    <comment>{0} - Placeholder for relative path to inf</comment>
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>Export &amp;Selected Driver List</value>

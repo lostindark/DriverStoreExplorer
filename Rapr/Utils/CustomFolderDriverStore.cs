@@ -3,25 +3,33 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Text;
+using System.Text.RegularExpressions;
 
 namespace Rapr.Utils
 {
     /// <summary>
-    /// A driver store implementation for managing driver packages in a custom folder.
-    /// This allows users to maintain a driver library for offline Windows installation.
+    /// Manages driver packages in a user-selected folder only.
+    /// No system driver store, DISM, PnPUtil, or SetupAPI calls are made.
     /// </summary>
     public class CustomFolderDriverStore : IDriverStore
     {
         private readonly string folderPath;
 
+        private static readonly Regex InfStringsLineRegex = new Regex(
+            @"^([^;\r\n=#\[][^\r\n=]*?)\s*=\s*([^;\r\n;]+)",
+            RegexOptions.Multiline | RegexOptions.Compiled);
+
+        private static readonly Regex InfModelLineRegex = new Regex(
+            @"^\s*(?<desc>[^=\r\n;]+?)\s*=\s*[^,\r\n]+,\s*(?<hwid>(?:PCI|USB|ROOT|ACPI|HDAUDIO|SCSI|SWD|SWC|HID|UMBUS|MONITOR|DISPLAY|MF|1394|DOT4|MTD|COMPOSITE|BIOMETRIC|LPTENUM|PORTS|STORAGE|WSD|VRD|SENSOR|EFI|GPRS|NET|WPD|MR|FL|SD|DETECTED|SWC)\\[^\r\n;]*)",
+            RegexOptions.Multiline | RegexOptions.IgnoreCase | RegexOptions.Compiled);
+
         public DriverStoreType Type => DriverStoreType.CustomFolder;
 
         public string OfflineStoreLocation => this.folderPath;
 
-        public bool SupportAddInstall => true;
+        public bool SupportAddInstall => false;
 
-        public bool SupportForceDeletion => true;
+        public bool SupportForceDeletion => false;
 
         public bool SupportDeviceNameColumn => true;
 
@@ -41,7 +49,7 @@ namespace Rapr.Utils
                 throw new DirectoryNotFoundException($"The folder path does not exist: {folderPath}");
             }
 
-            this.folderPath = folderPath;
+            this.folderPath = Path.GetFullPath(folderPath).TrimEnd('\\');
         }
 
         public List<DriverStoreEntry> EnumeratePackages()
@@ -50,14 +58,11 @@ namespace Rapr.Utils
 
             try
             {
-                // Find all .inf files in the folder and subfolders
-                var infFiles = Directory.EnumerateFiles(this.folderPath, "*.inf", SearchOption.AllDirectories);
-
-                foreach (var infFile in infFiles)
+                foreach (var infFile in this.EnumerateInfFiles(this.folderPath))
                 {
                     try
                     {
-                        var entry = ParseDriverPackage(infFile);
+                        var entry = this.ParseDriverPackage(infFile);
                         if (entry != null)
                         {
                             drivers.Add(entry);
@@ -80,19 +85,43 @@ namespace Rapr.Utils
 
         public bool DeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
         {
+            _ = forceDelete;
+
             try
             {
-                string folderPath = driverStoreEntry.DriverFolderLocation;
-
-                if (!Directory.Exists(folderPath))
+                if (driverStoreEntry == null)
                 {
-                    Trace.TraceWarning($"Driver folder not found: {folderPath}");
                     return false;
                 }
 
-                // Delete the driver folder
-                Directory.Delete(folderPath, recursive: true);
-                Trace.TraceInformation($"Deleted driver folder: {folderPath}");
+                string packageFolder = driverStoreEntry.DriverFolderLocation;
+                if (string.IsNullOrEmpty(packageFolder))
+                {
+                    return false;
+                }
+
+                packageFolder = Path.GetFullPath(packageFolder);
+
+                if (!this.IsPathUnderFolder(packageFolder, this.folderPath))
+                {
+                    Trace.TraceWarning($"Refusing to delete path outside custom folder: {packageFolder}");
+                    return false;
+                }
+
+                if (!this.IsInfInPackageSubfolder(packageFolder))
+                {
+                    Trace.TraceWarning($"Refusing to delete root-level INF package: {driverStoreEntry.DriverInfName}");
+                    return false;
+                }
+
+                if (!Directory.Exists(packageFolder))
+                {
+                    Trace.TraceWarning($"Driver folder not found: {packageFolder}");
+                    return false;
+                }
+
+                Directory.Delete(packageFolder, recursive: true);
+                Trace.TraceInformation($"Deleted driver folder: {packageFolder}");
                 return true;
             }
             catch (Exception ex)
@@ -102,57 +131,143 @@ namespace Rapr.Utils
             }
         }
 
-        public bool AddDriver(string infFullPath, bool install)
+        public AddDriverResult AddDriver(string infFullPath, bool install)
         {
+            _ = install;
+
             try
             {
                 if (!File.Exists(infFullPath))
                 {
                     Trace.TraceError($"INF file not found: {infFullPath}");
-                    return false;
+                    return AddDriverResult.Failed;
                 }
 
-                // Read the INF to get the driver name
-                var infFileName = Path.GetFileNameWithoutExtension(infFullPath);
-                var driverFolderName = $"{infFileName}_custom";
-                var targetFolderPath = Path.Combine(this.folderPath, driverFolderName);
-
-                // Create target folder
-                if (!Directory.Exists(targetFolderPath))
+                if (!infFullPath.EndsWith(".inf", StringComparison.OrdinalIgnoreCase))
                 {
-                    Directory.CreateDirectory(targetFolderPath);
+                    Trace.TraceError($"Not an INF file: {infFullPath}");
+                    return AddDriverResult.Failed;
                 }
 
-                // Copy the INF file
-                File.Copy(infFullPath, Path.Combine(targetFolderPath, Path.GetFileName(infFullPath)), overwrite: true);
-
-                // Copy all related files (cat, sys, dll, etc.) from the same directory
-                var sourceDir = Path.GetDirectoryName(infFullPath);
-                var infBaseName = Path.GetFileNameWithoutExtension(infFullPath);
-
-                foreach (var file in Directory.GetFiles(sourceDir))
+                var incoming = this.ParseDriverPackage(infFullPath);
+                if (incoming == null)
                 {
-                    var fileName = Path.GetFileName(file);
-                    var fileBaseName = Path.GetFileNameWithoutExtension(file);
+                    Trace.TraceError($"Failed to parse driver package: {infFullPath}");
+                    return AddDriverResult.Failed;
+                }
 
-                    // Copy files related to this driver
-                    if (fileBaseName.Equals(infBaseName, StringComparison.OrdinalIgnoreCase) ||
-                        fileName.EndsWith(".cat", StringComparison.OrdinalIgnoreCase) ||
-                        fileName.EndsWith(".sys", StringComparison.OrdinalIgnoreCase) ||
-                        fileName.EndsWith(".dll", StringComparison.OrdinalIgnoreCase))
+                string sourceDir = Path.GetFullPath(Path.GetDirectoryName(infFullPath));
+
+                if (this.IsPathUnderFolder(sourceDir, this.folderPath))
+                {
+                    if (this.IsCustomFolderRoot(sourceDir))
                     {
-                        var targetFile = Path.Combine(targetFolderPath, fileName);
-                        File.Copy(file, targetFile, overwrite: true);
+                        Trace.TraceError($"Driver INF must be in a subfolder of {this.folderPath}, not at the root");
+                        return AddDriverResult.Failed;
                     }
+
+                    Trace.TraceInformation($"Driver already in custom folder: {infFullPath}");
+                    return AddDriverResult.Skipped;
                 }
 
-                Trace.TraceInformation($"Added driver package: {infFileName} to {targetFolderPath}");
-                return true;
+                var existingMatches = this.EnumeratePackages()
+                    .Where(entry => HasSameDriverIdentity(entry, incoming))
+                    .ToList();
+
+                if (existingMatches.Any(entry => HasSameVersionAndDate(entry, incoming)))
+                {
+                    Trace.TraceInformation(
+                        $"Skipping driver already in custom folder: {incoming.DriverInfName} ({incoming.DriverVersion}, {incoming.DriverDate:d})");
+                    return AddDriverResult.Skipped;
+                }
+
+                var newestExisting = existingMatches
+                    .OrderByDescending(entry => entry.DriverVersion)
+                    .ThenByDescending(entry => entry.DriverDate)
+                    .FirstOrDefault();
+
+                if (newestExisting != null && CompareDriverVersion(incoming, newestExisting) <= 0)
+                {
+                    Trace.TraceInformation(
+                        $"Skipping driver; newer or equal version already in custom folder: {incoming.DriverInfName}");
+                    return AddDriverResult.Skipped;
+                }
+
+                string folderName = new DirectoryInfo(sourceDir).Name;
+                string targetFolderPath = this.GetUniqueTargetFolderPath(folderName);
+
+                this.CopyDirectory(sourceDir, targetFolderPath, overwrite: true);
+                Trace.TraceInformation($"Added driver package from {sourceDir} to {targetFolderPath}");
+
+                this.RemoveOlderDuplicatePackages(incoming.DriverInfName);
+
+                return AddDriverResult.Added;
             }
             catch (Exception ex)
             {
                 Trace.TraceError($"Failed to add driver: {ex.Message}");
-                return false;
+                return AddDriverResult.Failed;
+            }
+        }
+
+        private static bool HasSameDriverIdentity(DriverStoreEntry a, DriverStoreEntry b)
+        {
+            return a.DriverClass.Equals(b.DriverClass, StringComparison.OrdinalIgnoreCase)
+                && a.DriverExtensionId == b.DriverExtensionId
+                && a.DriverPkgProvider.Equals(b.DriverPkgProvider, StringComparison.OrdinalIgnoreCase)
+                && a.DriverInfName.Equals(b.DriverInfName, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static bool HasSameVersionAndDate(DriverStoreEntry a, DriverStoreEntry b)
+        {
+            return a.DriverVersion == b.DriverVersion && a.DriverDate.Date == b.DriverDate.Date;
+        }
+
+        private static int CompareDriverVersion(DriverStoreEntry a, DriverStoreEntry b)
+        {
+            int versionCompare = a.DriverVersion.CompareTo(b.DriverVersion);
+            if (versionCompare != 0)
+            {
+                return versionCompare;
+            }
+
+            return a.DriverDate.CompareTo(b.DriverDate);
+        }
+
+        /// <summary>
+        /// Removes superseded packages in the custom folder, keeping the newest version/date per driver identity.
+        /// Uses the same grouping rules as Select Old Drivers in the main UI.
+        /// </summary>
+        private void RemoveOlderDuplicatePackages(string infNameFilter = null)
+        {
+            var entries = this.EnumeratePackages();
+
+            if (!string.IsNullOrEmpty(infNameFilter))
+            {
+                entries = entries
+                    .Where(entry => entry.DriverInfName.Equals(infNameFilter, StringComparison.OrdinalIgnoreCase))
+                    .ToList();
+            }
+
+            var driverGroups = entries
+                .Where(entry => !entry.DriverInfName.Equals("ntprint.inf", StringComparison.OrdinalIgnoreCase))
+                .GroupBy(entry => new { entry.DriverClass, entry.DriverExtensionId, entry.DriverPkgProvider, entry.DriverInfName })
+                .Select(drivers => drivers
+                    .GroupBy(entry => new { entry.DriverVersion, entry.DriverDate })
+                    .OrderByDescending(g => g.Key.DriverVersion)
+                    .ThenByDescending(g => g.Key.DriverDate)
+                    .ToList())
+                .Where(groups => groups.Count > 1);
+
+            foreach (var versionGroups in driverGroups)
+            {
+                foreach (var oldGroup in versionGroups.Skip(1))
+                {
+                    foreach (var entry in oldGroup)
+                    {
+                        this.DeleteDriver(entry, forceDelete: false);
+                    }
+                }
             }
         }
 
@@ -166,23 +281,22 @@ namespace Rapr.Utils
                 }
 
                 string sourceFolderPath = driverStoreEntry.DriverFolderLocation;
+                if (string.IsNullOrEmpty(sourceFolderPath) ||
+                    !this.IsPathUnderFolder(sourceFolderPath, this.folderPath) ||
+                    !this.IsInfInPackageSubfolder(sourceFolderPath))
+                {
+                    return false;
+                }
+
                 string exportFolderName = driverStoreEntry.DriverFolderName;
                 string targetFolderPath = Path.Combine(destinationPath, exportFolderName);
 
-                // Create the target folder
                 if (Directory.Exists(targetFolderPath))
                 {
                     Directory.Delete(targetFolderPath, recursive: true);
                 }
 
-                Directory.CreateDirectory(targetFolderPath);
-
-                // Copy all files from the driver folder
-                foreach (var file in Directory.GetFiles(sourceFolderPath))
-                {
-                    var fileName = Path.GetFileName(file);
-                    File.Copy(file, Path.Combine(targetFolderPath, fileName), overwrite: true);
-                }
+                this.CopyDirectory(sourceFolderPath, targetFolderPath, overwrite: true);
 
                 Trace.TraceInformation($"Exported driver to: {targetFolderPath}");
                 return true;
@@ -203,26 +317,17 @@ namespace Rapr.Utils
                     Directory.CreateDirectory(destinationPath);
                 }
 
-                // Copy all driver folders from the custom folder
                 foreach (var driverFolder in Directory.GetDirectories(this.folderPath))
                 {
                     var folderName = Path.GetFileName(driverFolder);
                     var targetFolderPath = Path.Combine(destinationPath, folderName);
 
-                    // Create or overwrite the target folder
                     if (Directory.Exists(targetFolderPath))
                     {
                         Directory.Delete(targetFolderPath, recursive: true);
                     }
 
-                    Directory.CreateDirectory(targetFolderPath);
-
-                    // Copy all files
-                    foreach (var file in Directory.GetFiles(driverFolder))
-                    {
-                        var fileName = Path.GetFileName(file);
-                        File.Copy(file, Path.Combine(targetFolderPath, fileName), overwrite: true);
-                    }
+                    this.CopyDirectory(driverFolder, targetFolderPath, overwrite: true);
                 }
 
                 Trace.TraceInformation($"Exported all drivers to: {destinationPath}");
@@ -235,27 +340,98 @@ namespace Rapr.Utils
             }
         }
 
-        /// <summary>
-        /// Parses a driver INF file and returns a DriverStoreEntry.
-        /// </summary>
-        private static DriverStoreEntry ParseDriverPackage(string infFilePath)
+        private IEnumerable<string> EnumerateInfFiles(string rootPath)
+        {
+            foreach (var file in Directory.EnumerateFiles(rootPath, "*", SearchOption.AllDirectories))
+            {
+                if (!string.Equals(Path.GetExtension(file), ".inf", StringComparison.OrdinalIgnoreCase))
+                {
+                    continue;
+                }
+
+                string infDir = Path.GetFullPath(Path.GetDirectoryName(file)).TrimEnd('\\');
+                if (!this.IsInfInPackageSubfolder(infDir))
+                {
+                    Trace.TraceWarning($"Skipping root-level INF (must be in a subfolder): {file}");
+                    continue;
+                }
+
+                yield return file;
+            }
+        }
+
+        private bool IsInfInPackageSubfolder(string packageFolderPath)
+        {
+            return !this.IsCustomFolderRoot(packageFolderPath);
+        }
+
+        private bool IsCustomFolderRoot(string path)
+        {
+            return string.Equals(
+                Path.GetFullPath(path).TrimEnd('\\'),
+                this.folderPath,
+                StringComparison.OrdinalIgnoreCase);
+        }
+
+        private bool IsPathUnderFolder(string path, string rootFolder)
+        {
+            string fullPath = Path.GetFullPath(path).TrimEnd('\\') + Path.DirectorySeparatorChar;
+            string fullRoot = Path.GetFullPath(rootFolder).TrimEnd('\\') + Path.DirectorySeparatorChar;
+            return fullPath.StartsWith(fullRoot, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private string GetUniqueTargetFolderPath(string folderName)
+        {
+            string targetFolderPath = Path.Combine(this.folderPath, folderName);
+            if (!Directory.Exists(targetFolderPath))
+            {
+                return targetFolderPath;
+            }
+
+            for (int i = 2; i < 1000; i++)
+            {
+                targetFolderPath = Path.Combine(this.folderPath, $"{folderName}_{i}");
+                if (!Directory.Exists(targetFolderPath))
+                {
+                    return targetFolderPath;
+                }
+            }
+
+            throw new IOException($"Could not find unused folder name for {folderName}");
+        }
+
+        private void CopyDirectory(string sourceDir, string destDir, bool overwrite)
+        {
+            Directory.CreateDirectory(destDir);
+
+            foreach (var file in Directory.GetFiles(sourceDir))
+            {
+                File.Copy(file, Path.Combine(destDir, Path.GetFileName(file)), overwrite);
+            }
+
+            foreach (var dir in Directory.GetDirectories(sourceDir))
+            {
+                this.CopyDirectory(dir, Path.Combine(destDir, Path.GetFileName(dir)), overwrite);
+            }
+        }
+
+        private DriverStoreEntry ParseDriverPackage(string infFilePath)
         {
             try
             {
                 var folderPath = Path.GetDirectoryName(infFilePath);
                 var infFileName = Path.GetFileName(infFilePath);
 
-                // Read all text from INF file
                 var infContent = File.ReadAllText(infFilePath);
+                var strings = ParseStringsSection(infContent);
 
-                // 1. Parse DriverVer (Handles: DriverVer = MM/DD/YYYY,VERSION)
                 Version driverVersion = new Version("0.0.0.0");
                 DateTime driverDate = File.GetLastWriteTime(infFilePath);
 
-                var driverVerMatch = System.Text.RegularExpressions.Regex.Match(
-                    infContent, 
-                    @"DriverVer\s*=\s*([^,\r\n]+)\s*,\s*([\d.]+)", 
-                    System.Text.RegularExpressions.RegexOptions.IgnoreCase);
+                var driverVerMatch = Regex.Match(
+                    infContent,
+                    @"DriverVer\s*=\s*([^,\r\n]+)\s*,\s*([\d.]+)",
+                    RegexOptions.IgnoreCase);
 
                 if (driverVerMatch.Success)
                 {
@@ -263,106 +439,158 @@ namespace Rapr.Utils
                     {
                         driverDate = parsedDate;
                     }
+
                     if (Version.TryParse(driverVerMatch.Groups[2].Value.Trim(), out var parsedVersion))
                     {
                         driverVersion = parsedVersion;
                     }
                 }
 
-                // 2. Parse Class (Handles: Class = Extension)
                 string driverClass = "Unknown";
-                var classMatch = System.Text.RegularExpressions.Regex.Match(
-                    infContent, 
-                    @"^Class\s*=\s*([^\r\n;]+)", 
-                    System.Text.RegularExpressions.RegexOptions.IgnoreCase | System.Text.RegularExpressions.RegexOptions.Multiline);
-                
+                var classMatch = Regex.Match(
+                    infContent,
+                    @"^Class\s*=\s*([^\r\n;]+)",
+                    RegexOptions.IgnoreCase | RegexOptions.Multiline);
+
                 if (classMatch.Success)
                 {
-                    driverClass = classMatch.Groups[1].Value.Trim().Trim('"');
+                    driverClass = ResolveInfToken(classMatch.Groups[1].Value.Trim(), strings);
                 }
 
-                // 3. Parse Provider (Handles: Provider = %Provider%)
                 string providerRaw = "Custom Folder";
-                var providerMatch = System.Text.RegularExpressions.Regex.Match(
-                    infContent, 
-                    @"^Provider\s*=\s*([^\r\n;]+)", 
-                    System.Text.RegularExpressions.RegexOptions.IgnoreCase | System.Text.RegularExpressions.RegexOptions.Multiline);
-                
+                var providerMatch = Regex.Match(
+                    infContent,
+                    @"^Provider\s*=\s*([^\r\n;]+)",
+                    RegexOptions.IgnoreCase | RegexOptions.Multiline);
+
                 if (providerMatch.Success)
                 {
-                    providerRaw = providerMatch.Groups[1].Value.Trim().Trim('"');
+                    providerRaw = ResolveInfToken(providerMatch.Groups[1].Value.Trim(), strings);
                 }
 
-                // 4. Robust Recursive Resolution Layer targeting the [Strings] block specifically
-                int safetyCounter = 0;
-                while (providerRaw.StartsWith("%") && providerRaw.EndsWith("%") && safetyCounter < 5)
-                {
-                    safetyCounter++;
-                    string tokenName = providerRaw.Replace("%", "").Trim();
-                    
-                    // Look for the start of the [Strings] block to isolate lookup context
-                    int stringsIdx = infContent.IndexOf("[Strings]", StringComparison.OrdinalIgnoreCase);
-                    string contextSearchArea = stringsIdx != -1 ? infContent.Substring(stringsIdx) : infContent;
+                ParseFirstModelEntry(infContent, strings, out string deviceName, out string hardwareId);
 
-                    // Match tokenName = "Value" strictly within the designated strings area
-                    var stringTokenMatch = System.Text.RegularExpressions.Regex.Match(
-                        contextSearchArea, 
-                        $@"^{System.Text.RegularExpressions.Regex.Escape(tokenName)}\s*=\s*([^\r\n;]+)", 
-                        System.Text.RegularExpressions.RegexOptions.IgnoreCase | System.Text.RegularExpressions.RegexOptions.Multiline);
-                    
-                    if (stringTokenMatch.Success)
-                    {
-                        providerRaw = stringTokenMatch.Groups[1].Value.Trim().Trim('"');
-                    }
-                    else
-                    {
-                        // Fallback: If token cannot be resolved from the strings context, 
-                        // strip the % marks and use the raw token name (e.g. "Provider") as the provider identifier
-                        providerRaw = tokenName;
-                        break;
-                    }
-                }
-
-                var entry = new DriverStoreEntry
+                return new DriverStoreEntry
                 {
                     DriverInfName = infFileName,
                     DriverPublishedName = infFileName,
                     DriverFolderLocation = folderPath,
                     DriverVersion = driverVersion,
                     DriverDate = driverDate,
-                    DriverSize = CalculateFolderSize(folderPath),
+                    DriverSize = this.CalculatePackageSize(folderPath),
                     DriverClass = driverClass,
                     DriverPkgProvider = providerRaw,
-                    DriverSignerName = "Custom Folder Repo",
+                    DriverSignerName = "Custom Folder",
                     BootCritical = false,
                     DevicePresent = false,
-                    DeviceName = string.Empty,
-                    DeviceId = string.Empty,
+                    DeviceName = deviceName,
+                    DeviceId = hardwareId,
                     DriverExtensionId = Guid.Empty
                 };
-
-                return entry;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Trace.TraceError($"Error parsing driver package {infFilePath}: {ex.Message}");
+                Trace.TraceError($"Error parsing driver package {infFilePath}: {ex.Message}");
                 return null;
             }
         }
 
-        /// <summary>
-        /// Calculates the total size of files in a folder.
-        /// </summary>
-        private static long CalculateFolderSize(string folderPath)
+        private long CalculatePackageSize(string packageFolder)
         {
             try
             {
-                return Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories)
+                return Directory.GetFiles(packageFolder, "*", SearchOption.AllDirectories)
                     .Sum(f => new FileInfo(f).Length);
             }
             catch
             {
                 return 0;
+            }
+        }
+
+        private static Dictionary<string, string> ParseStringsSection(string infContent)
+        {
+            var strings = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            int stringsIdx = infContent.IndexOf("[Strings]", StringComparison.OrdinalIgnoreCase);
+            if (stringsIdx < 0)
+            {
+                return strings;
+            }
+
+            string stringsArea = infContent.Substring(stringsIdx);
+            foreach (var line in stringsArea.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None))
+            {
+                string trimmed = line.Trim();
+                if (trimmed.StartsWith("[", StringComparison.Ordinal) &&
+                    !trimmed.StartsWith("[Strings]", StringComparison.OrdinalIgnoreCase))
+                {
+                    break;
+                }
+
+                Match match = InfStringsLineRegex.Match(line);
+                if (!match.Success)
+                {
+                    continue;
+                }
+
+                string key = match.Groups[1].Value.Trim();
+                if (key.StartsWith("[", StringComparison.Ordinal))
+                {
+                    break;
+                }
+
+                string value = match.Groups[2].Value.Trim().Trim('"');
+                if (!strings.ContainsKey(key))
+                {
+                    strings[key] = value;
+                }
+            }
+
+            return strings;
+        }
+
+        private static string ResolveInfToken(string raw, IReadOnlyDictionary<string, string> strings)
+        {
+            if (string.IsNullOrWhiteSpace(raw))
+            {
+                return string.Empty;
+            }
+
+            raw = raw.Trim().Trim('"');
+            for (int i = 0; i < 5; i++)
+            {
+                if (!raw.StartsWith("%", StringComparison.Ordinal) || !raw.EndsWith("%", StringComparison.Ordinal))
+                {
+                    return raw;
+                }
+
+                string token = raw.Substring(1, raw.Length - 2).Trim();
+                if (strings != null && strings.TryGetValue(token, out string resolved))
+                {
+                    raw = resolved.Trim().Trim('"');
+                }
+                else
+                {
+                    return token;
+                }
+            }
+
+            return raw;
+        }
+
+        private static void ParseFirstModelEntry(string infContent, IReadOnlyDictionary<string, string> strings, out string deviceName, out string hardwareId)
+        {
+            deviceName = string.Empty;
+            hardwareId = string.Empty;
+
+            foreach (Match match in InfModelLineRegex.Matches(infContent))
+            {
+                deviceName = ResolveInfToken(match.Groups["desc"].Value.Trim(), strings);
+                hardwareId = match.Groups["hwid"].Value.Trim();
+                if (!string.IsNullOrEmpty(deviceName))
+                {
+                    return;
+                }
             }
         }
     }

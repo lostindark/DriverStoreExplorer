@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.IO;
 
 using Rapr.Properties;
 
@@ -14,6 +15,67 @@ namespace Rapr.Utils
 
     public static class DriverStoreFactory
     {
+        public static IDriverStore CreateDriverStoreFromSettings()
+        {
+            if (!Enum.TryParse(Settings.Default.DriverStoreType, out DriverStoreType storeType)
+                || !Enum.IsDefined(typeof(DriverStoreType), storeType))
+            {
+                storeType = DriverStoreType.Online;
+            }
+
+            string location = Settings.Default.DriverStoreLocation ?? string.Empty;
+
+            switch (storeType)
+            {
+                case DriverStoreType.Offline:
+                    if (IsValidOfflineStoreLocation(location))
+                    {
+                        return CreateOfflineDriverStore(location);
+                    }
+
+                    Trace.TraceWarning($"Offline driver store location invalid or missing, using online store: {location}");
+                    break;
+
+                case DriverStoreType.CustomFolder:
+                    if (IsValidCustomFolderLocation(location))
+                    {
+                        return CreateCustomFolderDriverStore(location);
+                    }
+
+                    Trace.TraceWarning($"Custom driver folder invalid or missing, using online store: {location}");
+                    break;
+            }
+
+            return CreateOnlineDriverStore();
+        }
+
+        public static void SaveDriverStoreSelection(IDriverStore driverStore)
+        {
+            Settings.Default.DriverStoreType = driverStore.Type.ToString();
+
+            if (driverStore.Type == DriverStoreType.Offline
+                || driverStore.Type == DriverStoreType.CustomFolder)
+            {
+                Settings.Default.DriverStoreLocation = driverStore.OfflineStoreLocation;
+            }
+            else
+            {
+                Settings.Default.DriverStoreLocation = string.Empty;
+            }
+
+            Settings.Default.Save();
+        }
+
+        private static bool IsValidOfflineStoreLocation(string path)
+        {
+            return !string.IsNullOrEmpty(path) && Directory.Exists(Path.Combine(path, "Windows"));
+        }
+
+        private static bool IsValidCustomFolderLocation(string path)
+        {
+            return !string.IsNullOrEmpty(path) && Directory.Exists(path);
+        }
+
         public static IDriverStore CreateOnlineDriverStore()
         {
             _ = Enum.TryParse(Settings.Default.DriverStoreOption, out DriverStoreOption driverStoreOption);

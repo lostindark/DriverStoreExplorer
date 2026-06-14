@@ -822,6 +822,51 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Package {0} was not added (already in driver store)..
+        /// </summary>
+        public static string Message_Driver_Skipped {
+            get {
+                return ResourceManager.GetString("Message_Driver_Skipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Skipped {0} (already in driver store)..
+        /// </summary>
+        public static string Message_Driver_Skipped_Detail {
+            get {
+                return ResourceManager.GetString("Message_Driver_Skipped_Detail", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added {0} package(s) to driver store. Skipped {1} duplicate(s)..
+        /// </summary>
+        public static string Message_Drivers_Added_With_Skipped {
+            get {
+                return ResourceManager.GetString("Message_Drivers_Added_With_Skipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added {0} package(s) and installed to driver store. Skipped {1} duplicate(s)..
+        /// </summary>
+        public static string Message_Drivers_Added_Installed_With_Skipped {
+            get {
+                return ResourceManager.GetString("Message_Drivers_Added_Installed_With_Skipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No packages added. Skipped {0} duplicate(s)..
+        /// </summary>
+        public static string Message_Drivers_All_Skipped {
+            get {
+                return ResourceManager.GetString("Message_Drivers_All_Skipped", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Error.
         /// </summary>
         public static string Message_Error {
@@ -1069,6 +1114,15 @@ namespace Rapr.Lang {
         public static string Status_Exporting_All_Drivers {
             get {
                 return ResourceManager.GetString("Status_Exporting_All_Drivers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exporting {0} of {1}: {2}....
+        /// </summary>
+        public static string Status_Exporting_Driver {
+            get {
+                return ResourceManager.GetString("Status_Exporting_Driver", resourceCulture);
             }
         }
         
