@@ -138,6 +138,9 @@
   <data name="Check_Install_Driver" xml:space="preserve">
     <value>&amp;Install Driver</value>
   </data>
+  <data name="Check_Show_Only_Selected_Drivers" xml:space="preserve">
+    <value>Show only selected drivers</value>
+  </data>
   <data name="Column_Date" xml:space="preserve">
     <value>Driver Date</value>
   </data>

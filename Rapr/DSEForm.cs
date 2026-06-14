@@ -127,7 +127,7 @@ namespace Rapr
             this.UpdateDriverStore(DriverStoreFactory.CreateDriverStoreFromSettings(), persistSelection: false);
 
             this.UpdateCheckedItemSizeTimer = new Timer(x => this.BeginInvoke((Action)(() => this.UpdateCheckedItemSize())));
-            this.searchDebounceTimer = new Timer(x => this.BeginInvoke((Action)(() => this.UpdateSearchFilter())));
+            this.searchDebounceTimer = new Timer(x => this.BeginInvoke((Action)(() => this.ApplyDriverListFilter())));
         }
 
         /// <summary>
@@ -426,6 +426,7 @@ namespace Rapr
 
                 var driverStoreEntries = await Task.Run(() => this.driverStore.EnumeratePackages()).ConfigureAwait(true);
                 this.lstDriverStoreEntries.SetObjects(driverStoreEntries);
+                this.ApplyDriverListFilter();
                 this.UpdateColumnSize();
 
                 string statusMessage = string.Format(Language.Status_Packages_Found, driverStoreEntries.Count);
@@ -553,10 +554,12 @@ namespace Rapr
                 if (allSucceeded)
                 {
                     this.lstDriverStoreEntries.RemoveObjects(driverStoreEntries);
+                    this.ApplyDriverListFilter();
                 }
                 else
                 {
                     this.lstDriverStoreEntries.SetObjects(allDriverStoreEntries);
+                    this.ApplyDriverListFilter();
                     this.UpdateColumnSize();
                 }
 
@@ -697,7 +700,7 @@ namespace Rapr
 
                         var allDriverStoreEntries = await Task.Run(() => this.driverStore.EnumeratePackages()).ConfigureAwait(true);
                         this.lstDriverStoreEntries.SetObjects(allDriverStoreEntries);
-
+                        this.ApplyDriverListFilter();
 
                         if (infFiles.Count == 1)
                         {
@@ -978,6 +981,10 @@ namespace Rapr
                 else
                 {
                     this.lstDriverStoreEntries.CheckedObjects = oldDriversToSelect.ToArray();
+                    if (this.cbShowOnlySelectedDrivers.Checked)
+                    {
+                        this.ApplyDriverListFilter();
+                    }
                 }
             }
         }
@@ -1168,6 +1175,16 @@ namespace Rapr
         private void LstDriverStoreEntries_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
             this.UpdateCheckedItemSizeTimer.Change(Delay, RefreshTime);
+
+            if (this.cbShowOnlySelectedDrivers.Checked)
+            {
+                this.ApplyDriverListFilter();
+            }
+        }
+
+        private void CbShowOnlySelectedDrivers_CheckedChanged(object sender, EventArgs e)
+        {
+            this.ApplyDriverListFilter();
         }
 
         private void UpdateCheckedItemSize()
@@ -1330,6 +1347,7 @@ namespace Rapr
             this.buttonSelectOldDrivers.Enabled = false;
             this.buttonExportDrivers.Enabled = false;
             this.buttonExportAllDrivers.Enabled = false;
+            this.cbShowOnlySelectedDrivers.Enabled = false;
             this.chooseDriverStoreToolStripMenuItem.Enabled = false;
             this.exportSelectedDriverListToolStripMenuItem.Enabled = false;
             this.exportAllDriverListToolStripMenuItem.Enabled = false;
@@ -1356,6 +1374,7 @@ namespace Rapr
             this.buttonSelectOldDrivers.Enabled = true;
             this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
             this.buttonExportAllDrivers.Enabled = this.lstDriverStoreEntries.Objects != null;
+            this.cbShowOnlySelectedDrivers.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
             this.exportSelectedDriverListToolStripMenuItem.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
             this.exportAllDriverListToolStripMenuItem.Enabled = this.lstDriverStoreEntries.Objects != null;
@@ -1639,52 +1658,68 @@ namespace Rapr
 
         private void UpdateSearchFilter()
         {
-            if (string.IsNullOrWhiteSpace(textBoxSearch.Text))
+            this.ApplyDriverListFilter();
+        }
+
+        private void ApplyDriverListFilter()
+        {
+            bool showOnlySelected = this.cbShowOnlySelectedDrivers.Checked;
+            string searchText = this.textBoxSearch.Text;
+            bool hasSearch = !string.IsNullOrWhiteSpace(searchText);
+
+            if (!showOnlySelected && !hasSearch)
             {
                 this.lstDriverStoreEntries.ModelFilter = null;
                 this.lstDriverStoreEntries.DefaultRenderer = null;
-                if (this.lstDriverStoreEntries.EmptyListMsg == Language.Message_No_Entries)
+                this.lstDriverStoreEntries.EmptyListMsg = Language.Message_No_Entries;
+                return;
+            }
+
+            this.lstDriverStoreEntries.EmptyListMsg = this.lstDriverStoreEntries.Objects != null
+                ? Language.Message_No_Match_Result
+                : Language.Message_No_Entries;
+
+            this.lstDriverStoreEntries.ModelFilter = new ModelFilter(delegate (object obj)
+            {
+                if (!(obj is DriverStoreEntry entry))
                 {
-                    this.lstDriverStoreEntries.EmptyListMsg = Language.Message_No_Entries;
+                    return false;
                 }
+
+                if (showOnlySelected && !this.lstDriverStoreEntries.IsChecked(entry))
+                {
+                    return false;
+                }
+
+                if (!hasSearch)
+                {
+                    return true;
+                }
+
+                bool Contains(string value) => value?.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0;
+
+                return Contains(entry.DriverPublishedName) ||
+                       Contains(entry.DriverInfName) ||
+                       Contains(entry.DriverClass) ||
+                       Contains(entry.DriverPkgProvider) ||
+                       Contains(entry.DriverSignerName) ||
+                       Contains(entry.DriverVersion?.ToString()) ||
+                       Contains(entry.DriverDate.ToString("d")) ||
+                       Contains(entry.DeviceName) ||
+                       Contains(entry.DeviceId) ||
+                       Contains(entry.InstallDate?.ToString("d")) ||
+                       Contains(entry.DriverExtensionId.ToString()) ||
+                       (entry.DriverFiles?.Any(f => Contains(f)) ?? false);
+            });
+
+            if (hasSearch)
+            {
+                TextMatchFilter textFilter = TextMatchFilter.Contains(this.lstDriverStoreEntries, searchText);
+                this.lstDriverStoreEntries.DefaultRenderer = new HighlightTextRenderer(textFilter);
             }
             else
             {
-                if (this.lstDriverStoreEntries.EmptyListMsg == Language.Message_No_Entries)
-                {
-                    this.lstDriverStoreEntries.EmptyListMsg = this.lstDriverStoreEntries.Objects != null ? Language.Message_No_Match_Result : Language.Message_No_Entries;
-                }
-
-                string searchText = textBoxSearch.Text;
-
-                // Create custom filter that searches all string properties including hidden columns
-                this.lstDriverStoreEntries.ModelFilter = new ModelFilter(delegate (object obj)
-                {
-                    if (!(obj is DriverStoreEntry entry))
-                    {
-                        return false;
-                    }
-
-                    // Helper function to check if a string contains the search text
-                    bool Contains(string value) => value?.IndexOf(searchText, StringComparison.OrdinalIgnoreCase) >= 0;
-
-                    return Contains(entry.DriverPublishedName) ||
-                           Contains(entry.DriverInfName) ||
-                           Contains(entry.DriverClass) ||
-                           Contains(entry.DriverPkgProvider) ||
-                           Contains(entry.DriverSignerName) ||
-                           Contains(entry.DriverVersion?.ToString()) ||
-                           Contains(entry.DriverDate.ToString("d")) ||
-                           Contains(entry.DeviceName) ||
-                           Contains(entry.DeviceId) ||
-                           Contains(entry.InstallDate?.ToString("d")) ||
-                           Contains(entry.DriverExtensionId.ToString()) ||
-                           (entry.DriverFiles?.Any(f => Contains(f)) ?? false);
-                }); 
-
-                // Use TextMatchFilter for highlighting visible columns
-                TextMatchFilter textFilter = TextMatchFilter.Contains(this.lstDriverStoreEntries, searchText);
-                this.lstDriverStoreEntries.DefaultRenderer = new HighlightTextRenderer(textFilter);
+                this.lstDriverStoreEntries.DefaultRenderer = null;
             }
         }
 

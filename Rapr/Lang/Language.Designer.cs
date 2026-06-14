@@ -228,6 +228,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Show only selected drivers.
+        /// </summary>
+        public static string Check_Show_Only_Selected_Drivers {
+            get {
+                return ResourceManager.GetString("Check_Show_Only_Selected_Drivers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to &amp;Choose Driver Store.
         /// </summary>
         public static string ChooseDriverStore_Title {

@@ -46,6 +46,7 @@
             this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
             this.buttonExportDrivers = new System.Windows.Forms.Button();
             this.buttonExportAllDrivers = new System.Windows.Forms.Button();
+            this.cbShowOnlySelectedDrivers = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chooseDriverStoreToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -314,6 +315,7 @@
             this.flowLayoutPanel1.Controls.Add(this.buttonSelectOldDrivers);
             this.flowLayoutPanel1.Controls.Add(this.buttonExportDrivers);
             this.flowLayoutPanel1.Controls.Add(this.buttonExportAllDrivers);
+            this.flowLayoutPanel1.Controls.Add(this.cbShowOnlySelectedDrivers);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(3, 16);
@@ -357,6 +359,18 @@
             this.buttonExportAllDrivers.Text = global::Rapr.Lang.Language.Button_Export_All_Drivers;
             this.buttonExportAllDrivers.UseVisualStyleBackColor = true;
             this.buttonExportAllDrivers.Click += new System.EventHandler(ButtonExportAllDrivers_Click);
+            // 
+            // cbShowOnlySelectedDrivers
+            // 
+            this.cbShowOnlySelectedDrivers.AutoSize = true;
+            this.cbShowOnlySelectedDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbShowOnlySelectedDrivers.Location = new System.Drawing.Point(9, 200);
+            this.cbShowOnlySelectedDrivers.Name = "cbShowOnlySelectedDrivers";
+            this.cbShowOnlySelectedDrivers.Size = new System.Drawing.Size(124, 17);
+            this.cbShowOnlySelectedDrivers.TabIndex = 8;
+            this.cbShowOnlySelectedDrivers.Text = global::Rapr.Lang.Language.Check_Show_Only_Selected_Drivers;
+            this.cbShowOnlySelectedDrivers.UseVisualStyleBackColor = true;
+            this.cbShowOnlySelectedDrivers.CheckedChanged += new System.EventHandler(this.CbShowOnlySelectedDrivers_CheckedChanged);
             // 
             // menuStrip1
             // 
@@ -765,6 +779,7 @@
         private BrightIdeasSoftware.OLVColumn deviceNameColumn;
         private System.Windows.Forms.Button buttonExportDrivers;
         private System.Windows.Forms.Button buttonExportAllDrivers;
+        private System.Windows.Forms.CheckBox cbShowOnlySelectedDrivers;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuExportDriver;
         private BrightIdeasSoftware.OLVColumn bootCriticalColumn;
         private BrightIdeasSoftware.OLVColumn driverExtensionIdColumn;
