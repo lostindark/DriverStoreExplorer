@@ -157,6 +157,14 @@ namespace Rapr.Utils
         public bool? BootCritical { get; set; }
 
         /// <summary>
+        /// Whether the driver is likely usable in WinPE based on INF BootFlags, device class, and co-installers.
+        /// True when BootFlags declare WinPE support or the INF targets a WinPE-relevant class without co-installers.
+        /// False when the class or co-installers indicate the driver is unsuitable for WinPE.
+        /// Null when compatibility could not be determined from the INF.
+        /// </summary>
+        public bool? WinPEDriver { get; set; }
+
+        /// <summary>
         /// Associated device Id (device instance path).
         /// </summary>
         public string DeviceId { get; set; }

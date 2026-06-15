@@ -1182,6 +1182,46 @@ namespace Rapr
             }
         }
 
+        private void CbSelectWinPEDrivers_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!this.cbSelectWinPEDrivers.Checked)
+            {
+                return;
+            }
+
+            this.cbSelectWinPEDrivers.CheckedChanged -= this.CbSelectWinPEDrivers_CheckedChanged;
+            try
+            {
+                this.cbSelectWinPEDrivers.Checked = false;
+
+                if (this.lstDriverStoreEntries.Objects == null)
+                {
+                    return;
+                }
+
+                var winPEDrivers = this.lstDriverStoreEntries.Objects
+                    .OfType<DriverStoreEntry>()
+                    .Where(entry => entry.WinPEDriver == true)
+                    .ToList();
+
+                if (winPEDrivers.Count == 0)
+                {
+                    this.ShowStatus(Status.Warning, Language.Message_No_WinPE_Drivers_Found);
+                    return;
+                }
+
+                this.lstDriverStoreEntries.CheckedObjects = winPEDrivers.ToArray();
+                if (this.cbShowOnlySelectedDrivers.Checked)
+                {
+                    this.ApplyDriverListFilter();
+                }
+            }
+            finally
+            {
+                this.cbSelectWinPEDrivers.CheckedChanged += this.CbSelectWinPEDrivers_CheckedChanged;
+            }
+        }
+
         private void CbShowOnlySelectedDrivers_CheckedChanged(object sender, EventArgs e)
         {
             this.ApplyDriverListFilter();
@@ -1347,6 +1387,7 @@ namespace Rapr
             this.buttonSelectOldDrivers.Enabled = false;
             this.buttonExportDrivers.Enabled = false;
             this.buttonExportAllDrivers.Enabled = false;
+            this.cbSelectWinPEDrivers.Enabled = false;
             this.cbShowOnlySelectedDrivers.Enabled = false;
             this.chooseDriverStoreToolStripMenuItem.Enabled = false;
             this.exportSelectedDriverListToolStripMenuItem.Enabled = false;
@@ -1374,6 +1415,7 @@ namespace Rapr
             this.buttonSelectOldDrivers.Enabled = true;
             this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
             this.buttonExportAllDrivers.Enabled = this.lstDriverStoreEntries.Objects != null;
+            this.cbSelectWinPEDrivers.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.cbShowOnlySelectedDrivers.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
             this.exportSelectedDriverListToolStripMenuItem.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;

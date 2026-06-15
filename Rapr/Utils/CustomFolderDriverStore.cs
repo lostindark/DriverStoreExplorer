@@ -470,6 +470,8 @@ namespace Rapr.Utils
 
                 ParseFirstModelEntry(infContent, strings, out string deviceName, out string hardwareId);
 
+                string infFullPath = Path.Combine(folderPath, infFileName);
+
                 return new DriverStoreEntry
                 {
                     DriverInfName = infFileName,
@@ -482,6 +484,7 @@ namespace Rapr.Utils
                     DriverPkgProvider = providerRaw,
                     DriverSignerName = "Custom Folder",
                     BootCritical = false,
+                    WinPEDriver = WinPEInfDetector.DetectFromInfFile(infFullPath),
                     DevicePresent = false,
                     DeviceName = deviceName,
                     DeviceId = hardwareId,

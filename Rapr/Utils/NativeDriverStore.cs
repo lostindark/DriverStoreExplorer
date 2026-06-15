@@ -324,6 +324,7 @@ namespace Rapr.Utils
                     DriverFolderLocation = driverFolderLocation,
                     DriverSize = driverSize,
                     BootCritical = bootCritical,
+                    WinPEDriver = WinPEInfDetector.DetectFromInfFile(driverStoreFilename),
                     InstallDate = GetObjectPropertyInfo<DateTime?>(driverStoreHandle, driverStoreFilename, DeviceHelper.DEVPKEY_DriverPackage_ImportDate),
                     DriverFiles = EnumerateDriverPackageBinaryFiles(driverStoreHandle, driverStoreFilename),
                 };

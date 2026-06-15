@@ -96,6 +96,7 @@ namespace Rapr.Utils
                             DriverFolderLocation = Path.GetDirectoryName(driverPackage.OriginalFileName),
                             DriverSize = DriverStoreRepository.GetFolderSize(new DirectoryInfo(Path.GetDirectoryName(driverPackage.OriginalFileName))),
                             BootCritical = driverPackage.BootCritical,
+                            WinPEDriver = WinPEInfDetector.DetectFromInfFile(driverPackage.OriginalFileName),
                         };
 
                         driverStoreEntries.Add(driverStoreEntry);

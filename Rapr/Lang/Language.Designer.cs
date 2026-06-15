@@ -228,6 +228,15 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Select WinPE drivers.
+        /// </summary>
+        public static string Check_Select_WinPE_Drivers {
+            get {
+                return ResourceManager.GetString("Check_Select_WinPE_Drivers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Show only selected drivers.
         /// </summary>
         public static string Check_Show_Only_Selected_Drivers {
@@ -1018,6 +1027,15 @@ namespace Rapr.Lang {
         public static string Message_No_Old_Drivers_Found {
             get {
                 return ResourceManager.GetString("Message_No_Old_Drivers_Found", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to No WinPE-compatible drivers were found..
+        /// </summary>
+        public static string Message_No_WinPE_Drivers_Found {
+            get {
+                return ResourceManager.GetString("Message_No_WinPE_Drivers_Found", resourceCulture);
             }
         }
         

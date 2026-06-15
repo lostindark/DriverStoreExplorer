@@ -138,6 +138,9 @@
   <data name="Check_Install_Driver" xml:space="preserve">
     <value>&amp;Install Driver</value>
   </data>
+  <data name="Check_Select_WinPE_Drivers" xml:space="preserve">
+    <value>Select WinPE drivers</value>
+  </data>
   <data name="Check_Show_Only_Selected_Drivers" xml:space="preserve">
     <value>Show only selected drivers</value>
   </data>
@@ -549,5 +552,8 @@ Please select the root directory of a Windows installation or image (the directo
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>No old drivers found to select.</value>
+  </data>
+  <data name="Message_No_WinPE_Drivers_Found" xml:space="preserve">
+    <value>No WinPE-compatible drivers were found.</value>
   </data>
 </root>

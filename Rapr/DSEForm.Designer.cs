@@ -46,6 +46,7 @@
             this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
             this.buttonExportDrivers = new System.Windows.Forms.Button();
             this.buttonExportAllDrivers = new System.Windows.Forms.Button();
+            this.cbSelectWinPEDrivers = new System.Windows.Forms.CheckBox();
             this.cbShowOnlySelectedDrivers = new System.Windows.Forms.CheckBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -315,6 +316,7 @@
             this.flowLayoutPanel1.Controls.Add(this.buttonSelectOldDrivers);
             this.flowLayoutPanel1.Controls.Add(this.buttonExportDrivers);
             this.flowLayoutPanel1.Controls.Add(this.buttonExportAllDrivers);
+            this.flowLayoutPanel1.Controls.Add(this.cbSelectWinPEDrivers);
             this.flowLayoutPanel1.Controls.Add(this.cbShowOnlySelectedDrivers);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
@@ -360,14 +362,26 @@
             this.buttonExportAllDrivers.UseVisualStyleBackColor = true;
             this.buttonExportAllDrivers.Click += new System.EventHandler(ButtonExportAllDrivers_Click);
             // 
+            // cbSelectWinPEDrivers
+            // 
+            this.cbSelectWinPEDrivers.AutoSize = true;
+            this.cbSelectWinPEDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbSelectWinPEDrivers.Location = new System.Drawing.Point(9, 200);
+            this.cbSelectWinPEDrivers.Name = "cbSelectWinPEDrivers";
+            this.cbSelectWinPEDrivers.Size = new System.Drawing.Size(124, 17);
+            this.cbSelectWinPEDrivers.TabIndex = 8;
+            this.cbSelectWinPEDrivers.Text = global::Rapr.Lang.Language.Check_Select_WinPE_Drivers;
+            this.cbSelectWinPEDrivers.UseVisualStyleBackColor = true;
+            this.cbSelectWinPEDrivers.CheckedChanged += new System.EventHandler(this.CbSelectWinPEDrivers_CheckedChanged);
+            // 
             // cbShowOnlySelectedDrivers
             // 
             this.cbShowOnlySelectedDrivers.AutoSize = true;
             this.cbShowOnlySelectedDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cbShowOnlySelectedDrivers.Location = new System.Drawing.Point(9, 200);
+            this.cbShowOnlySelectedDrivers.Location = new System.Drawing.Point(9, 223);
             this.cbShowOnlySelectedDrivers.Name = "cbShowOnlySelectedDrivers";
             this.cbShowOnlySelectedDrivers.Size = new System.Drawing.Size(124, 17);
-            this.cbShowOnlySelectedDrivers.TabIndex = 8;
+            this.cbShowOnlySelectedDrivers.TabIndex = 9;
             this.cbShowOnlySelectedDrivers.Text = global::Rapr.Lang.Language.Check_Show_Only_Selected_Drivers;
             this.cbShowOnlySelectedDrivers.UseVisualStyleBackColor = true;
             this.cbShowOnlySelectedDrivers.CheckedChanged += new System.EventHandler(this.CbShowOnlySelectedDrivers_CheckedChanged);
@@ -779,6 +793,7 @@
         private BrightIdeasSoftware.OLVColumn deviceNameColumn;
         private System.Windows.Forms.Button buttonExportDrivers;
         private System.Windows.Forms.Button buttonExportAllDrivers;
+        private System.Windows.Forms.CheckBox cbSelectWinPEDrivers;
         private System.Windows.Forms.CheckBox cbShowOnlySelectedDrivers;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuExportDriver;
         private BrightIdeasSoftware.OLVColumn bootCriticalColumn;

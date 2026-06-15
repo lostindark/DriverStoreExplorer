@@ -81,6 +81,12 @@ namespace Rapr.Utils
                         driverStoreEntry.DriverFolderLocation = driverFolderLocation;
                         driverStoreEntry.DriverSize = driverSize;
 
+                        if (!string.IsNullOrEmpty(driverInfName) && !string.IsNullOrEmpty(driverFolderLocation))
+                        {
+                            driverStoreEntry.WinPEDriver = WinPEInfDetector.DetectFromInfFile(
+                                Path.Combine(driverFolderLocation, driverInfName));
+                        }
+
                         driverStoreEntries[i] = driverStoreEntry;
                     }
                 }
