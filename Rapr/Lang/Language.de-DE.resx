@@ -127,7 +127,7 @@
     <value>&amp;OK</value>
   </data>
   <data name="Button_Refresh" xml:space="preserve">
-    <value>Aktualisie&amp;ren</value>
+    <value>&amp;Aktualisieren</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
     <value>Alte Treiber au&amp;swählen</value>
@@ -184,11 +184,11 @@
     <value>Alte Treiber auswählen</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Sie sind im Begriff {0} Pakete aus dem Driver Store zu entfernen.</value>
+    <value>Sie sind im Begriff, {0} Pakete aus dem Driver Store zu entfernen.</value>
     <comment>{0} – Platzhalter für die Paketanzahl</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Sie sind im Begriff {0} ({1}) aus dem Driver Store zu entfernen.</value>
+    <value>Sie sind im Begriff, {0} ({1}) aus dem Driver Store zu entfernen.</value>
     <comment>{0} – Platzhalter für die INF-Paketdatei
              {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
@@ -196,7 +196,7 @@
     <value>Dieses Programm erfordert Administratorrechte.</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
-    <value>Es ist mindestens Winodws Vista erforderlich.</value>
+    <value>Es ist mindestens Windows Vista erforderlich.</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
     <value>Sind Sie sicher?</value>
@@ -205,7 +205,7 @@
     <value>Warnung</value>
   </data>
   <data name="Operations_Text" xml:space="preserve">
-    <value>Funktionen</value>
+    <value>Aktionen</value>
   </data>
   <data name="Product_Name" xml:space="preserve">
     <value>Driver Store Explorer</value>
@@ -217,7 +217,7 @@
     <value>{0} Treiberpaket(e) gefunden</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[TIPP: Der Treiber scheint noch in Benutzung zu sein. Versuchen Sie das Löschen des Treiberpakets zu erzwingen.]</value>
+    <value>[TIPP: Der Treiber scheint noch in Verwendung zu sein. Versuchen Sie, das Löschen des Treiberpakets zu erzwingen.]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>&amp;Hilfe</value>
@@ -260,7 +260,7 @@
     <value>Die neueste Version und die Versionshinweise finden Sie unter:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-Fehler melden/Funktion anfragen:
+Fehler melden / Funktion anfragen:
     https://github.com/lostindark/DriverStoreExplorer/issues
 
 Mitwirkende:
@@ -280,10 +280,10 @@ Lizenz:
     <value>CSV-Dateien | *.csv</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Treiberpaket wird hinzugefügt...</value>
+    <value>Treiberpaket wird hinzugefügt …</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Lösche Treiberpaket(e)...</value>
+    <value>Lösche Treiberpaket(e) …</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>{0} ({1}) wurde aus dem Driver Store gelöscht.</value>
@@ -317,11 +317,11 @@ Lizenz:
     <value>Fehler</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>Inhalt unter {0} gespeichert. Die Exportierung war erfolgreich.</value>
+    <value>Der Inhalt wurde unter {0} gespeichert. Der Export war erfolgreich.</value>
     <comment>{0} – Platzhalter für den Exportpfad</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
-    <value>Die Exportierung ist fehlgeschlagen: {0}</value>
+    <value>Der Export ist fehlgeschlagen: {0}</value>
     <comment>{0} – Platzhalter für die Fehlermeldung</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
@@ -342,7 +342,7 @@ Lizenz:
     <value>Geräte-&amp;Eigenschaften öffnen</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
-    <value>Lokale Maschine</value>
+    <value>Lokaler Computer</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
     <value>Driver Store auswählen</value>
@@ -374,15 +374,15 @@ Lizenz:
     <value>Herunterladen</value>
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
-    <value>Driver Store wird überprüft...</value>
+    <value>Driver Store wird überprüft …</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
-    <value>Sie sind im Begriff {0} ({1}) aus dem Driver Store forciert zu löschen.</value>
+    <value>Sie sind im Begriff, das Löschen von {0} ({1}) aus dem Driver Store zu erzwingen.</value>
     <comment>{0} – Platzhalter für die INF-Paketdatei
              {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>Sie sind im Begriff {0} Pakete aus dem Driver Store forciert zu löschen.</value>
+    <value>Sie sind im Begriff, das Löschen von {0} Paketen aus dem Driver Store zu erzwingen.</value>
     <comment>{0} – Platzhalter für die Paketanzahl</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
@@ -406,15 +406,15 @@ Lizenz:
              {1} – Platzhalter für die OEM-INF-Datei</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Der Treiber {0} wurde installiert &amp; zum Driver Store hinzugefügt.</value>
+    <value>Der Treiber {0} wurde installiert und dem Driver Store hinzugefügt.</value>
     <comment>{0} – Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
-    <value>Fehler beim Hinzufügen des Pakets {0} &amp; installiert zum Driver Store.</value>
+    <value>Fehler beim Hinzufügen und Installieren des Pakets {0} im Driver Store.</value>
     <comment>{0} – Platzhalter für den Pfad zur INF-Datei</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>Treiber &amp;exportieren</value>
+    <value>Treiber e&amp;xportieren</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
     <value>Treiber exportieren</value>
@@ -435,19 +435,19 @@ Lizenz:
     <value>Das Exportieren der Treiberpakete war erfolgreich.</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
-    <value>Alle Treiberpakete werden exportiert...</value>
+    <value>Alle Treiberpakete werden exportiert …</value>
   </data>
   <data name="Status_Exporting_Drivers" xml:space="preserve">
-    <value>Treiberpaket(e) werden exportiert...</value>
+    <value>Treiberpaket(e) werden exportiert …</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>Abbre&amp;chen</value>
   </data>
   <data name="Column_BootCritical" xml:space="preserve">
-    <value>Kritisch beim Hochfahren</value>
+    <value>Startkritisch</value>
   </data>
   <data name="Column_Text_True" xml:space="preserve">
-    <value>Richtig</value>
+    <value>Wahr</value>
   </data>
   <data name="Column_Text_False" xml:space="preserve">
     <value>Falsch</value>
@@ -474,15 +474,15 @@ Lizenz:
     <value>Hier tippen, um zu suchen</value>
   </data>
   <data name="Message_No_Inf_Found" xml:space="preserve">
-     <value>Es wurden keine INF-Dateien in dem Ordner {0} gefunden.</value>
+     <value>In dem Ordner {0} wurden keine INF-Dateien gefunden.</value>
      <comment>{0} – Platzhalter für den Ordnernamen</comment>
    </data>
    <data name="Message_Drivers_Added" xml:space="preserve">
-     <value>Es wurden {0} Pakete zum Driver Store hinzugefügt.</value>
+     <value>{0} Pakete wurden zum Driver Store hinzugefügt.</value>
      <comment>{0} – Platzhalter für die Anzahl der Pakete</comment>
    </data>
    <data name="Message_Drivers_Added_Installed" xml:space="preserve">
-     <value>Es wurden {0} Pakete zum Driver Store hinzugefügt und installiert.</value>
+     <value>{0} Pakete wurden zum Driver Store hinzugefügt und installiert.</value>
      <comment>{0} – Platzhalter für die Anzahl der Pakete.</comment>
    </data>
    <data name="Message_Drivers_Added_Error" xml:space="preserve">
@@ -495,7 +495,7 @@ Lizenz:
      <value>Au&amp;sgewählte Treiberliste exportieren</value>
    </data>
    <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-     <value>Boot-kritische Treiber in alte Treiber einbeziehen</value>
+     <value>Startkritische Treiber in alte Treiber einbeziehen</value>
    </data>
    <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
      <value>Wählen Sie das Verzeichnis aus, das den Windows-Ordner enthält (nicht den Windows-Ordner selbst)</value>
