@@ -118,10 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>Sürücü(leri) &amp;Ekle</value>
+    <value>Sürücüleri &amp;Ekle</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>Sürücü(leri) &amp;Sil</value>
+    <value>Sürücüleri &amp;Sil</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;Tamam</value>
@@ -130,13 +130,13 @@
     <value>&amp;Yenile</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
-    <value>&amp;Eski Sürücü(leri)yü Seç</value>
+    <value>&amp;Eski Sürücüleri Seç</value>
   </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Silmeye &amp;Zorla</value>
   </data>
   <data name="Check_Install_Driver" xml:space="preserve">
-    <value>Sürücü Yü&amp;kle</value>
+    <value>Sürücüyü Yü&amp;kle</value>
   </data>
   <data name="Column_Date" xml:space="preserve">
     <value>Sürücü Tarihi</value>
@@ -338,7 +338,7 @@ Lisans:
   <data name="Context_Copy_Folder_Path" xml:space="preserve">
     <value>Klasör Yolunu K&amp;opyala</value>
   </data>
-    <data name="Context_Open_Device_Properties" xml:space="preserve">
+  <data name="Context_Open_Device_Properties" xml:space="preserve">
     <value>Aygıt Ö&amp;zelliklerini Aç</value>
   </data>
   <data name="DriverStore_LocalMachine" xml:space="preserve">
@@ -366,12 +366,24 @@ Lisans:
     <value>(Güncel)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
-    <value>(Yeni Sürüm Bulundu v{0} - {1})</value>
+    <value>(Yeni Sürüm Bulundu: v{0} - {1})</value>
     <comment>{0} - Placeholder for version number
 {1} - Placeholder for About_Download</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>İndir</value>
+  </data>
+  <data name="About_Update" xml:space="preserve">
+    <value>Güncelle</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(v{0} indiriliyor... %{1})</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(Güncelleme başarısız oldu: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>Sürücü deposu taranıyor...</value>
@@ -414,7 +426,7 @@ Lisans:
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>Sürücü(leri)yü Dışa Ak&amp;tar</value>
+    <value>Sürücüleri Dışa Ak&amp;tar</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
     <value>Sürücüyü &amp;Dışa Aktar</value>
@@ -511,15 +523,4 @@ Lütfen bir Windows kurulumunun veya kalıbının kök dizinini seçin (Windows 
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Seçilecek eski sürücüler bulunamadı.</value>
   </data>
-  <data name="About_Update" xml:space="preserve">
-    <value>Güncelleme</value>
-  </data>
-  <data name="Update_Downloading" xml:space="preserve">
-    <value>(v{0} indiriliyor... %{1})</value>
-    <comment>{0} - Placeholder for version number
-{1} - Placeholder for download percentage</comment>
-  </data>
-  <data name="Update_Failed" xml:space="preserve">
-    <value>(Güncelleme başarısız oldu: {0})</value>
-    <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+</root>
