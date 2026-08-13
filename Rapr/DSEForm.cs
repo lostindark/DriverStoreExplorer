@@ -708,6 +708,7 @@ namespace Rapr
             {
                 this.ctxMenuSelectAll.Enabled = true;
                 this.ctxMenuSelectOldDrivers.Enabled = true;
+                this.ctxMenuSelectUnusedDrivers.Enabled = true;
                 this.ctxMenuInvertSelection.Enabled = true;
 
                 if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0)
@@ -758,6 +759,7 @@ namespace Rapr
                 this.ctxMenuSelectAll.Enabled = false;
                 this.ctxMenuInvertSelection.Enabled = false;
                 this.ctxMenuSelectOldDrivers.Enabled = false;
+                this.ctxMenuSelectUnusedDrivers.Enabled = false;
                 this.ctxMenuOpenDeviceProperties.Enabled = false;
                 this.ctxMenuOpenFolder.Enabled = false;
                 this.ctxMenuCopyFolderPath.Enabled = false;
@@ -898,6 +900,32 @@ namespace Rapr
         private void ButtonSelectOldDrivers_Click(object sender, EventArgs e)
         {
             this.CtxMenuSelectOldDrivers_Click(sender, e);
+        }
+
+        private void CtxMenuSelectUnusedDrivers_Click(object sender, EventArgs e)
+        {
+            if (this.lstDriverStoreEntries.Objects != null)
+            {
+                var unusedDriversToSelect = this.lstDriverStoreEntries
+                    .Objects
+                    .OfType<DriverStoreEntry>()
+                    .Where(entry => string.IsNullOrEmpty(entry.DeviceName))
+                    .ToArray();
+
+                if (unusedDriversToSelect.Length == 0)
+                {
+                    this.ShowStatus(Status.Warning, Language.Message_No_Unused_Drivers_Found);
+                }
+                else
+                {
+                    this.lstDriverStoreEntries.CheckedObjects = unusedDriversToSelect;
+                }
+            }
+        }
+
+        private void ButtonSelectUnusedDrivers_Click(object sender, EventArgs e)
+        {
+            this.CtxMenuSelectUnusedDrivers_Click(sender, e);
         }
 
         private void ExportDriverList(IEnumerable objects)
@@ -1217,6 +1245,7 @@ namespace Rapr
             this.buttonDeleteDriver.Enabled = false;
             this.cbForceDeletion.Enabled = false;
             this.buttonSelectOldDrivers.Enabled = false;
+            this.buttonSelectUnusedDrivers.Enabled = false;
             this.buttonExportDrivers.Enabled = false;
             this.buttonExportAllDrivers.Enabled = false;
             this.chooseDriverStoreToolStripMenuItem.Enabled = false;
@@ -1237,6 +1266,7 @@ namespace Rapr
             this.buttonDeleteDriver.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
             this.cbForceDeletion.Enabled = this.buttonDeleteDriver.Enabled && this.driverStore.SupportForceDeletion;
             this.buttonSelectOldDrivers.Enabled = true;
+            this.buttonSelectUnusedDrivers.Enabled = true;
             this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
             this.buttonExportAllDrivers.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;

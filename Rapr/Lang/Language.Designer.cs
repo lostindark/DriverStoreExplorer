@@ -208,6 +208,15 @@ namespace Rapr.Lang {
                 return ResourceManager.GetString("Button_Select_Old", resourceCulture);
             }
         }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Select Drivers Without Existing Device.
+        /// </summary>
+        public static string Button_Select_Unused {
+            get {
+                return ResourceManager.GetString("Button_Select_Unused", resourceCulture);
+            }
+        }
         
         /// <summary>
         ///   Looks up a localized string similar to Force Deletio&amp;n.
@@ -467,6 +476,15 @@ namespace Rapr.Lang {
         public static string Context_Select_Old {
             get {
                 return ResourceManager.GetString("Context_Select_Old", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to Select Drivers Without Existing Device.
+        /// </summary>
+        public static string Context_Select_Unused {
+            get {
+                return ResourceManager.GetString("Context_Select_Unused", resourceCulture);
             }
         }
         
@@ -964,6 +982,15 @@ namespace Rapr.Lang {
         public static string Message_No_Old_Drivers_Found {
             get {
                 return ResourceManager.GetString("Message_No_Old_Drivers_Found", resourceCulture);
+            }
+        }
+
+        /// <summary>
+        ///   Looks up a localized string similar to No drivers without an existing device found to select..
+        /// </summary>
+        public static string Message_No_Unused_Drivers_Found {
+            get {
+                return ResourceManager.GetString("Message_No_Unused_Drivers_Found", resourceCulture);
             }
         }
         

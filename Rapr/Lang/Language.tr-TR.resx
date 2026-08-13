@@ -132,6 +132,9 @@
   <data name="Button_Select_Old" xml:space="preserve">
     <value>&amp;Eski Sürücüleri Seç</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>&amp;Kullanılmayan Sürücüleri Seç</value>
+  </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Silmeye &amp;Zorla</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>&amp;Eski Sürücüleri Seç</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>&amp;Kullanılmayan Sürücüleri Seç</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Sürücü deposundan {0} paket silinmek üzere.</value>
@@ -522,5 +528,8 @@ Lütfen bir Windows kurulumunun veya kalıbının kök dizinini seçin (Windows 
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Seçilecek eski sürücüler bulunamadı.</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Seçilecek kullanılmayan sürücü bulunamadı.</value>
   </data>
 </root>

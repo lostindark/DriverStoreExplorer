@@ -26,6 +26,7 @@
             this.ctxMenuSelectAll = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenuInvertSelection = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenuSelectOldDrivers = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxMenuSelectUnusedDrivers = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxMenuOpenFolder = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMenuCopyFolderPath = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +45,7 @@
             this.gbOptions = new System.Windows.Forms.GroupBox();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.buttonSelectOldDrivers = new System.Windows.Forms.Button();
+            this.buttonSelectUnusedDrivers = new System.Windows.Forms.Button();
             this.buttonExportDrivers = new System.Windows.Forms.Button();
             this.buttonExportAllDrivers = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
@@ -124,6 +126,7 @@
             this.ctxMenuSelectAll,
             this.ctxMenuInvertSelection,
             this.ctxMenuSelectOldDrivers,
+            this.ctxMenuSelectUnusedDrivers,
             this.toolStripSeparator1,
             this.ctxMenuOpenDeviceProperties,
             this.ctxMenuOpenFolder,
@@ -162,6 +165,13 @@
             this.ctxMenuSelectOldDrivers.Size = new System.Drawing.Size(188, 22);
             this.ctxMenuSelectOldDrivers.Text = global::Rapr.Lang.Language.Context_Select_Old;
             this.ctxMenuSelectOldDrivers.Click += new System.EventHandler(this.CtxMenuSelectOldDrivers_Click);
+            // 
+            // ctxMenuSelectUnusedDrivers
+            // 
+            this.ctxMenuSelectUnusedDrivers.Name = "CtxMenuSelectUnusedDrivers";
+            this.ctxMenuSelectUnusedDrivers.Size = new System.Drawing.Size(188, 22);
+            this.ctxMenuSelectUnusedDrivers.Text = global::Rapr.Lang.Language.Context_Select_Unused;
+            this.ctxMenuSelectUnusedDrivers.Click += new System.EventHandler(this.CtxMenuSelectUnusedDrivers_Click);
             // 
             // toolStripSeparator1
             // 
@@ -312,6 +322,7 @@
             this.flowLayoutPanel1.Controls.Add(this.buttonDeleteDriver);
             this.flowLayoutPanel1.Controls.Add(this.cbForceDeletion);
             this.flowLayoutPanel1.Controls.Add(this.buttonSelectOldDrivers);
+            this.flowLayoutPanel1.Controls.Add(this.buttonSelectUnusedDrivers);
             this.flowLayoutPanel1.Controls.Add(this.buttonExportDrivers);
             this.flowLayoutPanel1.Controls.Add(this.buttonExportAllDrivers);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -334,14 +345,26 @@
             this.buttonSelectOldDrivers.UseVisualStyleBackColor = true;
             this.buttonSelectOldDrivers.Click += new System.EventHandler(this.ButtonSelectOldDrivers_Click);
             // 
+            // buttonSelectUnusedDrivers
+            // 
+            this.buttonSelectUnusedDrivers.AutoSize = true;
+            this.buttonSelectUnusedDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSelectUnusedDrivers.Location = new System.Drawing.Point(9, 171);
+            this.buttonSelectUnusedDrivers.Name = "buttonSelectUnusedDrivers";
+            this.buttonSelectUnusedDrivers.Size = new System.Drawing.Size(124, 23);
+            this.buttonSelectUnusedDrivers.TabIndex = 6;
+            this.buttonSelectUnusedDrivers.Text = global::Rapr.Lang.Language.Button_Select_Unused;
+            this.buttonSelectUnusedDrivers.UseVisualStyleBackColor = true;
+            this.buttonSelectUnusedDrivers.Click += new System.EventHandler(this.ButtonSelectUnusedDrivers_Click);
+            // 
             // buttonExportDrivers
             // 
             this.buttonExportDrivers.AutoSize = true;
             this.buttonExportDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonExportDrivers.Location = new System.Drawing.Point(9, 171);
+            this.buttonExportDrivers.Location = new System.Drawing.Point(9, 200);
             this.buttonExportDrivers.Name = "buttonExportDrivers";
             this.buttonExportDrivers.Size = new System.Drawing.Size(124, 23);
-            this.buttonExportDrivers.TabIndex = 6;
+            this.buttonExportDrivers.TabIndex = 7;
             this.buttonExportDrivers.Text = global::Rapr.Lang.Language.Button_Export_Drivers;
             this.buttonExportDrivers.UseVisualStyleBackColor = true;
             this.buttonExportDrivers.Click += new System.EventHandler(ButtonExportDrivers_Click);
@@ -350,10 +373,10 @@
             // 
             this.buttonExportAllDrivers.AutoSize = true;
             this.buttonExportAllDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.buttonExportAllDrivers.Location = new System.Drawing.Point(9, 171);
+            this.buttonExportAllDrivers.Location = new System.Drawing.Point(9, 229);
             this.buttonExportAllDrivers.Name = "buttonExportAllDrivers";
             this.buttonExportAllDrivers.Size = new System.Drawing.Size(124, 23);
-            this.buttonExportAllDrivers.TabIndex = 7;
+            this.buttonExportAllDrivers.TabIndex = 8;
             this.buttonExportAllDrivers.Text = global::Rapr.Lang.Language.Button_Export_All_Drivers;
             this.buttonExportAllDrivers.UseVisualStyleBackColor = true;
             this.buttonExportAllDrivers.Click += new System.EventHandler(ButtonExportAllDrivers_Click);
@@ -737,6 +760,8 @@
         private BrightIdeasSoftware.OLVColumn driverSizeColumn;
         private System.Windows.Forms.Button buttonSelectOldDrivers;
         private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectOldDrivers;
+        private System.Windows.Forms.Button buttonSelectUnusedDrivers;
+        private System.Windows.Forms.ToolStripMenuItem ctxMenuSelectUnusedDrivers;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem optionsStripMenuItem;

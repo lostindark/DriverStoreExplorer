@@ -132,6 +132,9 @@
   <data name="Button_Select_Old" xml:space="preserve">
     <value>&amp;Select Old Driver(s)</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Select &amp;Unused Driver(s)</value>
+  </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Force Deletio&amp;n</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Select &amp;Old Drivers</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Select &amp;Unused Drivers</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>About to delete {0} packages from driver store.</value>
@@ -522,5 +528,8 @@ Please select the root directory of a Windows installation or image (the directo
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>No old drivers found to select.</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>No drivers without an existing device were found.</value>
   </data>
 </root>
