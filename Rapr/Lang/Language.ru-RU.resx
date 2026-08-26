@@ -132,6 +132,9 @@
   <data name="Button_Select_Old" xml:space="preserve">
     <value>Выделить устаревшие драйверы</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Выделить неиспользуемые драйверы</value>
+  </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Форсированное удаление</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Выделить устаревшие драйверы</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Выделить неиспользуемые драйверы</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Удалить {0} пакета(ов) из хранилища драйверов.</value>
@@ -257,7 +263,7 @@
     <value>Ошибка</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
-    <value>Вы можете найти последнюю версию программы и сведения об изменениях по адресу:
+    <value>Найти последнюю версию программы и сведения об изменениях можно по адресу:
     https://github.com/lostindark/DriverStoreExplorer/releases
 
 Сообщить об ошибке/запросить новую функцию:
@@ -322,7 +328,7 @@
   </data>
   <data name="Export_Failed" xml:space="preserve">
     <value>Ошибка экспорта: {0}</value>
-    <comment>{0} - Placeholder дя сообщения об ошибке</comment>
+    <comment>{0} - Placeholder для сообщения об ошибке</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
     <value>Выбрано драйверов: {0}. Общий размер: {1}.</value>
@@ -372,6 +378,18 @@
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>Загрузить</value>
+  </data>
+  <data name="About_Update" xml:space="preserve">
+    <value>Обновить</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(Загрузка v{0}... {1}%)</value>
+    <comment>{0} - Placeholder для номера версии
+{1} - Placeholder для процента выполнения загрузки</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(Ошибка обновления: {0})</value>
+    <comment>{0} - Placeholder сообщения об ошибке</comment>
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>Сканирование хранилища драйверов...</value>
@@ -504,22 +522,14 @@
     <value>Папка выбрана неправильно</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Location" xml:space="preserve">
-    <value>Выбранная папка должна содержать папку Windows.
+    <value>Выбранная папка должна содержать папку «Windows».
 
-Пожалуйста, выберите корневую папку установки или образа Windows (папку, содержащую папку Windows), а не саму папку Windows.</value>
+Пожалуйста, выберите корневую папку установки или образа Windows (папку, содержащую папку «Windows»), а не саму папку «Windows».</value>
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
-    <value>Старых драйверов для выбора не найдено.</value>
+    <value>Старых драйверов не найдено.</value>
   </data>
-  <data name="About_Update" xml:space="preserve">
-    <value>Обновить</value>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Найдены только драйверы для существующих устройств.</value>
   </data>
-  <data name="Update_Downloading" xml:space="preserve">
-    <value>(Загрузка v{0}... {1}%)</value>
-    <comment>{0} - Placeholder for version number
-{1} - Placeholder for download percentage</comment>
-  </data>
-  <data name="Update_Failed" xml:space="preserve">
-    <value>(Ошибка обновления: {0})</value>
-    <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+</root>
