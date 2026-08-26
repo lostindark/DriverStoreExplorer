@@ -132,6 +132,9 @@
   <data name="Button_Select_Old" xml:space="preserve">
     <value>&amp;Selecionar drivers antigos</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Selecionar drivers não &amp;usados</value>
+  </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>&amp;Forçar exclusão</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Selecionar drivers &amp;antigos</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Selecionar drivers não &amp;usados</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Prestes a excluir {0} pacotes do armazenamento de drivers.</value>
@@ -242,6 +248,9 @@
   </data>
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>Nenhum resultado.</value>
+  </data>
+  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
+    <value>Selecione a pasta do arquivo INF</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>Sobre o {0}</value>
@@ -353,6 +362,15 @@ Licença:
   <data name="About_Download" xml:space="preserve">
     <value>Baixar</value>
   </data>
+  <data name="About_Update" xml:space="preserve">
+    <value>Atualizar</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(Baixando versão {0}... {1}%)</value>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(Falha na atualização: {0})</value>
+  </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>Verificando armazenamento de drivers...</value>
   </data>
@@ -440,9 +458,6 @@ Licença:
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>Digite aqui para pesquisar</value>
   </data>
-  <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
-    <value>Selecione a pasta INF</value>
-  </data>
   <data name="Message_No_Inf_Found" xml:space="preserve">
     <value>Nenhum arquivo INF encontrado na pasta {0}.</value>
   </data>
@@ -478,15 +493,7 @@ Por favor, selecione a pasta raiz de uma instalação ou imagem do Windows (a pa
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Nenhum driver antigo encontrado para selecionar.</value>
   </data>
-  <data name="About_Update" xml:space="preserve">
-    <value>Atualizar</value>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Nenhum driver sem dispositivo existente foi encontrado.</value>
   </data>
-  <data name="Update_Downloading" xml:space="preserve">
-    <value>(Baixando v{0}... {1}%)</value>
-    <comment>{0} - Placeholder for version number
-{1} - Placeholder for download percentage</comment>
-  </data>
-  <data name="Update_Failed" xml:space="preserve">
-    <value>(Falha na atualização: {0})</value>
-    <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+</root>
