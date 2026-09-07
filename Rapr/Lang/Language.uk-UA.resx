@@ -530,6 +530,6 @@
     <value>Старих драйверів для вибору не знайдено.</value>
   </data>
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
-    <value>Не знайдено драйверів без наявного пристрою.</value>
+    <value>Знайдено драйвери лише для наявного пристрою.</value>
   </data>
   </root>
