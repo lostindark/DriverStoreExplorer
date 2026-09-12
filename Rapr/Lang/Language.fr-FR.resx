@@ -132,6 +132,9 @@
   <data name="Button_Select_Old" xml:space="preserve">
     <value>&amp;Sélectionner les pilotes obsolètes</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Sélectionner le(s) pilote(s) in&amp;utilisé(s)</value>
+  </data> 
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Forcer la suppressio&amp;n</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Sélectionner les pilotes &amp;obsolètes</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Sélectionner le(s) pilote(s) in&amp;utilisé(s)</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Sur le point de supprimer {0} packages du magasin de pilotes.</value>
@@ -522,5 +528,8 @@ Veuillez sélectionner le répertoire racine d'une installation ou d'une image W
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Aucun pilote obsolète n'a été trouvé pour être sélectionné.</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Aucun pilote sans appareil existant n'a été trouvé.</value>
   </data>
 </root>
