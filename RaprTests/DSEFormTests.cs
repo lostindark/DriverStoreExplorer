@@ -17,6 +17,64 @@ namespace Rapr.Tests
     public class DSEFormTests
     {
         [TestMethod]
+        public void PendingSelectionUpdateCannotUnlockARunningOperation()
+        {
+            WithOperationForm((form, list) =>
+            {
+                SetField(form, "driverStore", new NativeDriverStore());
+                var driver = CreateDriver("driver.inf", 1);
+                list.SetObjects(new[] { driver });
+                list.CheckedObjects = new[] { driver };
+
+                Invoke(form, "StartOperation");
+                Invoke(form, "UpdateCheckedItemSize");
+
+                foreach (string name in new[] { "buttonDeleteDriver", "buttonExportDrivers", "cbForceDeletion", "exportSelectedDriverListToolStripMenuItem" })
+                {
+                    Assert.IsFalse(IsActionEnabled(form, name), name);
+                }
+
+                var opening = new System.ComponentModel.CancelEventArgs();
+                Invoke(form, "ContextMenuStrip_Opening", null, opening);
+                Assert.IsTrue(opening.Cancel);
+
+                Invoke(form, "EndOperation");
+
+                foreach (string name in new[] { "buttonDeleteDriver", "buttonExportDrivers", "cbForceDeletion", "exportSelectedDriverListToolStripMenuItem" })
+                {
+                    Assert.IsTrue(IsActionEnabled(form, name), name);
+                }
+            });
+        }
+
+        [TestMethod]
+        public void SelectionUpdateDoesNotEnableUnsupportedOfflineActions()
+        {
+            WithOperationForm((form, list) =>
+            {
+                SetField(form, "driverStore", new DismUtil(@"C:\ReviewImage"));
+                var driver = CreateDriver("driver.inf", 1);
+                list.SetObjects(new[] { driver });
+                list.CheckedObjects = new[] { driver };
+
+                Invoke(form, "UpdateCheckedItemSize");
+
+                Assert.IsTrue(IsActionEnabled(form, "buttonDeleteDriver"));
+                Assert.IsFalse(IsActionEnabled(form, "cbForceDeletion"));
+                Assert.IsFalse(IsActionEnabled(form, "buttonExportDrivers"));
+
+                Invoke(form, "EndOperation");
+
+                Assert.IsFalse(IsActionEnabled(form, "buttonSelectOldDrivers"));
+                Assert.IsFalse(IsActionEnabled(form, "buttonSelectUnusedDrivers"));
+
+                SetField(form, "driverStore", new PnpUtil());
+                Invoke(form, "EndOperation");
+                Assert.IsFalse(IsActionEnabled(form, "buttonExportAllDrivers"));
+            });
+        }
+
+        [TestMethod]
         [DataRow("CtxMenuSelectOldDrivers_Click")]
         [DataRow("CtxMenuSelectUnusedDrivers_Click")]
         public void CleanupSelectionClearsStaleChecksWhenNoCandidatesExist(string handler)
@@ -111,6 +169,43 @@ namespace Rapr.Tests
         private static void Invoke(DSEForm form, string name, params object[] arguments)
         {
             typeof(DSEForm).GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic).Invoke(form, arguments);
+        }
+
+        private static void WithOperationForm(Action<DSEForm, MyObjectListView> test)
+        {
+            WithSelectionForm((form, list) =>
+            {
+                var controls = new List<IDisposable>();
+
+                try
+                {
+                    foreach (var field in typeof(DSEForm).GetFields(BindingFlags.Instance | BindingFlags.NonPublic))
+                    {
+                        if (field.GetValue(form) == null
+                            && (typeof(Control).IsAssignableFrom(field.FieldType) || typeof(ToolStripItem).IsAssignableFrom(field.FieldType)))
+                        {
+                            var control = Activator.CreateInstance(field.FieldType);
+                            field.SetValue(form, control);
+                            controls.Add((IDisposable)control);
+                        }
+                    }
+
+                    test(form, list);
+                }
+                finally
+                {
+                    foreach (var control in controls)
+                    {
+                        control.Dispose();
+                    }
+                }
+            });
+        }
+
+        private static bool IsActionEnabled(DSEForm form, string name)
+        {
+            var action = typeof(DSEForm).GetField(name, BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+            return action is Control control ? control.Enabled : ((ToolStripItem)action).Enabled;
         }
     }
 }

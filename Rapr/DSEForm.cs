@@ -23,7 +23,7 @@ using Rapr.Lang;
 using Rapr.Properties;
 using Rapr.Utils;
 
-using Timer = System.Threading.Timer;
+using Timer = System.Windows.Forms.Timer;
 
 namespace Rapr
 {
@@ -32,6 +32,7 @@ namespace Rapr
         private IDriverStore driverStore;
         private Color savedBackColor;
         private Color savedForeColor;
+        private bool operationInProgress;
 
         private HashSet<DriverStoreEntry> driversWithNewerDate = new HashSet<DriverStoreEntry>();
 
@@ -53,9 +54,8 @@ namespace Rapr
 
         private readonly Timer UpdateCheckedItemSizeTimer;
         private Timer searchDebounceTimer;
-        private const long RefreshTime = Timeout.Infinite;
-        private const long Delay = 100;
-        private const long SearchDebounceDelay = 300; // 0.3 seconds
+        private const int Delay = 100;
+        private const int SearchDebounceDelay = 300; // 0.3 seconds
 
         public DSEForm()
         {
@@ -126,8 +126,21 @@ namespace Rapr
  
             this.UpdateDriverStore(DriverStoreFactory.CreateOnlineDriverStore());
 
-            this.UpdateCheckedItemSizeTimer = new Timer(x => this.BeginInvoke((Action)(() => this.UpdateCheckedItemSize())));
-            this.searchDebounceTimer = new Timer(x => this.BeginInvoke((Action)(() => this.UpdateSearchFilter())));
+            this.UpdateCheckedItemSizeTimer = new Timer { Interval = Delay };
+            this.UpdateCheckedItemSizeTimer.Tick += (sender, e) =>
+            {
+                this.UpdateCheckedItemSizeTimer.Stop();
+                this.UpdateCheckedItemSize();
+            };
+            this.searchDebounceTimer = new Timer { Interval = SearchDebounceDelay };
+            this.searchDebounceTimer.Tick += (sender, e) =>
+            {
+                if (!this.operationInProgress)
+                {
+                    this.searchDebounceTimer.Stop();
+                    this.UpdateSearchFilter();
+                }
+            };
         }
 
         /// <summary>
@@ -707,6 +720,12 @@ namespace Rapr
 
         private void ContextMenuStrip_Opening(object sender, CancelEventArgs e)
         {
+            if (this.operationInProgress)
+            {
+                e.Cancel = true;
+                return;
+            }
+
             // Check if there are any entries
             if (this.lstDriverStoreEntries.Objects != null)
             {
@@ -845,7 +864,7 @@ namespace Rapr
 
         private void CtxMenuSelectOldDrivers_Click(object sender, EventArgs e)
         {
-            if (this.driverStore.SupportDeviceNameColumn && this.lstDriverStoreEntries.Objects != null)
+            if (!this.operationInProgress && this.driverStore.SupportDeviceNameColumn && this.lstDriverStoreEntries.Objects != null)
             {
                 var queryEntries = this.lstDriverStoreEntries
                     .Objects
@@ -908,7 +927,7 @@ namespace Rapr
 
         private void CtxMenuSelectUnusedDrivers_Click(object sender, EventArgs e)
         {
-            if (this.driverStore.SupportDeviceNameColumn && this.lstDriverStoreEntries.Objects != null)
+            if (!this.operationInProgress && this.driverStore.SupportDeviceNameColumn && this.lstDriverStoreEntries.Objects != null)
             {
                 var unusedDriversToSelect = this.lstDriverStoreEntries
                     .Objects
@@ -1105,11 +1124,20 @@ namespace Rapr
 
         private void LstDriverStoreEntries_ItemChecked(object sender, ItemCheckedEventArgs e)
         {
-            this.UpdateCheckedItemSizeTimer.Change(Delay, RefreshTime);
+            if (!this.operationInProgress)
+            {
+                this.UpdateCheckedItemSizeTimer?.Stop();
+                this.UpdateCheckedItemSizeTimer?.Start();
+            }
         }
 
         private void UpdateCheckedItemSize()
         {
+            if (this.operationInProgress)
+            {
+                return;
+            }
+
             IList checkedObjects = this.lstDriverStoreEntries.CheckedObjects;
 
             if (checkedObjects?.Count > 0)
@@ -1134,10 +1162,16 @@ namespace Rapr
                 this.ShowStatus(Status.Normal, Language.Status_No_Drivers_Selected);
             }
 
-            this.buttonDeleteDriver.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
-            this.exportSelectedDriverListToolStripMenuItem.Enabled = this.buttonDeleteDriver.Enabled;
-            this.cbForceDeletion.Enabled = this.buttonDeleteDriver.Enabled;
-            this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
+            this.UpdateSelectionActions();
+        }
+
+        private void UpdateSelectionActions()
+        {
+            bool hasCheckedDrivers = !this.operationInProgress && this.lstDriverStoreEntries.CheckedObjects.Count > 0;
+            this.buttonDeleteDriver.Enabled = hasCheckedDrivers;
+            this.exportSelectedDriverListToolStripMenuItem.Enabled = hasCheckedDrivers;
+            this.cbForceDeletion.Enabled = hasCheckedDrivers && this.driverStore.SupportForceDeletion;
+            this.buttonExportDrivers.Enabled = hasCheckedDrivers && this.driverStore.SupportExportDriver;
         }
 
         private void UpdateColumnSize()
@@ -1239,19 +1273,18 @@ namespace Rapr
 
         private void StartOperation()
         {
+            this.operationInProgress = true;
+            this.UpdateCheckedItemSizeTimer?.Stop();
             this.toolStripProgressBar1.Visible = true;
             this.lstDriverStoreEntries.Enabled = false;
             this.buttonEnumerate.Enabled = false;
             this.buttonAddDriver.Enabled = false;
             this.cbAddInstall.Enabled = false;
-            this.buttonDeleteDriver.Enabled = false;
-            this.cbForceDeletion.Enabled = false;
+            this.UpdateSelectionActions();
             this.buttonSelectOldDrivers.Enabled = false;
             this.buttonSelectUnusedDrivers.Enabled = false;
-            this.buttonExportDrivers.Enabled = false;
             this.buttonExportAllDrivers.Enabled = false;
             this.chooseDriverStoreToolStripMenuItem.Enabled = false;
-            this.exportSelectedDriverListToolStripMenuItem.Enabled = false;
             this.exportAllDriverListToolStripMenuItem.Enabled = false;
             this.languageToolStripMenuItem.Enabled = false;
             this.optionsStripMenuItem.Enabled = false;
@@ -1260,19 +1293,17 @@ namespace Rapr
 
         private void EndOperation()
         {
+            this.operationInProgress = false;
             this.toolStripProgressBar1.Visible = false;
             this.lstDriverStoreEntries.Enabled = true;
             this.buttonEnumerate.Enabled = true;
             this.buttonAddDriver.Enabled = true;
             this.cbAddInstall.Enabled = this.driverStore.SupportAddInstall;
-            this.buttonDeleteDriver.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
-            this.cbForceDeletion.Enabled = this.buttonDeleteDriver.Enabled && this.driverStore.SupportForceDeletion;
+            this.UpdateSelectionActions();
             this.buttonSelectOldDrivers.Enabled = this.driverStore.SupportDeviceNameColumn;
             this.buttonSelectUnusedDrivers.Enabled = this.driverStore.SupportDeviceNameColumn;
-            this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
-            this.buttonExportAllDrivers.Enabled = this.lstDriverStoreEntries.Objects != null;
+            this.buttonExportAllDrivers.Enabled = this.driverStore.SupportExportAllDrivers && this.lstDriverStoreEntries.Objects != null;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
-            this.exportSelectedDriverListToolStripMenuItem.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
             this.exportAllDriverListToolStripMenuItem.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.languageToolStripMenuItem.Enabled = true;
             this.optionsStripMenuItem.Enabled = true;
@@ -1506,7 +1537,8 @@ namespace Rapr
         private void TextBoxSearch_TextChanged(object sender, EventArgs e)
         {
             // Reset the debounce timer
-            this.searchDebounceTimer?.Change(SearchDebounceDelay, Timeout.Infinite);
+            this.searchDebounceTimer?.Stop();
+            this.searchDebounceTimer?.Start();
         }
 
         private void UpdateSearchFilter()
