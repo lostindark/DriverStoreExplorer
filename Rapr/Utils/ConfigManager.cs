@@ -37,50 +37,74 @@ namespace Rapr.Utils
         {
             List<DeviceDriverInfo> deviceDriverInfos = new List<DeviceDriverInfo>();
 
-            int deviceListLength = 0;
-            if (NativeMethods.CM_Get_Device_ID_List_Size(
-                ref deviceListLength,
-                null,
-                0) == ConfigManagerResult.Success)
-            {
-                byte[] buffer = new byte[deviceListLength * sizeof(char) + 2];
-                if (NativeMethods.CM_Get_Device_ID_List(
-                    null,
-                    buffer,
-                    deviceListLength,
-                    CM_GETIDLIST_FILTER.NONE) == ConfigManagerResult.Success)
+            var deviceIds = GetDeviceIds(
+                () =>
                 {
-                    string[] deviceIds = Encoding.Unicode.GetString(buffer).Split(new[] { '\0' }, StringSplitOptions.RemoveEmptyEntries);
+                    int length = 0;
+                    var result = NativeMethods.CM_Get_Device_ID_List_Size(ref length, null, CM_GETIDLIST_FILTER.NONE);
+                    return (result, length);
+                },
+                buffer => NativeMethods.CM_Get_Device_ID_List(null, buffer, buffer.Length / sizeof(char), CM_GETIDLIST_FILTER.NONE));
 
-                    foreach (var deviceId in deviceIds)
+            foreach (var deviceId in deviceIds)
+            {
+                uint devInst = 0;
+                if (NativeMethods.CM_Locate_DevNode(
+                    ref devInst,
+                    deviceId,
+                    CM_LOCATE_DEVNODE_FLAG.CM_LOCATE_DEVNODE_PHANTOM) == ConfigManagerResult.Success)
+                {
+                    try
                     {
-                        uint devInst = 0;
-                        if (NativeMethods.CM_Locate_DevNode(
-                            ref devInst,
-                            deviceId,
-                            CM_LOCATE_DEVNODE_FLAG.CM_LOCATE_DEVNODE_PHANTOM) == ConfigManagerResult.Success)
-                        {
-                            try
-                            {
-                                deviceDriverInfos.Add(new DeviceDriverInfo(
-                                    GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_InstanceId),
-                                    GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_FriendlyName)
-                                        ?? GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DeviceDesc),
-                                    GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DriverInfPath),
-                                    GetDevNodeProperty<DateTime>(devInst, DeviceHelper.DEVPKEY_Device_DriverDate),
-                                    GetDevNodeProperty<Version>(devInst, DeviceHelper.DEVPKEY_Device_DriverVersion),
-                                    IsDevicePresent(devInst),
-                                    GetDevNodeProperty<string[]>(devInst, DeviceHelper.DEVPKEY_Device_DriverExtendedInfs)));
-                            }
-                            catch (Win32Exception)
-                            {
-                            }
-                        }
+                        deviceDriverInfos.Add(new DeviceDriverInfo(
+                            GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_InstanceId),
+                            GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_FriendlyName)
+                                ?? GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DeviceDesc),
+                            GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DriverInfPath),
+                            GetDevNodeProperty<DateTime>(devInst, DeviceHelper.DEVPKEY_Device_DriverDate),
+                            GetDevNodeProperty<Version>(devInst, DeviceHelper.DEVPKEY_Device_DriverVersion),
+                            IsDevicePresent(devInst),
+                            GetDevNodeProperty<string[]>(devInst, DeviceHelper.DEVPKEY_Device_DriverExtendedInfs)));
+                    }
+                    catch (Win32Exception)
+                    {
                     }
                 }
             }
 
             return deviceDriverInfos;
+        }
+
+        private static string[] GetDeviceIds(
+            Func<(ConfigManagerResult Result, int Length)> getSize,
+            Func<byte[], ConfigManagerResult> getList)
+        {
+            ConfigManagerResult result = ConfigManagerResult.Failure;
+
+            // A device can arrive between querying the list size and retrieving it.
+            for (int attempt = 0; attempt < 3; attempt++)
+            {
+                var size = getSize();
+                result = size.Result;
+                if (result != ConfigManagerResult.Success)
+                {
+                    break;
+                }
+
+                byte[] buffer = new byte[checked(size.Length * sizeof(char))];
+                result = getList(buffer);
+                if (result == ConfigManagerResult.Success)
+                {
+                    return Encoding.Unicode.GetString(buffer).Split(new[] { '\0' }, StringSplitOptions.RemoveEmptyEntries);
+                }
+
+                if (result != ConfigManagerResult.BufferSmall)
+                {
+                    break;
+                }
+            }
+
+            throw new Win32Exception((int)NativeMethods.CM_MapCrToWin32Err(result, 31));
         }
 
         private static bool? IsDevicePresent(uint devInst)
@@ -266,6 +290,9 @@ namespace Rapr.Utils
         /// </summary>
         internal static class NativeMethods
         {
+            [DllImport("CfgMgr32.dll")]
+            internal static extern uint CM_MapCrToWin32Err(ConfigManagerResult result, uint defaultError);
+
             [DllImport("CfgMgr32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
             internal static extern ConfigManagerResult CM_Get_Class_Property(
                 ref Guid classGUID,
