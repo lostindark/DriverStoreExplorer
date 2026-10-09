@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -11,6 +12,20 @@ namespace Rapr.Tests.Utils
     [TestClass()]
     public class PnpUtilTests
     {
+        [TestMethod]
+        [DataRow(false, @"C:\Driver packages\Example Driver.inf", "/a \"Example Driver.inf\"")]
+        [DataRow(true, @"C:\Driver packages\Example Driver.inf", "/i /a \"Example Driver.inf\"")]
+        [DataRow(false, @"C:\Drivers\driver.inf", "/a \"driver.inf\"")]
+        [DataRow(true, @"C:\Drivers\driver.inf", "/i /a \"driver.inf\"")]
+        public void AddArgumentsKeepTheInfFilenameAsOneArgument(bool install, string path, string expectedArguments)
+        {
+            var getArguments = (Func<string, bool, string>)typeof(PnpUtil)
+                .GetMethod("GetAddArguments", BindingFlags.Static | BindingFlags.NonPublic)
+                .CreateDelegate(typeof(Func<string, bool, string>));
+
+            Assert.AreEqual(expectedArguments, getArguments(path, install));
+        }
+
         private const string EnglishPnpUtilEnumerateOutput = @"Microsoft PnP Utility
 
 Published name :            oem4.inf

@@ -281,6 +281,11 @@ namespace Rapr.Utils
         }
         #endregion
 
+        private static string GetAddArguments(string infName, bool install)
+        {
+            return (install ? "/i /a " : "/a ") + $"\"{Path.GetFileName(infName)}\"";
+        }
+
         private static bool PnpUtilHelper(PnpUtilOption option, string infName, ref string output)
         {
             bool retVal = true;
@@ -317,14 +322,14 @@ namespace Rapr.Utils
                 case PnpUtilOption.Add:
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
-                    start.Arguments = "/a " + Path.GetFileName(infName);
+                    start.Arguments = GetAddArguments(infName, install: false);
                     Trace.TraceInformation($"[Add] workDir = {start.WorkingDirectory}, arguments = {start.Arguments}");
                     break;
 
                 case PnpUtilOption.AddInstall:
                     fDebugPrintOutput = true;
                     start.WorkingDirectory = Path.GetDirectoryName(infName);
-                    start.Arguments = "/i /a " + Path.GetFileName(infName);
+                    start.Arguments = GetAddArguments(infName, install: true);
                     Trace.TraceInformation($"[AddInstall] workDir = {start.WorkingDirectory}, arguments = {start.Arguments}");
                     break;
             }
