@@ -75,6 +75,8 @@ Driver Store Explorer (RAPR) is a powerful tool for viewing, managing, and clean
 
 The in-app updater validates the replacement executable before changing the installation. If you rename the portable executable, updates preserve that filename and its accompanying `.exe.config` filename.
 
+When the application folder is writable, settings are stored alongside the executable. Existing per-user preferences are imported before switching to a new portable configuration; older configurations are retained if migration or save verification fails.
+
 ### Option 2: Install via Winget (Recommended)
 ```powershell
 winget install lostindark.DriverStoreExplorer

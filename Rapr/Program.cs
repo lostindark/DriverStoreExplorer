@@ -6,8 +6,6 @@ using System.Reflection;
 using System.Security;
 using System.Windows.Forms;
 
-using Bluegrams.Application;
-
 using Rapr.Lang;
 using Rapr.Utils;
 
@@ -95,26 +93,29 @@ namespace Rapr
             {
                 string settingFile = $"{Application.ProductName}.user.config";
                 string applicationFolderPath = DSEFormHelper.GetApplicationFolder();
+                bool migrationSucceeded = false;
+                bool portableSettingsFailed = false;
 
                 try
                 {
-                    // Test if we can open filePath as Read/Write
-                    using (FileStream fs = new FileStream(Path.Combine(applicationFolderPath, settingFile), FileMode.OpenOrCreate, FileAccess.ReadWrite))
+                    migrationSucceeded = SettingsMigration.UsePortableSettings(
+                        Properties.Settings.Default, applicationFolderPath, settingFile, hasDriverStoreOption =>
+                        {
+                            if (!hasDriverStoreOption)
+                            {
+                                DriverStoreFactory.MigrateDriverStoreSettings();
+                            }
+                        });
+                }
+                catch (Exception ex) when (ex is SecurityException || ex is UnauthorizedAccessException
+                    || ex is IOException || ex is ConfigurationException || ex is System.Xml.XmlException)
+                {
+                    portableSettingsFailed = true;
+                    Trace.TraceWarning($"Portable settings could not be initialized; retaining per-user settings: {ex}");
+                    if (!(ex is SecurityException) && !(ex is UnauthorizedAccessException) && !(ex is IOException))
                     {
+                        MessageBox.Show(ex.Message, Language.Product_Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-
-                    PortableSettingsProvider.SettingsFileName = settingFile;
-                    PortableSettingsProvider.SettingsDirectory = applicationFolderPath;
-                    PortableSettingsProvider.ApplyProvider(Properties.Settings.Default);
-                }
-                catch (SecurityException)
-                {
-                }
-                catch (UnauthorizedAccessException)
-                {
-                }
-                catch (IOException)
-                {
                 }
 
                 if (Properties.Settings.Default.UpgradeRequired)
@@ -123,11 +124,16 @@ namespace Rapr
                     {
                         // Upgrade settings from previous version
                         Properties.Settings.Default.Upgrade();
-                        DriverStoreFactory.MigrateDriverStoreSettings();
+                        _ = Properties.Settings.Default.DriverStoreOption;
+                        if (Properties.Settings.Default.PropertyValues[nameof(Properties.Settings.DriverStoreOption)].UsingDefaultValue)
+                        {
+                            DriverStoreFactory.MigrateDriverStoreSettings();
+                        }
 
                         // Mark upgrade as completed
                         Properties.Settings.Default.UpgradeRequired = false;
-                        Properties.Settings.Default.Save();
+                        SettingsMigration.SaveAndVerify(Properties.Settings.Default);
+                        migrationSucceeded = true;
 
                         Trace.TraceInformation("Settings migration completed successfully");
                     }
@@ -136,11 +142,12 @@ namespace Rapr
                         // Log the error but don't fail the application startup
                         Trace.TraceError($"Settings migration failed: {ex}");
 
-                        // Still mark upgrade as completed to avoid repeated attempts
-                        Properties.Settings.Default.UpgradeRequired = false;
-                        Properties.Settings.Default.Save();
+                        Properties.Settings.Default.UpgradeRequired = true;
                     }
+                }
 
+                if (migrationSucceeded && !portableSettingsFailed)
+                {
                     try
                     {
                         CleanUpOldConfig();
