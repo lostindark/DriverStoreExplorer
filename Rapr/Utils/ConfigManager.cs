@@ -20,10 +20,10 @@ namespace Rapr.Utils
             foreach (var driverStoreEntry in driverStoreEntries)
             {
                 var deviceInfo = devicesInfo.OrderByDescending(d => d.IsPresent)?.FirstOrDefault(e =>
-                    string.Equals(e.DriverInf, driverStoreEntry.DriverPublishedName, StringComparison.OrdinalIgnoreCase)
-                    && e.DriverVersion == driverStoreEntry.DriverVersion
-                    && e.DriverDate == driverStoreEntry.DriverDate
-                    || driverStoreEntry.DriverExtensionId != default && e.ExtendedInfs?.Any(extInf => string.Equals(extInf, driverStoreEntry.DriverPublishedName, StringComparison.OrdinalIgnoreCase)) == true);
+                    (string.Equals(e.DriverInf, driverStoreEntry.DriverPublishedName, StringComparison.OrdinalIgnoreCase)
+                        && e.DriverVersion == driverStoreEntry.DriverVersion
+                        && e.DriverDate == driverStoreEntry.DriverDate)
+                    || e.ExtendedInfs?.Any(extInf => string.Equals(extInf, driverStoreEntry.DriverPublishedName, StringComparison.OrdinalIgnoreCase)) == true);
 
                 driverStoreEntry.DeviceId = deviceInfo?.DeviceId;
                 driverStoreEntry.DeviceName = deviceInfo?.DeviceName;
