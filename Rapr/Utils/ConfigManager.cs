@@ -140,7 +140,7 @@ namespace Rapr.Utils
             try
             {
                 if (NativeMethods.CM_Get_Class_Property(
-                    classGuid,
+                    ref classGuid,
                     ref propertyKey,
                     out DevPropType propertyType,
                     propertyBufferPtr,
@@ -268,7 +268,7 @@ namespace Rapr.Utils
         {
             [DllImport("CfgMgr32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
             internal static extern ConfigManagerResult CM_Get_Class_Property(
-                Guid classGUID,
+                ref Guid classGUID,
                 ref DevPropKey propertyKey,
                 out DevPropType propertyType,
                 IntPtr buffer,

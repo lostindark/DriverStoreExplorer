@@ -333,7 +333,7 @@ namespace Rapr.Utils
                 if (NativeMethods.SetupDiGetDeviceProperty(
                     deviceInfoSet,
                     ref deviceInfo,
-                    propertyKey,
+                    ref propertyKey,
                     out DevPropType propertyType,
                     propertyBufferPtr,
                     BufferSize,
@@ -683,7 +683,7 @@ namespace Rapr.Utils
             internal static extern bool SetupDiGetDeviceProperty(
                 IntPtr deviceInfoSet,
                 ref SP_DEVINFO_DATA deviceInfoData,
-                DevPropKey propertyKey,
+                ref DevPropKey propertyKey,
                 out DevPropType propertyType,
                 IntPtr propertyBuffer,
                 int propertyBufferSize,
