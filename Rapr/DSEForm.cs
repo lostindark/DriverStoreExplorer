@@ -211,6 +211,10 @@ namespace Rapr
             this.buttonExportAllDrivers.Visible = driverStore.SupportExportAllDrivers;
             this.deviceNameColumn.IsVisible = driverStore.SupportForceDeletion;
             this.ctxMenuExportDriver.Visible = driverStore.SupportExportDriver;
+            this.buttonSelectOldDrivers.Enabled = driverStore.SupportDeviceNameColumn;
+            this.buttonSelectUnusedDrivers.Enabled = driverStore.SupportDeviceNameColumn;
+            this.ctxMenuSelectOldDrivers.Enabled = driverStore.SupportDeviceNameColumn;
+            this.ctxMenuSelectUnusedDrivers.Enabled = driverStore.SupportDeviceNameColumn;
 
             switch (driverStore.Type)
             {
@@ -707,8 +711,8 @@ namespace Rapr
             if (this.lstDriverStoreEntries.Objects != null)
             {
                 this.ctxMenuSelectAll.Enabled = true;
-                this.ctxMenuSelectOldDrivers.Enabled = true;
-                this.ctxMenuSelectUnusedDrivers.Enabled = true;
+                this.ctxMenuSelectOldDrivers.Enabled = this.driverStore.SupportDeviceNameColumn;
+                this.ctxMenuSelectUnusedDrivers.Enabled = this.driverStore.SupportDeviceNameColumn;
                 this.ctxMenuInvertSelection.Enabled = true;
 
                 if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0)
@@ -841,7 +845,7 @@ namespace Rapr
 
         private void CtxMenuSelectOldDrivers_Click(object sender, EventArgs e)
         {
-            if (this.lstDriverStoreEntries.Objects != null)
+            if (this.driverStore.SupportDeviceNameColumn && this.lstDriverStoreEntries.Objects != null)
             {
                 var queryEntries = this.lstDriverStoreEntries
                     .Objects
@@ -904,7 +908,7 @@ namespace Rapr
 
         private void CtxMenuSelectUnusedDrivers_Click(object sender, EventArgs e)
         {
-            if (this.lstDriverStoreEntries.Objects != null)
+            if (this.driverStore.SupportDeviceNameColumn && this.lstDriverStoreEntries.Objects != null)
             {
                 var unusedDriversToSelect = this.lstDriverStoreEntries
                     .Objects
@@ -1265,8 +1269,8 @@ namespace Rapr
             this.cbAddInstall.Enabled = this.driverStore.SupportAddInstall;
             this.buttonDeleteDriver.Enabled = this.lstDriverStoreEntries.CheckedObjects.Count > 0;
             this.cbForceDeletion.Enabled = this.buttonDeleteDriver.Enabled && this.driverStore.SupportForceDeletion;
-            this.buttonSelectOldDrivers.Enabled = true;
-            this.buttonSelectUnusedDrivers.Enabled = true;
+            this.buttonSelectOldDrivers.Enabled = this.driverStore.SupportDeviceNameColumn;
+            this.buttonSelectUnusedDrivers.Enabled = this.driverStore.SupportDeviceNameColumn;
             this.buttonExportDrivers.Enabled = this.buttonDeleteDriver.Enabled;
             this.buttonExportAllDrivers.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;

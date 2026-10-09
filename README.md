@@ -51,6 +51,7 @@ Driver Store Explorer (RAPR) is a powerful tool for viewing, managing, and clean
 
 - **Old drivers:** Drivers are considered as "old" when newer versions exist on the system. Removing these can help free up space and reduce clutter, but may impact compatibility with certain devices or configurations. Consider backing up drivers before removal. The "Select Old Driver(s)" can automatically identify old drivers, though results may vary.
 - **Grayed Device Names:** Drivers shown with device names in gray are associated with devices that are not currently connected (such as cameras, phones, or external drives). If you remove these drivers, you will need to reinstall them if you reconnect the device in the future.
+- **Offline Cleanup:** Automatic old/unused driver selection is disabled for offline stores because device usage cannot be established reliably. Drivers can still be selected manually for removal.
 - **Force Deletion:** Use this option if you need to delete a driver that is currently in use. Note: This option may not work for print drivers.
 ---
 
