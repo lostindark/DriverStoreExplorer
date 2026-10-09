@@ -16,7 +16,7 @@ dotnet test RaprTests\RaprTests.csproj
 dotnet test RaprTests\RaprTests.csproj --filter "FullyQualifiedName~TestMethodName"
 ```
 
-The CI workflow (`.github/workflows/ci.yml`) builds with MSBuild on `windows-latest`. There is no separate lint step — code analysis is handled by the `Microsoft.CodeAnalysis.NetAnalyzers` NuGet package at build time.
+The CI workflow (`.github/workflows/ci.yml`) builds with MSBuild on `windows-latest`, then executes the tests and rejects runs with zero executed tests. There is no separate lint step — code analysis is handled by the `Microsoft.CodeAnalysis.NetAnalyzers` NuGet package at build time.
 
 ## Architecture
 

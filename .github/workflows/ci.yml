@@ -71,6 +71,16 @@ jobs:
       - name: Build
         run: msbuild Rapr.sln /p:Configuration=Release /p:Platform="Any CPU" /v:minimal
 
+      - name: Run tests
+        shell: pwsh
+        run: |
+          dotnet test RaprTests\RaprTests.csproj --configuration Release --no-build --no-restore --logger "trx;LogFileName=tests.trx" --results-directory TestResults
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          [xml]$results = Get-Content TestResults\tests.trx
+          if ([int]$results.TestRun.ResultSummary.Counters.executed -eq 0) {
+            throw "No tests were executed."
+          }
+
       - name: Upload build artifact
         uses: actions/upload-artifact@v7
         with:
