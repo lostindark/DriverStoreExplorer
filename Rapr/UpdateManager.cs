@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -137,25 +138,67 @@ namespace Rapr
                 sourceDir = subDirs[0];
             }
 
-            string appDir = Path.GetFullPath(DSEFormHelper.GetApplicationFolder());
-            string currentExePath = Assembly.GetExecutingAssembly().Location;
+            InstallUpdate(sourceDir, Assembly.GetExecutingAssembly().Location);
 
-            // Validate all extracted file paths before making any changes
+            // Clean up temp folder
+            try { Directory.Delete(tempBaseDir, true); } catch { }
+        }
+
+        private static void InstallUpdate(string sourceDir, string currentExePath)
+        {
+            sourceDir = Path.GetFullPath(sourceDir).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar);
+            currentExePath = Path.GetFullPath(currentExePath);
+            string appDir = Path.GetDirectoryName(currentExePath);
+            string appDirPrefix = appDir.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar) + Path.DirectorySeparatorChar;
+            string sourceExePath = Path.Combine(sourceDir, typeof(UpdateManager).Assembly.GetName().Name + ".exe");
+            string oldExePath = currentExePath + ".old";
+
+            if (!File.Exists(sourceExePath))
+            {
+                throw new FileNotFoundException(null, sourceExePath);
+            }
+
+            if (AssemblyName.GetAssemblyName(sourceExePath).Name != typeof(UpdateManager).Assembly.GetName().Name)
+            {
+                throw new InvalidDataException();
+            }
+
+            string GetDestinationPath(string file)
+            {
+                if (file.Equals(sourceExePath, StringComparison.OrdinalIgnoreCase))
+                {
+                    return currentExePath;
+                }
+
+                if (file.Equals(sourceExePath + ".config", StringComparison.OrdinalIgnoreCase))
+                {
+                    return currentExePath + ".config";
+                }
+
+                return Path.GetFullPath(Path.Combine(appDir, file.Substring(sourceDir.Length + 1)));
+            }
+
             var filesToCopy = Directory.GetFiles(sourceDir, "*", SearchOption.AllDirectories);
+            var destinations = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+
+            // Validate the replacement and every destination before renaming the running executable.
             foreach (var file in filesToCopy)
             {
                 string relativePath = file.Substring(sourceDir.Length + 1);
-                string destPath = Path.GetFullPath(Path.Combine(appDir, relativePath));
+                string destPath = GetDestinationPath(file);
 
-                if (!destPath.StartsWith(appDir + Path.DirectorySeparatorChar, StringComparison.OrdinalIgnoreCase)
-                    && !destPath.Equals(appDir, StringComparison.OrdinalIgnoreCase))
+                if (!destPath.StartsWith(appDirPrefix, StringComparison.OrdinalIgnoreCase))
                 {
                     throw new InvalidOperationException($"Update package contains a file that escapes the application directory: {relativePath}");
+                }
+
+                if (!destinations.Add(destPath) || destPath.Equals(oldExePath, StringComparison.OrdinalIgnoreCase))
+                {
+                    throw new InvalidDataException();
                 }
             }
 
             // Rename the running exe — Windows allows renaming a running executable
-            string oldExePath = currentExePath + ".old";
             if (File.Exists(oldExePath))
             {
                 File.Delete(oldExePath);
@@ -168,8 +211,7 @@ namespace Rapr
                 // Copy all files from extracted folder to app directory
                 foreach (var file in filesToCopy)
                 {
-                    string relativePath = file.Substring(sourceDir.Length + 1);
-                    string destPath = Path.Combine(appDir, relativePath);
+                    string destPath = GetDestinationPath(file);
                     string destDir = Path.GetDirectoryName(destPath);
 
                     if (!Directory.Exists(destDir))
@@ -191,9 +233,6 @@ namespace Rapr
                 File.Move(oldExePath, currentExePath);
                 throw;
             }
-
-            // Clean up temp folder
-            try { Directory.Delete(tempBaseDir, true); } catch { }
         }
 
         private static bool IsGitHubUrl(Uri url)

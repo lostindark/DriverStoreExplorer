@@ -73,6 +73,8 @@ Driver Store Explorer (RAPR) is a powerful tool for viewing, managing, and clean
 3. Extract the files to a folder of your choice
 4. Run `Rapr.exe`
 
+The in-app updater validates the replacement executable before changing the installation. If you rename the portable executable, updates preserve that filename and its accompanying `.exe.config` filename.
+
 ### Option 2: Install via Winget (Recommended)
 ```powershell
 winget install lostindark.DriverStoreExplorer
