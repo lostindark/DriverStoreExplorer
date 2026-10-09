@@ -13,6 +13,7 @@
     <PackageReference Include="MSTest.TestFramework" Version="4.5.1" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <ProjectReference Include="..\Rapr\Rapr.csproj" />
   </ItemGroup>
 </Project>

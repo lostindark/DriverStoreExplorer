@@ -39,7 +39,7 @@ namespace Rapr
                     using (StreamWriter fileWriter = new StreamWriter(fileStream, new UTF8Encoding(false)))
                     {
                         // Write the header once
-                        string headerLine = string.Join(csvDelimiter, DriverStoreEntry.GetFieldNames());
+                        string headerLine = string.Join(csvDelimiter, Sanitize(DriverStoreEntry.GetFieldNames(), csvDelimiter));
                         fileWriter.WriteLine(headerLine);
 
                         // Write the values
@@ -68,9 +68,11 @@ namespace Rapr
                 }
 
                 if (values[i].Contains(csvDelimiter)
-                    || values[i].Contains(CsvQuote))
+                    || values[i].Contains(CsvQuote)
+                    || values[i].Contains("\r")
+                    || values[i].Contains("\n"))
                 {
-                    values[i] = CsvQuote + values[i].Replace(CsvQuote, "\\\"") + CsvQuote;
+                    values[i] = CsvQuote + values[i].Replace(CsvQuote, CsvQuote + CsvQuote) + CsvQuote;
                 }
             }
 
