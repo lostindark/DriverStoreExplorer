@@ -892,13 +892,11 @@ namespace Rapr
                     }
                 }
 
+                this.lstDriverStoreEntries.CheckedObjects = oldDriversToSelect;
+
                 if (oldDriversToSelect.Length == 0)
                 {
                     this.ShowStatus(Status.Warning, Language.Message_No_Old_Drivers_Found);
-                }
-                else
-                {
-                    this.lstDriverStoreEntries.CheckedObjects = oldDriversToSelect;
                 }
             }
         }
@@ -918,13 +916,11 @@ namespace Rapr
                     .Where(entry => string.IsNullOrEmpty(entry.DeviceName))
                     .ToArray();
 
+                this.lstDriverStoreEntries.CheckedObjects = unusedDriversToSelect;
+
                 if (unusedDriversToSelect.Length == 0)
                 {
                     this.ShowStatus(Status.Warning, Language.Message_No_Unused_Drivers_Found);
-                }
-                else
-                {
-                    this.lstDriverStoreEntries.CheckedObjects = unusedDriversToSelect;
                 }
             }
         }

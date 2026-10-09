@@ -17,6 +17,43 @@ namespace Rapr.Tests
     public class DSEFormTests
     {
         [TestMethod]
+        [DataRow("CtxMenuSelectOldDrivers_Click")]
+        [DataRow("CtxMenuSelectUnusedDrivers_Click")]
+        public void CleanupSelectionClearsStaleChecksWhenNoCandidatesExist(string handler)
+        {
+            WithSelectionForm((form, list) =>
+            {
+                var active = CreateDriver("active.inf", 1);
+                active.DeviceName = "Active device";
+                list.SetObjects(new[] { active });
+                list.CheckedObjects = new[] { active };
+
+                Invoke(form, handler, null, EventArgs.Empty);
+
+                Assert.AreEqual(0, list.CheckedObjects.Count);
+            });
+        }
+
+        [TestMethod]
+        [DataRow("CtxMenuSelectOldDrivers_Click")]
+        [DataRow("CtxMenuSelectUnusedDrivers_Click")]
+        public void CleanupSelectionReplacesStaleChecksWithTheMatchingCandidates(string handler)
+        {
+            WithSelectionForm((form, list) =>
+            {
+                var active = CreateDriver("driver.inf", 2);
+                active.DeviceName = "Active device";
+                var unused = CreateDriver("driver.inf", 1);
+                list.SetObjects(new[] { active, unused });
+                list.CheckedObjects = new[] { active };
+
+                Invoke(form, handler, null, EventArgs.Empty);
+
+                CollectionAssert.AreEquivalent(new[] { unused }, list.CheckedObjects.Cast<DriverStoreEntry>().ToArray());
+            });
+        }
+
+        [TestMethod]
         [DataRow("[Unknown]")]
         [DataRow(null)]
         [DataRow("")]
