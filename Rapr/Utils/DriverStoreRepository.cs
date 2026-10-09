@@ -18,6 +18,8 @@ namespace Rapr.Utils
 
     public class DriverStoreRepository
     {
+        internal const string UnknownInfName = "[Unknown]";
+
         private static readonly Regex DriverStoreRepositoryDirNameRegex = new Regex(@"^(.+\.inf)_.+$", RegexOptions.Compiled);
         private static readonly string SystemRoot = Environment.ExpandEnvironmentVariables("%SystemRoot%");
         private static readonly string SystemRootInf = Path.Combine(SystemRoot, "INF");
@@ -34,7 +36,7 @@ namespace Rapr.Utils
 
         public void FindInfInfo(string infName, out string originalInfName, out string driverFolderLocation, out long estimateSize)
         {
-            originalInfName = "[Unknown]";
+            originalInfName = UnknownInfName;
             driverFolderLocation = string.Empty;
             estimateSize = -1;
 

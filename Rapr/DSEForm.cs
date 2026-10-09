@@ -858,7 +858,9 @@ namespace Rapr
                 }
 
                 var driverGroups = queryEntries
-                    .Where(entry => entry.DriverInfName != "ntprint.inf")
+                    .Where(entry => !string.IsNullOrWhiteSpace(entry.DriverInfName)
+                        && entry.DriverInfName != DriverStoreRepository.UnknownInfName
+                        && entry.DriverInfName != "ntprint.inf")
                     .GroupBy(entry => new { entry.DriverClass, entry.DriverExtensionId, entry.DriverPkgProvider, entry.DriverInfName })
                     .Select(drivers => drivers
                         .GroupBy(entry => new { entry.DriverVersion, entry.DriverDate })
