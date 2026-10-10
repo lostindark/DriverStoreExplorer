@@ -132,6 +132,9 @@
   <data name="Button_Select_Old" xml:space="preserve">
     <value>Wybierz przestarzałe sterowniki</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Wybierz &amp;nieużywane sterowniki</value>
+  </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Wymuś usunięcie</value>
   </data>
@@ -162,9 +165,6 @@
   <data name="Column_Version" xml:space="preserve">
     <value>Wersja sterownika</value>
   </data>
-  <data name="Column_InstallDate" xml:space="preserve">
-    <value>Data Instalacji</value>
-  </data>
   <data name="Context_Delete" xml:space="preserve">
     <value>Usuń</value>
   </data>
@@ -186,6 +186,9 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>Zaznacz przestarzałe sterowniki</value>
   </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Wybierz &amp;nieużywane sterowniki</value>
+  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Zamierzasz usunąć pakiety sterowników {0}.</value>
     <comment>{0} - Placeholder for number of packages</comment>
@@ -202,7 +205,7 @@
     <value>Ta aplikacja nie działa z systemami starszymi niż Windows Vista.</value>
   </data>
   <data name="Message_Sure" xml:space="preserve">
-    <value>Jesteś pewien?</value>
+    <value>Czy na pewno?</value>
   </data>
   <data name="Message_Title_Warning" xml:space="preserve">
     <value>Ostrzeżenie</value>
@@ -217,10 +220,10 @@
     <value>Gotowy</value>
   </data>
   <data name="Status_Packages_Found" xml:space="preserve">
-    <value>Znaleziono {0} pakiet(ów) sterowników</value>
+    <value>Znalezione pakiety sterowników: {0}</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[INFO: Sterownik może być wciąż w użyciu. Użyj funkcji wymuszonego usunięcia]</value>
+    <value>[INFO: sterownik może być wciąż w użyciu. Użyj funkcji wymuszonego usunięcia]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>Pomoc</value>
@@ -238,7 +241,7 @@
     <value>Wyjdź</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>Wyświetl logi</value>
+    <value>Wyświetl dzienniki</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
@@ -294,7 +297,7 @@ Licencja użytkowania:
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>Usunięto {0} pakiet(y/ów) z magazynu sterowników.</value>
+    <value>Usunięte pakiety z magazynu sterowników: {0}.</value>
     <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
@@ -314,7 +317,7 @@ Licencja użytkowania:
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
-    <value>Nie znaleziono pliku log.</value>
+    <value>Nie znaleziono pliku dziennika.</value>
   </data>
   <data name="Message_Error" xml:space="preserve">
     <value>Błąd</value>
@@ -328,7 +331,7 @@ Licencja użytkowania:
     <comment>{0} - Placeholder for error message</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>Wybrano {0} sterownik(i/ów). Rozmiar całkowity: {1}.</value>
+    <value>Wybrane sterowniki: {0}. Rozmiar całkowity: {1}.</value>
     <comment>{0} - Placeholder for number of selected Drivers
 {1} - Placeholder for disk space</comment>
   </data>
@@ -376,6 +379,18 @@ Licencja użytkowania:
   <data name="About_Download" xml:space="preserve">
     <value>Pobierz</value>
   </data>
+  <data name="About_Update" xml:space="preserve">
+    <value>Aktualizuj</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(Pobieranie v{0}... {1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(Aktualizacja nie powiodła się: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>Skanowanie magazynu sterowników...</value>
   </data>
@@ -417,7 +432,7 @@ Licencja użytkowania:
     <comment>{0} - Placeholder for path to inf</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>Eksportuj sterownik(i)</value>
+    <value>Eksportuj sterowniki</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
     <value>Eksportuj sterownik</value>
@@ -457,6 +472,9 @@ Licencja użytkowania:
   </data>
   <data name="Column_Extension_Id" xml:space="preserve">
     <value>Identyfikator rozszerzenia</value>
+  </data>
+  <data name="Column_InstallDate" xml:space="preserve">
+    <value>Data instalacji</value>
   </data>
   <data name="Menu_Options" xml:space="preserve">
     <value>Opcje</value>
@@ -511,15 +529,7 @@ Proszę wybrać katalog główny instalacji lub obrazu Windows (katalog zawieraj
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>Nie znaleziono starych sterowników do wyboru.</value>
   </data>
-  <data name="About_Update" xml:space="preserve">
-    <value>Aktualizuj</value>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Nie znaleziono sterowników dla nieistniejących urządzeń.</value>
   </data>
-  <data name="Update_Downloading" xml:space="preserve">
-    <value>(Pobieranie v{0}... {1}%)</value>
-    <comment>{0} - Placeholder for version number
-{1} - Placeholder for download percentage</comment>
-  </data>
-  <data name="Update_Failed" xml:space="preserve">
-    <value>(Aktualizacja nie powiodła się: {0})</value>
-    <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+</root>
