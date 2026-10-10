@@ -158,10 +158,7 @@ namespace Rapr
                 throw new FileNotFoundException(null, sourceExePath);
             }
 
-            if (AssemblyName.GetAssemblyName(sourceExePath).Name != typeof(UpdateManager).Assembly.GetName().Name)
-            {
-                throw new InvalidDataException();
-            }
+            ValidateUpdateExecutable(sourceExePath);
 
             string GetDestinationPath(string file)
             {
@@ -232,6 +229,49 @@ namespace Rapr
 
                 File.Move(oldExePath, currentExePath);
                 throw;
+            }
+        }
+
+        private static void ValidateUpdateExecutable(string path)
+        {
+            var domain = AppDomain.CreateDomain("Update payload validation");
+            try
+            {
+                var validator = (ExecutableValidator)domain.CreateInstanceFromAndUnwrap(
+                    typeof(UpdateManager).Assembly.Location, typeof(ExecutableValidator).FullName);
+                validator.Validate(path, typeof(UpdateManager).Assembly.GetName().Name);
+            }
+            finally
+            {
+                AppDomain.Unload(domain);
+            }
+        }
+
+        public sealed class ExecutableValidator : MarshalByRefObject
+        {
+            public void Validate(string path, string expectedName)
+            {
+                var assembly = Assembly.ReflectionOnlyLoad(File.ReadAllBytes(path));
+                assembly.ManifestModule.GetPEKind(out PortableExecutableKinds kind, out ImageFileMachine machine);
+                if (assembly.GetName().Name != expectedName
+                    || assembly.EntryPoint == null || !assembly.EntryPoint.IsStatic
+                    || (kind & PortableExecutableKinds.ILOnly) == 0
+                    || (machine != ImageFileMachine.I386 && machine != ImageFileMachine.AMD64)
+                    || (machine == ImageFileMachine.AMD64 && !Environment.Is64BitOperatingSystem))
+                {
+                    throw new InvalidDataException();
+                }
+
+                using (var reader = new BinaryReader(File.OpenRead(path)))
+                {
+                    reader.BaseStream.Position = 0x3c;
+                    int peOffset = reader.ReadInt32();
+                    reader.BaseStream.Position = peOffset + 22;
+                    if ((reader.ReadUInt16() & 0x2000) != 0)
+                    {
+                        throw new InvalidDataException();
+                    }
+                }
             }
         }
 

@@ -1,6 +1,7 @@
 using System;
 using System.IO;
 using System.Reflection;
+using System.Reflection.Emit;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -30,6 +31,23 @@ namespace Rapr.Tests
         public void Cleanup()
         {
             Directory.Delete(this.testDirectory, recursive: true);
+        }
+
+        [TestMethod]
+        public void SameNameLibraryCannotReplaceTheExecutable()
+        {
+            string currentExePath = Path.Combine(this.appDirectory, "Rapr.exe");
+            File.WriteAllText(currentExePath, "original executable");
+            var library = AppDomain.CurrentDomain.DefineDynamicAssembly(
+                new AssemblyName("Rapr"), AssemblyBuilderAccess.Save, this.sourceDirectory);
+            library.DefineDynamicModule("Library", "Rapr.dll");
+            library.Save("Rapr.dll");
+            File.Move(Path.Combine(this.sourceDirectory, "Rapr.dll"), Path.Combine(this.sourceDirectory, "Rapr.exe"));
+
+            Assert.ThrowsExactly<InvalidDataException>(() => InstallUpdate(this.sourceDirectory, currentExePath));
+
+            Assert.AreEqual("original executable", File.ReadAllText(currentExePath));
+            Assert.IsFalse(File.Exists(currentExePath + ".old"));
         }
 
         [TestMethod]
