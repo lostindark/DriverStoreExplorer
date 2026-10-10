@@ -25,7 +25,7 @@ namespace Rapr.Utils
 
             var providers = settings.Providers.Cast<SettingsProvider>().ToArray();
             var propertyProviders = settings.Properties.Cast<SettingsProperty>().ToDictionary(p => p.Name, p => p.Provider);
-            var rollbackValues = CaptureValues(settings);
+            var rollbackValues = hasPortableSettings ? null : CaptureValues(settings);
             string previousDirectory = PortableSettingsProvider.SettingsDirectory;
             string previousFileName = PortableSettingsProvider.SettingsFileName;
             bool pendingUpgrade = !hasPortableSettings && (bool)settings["UpgradeRequired"];
@@ -112,7 +112,10 @@ namespace Rapr.Utils
                 finally
                 {
                     settings.Reload();
-                    RestoreValues(settings, rollbackValues);
+                    if (rollbackValues != null)
+                    {
+                        RestoreValues(settings, rollbackValues);
+                    }
                     if (pendingUpgrade)
                     {
                         settings["UpgradeRequired"] = true;

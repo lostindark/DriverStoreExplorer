@@ -44,6 +44,20 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        public void ExistingPortableSettingsDoNotReadTheUnusedSourceProvider()
+        {
+            UsePortableSettings(CreateSettings(false), this.directory, "portable.config", hasOption => { });
+            var settings = new TestSettings();
+            var provider = (MemorySettingsProvider)settings.Providers["MemorySettingsProvider"];
+            provider.FailReads = true;
+
+            Assert.IsFalse(UsePortableSettings(settings, this.directory, "portable.config", hasOption => Assert.Fail()));
+
+            Assert.AreEqual(CultureInfo.GetCultureInfo("fr-FR"), settings.Language);
+            Assert.AreEqual("PnpUtil", settings.DriverStoreOption);
+        }
+
+        [TestMethod]
         public void GeneratedApplicationSettingsRetainTheirTypedValuesAfterImport()
         {
             var settings = (ApplicationSettingsBase)Activator.CreateInstance(
@@ -242,6 +256,7 @@ namespace Rapr.Tests
 
         public sealed class MemorySettingsProvider : SettingsProvider, IApplicationSettingsProvider
         {
+            public bool FailReads { get; set; }
             public Dictionary<string, object> Values { get; } = new Dictionary<string, object>();
             public Dictionary<string, object> PreviousValues { get; } = new Dictionary<string, object>();
             public override string ApplicationName { get; set; } = "Tests";
@@ -253,6 +268,11 @@ namespace Rapr.Tests
 
             public override SettingsPropertyValueCollection GetPropertyValues(SettingsContext context, SettingsPropertyCollection properties)
             {
+                if (this.FailReads)
+                {
+                    throw new ConfigurationErrorsException("Source configuration cannot be read.");
+                }
+
                 var result = new SettingsPropertyValueCollection();
                 foreach (SettingsProperty property in properties)
                 {
