@@ -11,11 +11,13 @@ on:
 permissions:
   contents: read
   pull-requests: read
-engine:
-  id: copilot
-  # Avoid Responses custom-tool translation in the firewall's compatibility adapter.
-  model: claude-sonnet-4.6
+engine: copilot
 # Recompile with gh-aw v0.89.21 or newer for CLI-compatible isolated proxy authentication.
+sandbox:
+  agent:
+    id: awf
+    # Fixes Chat Completions custom tools incorrectly entering the Responses translator.
+    version: v0.28.27
 timeout-minutes: 10
 network:
   allowed:
