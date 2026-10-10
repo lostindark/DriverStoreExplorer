@@ -253,7 +253,7 @@
     <value>Совпадений не обнаружено.</value>
   </data>
   <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
-    <value>Выберите папку c inf-файлами</value>
+    <value>Выберите папку с inf-файлами</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>О {0}</value>
@@ -516,7 +516,7 @@
     <value>Включать критично важные для загрузки в старые драйверы</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
-    <value>Выберите папку, содержащий папку «Windows» (не саму папку «Windows»)</value>
+    <value>Выберите папку, содержащую папку «Windows» (не саму папку «Windows»)</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
     <value>Папка выбрана неправильно</value>
