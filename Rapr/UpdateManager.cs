@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Net;
@@ -176,6 +177,7 @@ namespace Rapr
             }
 
             var filesToCopy = Directory.GetFiles(sourceDir, "*", SearchOption.AllDirectories);
+            Array.Sort(filesToCopy, StringComparer.OrdinalIgnoreCase);
             var destinations = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
 
             // Validate the replacement and every destination before renaming the running executable.
@@ -195,45 +197,141 @@ namespace Rapr
                 }
             }
 
-            // Rename the running exe — Windows allows renaming a running executable
-            if (File.Exists(oldExePath))
-            {
-                File.Delete(oldExePath);
-            }
-
-            File.Move(currentExePath, oldExePath);
-
+            string backupDirectory = Path.Combine(sourceDir, ".rollback-" + Guid.NewGuid().ToString("N"));
+            var backups = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
+            var touchedFiles = new List<string>();
+            var createdDirectories = new List<string>();
+            bool executableMoved = false;
+            bool retainBackups = false;
             try
             {
-                // Copy all files from extracted folder to app directory
+                Directory.CreateDirectory(backupDirectory);
+                foreach (string destination in destinations)
+                {
+                    if (!destination.Equals(currentExePath, StringComparison.OrdinalIgnoreCase) && File.Exists(destination))
+                    {
+                        string backup = Path.Combine(backupDirectory, backups.Count.ToString(System.Globalization.CultureInfo.InvariantCulture));
+                        File.Copy(destination, backup);
+                        backups.Add(destination, backup);
+                    }
+                }
+
+                // Windows allows renaming a running executable.
+                if (File.Exists(oldExePath))
+                {
+                    File.Delete(oldExePath);
+                }
+
+                File.Move(currentExePath, oldExePath);
+                executableMoved = true;
+
                 foreach (var file in filesToCopy)
                 {
                     string destPath = GetDestinationPath(file);
                     string destDir = Path.GetDirectoryName(destPath);
 
-                    if (!Directory.Exists(destDir))
+                    var missingDirectories = new Stack<string>();
+                    for (string directory = destDir; !Directory.Exists(directory); directory = Path.GetDirectoryName(directory))
                     {
-                        Directory.CreateDirectory(destDir);
+                        missingDirectories.Push(directory);
                     }
 
+                    while (missingDirectories.Count > 0)
+                    {
+                        string directory = missingDirectories.Pop();
+                        Directory.CreateDirectory(directory);
+                        createdDirectories.Add(directory);
+                    }
+
+                    touchedFiles.Add(destPath);
                     File.Copy(file, destPath, overwrite: true);
                 }
             }
-            catch
+            catch (Exception installError)
             {
-                // Rollback: restore the original exe
-                if (File.Exists(currentExePath))
+                var rollbackErrors = new List<Exception>();
+                for (int i = touchedFiles.Count - 1; i >= 0; i--)
                 {
-                    File.Delete(currentExePath);
+                    string destination = touchedFiles[i];
+                    if (destination.Equals(currentExePath, StringComparison.OrdinalIgnoreCase))
+                    {
+                        continue;
+                    }
+
+                    try
+                    {
+                        if (backups.TryGetValue(destination, out string backup))
+                        {
+                            File.Copy(backup, destination, overwrite: true);
+                        }
+                        else if (File.Exists(destination))
+                        {
+                            File.Delete(destination);
+                        }
+                    }
+                    catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+                    {
+                        rollbackErrors.Add(ex);
+                    }
                 }
 
-                File.Move(oldExePath, currentExePath);
+                if (executableMoved)
+                {
+                    try
+                    {
+                        if (File.Exists(currentExePath))
+                        {
+                            File.Delete(currentExePath);
+                        }
+                        File.Move(oldExePath, currentExePath);
+                    }
+                    catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+                    {
+                        rollbackErrors.Add(ex);
+                    }
+                }
+
+                for (int i = createdDirectories.Count - 1; i >= 0; i--)
+                {
+                    try
+                    {
+                        Directory.Delete(createdDirectories[i]);
+                    }
+                    catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+                    {
+                        rollbackErrors.Add(ex);
+                    }
+                }
+
+                if (rollbackErrors.Count > 0)
+                {
+                    retainBackups = true;
+                    Trace.TraceError($"Update rollback could not complete. Backups retained at {backupDirectory}");
+                    rollbackErrors.Insert(0, installError);
+                    throw new AggregateException(rollbackErrors);
+                }
+
                 throw;
+            }
+            finally
+            {
+                if (!retainBackups && Directory.Exists(backupDirectory))
+                {
+                    try
+                    {
+                        Directory.Delete(backupDirectory, recursive: true);
+                    }
+                    catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+                    {
+                        Trace.TraceWarning($"Could not remove update backups at {backupDirectory}: {ex}");
+                    }
+                }
             }
         }
 
         private static void ValidateUpdateExecutable(string path)
         {
+            // Isolate reflection-only loads so retries never reuse an earlier payload's metadata.
             var domain = AppDomain.CreateDomain("Update payload validation");
             try
             {

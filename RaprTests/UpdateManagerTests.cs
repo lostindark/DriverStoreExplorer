@@ -144,6 +144,42 @@ namespace Rapr.Tests
             Assert.AreEqual("existing file", File.ReadAllText(Path.Combine(this.appDirectory, "blocked")));
         }
 
+        [TestMethod]
+        [DataRow(true)]
+        [DataRow(false)]
+        public void FailedUpdateRestoresConfigurationAndRemovesNewSupportingFiles(bool hasConfiguration)
+        {
+            string currentExePath = Path.Combine(this.appDirectory, "Renamed.exe");
+            File.WriteAllText(currentExePath, "original executable");
+            if (hasConfiguration)
+            {
+                File.WriteAllText(currentExePath + ".config", "original configuration");
+            }
+            this.CreateExecutablePayload();
+            File.WriteAllText(Path.Combine(this.sourceDirectory, "Rapr.exe.config"), "new configuration");
+            File.WriteAllText(Path.Combine(this.appDirectory, "existing.txt"), "original supporting file");
+            File.WriteAllText(Path.Combine(this.sourceDirectory, "existing.txt"), "new supporting file");
+            File.WriteAllText(Path.Combine(this.sourceDirectory, "new.txt"), "new file");
+            string nested = Directory.CreateDirectory(Path.Combine(this.sourceDirectory, "nested")).FullName;
+            File.WriteAllText(Path.Combine(nested, "new.txt"), "new nested file");
+            string blocked = Directory.CreateDirectory(Path.Combine(this.sourceDirectory, "zzzblocked")).FullName;
+            File.WriteAllText(Path.Combine(blocked, "failure.txt"), "cannot copy here");
+            File.WriteAllText(Path.Combine(this.appDirectory, "zzzblocked"), "blocking file");
+
+            Assert.ThrowsExactly<IOException>(() => InstallUpdate(this.sourceDirectory, currentExePath));
+
+            Assert.AreEqual("original executable", File.ReadAllText(currentExePath));
+            Assert.AreEqual(hasConfiguration, File.Exists(currentExePath + ".config"));
+            if (hasConfiguration)
+            {
+                Assert.AreEqual("original configuration", File.ReadAllText(currentExePath + ".config"));
+            }
+            Assert.AreEqual("original supporting file", File.ReadAllText(Path.Combine(this.appDirectory, "existing.txt")));
+            Assert.IsFalse(File.Exists(Path.Combine(this.appDirectory, "new.txt")));
+            Assert.IsFalse(Directory.Exists(Path.Combine(this.appDirectory, "nested")));
+            Assert.IsFalse(File.Exists(currentExePath + ".old"));
+        }
+
         private void CreateExecutablePayload()
         {
             File.Copy(typeof(UpdateManager).Assembly.Location, Path.Combine(this.sourceDirectory, "Rapr.exe"));
