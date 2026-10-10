@@ -16,8 +16,8 @@ engine: copilot
 sandbox:
   agent:
     id: awf
-    # Fixes Chat Completions custom tools incorrectly entering the Responses translator.
-    version: v0.28.27
+    # Includes custom-tool route guards and model-supported wire-API translation.
+    version: v0.28.50
 timeout-minutes: 10
 network:
   allowed:
