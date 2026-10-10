@@ -12,6 +12,7 @@ permissions:
   contents: read
   pull-requests: read
 engine: copilot
+# Recompile with gh-aw v0.89.21 or newer for CLI-compatible isolated proxy authentication.
 timeout-minutes: 10
 network:
   allowed:
