@@ -108,7 +108,8 @@ namespace Rapr
                         });
                 }
                 catch (Exception ex) when (ex is SecurityException || ex is UnauthorizedAccessException
-                    || ex is IOException || ex is ConfigurationException || ex is System.Xml.XmlException)
+                    || ex is IOException || ex is ConfigurationException || ex is System.Xml.XmlException
+                    || ex is InvalidDataException)
                 {
                     portableSettingsFailed = true;
                     Trace.TraceWarning($"Portable settings could not be initialized; retaining per-user settings: {ex}");
