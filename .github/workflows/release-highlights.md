@@ -11,7 +11,10 @@ on:
 permissions:
   contents: read
   pull-requests: read
-engine: copilot
+engine:
+  id: copilot
+  # Avoid Responses custom-tool translation in the firewall's compatibility adapter.
+  model: claude-sonnet-4.6
 # Recompile with gh-aw v0.89.21 or newer for CLI-compatible isolated proxy authentication.
 timeout-minutes: 10
 network:
