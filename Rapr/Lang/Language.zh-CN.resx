@@ -373,6 +373,7 @@
   <data name="Update_Failed" xml:space="preserve">
     <value>(更新失败: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
+  </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>正在扫描驱动存储...</value>
   </data>
@@ -497,4 +498,14 @@
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>未找到没有现有设备的驱动程序。</value>
   </data>
-  </data></root>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>“选择未使用的驱动”会选择没有关联设备的驱动，而不是已确认可以安全删除的驱动。
+杀毒软件、网络、打印机及其他软件所需的驱动也可能被选中。
+删除这些驱动可能导致软件或设备无法正常工作。请检查所选驱动，并在删除前备份。
+
+是否继续选择驱动？</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>所选驱动可能仍然需要使用。请在删除前检查并备份驱动。</value>
+  </data>
+</root>

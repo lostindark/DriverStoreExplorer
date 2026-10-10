@@ -532,4 +532,14 @@ Bitte wählen Sie das Stammverzeichnis einer Windows-Installation oder eines Win
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>Es wurden keine Treiber ohne vorhandenes Gerät gefunden.</value>
   </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>„Nicht verwendete Treiber auswählen“ wählt Treiber ohne zugeordnetes Gerät aus, nicht Treiber, deren Löschung nachweislich sicher ist.
+Dabei können auch notwendige Treiber für Antivirenprogramme, Netzwerke, Drucker und andere Software ausgewählt werden.
+Das Löschen dieser Treiber kann Software oder Geräte beeinträchtigen. Prüfen Sie die Auswahl und sichern Sie die Treiber vor dem Löschen.
+
+Mit der Auswahl der Treiber fortfahren?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Die ausgewählten Treiber werden möglicherweise weiterhin benötigt. Prüfen und sichern Sie die Treiber vor dem Löschen.</value>
+  </data>
 </root>

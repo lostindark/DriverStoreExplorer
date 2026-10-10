@@ -532,4 +532,14 @@ Veuillez sélectionner le répertoire racine d'une installation ou d'une image W
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>Aucun pilote sans périphérique associé n'a été trouvé.</value>
   </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>« Sélectionner les pilotes inutilisés » sélectionne les pilotes sans périphérique associé, et non les pilotes dont la suppression est assurément sans risque.
+Des pilotes essentiels d'antivirus, de réseau, d'imprimante et d'autres logiciels peuvent également être sélectionnés.
+Leur suppression peut empêcher des logiciels ou des périphériques de fonctionner. Vérifiez la sélection et sauvegardez les pilotes avant de les supprimer.
+
+Continuer la sélection des pilotes ?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Les pilotes sélectionnés peuvent encore être nécessaires. Vérifiez-les et sauvegardez-les avant de les supprimer.</value>
+  </data>
 </root>

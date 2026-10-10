@@ -523,4 +523,23 @@ Windows 폴더 자체가 아닌 Windows 설치 또는 이미지의 루트 디렉
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>선택할 오래된 드라이버를 찾을 수 없습니다.</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>사용하지 않는 드라이버 선택(&amp;U)</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>사용하지 않는 드라이버 선택(&amp;U)</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>기존 장치가 없는 드라이버를 찾을 수 없습니다.</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>"사용하지 않는 드라이버 선택"은 연결된 장치가 없는 드라이버를 선택하며, 안전하게 삭제할 수 있다고 확인된 드라이버를 선택하는 것이 아닙니다.
+바이러스 백신, 네트워크, 프린터 및 기타 소프트웨어의 필수 드라이버도 선택될 수 있습니다.
+이를 삭제하면 소프트웨어나 장치가 작동하지 않을 수 있습니다. 선택 항목을 검토하고 삭제하기 전에 드라이버를 백업하세요.
+
+드라이버 선택을 계속하시겠습니까?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>선택한 드라이버가 여전히 필요할 수 있습니다. 삭제하기 전에 검토하고 백업하세요.</value>
+  </data>
 </root>

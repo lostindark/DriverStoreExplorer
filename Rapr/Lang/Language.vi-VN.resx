@@ -527,4 +527,24 @@ Vui lòng chọn thư mục gốc của bản cài Windows hoặc image (thư m�
   <data name="Update_Failed" xml:space="preserve">
     <value>(Cập nhật thất bại: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+  </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Chọn driver không &amp;sử dụng</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Chọn các driver không &amp;sử dụng</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Không tìm thấy driver nào không có thiết bị hiện hữu.</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>"Chọn driver không sử dụng" chọn các driver không có thiết bị liên kết, chứ không phải các driver đã được xác nhận là có thể xóa an toàn.
+Các driver thiết yếu của phần mềm diệt virus, mạng, máy in và phần mềm khác cũng có thể được chọn.
+Xóa chúng có thể khiến phần mềm hoặc thiết bị ngừng hoạt động. Hãy kiểm tra các driver đã chọn và sao lưu trước khi xóa.
+
+Tiếp tục chọn driver?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Các driver đã chọn có thể vẫn cần thiết. Hãy kiểm tra và sao lưu các driver trước khi xóa.</value>
+  </data>
+</root>

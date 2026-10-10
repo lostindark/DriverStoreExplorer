@@ -531,4 +531,14 @@
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>未找到缺少對應裝置的驅動程式。</value>
   </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>「選擇未使用的驅動程式」會選取沒有關聯裝置的驅動程式，而不是已確認可安全刪除的驅動程式。
+防毒軟體、網路、印表機及其他軟體所需的驅動程式也可能被選取。
+刪除這些驅動程式可能導致軟體或裝置無法正常運作。請檢查選取項目，並在刪除前備份驅動程式。
+
+是否繼續選取驅動程式？</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>選取的驅動程式可能仍有需要。請在刪除前檢查並備份驅動程式。</value>
+  </data>
 </root>

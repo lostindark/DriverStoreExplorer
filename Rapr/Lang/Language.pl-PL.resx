@@ -532,4 +532,14 @@ Proszę wybrać katalog główny instalacji lub obrazu Windows (katalog zawieraj
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>Nie znaleziono sterowników dla nieistniejących urządzeń.</value>
   </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>Opcja „Wybierz nieużywane sterowniki” wybiera sterowniki bez powiązanego urządzenia, a nie sterowniki, których bezpieczne usunięcie zostało potwierdzone.
+Mogą zostać wybrane również niezbędne sterowniki programów antywirusowych, sieci, drukarek i innego oprogramowania.
+Ich usunięcie może spowodować nieprawidłowe działanie oprogramowania lub urządzeń. Sprawdź wybór i wykonaj kopię zapasową sterowników przed ich usunięciem.
+
+Czy kontynuować wybieranie sterowników?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Wybrane sterowniki mogą być nadal potrzebne. Sprawdź je i wykonaj kopię zapasową przed usunięciem.</value>
+  </data>
 </root>

@@ -485,4 +485,24 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   <data name="Update_Failed" xml:space="preserve">
     <value>(فشل التحديث: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+  </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>تحديد التعريفات غير المستخدمة(&amp;U)</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>تحديد التعريفات غير المستخدمة(&amp;U)</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>لم يتم العثور على تعريفات دون جهاز موجود.</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>يحدد خيار "تحديد التعريفات غير المستخدمة" التعريفات التي لا ترتبط بجهاز، وليس التعريفات التي ثبت أن حذفها آمن.
+قد يتم أيضًا تحديد تعريفات أساسية لمكافحة الفيروسات والشبكة والطابعة وغيرها من البرامج.
+قد يؤدي حذفها إلى تعطّل البرامج أو الأجهزة. راجع التحديد وأنشئ نسخة احتياطية من التعريفات قبل حذفها.
+
+هل تريد متابعة تحديد التعريفات؟</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>قد تظل التعريفات المحددة مطلوبة. راجعها وأنشئ نسخة احتياطية منها قبل حذفها.</value>
+  </data>
+</root>

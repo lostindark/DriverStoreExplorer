@@ -496,4 +496,14 @@ Por favor, selecione a pasta raiz de uma instalação ou imagem do Windows (a pa
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>Nenhum driver sem dispositivo existente foi encontrado.</value>
   </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>"Selecionar drivers não usados" seleciona drivers sem um dispositivo associado, não drivers comprovadamente seguros para excluir.
+Drivers essenciais de antivírus, rede, impressora e outros softwares também podem ser selecionados.
+Excluí-los pode fazer com que softwares ou dispositivos parem de funcionar. Revise a seleção e faça backup dos drivers antes de excluí-los.
+
+Continuar selecionando drivers?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Os drivers selecionados ainda podem ser necessários. Revise-os e faça backup antes de excluí-los.</value>
+  </data>
 </root>
