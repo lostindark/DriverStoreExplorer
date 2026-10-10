@@ -11,7 +11,9 @@ on:
 permissions:
   contents: read
   pull-requests: read
-engine: copilot
+engine:
+  id: copilot
+  copilot-sdk: true
 # Recompile with gh-aw v0.89.21 or newer for CLI-compatible isolated proxy authentication.
 sandbox:
   agent:
