@@ -1,17 +1,17 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!--
-    Microsoft ResX Schema
-
+  <!-- 
+    Microsoft ResX Schema 
+    
     Version 2.0
-
-    The primary goals of this format is to allow a simple XML format
-    that is mostly human readable. The generation and parsing of the
-    various data types are done through the TypeConverter classes
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
     associated with the data types.
-
+    
     Example:
-
+    
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-
-    There are any number of "resheader" rows that contain simple
+                
+    There are any number of "resheader" rows that contain simple 
     name/value pairs.
-
-    Each data row contains a name, and value. The row also contains a
-    type or mimetype. Type corresponds to a .NET class that support
-    text/value conversion through the TypeConverter architecture.
-    Classes that don't support this are serialized and stored with the
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
     mimetype set.
-
-    The mimetype is used for serialized objects, and tells the
-    ResXResourceReader how to depersist the object. This is currently not
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
     extensible. For a given mimetype the value must be set accordingly:
-
-    Note - application/x-microsoft.net.object.binary.base64 is the format
-    that the ResXResourceWriter will generate, however the reader can
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
     read any of the formats listed below.
-
+    
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-
+    
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with
+    value   : The object must be serialized with 
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array
+    value   : The object must be serialized into a byte array 
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -118,22 +118,22 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>&amp;Ajouter un pilote</value>
+    <value>&amp;Ajouter des pilotes</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
-    <value>Su&amp;pprimer le(s) pilote(s)</value>
+    <value>Suppri&amp;mer les pilotes</value>
   </data>
   <data name="Button_OK" xml:space="preserve">
     <value>&amp;OK</value>
   </data>
   <data name="Button_Refresh" xml:space="preserve">
-    <value>&amp;Rafraîchir</value>
+    <value>Actualise&amp;r</value>
   </data>
   <data name="Button_Select_Old" xml:space="preserve">
     <value>&amp;Sélectionner les pilotes obsolètes</value>
   </data>
   <data name="Button_Select_Unused" xml:space="preserve">
-    <value>Sélectionner le(s) pilote(s) in&amp;utilisé(s)</value>
+    <value>Sélectionner les pilotes in&amp;utilisés</value>
   </data> 
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>Forcer la suppressio&amp;n</value>
@@ -187,7 +187,7 @@
     <value>Sélectionner les pilotes &amp;obsolètes</value>
   </data>
   <data name="Context_Select_Unused" xml:space="preserve">
-    <value>Sélectionner le(s) pilote(s) in&amp;utilisé(s)</value>
+    <value>Sélectionner les pilotes in&amp;utilisés</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>Sur le point de supprimer {0} packages du magasin de pilotes.</value>
@@ -214,16 +214,16 @@
     <value>Opérations</value>
   </data>
   <data name="Product_Name" xml:space="preserve">
-    <value>DriverStore Explorer</value>
+    <value>Driver Store Explorer</value>
   </data>
   <data name="Status_Label" xml:space="preserve">
     <value>Prêt</value>
   </data>
   <data name="Status_Packages_Found" xml:space="preserve">
-    <value>{0} paquet(s) de pilote trouvé(s)</value>
+    <value>{0} package(s) de pilotes trouvés</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[CONSEIL : le pilote est peut-être encore utilisé. Essayez de FORCER la suppression du package]</value>
+    <value>[CONSEIL : Le pilote est peut-être encore utilisé. Essayez de FORCER la suppression du package]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>&amp;Aide</value>
@@ -253,7 +253,7 @@
     <value>Aucun résultat correspondant.</value>
   </data>
   <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
-    <value>Sélectionner le dossier des INF</value>
+    <value>Sélectionner le dossier INF</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>À propos de {0}</value>
@@ -263,10 +263,10 @@
     <value>Erreur</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
-    <value>Vous pouvez trouver la dernière version et les notes de publication à cette adresse :
+    <value>Vous trouverez la dernière version et les notes de publication ici :
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-Soumettre un problème / une demande de fonctionnalité :
+Signaler un bogue / suggérer une fonctionnalité :
     https://github.com/lostindark/DriverStoreExplorer/issues
 
 Contributeurs :
@@ -286,10 +286,10 @@ Licence :
     <value>Fichiers CSV | *.csv</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>Ajout du package de pilote en cours...</value>
+    <value>Ajout du package de pilotes...</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>Suppression du(des) package(s) de pilotes en cours...</value>
+    <value>Suppression du ou des packages de pilotes...</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>{0} ({1}) supprimé du magasin de pilotes.</value>
@@ -323,7 +323,7 @@ Licence :
     <value>Erreur</value>
   </data>
   <data name="Export_Complete" xml:space="preserve">
-    <value>Contenu enregistré vers {0}. Exportation complétée.</value>
+    <value>Contenu enregistré dans {0}. Exportation terminée.</value>
     <comment>{0} - Correspond au chemin d'exportation</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
@@ -339,7 +339,7 @@ Licence :
     <value>Aucun pilote sélectionné.</value>
   </data>
   <data name="Context_Open_Folder" xml:space="preserve">
-    <value>Ouvrir l'emplacement du &amp;fichier</value>
+    <value>Ouvrir l'emplacement du &amp;dossier</value>
   </data>
   <data name="Context_Copy_Folder_Path" xml:space="preserve">
     <value>Copier le c&amp;hemin du dossier</value>
@@ -392,7 +392,7 @@ Licence :
     <comment>{0} - Correspond au message d'erreur</comment>
   </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
-    <value>Analyse du magasin de pilotes en cours...</value>
+    <value>Analyse du magasin de pilotes...</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>Sur le point de forcer la suppression de {0} ({1}) du magasin de pilotes.</value>
@@ -424,7 +424,7 @@ Licence :
 {1} - Correspond au fichier INF OEM</comment>
   </data>
   <data name="Message_Driver_Added_Installed" xml:space="preserve">
-    <value>Le package {0} a été ajouté et installé dans le magasin de pilotes.</value>
+    <value>Package {0} ajouté et installé dans le magasin de pilotes.</value>
     <comment>{0} - Correspond au fichier INF du package</comment>
   </data>
   <data name="Message_Driver_Added_Installed_Error" xml:space="preserve">
@@ -432,7 +432,7 @@ Licence :
     <comment>{0} - Correspond au chemin vers le fichier INF</comment>
   </data>
   <data name="Button_Export_Drivers" xml:space="preserve">
-    <value>&amp;Exporter le(s) pilote(s)</value>
+    <value>&amp;Exporter les pilotes</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
     <value>&amp;Exporter le pilote</value>
@@ -453,16 +453,16 @@ Licence :
     <value>Exportation des packages de pilotes réussie.</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
-    <value>Exportation de tous les packages de pilotes en cours...</value>
+    <value>Exportation de tous les packages de pilotes...</value>
   </data>
   <data name="Status_Exporting_Drivers" xml:space="preserve">
-    <value>Exportation du(des) package(s) de pilotes en cours...</value>
+    <value>Exportation du ou des packages de pilotes...</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>&amp;Annuler</value>
   </data>
   <data name="Column_BootCritical" xml:space="preserve">
-    <value>Démarrage critique</value>
+    <value>Critique au démarrage</value>
   </data>
   <data name="Column_Text_True" xml:space="preserve">
     <value>Vrai</value>
@@ -513,7 +513,7 @@ Licence :
     <value>Exporter la liste des pilotes &amp;sélectionnés</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Inclure les pilotes critiques de démarrage dans les pilotes obsolètes</value>
+    <value>Inclure les pilotes critiques au démarrage dans les pilotes obsolètes</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>Sélectionnez le répertoire contenant le dossier Windows (pas le dossier Windows lui-même)</value>
@@ -527,9 +527,9 @@ Licence :
 Veuillez sélectionner le répertoire racine d'une installation ou d'une image Windows (le répertoire qui contient le dossier Windows), pas le dossier Windows lui-même.</value>
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
-    <value>Aucun pilote obsolète n'a été trouvé pour être sélectionné.</value>
+    <value>Aucun pilote obsolète à sélectionner n'a été trouvé.</value>
   </data>
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
-    <value>Aucun pilote sans appareil existant n'a été trouvé.</value>
+    <value>Aucun pilote sans périphérique associé n'a été trouvé.</value>
   </data>
 </root>
