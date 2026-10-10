@@ -132,6 +132,9 @@
   <data name="Button_Select_Old" xml:space="preserve">
     <value>选取旧的驱动(&amp;S)</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>选择未使用的驱动(&amp;U)</value>
+  </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>强制删除(&amp;N)</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>选择旧的驱动(&amp;O)</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>选择未使用的驱动(&amp;U)</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>正准备从驱动存储中删除 {0} 驱动包。</value>
@@ -356,6 +362,17 @@
   <data name="About_Download" xml:space="preserve">
     <value>下载</value>
   </data>
+  <data name="About_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(正在下载 v{0}... {1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(更新失败: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>正在扫描驱动存储...</value>
   </data>
@@ -477,15 +494,7 @@
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>未找到要选择的旧驱动程序。</value>
   </data>
-  <data name="About_Update" xml:space="preserve">
-    <value>更新</value>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>未找到没有现有设备的驱动程序。</value>
   </data>
-  <data name="Update_Downloading" xml:space="preserve">
-    <value>(正在下载 v{0}... {1}%)</value>
-    <comment>{0} - Placeholder for version number
-{1} - Placeholder for download percentage</comment>
-  </data>
-  <data name="Update_Failed" xml:space="preserve">
-    <value>(更新失败: {0})</value>
-    <comment>{0} - Placeholder for error message</comment>
   </data></root>
