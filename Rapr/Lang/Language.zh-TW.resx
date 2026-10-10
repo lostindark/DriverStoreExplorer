@@ -132,6 +132,9 @@
   <data name="Button_Select_Old" xml:space="preserve">
     <value>選擇舊版驅動程式(&amp;S)</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>選擇未使用的驅動程式(&amp;U)</value>
+  </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>強制刪除(&amp;N)</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>選擇舊版驅動程式(&amp;O)</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>選擇未使用的驅動程式(&amp;U)</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>要從驅動程式存放區刪除 {0} 個封裝。</value>
@@ -373,6 +379,18 @@
   <data name="About_Download" xml:space="preserve">
     <value>下載</value>
   </data>
+  <data name="About_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(正在下載 v{0}... {1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(更新失敗: {0})</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
     <value>正在掃描驅動程式存放區…</value>
   </data>
@@ -470,20 +488,20 @@
   <data name="Menu_Options_UsePnpUtil" xml:space="preserve">
     <value>使用 PnpUtil</value>
   </data>
-  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>在舊版驅動程式中包含開機關鍵驅動程式</value>
-  </data>
   <data name="Message_Type_Here_To_Search" xml:space="preserve">
     <value>在此處輸入以搜尋</value>
   </data>
   <data name="Message_No_Inf_Found" xml:space="preserve">
     <value>在資料夾 {0} 中找不到 Inf 檔案。</value>
+    <comment>{0} - Placeholder for the folder name</comment>
   </data>
   <data name="Message_Drivers_Added" xml:space="preserve">
     <value>已將 {0} 個驅動程式套件新增至驅動程式存放區。</value>
+    <comment>{0} - Placeholder for number of packages</comment>
   </data>
   <data name="Message_Drivers_Added_Installed" xml:space="preserve">
     <value>已將 {0} 個驅動程式套件新增並安裝至驅動程式存放區。</value>
+    <comment>{0} - Placeholder for number of packages.</comment>
   </data>
   <data name="Message_Drivers_Added_Error" xml:space="preserve">
     <value>將某些驅動程式套件新增至驅動程式存放區時發生錯誤。</value>
@@ -493,6 +511,9 @@
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
     <value>匯出所選驅動程式清單(&amp;S)</value>
+  </data>
+  <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
+    <value>在舊版驅動程式中包含開機關鍵驅動程式</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>選擇包含Windows資料夾的目錄（不是Windows資料夾本身）</value>
@@ -507,15 +528,7 @@
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>未找到要選擇的舊驅動程式。</value>
   </data>
-  <data name="About_Update" xml:space="preserve">
-    <value>更新</value>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>未找到缺少對應裝置的驅動程式。</value>
   </data>
-  <data name="Update_Downloading" xml:space="preserve">
-    <value>(正在下載 v{0}... {1}%)</value>
-    <comment>{0} - Placeholder for version number
-{1} - Placeholder for download percentage</comment>
-  </data>
-  <data name="Update_Failed" xml:space="preserve">
-    <value>(更新失敗: {0})</value>
-    <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+</root>
