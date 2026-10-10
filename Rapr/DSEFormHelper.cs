@@ -288,25 +288,31 @@ namespace Rapr
             }
 
             string currentFolder = Path.GetDirectoryName(assembly.Location);
+            string satelliteFileName = assembly.GetName().Name + ResourceSuffix;
 
             try
             {
-                DirectoryInfo dir = new DirectoryInfo(currentFolder);
-
-                foreach (var file in dir.EnumerateFiles($"{resourcePrefix}{ResourceSuffix}", SearchOption.AllDirectories))
+                // Satellite assemblies live in <app folder>\<culture>\Rapr.resources.dll, so only
+                // the direct subfolders need to be checked.
+                foreach (var cultureFolder in new DirectoryInfo(currentFolder).EnumerateDirectories())
                 {
-                    string folderName = file.Directory.Name;
+                    if (!File.Exists(Path.Combine(cultureFolder.FullName, satelliteFileName)))
+                    {
+                        continue;
+                    }
+
                     try
                     {
-                        supportedLanguage.Add(new CultureInfo(folderName));
+                        supportedLanguage.Add(new CultureInfo(cultureFolder.Name));
                     }
                     catch (CultureNotFoundException)
                     {
                     }
                 }
             }
-            catch (SecurityException)
+            catch (Exception ex) when (ex is SecurityException || ex is UnauthorizedAccessException || ex is IOException)
             {
+                Trace.TraceWarning($"Could not scan for satellite resource assemblies: {ex}");
             }
 
             return supportedLanguage;
