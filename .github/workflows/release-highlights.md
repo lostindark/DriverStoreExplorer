@@ -14,6 +14,34 @@ permissions:
 engine:
   id: copilot
   copilot-sdk: true
+safe-outputs:
+  missing-tool: false
+  missing-data: false
+  report-incomplete: false
+  report-failure-as-issue: false
+  report-failed-jobs: false
+  scripts:
+    highlights-complete:
+      description: Record completion after saving and verifying the highlights artifact; creates no GitHub content.
+      inputs:
+        message:
+          description: Completion summary
+          required: true
+          type: string
+      script: |
+        core.info(item.message);
+        return { success: true };
+checkout:
+  fetch-depth: 0
+post-steps:
+  - name: Verify release highlights
+    run: test -s /tmp/gh-aw/agent/release-highlights.md
+  - name: Upload release highlights
+    uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a
+    with:
+      name: release-highlights
+      path: /tmp/gh-aw/agent/release-highlights.md
+      if-no-files-found: error
 # Recompile with gh-aw v0.89.21 or newer for CLI-compatible isolated proxy authentication.
 sandbox:
   agent:
@@ -108,7 +136,7 @@ Dependency updates and internal improvements to keep things running smoothly.
 
 ### 5. Save Highlights
 
-**CRITICAL**: Write the highlights to `/tmp/gh-aw/agent/release-highlights.md` using shell. This path is automatically collected as a workflow artifact.
+**CRITICAL**: Write the highlights to `/tmp/gh-aw/agent/release-highlights.md` using shell. A dedicated post-step verifies and uploads this file as the `release-highlights` artifact.
 
 ```bash
 cat > /tmp/gh-aw/agent/release-highlights.md << 'HIGHLIGHTS_EOF'
@@ -118,12 +146,9 @@ cat > /tmp/gh-aw/agent/release-highlights.md << 'HIGHLIGHTS_EOF'
 HIGHLIGHTS_EOF
 ```
 
-After writing the file, call `noop` and stop:
-```
-safeoutputs/noop(message="Release highlights saved to /tmp/gh-aw/agent/release-highlights.md")
-```
+After writing the file, verify it is nonempty, call `safeoutputs/highlights_complete` with a completion message, and stop. This handler only logs completion: do not create issues, comments, or other GitHub content.
 
 **❌ DO NOT:**
-- Call any tool after noop
+- Create an issue or comment to report completion
 - Investigate how safe outputs work internally
 - Explore the workflow's lock.yml or CJS files
