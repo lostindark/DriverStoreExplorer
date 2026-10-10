@@ -741,6 +741,9 @@ namespace JR.Utils.GUI.Forms
 
                 if (buttonIndexToFocus > this.visibleButtonsCount) buttonIndexToFocus = this.visibleButtonsCount;
 
+                //Visible buttons are right-aligned in the three internal button slots.
+                buttonIndexToFocus += 3 - this.visibleButtonsCount;
+
                 if (buttonIndexToFocus == 3)
                 {
                     buttonToFocus = this.button3;

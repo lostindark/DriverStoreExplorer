@@ -532,4 +532,14 @@ Please select the root directory of a Windows installation or image (the directo
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>No drivers without an existing device were found.</value>
   </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>"Select Unused Driver(s)" selects drivers without an associated device, not drivers proven safe to delete.
+Essential antivirus, network, printer, and other software drivers may also be selected.
+Deleting them can break software or devices. Review the selection and back up drivers before deletion.
+
+Continue selecting drivers?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Selected drivers may still be required. Review and back up drivers before deleting.</value>
+  </data>
 </root>

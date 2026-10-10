@@ -35,6 +35,7 @@ namespace Rapr
         private bool operationInProgress;
 
         private HashSet<DriverStoreEntry> driversWithNewerDate = new HashSet<DriverStoreEntry>();
+        private HashSet<DriverStoreEntry> unusedDriversToReview = new HashSet<DriverStoreEntry>();
 
         private static readonly IUpdateManager UpdateManager = CreateUpdateManager();
 
@@ -398,6 +399,7 @@ namespace Rapr
                 this.lstDriverStoreEntries.EmptyListMsg = Language.Message_Scanning_Driver_Store;
                 this.lstDriverStoreEntries.ClearObjects();
                 this.driversWithNewerDate.Clear();
+                this.unusedDriversToReview.Clear();
 
                 var driverStoreEntries = await Task.Run(() => this.driverStore.EnumeratePackages()).ConfigureAwait(true);
                 this.lstDriverStoreEntries.SetObjects(driverStoreEntries);
@@ -929,17 +931,29 @@ namespace Rapr
         {
             if (!this.operationInProgress && this.driverStore.SupportDeviceNameColumn && this.lstDriverStoreEntries.Objects != null)
             {
+                if (!this.ConfirmUnusedDriverSelection())
+                {
+                    return;
+                }
+
                 var unusedDriversToSelect = this.lstDriverStoreEntries
                     .Objects
                     .OfType<DriverStoreEntry>()
                     .Where(entry => !entry.HasDeviceAssociation)
                     .ToArray();
 
+                this.unusedDriversToReview = new HashSet<DriverStoreEntry>(unusedDriversToSelect);
                 this.lstDriverStoreEntries.CheckedObjects = unusedDriversToSelect;
 
                 if (unusedDriversToSelect.Length == 0)
                 {
                     this.ShowStatus(Status.Warning, Language.Message_No_Unused_Drivers_Found);
+                }
+                else
+                {
+                    this.ShowStatus(
+                        Status.Warning,
+                        Language.ResourceManager.GetString("Status_Review_Unused_Drivers", Language.Culture));
                 }
             }
         }
@@ -947,6 +961,16 @@ namespace Rapr
         private void ButtonSelectUnusedDrivers_Click(object sender, EventArgs e)
         {
             this.CtxMenuSelectUnusedDrivers_Click(sender, e);
+        }
+
+        protected virtual bool ConfirmUnusedDriverSelection()
+        {
+            return this.ShowMessageBox(
+                Language.ResourceManager.GetString("Message_Select_Unused_Drivers_Warning", Language.Culture),
+                Language.Message_Title_Warning,
+                MessageBoxButtons.OKCancel,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2) == DialogResult.OK;
         }
 
         private void ExportDriverList(IEnumerable objects)
@@ -1321,6 +1345,17 @@ namespace Rapr
         private void ShowStatus(Status status, string text, string detail = null, bool usePopup = false)
         {
             this.lblStatus.Text = text.Replace("\r\n", "\n").Replace("\n", " ");
+            bool requiresReview = this.lstDriverStoreEntries.CheckedObjects?
+                .Cast<DriverStoreEntry>().Any(this.unusedDriversToReview.Contains) == true;
+            if (requiresReview)
+            {
+                string reminder = Language.ResourceManager.GetString("Status_Review_Unused_Drivers", Language.Culture);
+                if (!this.lblStatus.Text.Contains(reminder))
+                {
+                    this.lblStatus.Text += " " + reminder;
+                }
+            }
+
             string detailToLog = string.IsNullOrEmpty(detail) ? text : detail;
 
             switch (status)
@@ -1373,6 +1408,12 @@ namespace Rapr
 
                     break;
             }
+
+            if (requiresReview && status != Status.Error)
+            {
+                this.lblStatus.BackColor = Color.Yellow;
+                this.lblStatus.ForeColor = Color.Black;
+            }
         }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
@@ -1393,6 +1434,7 @@ namespace Rapr
 
                         if (result)
                         {
+                            this.unusedDriversToReview.Clear();
                             this.ShowStatus(Status.Success, Language.Message_Export_All_Drivers_Success);
                         }
                         else
@@ -1412,7 +1454,12 @@ namespace Rapr
             }
         }
 
-        private DialogResult ShowMessageBox(string text, string caption, MessageBoxButtons buttons, MessageBoxIcon icon)
+        private DialogResult ShowMessageBox(
+            string text,
+            string caption,
+            MessageBoxButtons buttons,
+            MessageBoxIcon icon,
+            MessageBoxDefaultButton defaultButton = MessageBoxDefaultButton.Button1)
         {
             return FlexibleMessageBox.Show(
                 this,
@@ -1420,7 +1467,7 @@ namespace Rapr
                 caption,
                 buttons,
                 icon,
-                MessageBoxDefaultButton.Button1);
+                defaultButton);
         }
 
         private async void UseNativeDriveStoreStripMenuItem_Click(object sender, System.EventArgs e)
@@ -1516,6 +1563,7 @@ namespace Rapr
 
                     if (allSucceeded)
                     {
+                        this.unusedDriversToReview.ExceptWith(driverStoreEntries);
                         this.ShowStatus(Status.Success, Language.Message_Export_Drivers_Success);
                     }
                     else
