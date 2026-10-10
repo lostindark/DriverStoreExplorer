@@ -892,7 +892,7 @@ namespace Rapr
                 var oldDriversToSelect = driverGroups
                     .SelectMany(groups => groups
                         .Skip(1)
-                        .Where(g => g.All(entry => string.IsNullOrEmpty(entry.DeviceName)))
+                        .Where(g => g.All(entry => !entry.HasDeviceAssociation))
                         .SelectMany(g => g))
                     .ToArray();
 
@@ -904,7 +904,7 @@ namespace Rapr
                     var newestDate = groups[0].Key.DriverDate;
 
                     foreach (var entry in groups.Skip(1)
-                        .Where(g => g.Key.DriverDate > newestDate && g.All(e => string.IsNullOrEmpty(e.DeviceName)))
+                        .Where(g => g.Key.DriverDate > newestDate && g.All(e => !e.HasDeviceAssociation))
                         .SelectMany(g => g))
                     {
                         this.driversWithNewerDate.Add(entry);
@@ -932,7 +932,7 @@ namespace Rapr
                 var unusedDriversToSelect = this.lstDriverStoreEntries
                     .Objects
                     .OfType<DriverStoreEntry>()
-                    .Where(entry => string.IsNullOrEmpty(entry.DeviceName))
+                    .Where(entry => !entry.HasDeviceAssociation)
                     .ToArray();
 
                 this.lstDriverStoreEntries.CheckedObjects = unusedDriversToSelect;

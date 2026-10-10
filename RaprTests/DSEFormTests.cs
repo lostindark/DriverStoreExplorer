@@ -17,6 +17,22 @@ namespace Rapr.Tests
     public class DSEFormTests
     {
         [TestMethod]
+        [DataRow("CtxMenuSelectOldDrivers_Click")]
+        [DataRow("CtxMenuSelectUnusedDrivers_Click")]
+        public void AssociatedDriversWithoutDisplayNamesAreNotCleanupCandidates(string handler)
+        {
+            WithSelectionForm((form, list) =>
+            {
+                var associated = CreateDriver("driver.inf", 1);
+                associated.DeviceId = "ACTIVE-DEVICE";
+                associated.DevicePresent = true;
+                list.SetObjects(new[] { associated, CreateDriver("driver.inf", 2) });
+                Invoke(form, handler, null, EventArgs.Empty);
+                Assert.IsFalse(list.CheckedObjects.Contains(associated));
+            });
+        }
+
+        [TestMethod]
         public void PendingSelectionUpdateCannotUnlockARunningOperation()
         {
             WithOperationForm((form, list) =>

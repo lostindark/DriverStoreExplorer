@@ -21,6 +21,9 @@ namespace Rapr.Utils
         /// </summary>
         public string DriverInfName { get; set; }
 
+        public bool HasDeviceAssociation => !string.IsNullOrEmpty(this.DeviceId)
+            || !string.IsNullOrEmpty(this.DeviceName) || this.DevicePresent.HasValue;
+
         /// <summary>
         /// Driver package provider
         /// </summary>
