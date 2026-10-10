@@ -124,8 +124,8 @@ namespace Rapr
                     {
                         // Upgrade settings from previous version
                         Properties.Settings.Default.Upgrade();
-                        _ = Properties.Settings.Default.DriverStoreOption;
-                        if (Properties.Settings.Default.PropertyValues[nameof(Properties.Settings.DriverStoreOption)].UsingDefaultValue)
+                        if (!SettingsMigration.HasStoredUserSetting(
+                            Properties.Settings.Default, nameof(Properties.Settings.DriverStoreOption)))
                         {
                             DriverStoreFactory.MigrateDriverStoreSettings();
                         }

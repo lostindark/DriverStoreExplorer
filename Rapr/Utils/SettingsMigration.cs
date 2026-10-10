@@ -50,8 +50,7 @@ namespace Rapr.Utils
                 }
                 else
                 {
-                    _ = settings["DriverStoreOption"];
-                    hasDriverStoreOption = !settings.PropertyValues["DriverStoreOption"].UsingDefaultValue;
+                    hasDriverStoreOption = HasStoredUserSetting(settings, "DriverStoreOption");
                 }
 
                 PortableSettingsProvider.SettingsDirectory = directory;
@@ -143,6 +142,59 @@ namespace Rapr.Utils
                     throw new InvalidDataException();
                 }
             }
+        }
+
+        internal static bool HasStoredUserSetting(ApplicationSettingsBase settings, string name)
+        {
+            if (settings.Properties[name].Provider is LocalFileSettingsProvider)
+            {
+                return HasStoredUserSettingInFiles(settings.Context, name, new[]
+                {
+                    ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoamingAndLocal).FilePath,
+                    ConfigurationManager.OpenExeConfiguration(ConfigurationUserLevel.PerUserRoaming).FilePath
+                });
+            }
+
+            _ = settings[name];
+            return !settings.PropertyValues[name].UsingDefaultValue;
+        }
+
+        private static bool HasStoredUserSettingInFiles(SettingsContext context, string name, string[] paths)
+        {
+            string group = (string)context["GroupName"];
+            string key = (string)context["SettingsKey"];
+            if (!string.IsNullOrEmpty(key))
+            {
+                group += "." + key;
+            }
+
+            group = XmlConvert.EncodeLocalName(group);
+            foreach (string path in paths)
+            {
+                if (!File.Exists(path))
+                {
+                    continue;
+                }
+
+                var document = new XmlDocument();
+                document.Load(path);
+                var section = document.DocumentElement?["userSettings"]?[group];
+                if (section == null)
+                {
+                    continue;
+                }
+
+                foreach (XmlNode node in section.ChildNodes)
+                {
+                    if (node is XmlElement element && element.Name == "setting"
+                        && element.GetAttribute("name") == name)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
 
         private static Dictionary<string, object> CaptureValues(ApplicationSettingsBase settings)

@@ -44,6 +44,58 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        [DataRow(null)]
+        [DataRow("Native")]
+        [DataRow("PnpUtil")]
+        public void BackendPresenceMatchesProductionProviderPersistedSettings(string backend)
+        {
+            string path = Path.Combine(this.directory, "user.config");
+            var context = new SettingsContext { ["GroupName"] = "MigrationTests", ["SettingsKey"] = "instance" };
+            var property = new SettingsProperty("DriverStoreOption")
+            {
+                PropertyType = typeof(string),
+                DefaultValue = "Native",
+                SerializeAs = SettingsSerializeAs.String
+            };
+            property.Attributes.Add(typeof(UserScopedSettingAttribute), new UserScopedSettingAttribute());
+            var document = new XmlDocument();
+            document.LoadXml("<configuration><configSections><sectionGroup name=\"userSettings\" type=\"System.Configuration.UserSettingsGroup, System\">"
+                + "<section name=\"MigrationTests.instance\" type=\"System.Configuration.ClientSettingsSection, System\" allowExeDefinition=\"MachineToLocalUser\" />"
+                + "</sectionGroup></configSections><userSettings><MigrationTests.instance /></userSettings></configuration>");
+            ((XmlElement)document.SelectSingleNode("//sectionGroup")).SetAttribute("type", typeof(UserSettingsGroup).AssemblyQualifiedName);
+            ((XmlElement)document.SelectSingleNode("//section")).SetAttribute("type", typeof(ClientSettingsSection).AssemblyQualifiedName);
+            if (backend != null)
+            {
+                var element = document.CreateElement("setting");
+                element.SetAttribute("name", property.Name);
+                element.SetAttribute("serializeAs", "String");
+                var value = document.CreateElement("value");
+                value.InnerText = backend;
+                element.AppendChild(value);
+                document.SelectSingleNode("//MigrationTests.instance").AppendChild(element);
+            }
+            document.Save(path);
+
+            var provider = new LocalFileSettingsProvider();
+            provider.Initialize(null, new NameValueCollection());
+            typeof(LocalFileSettingsProvider).GetField("_prevLocalConfigFileName",
+                BindingFlags.Instance | BindingFlags.NonPublic).SetValue(provider, path);
+            var previous = provider.GetPreviousVersion(context, property);
+
+            var hasStored = (Func<SettingsContext, string, string[], bool>)typeof(DriverStoreType).Assembly
+                .GetType("Rapr.Utils.SettingsMigration")
+                .GetMethod("HasStoredUserSettingInFiles", BindingFlags.Static | BindingFlags.NonPublic)
+                .CreateDelegate(typeof(Func<SettingsContext, string, string[], bool>));
+
+            Assert.AreEqual(previous != null, hasStored(context, property.Name, new[] { path }));
+            Assert.AreEqual(backend != null, hasStored(context, property.Name, new[] { path }));
+            if (backend != null)
+            {
+                Assert.AreEqual(backend, previous.PropertyValue);
+            }
+        }
+
+        [TestMethod]
         public void ExistingPortableSettingsDoNotReadTheUnusedSourceProvider()
         {
             UsePortableSettings(CreateSettings(false), this.directory, "portable.config", hasOption => { });
