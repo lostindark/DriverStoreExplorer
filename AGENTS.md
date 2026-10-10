@@ -18,6 +18,10 @@ dotnet test RaprTests\RaprTests.csproj --filter "FullyQualifiedName~TestMethodNa
 
 The CI workflow (`.github/workflows/ci.yml`) builds with MSBuild on `windows-latest`, then executes the tests and rejects runs with zero executed tests. There is no separate lint step — code analysis is handled by the `Microsoft.CodeAnalysis.NetAnalyzers` NuGet package at build time.
 
+CI increments the highest numeric `vMajor.Minor.Patch` tag for each new `master` push and stops on tagging/push errors. Reruns reuse the tag on HEAD. PR builds use unique `-pr.<number>.<run>.<attempt>+<sha>` informational versions and artifact names, without creating tags. Runs on the same ref are serialized.
+
+Release has an optional version input. Blank selects the latest successful `master` push CI run; a supplied version selects the latest successful run for that tagged commit. It verifies the tag/artifact/source match, signs that exact artifact, and creates or refreshes a draft. Published releases are never modified. It does not rebuild, assign versions, or create tags. Publish the draft manually to trigger WinGet submission. Release runs are serialized.
+
 ## Architecture
 
 **Driver store abstraction:** The core pattern is `IDriverStore` (in `Rapr/Utils/`), which defines operations for enumerating, adding, deleting, and exporting driver packages. Three implementations exist:

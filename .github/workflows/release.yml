@@ -4,15 +4,21 @@ on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Version to release (e.g. 1.0.0)'
-        required: true
+        description: 'Optional version to release again (e.g. 1.0.28 or v1.0.28); blank selects the latest successful CI build'
+        required: false
+        default: ''
         type: string
+
+concurrency:
+  group: official-release
+  cancel-in-progress: false
 
 permissions:
   contents: write
   actions: write
 
 env:
+  GH_REPO: ${{ github.repository }}
   SIGNPATH_ORG_ID: 'c9bd44ce-a067-4f9a-9135-468d00ed0b13'
   SIGNPATH_PROJECT_SLUG: 'DriverStoreExplorer'
   SIGNPATH_SIGNING_POLICY_SLUG: 'release-signing'
@@ -21,29 +27,84 @@ jobs:
   release:
     runs-on: windows-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v5
-
-      - name: Download CI artifact
+      - name: Select successful CI build
+        id: source
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REQUESTED_VERSION: ${{ inputs.version }}
         run: |
-          $name = "DriverStoreExplorer-v${{ inputs.version }}-unsigned"
-          $resp = gh api "repos/${{ github.repository }}/actions/artifacts?name=$name&per_page=1" | ConvertFrom-Json
-          if ($resp.total_count -eq 0) { throw "Artifact '$name' not found from CI" }
-          $id = $resp.artifacts[0].id
-          Write-Host "Found artifact ID: $id"
-          gh api "repos/${{ github.repository }}/actions/artifacts/$id/zip" > artifact.zip
-          Expand-Archive artifact.zip -DestinationPath ci-build
-          Remove-Item artifact.zip
+          $requestedVersion = ([string]$env:REQUESTED_VERSION).Trim()
+          $runArgs = @("run", "list", "--repo", "$env:GITHUB_REPOSITORY", "--workflow", "ci.yml",
+            "--branch", "master", "--event", "push", "--status", "success", "--limit", "1", "--json", "databaseId,headSha")
+          if ($requestedVersion) {
+            if ($requestedVersion -notmatch '^[vV]?(\d+\.\d+\.\d+)$') { throw "Version must have the form 1.0.28 or v1.0.28" }
+            $requestedVersion = $Matches[1]
+            $requestedTag = gh api "repos/$env:GITHUB_REPOSITORY/git/ref/tags/v$requestedVersion" | ConvertFrom-Json
+            if ($LASTEXITCODE -ne 0) { throw "Requested version has no tag" }
+            if ($requestedTag.object.type -ne "commit" -or $requestedTag.object.sha -notmatch '^[0-9a-f]{40}$') {
+              throw "Requested version is not a CI commit tag"
+            }
+            $runArgs += "--commit"
+            $runArgs += $requestedTag.object.sha
+          }
+          $runs = @(gh @runArgs | ConvertFrom-Json)
+          if ($LASTEXITCODE -ne 0) { throw "Failed to find successful CI builds" }
+          if ($runs.Count -eq 0) { throw "No successful master CI build is available" }
+          $source = $runs[0]
+          if ($source.headSha -notmatch '^[0-9a-f]{40}$') { throw "CI returned an invalid source commit" }
+          $pages = @(gh api "repos/$env:GITHUB_REPOSITORY/actions/runs/$($source.databaseId)/artifacts" --paginate --slurp |
+            ConvertFrom-Json)
+          if ($LASTEXITCODE -ne 0) { throw "Failed to read the selected CI artifacts" }
+          $artifacts = @($pages | ForEach-Object { $_.artifacts })
+          $builds = @($artifacts | Where-Object { $_.name -match '^DriverStoreExplorer-v\d+\.\d+\.\d+-unsigned$' })
+          if ($builds.Count -ne 1) { throw "Expected exactly one versioned build artifact in the selected CI run" }
+          $build = $builds[0]
+          if ($build.expired) { throw "The selected CI artifact has expired; run CI again before releasing" }
+          $version = $build.name -replace '^DriverStoreExplorer-v', '' -replace '-unsigned$', ''
+          if ($requestedVersion -and $version -ne $requestedVersion) {
+            throw "The selected CI artifact does not match the requested version"
+          }
+          $tag = gh api "repos/$env:GITHUB_REPOSITORY/git/ref/tags/v$version" | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0) { throw "The selected build has no release tag" }
+          if ($tag.object.type -ne "commit" -or $tag.object.sha -ne $source.headSha) {
+            throw "Tag v$version does not point to the selected CI commit"
+          }
+          $releasePages = @(gh api "repos/$env:GITHUB_REPOSITORY/releases" --paginate --slurp | ConvertFrom-Json)
+          if ($LASTEXITCODE -ne 0) { throw "Failed to check existing releases" }
+          $existing = @($releasePages | ForEach-Object { $_ } | Where-Object { $_.tag_name -eq "v$version" })
+          if ($existing.Count -gt 0 -and !$existing[0].draft) {
+            throw "Version v$version is already published; published releases will not be modified"
+          }
+          "version=$version" >> $env:GITHUB_OUTPUT
+          "artifact=$($build.name)" >> $env:GITHUB_OUTPUT
+          "sha=$($source.headSha)" >> $env:GITHUB_OUTPUT
+          "runId=$($source.databaseId)" >> $env:GITHUB_OUTPUT
+          Write-Host "Selected CI run $($source.databaseId), commit $($source.headSha)"
+
+      - name: Download selected CI artifact
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CI_RUN_ID: ${{ steps.source.outputs.runId }}
+          CI_ARTIFACT: ${{ steps.source.outputs.artifact }}
+          RELEASE_VERSION: ${{ steps.source.outputs.version }}
+        run: |
+          gh run download "$env:CI_RUN_ID" --repo "$env:GITHUB_REPOSITORY" --name "$env:CI_ARTIFACT" --dir ci-build
+          if ($LASTEXITCODE -ne 0) { throw "Failed to download the selected CI build" }
+          if (!(Test-Path ci-build\Rapr.exe)) { throw "CI executable is missing" }
+          $actual = [System.Reflection.AssemblyName]::GetAssemblyName((Resolve-Path ci-build\Rapr.exe)).Version
+          if ("$($actual.Major).$($actual.Minor).$($actual.Build)" -ne $env:RELEASE_VERSION) {
+            throw "CI executable version does not match its artifact and tag"
+          }
 
       - name: Upload unsigned artifact for SignPath
         id: upload-unsigned
         uses: actions/upload-artifact@v7
         with:
-          name: DriverStoreExplorer-v${{ inputs.version }}-unsigned
+          name: DriverStoreExplorer-v${{ steps.source.outputs.version }}-unsigned
           path: ci-build/
+          if-no-files-found: error
 
       - name: Submit signing request to SignPath
         id: signpath
@@ -60,23 +121,51 @@ jobs:
 
       - name: Create release archive
         shell: pwsh
+        env:
+          RELEASE_VERSION: ${{ steps.source.outputs.version }}
         run: |
-          Compress-Archive -Path signed-artifact/* -DestinationPath "DriverStoreExplorer-v${{ inputs.version }}.zip"
+          if (!(Test-Path signed-artifact\Rapr.exe)) { throw "Signed executable is missing" }
+          $actual = [System.Reflection.AssemblyName]::GetAssemblyName((Resolve-Path signed-artifact\Rapr.exe)).Version
+          if ("$($actual.Major).$($actual.Minor).$($actual.Build)" -ne $env:RELEASE_VERSION) {
+            throw "Signed executable version does not match the release version"
+          }
+          Compress-Archive -Path signed-artifact\* -DestinationPath "DriverStoreExplorer-v${{ steps.source.outputs.version }}.zip"
+
+      - name: Verify release tag
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_VERSION: ${{ steps.source.outputs.version }}
+          SOURCE_SHA: ${{ steps.source.outputs.sha }}
+        run: |
+          $tag = gh api "repos/$env:GITHUB_REPOSITORY/git/ref/tags/v$env:RELEASE_VERSION" | ConvertFrom-Json
+          if ($LASTEXITCODE -ne 0 -or $tag.object.type -ne "commit" -or $tag.object.sha -ne $env:SOURCE_SHA) {
+            throw "Release tag no longer matches the selected CI commit"
+          }
 
       - name: Generate release highlights
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          $version = "v${{ inputs.version }}"
+          $version = "v${{ steps.source.outputs.version }}"
           $dispatchTime = (Get-Date).ToUniversalTime().ToString("yyyy-MM-ddTHH:mm:ssZ")
-          gh workflow run release-highlights.lock.yml -f version="$version"
+          $dispatchOutput = gh workflow run release-highlights.lock.yml --ref master -f version="$version"
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "::warning::Could not start release highlights, using generated release notes"
+            exit 0
+          }
           Start-Sleep -Seconds 10
 
           # Find the triggered run created after dispatch time
           $runId = $null
-          for ($i = 0; $i -lt 60; $i++) {
+          if ("$dispatchOutput" -match '/actions/runs/(\d+)') { $runId = $Matches[1] }
+          for ($i = 0; -not $runId -and $i -lt 60; $i++) {
             $runs = gh api "repos/${{ github.repository }}/actions/workflows/release-highlights.lock.yml/runs?event=workflow_dispatch&created=%3E%3D$dispatchTime&per_page=5" | ConvertFrom-Json
+            if ($LASTEXITCODE -ne 0) {
+              Write-Host "::warning::Could not find release highlights run, using generated release notes"
+              exit 0
+            }
             if ($runs.workflow_runs.Count -gt 0) {
               $runId = $runs.workflow_runs[0].id
               Write-Host "Found matching run: $runId (status: $($runs.workflow_runs[0].status))"
@@ -93,6 +182,10 @@ jobs:
           for ($i = 0; $i -lt 20; $i++) {
             Start-Sleep -Seconds 30
             $status = (gh run view $runId --json status,conclusion | ConvertFrom-Json)
+            if ($LASTEXITCODE -ne 0) {
+              Write-Host "::warning::Could not read release highlights status, using generated release notes"
+              exit 0
+            }
             Write-Host "  Status: $($status.status)"
             if ($status.status -eq "completed") { break }
           }
@@ -110,28 +203,44 @@ jobs:
           # Download the dedicated highlights artifact.
           $downloadOutput = gh run download $runId -n release-highlights -D highlights-output 2>&1
           if ($LASTEXITCODE -ne 0) {
-            Write-Host "::warning::Failed to download agent artifact: $downloadOutput"
+            Write-Host "::warning::Failed to download release highlights: $downloadOutput"
           } elseif (Test-Path highlights-output/release-highlights.md) {
             Write-Host "Release highlights downloaded"
           } else {
             Write-Host "::warning::Release highlights artifact downloaded but highlights file not found"
           }
 
-      - name: Create GitHub release
+      - name: Create or refresh draft release
         shell: pwsh
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          RELEASE_VERSION: ${{ steps.source.outputs.version }}
         run: |
-          $args = @(
-            "v${{ inputs.version }}"
-            "DriverStoreExplorer-v${{ inputs.version }}.zip"
-            "--title", "DriverStore Explorer v${{ inputs.version }}"
-            "--draft"
-          )
-          if (Test-Path highlights-output/release-highlights.md) {
-            $args += "--notes-file"
-            $args += "highlights-output/release-highlights.md"
-          } else {
-            $args += "--generate-notes"
+          $tag = "v$env:RELEASE_VERSION"
+          $releasePages = @(gh api "repos/$env:GITHUB_REPOSITORY/releases" --paginate --slurp | ConvertFrom-Json)
+          if ($LASTEXITCODE -ne 0) { throw "Failed to check existing releases" }
+          $existing = @($releasePages | ForEach-Object { $_ } | Where-Object { $_.tag_name -eq $tag })
+          if ($existing.Count -gt 0 -and !$existing[0].draft) {
+            throw "Version $tag was published; it will not be modified"
           }
-          gh release create @args
+          $notesFile = "highlights-output\release-highlights.md"
+          if (!(Test-Path $notesFile)) {
+            $notes = gh api "repos/$env:GITHUB_REPOSITORY/releases/generate-notes" -f tag_name="$tag" | ConvertFrom-Json
+            if ($LASTEXITCODE -ne 0) { throw "Failed to generate release notes" }
+            $notesFile = "release-notes.md"
+            Set-Content $notesFile $notes.body -Encoding utf8
+          }
+          $archive = "DriverStoreExplorer-$tag.zip"
+          if ($existing.Count -gt 0) {
+            gh release edit "$tag" --title "DriverStore Explorer $tag" --notes-file "$notesFile" --verify-tag
+            if ($LASTEXITCODE -ne 0) { throw "Failed to refresh draft release notes" }
+            gh release upload "$tag" "$archive" --clobber
+            if ($LASTEXITCODE -ne 0) { throw "Failed to refresh the draft's signed archive" }
+          } else {
+            gh release create "$tag" "$archive" --title "DriverStore Explorer $tag" --draft --verify-tag --notes-file "$notesFile"
+            if ($LASTEXITCODE -ne 0) { throw "Failed to create draft release" }
+          }
+          "## Draft release v${{ steps.source.outputs.version }}" >> $env:GITHUB_STEP_SUMMARY
+          "Source commit: ${{ steps.source.outputs.sha }}" >> $env:GITHUB_STEP_SUMMARY
+          "Verified CI run: ${{ steps.source.outputs.runId }}" >> $env:GITHUB_STEP_SUMMARY
+          "Review and publish the draft at https://github.com/$env:GITHUB_REPOSITORY/releases" >> $env:GITHUB_STEP_SUMMARY

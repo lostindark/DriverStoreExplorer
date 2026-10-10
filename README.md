@@ -96,6 +96,28 @@ rapr
 
 ---
 
+## Creating an Official Release
+
+Open **Actions → Release → Run workflow** on `master`, or run:
+
+```powershell
+gh workflow run release.yml --ref master
+```
+
+No version or build ID is required. With the version input blank, the workflow selects the newest successful `master` push CI run (not necessarily the latest commit if its CI is pending or failed), verifies that its version tag points to its source commit, and downloads that exact run's artifact. It then signs the build, generates release notes, and creates a **draft**. It does not rebuild or assign a new version.
+
+To prepare a specific version again, supply `version` with or without the `v` prefix:
+
+```powershell
+gh workflow run release.yml --ref master -f version=1.0.28
+```
+
+The workflow selects the latest successful CI run for that tagged commit. An existing draft's notes and signed ZIP are refreshed; published releases are never modified.
+
+Approve the SignPath signing request if required, then review and publish the draft under **Releases**. Publication triggers WinGet submission. Existing tags are not moved or overwritten. If the selected artifact has expired, its tag is inconsistent, or the release is already published, the workflow stops instead of releasing a different build.
+
+CI assigns an increasing patch version and tag to each new `master` push; reruns reuse its existing tag. Failed builds can leave gaps in the version sequence. PR builds get unique preview versions and artifact names without creating release tags.
+
 ## Project History
 Originally hosted at [https://driverstoreexplorer.codeplex.com/](https://web.archive.org/web/20190417132137/https://archive.codeplex.com/?p=driverstoreexplorer).
 

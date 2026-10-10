@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: false
+
 jobs:
   build:
     runs-on: windows-latest
@@ -21,26 +25,37 @@ jobs:
       - name: Compute version and tag
         id: version
         shell: pwsh
+        env:
+          BUILD_EVENT: ${{ github.event_name }}
+          BUILD_REF: ${{ github.ref }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_SHA: ${{ github.event.pull_request.head.sha }}
         run: |
-          # Check if HEAD already has a version tag
-          $existingTag = git tag --points-at HEAD | Where-Object { $_ -match '^v\d+\.\d+\.\d+$' } | Select-Object -First 1
-          if ($existingTag) {
-            $version = $existingTag -replace '^v', ''
+          $tags = @(git tag --list)
+          if ($LASTEXITCODE -ne 0) { throw "Failed to list version tags" }
+          $latest = $tags | Where-Object { $_ -match '^v\d+\.\d+\.\d+$' } |
+            Sort-Object { [version]($_.Substring(1)) } -Descending | Select-Object -First 1
+          if (-not $latest) { throw "No valid version tag found" }
+          $latestVersion = [version]($latest.Substring(1))
+          $version = "$($latestVersion.Major).$($latestVersion.Minor).$($latestVersion.Build + 1)"
+          $buildId = "$env:GITHUB_RUN_NUMBER.$env:GITHUB_RUN_ATTEMPT"
+          if ($env:BUILD_EVENT -eq "pull_request") {
+            $sha = $env:PR_SHA.Substring(0, 8)
+            $fullVersion = "$version-pr.$env:PR_NUMBER.$buildId+$sha"
           } else {
-            $latest = git describe --tags --match "v*" --abbrev=0
-            if ($latest -match '^v(\d+\.\d+)\.(\d+)$') {
-              $version = "$($Matches[1]).$([int]$Matches[2] + 1)"
-            } else { throw "No valid version tag found" }
-            if ("${{ github.event_name }}" -eq "push" -and "${{ github.ref }}" -eq "refs/heads/master") {
+            $headTags = @(git tag --points-at HEAD)
+            if ($LASTEXITCODE -ne 0) { throw "Failed to read tags on HEAD" }
+            $existingTag = $headTags | Where-Object { $_ -match '^v\d+\.\d+\.\d+$' } |
+              Sort-Object { [version]($_.Substring(1)) } -Descending | Select-Object -First 1
+            if ($existingTag) {
+              $version = $existingTag.Substring(1)
+            } elseif ($env:BUILD_EVENT -eq "push" -and $env:BUILD_REF -eq "refs/heads/master") {
               Write-Host "Tag commit: v$version"
               git tag "v$version"
+              if ($LASTEXITCODE -ne 0) { throw "Failed to create tag v$version" }
               git push origin "v$version"
+              if ($LASTEXITCODE -ne 0) { throw "Failed to push tag v$version" }
             }
-          }
-          if ("${{ github.event_name }}" -eq "pull_request") {
-            $sha = "${{ github.event.pull_request.head.sha }}".Substring(0, 8)
-            $fullVersion = "$version+$sha"
-          } else {
             $fullVersion = $version
           }
           echo "version=$version" >> $env:GITHUB_OUTPUT
