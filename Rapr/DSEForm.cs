@@ -1699,11 +1699,15 @@ namespace Rapr
 
         private IEnumerable<string> FindInfFile(string infPath)
         {
-            // Search for *.inf files in the current directory  
+            // Search for *.inf files in the current directory. A package folder can hold several INFs, so add them all.
             var infFiles = Directory.GetFiles(infPath, "*.inf", SearchOption.TopDirectoryOnly);
             if (infFiles.Length > 0)
             {
-                yield return infFiles[0];
+                foreach (var infFile in infFiles)
+                {
+                    yield return infFile;
+                }
+
                 yield break;
             }
 
