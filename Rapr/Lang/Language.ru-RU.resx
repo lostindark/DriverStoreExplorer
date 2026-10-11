@@ -253,7 +253,7 @@
     <value>Совпадений не обнаружено.</value>
   </data>
   <data name="Dialog_Select_Inf_Folder" xml:space="preserve">
-    <value>Выберите папку c inf-файлами</value>
+    <value>Выберите папку с inf-файлами</value>
   </data>
   <data name="Product_About_Title" xml:space="preserve">
     <value>О {0}</value>
@@ -516,7 +516,7 @@
     <value>Включать критично важные для загрузки в старые драйверы</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
-    <value>Выберите папку, содержащий папку «Windows» (не саму папку «Windows»)</value>
+    <value>Выберите папку, содержащую папку «Windows» (не саму папку «Windows»)</value>
   </data>
   <data name="Message_Invalid_Offline_Store_Title" xml:space="preserve">
     <value>Папка выбрана неправильно</value>
@@ -531,5 +531,15 @@
   </data>
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>Найдены только драйверы для существующих устройств.</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>Команда «Выделить неиспользуемые драйверы» выбирает драйверы без связанного устройства, а не драйверы, безопасность удаления которых подтверждена.
+Также могут быть выбраны необходимые драйверы антивирусов, сети, принтеров и другого программного обеспечения.
+Их удаление может нарушить работу программ или устройств. Проверьте выбранные драйверы и создайте их резервную копию перед удалением.
+
+Продолжить выбор драйверов?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Выбранные драйверы могут по-прежнему быть необходимы. Проверьте их и создайте резервную копию перед удалением.</value>
   </data>
 </root>

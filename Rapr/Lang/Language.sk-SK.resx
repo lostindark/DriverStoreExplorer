@@ -522,4 +522,24 @@ Prosím vyberte koreňový adresár inštalácie alebo obrazu Windows (adresár 
   <data name="Update_Failed" xml:space="preserve">
     <value>(Aktualizácia zlyhala: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+  </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Označiť &amp;nepoužívané ovládače</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Označiť &amp;nepoužívané ovládače</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Neboli nájdené žiadne ovládače bez existujúceho zariadenia.</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>Možnosť „Označiť nepoužívané ovládače“ vyberá ovládače bez priradeného zariadenia, nie ovládače, ktorých bezpečné odstránenie bolo overené.
+Môžu byť vybrané aj nevyhnutné ovládače antivírusov, siete, tlačiarní a ďalšieho softvéru.
+Ich odstránenie môže narušiť fungovanie softvéru alebo zariadení. Skontrolujte výber a pred odstránením ovládače zálohujte.
+
+Pokračovať vo výbere ovládačov?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Vybrané ovládače môžu byť stále potrebné. Pred odstránením ich skontrolujte a zálohujte.</value>
+  </data>
+</root>

@@ -522,4 +522,24 @@ Vennligst velg rotkatalogen til en Windows-installasjon eller -bilde (katalogen 
   <data name="Update_Failed" xml:space="preserve">
     <value>(Oppdatering mislyktes: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+  </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Velg &amp;ubrukte driver(e)</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Velg &amp;ubrukte drivere</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Ingen drivere uten en eksisterende enhet ble funnet.</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>«Velg ubrukte driver(e)» velger drivere uten en tilknyttet enhet, ikke drivere som er bekreftet trygge å slette.
+Viktige drivere for antivirus, nettverk, skrivere og annen programvare kan også bli valgt.
+Hvis du sletter dem, kan programvare eller enheter slutte å fungere. Gå gjennom utvalget og sikkerhetskopier driverne før sletting.
+
+Vil du fortsette å velge drivere?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>De valgte driverne kan fortsatt være nødvendige. Gå gjennom og sikkerhetskopier driverne før sletting.</value>
+  </data>
+</root>

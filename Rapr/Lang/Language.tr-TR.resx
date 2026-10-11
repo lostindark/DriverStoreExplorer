@@ -532,4 +532,14 @@ Lütfen bir Windows kurulumunun veya kalıbının kök dizinini seçin (Windows 
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>Seçilecek kullanılmayan sürücü bulunamadı.</value>
   </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>"Kullanılmayan Sürücüleri Seç", silinmesinin güvenli olduğu kanıtlanmış sürücüleri değil, ilişkili bir aygıtı olmayan sürücüleri seçer.
+Antivirüs, ağ, yazıcı ve diğer yazılımlar için gerekli sürücüler de seçilebilir.
+Bunları silmek yazılımların veya aygıtların çalışmasını bozabilir. Seçimi gözden geçirin ve silmeden önce sürücüleri yedekleyin.
+
+Sürücü seçimine devam edilsin mi?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Seçilen sürücüler hâlâ gerekli olabilir. Silmeden önce sürücüleri gözden geçirin ve yedekleyin.</value>
+  </data>
 </root>

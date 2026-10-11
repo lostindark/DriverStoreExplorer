@@ -522,4 +522,24 @@ Kérjük válassza ki egy Windows telepítés vagy kép gyökérkönyvtárát (a
   <data name="Update_Failed" xml:space="preserve">
     <value>(Frissítés sikertelen: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+  </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Nem &amp;használt illesztőprogram(ok) kiválasztása</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Nem &amp;használt illesztőprogramok kijelölése</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Nem találhatók meglévő eszköz nélküli illesztőprogramok.</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>A „Nem használt illesztőprogram(ok) kiválasztása” a társított eszköz nélküli illesztőprogramokat választja ki, nem azokat, amelyekről bizonyított, hogy biztonságosan törölhetők.
+Nélkülözhetetlen vírusirtó-, hálózati, nyomtató- és más szoftverekhez tartozó illesztőprogramok is kiválasztásra kerülhetnek.
+Törlésük a szoftverek vagy eszközök hibás működését okozhatja. Ellenőrizze a kijelölést, és készítsen biztonsági másolatot az illesztőprogramokról a törlés előtt.
+
+Folytatja az illesztőprogramok kiválasztását?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>A kijelölt illesztőprogramokra továbbra is szükség lehet. Törlés előtt ellenőrizze őket, és készítsen róluk biztonsági másolatot.</value>
+  </data>
+</root>

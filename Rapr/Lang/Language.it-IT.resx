@@ -533,4 +533,14 @@ Seleziona la cartella principale di un'installazione o immagine Windows (la cart
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>Non è stato trovato alcun driver senza un dispositivo esistente.</value>
   </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>«Seleziona driver non usati» seleziona i driver senza un dispositivo associato, non quelli la cui eliminazione è stata verificata come sicura.
+Potrebbero essere selezionati anche driver essenziali di antivirus, rete, stampanti e altri software.
+Eliminarli può compromettere il funzionamento di software o dispositivi. Controlla la selezione ed esegui un backup dei driver prima di eliminarli.
+
+Continuare con la selezione dei driver?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>I driver selezionati potrebbero essere ancora necessari. Controllali ed esegui un backup prima di eliminarli.</value>
+  </data>
 </root>

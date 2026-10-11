@@ -522,4 +522,24 @@ Windowsインストールまたはイメージのルートディレクトリ（W
   <data name="Update_Failed" xml:space="preserve">
     <value>(更新に失敗しました: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+  </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>未使用のドライバーを選択(&amp;U)</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>未使用のドライバーを選択(&amp;U)</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>既存のデバイスに対応していないドライバーは見つかりませんでした。</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>「未使用のドライバーを選択」は、関連付けられたデバイスがないドライバーを選択します。安全に削除できることが確認されたドライバーを選択するものではありません。
+ウイルス対策ソフト、ネットワーク、プリンター、その他のソフトウェアに不可欠なドライバーも選択される可能性があります。
+削除するとソフトウェアやデバイスが動作しなくなる場合があります。選択内容を確認し、削除前にドライバーをバックアップしてください。
+
+ドライバーの選択を続行しますか？</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>選択したドライバーは引き続き必要な可能性があります。削除前に確認し、バックアップしてください。</value>
+  </data>
+</root>

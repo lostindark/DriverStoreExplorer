@@ -533,11 +533,17 @@ namespace Rapr.Utils
                 throw new ArgumentNullException(nameof(driverStoreEntry));
             }
 
-            var targetPath = Path.Combine(destinationPath, driverStoreEntry.GetDriversBackupFolderName());
-            if (!Directory.Exists(targetPath))
+            string folderName = driverStoreEntry.GetDriversBackupFolderName();
+            string targetPath = Path.Combine(destinationPath, folderName);
+
+            // Distinct packages can share a device class, name and version (two GPU INFs for the
+            // same card), so the folder name is not unique. Never write into an existing export.
+            for (int suffix = 1; Directory.Exists(targetPath); suffix++)
             {
-                Directory.CreateDirectory(targetPath);
+                targetPath = Path.Combine(destinationPath, $"{folderName}_{suffix}");
             }
+
+            Directory.CreateDirectory(targetPath);
 
             switch (this.Type)
             {

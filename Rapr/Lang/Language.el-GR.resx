@@ -522,4 +522,24 @@ Credits:
   <data name="Update_Failed" xml:space="preserve">
     <value>(Η ενημέρωση απέτυχε: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+  </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Επιλογή μη &amp;χρησιμοποιούμενων Drivers</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Επιλογή μη &amp;χρησιμοποιούμενων Drivers</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Δεν βρέθηκαν οδηγοί χωρίς υπάρχουσα συσκευή.</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>Η «Επιλογή μη χρησιμοποιούμενων Drivers» επιλέγει οδηγούς χωρίς συσχετισμένη συσκευή, όχι οδηγούς που έχει αποδειχθεί ότι μπορούν να διαγραφούν με ασφάλεια.
+Μπορεί επίσης να επιλεγούν απαραίτητοι οδηγοί για λογισμικό προστασίας από ιούς, δίκτυα, εκτυπωτές και άλλο λογισμικό.
+Η διαγραφή τους μπορεί να προκαλέσει δυσλειτουργία λογισμικού ή συσκευών. Ελέγξτε την επιλογή και δημιουργήστε αντίγραφα ασφαλείας των οδηγών πριν από τη διαγραφή.
+
+Να συνεχιστεί η επιλογή οδηγών;</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Οι επιλεγμένοι οδηγοί ενδέχεται να είναι ακόμα απαραίτητοι. Ελέγξτε τους και δημιουργήστε αντίγραφα ασφαλείας πριν από τη διαγραφή.</value>
+  </data>
+</root>

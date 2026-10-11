@@ -522,4 +522,24 @@ Por favor selecciona el directorio raíz de una instalación o imagen de Windows
   <data name="Update_Failed" xml:space="preserve">
     <value>(Error de actualización: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+  </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Seleccionar controlador(es) sin &amp;usar</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Seleccionar controladores sin &amp;usar</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>No se encontraron controladores sin un dispositivo existente.</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>«Seleccionar controlador(es) sin usar» selecciona controladores sin un dispositivo asociado, no controladores que se haya demostrado que se pueden borrar de forma segura.
+También pueden seleccionarse controladores esenciales de antivirus, redes, impresoras y otros programas.
+Borrarlos puede hacer que los programas o dispositivos dejen de funcionar. Revise la selección y haga una copia de seguridad de los controladores antes de borrarlos.
+
+¿Continuar con la selección de controladores?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Los controladores seleccionados podrían seguir siendo necesarios. Revíselos y haga una copia de seguridad antes de borrarlos.</value>
+  </data>
+</root>

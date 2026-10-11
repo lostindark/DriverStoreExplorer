@@ -522,4 +522,24 @@
   <data name="Update_Failed" xml:space="preserve">
     <value>(Яңарту хатасы: {0})</value>
     <comment>{0} - Placeholder for error message</comment>
-  </data></root>
+  </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>Кулланылмый торган драйвер(лар)ны сайлау (&amp;U)</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>Кулланылмый торган драйверларны сайлау (&amp;U)</value>
+  </data>
+  <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
+    <value>Булган җайланмасы булмаган драйверлар табылмады.</value>
+  </data>
+  <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
+    <value>«Кулланылмый торган драйвер(лар)ны сайлау» бәйләнгән җайланмасы булмаган драйверларны сайлый, ә бетерү куркынычсызлыгы расланган драйверларны түгел.
+Антивирус, челтәр, принтер һәм башка программалар өчен кирәкле драйверлар да сайланырга мөмкин.
+Аларны бетерү программаларның яки җайланмаларның эшен бозарга мөмкин. Сайланган драйверларны тикшерегез һәм бетерер алдыннан аларның резерв күчермәсен ясагыз.
+
+Драйверларны сайлауны дәвам итәргәме?</value>
+  </data>
+  <data name="Status_Review_Unused_Drivers" xml:space="preserve">
+    <value>Сайланган драйверлар һаман кирәк булырга мөмкин. Бетерер алдыннан аларны тикшерегез һәм резерв күчермәсен ясагыз.</value>
+  </data>
+</root>
