@@ -1020,6 +1020,10 @@ namespace Rapr
             {
                 byte[] driverStoreViewState = this.lstDriverStoreEntries.SaveState();
 
+                // SaveState/RestoreState only keep the primary sort column, so carry the secondary one over by hand.
+                int secondarySortColumnIndex = this.lstDriverStoreEntries.AllColumns.IndexOf(this.lstDriverStoreEntries.SecondarySortColumn);
+                SortOrder secondarySortOrder = this.lstDriverStoreEntries.SecondarySortOrder;
+
                 Thread.CurrentThread.CurrentCulture = ci;
                 Thread.CurrentThread.CurrentUICulture = ci;
 
@@ -1034,6 +1038,13 @@ namespace Rapr
                 this.RightToLeftLayout = ci.TextInfo.IsRightToLeft;
                 this.SetupListViewColumns();
                 this.lstDriverStoreEntries.RestoreState(driverStoreViewState);
+
+                if (secondarySortColumnIndex >= 0)
+                {
+                    this.lstDriverStoreEntries.SecondarySortColumn = this.lstDriverStoreEntries.AllColumns[secondarySortColumnIndex];
+                    this.lstDriverStoreEntries.SecondarySortOrder = secondarySortOrder;
+                }
+
                 this.lstDriverStoreEntries.RightToLeft = this.RightToLeft;
                 this.lstDriverStoreEntries.RightToLeftLayout = this.RightToLeftLayout;
                 this.UpdateDriverStore(this.driverStore);
