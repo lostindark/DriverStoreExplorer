@@ -508,4 +508,7 @@
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>所选驱动可能仍然需要使用。请在删除前检查并备份驱动。</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>选择未使用的驱动前显示警告</value>
+  </data>
 </root>

@@ -542,4 +542,7 @@ Windows 폴더 자체가 아닌 Windows 설치 또는 이미지의 루트 디렉
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>선택한 드라이버가 여전히 필요할 수 있습니다. 삭제하기 전에 검토하고 백업하세요.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>사용하지 않는 드라이버 선택 전에 경고</value>
+  </data>
 </root>

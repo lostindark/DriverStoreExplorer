@@ -542,4 +542,7 @@ Vil du fortsette å velge drivere?</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>De valgte driverne kan fortsatt være nødvendige. Gå gjennom og sikkerhetskopier driverne før sletting.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Advar før ubrukte drivere velges</value>
+  </data>
 </root>

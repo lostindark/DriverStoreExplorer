@@ -542,4 +542,7 @@ Borrarlos puede hacer que los programas o dispositivos dejen de funcionar. Revis
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Los controladores seleccionados podrían seguir siendo necesarios. Revíselos y haga una copia de seguridad antes de borrarlos.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Advertir antes de seleccionar controladores sin usar</value>
+  </data>
 </root>

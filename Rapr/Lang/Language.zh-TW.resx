@@ -541,4 +541,7 @@
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>選取的驅動程式可能仍有需要。請在刪除前檢查並備份驅動程式。</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>選擇未使用的驅動程式前顯示警告</value>
+  </data>
 </root>

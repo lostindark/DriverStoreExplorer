@@ -542,4 +542,7 @@ Mit der Auswahl der Treiber fortfahren?</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Die ausgewählten Treiber werden möglicherweise weiterhin benötigt. Prüfen und sichern Sie die Treiber vor dem Löschen.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Vor dem Auswählen nicht verwendeter Treiber warnen</value>
+  </data>
 </root>

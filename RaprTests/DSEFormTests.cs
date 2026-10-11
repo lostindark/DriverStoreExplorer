@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
@@ -205,6 +206,38 @@ namespace Rapr.Tests
                     new[] { confirmed ? unused : active },
                     list.CheckedObjects.Cast<DriverStoreEntry>().ToArray());
             });
+        }
+
+        [TestMethod]
+        [DataRow("CtxMenuSelectUnusedDrivers_Click")]
+        [DataRow("ButtonSelectUnusedDrivers_Click")]
+        public void DisabledUnusedDriverWarningSelectsWithoutConfirmation(string handler)
+        {
+            // Settings is internal to Rapr, so reach it through ApplicationSettingsBase.
+            var settings = (ApplicationSettingsBase)typeof(DSEForm).Assembly
+                .GetType("Rapr.Properties.Settings")
+                .GetProperty("Default", BindingFlags.Static | BindingFlags.Public)
+                .GetValue(null);
+            object previous = settings["WarnBeforeSelectingUnusedDrivers"];
+            settings["WarnBeforeSelectingUnusedDrivers"] = false;
+
+            try
+            {
+                WithSelectionForm((form, list) =>
+                {
+                    var unused = CreateDriver("unused.inf", 1);
+                    list.SetObjects(new[] { unused });
+
+                    Invoke(form, handler, null, EventArgs.Empty);
+
+                    Assert.AreEqual(0, ((SelectionTestForm)form).ConfirmationCount);
+                    CollectionAssert.AreEquivalent(new[] { unused }, list.CheckedObjects.Cast<DriverStoreEntry>().ToArray());
+                });
+            }
+            finally
+            {
+                settings["WarnBeforeSelectingUnusedDrivers"] = previous;
+            }
         }
 
         [TestMethod]

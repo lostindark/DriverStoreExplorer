@@ -542,4 +542,7 @@ Windowsインストールまたはイメージのルートディレクトリ（W
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>選択したドライバーは引き続き必要な可能性があります。削除前に確認し、バックアップしてください。</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>未使用のドライバーを選択する前に警告する</value>
+  </data>
 </root>

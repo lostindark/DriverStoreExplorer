@@ -542,4 +542,7 @@ Sürücü seçimine devam edilsin mi?</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Seçilen sürücüler hâlâ gerekli olabilir. Silmeden önce sürücüleri gözden geçirin ve yedekleyin.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Kullanılmayan Sürücüleri Seçmeden Önce Uyar</value>
+  </data>
 </root>

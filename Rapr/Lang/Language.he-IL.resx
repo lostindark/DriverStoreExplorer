@@ -516,4 +516,7 @@
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>ייתכן שמנהלי ההתקנים שנבחרו עדיין נחוצים. יש לבדוק ולגבות אותם לפני המחיקה.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>הצג אזהרה לפני בחירת מנהלי התקנים שאינם בשימוש</value>
+  </data>
 </root>
