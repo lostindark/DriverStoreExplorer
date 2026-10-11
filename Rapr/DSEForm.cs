@@ -611,7 +611,17 @@ namespace Rapr
                     string infPath = dialog.FileName;
                     bool installDriver = this.cbAddInstall.Checked;
 
-                    var infFiles = FindInfFile(infPath).ToList();
+                    List<string> infFiles;
+                    try
+                    {
+                        infFiles = FindInfFile(infPath).ToList();
+                    }
+                    catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException || ex is SecurityException)
+                    {
+                        // e.g. a subfolder we can't read, or a path that is too long in a deep driver bundle.
+                        this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
+                        return;
+                    }
 
                     if (infFiles.Count == 0)
                     {
