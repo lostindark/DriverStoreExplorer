@@ -1142,8 +1142,17 @@ namespace Rapr
         {
             Settings.Default.DriverStoreViewState = Convert.ToBase64String(this.lstDriverStoreEntries.SaveState());
 
-            Settings.Default.WindowState = this.WindowState;
-            Settings.Default.WindowLocation = this.Location;
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                // Don't reopen minimized, and don't save the off-screen (-32000, -32000) position.
+                Settings.Default.WindowState = FormWindowState.Normal;
+                Settings.Default.WindowLocation = this.RestoreBounds.Location;
+            }
+            else
+            {
+                Settings.Default.WindowState = this.WindowState;
+                Settings.Default.WindowLocation = this.Location;
+            }
 
             if (this.WindowState == FormWindowState.Normal)
             {
