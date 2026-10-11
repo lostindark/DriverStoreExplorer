@@ -39,10 +39,18 @@ namespace Rapr.Utils
         /// </summary>
         public Guid DriverExtensionId { get; set; }
 
+        // The date columns format with {0:d} and ObjectListView sorts the raw value, so a time part
+        // makes the sort disagree with the text on screen and starves the secondary sort column.
+        private DateTime driverDate;
+
         /// <summary>
         /// Sys file date
         /// </summary>
-        public DateTime DriverDate { get; set; }
+        public DateTime DriverDate
+        {
+            get => this.driverDate;
+            set => this.driverDate = value.Date;
+        }
 
         /// <summary>
         /// Sys file version
@@ -174,10 +182,16 @@ namespace Rapr.Utils
         /// </summary>
         public bool? DevicePresent { get; set; }
 
+        private DateTime? installDate;
+
         /// <summary>
         /// Driver install date - when the driver package was imported/added to the driver store
         /// </summary>
-        public DateTime? InstallDate { get; set; }
+        public DateTime? InstallDate
+        {
+            get => this.installDate;
+            set => this.installDate = value?.Date;
+        }
 
         /// <summary>
         /// List of driver files (sys, DLLs) in the driver package
