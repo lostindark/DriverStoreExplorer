@@ -1017,7 +1017,7 @@ namespace Rapr
                     this.ShowStatus(Status.Normal, message, usePopup: true);
                 }
             }
-            catch (Exception ex) when (ex is IOException || ex is SecurityException)
+            catch (Exception ex) when (ex is IOException || ex is SecurityException || ex is UnauthorizedAccessException)
             {
                 this.ShowStatus(Status.Error, string.Format(Language.Export_Failed, ex), usePopup: true);
             }
