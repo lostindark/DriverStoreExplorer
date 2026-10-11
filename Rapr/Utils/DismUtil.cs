@@ -41,6 +41,13 @@ namespace Rapr.Utils
             {
                 return false;
             }
+            catch (BadImageFormatException ex)
+            {
+                // A DismApi.dll for the other architecture was found on the search path. This mostly
+                // happens on Windows 7, which has no DismApi.dll in System32. Treat DISM as unavailable.
+                Trace.TraceWarning($"DismApi.dll could not be loaded: {ex.Message}");
+                return false;
+            }
 
             return true;
         })();
@@ -65,6 +72,12 @@ namespace Rapr.Utils
             }
             catch (EntryPointNotFoundException)
             {
+                return false;
+            }
+            catch (BadImageFormatException ex)
+            {
+                // Same as in IsDismAvailable.
+                Trace.TraceWarning($"DismApi.dll could not be loaded: {ex.Message}");
                 return false;
             }
 
