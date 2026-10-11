@@ -132,6 +132,9 @@
   <data name="Button_Select_Old" xml:space="preserve">
     <value>오래된 드라이버 선택(&amp;S)</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>사용되지 않는 드라이버 선택(&amp;U)</value>
+  </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>강제 삭제(&amp;N)</value>
   </data>
@@ -182,6 +185,9 @@
   </data>
   <data name="Context_Select_Old" xml:space="preserve">
     <value>오래된 드라이버 선택(&amp;O)</value>
+  </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>사용되지 않는 드라이버 선택(&amp;U)</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>드라이버 저장소에서 {0}개의 패키지를 삭제하려고 합니다.</value>
@@ -522,12 +528,6 @@ Windows 폴더 자체가 아닌 Windows 설치 또는 이미지의 루트 디렉
   </data>
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>선택할 오래된 드라이버를 찾을 수 없습니다.</value>
-  </data>
-  <data name="Button_Select_Unused" xml:space="preserve">
-    <value>사용하지 않는 드라이버 선택(&amp;U)</value>
-  </data>
-  <data name="Context_Select_Unused" xml:space="preserve">
-    <value>사용하지 않는 드라이버 선택(&amp;U)</value>
   </data>
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>기존 장치가 없는 드라이버를 찾을 수 없습니다.</value>
