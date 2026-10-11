@@ -766,8 +766,12 @@ namespace Rapr
                     this.ctxMenuSelect.Enabled = true;
 
                     this.ctxMenuOpenDeviceProperties.Enabled = !string.IsNullOrEmpty((this.lstDriverStoreEntries.SelectedObject as DriverStoreEntry)?.DeviceId);
-                    this.ctxMenuOpenFolder.Enabled = this.lstDriverStoreEntries.SelectedObjects.Count == 1;
-                    this.ctxMenuCopyFolderPath.Enabled = this.lstDriverStoreEntries.SelectedObjects.Count == 1;
+
+                    // The folder is unknown when the PnpUtil backend can't match the package to the driver store.
+                    bool hasFolder = this.lstDriverStoreEntries.SelectedObjects.Count == 1
+                        && !string.IsNullOrEmpty((this.lstDriverStoreEntries.SelectedObject as DriverStoreEntry)?.DriverFolderLocation);
+                    this.ctxMenuOpenFolder.Enabled = hasFolder;
+                    this.ctxMenuCopyFolderPath.Enabled = hasFolder;
                 }
                 else
                 {
@@ -1241,6 +1245,11 @@ namespace Rapr
             if (this.lstDriverStoreEntries.SelectedObject != null)
             {
                 DriverStoreEntry item = (DriverStoreEntry)this.lstDriverStoreEntries.SelectedObject;
+                if (string.IsNullOrEmpty(item.DriverFolderLocation))
+                {
+                    return;
+                }
+
                 Process.Start("explorer.exe", "/select, " + Path.Combine(item.DriverFolderLocation, item.DriverInfName));
             }
         }
@@ -1250,7 +1259,12 @@ namespace Rapr
             if (this.lstDriverStoreEntries.SelectedObject != null)
             {
                 DriverStoreEntry item = (DriverStoreEntry)this.lstDriverStoreEntries.SelectedObject;
-                Clipboard.SetText(item.DriverFolderLocation);
+
+                // Clipboard.SetText throws ArgumentNullException for an empty string.
+                if (!string.IsNullOrEmpty(item.DriverFolderLocation))
+                {
+                    Clipboard.SetText(item.DriverFolderLocation);
+                }
             }
         }
 
