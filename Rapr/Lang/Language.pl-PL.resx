@@ -542,4 +542,7 @@ Czy kontynuować wybieranie sterowników?</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Wybrane sterowniki mogą być nadal potrzebne. Sprawdź je i wykonaj kopię zapasową przed usunięciem.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Ostrzegaj przed wybraniem nieużywanych sterowników</value>
+  </data>
 </root>

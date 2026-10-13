@@ -542,4 +542,7 @@
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Сайланган драйверлар һаман кирәк булырга мөмкин. Бетерер алдыннан аларны тикшерегез һәм резерв күчермәсен ясагыз.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Кулланылмый торган драйверларны сайлау алдыннан кисәтү</value>
+  </data>
 </root>

@@ -542,4 +542,7 @@ Continuer la sélection des pilotes ?</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Les pilotes sélectionnés peuvent encore être nécessaires. Vérifiez-les et sauvegardez-les avant de les supprimer.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Avertir avant de sélectionner les pilotes inutilisés</value>
+  </data>
 </root>

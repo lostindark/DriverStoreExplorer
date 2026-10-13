@@ -147,5 +147,18 @@ namespace Rapr.Properties {
                 this["LogRetentionPeriod"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool WarnBeforeSelectingUnusedDrivers {
+            get {
+                return ((bool)(this["WarnBeforeSelectingUnusedDrivers"]));
+            }
+            set {
+                this["WarnBeforeSelectingUnusedDrivers"] = value;
+            }
+        }
     }
 }

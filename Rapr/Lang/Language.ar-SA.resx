@@ -505,4 +505,7 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>قد تظل التعريفات المحددة مطلوبة. راجعها وأنشئ نسخة احتياطية منها قبل حذفها.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>التحذير قبل تحديد التعريفات غير المستخدمة</value>
+  </data>
 </root>

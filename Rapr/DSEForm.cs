@@ -36,6 +36,7 @@ namespace Rapr
 
         private HashSet<DriverStoreEntry> driversWithNewerDate = new HashSet<DriverStoreEntry>();
         private HashSet<DriverStoreEntry> unusedDriversToReview = new HashSet<DriverStoreEntry>();
+        private ToolStripMenuItem warnBeforeSelectingUnusedDriversStripMenuItem;
 
         private static readonly IUpdateManager UpdateManager = CreateUpdateManager();
 
@@ -110,9 +111,7 @@ namespace Rapr
 
             this.Icon = DSEFormHelper.ExtractAssociatedIcon(Application.ExecutablePath);
             this.BuildLanguageMenu();
-
-            // Initialize the BootCritical option menu item
-            this.includeBootCriticalDriversStripMenuItem.Checked = Settings.Default.IncludeBootCriticalInOldDriverSelection;
+            this.SetupOptionsMenu();
 
             this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
             this.lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
@@ -348,6 +347,23 @@ namespace Rapr
                     defaultLanguageMenuItem.Checked = true;
                 }
             }
+        }
+
+        // Called after every InitializeComponent(), including when the language is switched,
+        // so the option menu items always reflect the saved settings.
+        private void SetupOptionsMenu()
+        {
+            this.includeBootCriticalDriversStripMenuItem.Checked = Settings.Default.IncludeBootCriticalInOldDriverSelection;
+
+            // Created here because its text has no generated Language property yet.
+            this.warnBeforeSelectingUnusedDriversStripMenuItem = new ToolStripMenuItem
+            {
+                CheckOnClick = true,
+                Checked = Settings.Default.WarnBeforeSelectingUnusedDrivers,
+                Text = Language.ResourceManager.GetString("Menu_Options_WarnBeforeSelectingUnusedDrivers", Language.Culture),
+            };
+            this.warnBeforeSelectingUnusedDriversStripMenuItem.Click += this.WarnBeforeSelectingUnusedDriversStripMenuItem_Click;
+            this.optionsStripMenuItem.DropDownItems.Add(this.warnBeforeSelectingUnusedDriversStripMenuItem);
         }
 
         private void EnsureOnScreen()
@@ -945,7 +961,7 @@ namespace Rapr
         {
             if (!this.operationInProgress && this.driverStore.SupportDeviceNameColumn && this.lstDriverStoreEntries.Objects != null)
             {
-                if (!this.ConfirmUnusedDriverSelection())
+                if (Settings.Default.WarnBeforeSelectingUnusedDrivers && !this.ConfirmUnusedDriverSelection())
                 {
                     return;
                 }
@@ -1048,6 +1064,7 @@ namespace Rapr
                 this.Controls.Clear();
                 this.InitializeComponent();
                 this.BuildLanguageMenu();
+                this.SetupOptionsMenu();
                 this.RightToLeft = ci.TextInfo.IsRightToLeft ? RightToLeft.Yes : RightToLeft.No;
                 this.RightToLeftLayout = ci.TextInfo.IsRightToLeft;
                 this.SetupListViewColumns();
@@ -1532,6 +1549,12 @@ namespace Rapr
         private void IncludeBootCriticalDriversStripMenuItem_Click(object sender, System.EventArgs e)
         {
             Settings.Default.IncludeBootCriticalInOldDriverSelection = this.includeBootCriticalDriversStripMenuItem.Checked;
+            Settings.Default.Save();
+        }
+
+        private void WarnBeforeSelectingUnusedDriversStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            Settings.Default.WarnBeforeSelectingUnusedDrivers = this.warnBeforeSelectingUnusedDriversStripMenuItem.Checked;
             Settings.Default.Save();
         }
 

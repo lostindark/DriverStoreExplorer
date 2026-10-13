@@ -542,4 +542,7 @@
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Вибрані драйвери можуть і далі бути потрібними. Перевірте їх і створіть резервну копію перед видаленням.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Попереджати перед вибором невикористаних драйверів</value>
+  </data>
 </root>

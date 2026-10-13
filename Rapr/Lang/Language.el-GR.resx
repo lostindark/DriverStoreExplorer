@@ -542,4 +542,7 @@ Credits:
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Οι επιλεγμένοι οδηγοί ενδέχεται να είναι ακόμα απαραίτητοι. Ελέγξτε τους και δημιουργήστε αντίγραφα ασφαλείας πριν από τη διαγραφή.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Προειδοποίηση πριν από την επιλογή μη χρησιμοποιούμενων Drivers</value>
+  </data>
 </root>

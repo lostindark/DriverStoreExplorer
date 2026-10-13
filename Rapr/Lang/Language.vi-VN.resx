@@ -547,4 +547,7 @@ Tiếp tục chọn driver?</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Các driver đã chọn có thể vẫn cần thiết. Hãy kiểm tra và sao lưu các driver trước khi xóa.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Cảnh báo trước khi chọn các driver không sử dụng</value>
+  </data>
 </root>

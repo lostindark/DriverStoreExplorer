@@ -542,4 +542,7 @@ Continue selecting drivers?</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Selected drivers may still be required. Review and back up drivers before deleting.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Warn Before Selecting Unused Drivers</value>
+  </data>
 </root>

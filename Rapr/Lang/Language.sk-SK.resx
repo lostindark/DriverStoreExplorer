@@ -542,4 +542,7 @@ Pokračovať vo výbere ovládačov?</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Vybrané ovládače môžu byť stále potrebné. Pred odstránením ich skontrolujte a zálohujte.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Upozorniť pred označením nepoužívaných ovládačov</value>
+  </data>
 </root>

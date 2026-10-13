@@ -542,4 +542,7 @@ Folytatja az illesztőprogramok kiválasztását?</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>A kijelölt illesztőprogramokra továbbra is szükség lehet. Törlés előtt ellenőrizze őket, és készítsen róluk biztonsági másolatot.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Figyelmeztetés a nem használt illesztőprogramok kijelölése előtt</value>
+  </data>
 </root>

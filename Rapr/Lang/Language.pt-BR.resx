@@ -506,4 +506,7 @@ Continuar selecionando drivers?</value>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Os drivers selecionados ainda podem ser necessários. Revise-os e faça backup antes de excluí-los.</value>
   </data>
+  <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
+    <value>Avisar antes de selecionar drivers não usados</value>
+  </data>
 </root>
