@@ -107,7 +107,7 @@ namespace Rapr.Utils
                             DriverDate = driverPackage.Date,
                             DriverVersion = driverPackage.Version,
                             DriverFolderLocation = Path.GetDirectoryName(driverPackage.OriginalFileName),
-                            DriverSize = DriverStoreRepository.GetFolderSize(new DirectoryInfo(Path.GetDirectoryName(driverPackage.OriginalFileName))),
+                            DriverSize = GetDriverFolderSize(Path.GetDirectoryName(driverPackage.OriginalFileName)),
                             BootCritical = driverPackage.BootCritical,
                         };
 
@@ -123,6 +123,20 @@ namespace Rapr.Utils
             return this.Type == DriverStoreType.Online
                 ? ConfigManager.FillDeviceInfo(driverStoreEntries)
                 : driverStoreEntries;
+        }
+
+        private static long GetDriverFolderSize(string driverFolderLocation)
+        {
+            // One missing or unreadable folder shouldn't make the whole list fail; NativeDriverStore does the same.
+            try
+            {
+                return DriverStoreRepository.GetFolderSize(new DirectoryInfo(driverFolderLocation));
+            }
+            catch (Exception ex) when (ex is IOException || ex is UnauthorizedAccessException)
+            {
+                Trace.TraceWarning($"Failed to get folder size for '{driverFolderLocation}': {ex}");
+                return 0;
+            }
         }
 
         private DismSession GetSession()

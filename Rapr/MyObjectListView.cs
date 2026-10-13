@@ -28,7 +28,7 @@ namespace Rapr
                     newPrimarySortColumn = this.PrimarySortColumn.Index;
 
                     // Update secondary column when shift key is down.
-                    if (e.Column == this.SecondarySortColumn.Index)
+                    if (this.SecondarySortColumn != null && e.Column == this.SecondarySortColumn.Index)
                     {
                         // Toggle the secondary column sorting direction.
                         this.SecondarySortOrder = (this.SecondarySortOrder == SortOrder.Descending
