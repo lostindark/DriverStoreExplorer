@@ -391,6 +391,56 @@ namespace Rapr.Tests
             });
         }
 
+        [TestMethod]
+        public void TypedDriverSelectionCanBeToggledAndInverted()
+        {
+            WithSelectionForm((form, list) =>
+            {
+                var first = CreateDriver("first.inf", 1);
+                var second = CreateDriver("second.inf", 1);
+                var third = CreateDriver("third.inf", 1);
+                list.CreateControl();
+                list.SetObjects(new[] { first, second, third });
+                list.SelectedObjects = new[] { first, second };
+                list.CheckedObjects = new[] { first, second };
+
+                Invoke(form, "CtxMenuSelect_Click", null, EventArgs.Empty);
+                Assert.AreEqual(0, list.CheckedObjects.Count);
+
+                Invoke(form, "CtxMenuSelect_Click", null, EventArgs.Empty);
+                CollectionAssert.AreEquivalent(new[] { first, second }, list.CheckedObjects.ToArray());
+
+                Invoke(form, "CtxMenuInvertSelection_Click", null, EventArgs.Empty);
+                CollectionAssert.AreEquivalent(new[] { third }, list.CheckedObjects.ToArray());
+            });
+        }
+
+        [TestMethod]
+        public void TypedDriverListRestoresUntypedViewState()
+        {
+            using (var previous = new ObjectListView())
+            using (var current = new MyObjectListView())
+            {
+                foreach (var list in new ObjectListViewBase[] { previous, current })
+                {
+                    var column = new OLVColumn("INF", nameof(DriverStoreEntry.DriverInfName));
+                    list.AllColumns.Add(column);
+                    list.Columns.Add(column);
+                }
+
+                previous.AllColumns[0].Width = 173;
+                previous.PrimarySortColumn = previous.AllColumns[0];
+                previous.PrimarySortOrder = SortOrder.Descending;
+                previous.ShowGroups = false;
+
+                Assert.IsTrue(current.RestoreState(previous.SaveState()));
+                Assert.AreEqual(173, current.AllColumns[0].Width);
+                Assert.AreSame(current.AllColumns[0], current.PrimarySortColumn);
+                Assert.AreEqual(SortOrder.Descending, current.PrimarySortOrder);
+                Assert.IsFalse(current.ShowGroups);
+            }
+        }
+
         private static DriverStoreEntry CreateDriver(string infName, int version)
         {
             return new DriverStoreEntry

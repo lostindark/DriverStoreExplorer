@@ -48,7 +48,7 @@ Release has an optional version input. Blank selects the latest successful `mast
 
 **Settings:** User settings are defined in `Properties/Settings.settings` and accessed via `Properties.Settings.Default`. The app uses `PortableSettingsProvider` for portable config files alongside the executable.
 
-**ListView:** The driver list uses `ObjectListView` (via `BrightIdeasSoftware` namespace), customized in `MyObjectListView.cs`. Use OLV's virtual mode and column aspects rather than raw `ListView` APIs.
+**ListView:** The driver list uses `TypedObjectListView<DriverStoreEntry>` via the designer-compatible `MyObjectListView` in `Rapr/MyObjectListView.cs`. Keep selection and model collections strongly typed and use OLV column aspects rather than raw `ListView` APIs.
 
 **Code analysis:** `GlobalSuppressions.cs` contains project-level analyzer suppressions. The project uses `Microsoft.CodeAnalysis.NetAnalyzers` for static analysis during build.
 

@@ -22,7 +22,7 @@
     <PackageReference Include="Microsoft.WindowsAPICodePack.Core" Version="1.1.0" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" GeneratePathProperty="true" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.4" GeneratePathProperty="true" />
-    <PackageReference Include="ObjectListView.Official" Version="2.9.1" GeneratePathProperty="true" />
+    <PackageReference Include="ObjectListView.WinForms" Version="3.0.10-preview" GeneratePathProperty="true" />
     <PackageReference Include="PortableSettingsProvider" Version="0.2.5" GeneratePathProperty="true" />
     <PackageReference Include="Resource.Embedder" Version="2.2.0" />
     <PackageReference Include="StrongNamer" Version="0.2.5" />
@@ -73,7 +73,7 @@
   <ItemGroup>
     <EmbeddedResource Include="$(PkgMicrosoft_Dism)\lib\net472\Microsoft.Dism.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgNewtonsoft_Json)\lib\net45\Newtonsoft.Json.dll" Visible="false" />
-    <EmbeddedResource Include="$(PkgObjectListView_Official)\lib\net20\ObjectListView.dll" Visible="false" />
+    <EmbeddedResource Include="$(PkgObjectListView_WinForms)\lib\net462\ObjectListView.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Core)\lib\Microsoft.WindowsAPICodePack.dll" Visible="false" />
     <EmbeddedResource Include="$(PkgMicrosoft_WindowsAPICodePack_Shell)\lib\Microsoft.WindowsAPICodePack.Shell.dll" Visible="false" />
     <EmbeddedResource Include="$(IntermediateOutputPath)SignedAssemblies\PortableSettingsProvider.dll" Visible="false">

@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -445,10 +444,10 @@ namespace Rapr
             await this.DeleteDriverStoreEntries(this.lstDriverStoreEntries.CheckedObjects).ConfigureAwait(true);
         }
 
-        private async Task DeleteDriverStoreEntries(IEnumerable entries)
+        private async Task DeleteDriverStoreEntries(IEnumerable<DriverStoreEntry> entries)
         {
             StringBuilder msgWarning = new StringBuilder();
-            var driverStoreEntries = entries.OfType<DriverStoreEntry>()
+            var driverStoreEntries = entries
                 .OrderByColumnName(this.lstDriverStoreEntries.PrimarySortColumn?.AspectName, this.lstDriverStoreEntries.PrimarySortOrder == SortOrder.Ascending)
                 .ThenByColumnName(this.lstDriverStoreEntries.SecondarySortColumn?.AspectName, this.lstDriverStoreEntries.SecondarySortOrder == SortOrder.Ascending)
                 .ToList();
@@ -779,7 +778,6 @@ namespace Rapr
                     if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0
                         && this.lstDriverStoreEntries
                             .SelectedObjects
-                            .Cast<object>()
                             .All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
                     {
                         this.ctxMenuSelect.Text = Language.Context_Deselect;
@@ -791,11 +789,11 @@ namespace Rapr
 
                     this.ctxMenuSelect.Enabled = true;
 
-                    this.ctxMenuOpenDeviceProperties.Enabled = !string.IsNullOrEmpty((this.lstDriverStoreEntries.SelectedObject as DriverStoreEntry)?.DeviceId);
+                    this.ctxMenuOpenDeviceProperties.Enabled = !string.IsNullOrEmpty(this.lstDriverStoreEntries.SelectedObject?.DeviceId);
 
                     // The folder is unknown when the PnpUtil backend can't match the package to the driver store.
                     bool hasFolder = this.lstDriverStoreEntries.SelectedObjects.Count == 1
-                        && !string.IsNullOrEmpty((this.lstDriverStoreEntries.SelectedObject as DriverStoreEntry)?.DriverFolderLocation);
+                        && !string.IsNullOrEmpty(this.lstDriverStoreEntries.SelectedObject?.DriverFolderLocation);
                     this.ctxMenuOpenFolder.Enabled = hasFolder;
                     this.ctxMenuCopyFolderPath.Enabled = hasFolder;
                 }
@@ -845,7 +843,7 @@ namespace Rapr
         {
             if (this.lstDriverStoreEntries.Objects != null)
             {
-                ArrayList list = new ArrayList();
+                List<DriverStoreEntry> list = new List<DriverStoreEntry>();
                 if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0)
                 {
                     list.AddRange(this.lstDriverStoreEntries.CheckedObjects);
@@ -855,7 +853,6 @@ namespace Rapr
                 {
                     if (this.lstDriverStoreEntries
                         .SelectedObjects
-                        .Cast<object>()
                         .All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
                     {
                         foreach (var item in this.lstDriverStoreEntries.SelectedObjects)
@@ -880,8 +877,7 @@ namespace Rapr
 
                 this.lstDriverStoreEntries.CheckedObjects = this.lstDriverStoreEntries
                     .Objects
-                    .Cast<object>()
-                    .Except(this.lstDriverStoreEntries.CheckedObjects.Cast<object>())
+                    .Except(this.lstDriverStoreEntries.CheckedObjects)
                     .ToList();
             }
         }
@@ -898,9 +894,7 @@ namespace Rapr
         {
             if (!this.operationInProgress && this.driverStore.SupportDeviceNameColumn && this.lstDriverStoreEntries.Objects != null)
             {
-                var queryEntries = this.lstDriverStoreEntries
-                    .Objects
-                    .OfType<DriverStoreEntry>();
+                var queryEntries = this.lstDriverStoreEntries.Objects;
 
                 // Apply BootCritical filter based on the setting
                 if (!Settings.Default.IncludeBootCriticalInOldDriverSelection)
@@ -968,7 +962,6 @@ namespace Rapr
 
                 var unusedDriversToSelect = this.lstDriverStoreEntries
                     .Objects
-                    .OfType<DriverStoreEntry>()
                     .Where(entry => !entry.HasDeviceAssociation)
                     .ToArray();
 
@@ -1003,14 +996,14 @@ namespace Rapr
                 MessageBoxDefaultButton.Button2) == DialogResult.OK;
         }
 
-        private void ExportDriverList(IEnumerable objects)
+        private void ExportDriverList(IEnumerable<DriverStoreEntry> objects)
         {
             if (objects == null)
             {
                 return;
             }
 
-            List<DriverStoreEntry> driverStoreEntries = objects.OfType<DriverStoreEntry>().ToList();
+            List<DriverStoreEntry> driverStoreEntries = objects.ToList();
 
             if (driverStoreEntries.Count == 0)
             {
@@ -1213,7 +1206,7 @@ namespace Rapr
                 return;
             }
 
-            IList checkedObjects = this.lstDriverStoreEntries.CheckedObjects;
+            IList<DriverStoreEntry> checkedObjects = this.lstDriverStoreEntries.CheckedObjects;
 
             if (checkedObjects?.Count > 0)
             {
@@ -1262,7 +1255,7 @@ namespace Rapr
         {
             if (this.lstDriverStoreEntries.SelectedObject != null)
             {
-                DriverStoreEntry item = (DriverStoreEntry)this.lstDriverStoreEntries.SelectedObject;
+                DriverStoreEntry item = this.lstDriverStoreEntries.SelectedObject;
                 Process.Start("rundll32.exe", $"devmgr.dll,DeviceProperties_RunDLL /MachineName \"\" /DeviceID \"{item.DeviceId}\"");
             }
         }
@@ -1271,7 +1264,7 @@ namespace Rapr
         {
             if (this.lstDriverStoreEntries.SelectedObject != null)
             {
-                DriverStoreEntry item = (DriverStoreEntry)this.lstDriverStoreEntries.SelectedObject;
+                DriverStoreEntry item = this.lstDriverStoreEntries.SelectedObject;
                 if (string.IsNullOrEmpty(item.DriverFolderLocation))
                 {
                     return;
@@ -1285,7 +1278,7 @@ namespace Rapr
         {
             if (this.lstDriverStoreEntries.SelectedObject != null)
             {
-                DriverStoreEntry item = (DriverStoreEntry)this.lstDriverStoreEntries.SelectedObject;
+                DriverStoreEntry item = this.lstDriverStoreEntries.SelectedObject;
 
                 // Clipboard.SetText throws ArgumentNullException for an empty string.
                 if (!string.IsNullOrEmpty(item.DriverFolderLocation))
@@ -1407,7 +1400,7 @@ namespace Rapr
         {
             this.lblStatus.Text = text.Replace("\r\n", "\n").Replace("\n", " ");
             bool requiresReview = this.lstDriverStoreEntries.CheckedObjects?
-                .Cast<DriverStoreEntry>().Any(this.unusedDriversToReview.Contains) == true;
+                .Any(this.unusedDriversToReview.Contains) == true;
             if (requiresReview)
             {
                 string reminder = Language.ResourceManager.GetString("Status_Review_Unused_Drivers", Language.Culture);
@@ -1584,13 +1577,12 @@ namespace Rapr
             }
         }
 
-        private async Task ExportDrivers(IEnumerable entries, string destinationPath)
+        private async Task ExportDrivers(IEnumerable<DriverStoreEntry> entries, string destinationPath)
         {
             try
             {
                 var driverStoreEntries = entries
-                    ?.OfType<DriverStoreEntry>()
-                    .OrderByColumnName(this.lstDriverStoreEntries.PrimarySortColumn?.AspectName, this.lstDriverStoreEntries.PrimarySortOrder == SortOrder.Ascending)
+                    ?.OrderByColumnName(this.lstDriverStoreEntries.PrimarySortColumn?.AspectName, this.lstDriverStoreEntries.PrimarySortOrder == SortOrder.Ascending)
                     .ThenByColumnName(this.lstDriverStoreEntries.SecondarySortColumn?.AspectName, this.lstDriverStoreEntries.SecondarySortOrder == SortOrder.Ascending)
                     .ToList();
 
