@@ -23,6 +23,9 @@ namespace Rapr
             // Get the http headers first to examine the content length
             using (var response = await client.GetAsync(requestUri, HttpCompletionOption.ResponseHeadersRead, cancellationToken).ConfigureAwait(false))
             {
+                // Otherwise an error page would be saved as if it were the download.
+                response.EnsureSuccessStatusCode();
+
                 var contentLength = response.Content.Headers.ContentLength;
 
                 using (var download = await response.Content.ReadAsStreamAsync().ConfigureAwait(false))
