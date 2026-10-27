@@ -1034,6 +1034,35 @@ oem47.inf
         }
 
         [TestMethod()]
+        public void ConsecutiveBlankLinesDoNotAddEmptyEntries()
+        {
+            string output = string.Join("\r\n", new[]
+            {
+                "Microsoft PnP Utility",
+                "",
+                "Published name :            oem4.inf",
+                "Driver package provider :   Microsoft",
+                "Class :                     Human Interface Devices",
+                "Driver date and version :   11/06/2015 9.9.114.0",
+                "Signer name :               Microsoft Windows Hardware Compatibility Publisher",
+                "",
+                "",
+                "Published name :            oem18.inf",
+                "Driver package provider :   Intel",
+                "Class :                     System devices",
+                "Driver date and version :   12/17/2012 9.0.0.1287",
+                "Signer name :               Microsoft Windows Hardware Compatibility Publisher",
+                "",
+            });
+
+            List<DriverStoreEntry> entries = PnpUtil.ParsePnpUtilEnumerateResult(output);
+
+            Assert.HasCount(2, entries);
+            Assert.AreEqual("oem4.inf", entries[0].DriverPublishedName);
+            Assert.AreEqual("oem18.inf", entries[1].DriverPublishedName);
+        }
+
+        [TestMethod()]
         public void ParseChinesePnpUtilEnumerateResultTest()
         {
             List<DriverStoreEntry> entries = PnpUtil.ParsePnpUtilEnumerateResult(ChinesePnpUtilEnumerateOutput);

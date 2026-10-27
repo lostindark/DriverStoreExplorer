@@ -303,6 +303,17 @@ namespace Rapr.Utils
         // The default format is "0.### XB", e.g. "4 KB" or "1.4 GB"
         public static string GetBytesReadable(long i)
         {
+            // A negative size means it couldn't be determined (see DriverStoreRepository).
+            if (i < 0)
+            {
+                return string.Empty;
+            }
+
+            if (i == 0)
+            {
+                return "0 KB";
+            }
+
             // Get absolute value
             long absolute_i = (i < 0 ? -i : i);
 

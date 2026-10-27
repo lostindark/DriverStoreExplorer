@@ -71,6 +71,16 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        [DataRow(-1L, "")]
+        [DataRow(0L, "0 KB")]
+        [DataRow(1L, "1 KB")]
+        [DataRow(2048L, "2 KB")]
+        public void UnknownAndEmptySizesAreNotShownAsOneKilobyte(long size, string expected)
+        {
+            Assert.AreEqual(expected, DriverStoreEntry.GetBytesReadable(size));
+        }
+
+        [TestMethod]
         public void DriverDateIsTruncatedToTheDayItDisplays()
         {
             var entry = new DriverStoreEntry { DriverDate = new DateTime(2026, 10, 6, 23, 45, 59) };

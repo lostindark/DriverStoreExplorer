@@ -1215,7 +1215,7 @@ namespace Rapr
 
                 foreach (DriverStoreEntry item in checkedObjects)
                 {
-                    totalSize += item.DriverSize;
+                    totalSize += Math.Max(item.DriverSize, 0);
                     driverList.Add($"{item.DriverPublishedName} - {item.DriverFolderName} - {DriverStoreEntry.GetBytesReadable(item.DriverSize)}");
                 }
 
