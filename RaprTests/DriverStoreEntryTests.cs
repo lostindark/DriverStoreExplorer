@@ -12,6 +12,32 @@ namespace Rapr.Tests
     public class DriverStoreEntryTests
     {
         [TestMethod]
+        public void ExportedValuesLineUpWithTheHeader()
+        {
+            var extensionId = new Guid("1d1b2b1c-7f6e-4d8a-9c3f-1a2b3c4d5e6f");
+            var entry = new DriverStoreEntry
+            {
+                BootCritical = true,
+                DriverExtensionId = extensionId,
+                DriverFiles = new List<string> { "a.sys", "b.dll" },
+            };
+
+            string[] names = DriverStoreEntry.GetFieldNames();
+            string[] values = entry.GetFieldValues();
+
+            Assert.AreEqual(names.Length, values.Length);
+            Assert.AreEqual(bool.TrueString, values[Array.IndexOf(names, "Boot Critical")]);
+            Assert.AreEqual(extensionId.ToString(), values[Array.IndexOf(names, "Extension Id")]);
+            Assert.AreEqual("a.sys, b.dll", values[Array.IndexOf(names, "Driver Files")]);
+
+            // Not every backend fills these in.
+            values = new DriverStoreEntry().GetFieldValues();
+            Assert.AreEqual(string.Empty, values[Array.IndexOf(names, "Boot Critical")]);
+            Assert.AreEqual(string.Empty, values[Array.IndexOf(names, "Extension Id")]);
+            Assert.AreEqual(string.Empty, values[Array.IndexOf(names, "Driver Files")]);
+        }
+
+        [TestMethod]
         public void InstallDateIsTruncatedToTheDayItDisplays()
         {
             var morning = new DriverStoreEntry { DriverInfName = "morning", InstallDate = new DateTime(2026, 10, 6, 8, 15, 1) };

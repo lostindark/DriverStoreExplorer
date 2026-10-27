@@ -270,6 +270,9 @@ namespace Rapr.Utils
                 "Device Name",
                 "Device Present",
                 "Install Date",
+                "Boot Critical",
+                "Extension Id",
+                "Driver Files",
             };
         }
 
@@ -290,6 +293,9 @@ namespace Rapr.Utils
                 this.DeviceName ?? string.Empty,
                 this.DevicePresent?.ToString() ?? string.Empty,
                 this.InstallDate?.ToString("d") ?? string.Empty,
+                this.BootCritical?.ToString() ?? string.Empty,
+                this.DriverExtensionId == Guid.Empty ? string.Empty : this.DriverExtensionId.ToString(),
+                this.DriverFiles != null ? string.Join(", ", this.DriverFiles) : string.Empty,
             };
         }
 
