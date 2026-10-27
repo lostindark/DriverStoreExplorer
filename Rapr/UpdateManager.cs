@@ -17,21 +17,22 @@ namespace Rapr
     public class UpdateManager : IUpdateManager, IDisposable
     {
         private const string versionInfoUrl = "https://api.github.com/repos/lostindark/DriverStoreExplorer/releases/latest";
-        private readonly HttpClient httpClient = new HttpClient();
+        private readonly HttpClient httpClient = CreateHttpClient();
         private bool disposedValue; // To detect redundant calls
 
         public bool HandlesRestart => false;
 
+        private static HttpClient CreateHttpClient()
+        {
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
+            client.DefaultRequestHeaders.Add("User-Agent", "System.Net.Http Agent");
+            return client;
+        }
+
         public async Task<VersionInfo> GetLatestVersionInfo()
         {
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-
-            this.httpClient.DefaultRequestHeaders
-                .Accept
-                .Add(new MediaTypeWithQualityHeaderValue("application/vnd.github.v3+json"));
-
-            this.httpClient.DefaultRequestHeaders
-                .Add("User-Agent", "System.Net.Http Agent");
 
             using (var response = await this.httpClient.GetAsync(new Uri(versionInfoUrl)).ConfigureAwait(false))
             {
