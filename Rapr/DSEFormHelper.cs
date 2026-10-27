@@ -62,22 +62,38 @@ namespace Rapr
 
                 StringBuilder finalPath = new StringBuilder(512);
                 int result = SafeNativeMethods.GetFinalPathNameByHandle(handle, finalPath, finalPath.Capacity, 0);
-                if (result < 0)
+                if (result > finalPath.Capacity)
+                {
+                    // The buffer was too small; result is the size needed.
+                    finalPath.Capacity = result;
+                    result = SafeNativeMethods.GetFinalPathNameByHandle(handle, finalPath, finalPath.Capacity, 0);
+                }
+
+                if (result == 0 || result > finalPath.Capacity)
                 {
                     throw new Win32Exception(Marshal.GetLastWin32Error());
                 }
 
-                // Remove the "\\?\" prefix
-                const string PathPrefix = @"\\?\";
-                string finalPathString = finalPath.ToString();
-
-                if (finalPath.Length > PathPrefix.Length && finalPathString.StartsWith(PathPrefix))
-                {
-                    finalPathString = finalPathString.Substring(PathPrefix.Length);
-                }
-
-                return finalPathString;
+                return RemoveExtendedPathPrefix(finalPath.ToString());
             }
+        }
+
+        internal static string RemoveExtendedPathPrefix(string path)
+        {
+            const string UncPrefix = @"\\?\UNC\";
+            const string PathPrefix = @"\\?\";
+
+            if (path.StartsWith(UncPrefix, StringComparison.OrdinalIgnoreCase))
+            {
+                return @"\\" + path.Substring(UncPrefix.Length);
+            }
+
+            if (path.StartsWith(PathPrefix, StringComparison.Ordinal))
+            {
+                return path.Substring(PathPrefix.Length);
+            }
+
+            return path;
         }
 
         public static bool IsRunAsAdmin { get; } = IsRunAsAdministrator();
