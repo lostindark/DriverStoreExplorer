@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
+using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Reflection;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
-
-using Newtonsoft.Json.Linq;
 
 namespace Rapr
 {
@@ -39,36 +41,42 @@ namespace Rapr
                 if (response.IsSuccessStatusCode)
                 {
                     var responseBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
-                    var releaseInfo = JObject.Parse(responseBody);
-
-                    var tagName = releaseInfo["tag_name"]?.ToString();
-                    var htmlUrl = releaseInfo["html_url"]?.ToString();
-                    var downloadUrl = releaseInfo.SelectToken("assets[0].browser_download_url")?.ToObject<string>();
-                    var digest = releaseInfo.SelectToken("assets[0].digest")?.ToObject<string>();
-
-                    if (tagName == null || htmlUrl == null || downloadUrl == null)
-                    {
-                        return null;
-                    }
-
-                    // Parse "sha256:<hex>" format
-                    string sha256 = null;
-                    if (digest != null && digest.StartsWith("sha256:", StringComparison.OrdinalIgnoreCase))
-                    {
-                        sha256 = digest.Substring("sha256:".Length);
-                    }
-
-                    return new VersionInfo
-                    {
-                        Version = Version.Parse(tagName.TrimStart('v', 'V')),
-                        PageUrl = new Uri(htmlUrl),
-                        DownloadUrl = new Uri(downloadUrl),
-                        Sha256 = sha256
-                    };
+                    return ParseLatestRelease(responseBody);
                 }
 
                 return null;
             }
+        }
+
+        internal static VersionInfo ParseLatestRelease(string json)
+        {
+            GitHubRelease release;
+            using (var stream = new MemoryStream(Encoding.UTF8.GetBytes(json)))
+            {
+                release = (GitHubRelease)new DataContractJsonSerializer(typeof(GitHubRelease)).ReadObject(stream);
+            }
+
+            var asset = release?.Assets?.FirstOrDefault();
+
+            if (release?.TagName == null || release.HtmlUrl == null || asset?.BrowserDownloadUrl == null)
+            {
+                return null;
+            }
+
+            // Parse "sha256:<hex>" format
+            string sha256 = null;
+            if (asset.Digest != null && asset.Digest.StartsWith("sha256:", StringComparison.OrdinalIgnoreCase))
+            {
+                sha256 = asset.Digest.Substring("sha256:".Length);
+            }
+
+            return new VersionInfo
+            {
+                Version = Version.Parse(release.TagName.TrimStart('v', 'V')),
+                PageUrl = new Uri(release.HtmlUrl),
+                DownloadUrl = new Uri(asset.BrowserDownloadUrl),
+                Sha256 = sha256
+            };
         }
 
         public async Task ApplyUpdateAsync(VersionInfo versionInfo, IProgress<float> progress)
@@ -428,6 +436,33 @@ namespace Rapr
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             this.Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        // Only the fields of https://docs.github.com/rest/releases/releases#get-the-latest-release that are used.
+        [DataContract]
+        private sealed class GitHubRelease
+        {
+            [DataMember(Name = "tag_name")]
+            public string TagName { get; set; }
+
+            [DataMember(Name = "html_url")]
+            public string HtmlUrl { get; set; }
+
+            [DataMember(Name = "assets")]
+            public List<GitHubAsset> Assets { get; set; }
+        }
+
+        [DataContract]
+        private sealed class GitHubAsset
+        {
+            [DataMember(Name = "name")]
+            public string Name { get; set; }
+
+            [DataMember(Name = "browser_download_url")]
+            public string BrowserDownloadUrl { get; set; }
+
+            [DataMember(Name = "digest")]
+            public string Digest { get; set; }
         }
     }
 }
