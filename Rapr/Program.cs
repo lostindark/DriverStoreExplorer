@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 using System.Security;
+using System.Threading;
 using System.Windows.Forms;
 
 using Rapr.Lang;
@@ -72,6 +73,25 @@ namespace Rapr
             }
         }
 
+        internal static void LogUnhandledException(object exception)
+        {
+            Trace.TraceError($"Unhandled exception: {exception}");
+        }
+
+        private static void OnThreadException(object sender, ThreadExceptionEventArgs e)
+        {
+            LogUnhandledException(e.Exception);
+
+            // Same dialog WinForms shows when there is no handler.
+            using (var dialog = new ThreadExceptionDialog(e.Exception))
+            {
+                if (dialog.ShowDialog() == DialogResult.Abort)
+                {
+                    Application.Exit();
+                }
+            }
+        }
+
         /// <summary>
         /// The main entry point for the application.
         /// </summary>
@@ -84,6 +104,11 @@ namespace Rapr
             Trace.AutoFlush = true;
             Trace.IndentSize = 4;
             Trace.Listeners.Add(new TextFileTraceListener());
+
+            // Write crashes to Rapr.log; otherwise a crash during startup leaves nothing to report.
+            Application.SetUnhandledExceptionMode(UnhandledExceptionMode.CatchException);
+            Application.ThreadException += OnThreadException;
+            AppDomain.CurrentDomain.UnhandledException += (sender, e) => LogUnhandledException(e.ExceptionObject);
 
             AddEnvironmentPaths(@"C:\Windows\System32\CompatTel");
 
