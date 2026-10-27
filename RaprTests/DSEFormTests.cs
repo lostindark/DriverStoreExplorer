@@ -20,7 +20,10 @@ using Rapr.Utils;
 
 namespace Rapr.Tests
 {
+    // These tests build WinForms controls and pump window messages. Run them on their own
+    // instead of alongside the other test classes.
     [STATestClass]
+    [DoNotParallelize]
     public class DSEFormTests
     {
         [TestMethod]
