@@ -19,22 +19,20 @@ namespace Rapr.Tests
             {
                 BootCritical = true,
                 DriverExtensionId = extensionId,
-                DriverFiles = new List<string> { "a.sys", "b.dll" },
             };
 
             string[] names = DriverStoreEntry.GetFieldNames();
             string[] values = entry.GetFieldValues();
 
             Assert.AreEqual(names.Length, values.Length);
+            CollectionAssert.DoesNotContain(names, "Driver Files");
             Assert.AreEqual(bool.TrueString, values[Array.IndexOf(names, "Boot Critical")]);
             Assert.AreEqual(extensionId.ToString(), values[Array.IndexOf(names, "Extension Id")]);
-            Assert.AreEqual("a.sys, b.dll", values[Array.IndexOf(names, "Driver Files")]);
 
             // Not every backend fills these in.
             values = new DriverStoreEntry().GetFieldValues();
             Assert.AreEqual(string.Empty, values[Array.IndexOf(names, "Boot Critical")]);
             Assert.AreEqual(string.Empty, values[Array.IndexOf(names, "Extension Id")]);
-            Assert.AreEqual(string.Empty, values[Array.IndexOf(names, "Driver Files")]);
         }
 
         [TestMethod]

@@ -254,6 +254,8 @@ namespace Rapr.Utils
             }
         }
 
+        // Driver Files is not exported: a single GPU driver package can list over 10,000 files,
+        // far more than an Excel cell holds (32,767 characters).
         public static string[] GetFieldNames()
         {
             return new[] {
@@ -272,7 +274,6 @@ namespace Rapr.Utils
                 "Install Date",
                 "Boot Critical",
                 "Extension Id",
-                "Driver Files",
             };
         }
 
@@ -295,7 +296,6 @@ namespace Rapr.Utils
                 this.InstallDate?.ToString("d") ?? string.Empty,
                 this.BootCritical?.ToString() ?? string.Empty,
                 this.DriverExtensionId == Guid.Empty ? string.Empty : this.DriverExtensionId.ToString(),
-                this.DriverFiles != null ? string.Join(", ", this.DriverFiles) : string.Empty,
             };
         }
 
