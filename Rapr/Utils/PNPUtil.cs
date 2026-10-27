@@ -115,7 +115,7 @@ namespace Rapr.Utils
                     else if (currentLine.Length == 0)
                     {
                         // Blank line means the end of an driver entry.
-                        if (!driverStoreEntry.Equals(default(DriverStoreEntry)))
+                        if (!string.IsNullOrEmpty(driverStoreEntry.DriverPublishedName))
                         {
                             driverStoreEntries.Add(driverStoreEntry);
                             driverStoreEntry = new DriverStoreEntry();
