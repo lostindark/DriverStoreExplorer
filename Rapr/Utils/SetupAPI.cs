@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -88,6 +89,40 @@ namespace Rapr.Utils
                 IntPtr.Zero))
             {
                 throw new Win32Exception();
+            }
+        }
+
+        /// <summary>
+        /// Adds a driver to the online driver store. Failures are logged and reported as false.
+        /// </summary>
+        public static bool TryAddDriver(string infFullPath, bool install)
+        {
+            try
+            {
+                AddDriver(infFullPath, install);
+                return true;
+            }
+            catch (Win32Exception ex)
+            {
+                Trace.TraceError(ex.ToString());
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Deletes a driver from the online driver store. Failures are logged and reported as false.
+        /// </summary>
+        public static bool TryDeleteDriver(DriverStoreEntry driverStoreEntry, bool forceDelete)
+        {
+            try
+            {
+                DeleteDriver(driverStoreEntry, forceDelete);
+                return true;
+            }
+            catch (Win32Exception ex)
+            {
+                Trace.TraceError(ex.ToString());
+                return false;
             }
         }
 
