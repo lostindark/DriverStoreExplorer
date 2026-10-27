@@ -14,6 +14,10 @@ namespace Rapr
     {
         private const string CsvQuote = "\"";
 
+        // Spreadsheet apps treat a cell starting with one of these as a formula. Provider and
+        // device names come from third-party INF files, so they shouldn't be able to become one.
+        private static readonly char[] FormulaPrefixes = { '=', '+', '-', '@', '\t', '\r' };
+
         public string Export(List<DriverStoreEntry> driverStoreEntries)
         {
             if (driverStoreEntries == null)
@@ -67,6 +71,13 @@ namespace Rapr
                 {
                     values[i] = string.Empty;
                     continue;
+                }
+
+                if (values[i].Length > 0
+                    && Array.IndexOf(FormulaPrefixes, values[i][0]) >= 0
+                    && !double.TryParse(values[i], NumberStyles.Float, CultureInfo.CurrentCulture, out _))
+                {
+                    values[i] = "'" + values[i];
                 }
 
                 if (values[i].Contains(csvDelimiter)
