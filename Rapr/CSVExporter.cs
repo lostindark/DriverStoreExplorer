@@ -36,7 +36,9 @@ namespace Rapr
                     string csvFileName = saveFileDialog.FileName;
 
                     using (FileStream fileStream = new FileStream(csvFileName, FileMode.Create))
-                    using (StreamWriter fileWriter = new StreamWriter(fileStream, new UTF8Encoding(false)))
+                    // Excel only reads the file as UTF-8 when it starts with a BOM; without it,
+                    // non-ASCII provider and device names are garbled.
+                    using (StreamWriter fileWriter = new StreamWriter(fileStream, new UTF8Encoding(true)))
                     {
                         // Write the header once
                         string headerLine = string.Join(csvDelimiter, Sanitize(DriverStoreEntry.GetFieldNames(), csvDelimiter));
