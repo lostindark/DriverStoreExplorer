@@ -42,6 +42,18 @@ namespace Rapr.Tests
             }
         }
 
+        [TestMethod]
+        [DataRow("=cmd|' /C calc'!A0", "'=cmd|' /C calc'!A0")]
+        [DataRow("+Provider", "'+Provider")]
+        [DataRow("@SUM(1,1)", "'@SUM(1,1)")]
+        [DataRow("-Provider", "'-Provider")]
+        [DataRow("-1", "-1")]
+        [DataRow("Contoso", "Contoso")]
+        public void ValuesThatLookLikeFormulasAreEscaped(string value, string expected)
+        {
+            Assert.AreEqual(expected, Sanitize(new[] { value }, ";")[0]);
+        }
+
         private static string NormalizeNewlines(string value)
         {
             return value.Replace("\r\n", "\n").Replace('\r', '\n');
