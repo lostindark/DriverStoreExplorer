@@ -15,6 +15,11 @@ namespace Rapr.Tests
                 .GetMethod("InstallUpdate", BindingFlags.Static | BindingFlags.NonPublic)
                 .CreateDelegate(typeof(Action<string, string>));
 
+        private static readonly Func<string, VersionInfo> ParseLatestRelease =
+            (Func<string, VersionInfo>)typeof(UpdateManager)
+                .GetMethod("ParseLatestRelease", BindingFlags.Static | BindingFlags.NonPublic)
+                .CreateDelegate(typeof(Func<string, VersionInfo>));
+
         private string testDirectory;
         private string sourceDirectory;
         private string appDirectory;
@@ -31,6 +36,74 @@ namespace Rapr.Tests
         public void Cleanup()
         {
             Directory.Delete(this.testDirectory, recursive: true);
+        }
+
+        [TestMethod]
+        public void LatestReleaseIsReadFromTheGitHubResponse()
+        {
+            const string Json = @"{
+                ""tag_name"": ""v1.0.63"",
+                ""html_url"": ""https://github.com/lostindark/DriverStoreExplorer/releases/tag/v1.0.63"",
+                ""draft"": false,
+                ""assets"": [
+                    {
+                        ""name"": ""DriverStoreExplorer-v1.0.63.zip"",
+                        ""size"": 1058111,
+                        ""digest"": ""sha256:2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae"",
+                        ""browser_download_url"": ""https://github.com/lostindark/DriverStoreExplorer/releases/download/v1.0.63/DriverStoreExplorer-v1.0.63.zip""
+                    }
+                ]
+            }";
+
+            VersionInfo info = ParseLatestRelease(Json);
+
+            Assert.AreEqual(new Version(1, 0, 63), info.Version);
+            Assert.AreEqual("https://github.com/lostindark/DriverStoreExplorer/releases/tag/v1.0.63", info.PageUrl.ToString());
+            Assert.AreEqual("https://github.com/lostindark/DriverStoreExplorer/releases/download/v1.0.63/DriverStoreExplorer-v1.0.63.zip", info.DownloadUrl.ToString());
+            Assert.AreEqual("2c26b46b68ffc68ff99b453c1d30413413422d706483bfa0f98a5e886266e7ae", info.Sha256);
+        }
+
+        [TestMethod]
+        public void TheAppZipIsPickedEvenIfItIsNotTheFirstAsset()
+        {
+            const string Json = @"{
+                ""tag_name"": ""v1.0.64"",
+                ""html_url"": ""https://github.com/lostindark/DriverStoreExplorer/releases/tag/v1.0.64"",
+                ""assets"": [
+                    {
+                        ""name"": ""checksums.txt"",
+                        ""browser_download_url"": ""https://github.com/lostindark/DriverStoreExplorer/releases/download/v1.0.64/checksums.txt""
+                    },
+                    {
+                        ""name"": ""DriverStoreExplorer-v1.0.64.zip"",
+                        ""browser_download_url"": ""https://github.com/lostindark/DriverStoreExplorer/releases/download/v1.0.64/DriverStoreExplorer-v1.0.64.zip""
+                    }
+                ]
+            }";
+
+            Assert.EndsWith("/DriverStoreExplorer-v1.0.64.zip", ParseLatestRelease(Json).DownloadUrl.ToString());
+        }
+
+        [TestMethod]
+        public void UpdateWithoutDigestIsRefusedBeforeDownloading()
+        {
+            using (var manager = new UpdateManager())
+            {
+                var versionInfo = new VersionInfo
+                {
+                    Version = new Version(9, 9, 9),
+                    DownloadUrl = new Uri("https://github.com/lostindark/DriverStoreExplorer/releases/download/v9.9.9/DriverStoreExplorer-v9.9.9.zip"),
+                };
+
+                Assert.ThrowsExactly<InvalidOperationException>(
+                    () => manager.ApplyUpdateAsync(versionInfo, null).GetAwaiter().GetResult());
+            }
+        }
+
+        [TestMethod]
+        public void ReleaseWithoutAssetsHasNoUpdate()
+        {
+            Assert.IsNull(ParseLatestRelease(@"{ ""tag_name"": ""v1.0.63"", ""html_url"": ""https://github.com/"", ""assets"": [] }"));
         }
 
         [TestMethod]

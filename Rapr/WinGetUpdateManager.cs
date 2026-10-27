@@ -109,7 +109,6 @@ del ""%~f0""
                         Arguments = arguments,
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
-                        RedirectStandardError = true,
                         CreateNoWindow = true
                     };
 
