@@ -95,6 +95,12 @@ namespace Rapr
                 throw new InvalidOperationException("Download URL is not from a trusted GitHub domain.");
             }
 
+            // The new executable runs elevated, so don't install anything that can't be checked.
+            if (string.IsNullOrEmpty(versionInfo.Sha256))
+            {
+                throw new InvalidOperationException("The release does not provide a SHA-256 digest for the download.");
+            }
+
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 
             string tempBaseDir = Path.Combine(Path.GetTempPath(), "DriverStoreExplorer");
@@ -125,19 +131,16 @@ namespace Rapr
             }
 
             // Verify SHA256 hash
-            if (!string.IsNullOrEmpty(versionInfo.Sha256))
+            using (var sha256 = SHA256.Create())
+            using (var fileStream = new FileStream(tempZipPath, FileMode.Open, FileAccess.Read, FileShare.Read))
             {
-                using (var sha256 = SHA256.Create())
-                using (var fileStream = new FileStream(tempZipPath, FileMode.Open, FileAccess.Read, FileShare.Read))
-                {
-                    var hashBytes = sha256.ComputeHash(fileStream);
-                    var actualHash = BitConverter.ToString(hashBytes).Replace("-", string.Empty);
+                var hashBytes = sha256.ComputeHash(fileStream);
+                var actualHash = BitConverter.ToString(hashBytes).Replace("-", string.Empty);
 
-                    if (!actualHash.Equals(versionInfo.Sha256, StringComparison.OrdinalIgnoreCase))
-                    {
-                        File.Delete(tempZipPath);
-                        throw new InvalidOperationException("SHA256 hash of the downloaded file does not match the expected value.");
-                    }
+                if (!actualHash.Equals(versionInfo.Sha256, StringComparison.OrdinalIgnoreCase))
+                {
+                    File.Delete(tempZipPath);
+                    throw new InvalidOperationException("SHA256 hash of the downloaded file does not match the expected value.");
                 }
             }
 

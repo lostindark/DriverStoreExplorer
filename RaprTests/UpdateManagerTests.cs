@@ -85,6 +85,22 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        public void UpdateWithoutDigestIsRefusedBeforeDownloading()
+        {
+            using (var manager = new UpdateManager())
+            {
+                var versionInfo = new VersionInfo
+                {
+                    Version = new Version(9, 9, 9),
+                    DownloadUrl = new Uri("https://github.com/lostindark/DriverStoreExplorer/releases/download/v9.9.9/DriverStoreExplorer-v9.9.9.zip"),
+                };
+
+                Assert.ThrowsExactly<InvalidOperationException>(
+                    () => manager.ApplyUpdateAsync(versionInfo, null).GetAwaiter().GetResult());
+            }
+        }
+
+        [TestMethod]
         public void ReleaseWithoutAssetsHasNoUpdate()
         {
             Assert.IsNull(ParseLatestRelease(@"{ ""tag_name"": ""v1.0.63"", ""html_url"": ""https://github.com/"", ""assets"": [] }"));
