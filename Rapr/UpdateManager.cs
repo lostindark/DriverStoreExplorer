@@ -56,7 +56,11 @@ namespace Rapr
                 release = (GitHubRelease)new DataContractJsonSerializer(typeof(GitHubRelease)).ReadObject(stream);
             }
 
-            var asset = release?.Assets?.FirstOrDefault();
+            // Pick the zip release.yml uploads rather than whichever asset happens to be first.
+            var asset = release?.Assets?.FirstOrDefault(a =>
+                a.Name != null
+                && a.Name.StartsWith("DriverStoreExplorer-", StringComparison.OrdinalIgnoreCase)
+                && a.Name.EndsWith(".zip", StringComparison.OrdinalIgnoreCase));
 
             if (release?.TagName == null || release.HtmlUrl == null || asset?.BrowserDownloadUrl == null)
             {

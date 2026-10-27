@@ -64,6 +64,27 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        public void TheAppZipIsPickedEvenIfItIsNotTheFirstAsset()
+        {
+            const string Json = @"{
+                ""tag_name"": ""v1.0.64"",
+                ""html_url"": ""https://github.com/lostindark/DriverStoreExplorer/releases/tag/v1.0.64"",
+                ""assets"": [
+                    {
+                        ""name"": ""checksums.txt"",
+                        ""browser_download_url"": ""https://github.com/lostindark/DriverStoreExplorer/releases/download/v1.0.64/checksums.txt""
+                    },
+                    {
+                        ""name"": ""DriverStoreExplorer-v1.0.64.zip"",
+                        ""browser_download_url"": ""https://github.com/lostindark/DriverStoreExplorer/releases/download/v1.0.64/DriverStoreExplorer-v1.0.64.zip""
+                    }
+                ]
+            }";
+
+            Assert.EndsWith("/DriverStoreExplorer-v1.0.64.zip", ParseLatestRelease(Json).DownloadUrl.ToString());
+        }
+
+        [TestMethod]
         public void ReleaseWithoutAssetsHasNoUpdate()
         {
             Assert.IsNull(ParseLatestRelease(@"{ ""tag_name"": ""v1.0.63"", ""html_url"": ""https://github.com/"", ""assets"": [] }"));
