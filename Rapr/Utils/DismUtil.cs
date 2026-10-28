@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
@@ -164,17 +163,7 @@ namespace Rapr.Utils
             switch (this.Type)
             {
                 case DriverStoreType.Online:
-                    try
-                    {
-                        SetupAPI.DeleteDriver(driverStoreEntry, forceDelete);
-                    }
-                    catch (Win32Exception ex)
-                    {
-                        Trace.TraceError(ex.ToString());
-                        return false;
-                    }
-
-                    return true;
+                    return SetupAPI.TryDeleteDriver(driverStoreEntry, forceDelete);
 
                 case DriverStoreType.Offline:
                     try
@@ -215,17 +204,7 @@ namespace Rapr.Utils
             switch (this.Type)
             {
                 case DriverStoreType.Online:
-                    try
-                    {
-                        SetupAPI.AddDriver(infFullPath, install);
-                    }
-                    catch (Win32Exception ex)
-                    {
-                        Trace.TraceError(ex.ToString());
-                        return false;
-                    }
-
-                    return true;
+                    return SetupAPI.TryAddDriver(infFullPath, install);
 
                 case DriverStoreType.Offline:
                     try
@@ -323,12 +302,12 @@ namespace Rapr.Utils
 
             // Pre Win 11 version.
             [DllImport("DismApi", CharSet = CharSet.Unicode)]
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Matches the function exported by DismApi.dll.")]
             public static extern int _DismExportDriver(DismSession Session, string Destination);
 
             // Win 11 version.
             [DllImport("DismApi", CharSet = CharSet.Unicode)]
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "Matches the function exported by DismApi.dll.")]
             public static extern int _DismExportDriver(
                 DismSession Session,
                 [MarshalAs(UnmanagedType.LPWStr)] string Destination,
