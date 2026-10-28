@@ -1251,6 +1251,21 @@ namespace Rapr
             }
         }
 
+        protected override void OnDpiChanged(DpiChangedEventArgs e)
+        {
+            base.OnDpiChanged(e);
+
+            // WinForms rescales controls and fonts when the window moves to a monitor with a
+            // different DPI, but not list view column widths. Scale them too, hidden ones included.
+            foreach (OLVColumn column in this.lstDriverStoreEntries.AllColumns)
+            {
+                if (column.Width > 0)
+                {
+                    column.Width = (int)Math.Round(column.Width * (double)e.DeviceDpiNew / e.DeviceDpiOld);
+                }
+            }
+        }
+
         private void CtxMenuOpenDeviceProperties_Click(object sender, EventArgs e)
         {
             if (this.lstDriverStoreEntries.SelectedObject != null)
