@@ -20,6 +20,11 @@ namespace Rapr.Controls
         public EnhancedSearchTextBox()
         {
             this.InitializeComponent();
+
+            // The border is drawn along the right edge, so repaint everything on resize; otherwise
+            // each old right edge stays behind as a short line when the window is resized.
+            this.SetStyle(ControlStyles.ResizeRedraw | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
+
             this.SetupEventHandlers();
         }
 
