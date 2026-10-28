@@ -104,9 +104,12 @@ namespace Rapr
                 Thread.CurrentThread.CurrentUICulture = lang;
             }
 
+            this.DpiDiag("ctor, before Font");
             this.Font = SystemFonts.MessageBoxFont;
+            this.DpiDiag("ctor, after Font");
 
             this.InitializeComponent();
+            this.DpiDiag("ctor, after InitializeComponent");
 
             this.Icon = DSEFormHelper.ExtractAssociatedIcon(Application.ExecutablePath);
             this.BuildLanguageMenu();
@@ -1242,6 +1245,61 @@ namespace Rapr
             this.buttonExportDrivers.Enabled = hasCheckedDrivers && this.driverStore.SupportExportDriver;
         }
 
+        // TEMPORARY DPI DIAGNOSTICS - do not commit.
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern IntPtr GetThreadDpiAwarenessContext();
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern int GetAwarenessFromDpiAwarenessContext(IntPtr value);
+
+        [System.Runtime.InteropServices.DllImport("user32.dll")]
+        private static extern uint GetDpiForWindow(IntPtr hwnd);
+
+        private void DpiDiag(string stage)
+        {
+            try
+            {
+                float screenDpi;
+                using (var g = Graphics.FromHwnd(IntPtr.Zero))
+                {
+                    screenDpi = g.DpiX;
+                }
+
+                string windowDpi = this.IsHandleCreated ? GetDpiForWindow(this.Handle).ToString(CultureInfo.InvariantCulture) : "-";
+                Trace.TraceInformation(
+                    $"DPIDIAG [{stage}] awareness={GetAwarenessFromDpiAwarenessContext(GetThreadDpiAwarenessContext())} " +
+                    $"DeviceDpi={this.DeviceDpi} windowDpi={windowDpi} screenDpi={screenDpi} " +
+                    $"AutoScaleDimensions={this.AutoScaleDimensions} Current={this.CurrentAutoScaleDimensions} " +
+                    $"Font={this.Font.Name} {this.Font.SizeInPoints}pt h={this.Font.Height} " +
+                    $"form={this.Size} refresh={this.buttonEnumerate?.Size} gb={this.gbOptions?.Size} flow={this.flowLayoutPanel1?.Size} " +
+                    $"list={this.lstDriverStoreEntries?.Size} search={this.textBoxSearch?.Size}");
+            }
+            catch (Exception ex)
+            {
+                Trace.TraceInformation($"DPIDIAG [{stage}] failed: {ex.Message}");
+            }
+        }
+
+        protected override void OnHandleCreated(EventArgs e)
+        {
+            this.DpiDiag("OnHandleCreated before base");
+            base.OnHandleCreated(e);
+            this.DpiDiag("OnHandleCreated after base");
+        }
+
+        protected override void OnLoad(EventArgs e)
+        {
+            this.DpiDiag("OnLoad before");
+            base.OnLoad(e);
+            this.DpiDiag("OnLoad after");
+        }
+
+        protected override void OnShown(EventArgs e)
+        {
+            base.OnShown(e);
+            this.DpiDiag("OnShown");
+        }
+
         private void UpdateColumnSize()
         {
             // Make the column size fit both header and content.
@@ -1253,7 +1311,9 @@ namespace Rapr
 
         protected override void OnDpiChanged(DpiChangedEventArgs e)
         {
+            this.DpiDiag($"OnDpiChanged before base {e.DeviceDpiOld}->{e.DeviceDpiNew}");
             base.OnDpiChanged(e);
+            this.DpiDiag("OnDpiChanged after base");
 
             // WinForms rescales controls and fonts when the window moves to a monitor with a
             // different DPI, but not list view column widths. Scale them too, hidden ones included.
