@@ -1244,10 +1244,26 @@ namespace Rapr
 
         private void UpdateColumnSize()
         {
-            // Make the column size fit both header and content.
-            for (var i = 0; i < this.lstDriverStoreEntries.Columns.Count - 1; i++)
+            var list = this.lstDriverStoreEntries;
+
+            // The header also draws the sort arrow, plus the sort priority when sorting by two
+            // columns, which the automatic width doesn't count ("Driver Date" became "Drive...").
+            // ObjectListView draws the arrow 16 pixels wide.
+            int sortIndicatorWidth = 16 + this.LogicalToDeviceUnits(4);
+            if (list.SortDescriptions.Count > 1)
             {
-                this.lstDriverStoreEntries.Columns[i].Width = -2;
+                sortIndicatorWidth += TextRenderer.MeasureText("9", list.Font).Width;
+            }
+
+            // Make the column size fit both header and content.
+            for (var i = 0; i < list.Columns.Count - 1; i++)
+            {
+                list.Columns[i].Width = -2;
+
+                if (list.ShowSortIndicators && list.Columns[i] is OLVColumn column && list.GetSortPriority(column) > 0)
+                {
+                    column.Width += sortIndicatorWidth;
+                }
             }
         }
 
