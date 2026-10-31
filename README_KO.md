@@ -81,7 +81,17 @@ winget install lostindark.DriverStoreExplorer
 rapr
 ```
 
-### 옵션 3: 소스에서 빌드
+### 옵션 3: Scoop을 통해 설치
+```powershell
+scoop bucket add extras
+scoop install driverstoreexplorer
+```
+설치 후 다음을 실행하여 도구 실행:
+```powershell
+rapr
+```
+
+### 옵션 4: 소스에서 빌드
 1. 이 저장소 복제 또는 다운로드
 2. Visual Studio 2022에서 `Rapr.sln` 열기
 3. 솔루션 빌드 (빌드 → 솔루션 빌드 또는 Ctrl+Shift+B)

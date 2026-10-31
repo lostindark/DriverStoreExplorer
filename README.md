@@ -83,7 +83,17 @@ After installation, launch the tool by running:
 rapr
 ```
 
-### Option 3: Build from Source
+### Option 3: Install via Scoop
+```powershell
+scoop bucket add extras
+scoop install driverstoreexplorer
+```
+After installation, launch the tool by running:
+```powershell
+rapr
+```
+
+### Option 4: Build from Source
 1. Clone or download this repository
 2. Open `Rapr.sln` in Visual Studio 2022
 3. Build the solution (Build → Build Solution or Ctrl+Shift+B)
