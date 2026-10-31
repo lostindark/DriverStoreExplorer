@@ -545,4 +545,46 @@ Mit der Auswahl der Treiber fortfahren?</value>
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Vor dem Auswählen nicht verwendeter Treiber warnen</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Detailbereich anzeigen</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Wählen Sie ein Paket aus, um die Details anzuzeigen.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Ordner</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Ältere Version</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Kein Gerät</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Startkritisch</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Erweiterung</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Eine neuere Version, {0}, ist installiert.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Eine neuere Version, {0}, wird von {1} verwendet.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>Wird von {0} verwendet.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>Für {0} installiert, das derzeit nicht angeschlossen ist.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Kein Gerät verwendet dieses Paket. Es kann noch für Hardware benötigt werden, die Sie später anschließen.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Windows benötigt diesen Treiber möglicherweise zum Starten.</value>
+  </data>
 </root>

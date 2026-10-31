@@ -544,4 +544,46 @@
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>選擇未使用的驅動程式前顯示警告</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>顯示詳細資料窗格</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>詳細資料</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>選取一個驅動程式套件以查看其詳細資料。</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>資料夾</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>舊版本</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>無裝置</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>啟動關鍵</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>延伸</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>已安裝較新的版本 {0}。</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>較新的版本 {0} 正由 {1} 使用。</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>正由 {0} 使用。</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>為 {0} 安裝，但該裝置目前未連接。</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>沒有裝置使用此驅動程式套件。之後連接的硬體可能仍需要它。</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Windows 啟動可能需要此驅動程式。</value>
+  </data>
 </root>

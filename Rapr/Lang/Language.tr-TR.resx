@@ -545,4 +545,46 @@ Sürücü seçimine devam edilsin mi?</value>
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Kullanılmayan Sürücüleri Seçmeden Önce Uyar</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Ayrıntılar Bölmesini Göster</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Ayrıntılar</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Ayrıntılarını görmek için bir paket seçin.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Klasör</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Eski sürüm</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Aygıt yok</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Önyükleme kritik</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Uzantı</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Daha yeni bir sürüm ({0}) yüklü.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Daha yeni bir sürüm ({0}) {1} tarafından kullanılıyor.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>{0} tarafından kullanılıyor.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>{0} için yüklendi, ancak bu aygıt şu anda bağlı değil.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Bu paketi hiçbir aygıt kullanmıyor. Daha sonra bağlayacağınız donanım için yine de gerekebilir.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Windows'un başlamak için bu sürücüye ihtiyacı olabilir.</value>
+  </data>
 </root>

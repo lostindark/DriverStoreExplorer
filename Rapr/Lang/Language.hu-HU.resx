@@ -545,4 +545,46 @@ Folytatja az illesztőprogramok kiválasztását?</value>
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Figyelmeztetés a nem használt illesztőprogramok kijelölése előtt</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Részletek panel megjelenítése</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Részletek</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Válasszon ki egy csomagot a részletek megtekintéséhez.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Mappa</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Régebbi verzió</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Nincs eszköz</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Rendszerindítás kritikus</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Bővítmény</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Egy újabb verzió ({0}) telepítve van.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Egy újabb verziót ({0}) a következő használja: {1}.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>Használja: {0}.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>Telepítve ehhez: {0}, amely most nincs csatlakoztatva.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Egyetlen eszköz sem használja ezt a csomagot. Még szükség lehet rá a később csatlakoztatott hardverhez.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Lehet, hogy a Windowsnak szüksége van erre az illesztőprogramra az indításhoz.</value>
+  </data>
 </root>

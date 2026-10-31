@@ -545,4 +545,46 @@ Czy kontynuować wybieranie sterowników?</value>
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Ostrzegaj przed wybraniem nieużywanych sterowników</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Pokaż panel szczegółów</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Szczegóły</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Wybierz pakiet, aby zobaczyć jego szczegóły.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Folder</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Starsza wersja</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Brak urządzenia</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Krytyczny przy rozruchu</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Rozszerzenie</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Zainstalowano nowszą wersję: {0}.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Nowsza wersja {0} jest używana przez {1}.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>Używany przez {0}.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>Zainstalowany dla {0}, które nie jest teraz podłączone.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Żadne urządzenie nie używa tego pakietu. Może być nadal potrzebny dla sprzętu, który podłączysz później.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Ten sterownik może być potrzebny do uruchomienia systemu Windows.</value>
+  </data>
 </root>

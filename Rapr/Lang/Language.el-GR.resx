@@ -545,4 +545,46 @@ Credits:
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Προειδοποίηση πριν από την επιλογή μη χρησιμοποιούμενων Drivers</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Εμφάνιση παραθύρου λεπτομερειών</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Λεπτομέρειες</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Επιλέξτε ένα πακέτο για να δείτε τις λεπτομέρειές του.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Φάκελος</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Παλαιότερη έκδοση</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Χωρίς συσκευή</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Κρίσιμο για το Boot</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Επέκταση</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Είναι εγκατεστημένη μια νεότερη έκδοση, η {0}.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Μια νεότερη έκδοση, η {0}, χρησιμοποιείται από τη συσκευή {1}.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>Χρησιμοποιείται από τη συσκευή {0}.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>Εγκατεστημένο για τη συσκευή {0}, η οποία δεν είναι συνδεδεμένη τώρα.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Καμία συσκευή δεν χρησιμοποιεί αυτό το πακέτο. Ίσως χρειαστεί ακόμα για υλικό που θα συνδέσετε αργότερα.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Τα Windows ίσως χρειάζονται αυτόν τον driver για να ξεκινήσουν.</value>
+  </data>
 </root>

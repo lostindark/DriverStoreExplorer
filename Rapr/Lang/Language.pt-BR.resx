@@ -509,4 +509,46 @@ Continuar selecionando drivers?</value>
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Avisar antes de selecionar drivers não usados</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Mostrar painel de detalhes</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Detalhes</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Selecione um pacote para ver os detalhes.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Pasta</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Versão antiga</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Sem dispositivo</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Crítico na inicialização</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Extensão</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Uma versão mais nova, {0}, está instalada.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Uma versão mais nova, {0}, está em uso por {1}.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>Em uso por {0}.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>Instalado para {0}, que não está conectado agora.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Nenhum dispositivo usa este pacote. Ele ainda pode ser necessário para hardware que você conectar depois.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>O Windows pode precisar deste driver para iniciar.</value>
+  </data>
 </root>

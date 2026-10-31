@@ -32,6 +32,9 @@
     <Setting Name="WarnBeforeSelectingUnusedDrivers" Roaming="true" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">True</Value>
     </Setting>
+    <Setting Name="ShowDetailsPane" Roaming="true" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">True</Value>
+    </Setting>
     <Setting Name="LogRetentionPeriod" Roaming="true" Type="System.TimeSpan" Scope="User">
       <Value Profile="(Default)">180.00:00:00</Value>
     </Setting>

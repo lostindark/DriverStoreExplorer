@@ -508,4 +508,46 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>التحذير قبل تحديد التعريفات غير المستخدمة</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>إظهار جزء التفاصيل</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>التفاصيل</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>حدد حزمة لعرض تفاصيلها.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>المجلد</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>إصدار أقدم</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>بلا جهاز</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>مهم للإقلاع</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>ملحق</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>يوجد إصدار أحدث مثبت: {0}.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>يستخدم {1} إصدارًا أحدث: {0}.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>مستخدم بواسطة {0}.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>مثبت لـ {0}، وهو غير متصل حاليًا.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>لا يستخدم أي جهاز هذه الحزمة. قد تظل مطلوبة لجهاز تقوم بتوصيله لاحقًا.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>قد يحتاج Windows إلى هذا التعريف لبدء التشغيل.</value>
+  </data>
 </root>
