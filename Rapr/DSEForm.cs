@@ -412,6 +412,11 @@ namespace Rapr
             this.operationsColumn.RowStyles.Add(new RowStyle());
             this.operationsColumn.RowStyles.Add(new RowStyle());
 
+            // The designer sizes the Operations box to fill the window's height, and with the
+            // default GrowOnly it would never get shorter than that, squeezing the pane below it.
+            this.gbOptions.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            this.flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+
             var table = this.tableLayoutPanel1;
             table.SuspendLayout();
             table.Controls.Remove(this.gbOptions);
