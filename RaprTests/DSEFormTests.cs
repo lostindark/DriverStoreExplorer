@@ -505,6 +505,117 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        public void CheckActionsLeaveDriversHiddenBySearchUnchanged()
+        {
+            WithSelectionForm((form, list) =>
+            {
+                var first = CreateDriver("first.inf", 1);
+                var second = CreateDriver("second.inf", 1);
+                var hiddenChecked = CreateDriver("hidden-checked.inf", 1);
+                var hiddenUnchecked = CreateDriver("hidden-unchecked.inf", 1);
+                list.CreateControl();
+                list.UseFiltering = true;
+                list.SetObjects(new[] { first, second, hiddenChecked, hiddenUnchecked });
+                list.CheckedObjects = new[] { hiddenChecked };
+                list.ModelFilter = new ModelFilter(model => !((DriverStoreEntry)model).DriverInfName.StartsWith("hidden", StringComparison.Ordinal));
+
+                void AssertHiddenUnchanged()
+                {
+                    Assert.IsTrue(list.IsChecked(hiddenChecked));
+                    Assert.IsFalse(list.IsChecked(hiddenUnchecked));
+                }
+
+                Invoke(form, "CtxMenuSelectAll_Click", null, EventArgs.Empty);
+                CollectionAssert.AreEquivalent(new[] { first, second }, list.CheckedObjects.ToArray());
+                AssertHiddenUnchanged();
+
+                Invoke(form, "CtxMenuSelectAll_Click", null, EventArgs.Empty);
+                Assert.AreEqual(0, list.CheckedObjects.Count);
+                AssertHiddenUnchanged();
+
+                list.CheckedObjects = new[] { first, hiddenChecked };
+                Invoke(form, "CtxMenuInvertSelection_Click", null, EventArgs.Empty);
+                CollectionAssert.AreEquivalent(new[] { second }, list.CheckedObjects.ToArray());
+                AssertHiddenUnchanged();
+
+                list.SelectedObjects = new[] { first };
+                Invoke(form, "CtxMenuSelect_Click", null, EventArgs.Empty);
+                CollectionAssert.AreEquivalent(new[] { first, second }, list.CheckedObjects.ToArray());
+                AssertHiddenUnchanged();
+
+                list.ModelFilter = null;
+                CollectionAssert.AreEquivalent(new[] { first, second, hiddenChecked }, list.CheckedObjects.ToArray());
+            });
+        }
+
+        [TestMethod]
+        [DataRow("CtxMenuSelectOldDrivers_Click")]
+        [DataRow("CtxMenuSelectUnusedDrivers_Click")]
+        public void StoreWideSelectionClearsTheSearchFirst(string handler)
+        {
+            WithOperationForm((form, list) =>
+            {
+                var active = CreateDriver("driver.inf", 2);
+                active.DeviceName = "Active device";
+                var unused = CreateDriver("driver.inf", 1);
+                list.CreateControl();
+                list.UseFiltering = true;
+                list.SetObjects(new[] { active, unused });
+                var search = (Control)typeof(DSEForm)
+                    .GetField("textBoxSearch", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                search.Text = "Active device";
+                Invoke(form, "UpdateSearchFilter");
+                Assert.AreEqual(1, list.GetItemCount());
+
+                Invoke(form, handler, null, EventArgs.Empty);
+
+                Assert.IsNull(list.ModelFilter);
+                Assert.AreEqual(string.Empty, search.Text);
+                Assert.AreEqual(2, list.GetItemCount());
+                CollectionAssert.AreEquivalent(new[] { unused }, list.CheckedObjects.ToArray());
+            });
+        }
+
+        [TestMethod]
+        public void CancelledUnusedDriverSelectionKeepsTheSearch()
+        {
+            // Settings is internal to Rapr, so reach it through ApplicationSettingsBase.
+            var settings = (ApplicationSettingsBase)typeof(DSEForm).Assembly
+                .GetType("Rapr.Properties.Settings")
+                .GetProperty("Default", BindingFlags.Static | BindingFlags.Public)
+                .GetValue(null);
+            object previous = settings["WarnBeforeSelectingUnusedDrivers"];
+            settings["WarnBeforeSelectingUnusedDrivers"] = true;
+
+            WithOperationForm((form, list) =>
+            {
+                ((SelectionTestForm)form).SelectionConfirmed = false;
+                try
+                {
+                    var active = CreateDriver("driver.inf", 2);
+                    active.DeviceName = "Active device";
+                    list.CreateControl();
+                    list.UseFiltering = true;
+                    list.SetObjects(new[] { active, CreateDriver("driver.inf", 1) });
+                    var search = (Control)typeof(DSEForm)
+                        .GetField("textBoxSearch", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                    search.Text = "Active device";
+                    Invoke(form, "UpdateSearchFilter");
+
+                    Invoke(form, "CtxMenuSelectUnusedDrivers_Click", null, EventArgs.Empty);
+
+                    Assert.AreEqual("Active device", search.Text);
+                    Assert.IsNotNull(list.ModelFilter);
+                    Assert.AreEqual(0, list.CheckedObjects.Count);
+                }
+                finally
+                {
+                    settings["WarnBeforeSelectingUnusedDrivers"] = previous;
+                }
+            });
+        }
+
+        [TestMethod]
         public void OperationButtonsShareTheNativeButtonStyle()
         {
             // Build only the designer controls; the real constructor requires elevation.
