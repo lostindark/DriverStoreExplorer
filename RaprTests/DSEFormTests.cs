@@ -530,6 +530,48 @@ namespace Rapr.Tests
             }
         }
 
+        [TestMethod]
+        [DataRow(false, CloseReason.UserClosing, false, false, 0)]
+        [DataRow(true, CloseReason.UserClosing, false, true, 1)]
+        [DataRow(true, CloseReason.UserClosing, true, false, 1)]
+        [DataRow(true, CloseReason.WindowsShutDown, false, false, 0)]
+        [DataRow(true, CloseReason.TaskManagerClosing, false, false, 0)]
+        public void ClosingDuringAnOperationAsksFirst(
+            bool operationRunning, CloseReason reason, bool confirmed, bool keepOpen, int confirmations)
+        {
+            WithSelectionForm((form, list) =>
+            {
+                var testForm = (SelectionTestForm)form;
+                testForm.CloseConfirmed = confirmed;
+                SetField(form, "operationInProgress", operationRunning);
+
+                var result = (bool)typeof(DSEForm)
+                    .GetMethod("ShouldKeepOpenForOperation", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .Invoke(form, new object[] { reason });
+
+                Assert.AreEqual(keepOpen, result);
+                Assert.AreEqual(confirmations, testForm.CloseConfirmationCount);
+            });
+        }
+
+        [TestMethod]
+        public void DeclinedCloseDuringAnOperationKeepsTheFormOpen()
+        {
+            WithOperationForm((form, list) =>
+            {
+                ((SelectionTestForm)form).CloseConfirmed = false;
+                Invoke(form, "StartOperation");
+                Assert.IsFalse(IsActionEnabled(form, "exitToolStripMenuItem"));
+
+                var args = new FormClosingEventArgs(CloseReason.UserClosing, false);
+                Invoke(form, "DSEForm_FormClosing", form, args);
+                Assert.IsTrue(args.Cancel);
+
+                Invoke(form, "EndOperation");
+                Assert.IsTrue(IsActionEnabled(form, "exitToolStripMenuItem"));
+            });
+        }
+
         private static DriverStoreEntry CreateDriver(string infName, int version)
         {
             return new DriverStoreEntry
@@ -624,6 +666,16 @@ namespace Rapr.Tests
                 this.ConfirmationCount++;
                 this.OnConfirmation?.Invoke();
                 return this.SelectionConfirmed;
+            }
+
+            public bool CloseConfirmed { get; set; }
+
+            public int CloseConfirmationCount { get; private set; }
+
+            protected override bool ConfirmCloseDuringOperation()
+            {
+                this.CloseConfirmationCount++;
+                return this.CloseConfirmed;
             }
         }
 

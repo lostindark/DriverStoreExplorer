@@ -539,6 +539,9 @@ Credits:
 
 Να συνεχιστεί η επιλογή οδηγών;</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Μια λειτουργία εκτελείται ακόμη. Αν κλείσετε τώρα, μπορεί να μην ολοκληρωθεί. Κλείσιμο παρ' όλα αυτά;</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Οι επιλεγμένοι οδηγοί ενδέχεται να είναι ακόμα απαραίτητοι. Ελέγξτε τους και δημιουργήστε αντίγραφα ασφαλείας πριν από τη διαγραφή.</value>
   </data>

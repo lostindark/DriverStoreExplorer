@@ -1118,6 +1118,25 @@ namespace Rapr
                 MessageBoxDefaultButton.Button2) == DialogResult.OK;
         }
 
+        // Closing ends the process, which stops a running delete, add or export partway.
+        // Windows shutdown and other non-user closes are not blocked.
+        private bool ShouldKeepOpenForOperation(CloseReason reason)
+        {
+            return this.operationInProgress
+                && reason == CloseReason.UserClosing
+                && !this.ConfirmCloseDuringOperation();
+        }
+
+        protected virtual bool ConfirmCloseDuringOperation()
+        {
+            return this.ShowMessageBox(
+                Language.ResourceManager.GetString("Message_Close_During_Operation", Language.Culture),
+                Language.Message_Title_Warning,
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning,
+                MessageBoxDefaultButton.Button2) == DialogResult.Yes;
+        }
+
         private void ExportDriverList(IEnumerable<DriverStoreEntry> objects)
         {
             if (objects == null)
@@ -1288,6 +1307,12 @@ namespace Rapr
 
         private void DSEForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+            if (this.ShouldKeepOpenForOperation(e.CloseReason))
+            {
+                e.Cancel = true;
+                return;
+            }
+
             Settings.Default.DriverStoreViewState = Convert.ToBase64String(this.lstDriverStoreEntries.SaveState());
 
             if (this.WindowState == FormWindowState.Minimized)
@@ -1514,6 +1539,7 @@ namespace Rapr
             this.exportAllDriverListToolStripMenuItem.Enabled = false;
             this.languageToolStripMenuItem.Enabled = false;
             this.optionsStripMenuItem.Enabled = false;
+            this.exitToolStripMenuItem.Enabled = false;
             this.textBoxSearch.Enabled = false;
         }
 
@@ -1533,6 +1559,7 @@ namespace Rapr
             this.exportAllDriverListToolStripMenuItem.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.languageToolStripMenuItem.Enabled = true;
             this.optionsStripMenuItem.Enabled = true;
+            this.exitToolStripMenuItem.Enabled = true;
             this.textBoxSearch.Enabled = true;
         }
 

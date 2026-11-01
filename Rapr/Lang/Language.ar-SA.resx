@@ -502,6 +502,9 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
 
 هل تريد متابعة تحديد التعريفات؟</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>لا تزال هناك عملية قيد التشغيل. قد يؤدي الإغلاق الآن إلى عدم اكتمالها. هل تريد الإغلاق على أي حال؟</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>قد تظل التعريفات المحددة مطلوبة. راجعها وأنشئ نسخة احتياطية منها قبل حذفها.</value>
   </data>

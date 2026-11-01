@@ -539,6 +539,9 @@ Törlésük a szoftverek vagy eszközök hibás működését okozhatja. Ellenő
 
 Folytatja az illesztőprogramok kiválasztását?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Egy művelet még folyamatban van. Ha most bezárja, előfordulhat, hogy nem fejeződik be. Mégis bezárja?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>A kijelölt illesztőprogramokra továbbra is szükség lehet. Törlés előtt ellenőrizze őket, és készítsen róluk biztonsági másolatot.</value>
   </data>

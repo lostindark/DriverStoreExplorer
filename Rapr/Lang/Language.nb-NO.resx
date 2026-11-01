@@ -539,6 +539,9 @@ Hvis du sletter dem, kan programvare eller enheter slutte å fungere. Gå gjenno
 
 Vil du fortsette å velge drivere?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>En operasjon pågår fortsatt. Hvis du lukker nå, kan den bli ufullført. Vil du lukke likevel?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>De valgte driverne kan fortsatt være nødvendige. Gå gjennom og sikkerhetskopier driverne før sletting.</value>
   </data>

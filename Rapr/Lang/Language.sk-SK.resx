@@ -539,6 +539,9 @@ Ich odstránenie môže narušiť fungovanie softvéru alebo zariadení. Skontro
 
 Pokračovať vo výbere ovládačov?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Operácia stále prebieha. Ak teraz zatvoríte, nemusí sa dokončiť. Zatvoriť aj tak?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Vybrané ovládače môžu byť stále potrebné. Pred odstránením ich skontrolujte a zálohujte.</value>
   </data>

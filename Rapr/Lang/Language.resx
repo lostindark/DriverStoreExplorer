@@ -539,6 +539,9 @@ Deleting them can break software or devices. Review the selection and back up dr
 
 Continue selecting drivers?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>An operation is still running. Closing now can leave it unfinished. Close anyway?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Selected drivers may still be required. Review and back up drivers before deleting.</value>
   </data>

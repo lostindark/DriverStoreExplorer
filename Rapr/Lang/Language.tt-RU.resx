@@ -539,6 +539,9 @@
 
 Драйверларны сайлауны дәвам итәргәме?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Операция әле бара. Хәзер ябсагыз, ул тәмамланмыйча калырга мөмкин. Барыбер ябаргамы?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Сайланган драйверлар һаман кирәк булырга мөмкин. Бетерер алдыннан аларны тикшерегез һәм резерв күчермәсен ясагыз.</value>
   </data>

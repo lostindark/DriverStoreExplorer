@@ -540,6 +540,9 @@ Eliminarli può compromettere il funzionamento di software o dispositivi. Contro
 
 Continuare con la selezione dei driver?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Un'operazione è ancora in corso. Chiudendo ora potrebbe non essere completata. Chiudere comunque?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>I driver selezionati potrebbero essere ancora necessari. Controllali ed esegui un backup prima di eliminarli.</value>
   </data>

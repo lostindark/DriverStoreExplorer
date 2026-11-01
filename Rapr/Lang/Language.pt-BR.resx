@@ -503,6 +503,9 @@ Excluí-los pode fazer com que softwares ou dispositivos parem de funcionar. Rev
 
 Continuar selecionando drivers?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Uma operação ainda está em andamento. Fechar agora pode deixá-la inacabada. Fechar mesmo assim?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Os drivers selecionados ainda podem ser necessários. Revise-os e faça backup antes de excluí-los.</value>
   </data>

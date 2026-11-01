@@ -539,6 +539,9 @@ Windows 폴더 자체가 아닌 Windows 설치 또는 이미지의 루트 디렉
 
 드라이버 선택을 계속하시겠습니까?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>작업이 아직 진행 중입니다. 지금 닫으면 작업이 완료되지 않을 수 있습니다. 그래도 닫으시겠습니까?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>선택한 드라이버가 여전히 필요할 수 있습니다. 삭제하기 전에 검토하고 백업하세요.</value>
   </data>

@@ -505,6 +505,9 @@
 
 是否继续选择驱动？</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>仍有操作正在进行。现在关闭可能导致操作无法完成。仍要关闭吗？</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>所选驱动可能仍然需要使用。请在删除前检查并备份驱动。</value>
   </data>

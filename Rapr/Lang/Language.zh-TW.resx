@@ -538,6 +538,9 @@
 
 是否繼續選取驅動程式？</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>仍有作業正在進行。現在關閉可能導致作業無法完成。仍要關閉嗎？</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>選取的驅動程式可能仍有需要。請在刪除前檢查並備份驅動程式。</value>
   </data>

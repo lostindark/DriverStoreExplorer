@@ -539,6 +539,9 @@ Leur suppression peut empêcher des logiciels ou des périphériques de fonction
 
 Continuer la sélection des pilotes ?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Une opération est toujours en cours. Si vous fermez maintenant, elle risque de ne pas se terminer. Fermer quand même ?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Les pilotes sélectionnés peuvent encore être nécessaires. Vérifiez-les et sauvegardez-les avant de les supprimer.</value>
   </data>

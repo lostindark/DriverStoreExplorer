@@ -539,6 +539,9 @@ Windowsインストールまたはイメージのルートディレクトリ（W
 
 ドライバーの選択を続行しますか？</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>操作がまだ実行中です。今閉じると、操作が完了しない可能性があります。それでも閉じますか？</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>選択したドライバーは引き続き必要な可能性があります。削除前に確認し、バックアップしてください。</value>
   </data>

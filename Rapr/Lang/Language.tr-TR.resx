@@ -539,6 +539,9 @@ Bunları silmek yazılımların veya aygıtların çalışmasını bozabilir. Se
 
 Sürücü seçimine devam edilsin mi?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Bir işlem hâlâ devam ediyor. Şimdi kapatmak işlemin yarım kalmasına neden olabilir. Yine de kapatılsın mı?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Seçilen sürücüler hâlâ gerekli olabilir. Silmeden önce sürücüleri gözden geçirin ve yedekleyin.</value>
   </data>

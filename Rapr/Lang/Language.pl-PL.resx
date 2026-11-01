@@ -539,6 +539,9 @@ Ich usunięcie może spowodować nieprawidłowe działanie oprogramowania lub ur
 
 Czy kontynuować wybieranie sterowników?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Operacja jest nadal w toku. Zamknięcie teraz może spowodować, że nie zostanie ukończona. Czy mimo to zamknąć?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Wybrane sterowniki mogą być nadal potrzebne. Sprawdź je i wykonaj kopię zapasową przed usunięciem.</value>
   </data>

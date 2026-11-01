@@ -539,6 +539,9 @@
 
 Продовжити вибір драйверів?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Операція ще виконується. Якщо закрити зараз, вона може залишитися незавершеною. Усе одно закрити?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Вибрані драйвери можуть і далі бути потрібними. Перевірте їх і створіть резервну копію перед видаленням.</value>
   </data>

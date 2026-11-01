@@ -513,6 +513,9 @@
 
 האם להמשיך בבחירת מנהלי ההתקנים?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>פעולה עדיין מתבצעת. סגירה כעת עלולה להשאיר אותה לא גמורה. לסגור בכל זאת?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>ייתכן שמנהלי ההתקנים שנבחרו עדיין נחוצים. יש לבדוק ולגבות אותם לפני המחיקה.</value>
   </data>

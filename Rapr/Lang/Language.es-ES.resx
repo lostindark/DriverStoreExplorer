@@ -539,6 +539,9 @@ Borrarlos puede hacer que los programas o dispositivos dejen de funcionar. Revis
 
 ¿Continuar con la selección de controladores?</value>
   </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Todavía hay una operación en curso. Si cierra ahora, puede quedar sin terminar. ¿Cerrar de todos modos?</value>
+  </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Los controladores seleccionados podrían seguir siendo necesarios. Revíselos y haga una copia de seguridad antes de borrarlos.</value>
   </data>
