@@ -505,6 +505,32 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        public void OperationButtonsShareTheNativeButtonStyle()
+        {
+            // Build only the designer controls; the real constructor requires elevation.
+            var form = (DSEForm)FormatterServices.GetUninitializedObject(typeof(DSEForm));
+            typeof(Form).GetConstructor(Type.EmptyTypes).Invoke(form, null);
+            try
+            {
+                Invoke(form, "InitializeComponent");
+                var panel = (FlowLayoutPanel)typeof(DSEForm)
+                    .GetField("flowLayoutPanel1", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                var buttons = panel.Controls.OfType<Button>().ToList();
+
+                Assert.IsGreaterThanOrEqualTo(7, buttons.Count);
+                foreach (var button in buttons)
+                {
+                    // Mixed styles give some buttons the Windows hover effect and others a different one.
+                    Assert.AreEqual(FlatStyle.System, button.FlatStyle, button.Name);
+                }
+            }
+            finally
+            {
+                form.Dispose();
+            }
+        }
+
+        [TestMethod]
         public void TypedDriverListRestoresUntypedViewState()
         {
             using (var previous = new ObjectListView())

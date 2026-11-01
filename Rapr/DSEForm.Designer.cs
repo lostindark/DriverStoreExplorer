@@ -337,6 +337,7 @@
             // 
             this.buttonSelectOldDrivers.AutoSize = true;
             this.buttonSelectOldDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSelectOldDrivers.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonSelectOldDrivers.Location = new System.Drawing.Point(9, 142);
             this.buttonSelectOldDrivers.Name = "buttonSelectOldDrivers";
             this.buttonSelectOldDrivers.Size = new System.Drawing.Size(124, 23);
@@ -349,6 +350,7 @@
             // 
             this.buttonSelectUnusedDrivers.AutoSize = true;
             this.buttonSelectUnusedDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonSelectUnusedDrivers.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonSelectUnusedDrivers.Location = new System.Drawing.Point(9, 171);
             this.buttonSelectUnusedDrivers.Name = "buttonSelectUnusedDrivers";
             this.buttonSelectUnusedDrivers.Size = new System.Drawing.Size(124, 23);
@@ -361,6 +363,7 @@
             // 
             this.buttonExportDrivers.AutoSize = true;
             this.buttonExportDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonExportDrivers.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonExportDrivers.Location = new System.Drawing.Point(9, 200);
             this.buttonExportDrivers.Name = "buttonExportDrivers";
             this.buttonExportDrivers.Size = new System.Drawing.Size(124, 23);
@@ -373,6 +376,7 @@
             // 
             this.buttonExportAllDrivers.AutoSize = true;
             this.buttonExportAllDrivers.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.buttonExportAllDrivers.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.buttonExportAllDrivers.Location = new System.Drawing.Point(9, 229);
             this.buttonExportAllDrivers.Name = "buttonExportAllDrivers";
             this.buttonExportAllDrivers.Size = new System.Drawing.Size(124, 23);
