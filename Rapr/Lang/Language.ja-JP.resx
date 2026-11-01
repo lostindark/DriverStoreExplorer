@@ -545,4 +545,46 @@ Windowsインストールまたはイメージのルートディレクトリ（W
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>未使用のドライバーを選択する前に警告する</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>詳細ウィンドウを表示する</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>詳細</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>詳細を表示するパッケージを選択してください。</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>フォルダー</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>古いバージョン</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>デバイスなし</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>起動に必要</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>拡張</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>新しいバージョン {0} がインストールされています。</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>新しいバージョン {0} が {1} で使用されています。</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>{0} で使用中です。</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>{0} 用にインストールされていますが、このデバイスは現在接続されていません。</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>このパッケージを使用しているデバイスはありません。後で接続するハードウェアに必要な場合があります。</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Windows の起動にこのドライバーが必要な場合があります。</value>
+  </data>
 </root>

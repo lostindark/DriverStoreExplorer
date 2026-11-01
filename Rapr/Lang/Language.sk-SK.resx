@@ -545,4 +545,46 @@ Pokračovať vo výbere ovládačov?</value>
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Upozorniť pred označením nepoužívaných ovládačov</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Zobraziť panel podrobností</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Podrobnosti</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Vyberte balík, aby ste videli jeho podrobnosti.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Priečinok</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Staršia verzia</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Žiadne zariadenie</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Kritický pre boot</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Rozšírenie</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Je nainštalovaná novšia verzia {0}.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Novšiu verziu {0} používa {1}.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>Používa {0}.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>Nainštalovaný pre {0}, ktoré teraz nie je pripojené.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Tento balík nepoužíva žiadne zariadenie. Môže byť ešte potrebný pre hardvér, ktorý pripojíte neskôr.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Windows môže tento ovládač potrebovať na spustenie.</value>
+  </data>
 </root>

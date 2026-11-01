@@ -545,4 +545,46 @@
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Попереджати перед вибором невикористаних драйверів</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Показувати панель відомостей</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Відомості</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Виберіть пакет, щоб побачити відомості про нього.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Папка</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Стара версія</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Немає пристрою</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Критично для завантаження</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Розширення</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Встановлено новішу версію: {0}.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Новіша версія {0} використовується пристроєм {1}.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>Використовується пристроєм {0}.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>Встановлено для {0}, але цей пристрій зараз не підключено.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Жоден пристрій не використовує цей пакет. Він може знадобитися для обладнання, яке ви підключите пізніше.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Цей драйвер може знадобитися Windows для завантаження.</value>
+  </data>
 </root>

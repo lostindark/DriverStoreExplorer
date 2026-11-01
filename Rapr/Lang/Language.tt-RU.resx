@@ -545,4 +545,46 @@
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Кулланылмый торган драйверларны сайлау алдыннан кисәтү</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Тулырак мәгълүмат панелен күрсәтү</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Тулырак мәгълүмат</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Тулырак мәгълүматны күрү өчен пакетны сайлагыз.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Папка</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Искерәк версия</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Җайланма юк</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Кабызу өчен мөһим</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Киңәйтү</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Яңарак версия, {0}, урнаштырылган.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Яңарак версия, {0}, {1} тарафыннан кулланыла.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>{0} тарафыннан кулланыла.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>{0} өчен урнаштырылган, ләкин ул хәзер тоташтырылмаган.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Бу пакетны бер җайланма да кулланмый. Ул соңрак тоташтырачак җиһаз өчен кирәк булырга мөмкин.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Windows кабызу өчен бу драйверга мохтаҗ булырга мөмкин.</value>
+  </data>
 </root>

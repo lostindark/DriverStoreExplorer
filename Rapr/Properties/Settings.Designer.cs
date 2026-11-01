@@ -160,5 +160,18 @@ namespace Rapr.Properties {
                 this["WarnBeforeSelectingUnusedDrivers"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        [global::System.Configuration.SettingsManageabilityAttribute(global::System.Configuration.SettingsManageability.Roaming)]
+        public bool ShowDetailsPane {
+            get {
+                return ((bool)(this["ShowDetailsPane"]));
+            }
+            set {
+                this["ShowDetailsPane"] = value;
+            }
+        }
     }
 }

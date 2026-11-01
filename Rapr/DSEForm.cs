@@ -18,6 +18,7 @@ using JR.Utils.GUI.Forms;
 
 using Microsoft.WindowsAPICodePack.Dialogs;
 
+using Rapr.Controls;
 using Rapr.Lang;
 using Rapr.Properties;
 using Rapr.Utils;
@@ -36,6 +37,10 @@ namespace Rapr
         private HashSet<DriverStoreEntry> driversWithNewerDate = new HashSet<DriverStoreEntry>();
         private HashSet<DriverStoreEntry> unusedDriversToReview = new HashSet<DriverStoreEntry>();
         private ToolStripMenuItem warnBeforeSelectingUnusedDriversStripMenuItem;
+        private ToolStripMenuItem showDetailsPaneStripMenuItem;
+        private DriverDetailsPanel detailsPanel;
+        private Panel operationsColumn;
+        private DriverInsights driverInsights;
 
         private static readonly IUpdateManager UpdateManager = CreateUpdateManager();
 
@@ -111,6 +116,7 @@ namespace Rapr
             this.Icon = DSEFormHelper.ExtractAssociatedIcon(Application.ExecutablePath);
             this.BuildLanguageMenu();
             this.SetupOptionsMenu();
+            this.SetupDetailsPane();
 
             this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
             this.lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
@@ -363,6 +369,127 @@ namespace Rapr
             };
             this.warnBeforeSelectingUnusedDriversStripMenuItem.Click += this.WarnBeforeSelectingUnusedDriversStripMenuItem_Click;
             this.optionsStripMenuItem.DropDownItems.Add(this.warnBeforeSelectingUnusedDriversStripMenuItem);
+
+            this.showDetailsPaneStripMenuItem = new ToolStripMenuItem
+            {
+                CheckOnClick = true,
+                Checked = Settings.Default.ShowDetailsPane,
+                Text = Language.ResourceManager.GetString("Menu_Options_ShowDetailsPane", Language.Culture),
+            };
+            this.showDetailsPaneStripMenuItem.Click += this.ShowDetailsPaneStripMenuItem_Click;
+            this.optionsStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
+            this.optionsStripMenuItem.DropDownItems.Add(this.showDetailsPaneStripMenuItem);
+        }
+
+        // Called after every InitializeComponent(), like SetupOptionsMenu(). The pane goes below the
+        // Operations box, in the same column, and is built in code because its texts have no
+        // generated Language properties yet.
+        private void SetupDetailsPane()
+        {
+            // After a language switch these hold the controls of the previous layout.
+            this.operationsColumn?.Dispose();
+            this.detailsPanel?.Dispose();
+
+            this.detailsPanel = new DriverDetailsPanel
+            {
+                Dock = DockStyle.Fill,
+            };
+            this.detailsPanel.FolderClicked += (sender, e) => this.OpenDriverFolder(this.detailsPanel.Entry);
+
+            // A plain docking panel: the Operations box on top, sized to its buttons, and the
+            // pane below it taking the rest. In a TableLayoutPanel with AutoSize rows the box kept
+            // the full height the designer gives it and squeezed the pane.
+            this.gbOptions.AutoSize = false;
+            this.operationsColumn = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Margin = Padding.Empty,
+                Padding = this.gbOptions.Margin,
+            };
+
+            var table = this.tableLayoutPanel1;
+            table.SuspendLayout();
+            table.Controls.Remove(this.gbOptions);
+
+            this.operationsColumn.Controls.Add(this.detailsPanel);
+            this.operationsColumn.Controls.Add(this.gbOptions);
+            table.Controls.Add(this.operationsColumn, 1, 0);
+            table.SetRowSpan(this.operationsColumn, 2);
+            this.ArrangeOperationsColumn();
+            table.ResumeLayout();
+
+            // Buttons are shown or hidden by driver store type; keep the box fitted to them.
+            this.flowLayoutPanel1.Layout += (sender, e) => this.FitOperationsBox();
+
+            this.lstDriverStoreEntries.SelectionChanged += (sender, e) => this.UpdateDetailsPane();
+            this.lstDriverStoreEntries.ItemsChanged += (sender, e) =>
+            {
+                this.driverInsights = null;
+                this.UpdateDetailsPane();
+            };
+        }
+
+        // Called after SetupDetailsPane() and again at the end of a language switch, where the new
+        // controls are only scaled to the screen's DPI once the form resumes layout.
+        private void ArrangeOperationsColumn()
+        {
+            bool show = Settings.Default.ShowDetailsPane;
+
+            this.operationsColumn.Width = this.OperationsBoxSize().Width + this.operationsColumn.Padding.Horizontal;
+
+            // Hidden, the Operations box takes the whole height again, as it did before the pane.
+            this.gbOptions.Dock = show ? DockStyle.Top : DockStyle.Fill;
+
+            // Docking goes from the back of the z-order to the front: the box docks first and takes
+            // the top, the pane fills what is left. Set it here rather than rely on the order the
+            // controls were added in, which a language switch doesn't keep.
+            this.gbOptions.SendToBack();
+
+            this.detailsPanel.Visible = show;
+            this.FitOperationsBox();
+            this.UpdateDetailsPane();
+        }
+
+        // The size the Operations box needs for its buttons, measured from the button panel so it
+        // doesn't depend on the box's current size.
+        private Size OperationsBoxSize()
+        {
+            Size buttons = this.flowLayoutPanel1.GetPreferredSize(Size.Empty);
+            Size frame = this.gbOptions.Size - this.gbOptions.DisplayRectangle.Size;
+            return buttons + frame;
+        }
+
+        private void FitOperationsBox()
+        {
+            if (this.gbOptions.Dock == DockStyle.Top)
+            {
+                int height = this.OperationsBoxSize().Height;
+                if (this.gbOptions.Height != height)
+                {
+                    this.gbOptions.Height = height;
+                }
+            }
+        }
+
+        private void UpdateDetailsPane()
+        {
+            // Not detailsPanel.Visible: that stays false until the window itself is shown.
+            if (this.detailsPanel == null || !Settings.Default.ShowDetailsPane)
+            {
+                return;
+            }
+
+            // SelectedObject is null unless exactly one package is selected.
+            DriverStoreEntry entry = this.lstDriverStoreEntries.SelectedObject;
+
+            if (entry != null && this.driverInsights == null)
+            {
+                this.driverInsights = new DriverInsights(
+                    this.lstDriverStoreEntries.Objects ?? Enumerable.Empty<DriverStoreEntry>(),
+                    this.driverStore.SupportDeviceNameColumn);
+            }
+
+            this.detailsPanel.ShowEntry(entry, this.driverInsights);
         }
 
         private void EnsureOnScreen()
@@ -902,18 +1029,7 @@ namespace Rapr
                     queryEntries = queryEntries.Where(entry => entry.BootCritical != true);
                 }
 
-                var driverGroups = queryEntries
-                    .Where(entry => !string.IsNullOrWhiteSpace(entry.DriverInfName)
-                        && entry.DriverInfName != DriverStoreRepository.UnknownInfName
-                        && entry.DriverInfName != "ntprint.inf")
-                    .GroupBy(entry => new { entry.DriverClass, entry.DriverExtensionId, entry.DriverPkgProvider, entry.DriverInfName })
-                    .Select(drivers => drivers
-                        .GroupBy(entry => new { entry.DriverVersion, entry.DriverDate })
-                        .OrderByDescending(g => g.Key.DriverVersion)
-                        .ThenByDescending(g => g.Key.DriverDate)
-                        .ToList())
-                    .Where(groups => groups.Count > 1)
-                    .ToList();
+                var driverGroups = DriverInsights.GroupVersions(queryEntries);
 
                 var oldDriversToSelect = driverGroups
                     .SelectMany(groups => groups
@@ -927,10 +1043,10 @@ namespace Rapr
 
                 foreach (var groups in driverGroups)
                 {
-                    var newestDate = groups[0].Key.DriverDate;
+                    var newestDate = groups[0].Key.Date;
 
                     foreach (var entry in groups.Skip(1)
-                        .Where(g => g.Key.DriverDate > newestDate && g.All(e => !e.HasDeviceAssociation))
+                        .Where(g => g.Key.Date > newestDate && g.All(e => !e.HasDeviceAssociation))
                         .SelectMany(g => g))
                     {
                         this.driversWithNewerDate.Add(entry);
@@ -1058,6 +1174,7 @@ namespace Rapr
                 this.InitializeComponent();
                 this.BuildLanguageMenu();
                 this.SetupOptionsMenu();
+                this.SetupDetailsPane();
                 this.RightToLeft = ci.TextInfo.IsRightToLeft ? RightToLeft.Yes : RightToLeft.No;
                 this.RightToLeftLayout = ci.TextInfo.IsRightToLeft;
                 this.SetupListViewColumns();
@@ -1075,6 +1192,7 @@ namespace Rapr
 
                 this.DSEForm_Shown(sender, e);
                 this.ResumeLayout();
+                this.ArrangeOperationsColumn();
                 Application.DoEvents();
 
                 Settings.Default.Language = ci;
@@ -1278,16 +1396,24 @@ namespace Rapr
 
         private void CtxMenuOpenFolder_Click(object sender, EventArgs e)
         {
-            if (this.lstDriverStoreEntries.SelectedObject != null)
-            {
-                DriverStoreEntry item = this.lstDriverStoreEntries.SelectedObject;
-                if (string.IsNullOrEmpty(item.DriverFolderLocation))
-                {
-                    return;
-                }
+            this.OpenDriverFolder(this.lstDriverStoreEntries.SelectedObject);
+        }
 
-                Process.Start("explorer.exe", "/select, " + Path.Combine(item.DriverFolderLocation, item.DriverInfName));
+        private void OpenDriverFolder(DriverStoreEntry item)
+        {
+            if (string.IsNullOrEmpty(item?.DriverFolderLocation))
+            {
+                return;
             }
+
+            // Path.Combine throws on a null INF name, so open the folder itself then.
+            if (string.IsNullOrEmpty(item.DriverInfName))
+            {
+                Process.Start("explorer.exe", item.DriverFolderLocation);
+                return;
+            }
+
+            Process.Start("explorer.exe", "/select, " + Path.Combine(item.DriverFolderLocation, item.DriverInfName));
         }
 
         private void CtxMenuCopyFolderPath_Click(object sender, EventArgs e)
@@ -1565,6 +1691,14 @@ namespace Rapr
         {
             Settings.Default.WarnBeforeSelectingUnusedDrivers = this.warnBeforeSelectingUnusedDriversStripMenuItem.Checked;
             Settings.Default.Save();
+        }
+
+        private void ShowDetailsPaneStripMenuItem_Click(object sender, System.EventArgs e)
+        {
+            Settings.Default.ShowDetailsPane = this.showDetailsPaneStripMenuItem.Checked;
+            Settings.Default.Save();
+
+            this.ArrangeOperationsColumn();
         }
 
         private async void CtxMenuExportDriver_Click(object sender, System.EventArgs e)

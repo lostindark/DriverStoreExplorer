@@ -550,4 +550,46 @@ Tiếp tục chọn driver?</value>
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Cảnh báo trước khi chọn các driver không sử dụng</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Hiện ngăn chi tiết</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Chi tiết</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Chọn một gói để xem chi tiết.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Thư mục</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Phiên bản cũ</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Không có thiết bị</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Quan trọng khi khởi động</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Phần mở rộng</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Đã cài đặt một phiên bản mới hơn, {0}.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Một phiên bản mới hơn, {0}, đang được {1} sử dụng.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>Đang được {0} sử dụng.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>Được cài đặt cho {0}, thiết bị này hiện không được kết nối.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Không có thiết bị nào sử dụng gói này. Gói có thể vẫn cần cho phần cứng bạn kết nối sau.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Windows có thể cần driver này để khởi động.</value>
+  </data>
 </root>

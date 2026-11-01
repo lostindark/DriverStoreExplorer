@@ -545,4 +545,46 @@ Continuer la sélection des pilotes ?</value>
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Avertir avant de sélectionner les pilotes inutilisés</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Afficher le volet des détails</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Détails</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Sélectionnez un package pour afficher ses détails.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Dossier</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Ancienne version</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Aucun périphérique</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Critique au démarrage</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Extension</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Une version plus récente, {0}, est installée.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Une version plus récente, {0}, est utilisée par {1}.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>Utilisé par {0}.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>Installé pour {0}, qui n'est pas connecté actuellement.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Aucun périphérique n'utilise ce package. Il peut encore servir pour du matériel que vous connecterez plus tard.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Windows peut avoir besoin de ce pilote pour démarrer.</value>
+  </data>
 </root>

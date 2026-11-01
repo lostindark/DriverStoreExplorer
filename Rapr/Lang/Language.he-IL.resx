@@ -519,4 +519,46 @@
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>הצג אזהרה לפני בחירת מנהלי התקנים שאינם בשימוש</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>הצג חלונית פרטים</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>פרטים</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>בחר חבילה כדי לראות את הפרטים שלה.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>תיקייה</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>גרסה ישנה יותר</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>אין התקן</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>קריטי לאתחול</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>הרחבה</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>גרסה חדשה יותר, {0}, מותקנת.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>גרסה חדשה יותר, {0}, נמצאת בשימוש על ידי {1}.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>בשימוש על ידי {0}.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>מותקן עבור {0}, שאינו מחובר כרגע.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>אף התקן אינו משתמש בחבילה זו. ייתכן שעדיין יהיה בה צורך עבור חומרה שתחבר בהמשך.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>ייתכן ש-Windows זקוק למנהל התקן זה כדי לאתחל.</value>
+  </data>
 </root>

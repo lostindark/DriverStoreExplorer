@@ -545,4 +545,46 @@ Borrarlos puede hacer que los programas o dispositivos dejen de funcionar. Revis
   <data name="Menu_Options_WarnBeforeSelectingUnusedDrivers" xml:space="preserve">
     <value>Advertir antes de seleccionar controladores sin usar</value>
   </data>
+  <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
+    <value>Mostrar panel de detalles</value>
+  </data>
+  <data name="Details_Title" xml:space="preserve">
+    <value>Detalles</value>
+  </data>
+  <data name="Details_Empty" xml:space="preserve">
+    <value>Selecciona un paquete para ver sus detalles.</value>
+  </data>
+  <data name="Details_Folder" xml:space="preserve">
+    <value>Carpeta</value>
+  </data>
+  <data name="Details_Tag_Old_Version" xml:space="preserve">
+    <value>Versión antigua</value>
+  </data>
+  <data name="Details_Tag_No_Device" xml:space="preserve">
+    <value>Sin dispositivo</value>
+  </data>
+  <data name="Details_Tag_Boot_Critical" xml:space="preserve">
+    <value>Crítico de arranque</value>
+  </data>
+  <data name="Details_Tag_Extension" xml:space="preserve">
+    <value>Extensión</value>
+  </data>
+  <data name="Details_Newer_Installed" xml:space="preserve">
+    <value>Hay una versión más nueva instalada: {0}.</value>
+  </data>
+  <data name="Details_Newer_In_Use" xml:space="preserve">
+    <value>Una versión más nueva, {0}, está en uso por {1}.</value>
+  </data>
+  <data name="Details_In_Use" xml:space="preserve">
+    <value>En uso por {0}.</value>
+  </data>
+  <data name="Details_Device_Not_Present" xml:space="preserve">
+    <value>Instalado para {0}, que ahora no está conectado.</value>
+  </data>
+  <data name="Details_No_Device" xml:space="preserve">
+    <value>Ningún dispositivo usa este paquete. Puede seguir siendo necesario para hardware que conectes más adelante.</value>
+  </data>
+  <data name="Details_Boot_Critical" xml:space="preserve">
+    <value>Windows puede necesitar este controlador para arrancar.</value>
+  </data>
 </root>
