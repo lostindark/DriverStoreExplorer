@@ -68,7 +68,7 @@
             this.aboutToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.textBoxSearch = new Rapr.Controls.EnhancedSearchTextBox();
-            this.lstDriverStoreEntries = new Rapr.MyObjectListView();
+            this.lstDriverStoreEntries = new Rapr.DriverStoreListView();
             this.driverInfColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverClassColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
             this.driverExtensionIdColumn = ((BrightIdeasSoftware.OLVColumn)(new BrightIdeasSoftware.OLVColumn()));
@@ -734,7 +734,7 @@
         #endregion
 
         private System.Windows.Forms.Button buttonEnumerate;
-        private MyObjectListView lstDriverStoreEntries;
+        private DriverStoreListView lstDriverStoreEntries;
         private BrightIdeasSoftware.OLVColumn driverOemInfColumn;
         private BrightIdeasSoftware.OLVColumn driverDateColumn;
         private BrightIdeasSoftware.OLVColumn driverClassColumn;

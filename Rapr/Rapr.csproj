@@ -21,7 +21,7 @@
     <PackageReference Include="Microsoft.Dism" Version="6.1.0" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.WindowsAPICodePack.Core" Version="1.1.0" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" GeneratePathProperty="true" />
-    <PackageReference Include="ObjectListView.WinForms" Version="3.0.10-preview" GeneratePathProperty="true" />
+    <PackageReference Include="ObjectListView.WinForms" Version="3.0.22-preview" GeneratePathProperty="true" />
     <PackageReference Include="PortableSettingsProvider" Version="0.2.5" GeneratePathProperty="true" />
     <PackageReference Include="Resource.Embedder" Version="2.2.0" />
     <PackageReference Include="StrongNamer" Version="0.2.5" />
@@ -58,7 +58,7 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Update="MyObjectListView.cs">
+    <Compile Update="DriverStoreListView.cs">
       <SubType>Component</SubType>
     </Compile>
     <None Update="app.manifest">

@@ -32,7 +32,7 @@ namespace Rapr.Tests
         [DataRow(ObjectListViewBase.ColumnSelectBehaviour.Submenu)]
         public void ColumnSelectionMenuExcludesOnlyBlankSpacerColumns(ObjectListViewBase.ColumnSelectBehaviour behaviour)
         {
-            using (var list = new MyObjectListView { SelectColumnsOnRightClickBehaviour = behaviour })
+            using (var list = new DriverStoreListView { SelectColumnsOnRightClickBehaviour = behaviour })
             using (var menu = new ContextMenuStrip())
             {
                 var visible = new OLVColumn("INF", nameof(DriverStoreEntry.DriverInfName));
@@ -508,7 +508,7 @@ namespace Rapr.Tests
         public void TypedDriverListRestoresUntypedViewState()
         {
             using (var previous = new ObjectListView())
-            using (var current = new MyObjectListView())
+            using (var current = new DriverStoreListView())
             {
                 foreach (var list in new ObjectListViewBase[] { previous, current })
                 {
@@ -542,14 +542,14 @@ namespace Rapr.Tests
             };
         }
 
-        private static void WithSelectionForm(Action<DSEForm, MyObjectListView> test)
+        private static void WithSelectionForm(Action<DSEForm, DriverStoreListView> test)
         {
             // Avoid startup/elevation; only the in-memory selection controls are exercised.
             var form = (SelectionTestForm)FormatterServices.GetUninitializedObject(typeof(SelectionTestForm));
             GC.SuppressFinalize(form);
             form.SelectionConfirmed = true;
 
-            using (var list = new MyObjectListView { CheckBoxes = true })
+            using (var list = new DriverStoreListView { CheckBoxes = true })
             using (var status = new ToolStripStatusLabel())
             {
                 list.Columns.Add(new OLVColumn { AspectName = "DriverInfName" });
@@ -572,7 +572,7 @@ namespace Rapr.Tests
             typeof(DSEForm).GetMethod(name, BindingFlags.Instance | BindingFlags.NonPublic).Invoke(form, arguments);
         }
 
-        private static void WithOperationForm(Action<DSEForm, MyObjectListView> test)
+        private static void WithOperationForm(Action<DSEForm, DriverStoreListView> test)
         {
             WithSelectionForm((form, list) =>
             {
