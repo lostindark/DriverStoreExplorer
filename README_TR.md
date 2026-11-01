@@ -80,7 +80,17 @@ Kurulumdan sonra aracı şu komutla başlatın:
 rapr
 ```
 
-### Seçenek 3: Kaynaktan Derleme
+### Seçenek 3: Scoop ile Kurulum
+```powershell
+scoop bucket add extras
+scoop install driverstoreexplorer
+```
+Kurulumdan sonra aracı şu komutla başlatın:
+```powershell
+rapr
+```
+
+### Seçenek 4: Kaynaktan Derleme
 1. Bu depoyu klonlayın veya indirin
 2. `Rapr.sln` dosyasını Visual Studio 2022'de açın
 3. Çözümü derleyin (Build → Build Solution veya Ctrl+Shift+B)

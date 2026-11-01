@@ -81,7 +81,17 @@ winget install lostindark.DriverStoreExplorer
 rapr
 ```
 
-### 方式三：从源代码构建
+### 方式三：通过 Scoop 安装
+```powershell
+scoop bucket add extras
+scoop install driverstoreexplorer
+```
+安装后，运行以下命令启动工具：
+```powershell
+rapr
+```
+
+### 方式四：从源代码构建
 1. 克隆或下载此仓库
 2. 在 Visual Studio 2022 中打开 `Rapr.sln`
 3. 构建解决方案（生成 → 生成解决方案 或 Ctrl+Shift+B）
