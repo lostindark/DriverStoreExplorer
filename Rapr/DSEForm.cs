@@ -406,18 +406,16 @@ namespace Rapr
                 Margin = Padding.Empty,
                 Padding = this.gbOptions.Margin,
             };
-            this.operationsColumn.Width = this.OperationsBoxSize().Width + this.operationsColumn.Padding.Horizontal;
 
             var table = this.tableLayoutPanel1;
             table.SuspendLayout();
             table.Controls.Remove(this.gbOptions);
 
-            // Docking follows reverse z-order: the box, added last, takes the top first.
             this.operationsColumn.Controls.Add(this.detailsPanel);
             this.operationsColumn.Controls.Add(this.gbOptions);
             table.Controls.Add(this.operationsColumn, 1, 0);
             table.SetRowSpan(this.operationsColumn, 2);
-            this.ShowDetailsPane(Settings.Default.ShowDetailsPane);
+            this.ArrangeOperationsColumn();
             table.ResumeLayout();
 
             // Buttons are shown or hidden by driver store type; keep the box fitted to them.
@@ -431,10 +429,22 @@ namespace Rapr
             };
         }
 
-        private void ShowDetailsPane(bool show)
+        // Called after SetupDetailsPane() and again at the end of a language switch, where the new
+        // controls are only scaled to the screen's DPI once the form resumes layout.
+        private void ArrangeOperationsColumn()
         {
+            bool show = Settings.Default.ShowDetailsPane;
+
+            this.operationsColumn.Width = this.OperationsBoxSize().Width + this.operationsColumn.Padding.Horizontal;
+
             // Hidden, the Operations box takes the whole height again, as it did before the pane.
             this.gbOptions.Dock = show ? DockStyle.Top : DockStyle.Fill;
+
+            // Docking goes from the back of the z-order to the front: the box docks first and takes
+            // the top, the pane fills what is left. Set it here rather than rely on the order the
+            // controls were added in, which a language switch doesn't keep.
+            this.gbOptions.SendToBack();
+
             this.detailsPanel.Visible = show;
             this.FitOperationsBox();
             this.UpdateDetailsPane();
@@ -1182,6 +1192,7 @@ namespace Rapr
 
                 this.DSEForm_Shown(sender, e);
                 this.ResumeLayout();
+                this.ArrangeOperationsColumn();
                 Application.DoEvents();
 
                 Settings.Default.Language = ci;
@@ -1687,7 +1698,7 @@ namespace Rapr
             Settings.Default.ShowDetailsPane = this.showDetailsPaneStripMenuItem.Checked;
             Settings.Default.Save();
 
-            this.ShowDetailsPane(this.showDetailsPaneStripMenuItem.Checked);
+            this.ArrangeOperationsColumn();
         }
 
         private async void CtxMenuExportDriver_Click(object sender, System.EventArgs e)
