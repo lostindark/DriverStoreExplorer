@@ -541,7 +541,7 @@ Startkritische Treiber werden nur ausgewählt, wenn Sie sie im Menü „Optionen
 Mit der Auswahl der Treiber fortfahren?</value>
   </data>
   <data name="Message_Close_During_Operation" xml:space="preserve">
-    <value>Ein Vorgang läuft noch. Wenn Sie jetzt schließen, wird er möglicherweise nicht abgeschlossen. Trotzdem schließen?</value>
+    <value>Ein Vorgang wird noch ausgeführt. Wenn Sie das Fenster jetzt schließen, wird der Vorgang möglicherweise nicht abgeschlossen. Möchten Sie das Fenster trotzdem schließen?</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Die ausgewählten Treiber werden möglicherweise weiterhin benötigt. Prüfen und sichern Sie die Treiber vor dem Löschen.</value>
