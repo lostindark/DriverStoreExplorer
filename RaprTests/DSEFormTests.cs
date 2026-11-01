@@ -572,6 +572,44 @@ namespace Rapr.Tests
             });
         }
 
+        [TestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void UnusedDriverSelectionFollowsTheBootCriticalOption(bool includeBootCritical)
+        {
+            // Settings is internal to Rapr, so reach it through ApplicationSettingsBase.
+            var settings = (ApplicationSettingsBase)typeof(DSEForm).Assembly
+                .GetType("Rapr.Properties.Settings")
+                .GetProperty("Default", BindingFlags.Static | BindingFlags.Public)
+                .GetValue(null);
+            object previous = settings["IncludeBootCriticalInOldDriverSelection"];
+            settings["IncludeBootCriticalInOldDriverSelection"] = includeBootCritical;
+
+            try
+            {
+                WithSelectionForm((form, list) =>
+                {
+                    var bootCritical = CreateDriver("storage.inf", 1);
+                    bootCritical.BootCritical = true;
+                    var unknown = CreateDriver("unknown.inf", 1);
+                    var regular = CreateDriver("regular.inf", 1);
+                    regular.BootCritical = false;
+                    list.SetObjects(new[] { bootCritical, unknown, regular });
+
+                    Invoke(form, "CtxMenuSelectUnusedDrivers_Click", null, EventArgs.Empty);
+
+                    var expected = includeBootCritical
+                        ? new[] { bootCritical, unknown, regular }
+                        : new[] { unknown, regular };
+                    CollectionAssert.AreEquivalent(expected, list.CheckedObjects.Cast<DriverStoreEntry>().ToArray());
+                });
+            }
+            finally
+            {
+                settings["IncludeBootCriticalInOldDriverSelection"] = previous;
+            }
+        }
+
         private static DriverStoreEntry CreateDriver(string infName, int version)
         {
             return new DriverStoreEntry

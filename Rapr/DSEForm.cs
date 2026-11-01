@@ -1084,7 +1084,8 @@ namespace Rapr
 
                 var unusedDriversToSelect = this.lstDriverStoreEntries
                     .Objects
-                    .Where(entry => !entry.HasDeviceAssociation)
+                    .Where(entry => !entry.HasDeviceAssociation
+                        && (Settings.Default.IncludeBootCriticalInOldDriverSelection || entry.BootCritical != true))
                     .ToArray();
 
                 this.unusedDriversToReview = new HashSet<DriverStoreEntry>(unusedDriversToSelect);
