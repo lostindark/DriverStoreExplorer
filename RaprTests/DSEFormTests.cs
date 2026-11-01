@@ -573,6 +573,20 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        public void AboutUpdateIsUnavailableDuringAnOperation()
+        {
+            // Updating from Help > About exits the app, which would stop the operation partway.
+            WithOperationForm((form, list) =>
+            {
+                Invoke(form, "StartOperation");
+                Assert.IsFalse(IsActionEnabled(form, "helpToolStripMenuItem"));
+
+                Invoke(form, "EndOperation");
+                Assert.IsTrue(IsActionEnabled(form, "helpToolStripMenuItem"));
+            });
+        }
+
+        [TestMethod]
         [DataRow(false)]
         [DataRow(true)]
         public void UnusedDriverSelectionFollowsTheBootCriticalOption(bool includeBootCritical)

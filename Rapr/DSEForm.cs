@@ -1540,6 +1540,8 @@ namespace Rapr
             this.exportAllDriverListToolStripMenuItem.Enabled = false;
             this.languageToolStripMenuItem.Enabled = false;
             this.optionsStripMenuItem.Enabled = false;
+            // Help > About can apply an update, which exits the app.
+            this.helpToolStripMenuItem.Enabled = false;
             this.exitToolStripMenuItem.Enabled = false;
             this.textBoxSearch.Enabled = false;
         }
@@ -1560,6 +1562,7 @@ namespace Rapr
             this.exportAllDriverListToolStripMenuItem.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.languageToolStripMenuItem.Enabled = true;
             this.optionsStripMenuItem.Enabled = true;
+            this.helpToolStripMenuItem.Enabled = true;
             this.exitToolStripMenuItem.Enabled = true;
             this.textBoxSearch.Enabled = true;
         }
