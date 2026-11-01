@@ -954,52 +954,40 @@ namespace Rapr
             }
         }
 
+        // The check actions below only change the rows that are shown. While a search hides
+        // some drivers, those keep their check state instead of being checked unseen.
+
         // Function to switch between "selected" and "unselected" states
         private void CtxMenuSelectAll_Click(object sender, EventArgs e)
         {
             // Check if there are any entries
             if (this.lstDriverStoreEntries.Objects != null)
             {
-                if (this.lstDriverStoreEntries.CheckedObjects != null
-                    && this.lstDriverStoreEntries.CheckedObjects.Count != 0)
+                var shown = this.GetShownDrivers();
+                if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0)
                 {
-                    this.lstDriverStoreEntries.UncheckAll();
+                    this.lstDriverStoreEntries.UncheckObjects(shown);
                 }
                 else
                 {
-                    this.lstDriverStoreEntries.CheckAll();
+                    this.lstDriverStoreEntries.CheckObjects(shown);
                 }
             }
         }
 
         private void CtxMenuSelect_Click(object sender, EventArgs e)
         {
-            if (this.lstDriverStoreEntries.Objects != null)
+            var selected = this.lstDriverStoreEntries.SelectedObjects;
+            if (this.lstDriverStoreEntries.Objects != null && selected?.Count > 0)
             {
-                List<DriverStoreEntry> list = new List<DriverStoreEntry>();
-                if (this.lstDriverStoreEntries.CheckedObjects?.Count > 0)
+                if (selected.All(this.lstDriverStoreEntries.IsChecked))
                 {
-                    list.AddRange(this.lstDriverStoreEntries.CheckedObjects);
+                    this.lstDriverStoreEntries.UncheckObjects(selected);
                 }
-
-                if (this.lstDriverStoreEntries.SelectedObjects?.Count > 0)
+                else
                 {
-                    if (this.lstDriverStoreEntries
-                        .SelectedObjects
-                        .All(i => this.lstDriverStoreEntries.CheckedObjects.Contains(i)))
-                    {
-                        foreach (var item in this.lstDriverStoreEntries.SelectedObjects)
-                        {
-                            list.Remove(item);
-                        }
-                    }
-                    else
-                    {
-                        list.AddRange(this.lstDriverStoreEntries.SelectedObjects);
-                    }
+                    this.lstDriverStoreEntries.CheckObjects(selected);
                 }
-
-                this.lstDriverStoreEntries.CheckedObjects = list;
             }
         }
 
@@ -1007,12 +995,37 @@ namespace Rapr
         {
             if (this.lstDriverStoreEntries.Objects != null)
             {
-
-                this.lstDriverStoreEntries.CheckedObjects = this.lstDriverStoreEntries
-                    .Objects
-                    .Except(this.lstDriverStoreEntries.CheckedObjects)
-                    .ToList();
+                var shown = this.GetShownDrivers();
+                var shownChecked = shown.Where(this.lstDriverStoreEntries.IsChecked).ToList();
+                this.lstDriverStoreEntries.UncheckObjects(shownChecked);
+                this.lstDriverStoreEntries.CheckObjects(shown.Except(shownChecked).ToList());
             }
+        }
+
+        private List<DriverStoreEntry> GetShownDrivers()
+        {
+            return this.lstDriverStoreEntries.FilteredObjects.Cast<DriverStoreEntry>().ToList();
+        }
+
+        // Old and unused selection looks at every driver, so show them all first.
+        // Otherwise drivers hidden by the search would be checked without being seen.
+        private void ShowAllDriversBeforeStoreWideSelection()
+        {
+            // Text typed just before may still be waiting for the search debounce timer,
+            // which would apply it after the selection. Check the text as well as the filter.
+            bool hasSearchText = !string.IsNullOrEmpty(this.textBoxSearch?.Text);
+            if (this.lstDriverStoreEntries.ModelFilter == null && !hasSearchText)
+            {
+                return;
+            }
+
+            if (hasSearchText)
+            {
+                this.textBoxSearch.Text = string.Empty;
+            }
+
+            this.searchDebounceTimer?.Stop();
+            this.UpdateSearchFilter();
         }
 
         private async void CtxMenuDelete_Click(object sender, EventArgs e)
@@ -1027,6 +1040,7 @@ namespace Rapr
         {
             if (!this.operationInProgress && this.driverStore.SupportDeviceNameColumn && this.lstDriverStoreEntries.Objects != null)
             {
+                this.ShowAllDriversBeforeStoreWideSelection();
                 var queryEntries = this.lstDriverStoreEntries.Objects;
 
                 // Apply BootCritical filter based on the setting
@@ -1082,6 +1096,7 @@ namespace Rapr
                     return;
                 }
 
+                this.ShowAllDriversBeforeStoreWideSelection();
                 var unusedDriversToSelect = this.lstDriverStoreEntries
                     .Objects
                     .Where(entry => !entry.HasDeviceAssociation)
