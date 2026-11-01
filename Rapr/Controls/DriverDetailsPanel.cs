@@ -214,10 +214,10 @@ namespace Rapr.Controls
                     Text = entry.DriverFolderName,
                     UseMnemonic = false,
                 };
-                link.Height = link.PreferredHeight;
                 link.LinkClicked += (sender, e) => this.FolderClicked?.Invoke(this, EventArgs.Empty);
                 this.toolTip.SetToolTip(link, entry.DriverFolderLocation);
                 this.AddRow(link);
+                link.Height = link.PreferredHeight;
             }
         }
 
@@ -304,10 +304,17 @@ namespace Rapr.Controls
                 label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
                 label.AutoEllipsis = true;
                 label.AutoSize = false;
-                label.Height = label.PreferredHeight;
             }
 
             this.AddRow(label);
+
+            // Only now does the label have the pane's font; measured before, it is too short and
+            // cuts off underscores and letters like g and y.
+            if (!wrap)
+            {
+                label.Height = label.PreferredHeight;
+            }
+
             return label;
         }
 
