@@ -513,7 +513,7 @@
     <value>匯出所選驅動程式清單(&amp;S)</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>在舊版驅動程式中包含開機關鍵驅動程式</value>
+    <value>在舊版及未使用的驅動程式中包含開機關鍵驅動程式</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>選擇包含Windows資料夾的目錄（不是Windows資料夾本身）</value>
@@ -535,8 +535,12 @@
     <value>「選擇未使用的驅動程式」會選取沒有關聯裝置的驅動程式，而不是已確認可安全刪除的驅動程式。
 防毒軟體、網路、印表機及其他軟體所需的驅動程式也可能被選取。
 刪除這些驅動程式可能導致軟體或裝置無法正常運作。請檢查選取項目，並在刪除前備份驅動程式。
+除非在「選項」選單中設定包含，否則不會選取開機關鍵驅動程式。
 
 是否繼續選取驅動程式？</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>仍有作業正在進行。現在關閉可能導致作業無法完成。仍要關閉嗎？</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>選取的驅動程式可能仍有需要。請在刪除前檢查並備份驅動程式。</value>

@@ -706,6 +706,100 @@ namespace Rapr.Tests
             }
         }
 
+        [TestMethod]
+        [DataRow(false, CloseReason.UserClosing, false, false, 0)]
+        [DataRow(true, CloseReason.UserClosing, false, true, 1)]
+        [DataRow(true, CloseReason.UserClosing, true, false, 1)]
+        [DataRow(true, CloseReason.WindowsShutDown, false, false, 0)]
+        [DataRow(true, CloseReason.TaskManagerClosing, false, false, 0)]
+        public void ClosingDuringAnOperationAsksFirst(
+            bool operationRunning, CloseReason reason, bool confirmed, bool keepOpen, int confirmations)
+        {
+            WithSelectionForm((form, list) =>
+            {
+                var testForm = (SelectionTestForm)form;
+                testForm.CloseConfirmed = confirmed;
+                SetField(form, "operationInProgress", operationRunning);
+
+                var result = (bool)typeof(DSEForm)
+                    .GetMethod("ShouldKeepOpenForOperation", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .Invoke(form, new object[] { reason });
+
+                Assert.AreEqual(keepOpen, result);
+                Assert.AreEqual(confirmations, testForm.CloseConfirmationCount);
+            });
+        }
+
+        [TestMethod]
+        public void DeclinedCloseDuringAnOperationKeepsTheFormOpen()
+        {
+            WithOperationForm((form, list) =>
+            {
+                ((SelectionTestForm)form).CloseConfirmed = false;
+                Invoke(form, "StartOperation");
+                Assert.IsFalse(IsActionEnabled(form, "exitToolStripMenuItem"));
+
+                var args = new FormClosingEventArgs(CloseReason.UserClosing, false);
+                Invoke(form, "DSEForm_FormClosing", form, args);
+                Assert.IsTrue(args.Cancel);
+
+                Invoke(form, "EndOperation");
+                Assert.IsTrue(IsActionEnabled(form, "exitToolStripMenuItem"));
+            });
+        }
+
+        [TestMethod]
+        public void AboutUpdateIsUnavailableDuringAnOperation()
+        {
+            // Updating from Help > About exits the app, which would stop the operation partway.
+            WithOperationForm((form, list) =>
+            {
+                Invoke(form, "StartOperation");
+                Assert.IsFalse(IsActionEnabled(form, "helpToolStripMenuItem"));
+
+                Invoke(form, "EndOperation");
+                Assert.IsTrue(IsActionEnabled(form, "helpToolStripMenuItem"));
+            });
+        }
+
+        [TestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void UnusedDriverSelectionFollowsTheBootCriticalOption(bool includeBootCritical)
+        {
+            // Settings is internal to Rapr, so reach it through ApplicationSettingsBase.
+            var settings = (ApplicationSettingsBase)typeof(DSEForm).Assembly
+                .GetType("Rapr.Properties.Settings")
+                .GetProperty("Default", BindingFlags.Static | BindingFlags.Public)
+                .GetValue(null);
+            object previous = settings["IncludeBootCriticalInOldDriverSelection"];
+            settings["IncludeBootCriticalInOldDriverSelection"] = includeBootCritical;
+
+            try
+            {
+                WithSelectionForm((form, list) =>
+                {
+                    var bootCritical = CreateDriver("storage.inf", 1);
+                    bootCritical.BootCritical = true;
+                    var unknown = CreateDriver("unknown.inf", 1);
+                    var regular = CreateDriver("regular.inf", 1);
+                    regular.BootCritical = false;
+                    list.SetObjects(new[] { bootCritical, unknown, regular });
+
+                    Invoke(form, "CtxMenuSelectUnusedDrivers_Click", null, EventArgs.Empty);
+
+                    var expected = includeBootCritical
+                        ? new[] { bootCritical, unknown, regular }
+                        : new[] { unknown, regular };
+                    CollectionAssert.AreEquivalent(expected, list.CheckedObjects.Cast<DriverStoreEntry>().ToArray());
+                });
+            }
+            finally
+            {
+                settings["IncludeBootCriticalInOldDriverSelection"] = previous;
+            }
+        }
+
         private static DriverStoreEntry CreateDriver(string infName, int version)
         {
             return new DriverStoreEntry
@@ -800,6 +894,16 @@ namespace Rapr.Tests
                 this.ConfirmationCount++;
                 this.OnConfirmation?.Invoke();
                 return this.SelectionConfirmed;
+            }
+
+            public bool CloseConfirmed { get; set; }
+
+            public int CloseConfirmationCount { get; private set; }
+
+            protected override bool ConfirmCloseDuringOperation()
+            {
+                this.CloseConfirmationCount++;
+                return this.CloseConfirmed;
             }
         }
 

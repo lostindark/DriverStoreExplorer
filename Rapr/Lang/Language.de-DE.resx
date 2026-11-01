@@ -501,7 +501,7 @@ Lizenz:
      <value>Au&amp;sgewählte Treiberliste exportieren</value>
    </data>
    <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-     <value>Startkritische Treiber in Auswahl alter Treiber einbeziehen</value>
+     <value>Startkritische Treiber in Auswahl alter und nicht verwendeter Treiber einbeziehen</value>
    </data>
    <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
      <value>Wählen Sie das Verzeichnis aus, das den Windows-Ordner enthält (nicht den Windows-Ordner selbst)</value>
@@ -536,8 +536,12 @@ Bitte wählen Sie das Stammverzeichnis einer Windows-Installation oder eines Win
     <value>„Nicht verwendete Treiber auswählen“ wählt Treiber ohne zugeordnetes Gerät aus, nicht Treiber, deren Löschung nachweislich sicher ist.
 Dabei können auch notwendige Treiber für Antivirenprogramme, Netzwerke, Drucker und andere Software ausgewählt werden.
 Das Löschen dieser Treiber kann Software oder Geräte beeinträchtigen. Prüfen Sie die Auswahl und sichern Sie die Treiber vor dem Löschen.
+Startkritische Treiber werden nur ausgewählt, wenn Sie sie im Menü „Optionen“ einbeziehen.
 
 Mit der Auswahl der Treiber fortfahren?</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Ein Vorgang läuft noch. Wenn Sie jetzt schließen, wird er möglicherweise nicht abgeschlossen. Trotzdem schließen?</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Die ausgewählten Treiber werden möglicherweise weiterhin benötigt. Prüfen und sichern Sie die Treiber vor dem Löschen.</value>

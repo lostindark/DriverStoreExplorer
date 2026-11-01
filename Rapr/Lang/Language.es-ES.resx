@@ -495,7 +495,7 @@ Licencia:
     <value>Escribe aquí para buscar</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Incluir críticos de arranque en controladores antiguos</value>
+    <value>Incluir críticos de arranque en controladores antiguos y sin usar</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>Selecciona el directorio que contiene la carpeta Windows (no la carpeta Windows en sí)</value>
@@ -536,8 +536,12 @@ Por favor selecciona el directorio raíz de una instalación o imagen de Windows
     <value>«Seleccionar controlador(es) sin usar» selecciona controladores sin un dispositivo asociado, no controladores que se haya demostrado que se pueden borrar de forma segura.
 También pueden seleccionarse controladores esenciales de antivirus, redes, impresoras y otros programas.
 Borrarlos puede hacer que los programas o dispositivos dejen de funcionar. Revise la selección y haga una copia de seguridad de los controladores antes de borrarlos.
+Los controladores críticos de arranque no se seleccionan salvo que los incluya en el menú «Opciones».
 
 ¿Continuar con la selección de controladores?</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Todavía hay una operación en curso. Si cierra ahora, puede quedar sin terminar. ¿Cerrar de todos modos?</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Los controladores seleccionados podrían seguir siendo necesarios. Revíselos y haga una copia de seguridad antes de borrarlos.</value>

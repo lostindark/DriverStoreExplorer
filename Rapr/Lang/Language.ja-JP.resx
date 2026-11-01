@@ -495,7 +495,7 @@
     <value>選択したドライバーリストをエクスポート(&amp;S)</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>起動に必要なドライバーを古いドライバーに含める</value>
+    <value>起動に必要なドライバーを古いドライバーと未使用のドライバーに含める</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>Windowsフォルダーを含むディレクトリを選択してください（Windowsフォルダー自体ではありません）</value>
@@ -536,8 +536,12 @@ Windowsインストールまたはイメージのルートディレクトリ（W
     <value>「未使用のドライバーを選択」は、関連付けられたデバイスがないドライバーを選択します。安全に削除できることが確認されたドライバーを選択するものではありません。
 ウイルス対策ソフト、ネットワーク、プリンター、その他のソフトウェアに不可欠なドライバーも選択される可能性があります。
 削除するとソフトウェアやデバイスが動作しなくなる場合があります。選択内容を確認し、削除前にドライバーをバックアップしてください。
+起動に必要なドライバーは、「オプション」メニューで含めるように設定しない限り選択されません。
 
 ドライバーの選択を続行しますか？</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>操作がまだ実行中です。今閉じると、操作が完了しない可能性があります。それでも閉じますか？</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>選択したドライバーは引き続き必要な可能性があります。削除前に確認し、バックアップしてください。</value>

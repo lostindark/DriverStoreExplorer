@@ -513,7 +513,7 @@ Licencja użytkowania:
     <value>Eksportuj wybraną listę sterowników</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Uwzględnij sterowniki krytyczne rozruchu w starych sterownikach</value>
+    <value>Uwzględnij sterowniki krytyczne rozruchu w starych i nieużywanych sterownikach</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>Wybierz katalog zawierający folder Windows (nie sam folder Windows)</value>
@@ -536,8 +536,12 @@ Proszę wybrać katalog główny instalacji lub obrazu Windows (katalog zawieraj
     <value>Opcja „Wybierz nieużywane sterowniki” wybiera sterowniki bez powiązanego urządzenia, a nie sterowniki, których bezpieczne usunięcie zostało potwierdzone.
 Mogą zostać wybrane również niezbędne sterowniki programów antywirusowych, sieci, drukarek i innego oprogramowania.
 Ich usunięcie może spowodować nieprawidłowe działanie oprogramowania lub urządzeń. Sprawdź wybór i wykonaj kopię zapasową sterowników przed ich usunięciem.
+Sterowniki krytyczne rozruchu nie są wybierane, chyba że uwzględnisz je w menu „Opcje”.
 
 Czy kontynuować wybieranie sterowników?</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Operacja jest nadal w toku. Zamknięcie teraz może spowodować, że nie zostanie ukończona. Czy mimo to zamknąć?</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Wybrane sterowniki mogą być nadal potrzebne. Sprawdź je i wykonaj kopię zapasową przed usunięciem.</value>

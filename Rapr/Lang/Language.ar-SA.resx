@@ -380,7 +380,7 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
     <value>تصدير جميع التعريفات...</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>تضمين برامج التشغيل المهمة للإقلاع في برامج التشغيل القديمة</value>
+    <value>تضمين برامج التشغيل المهمة للإقلاع في برامج التشغيل القديمة وغير المستخدمة</value>
   </data>
   <data name="Message_No_Match_Result" xml:space="preserve">
     <value>لا توجد نتائج مطابقة.</value>
@@ -499,8 +499,12 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
     <value>يحدد خيار "تحديد التعريفات غير المستخدمة" التعريفات التي لا ترتبط بجهاز، وليس التعريفات التي ثبت أن حذفها آمن.
 قد يتم أيضًا تحديد تعريفات أساسية لمكافحة الفيروسات والشبكة والطابعة وغيرها من البرامج.
 قد يؤدي حذفها إلى تعطّل البرامج أو الأجهزة. راجع التحديد وأنشئ نسخة احتياطية من التعريفات قبل حذفها.
+لا يتم تحديد التعريفات المهمة للإقلاع إلا إذا قمت بتضمينها من قائمة "خيارات".
 
 هل تريد متابعة تحديد التعريفات؟</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>لا تزال هناك عملية قيد التشغيل. قد يؤدي الإغلاق الآن إلى عدم اكتمالها. هل تريد الإغلاق على أي حال؟</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>قد تظل التعريفات المحددة مطلوبة. راجعها وأنشئ نسخة احتياطية منها قبل حذفها.</value>

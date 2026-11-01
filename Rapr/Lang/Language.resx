@@ -513,7 +513,7 @@ License:
     <value>Export &amp;Selected Driver List</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Include Boot Critical in Old Drivers</value>
+    <value>Include Boot Critical in Old and Unused Drivers</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>Select the directory containing the Windows folder (not the Windows folder itself)</value>
@@ -536,8 +536,12 @@ Please select the root directory of a Windows installation or image (the directo
     <value>"Select Unused Driver(s)" selects drivers without an associated device, not drivers proven safe to delete.
 Essential antivirus, network, printer, and other software drivers may also be selected.
 Deleting them can break software or devices. Review the selection and back up drivers before deletion.
+Boot critical drivers are not selected unless you include them in the Options menu.
 
 Continue selecting drivers?</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>An operation is still running. Closing now can leave it unfinished. Close anyway?</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Selected drivers may still be required. Review and back up drivers before deleting.</value>

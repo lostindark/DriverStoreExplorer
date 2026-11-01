@@ -541,8 +541,12 @@ Vui lòng chọn thư mục gốc của bản cài Windows hoặc image (thư m�
     <value>"Chọn driver không sử dụng" chọn các driver không có thiết bị liên kết, chứ không phải các driver đã được xác nhận là có thể xóa an toàn.
 Các driver thiết yếu của phần mềm diệt virus, mạng, máy in và phần mềm khác cũng có thể được chọn.
 Xóa chúng có thể khiến phần mềm hoặc thiết bị ngừng hoạt động. Hãy kiểm tra các driver đã chọn và sao lưu trước khi xóa.
+Driver quan trọng khi khởi động sẽ không được chọn trừ khi bạn bao gồm chúng trong menu "Tùy chọn".
 
 Tiếp tục chọn driver?</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Một thao tác vẫn đang chạy. Đóng ngay bây giờ có thể khiến thao tác chưa hoàn tất. Vẫn đóng?</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Các driver đã chọn có thể vẫn cần thiết. Hãy kiểm tra và sao lưu các driver trước khi xóa.</value>

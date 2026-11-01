@@ -513,7 +513,7 @@ Lisans:
     <value>Seçilen Sürücü Listesini Dışa Ak&amp;tar</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Eski Sürücülerde Önyükleme Kritik Olanları Dahil Et</value>
+    <value>Eski ve Kullanılmayan Sürücülerde Önyükleme Kritik Olanları Dahil Et</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>Windows klasörünü içeren dizini seçin (Windows klasörünün kendisini değil)</value>
@@ -536,8 +536,12 @@ Lütfen bir Windows kurulumunun veya kalıbının kök dizinini seçin (Windows 
     <value>"Kullanılmayan Sürücüleri Seç", silinmesinin güvenli olduğu kanıtlanmış sürücüleri değil, ilişkili bir aygıtı olmayan sürücüleri seçer.
 Antivirüs, ağ, yazıcı ve diğer yazılımlar için gerekli sürücüler de seçilebilir.
 Bunları silmek yazılımların veya aygıtların çalışmasını bozabilir. Seçimi gözden geçirin ve silmeden önce sürücüleri yedekleyin.
+Önyükleme kritik sürücüler, "Seçenekler" menüsünden dahil etmediğiniz sürece seçilmez.
 
 Sürücü seçimine devam edilsin mi?</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Bir işlem hâlâ devam ediyor. Şimdi kapatmak işlemin yarım kalmasına neden olabilir. Yine de kapatılsın mı?</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Seçilen sürücüler hâlâ gerekli olabilir. Silmeden önce sürücüleri gözden geçirin ve yedekleyin.</value>

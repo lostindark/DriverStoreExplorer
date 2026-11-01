@@ -477,7 +477,7 @@ Licença:
     <value>Exportar lista de drivers &amp;selecionados</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Incluir drivers de inicialização crítica em drivers antigos</value>
+    <value>Incluir drivers de inicialização crítica em drivers antigos e não usados</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>Selecione a pasta contendo a pasta Windows (não a própria pasta Windows)</value>
@@ -500,8 +500,12 @@ Por favor, selecione a pasta raiz de uma instalação ou imagem do Windows (a pa
     <value>"Selecionar drivers não usados" seleciona drivers sem um dispositivo associado, não drivers comprovadamente seguros para excluir.
 Drivers essenciais de antivírus, rede, impressora e outros softwares também podem ser selecionados.
 Excluí-los pode fazer com que softwares ou dispositivos parem de funcionar. Revise a seleção e faça backup dos drivers antes de excluí-los.
+Drivers de inicialização crítica não são selecionados, a menos que você os inclua no menu "Opções".
 
 Continuar selecionando drivers?</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>Uma operação ainda está em andamento. Fechar agora pode deixá-la inacabada. Fechar mesmo assim?</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>Os drivers selecionados ainda podem ser necessários. Revise-os e faça backup antes de excluí-los.</value>

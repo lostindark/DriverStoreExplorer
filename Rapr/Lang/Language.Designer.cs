@@ -660,7 +660,7 @@ namespace Rapr.Lang {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Include Boot Critical in Old Drivers.
+        ///   Looks up a localized string similar to Include Boot Critical in Old and Unused Drivers.
         /// </summary>
         public static string Menu_Options_IncludeBootCritical {
             get {

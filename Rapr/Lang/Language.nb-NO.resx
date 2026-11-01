@@ -495,7 +495,7 @@ Lisens:
     <value>Eksporter listen over de valgte driverne</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
-    <value>Inkluder oppstartkritiske drivere i gamle drivere</value>
+    <value>Inkluder oppstartkritiske drivere i gamle og ubrukte drivere</value>
   </data>
   <data name="Dialog_Select_Offline_Store_Title" xml:space="preserve">
     <value>Velg katalogen som inneholder Windows-mappen (ikke Windows-mappen selv)</value>
@@ -536,8 +536,12 @@ Vennligst velg rotkatalogen til en Windows-installasjon eller -bilde (katalogen 
     <value>«Velg ubrukte driver(e)» velger drivere uten en tilknyttet enhet, ikke drivere som er bekreftet trygge å slette.
 Viktige drivere for antivirus, nettverk, skrivere og annen programvare kan også bli valgt.
 Hvis du sletter dem, kan programvare eller enheter slutte å fungere. Gå gjennom utvalget og sikkerhetskopier driverne før sletting.
+Oppstartkritiske drivere velges ikke med mindre du inkluderer dem i «Innstillinger»-menyen.
 
 Vil du fortsette å velge drivere?</value>
+  </data>
+  <data name="Message_Close_During_Operation" xml:space="preserve">
+    <value>En operasjon pågår fortsatt. Hvis du lukker nå, kan den bli ufullført. Vil du lukke likevel?</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>De valgte driverne kan fortsatt være nødvendige. Gå gjennom og sikkerhetskopier driverne før sletting.</value>
