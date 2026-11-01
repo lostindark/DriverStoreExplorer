@@ -577,6 +577,45 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        [DataRow("CtxMenuSelectOldDrivers_Click")]
+        [DataRow("CtxMenuSelectUnusedDrivers_Click")]
+        public void StoreWideSelectionClearsASearchThatIsNotAppliedYet(string handler)
+        {
+            WithOperationForm((form, list) =>
+            {
+                var active = CreateDriver("driver.inf", 2);
+                active.DeviceName = "Active device";
+                var unused = CreateDriver("driver.inf", 1);
+                list.CreateControl();
+                list.UseFiltering = true;
+                list.SetObjects(new[] { active, unused });
+
+                using (var debounce = new Timer { Interval = 300 })
+                {
+                    SetField(form, "searchDebounceTimer", debounce);
+                    var search = (Control)typeof(DSEForm)
+                        .GetField("textBoxSearch", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+
+                    // Text was typed and the debounce timer is running, but the filter is not applied yet.
+                    search.Text = "Active device";
+                    debounce.Start();
+                    Assert.IsNull(list.ModelFilter);
+
+                    Invoke(form, handler, null, EventArgs.Empty);
+
+                    Assert.IsFalse(debounce.Enabled);
+                    Assert.AreEqual(string.Empty, search.Text);
+
+                    // A late debounce tick must not hide the drivers that were just checked.
+                    Invoke(form, "UpdateSearchFilter");
+                    Assert.AreEqual(2, list.GetItemCount());
+                    CollectionAssert.AreEquivalent(new[] { unused }, list.CheckedObjects.ToArray());
+                    SetField(form, "searchDebounceTimer", null);
+                }
+            });
+        }
+
+        [TestMethod]
         public void CancelledUnusedDriverSelectionKeepsTheSearch()
         {
             // Settings is internal to Rapr, so reach it through ApplicationSettingsBase.

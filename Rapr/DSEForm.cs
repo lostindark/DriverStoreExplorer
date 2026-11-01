@@ -1011,12 +1011,19 @@ namespace Rapr
         // Otherwise drivers hidden by the search would be checked without being seen.
         private void ShowAllDriversBeforeStoreWideSelection()
         {
-            if (this.lstDriverStoreEntries.ModelFilter == null)
+            // Text typed just before may still be waiting for the search debounce timer,
+            // which would apply it after the selection. Check the text as well as the filter.
+            bool hasSearchText = !string.IsNullOrEmpty(this.textBoxSearch?.Text);
+            if (this.lstDriverStoreEntries.ModelFilter == null && !hasSearchText)
             {
                 return;
             }
 
-            this.textBoxSearch.Text = string.Empty;
+            if (hasSearchText)
+            {
+                this.textBoxSearch.Text = string.Empty;
+            }
+
             this.searchDebounceTimer?.Stop();
             this.UpdateSearchFilter();
         }
