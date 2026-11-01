@@ -39,7 +39,7 @@ namespace Rapr
         private ToolStripMenuItem warnBeforeSelectingUnusedDriversStripMenuItem;
         private ToolStripMenuItem showDetailsPaneStripMenuItem;
         private DriverDetailsPanel detailsPanel;
-        private TableLayoutPanel operationsColumn;
+        private Panel operationsColumn;
         private DriverInsights driverInsights;
 
         private static readonly IUpdateManager UpdateManager = CreateUpdateManager();
@@ -393,39 +393,35 @@ namespace Rapr
             this.detailsPanel = new DriverDetailsPanel
             {
                 Dock = DockStyle.Fill,
-
-                // The Operations box sets the width of the column, not the pane.
-                Width = 0,
             };
             this.detailsPanel.FolderClicked += (sender, e) => this.OpenDriverFolder(this.detailsPanel.Entry);
 
-            this.operationsColumn = new TableLayoutPanel
+            // A plain docking panel: the Operations box on top, sized to its buttons, and the
+            // pane below it taking the rest. In a TableLayoutPanel with AutoSize rows the box kept
+            // the full height the designer gives it and squeezed the pane.
+            this.gbOptions.AutoSize = false;
+            this.operationsColumn = new Panel
             {
-                AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                ColumnCount = 1,
                 Dock = DockStyle.Fill,
                 Margin = Padding.Empty,
-                RowCount = 2,
+                Padding = this.gbOptions.Margin,
             };
-            this.operationsColumn.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
-            this.operationsColumn.RowStyles.Add(new RowStyle());
-            this.operationsColumn.RowStyles.Add(new RowStyle());
-
-            // The designer sizes the Operations box to fill the window's height, and with the
-            // default GrowOnly it would never get shorter than that, squeezing the pane below it.
-            this.gbOptions.AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            this.flowLayoutPanel1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+            this.operationsColumn.Width = this.OperationsBoxSize().Width + this.operationsColumn.Padding.Horizontal;
 
             var table = this.tableLayoutPanel1;
             table.SuspendLayout();
             table.Controls.Remove(this.gbOptions);
-            this.operationsColumn.Controls.Add(this.gbOptions, 0, 0);
-            this.operationsColumn.Controls.Add(this.detailsPanel, 0, 1);
+
+            // Docking follows reverse z-order: the box, added last, takes the top first.
+            this.operationsColumn.Controls.Add(this.detailsPanel);
+            this.operationsColumn.Controls.Add(this.gbOptions);
             table.Controls.Add(this.operationsColumn, 1, 0);
             table.SetRowSpan(this.operationsColumn, 2);
             this.ShowDetailsPane(Settings.Default.ShowDetailsPane);
             table.ResumeLayout();
+
+            // Buttons are shown or hidden by driver store type; keep the box fitted to them.
+            this.flowLayoutPanel1.Layout += (sender, e) => this.FitOperationsBox();
 
             this.lstDriverStoreEntries.SelectionChanged += (sender, e) => this.UpdateDetailsPane();
             this.lstDriverStoreEntries.ItemsChanged += (sender, e) =>
@@ -438,10 +434,31 @@ namespace Rapr
         private void ShowDetailsPane(bool show)
         {
             // Hidden, the Operations box takes the whole height again, as it did before the pane.
-            this.operationsColumn.RowStyles[0] = show ? new RowStyle(SizeType.AutoSize) : new RowStyle(SizeType.Percent, 100F);
-            this.operationsColumn.RowStyles[1] = show ? new RowStyle(SizeType.Percent, 100F) : new RowStyle(SizeType.Absolute, 0F);
+            this.gbOptions.Dock = show ? DockStyle.Top : DockStyle.Fill;
             this.detailsPanel.Visible = show;
+            this.FitOperationsBox();
             this.UpdateDetailsPane();
+        }
+
+        // The size the Operations box needs for its buttons, measured from the button panel so it
+        // doesn't depend on the box's current size.
+        private Size OperationsBoxSize()
+        {
+            Size buttons = this.flowLayoutPanel1.GetPreferredSize(Size.Empty);
+            Size frame = this.gbOptions.Size - this.gbOptions.DisplayRectangle.Size;
+            return buttons + frame;
+        }
+
+        private void FitOperationsBox()
+        {
+            if (this.gbOptions.Dock == DockStyle.Top)
+            {
+                int height = this.OperationsBoxSize().Height;
+                if (this.gbOptions.Height != height)
+                {
+                    this.gbOptions.Height = height;
+                }
+            }
         }
 
         private void UpdateDetailsPane()
