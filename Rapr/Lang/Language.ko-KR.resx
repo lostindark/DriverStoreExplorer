@@ -587,4 +587,19 @@ Windows 폴더 자체가 아닌 Windows 설치 또는 이미지의 루트 디렉
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows를 시작하는 데 이 드라이버가 필요할 수 있습니다.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>드라이버 파일</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>필터링</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>모든 필터 지우기</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>적용</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>모두 선택</value>
+  </data>
 </root>

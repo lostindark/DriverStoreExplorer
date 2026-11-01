@@ -587,4 +587,19 @@ Sürücü seçimine devam edilsin mi?</value>
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows'un başlamak için bu sürücüye ihtiyacı olabilir.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Sürücü Dosyaları</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Filtreleme</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Tüm Filtreleri Temizle</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Uygula</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Tümünü Seç</value>
+  </data>
 </root>

@@ -587,4 +587,19 @@
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Цей драйвер може знадобитися Windows для завантаження.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Файли драйвера</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Фільтрування</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Очистити всі фільтри</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Застосувати</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Вибрати всі</value>
+  </data>
 </root>

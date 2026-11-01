@@ -592,4 +592,19 @@ Tiếp tục chọn driver?</value>
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows có thể cần driver này để khởi động.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Tệp trình điều khiển</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Lọc</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Xóa tất cả bộ lọc</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Áp dụng</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Chọn tất cả</value>
+  </data>
 </root>

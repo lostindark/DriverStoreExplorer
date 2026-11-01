@@ -587,4 +587,19 @@ Vil du fortsette å velge drivere?</value>
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows kan trenge denne driveren for å starte.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Driverfiler</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Filtrering</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Fjern alle filtre</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Bruk</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Velg alle</value>
+  </data>
 </root>

@@ -561,4 +561,19 @@
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>ייתכן ש-Windows זקוק למנהל התקן זה כדי לאתחל.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>קובצי מנהל ההתקן</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>סינון</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>ניקוי כל המסננים</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>החל</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>בחירה בהכל</value>
+  </data>
 </root>

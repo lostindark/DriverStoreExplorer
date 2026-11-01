@@ -587,4 +587,19 @@
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows кабызу өчен бу драйверга мохтаҗ булырга мөмкин.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Драйвер файллары</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Фильтрлау</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Барлык фильтрларны чистарту</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Куллану</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Барлыкны сайлау</value>
+  </data>
 </root>

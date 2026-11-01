@@ -587,4 +587,19 @@ Windowsインストールまたはイメージのルートディレクトリ（W
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows の起動にこのドライバーが必要な場合があります。</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>ドライバー ファイル</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>フィルター</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>すべてのフィルターをクリア</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>適用</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>すべて選択</value>
+  </data>
 </root>

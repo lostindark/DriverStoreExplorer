@@ -587,4 +587,19 @@ Czy kontynuować wybieranie sterowników?</value>
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Ten sterownik może być potrzebny do uruchomienia systemu Windows.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Pliki sterownika</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Filtrowanie</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Wyczyść wszystkie filtry</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Zastosuj</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Zaznacz wszystkie</value>
+  </data>
 </root>

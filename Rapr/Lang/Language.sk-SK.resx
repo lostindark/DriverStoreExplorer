@@ -587,4 +587,19 @@ Pokračovať vo výbere ovládačov?</value>
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows môže tento ovládač potrebovať na spustenie.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Súbory ovládača</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Filtrovanie</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Vymazať všetky filtre</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Použiť</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Označiť všetko</value>
+  </data>
 </root>

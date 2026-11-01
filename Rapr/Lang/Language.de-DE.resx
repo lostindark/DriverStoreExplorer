@@ -587,4 +587,19 @@ Mit der Auswahl der Treiber fortfahren?</value>
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows benötigt diesen Treiber möglicherweise zum Starten.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Treiberdateien</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Filterung</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Alle Filter löschen</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Anwenden</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Alle auswählen</value>
+  </data>
 </root>

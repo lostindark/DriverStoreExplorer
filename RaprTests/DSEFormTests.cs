@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Serialization;
@@ -26,6 +27,91 @@ namespace Rapr.Tests
     [DoNotParallelize]
     public class DSEFormTests
     {
+        [TestMethod]
+        [DataRow(ObjectListViewBase.ColumnSelectBehaviour.InlineMenu)]
+        [DataRow(ObjectListViewBase.ColumnSelectBehaviour.Submenu)]
+        public void ColumnSelectionMenuExcludesOnlyBlankSpacerColumns(ObjectListViewBase.ColumnSelectBehaviour behaviour)
+        {
+            using (var list = new MyObjectListView { SelectColumnsOnRightClickBehaviour = behaviour })
+            using (var menu = new ContextMenuStrip())
+            {
+                var visible = new OLVColumn("INF", nameof(DriverStoreEntry.DriverInfName));
+                var hidden = new OLVColumn("Driver Files", nameof(DriverStoreEntry.DriverFiles)) { IsVisible = false };
+                var unnamed = new OLVColumn { Text = string.Empty };
+                var spacer = new OLVColumn { FillsFreeSpace = true, Text = string.Empty };
+                list.AllColumns.AddRange(new[] { visible, hidden, unnamed, spacer });
+                list.Columns.AddRange(new ColumnHeader[] { visible, unnamed, spacer });
+
+                list.MakeColumnSelectMenu(menu);
+
+                var items = behaviour == ObjectListViewBase.ColumnSelectBehaviour.Submenu
+                    ? ((ToolStripMenuItem)menu.Items[0]).DropDownItems
+                    : menu.Items;
+                CollectionAssert.AreEquivalent(
+                    new[] { visible, hidden, unnamed },
+                    items.Cast<ToolStripItem>().Select(item => item.Tag).ToArray());
+                Assert.IsTrue(spacer.IsVisible);
+                Assert.IsTrue(list.Columns.Contains(spacer));
+                Assert.AreEqual(4, list.AllColumns.Count);
+            }
+        }
+
+        [TestMethod]
+        public void ColumnAndFilterMenusFollowLanguageChanges()
+        {
+            var originalCulture = Language.Culture;
+            var originalLabels = new[]
+            {
+                FilterMenuBuilder.FILTERING_LABEL, FilterMenuBuilder.CLEAR_ALL_FILTERS_LABEL,
+                FilterMenuBuilder.APPLY_LABEL, FilterMenuBuilder.SELECT_ALL_LABEL
+            };
+            try
+            {
+                WithOperationForm((form, list) =>
+                {
+                    list.SetObjects(new[] { CreateDriver("first.inf", 1) });
+                    var filesColumn = (OLVColumn)typeof(DSEForm)
+                        .GetField("binaryFilesColumn", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                    list.AllColumns.Add(filesColumn);
+                    var cultures = new[] { "en-US", "fr-FR", "zh-CN", "en-US" };
+                    var labels = new[]
+                    {
+                        new[] { "Driver Files", "Filtering", "Clear All Filters", "Apply", "Select All" },
+                        new[] { "Fichiers du pilote", "Filtrage", "Effacer tous les filtres", "Appliquer", "Tout sélectionner" },
+                        new[] { "驱动文件", "筛选", "清除所有筛选", "应用", "全选" },
+                        new[] { "Driver Files", "Filtering", "Clear All Filters", "Apply", "Select All" }
+                    };
+                    for (int i = 0; i < cultures.Length; i++)
+                    {
+                        Language.Culture = CultureInfo.GetCultureInfo(cultures[i]);
+                        Invoke(form, "SetupListViewColumns");
+                        using (var columnsMenu = new ContextMenuStrip())
+                        using (var filterMenu = new ContextMenuStrip())
+                        {
+                            list.MakeColumnSelectMenu(columnsMenu);
+                            Assert.AreEqual(labels[i][0], columnsMenu.Items[0].Text);
+
+                            list.MakeFilteringMenu(filterMenu, 0);
+                            var filtering = (ToolStripMenuItem)filterMenu.Items[0];
+                            Assert.AreEqual(labels[i][1], filtering.Text);
+                            Assert.AreEqual(labels[i][2], filtering.DropDownItems[0].Text);
+                            Assert.AreEqual(labels[i][3], filtering.DropDownItems[3].Text);
+                            var choices = (ToolStripCheckedListBox)filtering.DropDownItems[2];
+                            Assert.AreEqual(labels[i][4], choices.Items[choices.Items.Count - 1]);
+                        }
+                    }
+                });
+            }
+            finally
+            {
+                Language.Culture = originalCulture;
+                FilterMenuBuilder.FILTERING_LABEL = originalLabels[0];
+                FilterMenuBuilder.CLEAR_ALL_FILTERS_LABEL = originalLabels[1];
+                FilterMenuBuilder.APPLY_LABEL = originalLabels[2];
+                FilterMenuBuilder.SELECT_ALL_LABEL = originalLabels[3];
+            }
+        }
+
         [TestMethod]
         [DataRow(false)]
         [DataRow(true)]
@@ -497,7 +583,9 @@ namespace Rapr.Tests
                     foreach (var field in typeof(DSEForm).GetFields(BindingFlags.Instance | BindingFlags.NonPublic))
                     {
                         if (field.GetValue(form) == null
-                            && (typeof(Control).IsAssignableFrom(field.FieldType) || typeof(ToolStripItem).IsAssignableFrom(field.FieldType)))
+                            && (typeof(Control).IsAssignableFrom(field.FieldType)
+                                || typeof(ToolStripItem).IsAssignableFrom(field.FieldType)
+                                || typeof(ColumnHeader).IsAssignableFrom(field.FieldType)))
                         {
                             var control = Activator.CreateInstance(field.FieldType);
                             field.SetValue(form, control);

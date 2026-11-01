@@ -252,6 +252,12 @@ namespace Rapr
 
         private void SetupListViewColumns()
         {
+            this.binaryFilesColumn.Text = Language.ResourceManager.GetString("Column_DriverFiles", Language.Culture);
+            FilterMenuBuilder.FILTERING_LABEL = Language.ResourceManager.GetString("Filter_Filtering", Language.Culture);
+            FilterMenuBuilder.CLEAR_ALL_FILTERS_LABEL = Language.ResourceManager.GetString("Filter_ClearAllFilters", Language.Culture);
+            FilterMenuBuilder.APPLY_LABEL = Language.ResourceManager.GetString("Filter_Apply", Language.Culture);
+            FilterMenuBuilder.SELECT_ALL_LABEL = Language.ResourceManager.GetString("Filter_SelectAll", Language.Culture);
+
             this.driverExtensionIdColumn.AspectToStringConverter = id => (Guid)id == Guid.Empty ? String.Empty : id.ToString();
             this.driverSizeColumn.AspectToStringConverter = size => DriverStoreEntry.GetBytesReadable((long)size);
 

@@ -553,4 +553,19 @@
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows 启动可能需要此驱动。</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>驱动文件</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>筛选</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>清除所有筛选</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>应用</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>全选</value>
+  </data>
 </root>

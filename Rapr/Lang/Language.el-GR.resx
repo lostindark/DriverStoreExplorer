@@ -587,4 +587,19 @@ Credits:
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Τα Windows ίσως χρειάζονται αυτόν τον driver για να ξεκινήσουν.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Αρχεία προγράμματος οδήγησης</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Φιλτράρισμα</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Εκκαθάριση όλων των φίλτρων</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Εφαρμογή</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Επιλογή όλων</value>
+  </data>
 </root>

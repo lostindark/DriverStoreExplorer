@@ -587,4 +587,19 @@ Folytatja az illesztőprogramok kiválasztását?</value>
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Lehet, hogy a Windowsnak szüksége van erre az illesztőprogramra az indításhoz.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Illesztőprogram-fájlok</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Szűrés</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Összes szűrő törlése</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Alkalmaz</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Összes kijelölése</value>
+  </data>
 </root>

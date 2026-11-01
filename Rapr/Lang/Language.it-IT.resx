@@ -588,4 +588,19 @@ Continuare con la selezione dei driver?</value>
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows potrebbe aver bisogno di questo driver per avviarsi.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>File del driver</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Filtraggio</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Cancella tutti i filtri</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Applica</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Seleziona tutto</value>
+  </data>
 </root>

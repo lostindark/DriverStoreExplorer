@@ -587,4 +587,19 @@ Continue selecting drivers?</value>
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>Windows may need this driver to start.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>Driver Files</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>Filtering</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>Clear All Filters</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
 </root>

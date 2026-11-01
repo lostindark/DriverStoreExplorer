@@ -550,4 +550,19 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   <data name="Details_Boot_Critical" xml:space="preserve">
     <value>قد يحتاج Windows إلى هذا التعريف لبدء التشغيل.</value>
   </data>
+  <data name="Column_DriverFiles" xml:space="preserve">
+    <value>ملفات برنامج التشغيل</value>
+  </data>
+  <data name="Filter_Filtering" xml:space="preserve">
+    <value>التصفية</value>
+  </data>
+  <data name="Filter_ClearAllFilters" xml:space="preserve">
+    <value>مسح جميع عوامل التصفية</value>
+  </data>
+  <data name="Filter_Apply" xml:space="preserve">
+    <value>تطبيق</value>
+  </data>
+  <data name="Filter_SelectAll" xml:space="preserve">
+    <value>تحديد الكل</value>
+  </data>
 </root>
