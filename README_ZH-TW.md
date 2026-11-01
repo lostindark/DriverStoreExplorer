@@ -2,7 +2,7 @@
 <td><img src="./Rapr/icon.ico" alt="logo" width="96"></td>
 <td>
 <h1>Driver Store Explorer (RAPR)</h1>
-🌏: <a href="/README.md">English</a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md"><b>繁體中文</b></a>
+🌏: <a href="/README.md">English</a> | <a href="/README_ES.md">Español</a> | <a href="/README_TR.md">Türkçe</a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md"><b>繁體中文</b></a>
 </td>
 </tr></table>
 
@@ -18,7 +18,7 @@
 
 ## 什麼是 Driver Store Explorer？
 
-Driver Store Explorer (RAPR) 是一款功能強大的工具，用於檢視、管理和清理 Windows [驅動程式存放區](https://msdn.microsoft.com/en-us/library/ff544868(VS.85).aspx)。它面向進階使用者和系統管理員。如果您不熟悉 Windows 內部機制，不建議使用此工具。
+Driver Store Explorer (RAPR) 是一款功能強大的工具，用於檢視、管理和清理 Windows [驅動程式存放區](https://learn.microsoft.com/zh-tw/windows-hardware/drivers/install/driver-store)。它面向進階使用者和系統管理員。如果您不熟悉 Windows 內部機制，不建議使用此工具。
 
 ---
 
@@ -49,8 +49,12 @@ Driver Store Explorer (RAPR) 是一款功能強大的工具，用於檢視、管
 
 ## 瞭解驅動程式狀態和移除選項
 
-- **舊驅動程式：** 當系統中存在較新版本時，驅動程式被視為「舊」驅動程式。移除這些驅動程式可以幫助釋放空間並減少雜亂，但可能會影響與某些裝置或組態的相容性。建議在移除前備份驅動程式。「選取舊驅動程式」功能可以自動識別舊驅動程式，但結果可能有所不同。
+- **舊驅動程式：** 當系統中存在較新版本時，驅動程式被視為「舊」驅動程式。移除這些驅動程式可以幫助釋放空間並減少雜亂，但可能會影響與某些裝置或組態的相容性。建議在移除前備份驅動程式。「選擇舊版驅動程式」功能可以自動識別舊驅動程式，但結果可能有所不同。
+- **未使用的驅動程式：** 「選擇未使用的驅動程式」會選取沒有關聯裝置的驅動程式，而不是已確認可以安全刪除的驅動程式。防毒軟體、網路服務、印表機及其他軟體所需的重要驅動程式也可能被選取。按鈕和右鍵選單在變更選取前都會顯示警告，預設選項為「取消」。此警告預設為啟用，可在 **選項 > 選擇未使用的驅動程式前顯示警告** 中關閉。只要仍有這類驅動程式被勾選，狀態列就會保留黃色提醒；發生錯誤時顯示為紅色，但不會隱藏該提醒。成功匯出驅動程式套件後，已備份驅動程式的提醒會消失；匯出 CSV 或備份失敗則不會。刪除前請檢查選取的驅動程式並進行備份。
+- **開機關鍵驅動程式：** Windows 啟動時可能需要這些驅動程式。除非開啟 **選項 > 在舊版及未使用的驅動程式中包含開機關鍵驅動程式**，否則「選擇舊版驅動程式」和「選擇未使用的驅動程式」會略過它們。
+- **搜尋時的選取：** 當搜尋方塊篩選清單時，「全選」、「反選」和「選擇」只會變更目前看得到的驅動程式。「選擇舊版驅動程式」和「選擇未使用的驅動程式」會檢查整個驅動程式存放區，因此會先清除搜尋，讓選取的驅動程式全部保持可見。
 - **灰色裝置名稱：** 裝置名稱顯示為灰色的驅動程式與目前未連線的裝置（如相機、手機或外接硬碟）相關聯。如果移除這些驅動程式，將來重新連線裝置時需要重新安裝。
+- **離線清理：** 由於無法可靠判斷裝置的使用情況，離線存放區中停用了舊版及未使用驅動程式的自動選取。您仍可以手動選取要移除的驅動程式。
 - **強制刪除：** 如果需要刪除正在使用的驅動程式，請使用此選項。注意：此選項可能不適用於列印驅動程式。
 ---
 
@@ -103,7 +107,7 @@ rapr
 最初託管於 [https://driverstoreexplorer.codeplex.com/](https://web.archive.org/web/20190417132137/https://archive.codeplex.com/?p=driverstoreexplorer)。
 
 ## 致謝
-- [ObjectListView](http://objectlistview.sourceforge.net/)
+- [ObjectListView](https://github.com/lostindark/ObjectListView)
 - [Managed DismApi Wrapper](https://github.com/jeffkl/ManagedDism)
 - [FlexibleMessageBox](https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the)
 - [Resource Embedder](https://github.com/0xced/resource-embedder)

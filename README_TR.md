@@ -2,7 +2,7 @@
 <td><img src="./Rapr/icon.ico" alt="logo" width="96"></td>
 <td>
 <h1>Driver Store Explorer (RAPR)</h1>
-🌏: <a href="/README.md">English</a> | <a href="/README_TR.md"><b>Türkçe</b></a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md">繁體中文</a>
+🌏: <a href="/README.md">English</a> | <a href="/README_ES.md">Español</a> | <a href="/README_TR.md"><b>Türkçe</b></a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md">繁體中文</a>
 </td>
 </tr></table>
 
@@ -18,7 +18,7 @@
 
 ## Driver Store Explorer nedir?
 
-Driver Store Explorer (RAPR), Windows [DriverStore](https://msdn.microsoft.com/en-us/library/ff544868(VS.85).aspx) içeriğini görüntülemek, yönetmek ve temizlemek için kullanılan güçlü bir araçtır. İleri düzey kullanıcılar ve yöneticiler için tasarlanmıştır. Windows'un iç işleyişine aşina değilseniz, bu aracı kullanmanız önerilmez.
+Driver Store Explorer (RAPR), Windows [DriverStore](https://learn.microsoft.com/tr-tr/windows-hardware/drivers/install/driver-store) içeriğini görüntülemek, yönetmek ve temizlemek için kullanılan güçlü bir araçtır. İleri düzey kullanıcılar ve yöneticiler için tasarlanmıştır. Windows'un iç işleyişine aşina değilseniz, bu aracı kullanmanız önerilmez.
 
 ---
 
@@ -49,7 +49,11 @@ Driver Store Explorer (RAPR), Windows [DriverStore](https://msdn.microsoft.com/e
 ## Sürücü Durumu ve Kaldırma Seçeneklerini Anlama
 
 - **Eski sürücüler:** Sistem üzerinde daha yeni sürümler bulunduğunda sürücüler "eski" olarak kabul edilir. Bunları kaldırmak alan açmaya ve karmaşayı azaltmaya yardımcı olabilir, ancak bazı aygıtlar veya yapılandırmalarla uyumluluğu etkileyebilir. Kaldırmadan önce sürücüleri yedeklemeyi düşünün. "Eski Sürücüleri Seç" seçeneği eski sürücüleri otomatik olarak belirleyebilir, ancak sonuçlar değişebilir.
+- **Kullanılmayan sürücüler:** "Kullanılmayan Sürücüleri Seç", silinmesinin güvenli olduğu kanıtlanmış sürücüleri değil, ilişkili bir aygıtı olmayan sürücüleri seçer. Antivirüs, ağ hizmeti, yazıcı ve diğer yazılımlar için gerekli sürücüler de seçilebilir. Hem düğme hem de bağlam menüsü, seçimi değiştirmeden önce bir uyarı gösterir; varsayılan seçenek İptal'dir. Bu uyarı varsayılan olarak etkindir ve **Seçenekler > Kullanılmayan Sürücüleri Seçmeden Önce Uyar** ile kapatılabilir. Bu sürücülerden biri işaretli kaldığı sürece durum çubuğunda sarı bir hatırlatma görünür; hatalar kırmızı gösterilir ama hatırlatmayı gizlemez. Sürücü paketlerini başarıyla dışa aktardığınızda, yedeklenen sürücüler için hatırlatma kalkar; CSV dışa aktarma ve başarısız yedeklemeler hatırlatmayı kaldırmaz. Silmeden önce seçilen sürücüleri gözden geçirin ve yedekleyin.
+- **Önyükleme için kritik sürücüler:** Windows'un başlaması için bu sürücüler gerekebilir. **Seçenekler > Eski ve Kullanılmayan Sürücülerde Önyükleme Kritik Olanları Dahil Et** seçeneğini açmadığınız sürece "Eski Sürücüleri Seç" ve "Kullanılmayan Sürücüleri Seç" bu sürücüleri atlar.
+- **Arama sırasında seçim:** Arama kutusu listeyi filtrelediğinde "Tümünü Seç", "Ters Seçim" ve "Seç" yalnızca gördüğünüz sürücüleri değiştirir. "Eski Sürücüleri Seç" ve "Kullanılmayan Sürücüleri Seç" tüm sürücü deposuna baktığı için önce aramayı temizler; böylece seçtikleri her şey görünür kalır.
 - **Gri aygıt adları:** Aygıt adı gri renkte gösterilen sürücüler, şu anda bağlı olmayan aygıtlarla ilişkilidir (örneğin kameralar, telefonlar veya harici sürücüler). Bu sürücüleri kaldırırsanız, aygıtı gelecekte yeniden bağladığınızda bunları yeniden yüklemeniz gerekir.
+- **Çevrimdışı temizleme:** Aygıt kullanımı güvenilir şekilde belirlenemediği için çevrimdışı depolarda eski ve kullanılmayan sürücülerin otomatik seçimi kapalıdır. Sürücüleri kaldırmak için yine de elle seçebilirsiniz.
 - **Zorla silme:** Şu anda kullanımda olan bir sürücüyü silmeniz gerekiyorsa bu seçeneği kullanın. Not: Bu seçenek yazıcı sürücülerinde çalışmayabilir.
 ---
 
@@ -102,7 +106,7 @@ rapr
 İlk olarak [https://driverstoreexplorer.codeplex.com/](https://web.archive.org/web/20190417132137/https://archive.codeplex.com/?p=driverstoreexplorer) adresinde barındırılıyordu.
 
 ## Katkıda Bulunanlar
-- [ObjectListView](http://objectlistview.sourceforge.net/)
+- [ObjectListView](https://github.com/lostindark/ObjectListView)
 - [Managed DismApi Wrapper](https://github.com/jeffkl/ManagedDism)
 - [FlexibleMessageBox](https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the)
 - [Resource Embedder](https://github.com/0xced/resource-embedder)

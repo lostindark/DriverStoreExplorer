@@ -2,7 +2,7 @@
 <td><img src="./Rapr/icon.ico" alt="logo" width="96"></td>
 <td>
 <h1>Driver Store Explorer (RAPR)</h1>
-🌏: <a href="/README.md">English</a> | <a href="/README_KO.md"><b>한국어</b></a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md">繁體中文</a>
+🌏: <a href="/README.md">English</a> | <a href="/README_ES.md">Español</a> | <a href="/README_TR.md">Türkçe</a> | <a href="/README_KO.md"><b>한국어</b></a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md">繁體中文</a>
 </td>
 </tr></table>
 
@@ -18,7 +18,7 @@
 
 ## Driver Store Explorer란 무엇인가요?
 
-Driver Store Explorer (RAPR)는 Windows [드라이버 저장소](https://msdn.microsoft.com/ko-kr/library/ff544868(VS.85).aspx)를 보고, 관리하고, 정리하는 강력한 도구입니다. 고급 사용자와 관리자를 대상으로 합니다. 내부 구조에 익숙하지 않은 경우 이 도구를 사용하지 않는 것이 좋습니다.
+Driver Store Explorer (RAPR)는 Windows [드라이버 저장소](https://learn.microsoft.com/ko-kr/windows-hardware/drivers/install/driver-store)를 보고, 관리하고, 정리하는 강력한 도구입니다. 고급 사용자와 관리자를 대상으로 합니다. 내부 구조에 익숙하지 않은 경우 이 도구를 사용하지 않는 것이 좋습니다.
 
 ---
 
@@ -50,7 +50,11 @@ Driver Store Explorer (RAPR)는 Windows [드라이버 저장소](https://msdn.mi
 ## 드라이버 상태 및 제거 옵션 이해하기
 
 - **오래된 드라이버:** 시스템에 최신 버전이 있는 경우 드라이버는 "오래된" 드라이버로 간주됩니다. 이러한 드라이버를 제거하면 공간을 확보하고 불필요한 요소를 줄이는 데 도움이 되지만 특정 장치 또는 구성과의 호환성에 영향을 줄 수 있습니다. 제거하기 전에 드라이버를 백업하는 것이 좋습니다. "오래된 드라이버 선택"을 사용하면 오래된 드라이버를 자동으로 식별할 수 있지만 결과는 다를 수 있습니다.
+- **사용되지 않는 드라이버:** "사용되지 않는 드라이버 선택"은 안전하게 삭제할 수 있다고 확인된 드라이버가 아니라, 연결된 장치가 없는 드라이버를 선택합니다. 바이러스 백신, 네트워크 서비스, 프린터 및 기타 소프트웨어에 꼭 필요한 드라이버도 선택될 수 있습니다. 버튼과 상황에 맞는 메뉴 모두 선택을 바꾸기 전에 경고를 표시하며, 기본 선택은 취소입니다. 이 경고는 기본적으로 켜져 있으며 **옵션 > 사용하지 않는 드라이버 선택 전에 경고**에서 끌 수 있습니다. 이러한 드라이버가 하나라도 선택되어 있는 동안 상태 표시줄에 노란색 알림이 남아 있으며, 오류는 빨간색으로 표시되지만 알림을 가리지 않습니다. 드라이버 패키지를 성공적으로 내보내면 백업한 드라이버에 대한 알림이 사라지지만, CSV 내보내기와 실패한 백업은 알림을 지우지 않습니다. 삭제하기 전에 선택한 드라이버를 검토하고 백업하세요.
+- **부팅 필수 드라이버:** Windows를 시작하는 데 이 드라이버가 필요할 수 있습니다. **옵션 > 오래된 드라이버 및 사용하지 않는 드라이버에 부팅 필수 항목 포함**을 켜지 않으면 "오래된 드라이버 선택"과 "사용되지 않는 드라이버 선택"은 이 드라이버를 건너뜁니다.
+- **검색 중 선택:** 검색 상자로 목록을 필터링하면 "모두 선택", "선택 반전", "선택"은 화면에 보이는 드라이버만 변경합니다. "오래된 드라이버 선택"과 "사용되지 않는 드라이버 선택"은 전체 드라이버 저장소를 확인하므로 먼저 검색을 지우며, 선택한 드라이버는 모두 화면에 표시됩니다.
 - **회색 장치 이름:** 장치 이름이 회색으로 표시된 드라이버는 현재 연결되지 않은 장치 (예: 카메라, 휴대폰 또는 외장 드라이브)와 관련된 드라이버입니다. 이러한 드라이버를 제거하면 나중에 장치를 다시 연결할 때 다시 설치해야 합니다.
+- **오프라인 정리:** 오프라인 저장소에서는 장치 사용 여부를 확실하게 알 수 없으므로 오래되거나 사용되지 않는 드라이버의 자동 선택이 꺼져 있습니다. 제거할 드라이버는 직접 선택할 수 있습니다.
 - **강제 삭제:** 현재 사용 중인 드라이버를 삭제해야 하는 경우 이 옵션을 사용하세요. 참고: 이 옵션은 인쇄 드라이버에는 작동하지 않을 수 있습니다.
 ---
 
@@ -103,7 +107,7 @@ rapr
 원래는 [https://driverstoreexplorer.codeplex.com/](https://web.archive.org/web/20190417132137/https://archive.codeplex.com/?p=driverstoreexplorer) 에서 호스팅되었습니다.
 
 ## 크레딧
-- [ObjectListView](http://objectlistview.sourceforge.net/)
+- [ObjectListView](https://github.com/lostindark/ObjectListView)
 - [Managed DismApi Wrapper](https://github.com/jeffkl/ManagedDism)
 - [FlexibleMessageBox](https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the)
 - [Resource Embedder](https://github.com/0xced/resource-embedder)

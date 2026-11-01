@@ -2,7 +2,7 @@
 <td><img src="./Rapr/icon.ico" alt="logo" width="96"></td>
 <td>
 <h1>Driver Store Explorer (RAPR)</h1>
-🌏: <a href="/README.md">English</a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md"><b>简体中文</b></a> | <a href="/README_ZH-TW.md">繁體中文</a>
+🌏: <a href="/README.md">English</a> | <a href="/README_ES.md">Español</a> | <a href="/README_TR.md">Türkçe</a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md"><b>简体中文</b></a> | <a href="/README_ZH-TW.md">繁體中文</a>
 </td>
 </tr></table>
 
@@ -18,7 +18,7 @@
 
 ## 什么是 Driver Store Explorer？
 
-Driver Store Explorer (RAPR) 是一款功能强大的工具，用于查看、管理和清理 Windows [驱动程序存储](https://msdn.microsoft.com/en-us/library/ff544868(VS.85).aspx)。它面向高级用户和系统管理员。如果您不熟悉 Windows 内部机制，不建议使用此工具。
+Driver Store Explorer (RAPR) 是一款功能强大的工具，用于查看、管理和清理 Windows [驱动程序存储](https://learn.microsoft.com/zh-cn/windows-hardware/drivers/install/driver-store)。它面向高级用户和系统管理员。如果您不熟悉 Windows 内部机制，不建议使用此工具。
 
 ---
 
@@ -49,8 +49,12 @@ Driver Store Explorer (RAPR) 是一款功能强大的工具，用于查看、管
 
 ## 了解驱动程序状态和移除选项
 
-- **旧驱动程序：** 当系统中存在更新版本时，驱动程序被视为"旧"驱动程序。移除这些驱动程序可以帮助释放空间并减少杂乱，但可能会影响与某些设备或配置的兼容性。建议在移除前备份驱动程序。"选择旧驱动程序"功能可以自动识别旧驱动程序，但结果可能有所不同。
+- **旧驱动程序：** 当系统中存在更新版本时，驱动程序被视为"旧"驱动程序。移除这些驱动程序可以帮助释放空间并减少杂乱，但可能会影响与某些设备或配置的兼容性。建议在移除前备份驱动程序。"选取旧的驱动"功能可以自动识别旧驱动程序，但结果可能有所不同。
+- **未使用的驱动程序：** "选择未使用的驱动"会选择没有关联设备的驱动程序，而不是已确认可以安全删除的驱动程序。杀毒软件、网络服务、打印机及其他软件所需的重要驱动程序也可能被选中。按钮和右键菜单在更改选择前都会显示警告，默认选项为"取消"。此警告默认启用，可在 **选项 > 选择未使用的驱动前显示警告** 中关闭。只要仍有这类驱动程序被勾选，状态栏就会保留黄色提醒；出错时显示为红色，但不会隐藏该提醒。成功导出驱动程序包后，已备份驱动程序的提醒会消失；导出 CSV 或备份失败则不会。删除前请检查所选驱动程序并进行备份。
+- **启动关键驱动程序：** Windows 启动时可能需要这些驱动程序。除非开启 **选项 > 在旧驱动程序和未使用的驱动程序中包含启动关键驱动程序**，否则"选取旧的驱动"和"选择未使用的驱动"会跳过它们。
+- **搜索时的选择：** 当搜索框筛选列表时，"全选"、"反选"和"选择"只会更改当前可见的驱动程序。"选取旧的驱动"和"选择未使用的驱动"会检查整个驱动程序存储，因此会先清除搜索，让选中的驱动程序全部保持可见。
 - **灰色设备名称：** 设备名称显示为灰色的驱动程序与当前未连接的设备（如相机、手机或外置驱动器）相关联。如果移除这些驱动程序，将来重新连接设备时需要重新安装。
+- **离线清理：** 由于无法可靠判断设备的使用情况，离线存储中禁用了旧驱动程序和未使用驱动程序的自动选择。您仍可以手动选择要移除的驱动程序。
 - **强制删除：** 如果需要删除正在使用的驱动程序，请使用此选项。注意：此选项可能不适用于打印驱动程序。
 ---
 
@@ -103,7 +107,7 @@ rapr
 最初托管于 [https://driverstoreexplorer.codeplex.com/](https://web.archive.org/web/20190417132137/https://archive.codeplex.com/?p=driverstoreexplorer)。
 
 ## 致谢
-- [ObjectListView](http://objectlistview.sourceforge.net/)
+- [ObjectListView](https://github.com/lostindark/ObjectListView)
 - [Managed DismApi Wrapper](https://github.com/jeffkl/ManagedDism)
 - [FlexibleMessageBox](https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the)
 - [Resource Embedder](https://github.com/0xced/resource-embedder)

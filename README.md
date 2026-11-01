@@ -2,7 +2,7 @@
 <td><img src="./Rapr/icon.ico" alt="logo" width="96"></td>
 <td>
 <h1>Driver Store Explorer (RAPR)</h1>
-🌏: <a href="/README.md"><b>English</b></a> | <a href="/README_TR.md">Türkçe</a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md">繁體中文</a>
+🌏: <a href="/README.md"><b>English</b></a> | <a href="/README_ES.md">Español</a> | <a href="/README_TR.md">Türkçe</a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md">繁體中文</a>
 </td>
 </tr></table>
 
@@ -18,7 +18,7 @@
 
 ## What is Driver Store Explorer?
 
-Driver Store Explorer (RAPR) is a powerful tool for viewing, managing, and cleaning up the Windows [DriverStore](https://msdn.microsoft.com/en-us/library/ff544868(VS.85).aspx). It is intended for advanced users and administrators. If you are not familiar with Windows internals, use of this tool is discouraged.
+Driver Store Explorer (RAPR) is a powerful tool for viewing, managing, and cleaning up the Windows [DriverStore](https://learn.microsoft.com/windows-hardware/drivers/install/driver-store). It is intended for advanced users and administrators. If you are not familiar with Windows internals, use of this tool is discouraged.
 
 ---
 
@@ -50,7 +50,9 @@ Driver Store Explorer (RAPR) is a powerful tool for viewing, managing, and clean
 ## Understanding Driver Status and Removal Options
 
 - **Old drivers:** Drivers are considered as "old" when newer versions exist on the system. Removing these can help free up space and reduce clutter, but may impact compatibility with certain devices or configurations. Consider backing up drivers before removal. The "Select Old Driver(s)" can automatically identify old drivers, though results may vary.
-- **Unused drivers:** "Select Unused Driver(s)" selects drivers without an associated device, not drivers proven safe to delete. Essential antivirus, network service, printer, and other software drivers may also be selected. Both the button and context menu show a warning before changing the selection; Cancel is the default. A yellow status reminder remains alongside operation results while any of these drivers are checked; errors remain red without hiding the reminder. Successful driver-package exports clear the reminder for the backed-up drivers; CSV exports and failed backups do not. Review the selected drivers and back them up before deletion.
+- **Unused drivers:** "Select Unused Driver(s)" selects drivers without an associated device, not drivers proven safe to delete. Essential antivirus, network service, printer, and other software drivers may also be selected. Both the button and context menu show a warning before changing the selection; Cancel is the default. This warning is enabled by default and can be turned off with **Options > Warn Before Selecting Unused Drivers**. A yellow status reminder remains alongside operation results while any of these drivers are checked; errors remain red without hiding the reminder. Successful driver-package exports clear the reminder for the backed-up drivers; CSV exports and failed backups do not. Review the selected drivers and back them up before deletion.
+- **Boot critical drivers:** Windows may need these drivers to start. "Select Old Driver(s)" and "Select Unused Driver(s)" skip them unless you turn on **Options > Include Boot Critical in Old and Unused Drivers**.
+- **Selecting while searching:** When the search box filters the list, "Select All", "Invert Selection" and "Select" only change the drivers you can see. "Select Old Driver(s)" and "Select Unused Driver(s)" look at the whole driver store, so they clear the search first and everything they select stays visible.
 - **Grayed Device Names:** Drivers shown with device names in gray are associated with devices that are not currently connected (such as cameras, phones, or external drives). If you remove these drivers, you will need to reinstall them if you reconnect the device in the future.
 - **Offline Cleanup:** Automatic old/unused driver selection is disabled for offline stores because device usage cannot be established reliably. Drivers can still be selected manually for removal.
 - **Force Deletion:** Use this option if you need to delete a driver that is currently in use. Note: This option may not work for print drivers.
@@ -105,7 +107,7 @@ rapr
 Originally hosted at [https://driverstoreexplorer.codeplex.com/](https://web.archive.org/web/20190417132137/https://archive.codeplex.com/?p=driverstoreexplorer).
 
 ## Credits
-- [ObjectListView](http://objectlistview.sourceforge.net/)
+- [ObjectListView](https://github.com/lostindark/ObjectListView)
 - [Managed DismApi Wrapper](https://github.com/jeffkl/ManagedDism)
 - [FlexibleMessageBox](https://www.codeproject.com/Articles/601900/FlexibleMessageBox-A-Flexible-Replacement-for-the)
 - [Resource Embedder](https://github.com/0xced/resource-embedder)
