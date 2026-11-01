@@ -531,7 +531,7 @@ namespace Rapr
             await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Any failure is logged and shown to the user instead of ending the app.")]
         private async Task PopulateUIWithDriverStoreEntries()
         {
             try
@@ -615,7 +615,7 @@ namespace Rapr
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Any failure is logged and shown to the user instead of ending the app.")]
         private async Task DeleteDriverStorePackages(List<DriverStoreEntry> driverStoreEntries)
         {
             StringBuilder details = new StringBuilder();
@@ -741,7 +741,7 @@ namespace Rapr
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Any failure is logged and shown to the user instead of ending the app.")]
         private async void ButtonAddDriver_Click(object sender, EventArgs e)
         {
             using (var dialog = new CommonOpenFileDialog { IsFolderPicker = true, EnsurePathExists = true, Title = Language.Dialog_Select_Inf_Folder })
@@ -1612,7 +1612,7 @@ namespace Rapr
             }
         }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "<Pending>")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Any failure is logged and shown to the user instead of ending the app.")]
         private async void ButtonExportAllDrivers_Click(object sender, EventArgs e)
         {
             using (var dialog = new CommonOpenFileDialog { IsFolderPicker = true })

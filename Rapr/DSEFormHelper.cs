@@ -13,15 +13,12 @@ using System.Security.Principal;
 using System.Text;
 using System.Windows.Forms;
 
-using Microsoft.Win32;
 using Microsoft.Win32.SafeHandles;
 
 namespace Rapr
 {
     public static class DSEFormHelper
     {
-        private const string AppCompatRegistry = @"Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers";
-        private const string RunAsAdminRegistryValue = "RUNASADMIN";
         private static readonly Version Win8Version = new Version(6, 2);
         private static readonly Version Win10Version = new Version(10, 0);
         private static readonly Version Win11Version = new Version(10, 0, 22000);
@@ -170,53 +167,6 @@ namespace Rapr
 
             Application.Exit();
             return true;
-        }
-
-        public static bool RunAsAdmin
-        {
-            get
-            {
-                using (var key = Registry.CurrentUser.OpenSubKey(AppCompatRegistry))
-                {
-                    string valueStr = (string)key?.GetValue(Assembly.GetExecutingAssembly().Location);
-                    return !string.IsNullOrEmpty(valueStr)
-                        && valueStr.Split(' ').Any(s => s == RunAsAdminRegistryValue);
-                }
-            }
-
-            set
-            {
-                using (var key = Registry.CurrentUser.CreateSubKey(AppCompatRegistry, RegistryKeyPermissionCheck.ReadWriteSubTree))
-                {
-                    if (key != null)
-                    {
-                        List<string> values = new List<string> { "~" };
-                        string keyStr = Assembly.GetExecutingAssembly().Location;
-                        string valueStr = (string)key.GetValue(keyStr);
-
-                        if (!string.IsNullOrEmpty(valueStr))
-                        {
-                            values = valueStr.Split(' ').ToList();
-                        }
-
-                        values.Remove(RunAsAdminRegistryValue);
-
-                        if (value)
-                        {
-                            values.Add(RunAsAdminRegistryValue);
-                        }
-
-                        if (values.Count == 1 && values[0] == "~")
-                        {
-                            key.DeleteValue(keyStr);
-                        }
-                        else
-                        {
-                            key.SetValue(keyStr, string.Join(" ", values), RegistryValueKind.String);
-                        }
-                    }
-                }
-            }
         }
 
         /// <summary>

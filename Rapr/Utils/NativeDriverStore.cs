@@ -140,17 +140,7 @@ namespace Rapr.Utils
             switch (this.Type)
             {
                 case DriverStoreType.Online:
-                    try
-                    {
-                        SetupAPI.DeleteDriver(driverStoreEntry, forceDelete);
-                    }
-                    catch (Win32Exception ex)
-                    {
-                        Trace.TraceError(ex.ToString());
-                        return false;
-                    }
-
-                    return true;
+                    return SetupAPI.TryDeleteDriver(driverStoreEntry, forceDelete);
 
                 case DriverStoreType.Offline:
                     try
@@ -195,17 +185,7 @@ namespace Rapr.Utils
             switch (this.Type)
             {
                 case DriverStoreType.Online:
-                    try
-                    {
-                        SetupAPI.AddDriver(infFullPath, install);
-                    }
-                    catch (Win32Exception ex)
-                    {
-                        Trace.TraceError(ex.ToString());
-                        return false;
-                    }
-
-                    return true;
+                    return SetupAPI.TryAddDriver(infFullPath, install);
 
                 case DriverStoreType.Offline:
                     try
