@@ -95,6 +95,19 @@ namespace Rapr.Tests.Utils
         }
 
         [TestMethod]
+        public void NewerVersionPrefersAConnectedDevice()
+        {
+            var newestDisconnected = Package("oem3.inf", "3.0", deviceName: "Contoso Adapter");
+            newestDisconnected.DevicePresent = false;
+            var newestConnected = Package("oem4.inf", "3.0", deviceName: "Contoso Adapter #2");
+            var older = Package("oem1.inf", "1.0");
+            var insights = new DriverInsights(new[] { newestDisconnected, newestConnected, older }, devicesKnown: true);
+
+            Assert.AreSame(newestConnected, insights.GetNewerVersion(older));
+            StringAssert.Contains(DriverDetailsPanel.GetNotes(older, insights)[0], "Contoso Adapter #2");
+        }
+
+        [TestMethod]
         public void NotesNameTheNewerVersionAndItsDevice()
         {
             var newest = Package("oem2.inf", "2.0", deviceName: "Contoso Adapter");
@@ -106,6 +119,20 @@ namespace Rapr.Tests.Utils
             Assert.AreEqual(2, notes.Count);
             StringAssert.Contains(notes[0], "2.0");
             StringAssert.Contains(notes[0], "Contoso Adapter");
+        }
+
+        [TestMethod]
+        public void NotesShowTheDateWhenOnlyTheDateIsNewer()
+        {
+            var newest = Package("oem2.inf", "2.0");
+            newest.DriverDate = new DateTime(2024, 5, 6);
+            var older = Package("oem1.inf", "2.0");
+            older.DriverDate = new DateTime(2023, 1, 2);
+            var insights = new DriverInsights(new[] { newest, older }, devicesKnown: true);
+
+            IList<string> notes = DriverDetailsPanel.GetNotes(older, insights);
+
+            StringAssert.Contains(notes[0], "2.0 (" + newest.DriverDate.ToString("d", System.Globalization.CultureInfo.CurrentCulture) + ")");
         }
 
         [TestMethod]

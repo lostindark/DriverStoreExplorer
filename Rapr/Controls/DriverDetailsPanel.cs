@@ -82,9 +82,15 @@ namespace Rapr.Controls
             DriverStoreEntry newer = insights?.GetNewerVersion(entry);
             if (newer != null)
             {
+                // A newer copy can have the same version and only a later date; show the date then,
+                // or the note would read "A newer version, 1.0, ..." on a package that is 1.0 too.
+                string newerVersion = newer.DriverVersion == entry.DriverVersion
+                    ? string.Format(CultureInfo.CurrentCulture, "{0} ({1:d})", newer.DriverVersion, newer.DriverDate)
+                    : newer.DriverVersion?.ToString();
+
                 notes.Add(string.IsNullOrEmpty(newer.DeviceName) || newer.DevicePresent == false
-                    ? FormatString("Details_Newer_Installed", newer.DriverVersion)
-                    : FormatString("Details_Newer_In_Use", newer.DriverVersion, newer.DeviceName));
+                    ? FormatString("Details_Newer_Installed", newerVersion)
+                    : FormatString("Details_Newer_In_Use", newerVersion, newer.DeviceName));
             }
 
             if (!string.IsNullOrEmpty(entry.DeviceName))
@@ -173,7 +179,8 @@ namespace Rapr.Controls
                 this.titleFont = new Font(this.Font.FontFamily, this.Font.SizeInPoints * 1.2f, FontStyle.Bold, GraphicsUnit.Point);
             }
 
-            Label title = this.AddText(entry.DriverInfName, Color.Empty, wrap: false);
+            string name = string.IsNullOrEmpty(entry.DriverInfName) ? entry.DriverPublishedName : entry.DriverInfName;
+            Label title = this.AddText(name, Color.Empty, wrap: false);
             title.Font = this.titleFont;
             title.Height = title.PreferredHeight;
 
@@ -185,7 +192,10 @@ namespace Rapr.Controls
                     entry.DriverVersion?.ToString(),
                     entry.DriverDate == default(DateTime) ? null : entry.DriverDate.ToString("d", CultureInfo.CurrentCulture),
                 }.Where(part => !string.IsNullOrEmpty(part)));
-            this.AddText(subtitle, SystemColors.GrayText, wrap: true);
+            if (subtitle.Length > 0)
+            {
+                this.AddText(subtitle, SystemColors.GrayText, wrap: true);
+            }
 
             this.AddTags(entry, insights);
 

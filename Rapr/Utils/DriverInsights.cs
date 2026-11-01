@@ -63,7 +63,7 @@ namespace Rapr.Utils
 
         /// <summary>
         /// The newest version of the same driver when <paramref name="entry"/> is an older one,
-        /// preferring a package that a device uses. Null when it is already the newest.
+        /// preferring a package that a connected device uses. Null when it is already the newest.
         /// </summary>
         public DriverStoreEntry GetNewerVersion(DriverStoreEntry entry)
         {
@@ -72,7 +72,11 @@ namespace Rapr.Utils
                 return null;
             }
 
-            return versions[0].FirstOrDefault(newer => !string.IsNullOrEmpty(newer.DeviceName)) ?? versions[0].First();
+            // Several packages can share the newest version and date. Name a connected device
+            // when there is one, then any device, so the note doesn't skip the one in use.
+            return versions[0].FirstOrDefault(newer => !string.IsNullOrEmpty(newer.DeviceName) && newer.DevicePresent != false)
+                ?? versions[0].FirstOrDefault(newer => !string.IsNullOrEmpty(newer.DeviceName))
+                ?? versions[0].First();
         }
 
         /// <summary>

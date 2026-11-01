@@ -39,6 +39,7 @@ namespace Rapr
         private ToolStripMenuItem warnBeforeSelectingUnusedDriversStripMenuItem;
         private ToolStripMenuItem showDetailsPaneStripMenuItem;
         private DriverDetailsPanel detailsPanel;
+        private TableLayoutPanel operationsColumn;
         private DriverInsights driverInsights;
 
         private static readonly IUpdateManager UpdateManager = CreateUpdateManager();
@@ -380,27 +381,45 @@ namespace Rapr
             this.optionsStripMenuItem.DropDownItems.Add(this.showDetailsPaneStripMenuItem);
         }
 
-        // Called after every InitializeComponent(), like SetupOptionsMenu(). The pane goes between
-        // the list and the Operations box, and is built in code because its texts have no
+        // Called after every InitializeComponent(), like SetupOptionsMenu(). The pane goes below the
+        // Operations box, in the same column, and is built in code because its texts have no
         // generated Language properties yet.
         private void SetupDetailsPane()
         {
+            // After a language switch these hold the controls of the previous layout.
+            this.operationsColumn?.Dispose();
             this.detailsPanel?.Dispose();
+
             this.detailsPanel = new DriverDetailsPanel
             {
                 Dock = DockStyle.Fill,
-                Visible = Settings.Default.ShowDetailsPane,
-                Width = this.LogicalToDeviceUnits(250),
+
+                // The Operations box sets the width of the column, not the pane.
+                Width = 0,
             };
             this.detailsPanel.FolderClicked += (sender, e) => this.OpenDriverFolder(this.detailsPanel.Entry);
 
+            this.operationsColumn = new TableLayoutPanel
+            {
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                ColumnCount = 1,
+                Dock = DockStyle.Fill,
+                Margin = Padding.Empty,
+                RowCount = 2,
+            };
+            this.operationsColumn.ColumnStyles.Add(new ColumnStyle(SizeType.AutoSize));
+            this.operationsColumn.RowStyles.Add(new RowStyle());
+            this.operationsColumn.RowStyles.Add(new RowStyle());
+
             var table = this.tableLayoutPanel1;
             table.SuspendLayout();
-            table.ColumnCount = 3;
-            table.ColumnStyles.Insert(1, new ColumnStyle(SizeType.AutoSize));
-            table.SetColumn(this.gbOptions, 2);
-            table.Controls.Add(this.detailsPanel, 1, 0);
-            table.SetRowSpan(this.detailsPanel, 2);
+            table.Controls.Remove(this.gbOptions);
+            this.operationsColumn.Controls.Add(this.gbOptions, 0, 0);
+            this.operationsColumn.Controls.Add(this.detailsPanel, 0, 1);
+            table.Controls.Add(this.operationsColumn, 1, 0);
+            table.SetRowSpan(this.operationsColumn, 2);
+            this.ShowDetailsPane(Settings.Default.ShowDetailsPane);
             table.ResumeLayout();
 
             this.lstDriverStoreEntries.SelectionChanged += (sender, e) => this.UpdateDetailsPane();
@@ -411,9 +430,19 @@ namespace Rapr
             };
         }
 
+        private void ShowDetailsPane(bool show)
+        {
+            // Hidden, the Operations box takes the whole height again, as it did before the pane.
+            this.operationsColumn.RowStyles[0] = show ? new RowStyle(SizeType.AutoSize) : new RowStyle(SizeType.Percent, 100F);
+            this.operationsColumn.RowStyles[1] = show ? new RowStyle(SizeType.Percent, 100F) : new RowStyle(SizeType.Absolute, 0F);
+            this.detailsPanel.Visible = show;
+            this.UpdateDetailsPane();
+        }
+
         private void UpdateDetailsPane()
         {
-            if (this.detailsPanel == null || !this.detailsPanel.Visible)
+            // Not detailsPanel.Visible: that stays false until the window itself is shown.
+            if (this.detailsPanel == null || !Settings.Default.ShowDetailsPane)
             {
                 return;
             }
@@ -1344,6 +1373,13 @@ namespace Rapr
                 return;
             }
 
+            // Path.Combine throws on a null INF name, so open the folder itself then.
+            if (string.IsNullOrEmpty(item.DriverInfName))
+            {
+                Process.Start("explorer.exe", item.DriverFolderLocation);
+                return;
+            }
+
             Process.Start("explorer.exe", "/select, " + Path.Combine(item.DriverFolderLocation, item.DriverInfName));
         }
 
@@ -1629,8 +1665,7 @@ namespace Rapr
             Settings.Default.ShowDetailsPane = this.showDetailsPaneStripMenuItem.Checked;
             Settings.Default.Save();
 
-            this.detailsPanel.Visible = this.showDetailsPaneStripMenuItem.Checked;
-            this.UpdateDetailsPane();
+            this.ShowDetailsPane(this.showDetailsPaneStripMenuItem.Checked);
         }
 
         private async void CtxMenuExportDriver_Click(object sender, System.EventArgs e)
