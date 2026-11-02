@@ -537,12 +537,12 @@ Seleziona la cartella principale di un'installazione o immagine Windows (la cart
     <value>«Seleziona driver non usati» seleziona i driver senza un dispositivo associato, non quelli la cui eliminazione è stata verificata come sicura.
 Potrebbero essere selezionati anche driver essenziali di antivirus, rete, stampanti e altri software.
 Eliminarli può compromettere il funzionamento di software o dispositivi. Controlla la selezione ed esegui un backup dei driver prima di eliminarli.
-I driver critici per il boot non vengono selezionati, a meno che tu non li includa nel menu «Opzioni».
+Non vengono selezionati i driver critici per il boot , a meno che tu non li includa nel menu 'Opzioni'.
 
 Continuare con la selezione dei driver?</value>
   </data>
   <data name="Message_Close_During_Operation" xml:space="preserve">
-    <value>Un'operazione è ancora in corso. Chiudendo ora potrebbe non essere completata. Chiudere comunque?</value>
+    <value>Un'operazione è ancora in corso. Chiudendo ora potrebbe non essere completata. Vuoi chiudere comunque?</value>
   </data>
   <data name="Status_Review_Unused_Drivers" xml:space="preserve">
     <value>I driver selezionati potrebbero essere ancora necessari. Controllali ed esegui un backup prima di eliminarli.</value>
@@ -551,13 +551,13 @@ Continuare con la selezione dei driver?</value>
     <value>Avvisa prima di selezionare i driver non usati</value>
   </data>
   <data name="Menu_Options_ShowDetailsPane" xml:space="preserve">
-    <value>Mostra il riquadro dei dettagli</value>
+    <value>Visualizza riquadro dettagli</value>
   </data>
   <data name="Details_Title" xml:space="preserve">
     <value>Dettagli</value>
   </data>
   <data name="Details_Empty" xml:space="preserve">
-    <value>Seleziona un pacchetto per vederne i dettagli.</value>
+    <value>Per vederne i dettagli seleziona un pacchetto.</value>
   </data>
   <data name="Details_Folder" xml:space="preserve">
     <value>Cartella</value>
@@ -575,13 +575,13 @@ Continuare con la selezione dei driver?</value>
     <value>Estensione</value>
   </data>
   <data name="Details_Newer_Installed" xml:space="preserve">
-    <value>È installata una versione più recente, {0}.</value>
+    <value>È installata una versione più recente, '{0}'.</value>
   </data>
   <data name="Details_Newer_In_Use" xml:space="preserve">
-    <value>Una versione più recente, {0}, è in uso da {1}.</value>
+    <value>Una versione più recente, '{0}', è in uso da '{1}'.</value>
   </data>
   <data name="Details_In_Use" xml:space="preserve">
-    <value>In uso da {0}.</value>
+    <value>In uso da '{0}'.</value>
   </data>
   <data name="Details_Device_Not_Present" xml:space="preserve">
     <value>Installato per {0}, che al momento non è collegato.</value>
@@ -593,10 +593,10 @@ Continuare con la selezione dei driver?</value>
     <value>Windows potrebbe aver bisogno di questo driver per avviarsi.</value>
   </data>
   <data name="Column_DriverFiles" xml:space="preserve">
-    <value>File del driver</value>
+    <value>File driver</value>
   </data>
   <data name="Filter_Filtering" xml:space="preserve">
-    <value>Filtraggio</value>
+    <value>Filtro</value>
   </data>
   <data name="Filter_ClearAllFilters" xml:space="preserve">
     <value>Cancella tutti i filtri</value>
