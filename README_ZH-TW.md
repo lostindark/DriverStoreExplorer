@@ -2,7 +2,7 @@
 <td><img src="./Rapr/icon.ico" alt="logo" width="96"></td>
 <td>
 <h1>Driver Store Explorer (RAPR)</h1>
-🌏: <a href="/README.md">English</a> | <a href="/README_ES.md">Español</a> | <a href="/README_TR.md">Türkçe</a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md"><b>繁體中文</b></a>
+🌏: <a href="/README.md">English</a> | <a href="/README_ES.md">Español</a> | <a href="/README_FR.md">Français</a> | <a href="/README_TR.md">Türkçe</a> | <a href="/README_KO.md">한국어</a> | <a href="/README_ZH-CN.md">简体中文</a> | <a href="/README_ZH-TW.md"><b>繁體中文</b></a>
 </td>
 </tr></table>
 
