@@ -58,7 +58,7 @@ Driver Store Explorer (RAPR), Windows [DriverStore](https://learn.microsoft.com/
 ---
 
 ## Ekran Görüntüsü
-![Screenshot of DriverStoreExplorer](https://github.com/user-attachments/assets/2d7df896-494d-4bcd-b064-5f05696cd0d3)
+![Screenshot of DriverStoreExplorer](Screenshots/Screenshot.png)
 
 ---
 

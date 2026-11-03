@@ -59,7 +59,7 @@ Driver Store Explorer (RAPR)는 Windows [드라이버 저장소](https://learn.m
 ---
 
 ## 스크린샷
-![Screenshot of DriverStoreExplorer](https://github.com/user-attachments/assets/2d7df896-494d-4bcd-b064-5f05696cd0d3)
+![Screenshot of DriverStoreExplorer](Screenshots/Screenshot.png)
 
 ---
 
