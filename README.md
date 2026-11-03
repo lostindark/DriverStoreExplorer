@@ -59,7 +59,7 @@ Driver Store Explorer (RAPR) is a powerful tool for viewing, managing, and clean
 ---
 
 ## Screenshot
-<img width="1359" height="992" alt="Screenshot of DriverStoreExplorer" src="https://github.com/user-attachments/assets/da5629e0-ecaf-4bfa-b2e9-5f5d3adcad19" />
+<img width="887" height="632" alt="Screenshot of DriverStoreExplorer" src="https://github.com/user-attachments/assets/11a887ed-200b-447e-a936-f7da5e1a3c94" />
 
 ---
 
