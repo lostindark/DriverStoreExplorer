@@ -6,7 +6,9 @@ using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -16,6 +18,7 @@ using JR.Utils.GUI.Forms;
 
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
+using Rapr.Controls;
 using Rapr.Lang;
 using Rapr.Utils;
 
@@ -655,6 +658,495 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void DetailsPanePreservesResizedWidthAcrossLayoutChanges(bool rightToLeft)
+        {
+            var settings = (ApplicationSettingsBase)typeof(DSEForm).Assembly
+                .GetType("Rapr.Properties.Settings")
+                .GetProperty("Default", BindingFlags.Static | BindingFlags.Public)
+                .GetValue(null);
+            object previous = settings["ShowDetailsPane"];
+            object previousWidth = settings["DetailsPaneWidth"];
+            var form = (DSEForm)FormatterServices.GetUninitializedObject(typeof(DSEForm));
+            typeof(Form).GetConstructor(Type.EmptyTypes).Invoke(form, null);
+            try
+            {
+                settings["ShowDetailsPane"] = false;
+                settings["DetailsPaneWidth"] = 360;
+                Invoke(form, "InitializeComponent");
+                Invoke(form, "SetupDetailsPane");
+                form.RightToLeft = rightToLeft ? RightToLeft.Yes : RightToLeft.No;
+                var column = (Panel)typeof(DSEForm)
+                    .GetField("operationsColumn", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                var splitter = (Splitter)typeof(DSEForm)
+                    .GetField("detailsSplitter", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                int compactWidth = column.Width;
+                int compactMinimumWidth = form.MinimumSize.Width;
+
+                settings["ShowDetailsPane"] = true;
+                Invoke(form, "ArrangeOperationsColumn");
+                Assert.IsGreaterThan(compactWidth, column.Width);
+                Assert.AreEqual(rightToLeft ? DockStyle.Left : DockStyle.Right, column.Dock);
+                Assert.AreEqual(column.Dock, splitter.Dock);
+                Assert.IsGreaterThan(compactMinimumWidth, form.MinimumSize.Width);
+
+                splitter.SplitPosition = column.Width + 60;
+                int expandedWidth = column.Width;
+                int savedWidth = (int)settings["DetailsPaneWidth"];
+                Assert.IsGreaterThan(360, savedWidth);
+                var operations = (GroupBox)typeof(DSEForm)
+                    .GetField("gbOptions", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                var actions = operations.Controls.OfType<TableLayoutPanel>().Single();
+                int buttonHeight = actions.Controls.OfType<Button>().First().Height;
+                foreach (Button button in actions.Controls.OfType<Button>())
+                {
+                    Assert.AreEqual(actions.DisplayRectangle.Width - button.Margin.Horizontal, button.Width, button.Name);
+                    Assert.AreEqual(buttonHeight, button.Height, button.Name);
+                }
+
+                int allActionsHeight = operations.Height;
+                var exportButton = actions.Controls.OfType<Button>().Single(button => button.Name == "buttonExportDrivers");
+                exportButton.Visible = false;
+                actions.PerformLayout();
+                Assert.IsLessThan(allActionsHeight, operations.Height);
+                exportButton.Visible = true;
+                actions.PerformLayout();
+                Assert.AreEqual(allActionsHeight, operations.Height);
+
+                form.Width += 200;
+                Assert.AreEqual(expandedWidth, column.Width);
+
+                settings["ShowDetailsPane"] = false;
+                Invoke(form, "ArrangeOperationsColumn");
+                Assert.AreEqual(compactWidth, column.Width);
+                Assert.AreEqual(compactMinimumWidth, form.MinimumSize.Width);
+
+                settings["ShowDetailsPane"] = true;
+                Invoke(form, "ArrangeOperationsColumn");
+                Assert.AreEqual(expandedWidth, column.Width);
+
+                int largeFormWidth = form.Width;
+                form.Width = form.MinimumSize.Width;
+                var list = (Control)typeof(DSEForm)
+                    .GetField("lstDriverStoreEntries", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                Assert.IsGreaterThanOrEqualTo(splitter.MinExtra - list.Margin.Horizontal, list.Width);
+                Assert.AreEqual(savedWidth, settings["DetailsPaneWidth"]);
+                form.Width = largeFormWidth;
+                Assert.AreEqual(expandedWidth, column.Width);
+
+                form.Controls.Clear();
+                Invoke(form, "InitializeComponent");
+                Invoke(form, "SetupDetailsPane");
+                column = (Panel)typeof(DSEForm)
+                    .GetField("operationsColumn", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                Assert.AreEqual(expandedWidth, column.Width);
+            }
+            finally
+            {
+                settings["ShowDetailsPane"] = previous;
+                settings["DetailsPaneWidth"] = previousWidth;
+                form.Dispose();
+            }
+        }
+
+        [TestMethod]
+        [DataRow(FormWindowState.Normal)]
+        [DataRow(FormWindowState.Maximized)]
+        public void MinimizingPreservesTheWindowRestoreBounds(FormWindowState initialState)
+        {
+            var settings = (ApplicationSettingsBase)typeof(DSEForm).Assembly
+                .GetType("Rapr.Properties.Settings")
+                .GetProperty("Default", BindingFlags.Static | BindingFlags.Public)
+                .GetValue(null);
+            object previous = settings["ShowDetailsPane"];
+            object previousWidth = settings["DetailsPaneWidth"];
+            var form = (SelectionTestForm)FormatterServices.GetUninitializedObject(typeof(SelectionTestForm));
+            typeof(Form).GetConstructor(Type.EmptyTypes).Invoke(form, null);
+            try
+            {
+                settings["ShowDetailsPane"] = true;
+                settings["DetailsPaneWidth"] = 360;
+                Invoke(form, "InitializeComponent");
+                Invoke(form, "SetupDetailsPane");
+                form.Load -= (EventHandler)Delegate.CreateDelegate(typeof(EventHandler), form,
+                    typeof(DSEForm).GetMethod("DSEForm_Load", BindingFlags.Instance | BindingFlags.NonPublic));
+                form.Shown -= (EventHandler)Delegate.CreateDelegate(typeof(EventHandler), form,
+                    typeof(DSEForm).GetMethod("DSEForm_Shown", BindingFlags.Instance | BindingFlags.NonPublic));
+                form.FormClosing -= (FormClosingEventHandler)Delegate.CreateDelegate(typeof(FormClosingEventHandler), form,
+                    typeof(DSEForm).GetMethod("DSEForm_FormClosing", BindingFlags.Instance | BindingFlags.NonPublic));
+                form.ShowInTaskbar = false;
+                form.Opacity = 0;
+                form.StartPosition = FormStartPosition.Manual;
+                form.Location = new Point(-20000, -20000);
+                form.Size = new Size(1100, 800);
+                form.Show();
+                Application.DoEvents();
+                Rectangle normalBounds = form.Bounds;
+                form.WindowState = initialState;
+                Application.DoEvents();
+                Size minimumSize = form.MinimumSize;
+
+                form.WindowState = FormWindowState.Minimized;
+                Application.DoEvents();
+
+                Assert.AreEqual(normalBounds, form.RestoreBounds);
+                Assert.AreEqual(minimumSize, form.MinimumSize);
+                form.WindowState = initialState;
+                Application.DoEvents();
+                Assert.AreEqual(initialState, form.WindowState);
+                Assert.AreEqual(normalBounds, form.RestoreBounds);
+                if (initialState == FormWindowState.Normal)
+                {
+                    Assert.AreEqual(normalBounds, form.Bounds);
+                }
+            }
+            finally
+            {
+                settings["ShowDetailsPane"] = previous;
+                settings["DetailsPaneWidth"] = previousWidth;
+                form.Dispose();
+            }
+        }
+
+        [TestMethod]
+        [DataRow(8.25f)]
+        [DataRow(12f)]
+        [DataRow(16f)]
+        public void DriverDetailsRemainSelectableWhileLongValuesReflow(float fontSize)
+        {
+            using (var font = new Font(SystemFonts.MessageBoxFont.FontFamily, fontSize))
+            using (var panel = new DriverDetailsPanel { Font = font, Size = new Size(200, 700) })
+            {
+                var entry = CreateDriver("driver.inf", 1);
+                entry.DriverPublishedName = "oem1.inf";
+                entry.BootCritical = true;
+                entry.DeviceId = string.Join("\\", Enumerable.Repeat("LONG_DEVICE_IDENTIFIER_0123456789", 5));
+                entry.DriverSignerName = string.Join(" ", Enumerable.Repeat("Contoso Hardware Publisher", 5));
+                entry.DriverFolderLocation = @"C:\Windows\System32\DriverStore\FileRepository\"
+                    + string.Join("_", Enumerable.Repeat("long_driver_folder_name", 5));
+                panel.CreateControl();
+                var insights = new DriverInsights(new[] { entry }, devicesKnown: true);
+                panel.ShowEntry(entry, insights);
+                var content = panel.Controls.OfType<RichTextBox>().Single();
+                Assert.AreEqual(1, panel.Controls.Count);
+                Assert.IsTrue(content.ReadOnly);
+                Assert.IsFalse(content.Text.Contains("\n\n"));
+                Assert.IsFalse(content.Text.EndsWith("\n", StringComparison.Ordinal));
+                StringAssert.Contains(content.Text, entry.DriverSignerName);
+                StringAssert.Contains(content.Text, entry.DriverFolderLocation);
+                foreach (string caption in new[] { Language.Column_Oem_Inf, Language.Column_Size, Language.Column_DeviceId })
+                {
+                    content.Select(content.Text.IndexOf(caption, StringComparison.Ordinal), caption.Length);
+                    Assert.AreEqual(SystemColors.GrayText.ToArgb(), content.SelectionColor.ToArgb());
+                }
+
+                int sizeHeader = content.Text.IndexOf(Language.Column_Size, StringComparison.Ordinal);
+                int headerSpacing = GetParagraphSpaceBefore(content, sizeHeader);
+                int valueSpacing = GetParagraphSpaceBefore(content, sizeHeader + Language.Column_Size.Length + 1);
+                Assert.IsGreaterThan(valueSpacing, headerSpacing);
+
+                content.Select(0, entry.DriverInfName.Length);
+                using (var titleFont = content.SelectionFont)
+                {
+                    Assert.IsTrue(titleFont.Bold);
+                    Assert.IsGreaterThan(font.SizeInPoints, titleFont.SizeInPoints);
+                }
+
+                int folderIndex = content.Text.LastIndexOf(entry.DriverFolderLocation, StringComparison.Ordinal);
+                content.Select(folderIndex, entry.DriverFolderLocation.Length);
+                Assert.AreEqual(SystemColors.HotTrack.ToArgb(), content.SelectionColor.ToArgb());
+                using (var folderFont = content.SelectionFont)
+                {
+                    Assert.IsTrue(folderFont.Underline);
+                }
+
+                string tag = Language.ResourceManager.GetString("Details_Tag_Boot_Critical", Language.Culture);
+                int tagIndex = content.Text.IndexOf(tag, StringComparison.Ordinal);
+                Assert.AreEqual(0, GetParagraphSpaceBefore(content, tagIndex));
+                content.Select(tagIndex, tag.Length);
+                Assert.AreNotEqual(content.BackColor.ToArgb(), content.SelectionBackColor.ToArgb());
+
+                int firstField = content.Text.IndexOf(Language.Column_Oem_Inf, StringComparison.Ordinal);
+                int lastField = content.Text.IndexOf(entry.DeviceId, StringComparison.Ordinal) + entry.DeviceId.Length;
+                content.Select(firstField, lastField - firstField);
+                string selectedText = content.SelectedText;
+                StringAssert.Contains(selectedText, entry.DriverPublishedName);
+                StringAssert.Contains(selectedText, entry.DeviceId);
+                int narrowLines = content.GetLineFromCharIndex(content.TextLength - 1);
+                string document = content.Text;
+
+                panel.Width = 500;
+
+                Assert.IsLessThan(narrowLines, content.GetLineFromCharIndex(content.TextLength - 1));
+                Assert.AreEqual(document, content.Text);
+                Assert.AreEqual(selectedText, content.SelectedText);
+
+                panel.ShowEntry(CreateDriver("other.inf", 2), null);
+                Assert.IsFalse(content.Text.Contains(entry.DeviceId));
+                Assert.IsFalse(content.Text.EndsWith("\n", StringComparison.Ordinal));
+                panel.ShowEntry(entry, insights);
+                Assert.AreEqual(document, content.Text);
+
+                using (var largerFont = new Font(font.FontFamily, font.SizeInPoints * 1.25f))
+                {
+                    panel.Font = largerFont;
+                    Assert.AreEqual(document, content.Text);
+                    panel.Font = font;
+                }
+
+                panel.Scale(new SizeF(1.5f, 1.5f));
+                content.SelectAll();
+                Assert.AreEqual(document, content.SelectedText);
+            }
+        }
+
+        [TestMethod]
+        [DataRow(MouseButtons.Left, Keys.None, true, false, RightToLeft.No)]
+        [DataRow(MouseButtons.Left, Keys.Control, true, true, RightToLeft.No)]
+        [DataRow(MouseButtons.Right, Keys.Control, true, false, RightToLeft.No)]
+        [DataRow(MouseButtons.Left, Keys.Control, false, false, RightToLeft.No)]
+        [DataRow(MouseButtons.Left, Keys.Control, true, true, RightToLeft.Yes)]
+        public void FolderPathOpensOnlyOnControlLeftClick(
+            MouseButtons button, Keys modifiers, bool onFolder, bool shouldOpen, RightToLeft rightToLeft)
+        {
+            using (var panel = new DriverDetailsPanel { Size = new Size(360, 900), RightToLeft = rightToLeft })
+            {
+                var entry = CreateDriver("driver.inf", 1);
+                entry.DriverFolderLocation = @"C:\Windows\System32\DriverStore\FileRepository\driver";
+                entry.DriverPkgProvider = entry.DriverFolderLocation;
+                panel.ShowEntry(entry, null);
+                var content = panel.Controls.OfType<RichTextBox>().Single();
+                int index = onFolder
+                    ? content.Text.LastIndexOf(entry.DriverFolderLocation, StringComparison.Ordinal)
+                    : content.Text.IndexOf(entry.DriverFolderLocation, StringComparison.Ordinal);
+                Point location = content.GetPositionFromCharIndex(index + 3);
+                Point nextCharacter = content.GetPositionFromCharIndex(index + 4);
+                location.X = Math.Min(location.X, nextCharacter.X)
+                    + Math.Max(1, Math.Abs(nextCharacter.X - location.X) * 3 / 4);
+                location.Y += content.Font.Height / 2;
+                int opened = 0;
+                panel.FolderClicked += (sender, e) => opened++;
+
+                typeof(Control).GetMethod("OnMouseMove", BindingFlags.Instance | BindingFlags.NonPublic)
+                    .Invoke(content, new object[] { new MouseEventArgs(MouseButtons.None, 0, location.X, location.Y, 0) });
+                var toolTip = (ToolTip)typeof(DriverDetailsPanel)
+                    .GetField("toolTip", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(panel);
+                Assert.AreEqual(onFolder
+                    ? Language.ResourceManager.GetString("Details_Folder_Open_Hint", Language.Culture)
+                    : string.Empty, toolTip.GetToolTip(content));
+
+                ClickTextBox(content, location, modifiers: modifiers, button: button);
+
+                Assert.AreEqual(shouldOpen ? 1 : 0, opened);
+                panel.ShowEntry(null, null);
+                ClickTextBox(content, location, modifiers: Keys.Control);
+                Assert.AreEqual(shouldOpen ? 1 : 0, opened);
+            }
+        }
+
+        [TestMethod]
+        public void ControlClickOpensAScrolledFolderWithoutChangingTheTextSelection()
+        {
+            using (var panel = new DriverDetailsPanel { Size = new Size(200, 160) })
+            {
+                var entry = CreateDriver("driver.inf", 1);
+                entry.DriverFolderLocation = @"C:\Windows\System32\DriverStore\FileRepository\driver";
+                panel.ShowEntry(entry, null);
+                var content = panel.Controls.OfType<RichTextBox>().Single();
+                content.Select(0, 0);
+                SendTextBoxMessage(content, 0x0115, new IntPtr(7), IntPtr.Zero);
+                int folderIndex = content.Text.LastIndexOf(entry.DriverFolderLocation, StringComparison.Ordinal);
+                Point location = content.GetPositionFromCharIndex(folderIndex + 3);
+                location.Offset(1, content.Font.Height / 2);
+                Assert.IsTrue(content.ClientRectangle.Contains(location));
+                int opened = 0;
+                panel.FolderClicked += (sender, e) => opened++;
+
+                ClickTextBox(content, location, modifiers: Keys.Control);
+
+                Assert.AreEqual(1, opened);
+                Assert.AreEqual(0, content.SelectionStart);
+                Assert.AreEqual(0, content.SelectionLength);
+                Assert.IsFalse(content.Capture);
+            }
+        }
+
+        [TestMethod]
+        [DataRow(false)]
+        [DataRow(true)]
+        public void TripleClickSelectsOneLogicalLineOnlyAtTheSameLocation(bool moveThirdClick)
+        {
+            using (var panel = new DriverDetailsPanel { Size = new Size(300, 700) })
+            {
+                var entry = CreateDriver("first word and more text.inf", 1);
+                panel.ShowEntry(entry, null);
+                var textBox = panel.Controls.OfType<RichTextBox>().Single();
+                var location = new Point(3, 3);
+
+                ClickTextBox(textBox, location);
+                ClickTextBox(textBox, location, doubleClick: true);
+                Assert.IsGreaterThan(0, textBox.SelectionLength);
+                Assert.AreNotEqual(textBox.Text, textBox.SelectedText);
+
+                if (moveThirdClick)
+                {
+                    location.X += SystemInformation.DoubleClickSize.Width + 1;
+                }
+
+                ClickTextBox(textBox, location);
+
+                Assert.AreEqual(!moveThirdClick, textBox.SelectedText == entry.DriverInfName);
+                ClickTextBox(textBox, location);
+                Assert.AreNotEqual(entry.DriverInfName, textBox.SelectedText);
+            }
+        }
+
+        [TestMethod]
+        public void TripleClickSelectionExpiresAfterTheSystemDoubleClickInterval()
+        {
+            using (var panel = new DriverDetailsPanel { Size = new Size(300, 700) })
+            {
+                var entry = CreateDriver("first word and more text.inf", 1);
+                panel.ShowEntry(entry, null);
+                var textBox = panel.Controls.OfType<RichTextBox>().Single();
+                var location = new Point(3, 3);
+                ClickTextBox(textBox, location);
+                ClickTextBox(textBox, location, doubleClick: true);
+                System.Threading.Thread.Sleep(SystemInformation.DoubleClickTime + 20);
+
+                ClickTextBox(textBox, location);
+
+                Assert.AreNotEqual(entry.DriverInfName, textBox.SelectedText);
+            }
+        }
+
+        [TestMethod]
+        public void TripleClickSelectsTheWholeWrappedFolderPathWithoutOtherFields()
+        {
+            using (var panel = new DriverDetailsPanel { Size = new Size(160, 900) })
+            {
+                var entry = CreateDriver("driver.inf", 1);
+                entry.DriverFolderLocation = @"C:\driver store\" + new string('x', 100);
+                panel.ShowEntry(entry, null);
+                var content = panel.Controls.OfType<RichTextBox>().Single();
+                int folderIndex = content.Text.LastIndexOf(entry.DriverFolderLocation, StringComparison.Ordinal);
+                int wrappedLine = content.GetLineFromCharIndex(folderIndex) + 1;
+                int wrappedIndex = content.GetFirstCharIndexFromLine(wrappedLine);
+                Assert.IsLessThan(folderIndex + entry.DriverFolderLocation.Length, wrappedIndex);
+                Point location = content.GetPositionFromCharIndex(wrappedIndex + 2);
+                location.Offset(1, 1);
+
+                ClickTextBox(content, location);
+                ClickTextBox(content, location, doubleClick: true);
+                ClickTextBox(content, location);
+
+                Assert.AreEqual(entry.DriverFolderLocation, content.SelectedText);
+            }
+        }
+
+        [TestMethod]
+        public void DetailsHideTheNativeCaretWithoutDisablingSelection()
+        {
+            using (var panel = new DriverDetailsPanel())
+            {
+                panel.ShowEntry(CreateDriver("driver.inf", 1), null);
+                var content = panel.Controls.OfType<RichTextBox>().Single();
+                Assert.IsTrue(CaretNativeMethods.CreateCaret(content.Handle, IntPtr.Zero, 1, content.Font.Height));
+                try
+                {
+                    Assert.IsTrue(CaretNativeMethods.ShowCaret(content.Handle));
+                    var info = new CaretNativeMethods.GuiThreadInfo
+                    {
+                        Size = (uint)Marshal.SizeOf<CaretNativeMethods.GuiThreadInfo>(),
+                    };
+                    uint thread = CaretNativeMethods.GetCurrentThreadId();
+                    Assert.IsTrue(CaretNativeMethods.GetGUIThreadInfo(thread, ref info));
+                    Assert.AreEqual(1u, info.Flags & 1u);
+
+                    SendTextBoxMessage(content, 0x0007, IntPtr.Zero, IntPtr.Zero);
+
+                    Assert.IsTrue(CaretNativeMethods.GetGUIThreadInfo(thread, ref info));
+                    Assert.AreEqual(0u, info.Flags & 1u);
+                    content.Select(0, "driver.inf".Length);
+                    Assert.AreEqual("driver.inf", content.SelectedText);
+                }
+                finally
+                {
+                    CaretNativeMethods.DestroyCaret();
+                }
+            }
+        }
+
+        private static int GetParagraphSpaceBefore(RichTextBox content, int index)
+        {
+            content.Select(index, 1);
+            Match match = Regex.Match(content.SelectedRtf, @"\\sb(\d+)");
+            return match.Success ? int.Parse(match.Groups[1].Value, CultureInfo.InvariantCulture) : 0;
+        }
+
+        private static void ClickTextBox(
+            TextBoxBase textBox, Point location, bool doubleClick = false,
+            Keys modifiers = Keys.None, MouseButtons button = MouseButtons.Left)
+        {
+            int control = (modifiers & Keys.Control) != 0 ? 8 : 0;
+            int buttonFlags = button == MouseButtons.Right ? 2 : 1;
+            var position = new IntPtr((location.Y << 16) | (location.X & 0xFFFF));
+            SendTextBoxMessage(textBox, button == MouseButtons.Right ? 0x0204 : doubleClick ? 0x0203 : 0x0201,
+                new IntPtr(buttonFlags | control), position);
+            SendTextBoxMessage(textBox, button == MouseButtons.Right ? 0x0205 : 0x0202,
+                new IntPtr(control), position);
+        }
+
+        private static void SendTextBoxMessage(TextBoxBase textBox, int message, IntPtr wParam, IntPtr lParam)
+        {
+            var procedure = textBox.GetType().GetMethod("WndProc", BindingFlags.Instance | BindingFlags.NonPublic);
+            procedure.Invoke(textBox, new object[]
+            {
+                Message.Create(textBox.Handle, message, wParam, lParam)
+            });
+        }
+
+        private static class CaretNativeMethods
+        {
+            [DllImport("kernel32.dll")]
+            internal static extern uint GetCurrentThreadId();
+
+            [DllImport("user32.dll")]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            internal static extern bool CreateCaret(IntPtr window, IntPtr bitmap, int width, int height);
+
+            [DllImport("user32.dll")]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            internal static extern bool ShowCaret(IntPtr window);
+
+            [DllImport("user32.dll")]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            internal static extern bool DestroyCaret();
+
+            [DllImport("user32.dll")]
+            [return: MarshalAs(UnmanagedType.Bool)]
+            internal static extern bool GetGUIThreadInfo(uint thread, ref GuiThreadInfo info);
+
+            [StructLayout(LayoutKind.Sequential)]
+            internal struct GuiThreadInfo
+            {
+                internal uint Size;
+                internal uint Flags;
+                internal IntPtr Active;
+                internal IntPtr Focus;
+                internal IntPtr Capture;
+                internal IntPtr MenuOwner;
+                internal IntPtr MoveSize;
+                internal IntPtr Caret;
+                internal int Left;
+                internal int Top;
+                internal int Right;
+                internal int Bottom;
+            }
+        }
+
+        [TestMethod]
         public void OperationButtonsShareTheNativeButtonStyle()
         {
             // Build only the designer controls; the real constructor requires elevation.
@@ -883,6 +1375,8 @@ namespace Rapr.Tests
 
         private sealed class SelectionTestForm : DSEForm
         {
+            protected override bool ShowWithoutActivation => true;
+
             public bool SelectionConfirmed { get; set; }
 
             public int ConfirmationCount { get; private set; }

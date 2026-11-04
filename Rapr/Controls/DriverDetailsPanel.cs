@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
 using Rapr.Lang;
@@ -21,44 +22,44 @@ namespace Rapr.Controls
         private static readonly Color BootCriticalColor = Color.FromArgb(0xFD, 0xDE, 0xDE);
         private static readonly Color ExtensionColor = Color.FromArgb(0xDB, 0xEA, 0xFA);
 
-        private readonly Panel scroller;
-        private readonly TableLayoutPanel table;
+        private readonly DetailsRichTextBox content;
         private readonly ToolTip toolTip = new ToolTip();
-
-        // Controls whose width follows the pane, so their text wraps instead of being cut.
-        private readonly List<Control> wrappingControls = new List<Control>();
 
         private DriverInsights insights;
         private Font titleFont;
+        private Font folderFont;
+        private int folderStart = -1;
+        private int folderLength;
+        private bool folderHovered;
 
         public DriverDetailsPanel()
         {
             this.Text = GetString("Details_Title");
 
-            this.table = new TableLayoutPanel
+            this.content = new DetailsRichTextBox(this.IsFolderPosition)
             {
-                AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                ColumnCount = 1,
-                Dock = DockStyle.Top,
-                GrowStyle = TableLayoutPanelGrowStyle.AddRows,
-            };
-            this.table.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
-
-            this.scroller = new Panel
-            {
-                AutoScroll = true,
+                BackColor = this.BackColor,
+                BorderStyle = BorderStyle.None,
+                Cursor = Cursors.Default,
+                DetectUrls = false,
                 Dock = DockStyle.Fill,
+                HideSelection = false,
+                ReadOnly = true,
+                ScrollBars = RichTextBoxScrollBars.Vertical,
+                WordWrap = true,
             };
-            this.scroller.Controls.Add(this.table);
-            this.scroller.ClientSizeChanged += (sender, e) => this.UpdateWrapWidth();
-            this.Controls.Add(this.scroller);
+            EnableTripleClickSelection(this.content);
+            this.content.FolderClicked += (sender, e) => this.FolderClicked?.Invoke(this, EventArgs.Empty);
+            this.content.MouseMove += (sender, e) => this.SetFolderHover(this.IsFolderPosition(e.Location));
+            this.content.MouseLeave += (sender, e) => this.SetFolderHover(false);
+            this.content.VScroll += (sender, e) => this.SetFolderHover(false);
+            this.Controls.Add(this.content);
 
             this.ShowEntry(null, null);
         }
 
         /// <summary>
-        /// Raised when the folder link is clicked. The package is <see cref="Entry"/>.
+        /// Raised when the folder path is Ctrl+clicked. The package is <see cref="Entry"/>.
         /// </summary>
         public event EventHandler FolderClicked;
 
@@ -119,40 +120,39 @@ namespace Rapr.Controls
             this.Entry = entry;
             this.insights = insights;
 
-            this.table.SuspendLayout();
-            try
-            {
-                this.ClearRows();
+            this.folderStart = -1;
+            this.folderLength = 0;
+            this.content.CancelFolderClick();
+            this.SetFolderHover(false);
+            this.content.Clear();
 
-                if (entry == null)
-                {
-                    this.AddText(GetString("Details_Empty"), SystemColors.GrayText, wrap: true);
-                }
-                else
-                {
-                    this.AddEntry(entry, insights);
-                }
-            }
-            finally
+            if (entry == null)
             {
-                this.table.ResumeLayout(true);
+                this.AppendParagraph(GetString("Details_Empty"), SystemColors.GrayText);
+            }
+            else
+            {
+                this.AddEntry(entry, insights);
             }
 
-            this.UpdateWrapWidth();
-            this.scroller.AutoScrollPosition = Point.Empty;
+            this.content.Select(0, 0);
+            this.content.ScrollToCaret();
         }
 
         protected override void OnFontChanged(EventArgs e)
         {
             base.OnFontChanged(e);
 
-            if (this.table == null)
+            if (this.content == null)
             {
                 return;
             }
 
             this.titleFont?.Dispose();
             this.titleFont = null;
+            this.folderFont?.Dispose();
+            this.folderFont = null;
+            this.content.Font = this.Font;
             this.ShowEntry(this.Entry, this.insights);
         }
 
@@ -162,6 +162,7 @@ namespace Rapr.Controls
             {
                 this.toolTip.Dispose();
                 this.titleFont?.Dispose();
+                this.folderFont?.Dispose();
             }
 
             base.Dispose(disposing);
@@ -180,9 +181,7 @@ namespace Rapr.Controls
             }
 
             string name = string.IsNullOrEmpty(entry.DriverInfName) ? entry.DriverPublishedName : entry.DriverInfName;
-            Label title = this.AddText(name, Color.Empty, wrap: false);
-            title.Font = this.titleFont;
-            title.Height = title.PreferredHeight;
+            this.AppendParagraph(name, Color.Empty, this.titleFont);
 
             string subtitle = string.Join(
                 " · ",
@@ -194,14 +193,14 @@ namespace Rapr.Controls
                 }.Where(part => !string.IsNullOrEmpty(part)));
             if (subtitle.Length > 0)
             {
-                this.AddText(subtitle, SystemColors.GrayText, wrap: true);
+                this.AppendParagraph(subtitle, SystemColors.GrayText);
             }
 
             this.AddTags(entry, insights);
 
             foreach (string note in GetNotes(entry, insights))
             {
-                this.AddText(note, Color.Empty, wrap: true).Margin = this.ScaledMargin(top: 8);
+                this.AppendParagraph(note, Color.Empty, spaceBefore: 3);
             }
 
             this.AddField(Language.Column_Oem_Inf, entry.DriverPublishedName);
@@ -214,32 +213,57 @@ namespace Rapr.Controls
 
             if (!string.IsNullOrEmpty(entry.DriverFolderLocation))
             {
-                this.AddText(GetString("Details_Folder"), SystemColors.GrayText, wrap: false).Margin = this.ScaledMargin(top: 8);
-
-                var link = new LinkLabel
+                this.AddCaption(GetString("Details_Folder"));
+                if (this.folderFont == null)
                 {
-                    Anchor = AnchorStyles.Left | AnchorStyles.Right,
-                    AutoSize = false,
-                    Margin = this.ScaledMargin(),
-                    Text = entry.DriverFolderName,
-                    UseMnemonic = false,
-                };
-                link.LinkClicked += (sender, e) => this.FolderClicked?.Invoke(this, EventArgs.Empty);
-                this.toolTip.SetToolTip(link, entry.DriverFolderLocation);
-                this.AddRow(link);
-                link.Height = link.PreferredHeight;
+                    this.folderFont = new Font(this.Font, this.Font.Style | FontStyle.Underline);
+                }
+
+                this.folderStart = this.AppendParagraph(entry.DriverFolderLocation, SystemColors.HotTrack, this.folderFont);
+                this.folderLength = this.content.TextLength - this.folderStart;
+            }
+        }
+
+        private bool IsFolderPosition(Point location)
+        {
+            if (this.folderStart < 0 || !this.content.ClientRectangle.Contains(location))
+            {
+                return false;
+            }
+
+            int index = this.content.GetCharIndexFromPosition(location);
+            return this.IsFolderCharacter(index, location) || this.IsFolderCharacter(index - 1, location);
+        }
+
+        private bool IsFolderCharacter(int index, Point location)
+        {
+            if (index < this.folderStart || index >= this.folderStart + this.folderLength)
+            {
+                return false;
+            }
+
+            Point start = this.content.GetPositionFromCharIndex(index);
+            Point end = this.content.GetPositionFromCharIndex(index + 1);
+            int left = start.Y == end.Y ? Math.Min(start.X, end.X) : start.X;
+            int width = start.Y == end.Y
+                ? Math.Abs(end.X - start.X)
+                : TextRenderer.MeasureText(this.content.Text[index].ToString(), this.Font, Size.Empty, TextFormatFlags.NoPadding).Width;
+            return new Rectangle(left, start.Y, Math.Max(1, width), this.content.Font.Height).Contains(location);
+        }
+
+        private void SetFolderHover(bool hovered)
+        {
+            if (this.folderHovered != hovered)
+            {
+                this.folderHovered = hovered;
+                this.toolTip.SetToolTip(this.content, hovered ? GetString("Details_Folder_Open_Hint") : null);
             }
         }
 
         private void AddTags(DriverStoreEntry entry, DriverInsights insights)
         {
-            var tags = new FlowLayoutPanel
-            {
-                AutoSize = true,
-                AutoSizeMode = AutoSizeMode.GrowAndShrink,
-                Margin = this.ScaledMargin(top: 6),
-                WrapContents = true,
-            };
+            bool hasTags = false;
+            int start = 0;
 
             void AddTag(bool show, string name, Color color)
             {
@@ -248,17 +272,21 @@ namespace Rapr.Controls
                     return;
                 }
 
-                bool highContrast = SystemInformation.HighContrast;
-                tags.Controls.Add(new Label
+                if (hasTags)
                 {
-                    AutoSize = true,
-                    BackColor = highContrast ? SystemColors.Highlight : color,
-                    ForeColor = highContrast ? SystemColors.HighlightText : Color.Black,
-                    Margin = new Padding(0, 0, this.LogicalToDeviceUnits(4), this.LogicalToDeviceUnits(4)),
-                    Padding = new Padding(this.LogicalToDeviceUnits(4), this.LogicalToDeviceUnits(1), this.LogicalToDeviceUnits(4), this.LogicalToDeviceUnits(2)),
-                    Text = GetString(name),
-                    UseMnemonic = false,
-                });
+                    this.AppendText("  ", Color.Empty);
+                }
+                else
+                {
+                    start = this.BeginParagraph();
+                }
+
+                bool highContrast = SystemInformation.HighContrast;
+                this.AppendText(
+                    " " + GetString(name) + " ",
+                    highContrast ? SystemColors.HighlightText : Color.Black,
+                    background: highContrast ? SystemColors.Highlight : color);
+                hasTags = true;
             }
 
             AddTag(insights?.IsOldVersion(entry) == true, "Details_Tag_Old_Version", OldVersionColor);
@@ -266,14 +294,10 @@ namespace Rapr.Controls
             AddTag(DriverInsights.IsBootCritical(entry), "Details_Tag_Boot_Critical", BootCriticalColor);
             AddTag(DriverInsights.IsExtension(entry), "Details_Tag_Extension", ExtensionColor);
 
-            if (tags.Controls.Count == 0)
+            if (hasTags)
             {
-                tags.Dispose();
-                return;
+                this.FormatParagraph(start, 0);
             }
-
-            this.wrappingControls.Add(tags);
-            this.AddRow(tags);
         }
 
         private void AddField(string caption, string value)
@@ -283,84 +307,203 @@ namespace Rapr.Controls
                 return;
             }
 
-            this.AddText(caption, SystemColors.GrayText, wrap: false).Margin = this.ScaledMargin(top: 8);
-
-            // One line; a value that doesn't fit ends with "..." and shows in full in a tooltip.
-            this.AddText(value, Color.Empty, wrap: false);
+            this.AddCaption(caption);
+            this.AppendParagraph(value, Color.Empty);
         }
 
-        private Label AddText(string text, Color color, bool wrap)
+        private void AddCaption(string text)
         {
-            var label = new Label
+            this.AppendParagraph(text, SystemColors.GrayText, spaceBefore: 2);
+        }
+
+        private int AppendParagraph(string text, Color color, Font font = null, int spaceBefore = 0)
+        {
+            int start = this.BeginParagraph();
+            this.AppendText(text, color, font);
+            this.FormatParagraph(start, spaceBefore);
+            return start;
+        }
+
+        private int BeginParagraph()
+        {
+            if (this.content.TextLength > 0)
             {
-                Margin = this.ScaledMargin(),
-                Text = text,
-                UseMnemonic = false,
+                this.AppendText("\n", Color.Empty);
+            }
+
+            return this.content.TextLength;
+        }
+
+        private void FormatParagraph(int start, int spaceBefore)
+        {
+            this.content.Select(start, this.content.TextLength - start);
+            this.SetParagraphSpacing(spaceBefore);
+            this.content.Select(this.content.TextLength, 0);
+        }
+
+        private void SetParagraphSpacing(int spaceBefore)
+        {
+            const int EmSetParagraphFormat = 0x0447;
+            const uint SpaceBefore = 0x40;
+            const uint SpaceAfter = 0x80;
+            var format = new SafeNativeMethods.ParagraphFormat2
+            {
+                Size = (uint)Marshal.SizeOf<SafeNativeMethods.ParagraphFormat2>(),
+                Mask = SpaceBefore | SpaceAfter,
+                SpaceBefore = spaceBefore * 20,
+                SpaceAfter = 0,
             };
-
-            if (!color.IsEmpty)
+            if (SafeNativeMethods.SendMessage(
+                new HandleRef(this.content, this.content.Handle), EmSetParagraphFormat, IntPtr.Zero, ref format) == IntPtr.Zero)
             {
-                label.ForeColor = color;
+                throw new InvalidOperationException("Could not set details paragraph spacing.");
             }
-
-            if (wrap)
-            {
-                label.Anchor = AnchorStyles.Left | AnchorStyles.Top;
-                label.AutoSize = true;
-                this.wrappingControls.Add(label);
-            }
-            else
-            {
-                label.Anchor = AnchorStyles.Left | AnchorStyles.Right;
-                label.AutoEllipsis = true;
-                label.AutoSize = false;
-            }
-
-            this.AddRow(label);
-
-            // Only now does the label have the pane's font; measured before, it is too short and
-            // cuts off underscores and letters like g and y.
-            if (!wrap)
-            {
-                label.Height = label.PreferredHeight;
-            }
-
-            return label;
         }
 
-        private void AddRow(Control control)
+        private void AppendText(string text, Color color, Font font = null, Color? background = null)
         {
-            this.table.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            this.table.Controls.Add(control, 0, this.table.RowStyles.Count - 1);
-            this.table.RowCount = this.table.RowStyles.Count;
+            this.content.Select(this.content.TextLength, 0);
+            this.content.SelectionFont = font ?? this.Font;
+            this.content.SelectionColor = color.IsEmpty ? this.ForeColor : color;
+            this.content.SelectionBackColor = background ?? this.BackColor;
+            this.content.AppendText(text);
         }
 
-        private void ClearRows()
+        private static void EnableTripleClickSelection(TextBoxBase textBox)
         {
-            this.wrappingControls.Clear();
+            int clicks = 0;
+            int lastClickTime = 0;
+            Rectangle clickArea = Rectangle.Empty;
+            bool selectLineOnMouseUp = false;
+            int selectionStart = 0;
+            int selectionLength = 0;
 
-            while (this.table.Controls.Count > 0)
+            textBox.MouseDown += (sender, e) =>
             {
-                Control control = this.table.Controls[0];
-                this.toolTip.SetToolTip(control, null);
-                control.Dispose();
+                selectLineOnMouseUp = false;
+                if (e.Button != MouseButtons.Left)
+                {
+                    clicks = 0;
+                    return;
+                }
+
+                int now = Environment.TickCount;
+                uint elapsed = unchecked((uint)(now - lastClickTime));
+                clicks = clicks > 0 && elapsed <= (uint)SystemInformation.DoubleClickTime && clickArea.Contains(e.Location)
+                    ? clicks + 1
+                    : 1;
+                lastClickTime = now;
+                Size size = SystemInformation.DoubleClickSize;
+                clickArea = new Rectangle(e.X - (size.Width / 2), e.Y - (size.Height / 2), size.Width, size.Height);
+
+                if (clicks == 3)
+                {
+                    clicks = 0;
+                    selectLineOnMouseUp = true;
+                    string text = textBox.Text;
+                    int index = textBox.GetCharIndexFromPosition(e.Location);
+                    selectionStart = index > 0 ? text.LastIndexOf('\n', index - 1) + 1 : 0;
+                    int end = text.IndexOf('\n', index);
+                    selectionLength = (end < 0 ? text.Length : end) - selectionStart;
+                    textBox.Select(selectionStart, selectionLength);
+                }
+            };
+            // Native mouse-up handling can replace the selection made on mouse-down.
+            textBox.MouseUp += (sender, e) =>
+            {
+                if (e.Button != MouseButtons.Left)
+                {
+                    return;
+                }
+
+                if (!clickArea.Contains(e.Location))
+                {
+                    clicks = 0;
+                }
+                else if (selectLineOnMouseUp)
+                {
+                    textBox.Select(selectionStart, selectionLength);
+                }
+
+                selectLineOnMouseUp = false;
+            };
+        }
+
+        private sealed class DetailsRichTextBox : RichTextBox
+        {
+            private const int WmSetFocus = 0x0007;
+            private const int WmLeftButtonDown = 0x0201;
+            private const int WmLeftButtonUp = 0x0202;
+            private const int MkControl = 0x0008;
+
+            private readonly Func<Point, bool> isFolderPosition;
+            private bool folderPressed;
+            private Rectangle clickArea;
+
+            public DetailsRichTextBox(Func<Point, bool> isFolderPosition)
+            {
+                this.isFolderPosition = isFolderPosition;
             }
 
-            this.table.RowStyles.Clear();
-            this.table.RowCount = 0;
-        }
+            public event EventHandler FolderClicked;
 
-        private void UpdateWrapWidth()
-        {
-            int width = this.scroller.ClientSize.Width - this.table.Padding.Horizontal;
-
-            foreach (Control control in this.wrappingControls)
+            public void CancelFolderClick()
             {
-                control.MaximumSize = new Size(Math.Max(1, width - control.Margin.Horizontal), 0);
+                this.folderPressed = false;
+                if (this.Capture)
+                {
+                    this.Capture = false;
+                }
+            }
+
+            protected override void OnMouseCaptureChanged(EventArgs e)
+            {
+                if (!this.Capture)
+                {
+                    this.folderPressed = false;
+                }
+
+                base.OnMouseCaptureChanged(e);
+            }
+
+            protected override void WndProc(ref Message m)
+            {
+                if (m.Msg == WmLeftButtonDown || m.Msg == WmLeftButtonUp)
+                {
+                    var location = new Point((short)m.LParam.ToInt64(), (short)(m.LParam.ToInt64() >> 16));
+                    bool control = (m.WParam.ToInt64() & MkControl) != 0;
+                    if (m.Msg == WmLeftButtonDown && control && this.isFolderPosition(location))
+                    {
+                        // Rich Edit handles Ctrl+click itself, so intercept the folder before native selection or scrolling.
+                        this.folderPressed = true;
+                        Size size = SystemInformation.DragSize;
+                        this.clickArea = new Rectangle(
+                            location.X - (size.Width / 2), location.Y - (size.Height / 2), size.Width, size.Height);
+                        this.Capture = true;
+                        m.Result = IntPtr.Zero;
+                        return;
+                    }
+
+                    if (m.Msg == WmLeftButtonUp && this.folderPressed)
+                    {
+                        bool open = control && this.clickArea.Contains(location);
+                        this.CancelFolderClick();
+                        if (open)
+                        {
+                            this.FolderClicked?.Invoke(this, EventArgs.Empty);
+                        }
+
+                        m.Result = IntPtr.Zero;
+                        return;
+                    }
+                }
+
+                base.WndProc(ref m);
+                if (m.Msg == WmSetFocus || this.Focused)
+                {
+                    SafeNativeMethods.HideCaret(new HandleRef(this, m.HWnd));
+                }
             }
         }
-
-        private Padding ScaledMargin(int top = 0) =>
-            new Padding(this.LogicalToDeviceUnits(2), this.LogicalToDeviceUnits(top), this.LogicalToDeviceUnits(2), 0);
     }
 }

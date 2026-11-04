@@ -40,6 +40,10 @@ namespace Rapr
         private ToolStripMenuItem showDetailsPaneStripMenuItem;
         private DriverDetailsPanel detailsPanel;
         private Panel operationsColumn;
+        private TableLayoutPanel operationsLayout;
+        private Panel detailsWorkspace;
+        private Splitter detailsSplitter;
+        private int compactMinimumWidth;
         private DriverInsights driverInsights;
 
         private static readonly IUpdateManager UpdateManager = CreateUpdateManager();
@@ -393,8 +397,8 @@ namespace Rapr
         private void SetupDetailsPane()
         {
             // After a language switch these hold the controls of the previous layout.
-            this.operationsColumn?.Dispose();
-            this.detailsPanel?.Dispose();
+            this.detailsWorkspace?.Dispose();
+            this.compactMinimumWidth = this.MinimumSize.Width;
 
             this.detailsPanel = new DriverDetailsPanel
             {
@@ -406,9 +410,36 @@ namespace Rapr
             // pane below it taking the rest. In a TableLayoutPanel with AutoSize rows the box kept
             // the full height the designer gives it and squeezed the pane.
             this.gbOptions.AutoSize = false;
+            this.operationsLayout = new TableLayoutPanel
+            {
+                AutoSize = true,
+                AutoSizeMode = AutoSizeMode.GrowAndShrink,
+                ColumnCount = 1,
+                Dock = DockStyle.Top,
+                Padding = this.flowLayoutPanel1.Padding,
+                TabIndex = this.flowLayoutPanel1.TabIndex,
+                TabStop = false,
+            };
+            this.operationsLayout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            Control[] actions = this.flowLayoutPanel1.Controls.Cast<Control>().ToArray();
+            this.operationsLayout.RowCount = actions.Length;
+            for (int row = 0; row < actions.Length; row++)
+            {
+                if (actions[row] is Button button)
+                {
+                    button.AutoSizeMode = AutoSizeMode.GrowAndShrink;
+                }
+
+                this.operationsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+                this.operationsLayout.Controls.Add(actions[row], 0, row);
+            }
+
+            this.gbOptions.Controls.Remove(this.flowLayoutPanel1);
+            this.flowLayoutPanel1.Dispose();
+            this.gbOptions.Controls.Add(this.operationsLayout);
             this.operationsColumn = new Panel
             {
-                Dock = DockStyle.Fill,
+                Dock = DockStyle.Right,
                 Margin = Padding.Empty,
                 Padding = this.gbOptions.Margin,
             };
@@ -416,16 +447,45 @@ namespace Rapr
             var table = this.tableLayoutPanel1;
             table.SuspendLayout();
             table.Controls.Remove(this.gbOptions);
+            table.ColumnCount = 1;
+            table.ColumnStyles.RemoveAt(1);
 
             this.operationsColumn.Controls.Add(this.detailsPanel);
             this.operationsColumn.Controls.Add(this.gbOptions);
-            table.Controls.Add(this.operationsColumn, 1, 0);
-            table.SetRowSpan(this.operationsColumn, 2);
-            this.ArrangeOperationsColumn();
+            this.detailsSplitter = new Splitter
+            {
+                Dock = DockStyle.Right,
+                Width = 3,
+                BackColor = SystemColors.Control,
+                Cursor = Cursors.SizeWE,
+                TabStop = false,
+            };
+            this.detailsSplitter.SplitterMoved += (sender, e) =>
+            {
+                Settings.Default.DetailsPaneWidth = (int)Math.Round(
+                    this.operationsColumn.Width * 96.0 / this.LogicalToDeviceUnits(96));
+            };
+            this.detailsWorkspace = new Panel
+            {
+                Dock = DockStyle.Fill,
+                Size = table.Size,
+                Margin = table.Margin,
+                TabIndex = table.TabIndex,
+            };
+            int index = this.Controls.GetChildIndex(table);
+            this.detailsWorkspace.Controls.Add(table);
+            this.detailsWorkspace.Controls.Add(this.detailsSplitter);
+            this.detailsWorkspace.Controls.Add(this.operationsColumn);
+            this.Controls.Add(this.detailsWorkspace);
+            this.Controls.SetChildIndex(this.detailsWorkspace, index);
             table.ResumeLayout();
+            this.detailsWorkspace.ClientSizeChanged += (sender, e) => this.ArrangeOperationsColumn();
+            this.detailsWorkspace.RightToLeftChanged += (sender, e) => this.ArrangeOperationsColumn();
+            this.ArrangeOperationsColumn();
+            this.UpdateDetailsPane();
 
             // Buttons are shown or hidden by driver store type; keep the box fitted to them.
-            this.flowLayoutPanel1.Layout += (sender, e) => this.FitOperationsBox();
+            this.operationsLayout.Layout += (sender, e) => this.FitOperationsBox();
 
             this.lstDriverStoreEntries.SelectionChanged += (sender, e) => this.UpdateDetailsPane();
             this.lstDriverStoreEntries.ItemsChanged += (sender, e) =>
@@ -439,9 +499,37 @@ namespace Rapr
         // controls are only scaled to the screen's DPI once the form resumes layout.
         private void ArrangeOperationsColumn()
         {
+            // Changing MinimumSize while minimized overwrites WinForms' restore bounds.
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                return;
+            }
+
             bool show = Settings.Default.ShowDetailsPane;
 
-            this.operationsColumn.Width = this.OperationsBoxSize().Width + this.operationsColumn.Padding.Horizontal;
+            int width = this.OperationsBoxSize().Width + this.operationsColumn.Padding.Horizontal;
+            this.detailsSplitter.MinSize = Math.Max(width, this.LogicalToDeviceUnits(280));
+            this.detailsSplitter.MinExtra = this.LogicalToDeviceUnits(320);
+            this.detailsSplitter.Visible = show;
+            this.operationsColumn.Dock = this.RightToLeft == RightToLeft.Yes ? DockStyle.Left : DockStyle.Right;
+            this.detailsSplitter.Dock = this.operationsColumn.Dock;
+            int minimumWidth = show
+                ? Math.Max(this.compactMinimumWidth, this.detailsSplitter.MinSize + this.detailsSplitter.MinExtra
+                    + this.detailsSplitter.Width + this.Width - this.detailsWorkspace.ClientSize.Width)
+                : this.compactMinimumWidth;
+            if (this.MinimumSize.Width != minimumWidth)
+            {
+                this.MinimumSize = new Size(minimumWidth, this.MinimumSize.Height);
+            }
+            if (show)
+            {
+                width = Math.Max(this.detailsSplitter.MinSize, this.LogicalToDeviceUnits(Settings.Default.DetailsPaneWidth));
+                int available = Math.Max(0, this.detailsWorkspace.ClientSize.Width
+                    - this.detailsSplitter.MinExtra - this.detailsSplitter.Width);
+                width = Math.Min(width, available);
+            }
+
+            this.operationsColumn.Width = width;
 
             // Hidden, the Operations box takes the whole height again, as it did before the pane.
             this.gbOptions.Dock = show ? DockStyle.Top : DockStyle.Fill;
@@ -453,14 +541,13 @@ namespace Rapr
 
             this.detailsPanel.Visible = show;
             this.FitOperationsBox();
-            this.UpdateDetailsPane();
         }
 
         // The size the Operations box needs for its buttons, measured from the button panel so it
         // doesn't depend on the box's current size.
         private Size OperationsBoxSize()
         {
-            Size buttons = this.flowLayoutPanel1.GetPreferredSize(Size.Empty);
+            Size buttons = this.operationsLayout.GetPreferredSize(Size.Empty);
             Size frame = this.gbOptions.Size - this.gbOptions.DisplayRectangle.Size;
             return buttons + frame;
         }
@@ -1751,6 +1838,7 @@ namespace Rapr
             Settings.Default.Save();
 
             this.ArrangeOperationsColumn();
+            this.UpdateDetailsPane();
         }
 
         private async void CtxMenuExportDriver_Click(object sender, System.EventArgs e)

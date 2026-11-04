@@ -24,6 +24,31 @@ namespace Rapr
         [return: MarshalAs(UnmanagedType.Bool)]
         internal static extern bool DestroyIcon(IntPtr hIcon);
 
+        [DllImport("user32.dll")]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        internal static extern bool HideCaret(HandleRef hWnd);
+
+        [DllImport("user32.dll", EntryPoint = "SendMessageW", ExactSpelling = true)]
+        internal static extern IntPtr SendMessage(
+            HandleRef hWnd, int message, IntPtr wParam, ref ParagraphFormat2 format);
+
+        // PARAFORMAT2; the remaining fields are unused when only paragraph spacing is set.
+        [StructLayout(LayoutKind.Explicit, Size = 188)]
+        internal struct ParagraphFormat2
+        {
+            [FieldOffset(0)]
+            internal uint Size;
+
+            [FieldOffset(4)]
+            internal uint Mask;
+
+            [FieldOffset(156)]
+            internal int SpaceBefore;
+
+            [FieldOffset(160)]
+            internal int SpaceAfter;
+        }
+
         [DllImport("kernel32.dll", SetLastError = true, CharSet = CharSet.Auto)]
         public static extern SafeFileHandle CreateFile(
             string lpFileName,

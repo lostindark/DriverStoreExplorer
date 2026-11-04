@@ -561,6 +561,9 @@ Continue selecting drivers?</value>
   <data name="Details_Folder" xml:space="preserve">
     <value>Folder</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+click to open</value>
+  </data>
   <data name="Details_Tag_Old_Version" xml:space="preserve">
     <value>Old version</value>
   </data>
