@@ -561,6 +561,9 @@ Continuer la sélection des pilotes ?</value>
   <data name="Details_Folder" xml:space="preserve">
     <value>Dossier</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+clic pour ouvrir</value>
+  </data>
   <data name="Details_Tag_Old_Version" xml:space="preserve">
     <value>Ancienne version</value>
   </data>
