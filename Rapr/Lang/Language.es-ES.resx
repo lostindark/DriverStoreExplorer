@@ -561,6 +561,9 @@ Los controladores críticos de arranque no se seleccionan salvo que los incluya 
   <data name="Details_Folder" xml:space="preserve">
     <value>Carpeta</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+clic para abrir</value>
+  </data>
   <data name="Details_Tag_Old_Version" xml:space="preserve">
     <value>Versión antigua</value>
   </data>
