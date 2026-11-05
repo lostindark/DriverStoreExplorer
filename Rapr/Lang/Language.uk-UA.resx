@@ -561,6 +561,9 @@
   <data name="Details_Folder" xml:space="preserve">
     <value>Папка</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+клацніть, щоб відкрити</value>
+  </data>
   <data name="Details_Tag_Old_Version" xml:space="preserve">
     <value>Стара версія</value>
   </data>
