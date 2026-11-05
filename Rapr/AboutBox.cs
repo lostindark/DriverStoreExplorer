@@ -5,7 +5,10 @@ using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+using JR.Utils.GUI.Forms;
+
 using Rapr.Lang;
+using Rapr.Utils;
 
 namespace Rapr
 {
@@ -22,6 +25,7 @@ namespace Rapr
             this.InitializeComponent();
             this.Text = string.Format(Language.Product_About_Title, Language.Product_Name);
             this.labelVersionInfo.Text = $"v{AssemblyVersion}";
+            DriverStoreTheme.Attach(this);
 
             _ = this.UpdateLatestVersionInfo();
         }
@@ -209,7 +213,7 @@ namespace Rapr
             }
             catch (Exception ex)
             {
-                MessageBox.Show(
+                FlexibleMessageBox.Show(
                     string.Format(Language.Update_Failed, ex.Message),
                     Language.Product_Name,
                     MessageBoxButtons.OK,

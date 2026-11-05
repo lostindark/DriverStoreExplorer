@@ -60,6 +60,47 @@ namespace Rapr.Tests
         }
 
         [TestMethod]
+        public void ThemeChangesPreserveWarningStatusAndSearchSelection()
+        {
+            var previousMode = ObjectListViewTheme.ColorMode;
+            try
+            {
+                WithOperationForm((form, list) =>
+                {
+                    list.UseFiltering = true;
+                    var entry = CreateDriver("first.inf", 1);
+                    list.SetObjects(new[] { entry, CreateDriver("second.inf", 1) });
+                    list.SelectedObject = entry;
+                    list.CheckedObject = entry;
+                    var search = (EnhancedSearchTextBox)typeof(DSEForm)
+                        .GetField("textBoxSearch", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                    search.Text = "first";
+                    Invoke(form, "ShowStatus", DSEForm.Status.Warning, "Review", null, false);
+                    var palette = new ThemePalette(true, false);
+
+                    Invoke(form, "ApplyTheme", palette);
+
+                    var status = (ToolStripStatusLabel)typeof(DSEForm)
+                        .GetField("lblStatus", BindingFlags.Instance | BindingFlags.NonPublic).GetValue(form);
+                    Assert.AreEqual("Review", status.Text);
+                    Assert.AreEqual(Color.FromArgb(100, 75, 15), status.BackColor);
+                    Assert.AreEqual(palette.TextColor, status.ForeColor);
+                    Assert.AreEqual("first", search.Text);
+                    Assert.AreSame(entry, list.SelectedObject);
+                    Assert.AreSame(entry, list.CheckedObject);
+                    Assert.AreEqual(1, list.GetItemCount());
+
+                    Invoke(form, "ShowStatus", DSEForm.Status.Normal, "Ready", null, false);
+                    Assert.AreNotEqual(Color.FromArgb(100, 75, 15), status.BackColor);
+                });
+            }
+            finally
+            {
+                ObjectListViewTheme.ColorMode = previousMode;
+            }
+        }
+
+        [TestMethod]
         public void ColumnAndFilterMenusFollowLanguageChanges()
         {
             var originalCulture = Language.Culture;
@@ -1320,6 +1361,7 @@ namespace Rapr.Tests
                 SetField(form, "driverStore", new DismUtil());
                 SetField(form, "driversWithNewerDate", new HashSet<DriverStoreEntry>());
                 SetField(form, "unusedDriversToReview", new HashSet<DriverStoreEntry>());
+                SetField(form, "themeColors", new ThemePalette(false, SystemInformation.HighContrast));
                 test(form, list);
             }
         }

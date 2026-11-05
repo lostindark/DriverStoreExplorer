@@ -21,7 +21,7 @@
     <PackageReference Include="Microsoft.Dism" Version="6.1.0" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.WindowsAPICodePack.Core" Version="1.1.0" GeneratePathProperty="true" />
     <PackageReference Include="Microsoft.WindowsAPICodePack.Shell" Version="1.1.0" GeneratePathProperty="true" />
-    <PackageReference Include="ObjectListView.WinForms" Version="3.0.40-preview" GeneratePathProperty="true" />
+    <PackageReference Include="ObjectListView.WinForms" Version="3.0.42-preview" GeneratePathProperty="true" />
     <PackageReference Include="PortableSettingsProvider" Version="0.2.5" GeneratePathProperty="true" />
     <PackageReference Include="Resource.Embedder" Version="2.2.0" />
     <PackageReference Include="StrongNamer" Version="0.2.5" />

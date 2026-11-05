@@ -6,6 +6,8 @@ using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
+using BrightIdeasSoftware;
+
 using Rapr.Lang;
 using Rapr.Utils;
 
@@ -15,7 +17,7 @@ namespace Rapr.Controls
     /// Shows the package selected in the list: notes on whether it may still be needed, and its
     /// main fields.
     /// </summary>
-    public sealed class DriverDetailsPanel : GroupBox
+    public sealed class DriverDetailsPanel : GroupBox, IThemeAware
     {
         private static readonly Color OldVersionColor = Color.FromArgb(0xFF, 0xF1, 0xC4);
         private static readonly Color NoDeviceColor = Color.FromArgb(0xE6, 0xE6, 0xE6);
@@ -31,10 +33,12 @@ namespace Rapr.Controls
         private int folderStart = -1;
         private int folderLength;
         private bool folderHovered;
+        private IThemeColors palette = new ThemePalette(false, SystemInformation.HighContrast);
 
         public DriverDetailsPanel()
         {
             this.Text = GetString("Details_Title");
+            this.UpdateContentPadding();
 
             this.content = new DetailsRichTextBox(this.IsFolderPosition)
             {
@@ -67,6 +71,14 @@ namespace Rapr.Controls
         /// The package shown, or null when nothing (or more than one package) is selected.
         /// </summary>
         public DriverStoreEntry Entry { get; private set; }
+
+        public void ApplyTheme(IThemeColors colors)
+        {
+            this.palette = colors;
+            this.content.BackColor = this.BackColor;
+            this.content.ForeColor = this.ForeColor;
+            this.ShowEntry(this.Entry, this.insights);
+        }
 
         /// <summary>
         /// The notes that explain whether a package may still be needed.
@@ -128,7 +140,7 @@ namespace Rapr.Controls
 
             if (entry == null)
             {
-                this.AppendParagraph(GetString("Details_Empty"), SystemColors.GrayText);
+                this.AppendParagraph(GetString("Details_Empty"), this.palette.GrayTextColor);
             }
             else
             {
@@ -154,6 +166,18 @@ namespace Rapr.Controls
             this.folderFont = null;
             this.content.Font = this.Font;
             this.ShowEntry(this.Entry, this.insights);
+        }
+
+        protected override void OnDpiChangedAfterParent(EventArgs e)
+        {
+            base.OnDpiChangedAfterParent(e);
+            this.UpdateContentPadding();
+        }
+
+        private void UpdateContentPadding()
+        {
+            int inset = this.LogicalToDeviceUnits(8);
+            this.Padding = new Padding(inset, this.LogicalToDeviceUnits(4), inset, inset);
         }
 
         protected override void Dispose(bool disposing)
@@ -193,7 +217,7 @@ namespace Rapr.Controls
                 }.Where(part => !string.IsNullOrEmpty(part)));
             if (subtitle.Length > 0)
             {
-                this.AppendParagraph(subtitle, SystemColors.GrayText);
+                this.AppendParagraph(subtitle, this.palette.GrayTextColor);
             }
 
             this.AddTags(entry, insights);
@@ -219,7 +243,8 @@ namespace Rapr.Controls
                     this.folderFont = new Font(this.Font, this.Font.Style | FontStyle.Underline);
                 }
 
-                this.folderStart = this.AppendParagraph(entry.DriverFolderLocation, SystemColors.HotTrack, this.folderFont);
+                this.folderStart = this.AppendParagraph(entry.DriverFolderLocation,
+                    this.palette.LinkColor, this.folderFont);
                 this.folderLength = this.content.TextLength - this.folderStart;
             }
         }
@@ -281,11 +306,11 @@ namespace Rapr.Controls
                     start = this.BeginParagraph();
                 }
 
-                bool highContrast = SystemInformation.HighContrast;
+                bool highContrast = this.palette.HighContrast;
                 this.AppendText(
                     " " + GetString(name) + " ",
-                    highContrast ? SystemColors.HighlightText : Color.Black,
-                    background: highContrast ? SystemColors.Highlight : color);
+                    highContrast ? this.palette.HighlightTextColor : this.palette.Dark ? this.palette.TextColor : Color.Black,
+                    background: highContrast ? this.palette.HighlightColor : this.palette.Dark ? ControlPaint.Dark(color, 0.65f) : color);
                 hasTags = true;
             }
 
@@ -313,7 +338,7 @@ namespace Rapr.Controls
 
         private void AddCaption(string text)
         {
-            this.AppendParagraph(text, SystemColors.GrayText, spaceBefore: 2);
+            this.AppendParagraph(text, this.palette.GrayTextColor, spaceBefore: 2);
         }
 
         private int AppendParagraph(string text, Color color, Font font = null, int spaceBefore = 0)

@@ -2,6 +2,9 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Rapr.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
+    <Setting Name="ThemeMode" Roaming="true" Type="System.String" Scope="User">
+      <Value Profile="(Default)">System</Value>
+    </Setting>
     <Setting Name="Language" Roaming="true" Type="System.Globalization.CultureInfo" Scope="User">
       <Value Profile="(Default)">(Default)</Value>
     </Setting>

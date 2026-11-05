@@ -458,6 +458,14 @@ namespace JR.Utils.GUI.Forms
             private FlexibleMessageBoxForm()
             {
                 InitializeComponent();
+                Rapr.Utils.DriverStoreTheme.Initialize();
+                BrightIdeasSoftware.FormTheme.Attach(this, prepareFirstFrame: true, customizeControl: (control, palette) =>
+                {
+                    if (control is RichTextBox || control is TableLayoutPanel)
+                    {
+                        control.BackColor = palette.Dark || palette.HighContrast ? palette.ControlColor : palette.WindowColor;
+                    }
+                });
 
                 //Try to evaluate the language. If this fails, the fallback language English will be used
                 Enum.TryParse<TwoLetterISOLanguageID>(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName, out this.languageID);

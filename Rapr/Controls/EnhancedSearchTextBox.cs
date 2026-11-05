@@ -2,7 +2,11 @@ using System;
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
+
+using BrightIdeasSoftware;
+
 using Rapr.Properties;
+using Rapr.Utils;
 
 namespace Rapr.Controls
 {
@@ -11,21 +15,78 @@ namespace Rapr.Controls
     /// </summary>
     [DesignerCategory("UserControl")]
     [ToolboxItem(true)]
-    public partial class EnhancedSearchTextBox : UserControl
+    public partial class EnhancedSearchTextBox : UserControl, IThemeAware
     {
         private const int DesignHeight = 24;
         private const int DesignIconSize = 16;
         private const int DesignPadding = 4;
+        private IThemeColors palette = new ThemePalette(false, SystemInformation.HighContrast);
+        private readonly Image lightSearchIcon;
+        private readonly Image lightClearIcon;
+        private Image darkSearchIcon;
 
         public EnhancedSearchTextBox()
         {
             this.InitializeComponent();
+            this.lightSearchIcon = this.searchIcon.Image;
+            this.lightClearIcon = this.clearButton.Image;
 
             // The border is drawn along the right edge, so repaint everything on resize; otherwise
             // each old right edge stays behind as a short line when the window is resized.
             this.SetStyle(ControlStyles.ResizeRedraw | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint, true);
 
             this.SetupEventHandlers();
+            this.Disposed += (sender, e) =>
+            {
+                this.darkSearchIcon?.Dispose();
+                if (this.clearButton.Image != this.lightClearIcon)
+                {
+                    this.clearButton.Image?.Dispose();
+                }
+            };
+        }
+
+        public void ApplyTheme(IThemeColors colors)
+        {
+            this.palette = colors;
+            this.BackColor = colors.InputColor;
+            this.textBox.BackColor = colors.InputColor;
+            this.textBox.ForeColor = colors.TextColor;
+            this.searchIcon.BackColor = colors.InputColor;
+            this.clearButton.BackColor = colors.InputColor;
+            this.placeholderLabel.BackColor = Color.Transparent;
+            this.placeholderLabel.ForeColor = colors.GrayTextColor;
+            bool invertIcon = colors.InputColor.GetBrightness() < 0.5f;
+            if (invertIcon && this.darkSearchIcon == null && this.lightSearchIcon != null)
+            {
+                var bitmap = new Bitmap(this.lightSearchIcon.Width, this.lightSearchIcon.Height);
+                using (var graphics = Graphics.FromImage(bitmap))
+                using (var attributes = new System.Drawing.Imaging.ImageAttributes())
+                {
+                    attributes.SetColorMatrix(new System.Drawing.Imaging.ColorMatrix(new[]
+                    {
+                        new[] { -1f, 0, 0, 0, 0 },
+                        new[] { 0, -1f, 0, 0, 0 },
+                        new[] { 0, 0, -1f, 0, 0 },
+                        new[] { 0, 0, 0, 1f, 0 },
+                        new[] { 1f, 1f, 1f, 0, 1f },
+                    }));
+                    graphics.DrawImage(this.lightSearchIcon, new Rectangle(Point.Empty, bitmap.Size),
+                        0, 0, bitmap.Width, bitmap.Height, GraphicsUnit.Pixel, attributes);
+                }
+
+                this.darkSearchIcon = bitmap;
+            }
+
+            this.searchIcon.Image = invertIcon ? this.darkSearchIcon : this.lightSearchIcon;
+            var oldImage = this.clearButton.Image;
+            this.clearButton.Image = this.CreateXBitmap(colors.GrayTextColor);
+            if (oldImage != this.lightClearIcon)
+            {
+                oldImage?.Dispose();
+            }
+
+            this.Invalidate();
         }
 
         protected override void OnLoad(EventArgs e)
@@ -194,6 +255,17 @@ namespace Rapr.Controls
                 return;
             }
 
+            if (this.palette.Dark || this.palette.HighContrast)
+            {
+                var previous = this.clearButton.Image;
+                this.clearButton.Image = this.CreateXBitmap(this.palette.TextColor);
+                if (previous != this.lightClearIcon)
+                {
+                    previous?.Dispose();
+                }
+                return;
+            }
+
             try
             {
                 if (Resources.Clear != null)
@@ -231,6 +303,10 @@ namespace Rapr.Controls
         private Image GetClearButtonIcon()
         {
             if (this.DesignMode) return null;
+            if (this.palette.Dark || this.palette.HighContrast)
+            {
+                return this.CreateXBitmap(this.palette.GrayTextColor);
+            }
 
             try
             {
@@ -280,7 +356,7 @@ namespace Rapr.Controls
         private void EnhancedSearchTextBox_Paint(object sender, PaintEventArgs e)
         {
             float penWidth = Math.Max(1f, this.ScaleFactor);
-            using (var pen = new Pen(Color.Gray, penWidth))
+            using (var pen = new Pen(this.palette.ControlDarkColor, penWidth))
             {
                 Rectangle borderRect = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
                 e.Graphics.DrawRectangle(pen, borderRect);

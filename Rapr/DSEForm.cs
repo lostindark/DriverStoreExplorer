@@ -45,6 +45,10 @@ namespace Rapr
         private Splitter detailsSplitter;
         private int compactMinimumWidth;
         private DriverInsights driverInsights;
+        private IThemeColors themeColors = new ThemePalette(false, SystemInformation.HighContrast);
+        private Status currentStatus = Status.Normal;
+        private bool statusRequiresReview;
+        private ToolStripMenuItem themeMenu;
 
         private static readonly IUpdateManager UpdateManager = CreateUpdateManager();
 
@@ -113,6 +117,7 @@ namespace Rapr
                 Thread.CurrentThread.CurrentUICulture = lang;
             }
 
+            DriverStoreTheme.Initialize();
             this.Font = SystemFonts.MessageBoxFont;
 
             this.InitializeComponent();
@@ -121,6 +126,7 @@ namespace Rapr
             this.BuildLanguageMenu();
             this.SetupOptionsMenu();
             this.SetupDetailsPane();
+            DriverStoreTheme.Attach(this, this.ApplyTheme);
 
             this.lstDriverStoreEntries.PrimarySortColumn = this.driverClassColumn;
             this.lstDriverStoreEntries.PrimarySortOrder = SortOrder.Ascending;
@@ -368,6 +374,7 @@ namespace Rapr
         // so the option menu items always reflect the saved settings.
         private void SetupOptionsMenu()
         {
+            this.lstDriverStoreEntries.AlternateRowBackColor = Color.Empty;
             this.includeBootCriticalDriversStripMenuItem.Checked = Settings.Default.IncludeBootCriticalInOldDriverSelection;
 
             // Created here because its text has no generated Language property yet.
@@ -389,6 +396,43 @@ namespace Rapr
             this.showDetailsPaneStripMenuItem.Click += this.ShowDetailsPaneStripMenuItem_Click;
             this.optionsStripMenuItem.DropDownItems.Add(new ToolStripSeparator());
             this.optionsStripMenuItem.DropDownItems.Add(this.showDetailsPaneStripMenuItem);
+
+            this.themeMenu = new ToolStripMenuItem(Language.ResourceManager.GetString("Menu_Options_Theme", Language.Culture));
+            foreach (string mode in new[] { "System", "Light", "Dark" })
+            {
+                var item = new ToolStripMenuItem(Language.ResourceManager.GetString("Theme_" + mode, Language.Culture))
+                {
+                    Tag = mode,
+                    Checked = string.Equals(Settings.Default.ThemeMode, mode, StringComparison.Ordinal),
+                };
+                item.Click += (sender, e) =>
+                {
+                    Settings.Default.ThemeMode = (string)((ToolStripMenuItem)sender).Tag;
+                    Settings.Default.Save();
+                    DriverStoreTheme.Initialize();
+                };
+                this.themeMenu.DropDownItems.Add(item);
+            }
+
+            this.optionsStripMenuItem.DropDownItems.Add(this.themeMenu);
+        }
+
+        private void ApplyTheme(IThemeColors palette)
+        {
+            this.themeColors = palette;
+            this.savedBackColor = this.statusStrip1.BackColor;
+            this.savedForeColor = this.statusStrip1.ForeColor;
+            foreach (ToolStripMenuItem item in this.themeMenu.DropDownItems)
+            {
+                item.Checked = string.Equals(Settings.Default.ThemeMode, (string)item.Tag, StringComparison.Ordinal);
+            }
+
+            this.ApplyStatusColors();
+            if (this.lstDriverStoreEntries.Objects != null)
+            {
+                this.lstDriverStoreEntries.RefreshObjects(this.lstDriverStoreEntries.Objects);
+            }
+            this.UpdateSearchFilter();
         }
 
         // Called after every InitializeComponent(), like SetupOptionsMenu(). The pane goes below the
@@ -456,7 +500,6 @@ namespace Rapr
             {
                 Dock = DockStyle.Right,
                 Width = 3,
-                BackColor = SystemColors.Control,
                 Cursor = Cursors.SizeWE,
                 TabStop = false,
             };
@@ -606,9 +649,6 @@ namespace Rapr
 
         private async void DSEForm_Shown(object sender, EventArgs e)
         {
-            this.savedBackColor = this.lblStatus.BackColor;
-            this.savedForeColor = this.lblStatus.ForeColor;
-
             this.EnsureOnScreen();
 
             await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
@@ -1303,6 +1343,7 @@ namespace Rapr
                 this.BuildLanguageMenu();
                 this.SetupOptionsMenu();
                 this.SetupDetailsPane();
+                DriverStoreTheme.Attach(this);
                 this.RightToLeft = ci.TextInfo.IsRightToLeft ? RightToLeft.Yes : RightToLeft.No;
                 this.RightToLeftLayout = ci.TextInfo.IsRightToLeft;
                 this.SetupListViewColumns();
@@ -1600,19 +1641,25 @@ namespace Rapr
         private void LstDriverStoreEntries_FormatCell(object sender, BrightIdeasSoftware.FormatCellEventArgs e)
         {
             DriverStoreEntry entry = (DriverStoreEntry)e.Model;
+            if (this.themeColors.HighContrast && e.Item.Checked)
+            {
+                e.SubItem.ForeColor = this.themeColors.HighlightTextColor;
+                return;
+            }
 
             if (e.ColumnIndex == this.deviceNameColumn.Index)
             {
                 if (entry.DevicePresent == false)
                 {
-                    e.SubItem.ForeColor = Color.Gray;
+                    e.SubItem.ForeColor = this.themeColors.GrayTextColor;
                 }
             }
             else if (e.ColumnIndex == this.driverDateColumn.Index)
             {
                 if (this.driversWithNewerDate.Contains(entry))
                 {
-                    e.SubItem.ForeColor = Color.OrangeRed;
+                    e.SubItem.ForeColor = this.themeColors.HighContrast ? this.themeColors.TextColor
+                        : this.themeColors.Dark ? Color.FromArgb(255, 160, 120) : Color.OrangeRed;
                 }
             }
         }
@@ -1621,7 +1668,12 @@ namespace Rapr
         {
             if (e.Item.Checked)
             {
-                e.Item.BackColor = Color.FromArgb(unchecked((int)0xFFCBE8F6));
+                e.Item.BackColor = this.themeColors.HighContrast ? this.themeColors.HighlightColor
+                    : this.themeColors.Dark ? Color.FromArgb(40, 65, 80) : Color.FromArgb(203, 232, 246);
+                if (this.themeColors.HighContrast)
+                {
+                    e.Item.ForeColor = this.themeColors.HighlightTextColor;
+                }
             }
         }
 
@@ -1682,6 +1734,8 @@ namespace Rapr
             this.lblStatus.Text = text.Replace("\r\n", "\n").Replace("\n", " ");
             bool requiresReview = this.lstDriverStoreEntries.CheckedObjects?
                 .Any(this.unusedDriversToReview.Contains) == true;
+            this.currentStatus = status;
+            this.statusRequiresReview = requiresReview;
             if (requiresReview)
             {
                 string reminder = Language.ResourceManager.GetString("Status_Review_Unused_Drivers", Language.Culture);
@@ -1692,12 +1746,11 @@ namespace Rapr
             }
 
             string detailToLog = string.IsNullOrEmpty(detail) ? text : detail;
+            this.ApplyStatusColors();
 
             switch (status)
             {
                 case Status.Error:
-                    this.lblStatus.BackColor = Color.FromArgb(0xFF, 0x00, 0x33);
-                    this.lblStatus.ForeColor = Color.White;
                     Trace.TraceError(detailToLog);
 
                     if (usePopup)
@@ -1708,8 +1761,6 @@ namespace Rapr
                     break;
 
                 case Status.Success:
-                    this.lblStatus.BackColor = Color.LightGreen;
-                    this.lblStatus.ForeColor = Color.Black;
                     Trace.TraceInformation(detailToLog);
 
                     if (usePopup)
@@ -1720,8 +1771,6 @@ namespace Rapr
                     break;
 
                 case Status.Warning:
-                    this.lblStatus.BackColor = Color.Yellow;
-                    this.lblStatus.ForeColor = Color.Black;
                     Trace.TraceWarning(detailToLog);
 
                     if (usePopup)
@@ -1732,8 +1781,6 @@ namespace Rapr
                     break;
 
                 case Status.Normal:
-                    this.lblStatus.BackColor = this.savedBackColor;
-                    this.lblStatus.ForeColor = this.savedForeColor;
                     Trace.TraceInformation(detailToLog);
 
                     if (usePopup)
@@ -1744,10 +1791,25 @@ namespace Rapr
                     break;
             }
 
-            if (requiresReview && status != Status.Error)
+        }
+
+        private void ApplyStatusColors()
+        {
+            Color error = this.themeColors.HighContrast ? this.themeColors.HighlightColor
+                : this.themeColors.Dark ? Color.FromArgb(125, 35, 45) : Color.FromArgb(255, 0, 51);
+            Color warning = this.themeColors.HighContrast ? this.themeColors.HighlightColor
+                : this.themeColors.Dark ? Color.FromArgb(100, 75, 15) : Color.Yellow;
+            Color success = this.themeColors.HighContrast ? this.themeColors.HighlightColor
+                : this.themeColors.Dark ? Color.FromArgb(30, 80, 45) : Color.LightGreen;
+            this.lblStatus.BackColor = this.currentStatus == Status.Error ? error
+                : this.statusRequiresReview || this.currentStatus == Status.Warning ? warning
+                : this.currentStatus == Status.Success ? success : this.savedBackColor;
+            this.lblStatus.ForeColor = this.currentStatus == Status.Normal && !this.statusRequiresReview
+                ? this.savedForeColor : this.themeColors.HighContrast ? this.themeColors.HighlightTextColor
+                    : this.themeColors.Dark ? this.themeColors.TextColor : Color.Black;
+            if (this.currentStatus == Status.Error && !this.themeColors.HighContrast)
             {
-                this.lblStatus.BackColor = Color.Yellow;
-                this.lblStatus.ForeColor = Color.Black;
+                this.lblStatus.ForeColor = Color.White;
             }
         }
 
@@ -1996,7 +2058,14 @@ namespace Rapr
 
                 // Use TextMatchFilter for highlighting visible columns
                 TextMatchFilter textFilter = TextMatchFilter.Contains(this.lstDriverStoreEntries, searchText);
-                this.lstDriverStoreEntries.DefaultRenderer = new HighlightTextRenderer(textFilter);
+                var renderer = new HighlightTextRenderer(textFilter);
+                if (this.themeColors.Dark || this.themeColors.HighContrast)
+                {
+                    renderer.FillBrush = null;
+                    renderer.FramePen = this.themeColors.HighContrast ? SystemPens.Highlight : Pens.LightSkyBlue;
+                }
+
+                this.lstDriverStoreEntries.DefaultRenderer = renderer;
             }
         }
 

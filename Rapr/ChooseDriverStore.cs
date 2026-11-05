@@ -3,7 +3,11 @@ using System.ComponentModel;
 using System.IO;
 using System.Windows.Forms;
 
+using JR.Utils.GUI.Forms;
+
 using Microsoft.WindowsAPICodePack.Dialogs;
+
+using Rapr.Utils;
 
 namespace Rapr
 {
@@ -55,6 +59,7 @@ namespace Rapr
         public ChooseDriverStore()
         {
             this.InitializeComponent();
+            DriverStoreTheme.Attach(this);
             AddRadioCheckedBinding(this.radioButtonDriverStoreOnline, this, nameof(this.StoreType), DriverStoreType.Online);
             AddRadioCheckedBinding(this.radioButtonDriverStoreOffline, this, nameof(this.StoreType), DriverStoreType.Offline);
 
@@ -113,7 +118,7 @@ namespace Rapr
                     // Validate that the selected directory contains a Windows folder
                     if (!IsValidOfflineStoreLocation(selectedPath))
                     {
-                        MessageBox.Show(
+                        FlexibleMessageBox.Show(
                             this,
                             Lang.Language.Message_Invalid_Offline_Store_Location, 
                             Lang.Language.Message_Invalid_Offline_Store_Title, 

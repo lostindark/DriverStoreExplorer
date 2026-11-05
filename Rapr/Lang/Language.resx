@@ -609,4 +609,16 @@ Continue selecting drivers?</value>
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Select All</value>
   </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Theme</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Use Windows setting</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Light</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Dark</value>
+  </data>
 </root>
