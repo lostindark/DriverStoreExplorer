@@ -561,6 +561,9 @@ Mit der Auswahl der Treiber fortfahren?</value>
   <data name="Details_Folder" xml:space="preserve">
     <value>Ordner</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Mit Strg+Klick öffnen</value>
+  </data>
   <data name="Details_Tag_Old_Version" xml:space="preserve">
     <value>Ältere Version</value>
   </data>
