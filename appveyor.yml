@@ -1,32 +1,47 @@
-version: 1.0.{build}
+version: appveyor-{build}
 pull_requests:
   do_not_increment_build_number: true
 skip_tags: true
 image: Visual Studio 2022
 configuration: Release
 platform: Any CPU
-assembly_info:
-  patch: true
-  file: '**\AssemblyInfo.*'
-  assembly_version: '{version}'
-  assembly_file_version: '{version}'
-  assembly_informational_version: '{version}'
+install:
+- ps: |
+    $ErrorActionPreference = 'Stop'
+    & .\.github\scripts\Test-BuildVersion.ps1
+    git fetch origin --tags
+    if ($LASTEXITCODE -ne 0) { throw 'Failed to fetch version tags' }
+    $parameters = @{}
+    if ($env:APPVEYOR_PULL_REQUEST_NUMBER) {
+      $parameters = @{
+        PullRequestNumber = $env:APPVEYOR_PULL_REQUEST_NUMBER
+        HeadSha = $env:APPVEYOR_PULL_REQUEST_HEAD_COMMIT
+      }
+    }
+    $buildVersion = & .\.github\scripts\Get-BuildVersion.ps1 @parameters
+    $version = $buildVersion.Version
+    $fullVersion = $buildVersion.FullVersion
+    foreach ($file in @('Rapr\Properties\AssemblyInfo.cs', 'RaprTests\AssemblyInfo.cs')) {
+      $content = Get-Content $file -Raw
+      $content = $content -replace 'AssemblyVersion\(".*?"\)', "AssemblyVersion(`"$version`")"
+      $content = $content -replace 'AssemblyFileVersion\(".*?"\)', "AssemblyFileVersion(`"$version`")"
+      $content = $content -replace 'AssemblyInformationalVersion\(".*?"\)', "AssemblyInformationalVersion(`"$fullVersion`")"
+      Set-Content $file $content
+    }
+    try {
+      Update-AppveyorBuild -Version $fullVersion
+    } catch {
+      if ($_.Exception.Message -notlike '*Build with specified version already exists*') { throw }
+      $displayVersion = "$fullVersion-appveyor.$env:APPVEYOR_BUILD_ID"
+      Write-Warning "AppVeyor version $fullVersion already exists; using $displayVersion for the build display only"
+      Update-AppveyorBuild -Version $displayVersion
+    }
+    Set-AppveyorBuildVariable -Name BUILD_FULL_VERSION -Value $fullVersion
 before_build:
-- ps: >-
-    $existingTag = git tag --points-at HEAD | Where-Object { $_ -match '^v\d+\.\d+\.\d+$' } | Select-Object -First 1;
-    if ($existingTag) {
-      $version = $existingTag -replace '^v', ''
-    } else {
-      $latest = git describe --tags --match "v*" --abbrev=0;
-      if ($latest -match '^v(\d+\.\d+)\.(\d+)$') {
-        $version = "$($Matches[1]).$([int]$Matches[2] + 1)"
-      } else { throw "No valid version tag found" }
-    };
-    Update-AppveyorBuild -Version $version
 - cmd: nuget restore
 build:
   parallel: true
   verbosity: normal
 artifacts:
 - path: Rapr\bin\$(configuration)
-  name: DriverStoreExplorer.v$(appveyor_build_version)
+  name: DriverStoreExplorer-v$(BUILD_FULL_VERSION)-unsigned
