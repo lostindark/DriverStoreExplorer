@@ -22,10 +22,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Test build version calculation
-        shell: pwsh
-        run: .\.github\scripts\Test-BuildVersion.ps1
-
       - name: Compute version and tag
         id: version
         shell: pwsh

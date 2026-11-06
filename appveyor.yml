@@ -8,7 +8,6 @@ platform: Any CPU
 install:
 - ps: |
     $ErrorActionPreference = 'Stop'
-    & .\.github\scripts\Test-BuildVersion.ps1
     git fetch origin --tags
     if ($LASTEXITCODE -ne 0) { throw 'Failed to fetch version tags' }
     $parameters = @{}

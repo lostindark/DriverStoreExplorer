@@ -1,0 +1,37 @@
+name: Versioning tests
+
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/scripts/Get-BuildVersion.ps1'
+      - '.github/scripts/Test-BuildVersion.ps1'
+      - '.github/workflows/ci.yml'
+      - '.github/workflows/version-tests.yml'
+      - 'appveyor.yml'
+  pull_request:
+    branches: [master]
+    paths:
+      - '.github/scripts/Get-BuildVersion.ps1'
+      - '.github/scripts/Test-BuildVersion.ps1'
+      - '.github/workflows/ci.yml'
+      - '.github/workflows/version-tests.yml'
+      - 'appveyor.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Test with PowerShell
+        shell: pwsh
+        run: .\.github\scripts\Test-BuildVersion.ps1
+
+      - name: Test with Windows PowerShell
+        shell: powershell
+        run: .\.github\scripts\Test-BuildVersion.ps1
