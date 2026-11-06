@@ -606,4 +606,19 @@ Windowsインストールまたはイメージのルートディレクトリ（W
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>すべて選択</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+クリックで開く</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>テーマ</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Windows の設定を使用する</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>ライト</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>ダーク</value>
+  </data>
 </root>

@@ -606,4 +606,19 @@ Vil du fortsette å velge drivere?</value>
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Velg alle</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+klikk for å åpne</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Bruk Windows-innstillingen</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Lyst</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Mørkt</value>
+  </data>
 </root>

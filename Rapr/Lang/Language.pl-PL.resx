@@ -606,4 +606,19 @@ Czy kontynuować wybieranie sterowników?</value>
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Zaznacz wszystkie</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+kliknięcie, aby otworzyć</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Motyw</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Użyj ustawienia systemu Windows</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Jasny</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Ciemny</value>
+  </data>
 </root>

@@ -569,4 +569,19 @@ https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE</value>
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>تحديد الكل</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+نقر للفتح</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>النسق</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>استخدام إعداد Windows</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>فاتح</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>داكن</value>
+  </data>
 </root>

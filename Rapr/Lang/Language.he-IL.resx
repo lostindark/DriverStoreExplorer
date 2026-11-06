@@ -580,4 +580,19 @@
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>בחירה בהכל</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+לחיצה לפתיחה</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>ערכת נושא</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>שימוש בהגדרת Windows</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>בהיר</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>כהה</value>
+  </data>
 </root>

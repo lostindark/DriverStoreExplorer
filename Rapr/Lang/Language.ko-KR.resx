@@ -609,4 +609,16 @@ Windows 폴더 자체가 아닌 Windows 설치 또는 이미지의 루트 디렉
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>모두 선택</value>
   </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>테마</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Windows 설정 사용</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>밝게</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>어둡게</value>
+  </data>
 </root>

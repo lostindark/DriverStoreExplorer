@@ -606,4 +606,19 @@ Credits:
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Επιλογή όλων</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+κλικ για άνοιγμα</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Θέμα</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Χρήση της ρύθμισης των Windows</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Φωτεινό</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Σκοτεινό</value>
+  </data>
 </root>

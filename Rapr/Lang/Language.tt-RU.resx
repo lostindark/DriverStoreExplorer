@@ -606,4 +606,19 @@
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Барлыкны сайлау</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ачу өчен Ctrl+чиртү</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Windows көйләвен куллану</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Ачык</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Караңгы</value>
+  </data>
 </root>

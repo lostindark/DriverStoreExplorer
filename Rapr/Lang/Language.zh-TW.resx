@@ -605,4 +605,19 @@
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>全選</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>按住 Ctrl 並按一下以開啟</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>佈景主題</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>使用 Windows 設定</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>淺色</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>深色</value>
+  </data>
 </root>

@@ -606,4 +606,19 @@ Folytatja az illesztőprogramok kiválasztását?</value>
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Összes kijelölése</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+kattintás a megnyitáshoz</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Téma</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>A Windows beállításának használata</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Világos</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Sötét</value>
+  </data>
 </root>

@@ -609,4 +609,16 @@ Continuer la sélection des pilotes ?</value>
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Tout sélectionner</value>
   </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Thème</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Utiliser le paramètre Windows</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Clair</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Sombre</value>
+  </data>
 </root>

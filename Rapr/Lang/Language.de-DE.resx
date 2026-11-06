@@ -609,4 +609,16 @@ Mit der Auswahl der Treiber fortfahren?</value>
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Alle auswählen</value>
   </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Design</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Windows-Einstellung verwenden</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Hell</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Dunkel</value>
+  </data>
 </root>

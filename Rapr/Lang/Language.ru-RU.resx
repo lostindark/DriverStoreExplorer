@@ -606,4 +606,19 @@
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Выделить все</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+щелчок, чтобы открыть</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Использовать настройку Windows</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Светлая</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Тёмная</value>
+  </data>
 </root>

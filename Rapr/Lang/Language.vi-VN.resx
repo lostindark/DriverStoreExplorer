@@ -611,4 +611,19 @@ Tiếp tục chọn driver?</value>
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Chọn tất cả</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+nhấp để mở</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Chủ đề</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Sử dụng cài đặt Windows</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Sáng</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Tối</value>
+  </data>
 </root>

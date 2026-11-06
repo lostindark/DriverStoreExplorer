@@ -570,4 +570,19 @@ Continuar selecionando drivers?</value>
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Selecionar todos</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+clique para abrir</value>
+  </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Usar a configuração do Windows</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Claro</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Escuro</value>
+  </data>
 </root>
