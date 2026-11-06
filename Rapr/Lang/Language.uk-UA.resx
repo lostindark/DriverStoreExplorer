@@ -609,4 +609,16 @@
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Вибрати всі</value>
   </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Тема</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Параметри Windows</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Світла</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Темна</value>
+  </data>
 </root>
