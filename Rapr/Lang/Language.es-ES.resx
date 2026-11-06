@@ -609,4 +609,16 @@ Los controladores críticos de arranque no se seleccionan salvo que los incluya 
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Seleccionar todo</value>
   </data>
+  <data name="Menu_Options_Theme" xml:space="preserve">
+    <value>Tema</value>
+  </data>
+  <data name="Theme_System" xml:space="preserve">
+    <value>Usar la configuración de Windows</value>
+  </data>
+  <data name="Theme_Light" xml:space="preserve">
+    <value>Claro</value>
+  </data>
+  <data name="Theme_Dark" xml:space="preserve">
+    <value>Oscuro</value>
+  </data>
 </root>
