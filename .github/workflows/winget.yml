@@ -13,6 +13,8 @@ on:
 jobs:
   publish:
     runs-on: windows-latest
+    permissions:
+      contents: read
     steps:
       - name: Publish lostindark.DriverStoreExplorer to WinGet
         env:
