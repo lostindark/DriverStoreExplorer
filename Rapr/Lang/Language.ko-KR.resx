@@ -616,9 +616,9 @@ Windows 폴더 자체가 아닌 Windows 설치 또는 이미지의 루트 디렉
     <value>Windows 설정 사용</value>
   </data>
   <data name="Theme_Light" xml:space="preserve">
-    <value>밝게</value>
+    <value>밝은</value>
   </data>
   <data name="Theme_Dark" xml:space="preserve">
-    <value>어둡게</value>
+    <value>어두운</value>
   </data>
 </root>
