@@ -599,7 +599,6 @@
             this.lstDriverStoreEntries.Name = "lstDriverStoreEntries";
             this.lstDriverStoreEntries.ShowItemToolTips = true;
             this.lstDriverStoreEntries.Size = new System.Drawing.Size(844, 673);
-            this.lstDriverStoreEntries.SortGroupItemsByPrimaryColumn = false;
             this.lstDriverStoreEntries.TabIndex = 0;
             this.lstDriverStoreEntries.UseCellFormatEvents = true;
             this.lstDriverStoreEntries.UseCompatibleStateImageBehavior = false;
