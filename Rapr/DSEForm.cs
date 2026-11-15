@@ -49,6 +49,7 @@ namespace Rapr
         private Status currentStatus = Status.Normal;
         private bool statusRequiresReview;
         private ToolStripMenuItem themeMenu;
+        private ToolStripMenuItem removeGhostDevicesToolStripMenuItem;
 
         private static readonly IUpdateManager UpdateManager = CreateUpdateManager();
 
@@ -243,6 +244,7 @@ namespace Rapr
             this.buttonSelectUnusedDrivers.Enabled = driverStore.SupportDeviceNameColumn;
             this.ctxMenuSelectOldDrivers.Enabled = driverStore.SupportDeviceNameColumn;
             this.ctxMenuSelectUnusedDrivers.Enabled = driverStore.SupportDeviceNameColumn;
+            this.removeGhostDevicesToolStripMenuItem.Enabled = driverStore.Type == DriverStoreType.Online;
 
             switch (driverStore.Type)
             {
@@ -415,6 +417,12 @@ namespace Rapr
             }
 
             this.optionsStripMenuItem.DropDownItems.Add(this.themeMenu);
+
+            this.removeGhostDevicesToolStripMenuItem = new ToolStripMenuItem(Language.ResourceManager.GetString("Menu_File_Remove_Ghost_Devices", Language.Culture));
+            this.removeGhostDevicesToolStripMenuItem.Click += this.RemoveGhostDevicesToolStripMenuItem_Click;
+            this.fileToolStripMenuItem.DropDownItems.Insert(
+                this.fileToolStripMenuItem.DropDownItems.IndexOf(this.toolStripSeparator4),
+                this.removeGhostDevicesToolStripMenuItem);
         }
 
         private void ApplyTheme(IThemeColors palette)
@@ -1404,6 +1412,96 @@ namespace Rapr
             ExportDriverList(this.lstDriverStoreEntries.Objects);
         }
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1031:Do not catch general exception types", Justification = "Any failure is logged and shown to the user instead of ending the app.")]
+        private async void RemoveGhostDevicesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (this.driverStore.Type != DriverStoreType.Online)
+            {
+                return;
+            }
+
+            List<GhostDevice> ghostDevices;
+            try
+            {
+                this.StartOperation();
+                this.ShowStatus(Status.Normal, Language.ResourceManager.GetString("Status_Scanning_Ghost_Devices", Language.Culture));
+                ghostDevices = await Task.Run(() => ConfigManager.GetGhostDevices()).ConfigureAwait(true);
+            }
+            catch (Exception ex)
+            {
+                this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
+                return;
+            }
+            finally
+            {
+                this.EndOperation();
+            }
+
+            if (ghostDevices.Count == 0)
+            {
+                this.ShowStatus(Status.Normal, Language.ResourceManager.GetString("Message_No_Ghost_Devices", Language.Culture), usePopup: true);
+                return;
+            }
+
+            List<GhostDevice> selected;
+            using (var form = new GhostDevicesForm(ghostDevices) { RightToLeft = this.RightToLeft, RightToLeftLayout = this.RightToLeftLayout })
+            {
+                if (form.ShowDialog(this) != DialogResult.OK)
+                {
+                    this.UpdateCheckedItemSize();
+                    return;
+                }
+
+                selected = form.SelectedDevices;
+            }
+
+            if (selected.Count == 0
+                || DialogResult.OK != this.ShowMessageBox(
+                    string.Format(Language.ResourceManager.GetString("Message_Confirm_Remove_Ghost_Devices", Language.Culture), selected.Count),
+                    Language.Message_Title_Warning,
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Warning,
+                    MessageBoxDefaultButton.Button2))
+            {
+                this.UpdateCheckedItemSize();
+                return;
+            }
+
+            try
+            {
+                this.StartOperation();
+                this.ShowStatus(Status.Normal, Language.ResourceManager.GetString("Status_Removing_Ghost_Devices", Language.Culture));
+                var failed = await Task.Run(() => selected.Where(device => !ConfigManager.TryRemoveGhostDevice(device.InstanceId)).ToList()).ConfigureAwait(true);
+
+                if (failed.Count == 0)
+                {
+                    this.ShowStatus(
+                        Status.Success,
+                        string.Format(Language.ResourceManager.GetString("Message_Remove_Ghost_Devices_Success", Language.Culture), selected.Count),
+                        usePopup: true);
+                }
+                else
+                {
+                    string message = string.Format(Language.ResourceManager.GetString("Message_Remove_Ghost_Devices_Error", Language.Culture), failed.Count, selected.Count);
+                    this.ShowStatus(
+                        Status.Error,
+                        $"{message}{Environment.NewLine}{string.Join(Environment.NewLine, failed)}",
+                        usePopup: true);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.ShowStatus(Status.Error, ex.Message, ex.ToString(), true);
+            }
+            finally
+            {
+                this.EndOperation();
+            }
+
+            // Packages that only served the removed devices now show up as unused.
+            await this.PopulateUIWithDriverStoreEntries().ConfigureAwait(true);
+        }
+
         private void RunAsAdminToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DSEFormHelper.RunAsAdministrator();
@@ -1691,6 +1789,7 @@ namespace Rapr
             this.buttonSelectUnusedDrivers.Enabled = false;
             this.buttonExportAllDrivers.Enabled = false;
             this.chooseDriverStoreToolStripMenuItem.Enabled = false;
+            this.removeGhostDevicesToolStripMenuItem.Enabled = false;
             this.exportAllDriverListToolStripMenuItem.Enabled = false;
             this.languageToolStripMenuItem.Enabled = false;
             this.optionsStripMenuItem.Enabled = false;
@@ -1713,6 +1812,7 @@ namespace Rapr
             this.buttonSelectUnusedDrivers.Enabled = this.driverStore.SupportDeviceNameColumn;
             this.buttonExportAllDrivers.Enabled = this.driverStore.SupportExportAllDrivers && this.lstDriverStoreEntries.Objects != null;
             this.chooseDriverStoreToolStripMenuItem.Enabled = true;
+            this.removeGhostDevicesToolStripMenuItem.Enabled = this.driverStore.Type == DriverStoreType.Online;
             this.exportAllDriverListToolStripMenuItem.Enabled = this.lstDriverStoreEntries.Objects != null;
             this.languageToolStripMenuItem.Enabled = true;
             this.optionsStripMenuItem.Enabled = true;
