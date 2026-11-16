@@ -99,18 +99,35 @@ namespace Rapr.Utils
         /// </summary>
         public static bool TryRemoveGhostDevice(string deviceId)
         {
-            uint devInst = 0;
-            var result = NativeMethods.CM_Locate_DevNode(ref devInst, deviceId, CM_LOCATE_DEVNODE_FLAG.CM_LOCATE_DEVNODE_PHANTOM);
+            return TryRemoveGhostDevice(
+                deviceId,
+                id =>
+                {
+                    uint devInst = 0;
+                    var result = NativeMethods.CM_Locate_DevNode(ref devInst, id, CM_LOCATE_DEVNODE_FLAG.CM_LOCATE_DEVNODE_PHANTOM);
+                    return (result, devInst);
+                },
+                devInst => NativeMethods.CM_Get_DevNode_Status(out _, out _, devInst, 0),
+                devInst => NativeMethods.CM_Uninstall_DevNode(devInst, 0));
+        }
+
+        private static bool TryRemoveGhostDevice(
+            string deviceId,
+            Func<string, (ConfigManagerResult Result, uint DevInst)> locate,
+            Func<uint, ConfigManagerResult> getStatus,
+            Func<uint, ConfigManagerResult> uninstall)
+        {
+            var (result, devInst) = locate(deviceId);
             if (result == ConfigManagerResult.Success)
             {
                 // Check again: the device may have been connected since the scan.
-                if (!GhostDevice.IsGhost(IsDevicePresent(devInst)))
+                if (!GhostDevice.IsGhost(PresenceFromStatus(getStatus(devInst))))
                 {
                     Trace.TraceWarning($"Skipped ghost device {deviceId}: it is present now.");
                     return false;
                 }
 
-                result = NativeMethods.CM_Uninstall_DevNode(devInst, 0);
+                result = uninstall(devInst);
             }
 
             if (result != ConfigManagerResult.Success)

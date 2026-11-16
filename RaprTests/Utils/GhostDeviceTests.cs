@@ -15,6 +15,59 @@ namespace Rapr.Tests.Utils
                 .GetMethod("PresenceFromStatus", BindingFlags.Static | BindingFlags.NonPublic)
                 .CreateDelegate(typeof(Func<ConfigManager.ConfigManagerResult, bool?>));
 
+        private delegate bool RemoveGhostDevice(
+            string deviceId,
+            Func<string, (ConfigManager.ConfigManagerResult Result, uint DevInst)> locate,
+            Func<uint, ConfigManager.ConfigManagerResult> getStatus,
+            Func<uint, ConfigManager.ConfigManagerResult> uninstall);
+
+        private static readonly RemoveGhostDevice TryRemove =
+            (RemoveGhostDevice)typeof(ConfigManager)
+                .GetMethod(
+                    "TryRemoveGhostDevice",
+                    BindingFlags.Static | BindingFlags.NonPublic,
+                    null,
+                    new[]
+                    {
+                        typeof(string),
+                        typeof(Func<string, (ConfigManager.ConfigManagerResult Result, uint DevInst)>),
+                        typeof(Func<uint, ConfigManager.ConfigManagerResult>),
+                        typeof(Func<uint, ConfigManager.ConfigManagerResult>),
+                    },
+                    null)
+                .CreateDelegate(typeof(RemoveGhostDevice));
+
+        [TestMethod]
+        [DataRow(ConfigManager.ConfigManagerResult.Success, ConfigManager.ConfigManagerResult.NoSuchDevnode, ConfigManager.ConfigManagerResult.Success, true, true)]
+        [DataRow(ConfigManager.ConfigManagerResult.Success, ConfigManager.ConfigManagerResult.NoSuchDevnode, ConfigManager.ConfigManagerResult.RemoveVetoed, true, false)]
+        [DataRow(ConfigManager.ConfigManagerResult.Success, ConfigManager.ConfigManagerResult.Success, ConfigManager.ConfigManagerResult.Success, false, false)]
+        [DataRow(ConfigManager.ConfigManagerResult.Success, ConfigManager.ConfigManagerResult.AccessDenied, ConfigManager.ConfigManagerResult.Success, false, false)]
+        [DataRow(ConfigManager.ConfigManagerResult.NoSuchDevnode, ConfigManager.ConfigManagerResult.NoSuchDevnode, ConfigManager.ConfigManagerResult.Success, false, false)]
+        [DataRow(ConfigManager.ConfigManagerResult.InvalidDeviceId, ConfigManager.ConfigManagerResult.NoSuchDevnode, ConfigManager.ConfigManagerResult.Success, false, false)]
+        public void OnlyDevicesStillAbsentAreUninstalled(
+            ConfigManager.ConfigManagerResult locateResult,
+            ConfigManager.ConfigManagerResult statusResult,
+            ConfigManager.ConfigManagerResult uninstallResult,
+            bool expectUninstall,
+            bool expectedResult)
+        {
+            const uint devInst = 42;
+            uint? uninstalled = null;
+
+            bool result = TryRemove(
+                @"USB\VID_0781&PID_5581\1",
+                id => (locateResult, devInst),
+                inst => statusResult,
+                inst =>
+                {
+                    uninstalled = inst;
+                    return uninstallResult;
+                });
+
+            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(expectUninstall ? devInst : (uint?)null, uninstalled);
+        }
+
         [TestMethod]
         [DataRow(ConfigManager.ConfigManagerResult.NoSuchDevnode, true)]
         [DataRow(ConfigManager.ConfigManagerResult.Success, false)]
