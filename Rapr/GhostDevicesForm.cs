@@ -1,8 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
+
+using BrightIdeasSoftware;
 
 using Rapr.Lang;
 using Rapr.Utils;
@@ -15,11 +18,14 @@ namespace Rapr
     /// </summary>
     public class GhostDevicesForm : Form
     {
-        private readonly ListView listView;
+        // ObjectListView, not ListView: the shared theme only paints its header, scrollbars and checkboxes dark.
+        private readonly ObjectListView listView;
         private readonly Button buttonRemove;
         private readonly CheckBox checkBoxHideRecent;
-        private readonly NumericUpDown numericRecentDays;
-        private readonly List<ListViewItem> allItems;
+        private readonly TextBox textRecentDays;
+        private int recentDays = 30;
+        // Check state lives here so a device keeps it while the filter hides it.
+        private readonly HashSet<GhostDevice> checkedDevices;
 
         public GhostDevicesForm(IEnumerable<GhostDevice> devices)
         {
@@ -48,35 +54,40 @@ namespace Rapr
                 Text = GetString("GhostDevices_Description"),
             };
 
-            this.listView = new ListView
+            this.checkedDevices = new HashSet<GhostDevice>(devices.Where(device => device.SelectedByDefault));
+            this.listView = new ObjectListView
             {
                 Dock = DockStyle.Fill,
                 View = View.Details,
                 CheckBoxes = true,
                 FullRowSelect = true,
+                GridLines = true,
                 HideSelection = false,
+                ShowGroups = false,
+                UseFiltering = true,
+                // The dialog only opens when there are ghost devices, so an empty list means the filter hid them all.
+                EmptyListMsg = GetString("GhostDevices_AllHidden"),
+                CheckStateGetter = model => this.checkedDevices.Contains((GhostDevice)model) ? CheckState.Checked : CheckState.Unchecked,
+                CheckStatePutter = (model, state) =>
+                {
+                    this.SetChecked((GhostDevice)model, state == CheckState.Checked);
+                    return state;
+                },
             };
-            this.listView.Columns.Add(GetString("GhostDevices_Column_Name"));
-            this.listView.Columns.Add(GetString("GhostDevices_Column_Class"));
-            this.listView.Columns.Add(GetString("GhostDevices_Column_LastUsed"));
-            this.listView.Columns.Add(GetString("GhostDevices_Column_InstanceId"));
-
-            // Items are built once so a device keeps its check state while the filter hides it.
-            this.allItems = devices
-                .OrderBy(d => d.ClassName)
-                .ThenBy(d => d.Name)
-                .Select(device => new ListViewItem(new[]
+            this.listView.ItemChecked += (sender, e) => this.UpdateRemoveButton();
+            this.listView.AllColumns.AddRange(new[]
+            {
+                new OLVColumn(GetString("GhostDevices_Column_Name"), null) { AspectGetter = model => ((GhostDevice)model).Name ?? ((GhostDevice)model).InstanceId },
+                new OLVColumn(GetString("GhostDevices_Column_Class"), nameof(GhostDevice.ClassName)),
+                new OLVColumn(GetString("GhostDevices_Column_LastUsed"), null)
                 {
-                    device.Name ?? device.InstanceId,
-                    device.ClassName,
-                    device.LastUsed?.ToLocalTime().ToString("g") ?? string.Empty,
-                    device.InstanceId,
-                })
-                {
-                    Tag = device,
-                    Checked = device.SelectedByDefault,
-                })
-                .ToList();
+                    AspectGetter = model => ((GhostDevice)model).LastUsed?.ToLocalTime(),
+                    AspectToStringFormat = Language.Date_Format,
+                },
+                new OLVColumn(GetString("GhostDevices_Column_InstanceId"), nameof(GhostDevice.InstanceId)),
+            });
+            this.listView.RebuildColumns();
+            this.listView.SetObjects(devices.OrderBy(d => d.ClassName).ThenBy(d => d.Name).ToList());
 
             this.checkBoxHideRecent = new CheckBox
             {
@@ -85,24 +96,48 @@ namespace Rapr
                 Checked = true,
                 Text = GetString("GhostDevices_HideRecent"),
             };
-            this.numericRecentDays = new NumericUpDown
+            // A plain text box: the shared theme cannot paint NumericUpDown or ComboBox buttons dark.
+            this.textRecentDays = new TextBox
             {
                 Anchor = AnchorStyles.Left,
-                Minimum = 1,
-                Maximum = 3650,
-                Value = 30,
-                Width = 70,
+                MaxLength = 4,
+                Width = 50,
+                Text = this.recentDays.ToString(CultureInfo.CurrentCulture),
+            };
+            this.textRecentDays.KeyPress += (sender, e) => e.Handled = !char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar);
+            this.textRecentDays.TextChanged += (sender, e) =>
+            {
+                // An empty or zero value (mid-edit, or pasted text) keeps the last valid number.
+                if (int.TryParse(this.textRecentDays.Text, NumberStyles.None, CultureInfo.CurrentCulture, out int days) && days > 0)
+                {
+                    this.recentDays = days;
+                    this.ApplyFilter();
+                }
             };
             this.checkBoxHideRecent.CheckedChanged += (sender, e) => this.ApplyFilter();
-            this.numericRecentDays.ValueChanged += (sender, e) => this.ApplyFilter();
 
             var filter = new FlowLayoutPanel { AutoSize = true, Anchor = AnchorStyles.Left, WrapContents = false, Margin = new Padding(0, 0, 0, 4) };
             filter.Controls.Add(this.checkBoxHideRecent);
-            filter.Controls.Add(this.numericRecentDays);
+            filter.Controls.Add(this.textRecentDays);
 
-            // Column widths need the window handle, so size them once the form is loaded.
-            this.Load += (sender, e) => this.listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
-            this.listView.ItemChecked += (sender, e) => this.buttonRemove.Enabled = this.listView.CheckedItems.Count > 0;
+            // Column widths need the window handle, so size them once the form is loaded,
+            // over every device so a column is not cut off when the filter is turned off.
+            this.Load += (sender, e) =>
+            {
+                this.listView.ModelFilter = null;
+                this.listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
+                for (int i = 0; i < this.listView.Columns.Count - 1; i++)
+                {
+                    ColumnHeader column = this.listView.Columns[i];
+                    int contentWidth = column.Width;
+                    // Wide enough for the header and its sort arrow, but a name that falls back to
+                    // a long instance ID must not push the other columns out of view.
+                    this.listView.AutoResizeColumn(i, ColumnHeaderAutoResizeStyle.HeaderSize);
+                    column.Width = Math.Min(Math.Max(contentWidth, column.Width + SystemInformation.SmallIconSize.Width), this.listView.ClientSize.Width / 3);
+                }
+
+                this.ApplyFilter();
+            };
 
             this.buttonRemove = new Button
             {
@@ -130,23 +165,52 @@ namespace Rapr
 
         private void ApplyFilter()
         {
+            this.ReadVisibleChecks();
             bool hideRecent = this.checkBoxHideRecent.Checked;
-            int days = (int)this.numericRecentDays.Value;
+            int days = this.recentDays;
             DateTime nowUtc = DateTime.UtcNow;
-            this.numericRecentDays.Enabled = hideRecent;
+            this.textRecentDays.Enabled = hideRecent;
 
-            this.listView.BeginUpdate();
-            this.listView.Items.Clear();
-            this.listView.Items.AddRange(this.allItems
-                .Where(item => !hideRecent || !GhostDevice.IsUsedWithin(((GhostDevice)item.Tag).LastUsed, nowUtc, days))
-                .ToArray());
-            this.listView.EndUpdate();
-            this.buttonRemove.Enabled = this.listView.CheckedItems.Count > 0;
+            this.listView.ModelFilter = hideRecent
+                ? new ModelFilter(model => !GhostDevice.IsUsedWithin(((GhostDevice)model).LastUsed, nowUtc, days))
+                : null;
+            this.UpdateRemoveButton();
         }
 
-        // Only visible items count: a device hidden by the filter is never removed.
+        private void UpdateRemoveButton()
+        {
+            // ItemChecked also fires while the list is filled, before the button exists.
+            if (this.buttonRemove != null)
+            {
+                this.buttonRemove.Enabled = this.SelectedDevices.Count > 0;
+            }
+        }
+
+        private void SetChecked(GhostDevice device, bool isChecked)
+        {
+            if (isChecked)
+            {
+                this.checkedDevices.Add(device);
+            }
+            else
+            {
+                this.checkedDevices.Remove(device);
+            }
+        }
+
+        // Accessibility tools (UI Automation) toggle a row without going through CheckStatePutter,
+        // so the rows on screen are the source of truth for what the user selected.
+        private void ReadVisibleChecks()
+        {
+            foreach (OLVListItem item in this.listView.Items)
+            {
+                this.SetChecked((GhostDevice)item.RowObject, item.Checked);
+            }
+        }
+
+        // Exactly the rows shown checked: a device hidden by the filter is never removed.
         public List<GhostDevice> SelectedDevices =>
-            this.listView.CheckedItems.Cast<ListViewItem>().Select(item => (GhostDevice)item.Tag).ToList();
+            this.listView.Items.Cast<OLVListItem>().Where(item => item.Checked).Select(item => (GhostDevice)item.RowObject).ToList();
 
         private static string GetString(string name) => Language.ResourceManager.GetString(name, Language.Culture) ?? name;
     }

@@ -645,6 +645,9 @@ Continue selecting drivers?</value>
   <data name="GhostDevices_HideRecent" xml:space="preserve">
     <value>&amp;Hide devices used in the last (days):</value>
   </data>
+  <data name="GhostDevices_AllHidden" xml:space="preserve">
+    <value>All ghost devices were used recently. Turn off the filter above to show them.</value>
+  </data>
   <data name="GhostDevices_Remove" xml:space="preserve">
     <value>&amp;Remove</value>
   </data>
