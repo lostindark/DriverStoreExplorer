@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -16,6 +17,9 @@ namespace Rapr
     {
         private readonly ListView listView;
         private readonly Button buttonRemove;
+        private readonly CheckBox checkBoxHideRecent;
+        private readonly NumericUpDown numericRecentDays;
+        private readonly List<ListViewItem> allItems;
 
         public GhostDevicesForm(IEnumerable<GhostDevice> devices)
         {
@@ -28,9 +32,10 @@ namespace Rapr
             this.ShowInTaskbar = false;
             this.ShowIcon = false;
 
-            var layout = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 3, Padding = new Padding(8) };
+            var layout = new TableLayoutPanel { Dock = DockStyle.Fill, ColumnCount = 1, RowCount = 4, Padding = new Padding(8) };
             // A fixed-width column lets the description wrap and keeps the buttons inside the window.
             layout.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100));
+            layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
             layout.RowStyles.Add(new RowStyle(SizeType.Percent, 100));
             layout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
@@ -53,16 +58,47 @@ namespace Rapr
             };
             this.listView.Columns.Add(GetString("GhostDevices_Column_Name"));
             this.listView.Columns.Add(GetString("GhostDevices_Column_Class"));
+            this.listView.Columns.Add(GetString("GhostDevices_Column_LastUsed"));
             this.listView.Columns.Add(GetString("GhostDevices_Column_InstanceId"));
 
-            foreach (var device in devices.OrderBy(d => d.ClassName).ThenBy(d => d.Name))
-            {
-                this.listView.Items.Add(new ListViewItem(new[] { device.Name ?? device.InstanceId, device.ClassName, device.InstanceId })
+            // Items are built once so a device keeps its check state while the filter hides it.
+            this.allItems = devices
+                .OrderBy(d => d.ClassName)
+                .ThenBy(d => d.Name)
+                .Select(device => new ListViewItem(new[]
+                {
+                    device.Name ?? device.InstanceId,
+                    device.ClassName,
+                    device.LastUsed?.ToLocalTime().ToString("g") ?? string.Empty,
+                    device.InstanceId,
+                })
                 {
                     Tag = device,
                     Checked = device.SelectedByDefault,
-                });
-            }
+                })
+                .ToList();
+
+            this.checkBoxHideRecent = new CheckBox
+            {
+                AutoSize = true,
+                Anchor = AnchorStyles.Left,
+                Checked = true,
+                Text = GetString("GhostDevices_HideRecent"),
+            };
+            this.numericRecentDays = new NumericUpDown
+            {
+                Anchor = AnchorStyles.Left,
+                Minimum = 1,
+                Maximum = 3650,
+                Value = 30,
+                Width = 70,
+            };
+            this.checkBoxHideRecent.CheckedChanged += (sender, e) => this.ApplyFilter();
+            this.numericRecentDays.ValueChanged += (sender, e) => this.ApplyFilter();
+
+            var filter = new FlowLayoutPanel { AutoSize = true, Anchor = AnchorStyles.Left, WrapContents = false, Margin = new Padding(0, 0, 0, 4) };
+            filter.Controls.Add(this.checkBoxHideRecent);
+            filter.Controls.Add(this.numericRecentDays);
 
             // Column widths need the window handle, so size them once the form is loaded.
             this.Load += (sender, e) => this.listView.AutoResizeColumns(ColumnHeaderAutoResizeStyle.ColumnContent);
@@ -73,7 +109,6 @@ namespace Rapr
                 AutoSize = true,
                 DialogResult = DialogResult.OK,
                 Text = GetString("GhostDevices_Remove"),
-                Enabled = this.listView.CheckedItems.Count > 0,
             };
             var buttonCancel = new Button { AutoSize = true, DialogResult = DialogResult.Cancel, Text = Language.Button_Cancel };
 
@@ -82,15 +117,34 @@ namespace Rapr
             buttons.Controls.Add(buttonCancel);
 
             layout.Controls.Add(description, 0, 0);
-            layout.Controls.Add(this.listView, 0, 1);
-            layout.Controls.Add(buttons, 0, 2);
+            layout.Controls.Add(filter, 0, 1);
+            layout.Controls.Add(this.listView, 0, 2);
+            layout.Controls.Add(buttons, 0, 3);
             this.Controls.Add(layout);
 
             this.AcceptButton = this.buttonRemove;
             this.CancelButton = buttonCancel;
+            this.ApplyFilter();
             DriverStoreTheme.Attach(this);
         }
 
+        private void ApplyFilter()
+        {
+            bool hideRecent = this.checkBoxHideRecent.Checked;
+            int days = (int)this.numericRecentDays.Value;
+            DateTime nowUtc = DateTime.UtcNow;
+            this.numericRecentDays.Enabled = hideRecent;
+
+            this.listView.BeginUpdate();
+            this.listView.Items.Clear();
+            this.listView.Items.AddRange(this.allItems
+                .Where(item => !hideRecent || !GhostDevice.IsUsedWithin(((GhostDevice)item.Tag).LastUsed, nowUtc, days))
+                .ToArray());
+            this.listView.EndUpdate();
+            this.buttonRemove.Enabled = this.listView.CheckedItems.Count > 0;
+        }
+
+        // Only visible items count: a device hidden by the filter is never removed.
         public List<GhostDevice> SelectedDevices =>
             this.listView.CheckedItems.Cast<ListViewItem>().Select(item => (GhostDevice)item.Tag).ToList();
 

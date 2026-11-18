@@ -639,6 +639,12 @@ Continue selecting drivers?</value>
   <data name="GhostDevices_Column_InstanceId" xml:space="preserve">
     <value>Instance ID</value>
   </data>
+  <data name="GhostDevices_Column_LastUsed" xml:space="preserve">
+    <value>Last Used</value>
+  </data>
+  <data name="GhostDevices_HideRecent" xml:space="preserve">
+    <value>&amp;Hide devices used in the last (days):</value>
+  </data>
   <data name="GhostDevices_Remove" xml:space="preserve">
     <value>&amp;Remove</value>
   </data>

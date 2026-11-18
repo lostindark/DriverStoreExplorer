@@ -88,7 +88,10 @@ namespace Rapr.Utils
                     deviceId,
                     GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_FriendlyName)
                         ?? GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DeviceDesc),
-                    GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_Class)));
+                    GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_Class),
+                    GhostDevice.LatestOf(
+                        GetDevNodeProperty<DateTime?>(devInst, DeviceHelper.DEVPKEY_Device_LastArrivalDate),
+                        GetDevNodeProperty<DateTime?>(devInst, DeviceHelper.DEVPKEY_Device_LastRemovalDate))));
             }
 
             return ghostDevices;
