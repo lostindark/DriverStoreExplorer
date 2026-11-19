@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -36,16 +37,7 @@ namespace Rapr.Utils
         {
             List<DeviceDriverInfo> deviceDriverInfos = new List<DeviceDriverInfo>();
 
-            var deviceIds = GetDeviceIds(
-                () =>
-                {
-                    int length = 0;
-                    var result = NativeMethods.CM_Get_Device_ID_List_Size(ref length, null, CM_GETIDLIST_FILTER.NONE);
-                    return (result, length);
-                },
-                buffer => NativeMethods.CM_Get_Device_ID_List(null, buffer, buffer.Length / sizeof(char), CM_GETIDLIST_FILTER.NONE));
-
-            foreach (var deviceId in deviceIds)
+            foreach (var deviceId in GetAllDeviceIds())
             {
                 uint devInst = 0;
                 var locateResult = NativeMethods.CM_Locate_DevNode(
@@ -74,6 +66,93 @@ namespace Rapr.Utils
             }
 
             return deviceDriverInfos;
+        }
+
+        /// <summary>
+        /// Lists devices that are installed but not connected (non-present devnodes).
+        /// </summary>
+        public static List<GhostDevice> GetGhostDevices()
+        {
+            var ghostDevices = new List<GhostDevice>();
+
+            foreach (var deviceId in GetAllDeviceIds())
+            {
+                uint devInst = 0;
+                if (NativeMethods.CM_Locate_DevNode(ref devInst, deviceId, CM_LOCATE_DEVNODE_FLAG.CM_LOCATE_DEVNODE_PHANTOM) != ConfigManagerResult.Success
+                    || !GhostDevice.IsGhost(IsDevicePresent(devInst)))
+                {
+                    continue;
+                }
+
+                ghostDevices.Add(new GhostDevice(
+                    deviceId,
+                    GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_FriendlyName)
+                        ?? GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_DeviceDesc),
+                    GetDevNodeProperty<string>(devInst, DeviceHelper.DEVPKEY_Device_Class),
+                    GhostDevice.LatestOf(
+                        GetDevNodeProperty<DateTime?>(devInst, DeviceHelper.DEVPKEY_Device_LastArrivalDate),
+                        GetDevNodeProperty<DateTime?>(devInst, DeviceHelper.DEVPKEY_Device_LastRemovalDate))));
+            }
+
+            return ghostDevices;
+        }
+
+        /// <summary>
+        /// Uninstalls a non-present device. Present devices are never touched. Failures are logged and reported as false.
+        /// </summary>
+        public static bool TryRemoveGhostDevice(string deviceId)
+        {
+            return TryRemoveGhostDevice(
+                deviceId,
+                id =>
+                {
+                    uint devInst = 0;
+                    var result = NativeMethods.CM_Locate_DevNode(ref devInst, id, CM_LOCATE_DEVNODE_FLAG.CM_LOCATE_DEVNODE_PHANTOM);
+                    return (result, devInst);
+                },
+                devInst => NativeMethods.CM_Get_DevNode_Status(out _, out _, devInst, 0),
+                devInst => NativeMethods.CM_Uninstall_DevNode(devInst, 0));
+        }
+
+        private static bool TryRemoveGhostDevice(
+            string deviceId,
+            Func<string, (ConfigManagerResult Result, uint DevInst)> locate,
+            Func<uint, ConfigManagerResult> getStatus,
+            Func<uint, ConfigManagerResult> uninstall)
+        {
+            var (result, devInst) = locate(deviceId);
+            if (result == ConfigManagerResult.Success)
+            {
+                // Check again: the device may have been connected since the scan.
+                if (!GhostDevice.IsGhost(PresenceFromStatus(getStatus(devInst))))
+                {
+                    Trace.TraceWarning($"Skipped ghost device {deviceId}: it is present now.");
+                    return false;
+                }
+
+                result = uninstall(devInst);
+            }
+
+            if (result != ConfigManagerResult.Success)
+            {
+                Trace.TraceError($"Failed to remove ghost device {deviceId}: {result}");
+                return false;
+            }
+
+            Trace.TraceInformation($"Removed ghost device {deviceId}");
+            return true;
+        }
+
+        private static string[] GetAllDeviceIds()
+        {
+            return GetDeviceIds(
+                () =>
+                {
+                    int length = 0;
+                    var result = NativeMethods.CM_Get_Device_ID_List_Size(ref length, null, CM_GETIDLIST_FILTER.NONE);
+                    return (result, length);
+                },
+                buffer => NativeMethods.CM_Get_Device_ID_List(null, buffer, buffer.Length / sizeof(char), CM_GETIDLIST_FILTER.NONE));
         }
 
         private static string[] GetDeviceIds(
@@ -110,8 +189,11 @@ namespace Rapr.Utils
 
         private static bool? IsDevicePresent(uint devInst)
         {
-            ConfigManagerResult result = NativeMethods.CM_Get_DevNode_Status(out _, out _, devInst, 0);
+            return PresenceFromStatus(NativeMethods.CM_Get_DevNode_Status(out _, out _, devInst, 0));
+        }
 
+        private static bool? PresenceFromStatus(ConfigManagerResult result)
+        {
             if (result == ConfigManagerResult.Success)
             {
                 return true;
@@ -348,6 +430,9 @@ namespace Rapr.Utils
               out uint problemNumber,
               uint devInst,
               uint ulFlags);
+
+            [DllImport("CfgMgr32.dll", SetLastError = true, CharSet = CharSet.Unicode)]
+            internal static extern ConfigManagerResult CM_Uninstall_DevNode(uint devInst, uint ulFlags);
         }
     }
 }
