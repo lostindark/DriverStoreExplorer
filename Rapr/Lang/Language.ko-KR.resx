@@ -621,4 +621,52 @@ Windows 폴더 자체가 아닌 Windows 설치 또는 이미지의 루트 디렉
   <data name="Theme_Dark" xml:space="preserve">
     <value>어두운</value>
   </data>
+  <data name="Menu_File_Remove_Ghost_Devices" xml:space="preserve">
+    <value>유령 장치 제거(&amp;G)...</value>
+  </data>
+  <data name="GhostDevices_Title" xml:space="preserve">
+    <value>유령 장치 제거</value>
+  </data>
+  <data name="GhostDevices_Description" xml:space="preserve">
+    <value>이 장치들은 설치되어 있지만 연결되어 있지 않습니다. 장치를 제거하면 해당 장치 항목이 삭제되지만; 나중에 장치가 다시 연결되면 Windows가 이를 다시 설치합니다. 소프트웨어로 생성된 장치 (ROOT, SWD, HTREE, ...)는 일부가 숨겨져 있어도 필요하기 때문에 기본적으로 선택되지 않습니다.</value>
+  </data>
+  <data name="GhostDevices_Column_Name" xml:space="preserve">
+    <value>장치</value>
+  </data>
+  <data name="GhostDevices_Column_Class" xml:space="preserve">
+    <value>클래스</value>
+  </data>
+  <data name="GhostDevices_Column_InstanceId" xml:space="preserve">
+    <value>인스턴스 ID</value>
+  </data>
+  <data name="GhostDevices_Column_LastUsed" xml:space="preserve">
+    <value>최근 사용</value>
+  </data>
+  <data name="GhostDevices_HideRecent" xml:space="preserve">
+    <value>최근 (일) 사용한 기기 숨기기(&amp;H):</value>
+  </data>
+  <data name="GhostDevices_AllHidden" xml:space="preserve">
+    <value>모든 유령 장치는 최근에 사용되었습니다. 위의 필터를 끄면 이를 표시합니다.</value>
+  </data>
+  <data name="GhostDevices_Remove" xml:space="preserve">
+    <value>제거(&amp;R)</value>
+  </data>
+  <data name="Status_Scanning_Ghost_Devices" xml:space="preserve">
+    <value>유령 장치를 검색 중...</value>
+  </data>
+  <data name="Status_Removing_Ghost_Devices" xml:space="preserve">
+    <value>유령 장치 제거 중...</value>
+  </data>
+  <data name="Message_No_Ghost_Devices" xml:space="preserve">
+    <value>유령 장치를 찾을 수 없습니다.</value>
+  </data>
+  <data name="Message_Confirm_Remove_Ghost_Devices" xml:space="preserve">
+    <value>{0}개의 유령 장치를 제거하시겠습니까? 이 작업은 되돌릴 수 없습니다.</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Success" xml:space="preserve">
+    <value>{0}개의 유령 장치가 제거되었습니다.</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Error" xml:space="preserve">
+    <value>{0} / {1}개의 유령 장치를 제거할 수 없습니다:</value>
+  </data>
 </root>
