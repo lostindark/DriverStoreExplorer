@@ -621,4 +621,52 @@
   <data name="Theme_Dark" xml:space="preserve">
     <value>Темна</value>
   </data>
+  <data name="Menu_File_Remove_Ghost_Devices" xml:space="preserve">
+    <value>Видалити &amp;примарні пристрої...</value>
+  </data>
+  <data name="GhostDevices_Title" xml:space="preserve">
+    <value>Видалити примарні пристрої</value>
+  </data>
+  <data name="GhostDevices_Description" xml:space="preserve">
+    <value>Ці пристрої встановлені, але не підключені. Видалення пристрою призводить до видалення запису про нього; якщо згодом пристрій буде підключено, Windows встановить його знову. Пристрої, створені програмним шляхом (ROOT, SWD, HTREE тощо), за замовчуванням не вибираються, оскільки деякі з них необхідні навіть тоді, коли вони приховані.</value>
+  </data>
+  <data name="GhostDevices_Column_Name" xml:space="preserve">
+    <value>Пристрій</value>
+  </data>
+  <data name="GhostDevices_Column_Class" xml:space="preserve">
+    <value>Клас</value>
+  </data>
+  <data name="GhostDevices_Column_InstanceId" xml:space="preserve">
+    <value>Ідентифікатор екземпляра</value>
+  </data>
+  <data name="GhostDevices_Column_LastUsed" xml:space="preserve">
+    <value>Востаннє використано</value>
+  </data>
+  <data name="GhostDevices_HideRecent" xml:space="preserve">
+    <value>&amp;Приховати пристрої, використані за останні (дні):</value>
+  </data>
+  <data name="GhostDevices_AllHidden" xml:space="preserve">
+    <value>Усі примарні пристрої нещодавно використовувалися. Вимкніть фільтр вище, щоб відобразити їх.</value>
+  </data>
+  <data name="GhostDevices_Remove" xml:space="preserve">
+    <value>&amp;Видалити</value>
+  </data>
+  <data name="Status_Scanning_Ghost_Devices" xml:space="preserve">
+    <value>Пошук примарних пристроїв...</value>
+  </data>
+  <data name="Status_Removing_Ghost_Devices" xml:space="preserve">
+    <value>Видалення примарних пристроїв...</value>
+  </data>
+  <data name="Message_No_Ghost_Devices" xml:space="preserve">
+    <value>Примарних пристроїв не знайдено.</value>
+  </data>
+  <data name="Message_Confirm_Remove_Ghost_Devices" xml:space="preserve">
+    <value>Видалити {0} примарних пристроїв? Це неможливо скасувати.</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Success" xml:space="preserve">
+    <value>Видалено {0} примарних пристроїв.</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Error" xml:space="preserve">
+    <value>Неможливо видалити {0} з {1} примарних пристроїв:</value>
+  </data>
 </root>
