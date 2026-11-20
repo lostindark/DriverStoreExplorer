@@ -132,6 +132,9 @@
   <data name="Button_Select_Old" xml:space="preserve">
     <value>古いドライバーを選択(&amp;S)</value>
   </data>
+  <data name="Button_Select_Unused" xml:space="preserve">
+    <value>未使用のドライバーを選択(&amp;U)</value>
+  </data>
   <data name="Check_Force_Delete" xml:space="preserve">
     <value>強制削除(&amp;N)</value>
   </data>
@@ -183,6 +186,9 @@
   <data name="Context_Select_Old" xml:space="preserve">
     <value>古いドライバーを選択(&amp;O)</value>
   </data>
+  <data name="Context_Select_Unused" xml:space="preserve">
+    <value>未使用のドライバーを選択(&amp;U)</value>
+  </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
     <value>ドライバーストアから{0}個のパッケージを削除します。</value>
     <comment>{0} - Placeholder for number of packages</comment>
@@ -217,7 +223,7 @@
     <value>{0}個のドライバーパッケージが見つかりました</value>
   </data>
   <data name="Tip_Driver_In_Use" xml:space="preserve">
-    <value>[ヒント: ドライバーが使用中の可能性があります。強制削除を試してください。]</value>
+    <value>[ヒント：ドライバーが使用中の可能性があります。強制削除を試してください。]</value>
   </data>
   <data name="Menu_Help" xml:space="preserve">
     <value>ヘルプ(&amp;H)</value>
@@ -229,13 +235,13 @@
     <value>ファイル(&amp;F)</value>
   </data>
   <data name="Menu_File_Export_All_Driver_List" xml:space="preserve">
-    <value>すべてのドライバーリストをエクスポート(&amp;E)...</value>
+    <value>すべてのドライバーリストをエクスポート(&amp;E)…</value>
   </data>
   <data name="Menu_File_Exit" xml:space="preserve">
     <value>終了(&amp;X)</value>
   </data>
   <data name="Menu_File_View_Logs" xml:space="preserve">
-    <value>ログの表示(&amp;V)...</value>
+    <value>ログの表示(&amp;V)…</value>
   </data>
   <data name="Date_Format" xml:space="preserve">
     <value>{0:d}</value>
@@ -257,19 +263,19 @@
     <value>エラー</value>
   </data>
   <data name="About_Project_Description" xml:space="preserve">
-    <value>最新バージョンの入手とリリースノート:
+    <value>最新バージョンの入手とリリースノート：
     https://github.com/lostindark/DriverStoreExplorer/releases
 
-バグの報告/機能に関する要望:
+バグの報告/機能に関する要望：
     https://github.com/lostindark/DriverStoreExplorer/issues
 
-貢献者:
+貢献者：
     https://github.com/lostindark/DriverStoreExplorer/graphs/contributors
 
-謝辞:
+謝辞：
     https://github.com/lostindark/DriverStoreExplorer?tab=readme-ov-file#credits
 
-ライセンス:
+ライセンス：
     https://github.com/lostindark/DriverStoreExplorer/blob/master/LICENSE
 </value>
   </data>
@@ -280,10 +286,10 @@
     <value>CSVファイル | *.csv</value>
   </data>
   <data name="Status_Adding_Package" xml:space="preserve">
-    <value>ドライバーパッケージを追加しています...</value>
+    <value>ドライバーパッケージを追加しています…</value>
   </data>
   <data name="Status_Deleting_Packages" xml:space="preserve">
-    <value>ドライバーパッケージを削除しています...</value>
+    <value>ドライバーパッケージを削除しています…</value>
   </data>
   <data name="Message_Delete_Package" xml:space="preserve">
     <value>ドライバーストアから{0} ({1})を削除しました。</value>
@@ -321,11 +327,11 @@
     <comment>{0} - Placeholder for export path</comment>
   </data>
   <data name="Export_Failed" xml:space="preserve">
-    <value>エクスポートに失敗しました: {0}</value>
+    <value>エクスポートに失敗しました：{0}</value>
     <comment>{0} - Placeholder for error message</comment>
   </data>
   <data name="Status_Selected_Drivers" xml:space="preserve">
-    <value>{0}個のドライバーを選択中（合計サイズ: {1}）</value>
+    <value>{0}個のドライバーを選択中（合計サイズ：{1}）</value>
     <comment>{0} - Placeholder for number of selected Drivers
 {1} - Placeholder for disk space</comment>
   </data>
@@ -345,7 +351,7 @@
     <value>ローカルコンピューター</value>
   </data>
   <data name="Menu_File_Choose_Driver_Store" xml:space="preserve">
-    <value>ドライバーストアの選択(&amp;C)...</value>
+    <value>ドライバーストアの選択(&amp;C)…</value>
   </data>
   <data name="DriverStore_Offline" xml:space="preserve">
     <value>オフラインドライバーストア</value>
@@ -366,15 +372,27 @@
     <value>(最新)</value>
   </data>
   <data name="About_FoundNewVersion" xml:space="preserve">
-    <value>(新しいバージョンがあります: v{0} - {1})</value>
+    <value>(新しいバージョンがあります：v{0} - {1})</value>
     <comment>{0} - Placeholder for version number
 {1} - Placeholder for About_Download</comment>
   </data>
   <data name="About_Download" xml:space="preserve">
     <value>ダウンロード</value>
   </data>
+  <data name="About_Update" xml:space="preserve">
+    <value>更新</value>
+  </data>
+  <data name="Update_Downloading" xml:space="preserve">
+    <value>(v{0}をダウンロード中…{1}%)</value>
+    <comment>{0} - Placeholder for version number
+{1} - Placeholder for download percentage</comment>
+  </data>
+  <data name="Update_Failed" xml:space="preserve">
+    <value>(更新に失敗しました：{0})</value>
+    <comment>{0} - Placeholder for error message</comment>
+  </data>
   <data name="Message_Scanning_Driver_Store" xml:space="preserve">
-    <value>ドライバーストアをスキャンしています...</value>
+    <value>ドライバーストアをスキャンしています…</value>
   </data>
   <data name="Message_ForceDelete_Single_Package" xml:space="preserve">
     <value>ドライバーストアから{0} ({1})を強制削除します。</value>
@@ -391,7 +409,7 @@
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Export_Success" xml:space="preserve">
-    <value>ドライバー{0} ({1})のエクスポートに成功しました。</value>
+    <value>ドライバー「{0} ({1})」のエクスポートに成功しました。</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
@@ -401,7 +419,7 @@
 {1} - Placeholder for oem inf file</comment>
   </data>
   <data name="Message_Export_Fail" xml:space="preserve">
-    <value>ドライバー{0} ({1})のエクスポートに失敗しました。</value>
+    <value>ドライバー「{0} ({1})」のエクスポートに失敗しました。</value>
     <comment>{0} - Placeholder for inf package file
 {1} - Placeholder for oem inf file</comment>
   </data>
@@ -435,10 +453,10 @@
     <value>ドライバーパッケージのエクスポートに成功しました。</value>
   </data>
   <data name="Status_Exporting_All_Drivers" xml:space="preserve">
-    <value>すべてのドライバーパッケージをエクスポートしています...</value>
+    <value>すべてのドライバーパッケージをエクスポートしています…</value>
   </data>
   <data name="Status_Exporting_Drivers" xml:space="preserve">
-    <value>ドライバーパッケージをエクスポートしています...</value>
+    <value>ドライバーパッケージをエクスポートしています…</value>
   </data>
   <data name="Button_Cancel" xml:space="preserve">
     <value>キャンセル(&amp;C)</value>
@@ -492,7 +510,7 @@
     <value>ドライバーストアに一部のパッケージを追加してインストールする際にエラーが発生しました。</value>
   </data>
   <data name="Menu_File_Export_Selected_Driver_List" xml:space="preserve">
-    <value>選択したドライバーリストをエクスポート(&amp;S)...</value>
+    <value>選択したドライバーリストをエクスポート(&amp;S)…</value>
   </data>
   <data name="Menu_Options_IncludeBootCritical" xml:space="preserve">
     <value>起動に必要なドライバーを古いドライバーと未使用のドライバーに含める</value>
@@ -511,30 +529,12 @@ Windowsフォルダー自体ではなく、Windowsインストールまたはイ
   <data name="Message_No_Old_Drivers_Found" xml:space="preserve">
     <value>選択できる古いドライバーが見つかりません。</value>
   </data>
-  <data name="About_Update" xml:space="preserve">
-    <value>更新</value>
-  </data>
-  <data name="Update_Downloading" xml:space="preserve">
-    <value>(v{0}をダウンロード中... {1}%)</value>
-    <comment>{0} - Placeholder for version number
-{1} - Placeholder for download percentage</comment>
-  </data>
-  <data name="Update_Failed" xml:space="preserve">
-    <value>(更新に失敗しました: {0})</value>
-    <comment>{0} - Placeholder for error message</comment>
-  </data>
-  <data name="Button_Select_Unused" xml:space="preserve">
-    <value>未使用のドライバーを選択(&amp;U)</value>
-  </data>
-  <data name="Context_Select_Unused" xml:space="preserve">
-    <value>未使用のドライバーを選択(&amp;U)</value>
-  </data>
   <data name="Message_No_Unused_Drivers_Found" xml:space="preserve">
     <value>既存のデバイスに関連付けられていないドライバーは見つかりませんでした。</value>
   </data>
   <data name="Message_Select_Unused_Drivers_Warning" xml:space="preserve">
     <value>「未使用のドライバーを選択」は、関連付けられたデバイスがないドライバーを選択します。安全に削除できることが確認されたドライバーを選択するものではありません。
-ウイルス対策ソフト、ネットワーク、プリンター、その他のソフトウェアに不可欠なドライバーも選択される可能性があります。
+重要なウイルス対策ソフト、ネットワーク、プリンター、その他のソフトウェアドライバーも選択される可能性があります。
 削除するとソフトウェアやデバイスが動作しなくなる場合があります。選択内容を確認し、削除前にドライバーをバックアップしてください。
 起動に必要なドライバーは、「オプション」メニューで含めるように設定しない限り選択されません。
 
@@ -560,6 +560,9 @@ Windowsフォルダー自体ではなく、Windowsインストールまたはイ
   </data>
   <data name="Details_Folder" xml:space="preserve">
     <value>フォルダー</value>
+  </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+クリックで開く</value>
   </data>
   <data name="Details_Tag_Old_Version" xml:space="preserve">
     <value>古いバージョン</value>
@@ -606,9 +609,6 @@ Windowsフォルダー自体ではなく、Windowsインストールまたはイ
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>すべて選択</value>
   </data>
-  <data name="Details_Folder_Open_Hint" xml:space="preserve">
-    <value>Ctrl+クリックで開く</value>
-  </data>
   <data name="Menu_Options_Theme" xml:space="preserve">
     <value>テーマ</value>
   </data>
@@ -620,5 +620,53 @@ Windowsフォルダー自体ではなく、Windowsインストールまたはイ
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>ダーク</value>
+  </data>
+  <data name="Menu_File_Remove_Ghost_Devices" xml:space="preserve">
+    <value>ゴーストデバイスの削除(&amp;G)…</value>
+  </data>
+  <data name="GhostDevices_Title" xml:space="preserve">
+    <value>ゴーストデバイスの削除</value>
+  </data>
+  <data name="GhostDevices_Description" xml:space="preserve">
+    <value>これらのデバイスはインストールされていますが、現在は接続されていません。デバイスを削除するとそのエントリが消去されますが、後で再び接続した際にWindowsが再インストールします。ソフトウェアによって作成されたデバイス（ROOT、SWD、HTREEなど）は、非表示の状態でも一部が必要となるため、既定では選択されません。</value>
+  </data>
+  <data name="GhostDevices_Column_Name" xml:space="preserve">
+    <value>デバイス</value>
+  </data>
+  <data name="GhostDevices_Column_Class" xml:space="preserve">
+    <value>クラス</value>
+  </data>
+  <data name="GhostDevices_Column_InstanceId" xml:space="preserve">
+    <value>インスタンスID</value>
+  </data>
+  <data name="GhostDevices_Column_LastUsed" xml:space="preserve">
+    <value>最終使用日時</value>
+  </data>
+  <data name="GhostDevices_HideRecent" xml:space="preserve">
+    <value>最近使用したデバイスを非表示（日数）(&amp;H)：</value>
+  </data>
+  <data name="GhostDevices_AllHidden" xml:space="preserve">
+    <value>すべてのゴーストデバイスが最近使用されています。表示するには上のフィルターをオフにしてください。</value>
+  </data>
+  <data name="GhostDevices_Remove" xml:space="preserve">
+    <value>削除(&amp;R)</value>
+  </data>
+  <data name="Status_Scanning_Ghost_Devices" xml:space="preserve">
+    <value>ゴーストデバイスをスキャンしています…</value>
+  </data>
+  <data name="Status_Removing_Ghost_Devices" xml:space="preserve">
+    <value>ゴーストデバイスを削除しています…</value>
+  </data>
+  <data name="Message_No_Ghost_Devices" xml:space="preserve">
+    <value>ゴーストデバイスは見つかりませんでした。</value>
+  </data>
+  <data name="Message_Confirm_Remove_Ghost_Devices" xml:space="preserve">
+    <value>{0}個のゴーストデバイスを削除しますか？この操作は元に戻せません。</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Success" xml:space="preserve">
+    <value>{0}個のゴーストデバイスを削除しました。</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Error" xml:space="preserve">
+    <value>{1}個中{0}個のゴーストデバイスを削除できませんでした：</value>
   </data>
 </root>
