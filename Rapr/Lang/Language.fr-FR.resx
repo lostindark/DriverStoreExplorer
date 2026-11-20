@@ -621,4 +621,52 @@ Continuer la sélection des pilotes ?</value>
   <data name="Theme_Dark" xml:space="preserve">
     <value>Sombre</value>
   </data>
+  <data name="Menu_File_Remove_Ghost_Devices" xml:space="preserve">
+    <value>Supprimer les périphériques &amp;fantômes...</value>
+  </data>
+  <data name="GhostDevices_Title" xml:space="preserve">
+    <value>Supprimer les périphériques fantômes</value>
+  </data>
+  <data name="GhostDevices_Description" xml:space="preserve">
+    <value>Ces périphériques sont installés mais ne sont pas connectés. En supprimer un efface son entrée de périphérique ; Windows le réinstallera si le périphérique est connecté ultérieurement. Les périphériques créés par logiciel (ROOT, SWD, HTREE, ...) ne sont pas sélectionnés par défaut, car certains d'entre eux sont nécessaires même lorsqu'ils sont masqués.</value>
+  </data>
+  <data name="GhostDevices_Column_Name" xml:space="preserve">
+    <value>Périphérique</value>
+  </data>
+  <data name="GhostDevices_Column_Class" xml:space="preserve">
+    <value>Classe</value>
+  </data>
+  <data name="GhostDevices_Column_InstanceId" xml:space="preserve">
+    <value>ID d'instance</value>
+  </data>
+  <data name="GhostDevices_Column_LastUsed" xml:space="preserve">
+    <value>Dernière utilisation</value>
+  </data>
+  <data name="GhostDevices_HideRecent" xml:space="preserve">
+    <value>&amp;Masquer les périphériques utilisés au cours des derniers (jours) :</value>
+  </data>
+  <data name="GhostDevices_AllHidden" xml:space="preserve">
+    <value>Tous les périphériques fantômes ont été utilisés récemment. Désactivez le filtre ci-dessus pour les afficher.</value>
+  </data>
+  <data name="GhostDevices_Remove" xml:space="preserve">
+    <value>&amp;Supprimer</value>
+  </data>
+  <data name="Status_Scanning_Ghost_Devices" xml:space="preserve">
+    <value>Recherche des périphériques fantômes...</value>
+  </data>
+  <data name="Status_Removing_Ghost_Devices" xml:space="preserve">
+    <value>Suppression des périphériques fantômes...</value>
+  </data>
+  <data name="Message_No_Ghost_Devices" xml:space="preserve">
+    <value>Aucun périphérique fantôme trouvé.</value>
+  </data>
+  <data name="Message_Confirm_Remove_Ghost_Devices" xml:space="preserve">
+    <value>Supprimer {0} périphérique(s) fantôme(s) ? Cette action est irréversible.</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Success" xml:space="preserve">
+    <value>{0} périphérique(s) fantôme(s) supprimé(s).</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Error" xml:space="preserve">
+    <value>{0} périphérique(s) fantôme(s) sur {1} n'ont pas pu être supprimé(s) :</value>
+  </data>
 </root>
