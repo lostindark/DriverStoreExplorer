@@ -623,10 +623,10 @@ Continuare con la selezione dei driver?</value>
     <value>Scuro</value>
   </data>
   <data name="Menu_File_Remove_Ghost_Devices" xml:space="preserve">
-    <value>Rimuovi dispostivi &amp;fantasma...</value>
+    <value>Rimuovi dispositivi &amp;fantasma...</value>
   </data>
   <data name="GhostDevices_Title" xml:space="preserve">
-    <value>Rimuovi dispostivi fantasma</value>
+    <value>Rimuovi dispositivi fantasma</value>
   </data>
   <data name="GhostDevices_Description" xml:space="preserve">
     <value>Questi dispositivi sono installati ma non collegati. La rimozione di uno elimina la voce del dispositivo; se il dispositivo verrà ricollegato Windows lo installerà di nuovo. I dispositivi creati dal software (ROOT, SWD, HTREE, ...) non sono selezionati per impostazione predefinita perché alcuni di essi sono necessari anche quando nascosti.</value>
@@ -662,7 +662,7 @@ Continuare con la selezione dei driver?</value>
     <value>Nessun dispositivo fantasma trovato.</value>
   </data>
   <data name="Message_Confirm_Remove_Ghost_Devices" xml:space="preserve">
-    <value>Vuoi rimuovere '{0}' dispositivi fantasma? Questo operazione non potrà essere annullata.</value>
+    <value>Vuoi rimuovere '{0}' dispositivi fantasma? Questa operazione non potrà essere annullata.</value>
   </data>
   <data name="Message_Remove_Ghost_Devices_Success" xml:space="preserve">
     <value>{0} dispositivi fantasma rimossi.</value>
