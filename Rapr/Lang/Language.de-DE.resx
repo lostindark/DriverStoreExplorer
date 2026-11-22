@@ -621,4 +621,52 @@ Mit der Auswahl der Treiber fortfahren?</value>
   <data name="Theme_Dark" xml:space="preserve">
     <value>Dunkel</value>
   </data>
+  <data name="Menu_File_Remove_Ghost_Devices" xml:space="preserve">
+    <value>Geistergeräte &amp;entfernen …</value>
+  </data>
+  <data name="GhostDevices_Title" xml:space="preserve">
+    <value>Geistergeräte entfernen</value>
+  </data>
+  <data name="GhostDevices_Description" xml:space="preserve">
+    <value>Diese Geräte sind installiert, aber nicht angeschlossen. Durch das Entfernen wird der jeweilige Geräteeintrag gelöscht. Windows installiert das Gerät erneut, wenn es später wieder angeschlossen wird. Softwareseitig erstellte Geräte (ROOT, SWD, HTREE …) sind standardmäßig nicht ausgewählt, da einige davon auch im ausgeblendeten Zustand benötigt werden.</value>
+  </data>
+  <data name="GhostDevices_Column_Name" xml:space="preserve">
+    <value>Gerät</value>
+  </data>
+  <data name="GhostDevices_Column_Class" xml:space="preserve">
+    <value>Klasse</value>
+  </data>
+  <data name="GhostDevices_Column_InstanceId" xml:space="preserve">
+    <value>Instanz-ID</value>
+  </data>
+  <data name="GhostDevices_Column_LastUsed" xml:space="preserve">
+    <value>Zuletzt verwendet</value>
+  </data>
+  <data name="GhostDevices_HideRecent" xml:space="preserve">
+    <value>&amp;Kürzlich verwendete Geräte ausblenden (Tage):</value>
+  </data>
+  <data name="GhostDevices_AllHidden" xml:space="preserve">
+    <value>Alle Geistergeräte wurden kürzlich verwendet. Deaktivieren Sie den Filter oben, um sie anzuzeigen.</value>
+  </data>
+  <data name="GhostDevices_Remove" xml:space="preserve">
+    <value>&amp;Entfernen</value>
+  </data>
+  <data name="Status_Scanning_Ghost_Devices" xml:space="preserve">
+    <value>Geistergeräte werden gesucht …</value>
+  </data>
+  <data name="Status_Removing_Ghost_Devices" xml:space="preserve">
+    <value>Geistergeräte werden entfernt …</value>
+  </data>
+  <data name="Message_No_Ghost_Devices" xml:space="preserve">
+    <value>Es wurden keine Geistergeräte gefunden.</value>
+  </data>
+  <data name="Message_Confirm_Remove_Ghost_Devices" xml:space="preserve">
+    <value>{0} Geistergeräte entfernen? Dieser Vorgang kann nicht rückgängig gemacht werden.</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Success" xml:space="preserve">
+    <value>{0} Geistergeräte wurden entfernt.</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Error" xml:space="preserve">
+    <value>{0} von {1} Geistergeräten konnten nicht entfernt werden:</value>
+  </data>
 </root>
