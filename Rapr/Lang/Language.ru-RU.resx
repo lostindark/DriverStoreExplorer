@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Button_Add_Package" xml:space="preserve">
-    <value>Добавить драйвер</value>
+    <value>Добавить драйвер(ы)</value>
   </data>
   <data name="Button_Delete_Package" xml:space="preserve">
     <value>Удалить драйвер(ы)</value>
@@ -190,16 +190,16 @@
     <value>Выделить неиспользуемые драйверы</value>
   </data>
   <data name="Message_Delete_Multiple_Packages" xml:space="preserve">
-    <value>Удалить {0} пакета(ов) из хранилища драйверов.</value>
+    <value>Удаление {0} пакета(ов) из хранилища драйверов.</value>
     <comment>{0} - Placeholder для количества пакетов</comment>
   </data>
   <data name="Message_Delete_Single_Package" xml:space="preserve">
-    <value>Удалить {0} ({1}) из хранилища драйверов.</value>
+    <value>Удаление {0} ({1}) из хранилища драйверов.</value>
     <comment>{0} - Placeholder для inf-файла пакета драйверов
 {1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_Requires_Admin" xml:space="preserve">
-    <value>Для запуска этой утилиты требуются права администратора.</value>
+    <value>Для запуска этой программы требуются права администратора.</value>
   </data>
   <data name="Message_Requires_Later_OS" xml:space="preserve">
     <value>Эта программа не может быть запущена на ОС младше Vista.</value>
@@ -297,7 +297,7 @@
 {1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_Delete_Packages" xml:space="preserve">
-    <value>Удалено {0} пакетов из хранилища драйверов.</value>
+    <value>Удалено пакетов из хранилища драйверов: {0}.</value>
     <comment>{0} - Placeholder для количества пакетов</comment>
   </data>
   <data name="Message_Delete_Package_Error" xml:space="preserve">
@@ -309,11 +309,11 @@
     <value>Ошибка удаления пакетов из хранилища драйверов.</value>
   </data>
   <data name="Message_Driver_Added" xml:space="preserve">
-    <value>Добавлен {0} пакет в хранилище драйверов.</value>
+    <value>Добавлен пакет {0} в хранилище драйверов.</value>
     <comment>{0} - Placeholder для пути к inf-файлу</comment>
   </data>
   <data name="Message_Driver_Added_Error" xml:space="preserve">
-    <value>Ошибка добавления {0} пакета в хранилище драйверов.</value>
+    <value>Ошибка добавления пакета {0} в хранилище драйверов.</value>
     <comment>{0} - Placeholder для пути к inf-файлу</comment>
   </data>
   <data name="Message_Log_File_NotFound" xml:space="preserve">
@@ -400,7 +400,7 @@
 {1} - Placeholder для файла OEM INF</comment>
   </data>
   <data name="Message_ForceDelete_Multiple_Packages" xml:space="preserve">
-    <value>Форсировано удалить {0} пакета(ов) из хранилища драйверов.</value>
+    <value>Форсировано удалить пакетов из хранилища драйверов: {0}.</value>
     <comment>{0} - Placeholder для количества пакетов</comment>
   </data>
   <data name="Message_Delete_Success" xml:space="preserve">
@@ -435,7 +435,7 @@
     <value>Экспорт драйвера(ов)</value>
   </data>
   <data name="Context_Export_Driver" xml:space="preserve">
-    <value>Экспорт драйверов</value>
+    <value>Экспорт драйвера</value>
   </data>
   <data name="Button_Export_All_Drivers" xml:space="preserve">
     <value>Экспорт всех драйверов</value>
@@ -496,11 +496,11 @@
     <comment>{0} - Placeholder для имени папки</comment>
   </data>
   <data name="Message_Drivers_Added" xml:space="preserve">
-    <value>Добавлено {0} пакета(ов) в хранилище драйверов.</value>
+    <value>Добавлено пакетов в хранилище драйверов: {0}.</value>
     <comment>{0} - Placeholder для количества пакетов</comment>
   </data>
   <data name="Message_Drivers_Added_Installed" xml:space="preserve">
-    <value>Установлено и добавлено в хранилище драйверов {0} пакета(ов).</value>
+    <value>Установлено и добавлено в хранилище драйверов пакетов: {0}.</value>
     <comment>{0} - Placeholder для количества пакетов</comment>
   </data>
   <data name="Message_Drivers_Added_Error" xml:space="preserve">
@@ -561,6 +561,9 @@
   <data name="Details_Folder" xml:space="preserve">
     <value>Папка</value>
   </data>
+  <data name="Details_Folder_Open_Hint" xml:space="preserve">
+    <value>Ctrl+щелчок, чтобы открыть</value>
+  </data>
   <data name="Details_Tag_Old_Version" xml:space="preserve">
     <value>Старая версия</value>
   </data>
@@ -606,9 +609,6 @@
   <data name="Filter_SelectAll" xml:space="preserve">
     <value>Выделить все</value>
   </data>
-  <data name="Details_Folder_Open_Hint" xml:space="preserve">
-    <value>Ctrl+щелчок, чтобы открыть</value>
-  </data>
   <data name="Menu_Options_Theme" xml:space="preserve">
     <value>Тема</value>
   </data>
@@ -620,5 +620,53 @@
   </data>
   <data name="Theme_Dark" xml:space="preserve">
     <value>Тёмная</value>
+  </data>
+  <data name="Menu_File_Remove_Ghost_Devices" xml:space="preserve">
+    <value>Удалить &amp;фантомные устройства...</value>
+  </data>
+  <data name="GhostDevices_Title" xml:space="preserve">
+    <value>Удаление фантомных устройств</value>
+  </data>
+  <data name="GhostDevices_Description" xml:space="preserve">
+    <value>Эти устройства установлены, но не подключены. При удалении устройства его запись также удаляется; Windows установит его снова, если устройство будет подключено позже. Созданные программным обеспечением устройства (ROOT, SWD, HTREE, ...) по умолчанию не выбираются, поскольку некоторые из них необходимы, даже если они скрыты.</value>
+  </data>
+  <data name="GhostDevices_Column_Name" xml:space="preserve">
+    <value>Устройство</value>
+  </data>
+  <data name="GhostDevices_Column_Class" xml:space="preserve">
+    <value>Класс</value>
+  </data>
+  <data name="GhostDevices_Column_InstanceId" xml:space="preserve">
+    <value>ID экземпляра</value>
+  </data>
+  <data name="GhostDevices_Column_LastUsed" xml:space="preserve">
+    <value>Последнее использование</value>
+  </data>
+  <data name="GhostDevices_HideRecent" xml:space="preserve">
+    <value>&amp;Скрыть устройства, использованные за последние (дн.):</value>
+  </data>
+  <data name="GhostDevices_AllHidden" xml:space="preserve">
+    <value>Все фантомные устройства недавно использовались. Отключите фильтр выше, чтобы показать их.</value>
+  </data>
+  <data name="GhostDevices_Remove" xml:space="preserve">
+    <value>&amp;Удалить</value>
+  </data>
+  <data name="Status_Scanning_Ghost_Devices" xml:space="preserve">
+    <value>Поиск фантомных устройств...</value>
+  </data>
+  <data name="Status_Removing_Ghost_Devices" xml:space="preserve">
+    <value>Удаление фантомных устройств...</value>
+  </data>
+  <data name="Message_No_Ghost_Devices" xml:space="preserve">
+    <value>Фантомные устройства не найдены.</value>
+  </data>
+  <data name="Message_Confirm_Remove_Ghost_Devices" xml:space="preserve">
+    <value>Удалить фантомные устройства ({0} экз.)? Это действие нельзя отменить.</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Success" xml:space="preserve">
+    <value>Удалено фантомных устройств: {0}.</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Error" xml:space="preserve">
+    <value>Не удалось удалить {0} из {1} фантомных устройств:</value>
   </data>
 </root>
