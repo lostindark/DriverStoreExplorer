@@ -18,7 +18,7 @@ dotnet test RaprTests\RaprTests.csproj --filter "FullyQualifiedName~TestMethodNa
 
 The CI workflow (`.github/workflows/ci.yml`) builds with MSBuild on `windows-latest`, then executes the tests and rejects runs with zero executed tests. There is no separate lint step — code analysis is handled by the `Microsoft.CodeAnalysis.NetAnalyzers` NuGet package at build time.
 
-CI increments the highest numeric `vMajor.Minor.Patch` tag for each new `master` push and stops on tagging/push errors. Reruns reuse the tag on HEAD. PR builds use unique `-pr.<number>.<run>.<attempt>+<sha>` informational versions and artifact names, without creating tags. Runs on the same ref are serialized.
+GitHub Actions and AppVeyor use `.github/scripts/Get-BuildVersion.ps1` to find the nearest numeric `vMajor.Minor.Patch` tag on first-parent history and add the commit distance to its patch number. GitHub Actions tags `master` pushes, reuses the tag on HEAD for reruns, and stops on tagging or push errors. PR builds derive the numeric version from the merge commit's first parent and append `-pr.<number>+<head SHA8>` for the informational version and artifact name, without creating tags. GitHub Actions runs on the same ref are serialized.
 
 Release has an optional version input. Blank selects the latest successful `master` push CI run; a supplied version selects the latest successful run for that tagged commit. It verifies the tag/artifact/source match, signs that exact artifact, and creates or refreshes a draft. Published releases are never modified. It does not rebuild, assign versions, or create tags. Publish the draft manually to trigger WinGet submission. Release runs are serialized.
 
@@ -30,9 +30,11 @@ Release has an optional version input. Blank selects the latest successful `mast
 - `DismUtil` — DISM API via `Microsoft.Dism` NuGet package
 - `PnpUtil` — Parses `pnputil.exe` command output
 
-`DriverStoreFactory` creates the appropriate implementation based on user settings with automatic fallback based on OS capabilities. Each backend supports both online (local machine) and offline (mounted image) driver stores.
+`DriverStoreFactory` creates the appropriate implementation based on user settings with automatic fallback based on OS capabilities. `NativeDriverStore` and `DismUtil` support both online (local machine) and offline (mounted image) driver stores. `PnpUtil` is online-only.
 
 **Main form split:** The main UI is split across `DSEForm.cs` (form logic, event handlers, driver operations) and `DSEFormHelper.cs` (static helpers for OS detection, admin checks, path resolution, native interop).
+
+**Ghost devices:** Remove Ghost Devices is online-only. It uses `ConfigManager` to enumerate and remove non-present devices, rather than calling `IDriverStore`.
 
 **Single-file deployment:** NuGet dependencies are embedded as resources via `Resource.Embedder` and resolved at runtime through `AppDomain.CurrentDomain.AssemblyResolve` in `Program.cs`. This means the app ships as a single executable with embedded DLLs.
 
@@ -48,7 +50,7 @@ Release has an optional version input. Blank selects the latest successful `mast
 
 **Settings:** User settings are defined in `Properties/Settings.settings` and accessed via `Properties.Settings.Default`. The app uses `PortableSettingsProvider` for portable config files alongside the executable.
 
-**ListView:** The driver list uses `TypedObjectListView<DriverStoreEntry>` via the designer-compatible `MyObjectListView` in `Rapr/MyObjectListView.cs`. Keep selection and model collections strongly typed and use OLV column aspects rather than raw `ListView` APIs.
+**ListView:** The driver list uses `DriverStoreListView` (`Rapr/DriverStoreListView.cs`), which directly extends `TypedObjectListView<DriverStoreEntry>`. Keep selection and model collections strongly typed and use OLV column aspects rather than raw `ListView` APIs.
 
 **Code analysis:** `GlobalSuppressions.cs` contains project-level analyzer suppressions. The project uses `Microsoft.CodeAnalysis.NetAnalyzers` for static analysis during build.
 
