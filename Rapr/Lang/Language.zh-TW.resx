@@ -620,4 +620,52 @@
   <data name="Theme_Dark" xml:space="preserve">
     <value>深色</value>
   </data>
+  <data name="Menu_File_Remove_Ghost_Devices" xml:space="preserve">
+    <value>移除幽靈裝置(&amp;G)...</value>
+  </data>
+  <data name="GhostDevices_Title" xml:space="preserve">
+    <value>移除幽靈裝置</value>
+  </data>
+  <data name="GhostDevices_Description" xml:space="preserve">
+    <value>這些裝置已安裝，但目前未連線。移除裝置會刪除其裝置項目；如果之後重新連接該裝置，Windows 會重新安裝它。預設不會選取由軟體建立的裝置（ROOT、SWD、HTREE 等），因為其中有些裝置即使隱藏也仍需保留。</value>
+  </data>
+  <data name="GhostDevices_Column_Name" xml:space="preserve">
+    <value>裝置</value>
+  </data>
+  <data name="GhostDevices_Column_Class" xml:space="preserve">
+    <value>類別</value>
+  </data>
+  <data name="GhostDevices_Column_InstanceId" xml:space="preserve">
+    <value>執行個體識別碼</value>
+  </data>
+  <data name="GhostDevices_Column_LastUsed" xml:space="preserve">
+    <value>上次使用時間</value>
+  </data>
+  <data name="GhostDevices_HideRecent" xml:space="preserve">
+    <value>隱藏最近使用過的裝置(&amp;H)（天數）：</value>
+  </data>
+  <data name="GhostDevices_AllHidden" xml:space="preserve">
+    <value>所有幽靈裝置最近都使用過。關閉上方的篩選選項即可顯示這些裝置。</value>
+  </data>
+  <data name="GhostDevices_Remove" xml:space="preserve">
+    <value>移除(&amp;R)</value>
+  </data>
+  <data name="Status_Scanning_Ghost_Devices" xml:space="preserve">
+    <value>正在掃描幽靈裝置...</value>
+  </data>
+  <data name="Status_Removing_Ghost_Devices" xml:space="preserve">
+    <value>正在移除幽靈裝置...</value>
+  </data>
+  <data name="Message_No_Ghost_Devices" xml:space="preserve">
+    <value>找不到幽靈裝置。</value>
+  </data>
+  <data name="Message_Confirm_Remove_Ghost_Devices" xml:space="preserve">
+    <value>確定要移除 {0} 個幽靈裝置嗎？此動作無法復原。</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Success" xml:space="preserve">
+    <value>已移除 {0} 個幽靈裝置。</value>
+  </data>
+  <data name="Message_Remove_Ghost_Devices_Error" xml:space="preserve">
+    <value>無法移除 {0} 個幽靈裝置（共 {1} 個）：</value>
+  </data>
 </root>
